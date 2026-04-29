@@ -1,0 +1,9 @@
+{
+  "name": "sensei-quiz",
+  "version": "1.0.0",
+  "description": "先生クイズアプリ",
+  "private": true,
+  "engines": {
+    "node": "18.x"
+  }
+}
