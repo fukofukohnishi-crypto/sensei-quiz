@@ -20,7 +20,7 @@ export default async function handler(req, res) {
       else if (decoded[0] === 0x52 && decoded[1] === 0x49) mediaType = 'image/webp';
     } catch (e) {}
 
-    const NAMES = { shakai:'社会', sansu:'算数', kokugo:'国語', rika:'理科' };
+    const NAMES = { shakai: '社会', sansu: '算数', kokugo: '国語', rika: '理科' };
     const subjList = subjects.map(s => NAMES[s] || s).join('・');
 
     const prompt = `あなたは小学3年生向けの問題を作る先生です。
@@ -29,9 +29,23 @@ export default async function handler(req, res) {
 subjectの値は次のいずれか：${subjects.join(', ')}
 
 必ずJSONのみで返してください。説明文・マークダウン不要。
-形式：{"questions":[{"q":"問題文","a":"正解の選択肢","choices":["正解","不正解1","不正解2","不正解3"],"subject":"rika"}]}
+形式：
+{"questions":[
+  {
+    "q":"問題文",
+    "a":"正解の選択肢",
+    "choices":["正解","不正解1","不正解2","不正解3"],
+    "subject":"rika",
+    "explain":"正解の簡単な解説（1〜2文、小学3年生がわかる言葉で）"
+  }
+]}
 
-注意：choicesは必ず4つ、choicesの中にaが必ず含まれる、小学3年生がわかる言葉を使う`;
+注意：
+- choicesは必ず4つ
+- choicesの中にaが必ず含まれる
+- 小学3年生がわかる言葉を使う
+- explainは正解・不正解どちらにも使える中立的な解説にする
+- 画像の内容から問題を作る`;
 
     const response = await fetch('https://api.anthropic.com/v1/messages', {
       method: 'POST',
@@ -42,7 +56,7 @@ subjectの値は次のいずれか：${subjects.join(', ')}
       },
       body: JSON.stringify({
         model: 'claude-opus-4-6',
-        max_tokens: 1500,
+        max_tokens: 2000,
         messages: [{
           role: 'user',
           content: [
