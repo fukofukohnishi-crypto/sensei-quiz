@@ -257,20 +257,20 @@ html,body{height:100%;font-family:'Noto Sans JP',sans-serif;background:var(--bg)
 <!-- ADD PHOTOS（科目＋回＋写真） -->
 <div class="screen" id="addphotos">
   <div class="hdr">
-    <button class="hdr-back" onclick="showScreen('subjectselect')">←</button>
+    <button class="hdr-back" onclick="showScreen('roundselect')">←</button>
     <div class="hdr-title" id="ap-title">📷 問題を追加</div>
   </div>
   <div class="scrollbody">
     <span class="lbl">科目</span>
     <div id="ap-chips" style="margin-bottom:14px"></div>
-    <span class="lbl">回（第N回）</span>
+    <span class="lbl">回（第N回）を選ぶ</span>
     <div style="display:grid;grid-template-columns:repeat(5,1fr);gap:6px;margin-bottom:14px" id="ap-round-btns"></div>
     <span class="lbl">写真（最大20枚）</span>
-    <label class="upl" id="ap-upl">
-      <input type="file" accept="image/*" multiple onchange="onPhotos(event,true)"/>
+    <div class="upl" id="ap-upl" onclick="document.getElementById('ap-file-input').click()">
+      <input type="file" id="ap-file-input" accept="image/*" multiple style="display:none" onchange="onPhotos(event,true)"/>
       <div style="font-size:2rem;margin-bottom:6px">📷</div>
       <div id="ap-upl-txt" style="color:#ccc;font-weight:700;font-size:.9rem">タップして写真を選ぶ</div>
-    </label>
+    </div>
     <div class="thumb-strip" id="ap-thumbs" style="display:none"></div>
     <div id="ap-prog-wrap" style="display:none">
       <div style="display:flex;justify-content:space-between;font-size:.73rem;color:var(--muted);margin-bottom:4px"><span>処理中…</span><span id="ap-prog-pct">0%</span></div>
@@ -590,7 +590,7 @@ function goAddPhotosSubj(subj,round){
   apPhotos=[];
   apCurrentSubj=subj;
   apSelectedRound=round||1;
-  document.getElementById('ap-upl').classList.remove('has-files');
+  document.getElementById('ap-upl').classList.remove('has-files');document.getElementById('ap-file-input').value='';
   document.getElementById('ap-upl-txt').textContent='タップして写真を選ぶ';
   document.getElementById('ap-thumbs').style.display='none';
   document.getElementById('ap-thumbs').innerHTML='';
@@ -873,7 +873,7 @@ function createTest(){
 }
 function goAddPhotos(){
   apPhotos=[];apCurrentSubj='rika';apSelectedRound=1;
-  document.getElementById('ap-upl').classList.remove('has-files');
+  document.getElementById('ap-upl').classList.remove('has-files');document.getElementById('ap-file-input').value='';
   document.getElementById('ap-upl-txt').textContent='タップして写真を選ぶ';
   document.getElementById('ap-thumbs').style.display='none';document.getElementById('ap-thumbs').innerHTML='';
   document.getElementById('ap-prog-wrap').style.display='none';document.getElementById('ap-log').innerHTML='';
