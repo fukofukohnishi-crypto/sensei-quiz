@@ -628,7 +628,7 @@ function doAnswer(chosen,ans,btn,explain){
     setBubble(cfg.ng[Math.floor(Math.random()*cfg.ng.length)]);
     document.getElementById('quiz-char').src=IMGS[cfg.key].wrong;
     showFB(false,`❌ 正解は「${ans}」`,explain||'もう一度確認してみよう！');
-    nb.style.background='#333';
+    nb.style.background=`linear-gradient(135deg,${cfg.color},${cfg.btn})`;
   }
   document.getElementById('q-score').textContent=score;
   document.getElementById('streak-pill').textContent='🔥 '+streak;
