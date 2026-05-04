@@ -202,6 +202,16 @@ html,body{height:100%;font-family:'Noto Sans JP',sans-serif;background:var(--bg)
 .cf{position:absolute;top:-20px;border-radius:2px;animation:cfFall linear forwards}
 @keyframes cfFall{0%{transform:translateY(0) rotate(0);opacity:1}100%{transform:translateY(110vh) rotate(720deg);opacity:0}}
 @keyframes fadeIn{from{opacity:0;transform:translateY(5px)}to{opacity:1;transform:translateY(0)}}
+
+/* 回選択ボタン */
+.round-num-btn{
+  padding:10px 4px;border:2px solid rgba(255,255,255,.1);
+  border-radius:10px;background:var(--card);
+  color:var(--muted);font-family:inherit;font-size:.8rem;font-weight:700;
+  cursor:pointer;text-align:center;transition:all .15s;
+}
+.round-num-btn.active{border-color:#ffd700;background:rgba(255,215,0,.15);color:#ffd700}
+.round-num-btn:active{transform:scale(.95)}
 </style>
 </head>
 <body>
@@ -245,25 +255,17 @@ html,body{height:100%;font-family:'Noto Sans JP',sans-serif;background:var(--bg)
   </div>
 </div>
 
-<!-- ADD PHOTOS（回を指定してアップ） -->
+<!-- ADD PHOTOS（科目＋回＋写真） -->
 <div class="screen" id="addphotos">
   <div class="hdr">
     <button class="hdr-back" onclick="showScreen('subjectselect')">←</button>
-    <div class="hdr-title">📷 問題を追加</div>
+    <div class="hdr-title" id="ap-title">📷 問題を追加</div>
   </div>
   <div class="scrollbody">
     <span class="lbl">科目</span>
     <div id="ap-chips" style="margin-bottom:14px"></div>
     <span class="lbl">回（第N回）</span>
-    <div style="margin-bottom:14px">
-      <select id="ap-round" style="width:100%;background:var(--card);border:1.5px solid var(--border);border-radius:11px;padding:12px 14px;color:white;font-family:inherit;font-size:.95rem;outline:none;appearance:none;-webkit-appearance:none;background-image:url('data:image/svg+xml,<svg xmlns=\"http://www.w3.org/2000/svg\" width=\"12\" height=\"8\"><path d=\"M0 0l6 8 6-8z\" fill=\"%23888\"/></svg>');background-repeat:no-repeat;background-position:right 14px center">
-        <option value="1">第1回</option>
-        <option value="2">第2回</option>
-        <option value="3">第3回</option>
-        <option value="4">第4回</option>
-        <option value="5">第5回</option>
-      </select>
-    </div>
+    <div style="display:grid;grid-template-columns:repeat(5,1fr);gap:6px;margin-bottom:14px" id="ap-round-btns"></div>
     <span class="lbl">写真（最大20枚）</span>
     <label class="upl" id="ap-upl">
       <input type="file" accept="image/*" multiple onchange="onPhotos(event,true)"/>
@@ -280,41 +282,20 @@ html,body{height:100%;font-family:'Noto Sans JP',sans-serif;background:var(--bg)
   </div>
 </div>
 
-<!-- NEW TEST -->
+<!-- NEW TEST（テスト名だけ設定） -->
 <div class="screen" id="newtest">
   <div class="hdr">
     <button class="hdr-back" onclick="showScreen('home')">←</button>
     <div class="hdr-title">新しいテスト</div>
   </div>
   <div class="scrollbody">
+    <div style="text-align:center;padding:20px 0 16px">
+      <div style="font-size:2.5rem;margin-bottom:8px">📚</div>
+      <div style="font-size:.85rem;color:var(--muted);line-height:1.8">テストの名前を決めよう！<br>問題は後から科目・回ごとに追加できます。</div>
+    </div>
     <span class="lbl">テスト名</span>
-    <input class="inp" id="nt-name" placeholder="例：前期第1回マンスリー" maxlength="30"/>
-    <span class="lbl">科目</span>
-    <div id="nt-chips" style="margin-bottom:14px"></div>
-    <span class="lbl">回（第N回）</span>
-    <div style="margin-bottom:14px">
-      <select id="nt-round" style="width:100%;background:var(--card);border:1.5px solid var(--border);border-radius:11px;padding:12px 14px;color:white;font-family:inherit;font-size:.95rem;outline:none;appearance:none;-webkit-appearance:none;background-image:url('data:image/svg+xml,<svg xmlns=\"http://www.w3.org/2000/svg\" width=\"12\" height=\"8\"><path d=\"M0 0l6 8 6-8z\" fill=\"%23888\"/></svg>');background-repeat:no-repeat;background-position:right 14px center">
-        <option value="1">第1回</option>
-        <option value="2">第2回</option>
-        <option value="3">第3回</option>
-        <option value="4">第4回</option>
-        <option value="5">第5回</option>
-      </select>
-    </div>
-    <span class="lbl">写真（最大20枚）</span>
-    <label class="upl" id="nt-upl">
-      <input type="file" accept="image/*" multiple onchange="onPhotos(event,false)"/>
-      <div style="font-size:2rem;margin-bottom:6px">📷</div>
-      <div id="nt-upl-txt" style="color:#ccc;font-weight:700;font-size:.9rem">タップして写真を選ぶ</div>
-      <div style="font-size:.72rem;color:var(--muted);margin-top:3px">プリント・教科書（最大20枚）</div>
-    </label>
-    <div class="thumb-strip" id="nt-thumbs" style="display:none"></div>
-    <div id="nt-prog-wrap" style="display:none">
-      <div style="display:flex;justify-content:space-between;font-size:.73rem;color:var(--muted);margin-bottom:4px"><span>処理中…</span><span id="nt-prog-pct">0%</span></div>
-      <div class="prog-bar"><div class="prog-fill" id="nt-prog-fill" style="width:0%"></div></div>
-      <div class="log-wrap" id="nt-log"></div>
-    </div>
-    <button class="btn" id="nt-gen-btn" style="background:linear-gradient(135deg,#ffd700,#ff6b35);color:#1a0a00" onclick="generateAll()" disabled>✨ AIで問題を全部作る</button>
+    <input class="inp" id="nt-name" placeholder="例：5月マンスリーテスト" maxlength="30"/>
+    <button class="btn" id="nt-create-btn" style="background:linear-gradient(135deg,#ffd700,#ff6b35);color:#1a0a00;margin-top:8px" onclick="createTest()">✅ テストを作る</button>
   </div>
 </div>
 
@@ -821,23 +802,41 @@ function retryQuiz(){
 
 // ---- PHOTO / GENERATE ----
 function goNewTest(){
-  ntPhotos=[];ntSelectedSubj='rika';
   document.getElementById('nt-name').value='';
-  document.getElementById('nt-round').value='1';
-  document.getElementById('nt-upl').classList.remove('has-files');
-  document.getElementById('nt-upl-txt').textContent='タップして写真を選ぶ';
-  document.getElementById('nt-thumbs').style.display='none';document.getElementById('nt-thumbs').innerHTML='';
-  document.getElementById('nt-prog-wrap').style.display='none';document.getElementById('nt-log').innerHTML='';
-  document.getElementById('nt-gen-btn').disabled=true;buildChips();showScreen('newtest');
+  showScreen('newtest');
+}
+function createTest(){
+  const name=document.getElementById('nt-name').value.trim();
+  if(!name){showToast('テスト名を入力してね','#ffaa44');return;}
+  // 同名テストがあればそれを使う
+  let testId=Object.keys(DB.tests).find(id=>DB.tests[id].name===name);
+  if(!testId){
+    testId='test_'+Date.now();
+    DB.tests[testId]={id:testId,name,createdAt:Date.now(),questions:{shakai:{},sansu:{},kokugo:{},rika:{}}};
+    saveDB();
+  }
+  showToast('「'+name+'」を作りました！','#44cc88');
+  setTimeout(()=>openTest(testId),800);
 }
 function goAddPhotos(){
-  apPhotos=[];apCurrentSubj='rika';
-  document.getElementById('ap-round').value='1';
+  apPhotos=[];apCurrentSubj='rika';apSelectedRound=1;
   document.getElementById('ap-upl').classList.remove('has-files');
   document.getElementById('ap-upl-txt').textContent='タップして写真を選ぶ';
   document.getElementById('ap-thumbs').style.display='none';document.getElementById('ap-thumbs').innerHTML='';
   document.getElementById('ap-prog-wrap').style.display='none';document.getElementById('ap-log').innerHTML='';
-  document.getElementById('ap-gen-btn').disabled=true;buildChips();showScreen('addphotos');
+  document.getElementById('ap-gen-btn').disabled=true;
+  document.getElementById('ap-title').textContent='📷 '+DB.tests[currentTestId].name+' に追加';
+  // 回選択ボタン生成（1〜10）
+  const roundBtns=document.getElementById('ap-round-btns');
+  roundBtns.innerHTML=Array.from({length:10},(_,i)=>i+1).map(n=>
+    `<button class="round-num-btn${n===1?' active':''}" onclick="selectRound(${n},this)">第${n}回</button>`
+  ).join('');
+  buildChips();showScreen('addphotos');
+}
+function selectRound(n,btn){
+  apSelectedRound=n;
+  document.querySelectorAll('.round-num-btn').forEach(b=>b.classList.remove('active'));
+  btn.classList.add('active');
 }
 function onPhotos(e,isAp){
   const all=Array.from(e.target.files);
@@ -913,7 +912,7 @@ async function generateAll(){
 
 async function apGenerateAll(){
   if(!apPhotos.length){showToast('写真を選んでね','#ffaa44');return;}
-  const round=parseInt(document.getElementById('ap-round').value);
+  const round=apSelectedRound||1;
   const subj=apCurrentSubj;
   document.getElementById('ap-gen-btn').disabled=true;document.getElementById('ap-prog-wrap').style.display='block';
   const logEl=document.getElementById('ap-log');logEl.innerHTML='';
