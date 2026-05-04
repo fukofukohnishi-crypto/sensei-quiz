@@ -101,7 +101,7 @@ html,body{height:100%;font-family:'Noto Sans JP',sans-serif;background:var(--bg)
 
 /* キャラ列 ← 2回り大きく */
 .qz-char-col{
-  width:250px;
+  width:400px;
   flex-shrink:0;
   display:flex;
   flex-direction:column;
@@ -111,8 +111,8 @@ html,body{height:100%;font-family:'Noto Sans JP',sans-serif;background:var(--bg)
   position:relative;
 }
 .qz-char-img{
-  width:250px;
-  height:250px;
+  width:400px;
+  height:400px;
   object-fit:contain;
   object-position:bottom center;
   filter:drop-shadow(0 4px 16px rgba(0,0,0,.5));
@@ -126,8 +126,8 @@ html,body{height:100%;font-family:'Noto Sans JP',sans-serif;background:var(--bg)
   text-align:center;
   flex-shrink:0;
 }
-.qz-bubble-name{font-size:.65rem;font-weight:700;opacity:.5;margin-bottom:2px}
-.qz-bubble-txt{font-size:.82rem;font-weight:700;line-height:1.45;color:white}
+.qz-bubble-name{font-size:.9rem;font-weight:700;opacity:.6;margin-bottom:3px}
+.qz-bubble-txt{font-size:1.1rem;font-weight:700;line-height:1.5;color:white}
 
 /* 問題列 */
 .qz-q-col{
@@ -137,11 +137,11 @@ html,body{height:100%;font-family:'Noto Sans JP',sans-serif;background:var(--bg)
   justify-content:center;
   padding:14px 14px;
 }
-.qz-q-tag{font-size:.72rem;font-weight:700;opacity:.75;margin-bottom:8px;letter-spacing:.5px}
+.qz-q-tag{display:none}
 .qz-q-txt{
-  font-size:1.35rem;   /* +10pt */
+  font-size:2.4rem;
   font-weight:900;
-  line-height:1.6;
+  line-height:1.5;
   color:white;
 }
 
@@ -169,7 +169,7 @@ html,body{height:100%;font-family:'Noto Sans JP',sans-serif;background:var(--bg)
   border-radius:13px;
   color:var(--text);
   font-family:inherit;
-  font-size:1.1rem;    /* +10pt */
+  font-size:2rem;
   font-weight:700;
   cursor:pointer;
   text-align:center;
@@ -573,7 +573,7 @@ function beginQuiz(){
   qIdx=0;score=0;streak=0;maxStreak=0;correct=0;wrong=0;answered=false;
   segResults=new Array(questions.length).fill(null);
   const cfg=CHARS[currentSubject];
-  document.getElementById('qz-bubble-name').textContent=cfg.name;
+  document.getElementById('qz-bubble-name').textContent=cfg.subject+' '+cfg.name;
   document.getElementById('quiz-char').src=IMGS[cfg.key].ganbaro;
   document.getElementById('q-score').textContent='0';
   document.getElementById('streak-pill').textContent='🔥 0';
