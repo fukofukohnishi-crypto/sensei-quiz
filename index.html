@@ -101,7 +101,7 @@ html,body{height:100%;font-family:'Noto Sans JP',sans-serif;background:var(--bg)
 
 /* キャラ列 ← 2回り大きく */
 .qz-char-col{
-  width:200px;
+  width:250px;
   flex-shrink:0;
   display:flex;
   flex-direction:column;
@@ -111,8 +111,8 @@ html,body{height:100%;font-family:'Noto Sans JP',sans-serif;background:var(--bg)
   position:relative;
 }
 .qz-char-img{
-  width:200px;
-  height:200px;
+  width:250px;
+  height:250px;
   object-fit:contain;
   object-position:bottom center;
   filter:drop-shadow(0 4px 16px rgba(0,0,0,.5));
@@ -174,8 +174,8 @@ html,body{height:100%;font-family:'Noto Sans JP',sans-serif;background:var(--bg)
   cursor:pointer;
   text-align:center;
   display:flex;align-items:center;justify-content:center;
-  padding:8px 7px;
-  line-height:1.35;
+  padding:4px 7px;
+  line-height:1.2;
   transition:all .15s;
   width:100%;height:100%;
 }
@@ -187,8 +187,8 @@ html,body{height:100%;font-family:'Noto Sans JP',sans-serif;background:var(--bg)
 
 /* フィードバックバナー ← 正解時は大きくインパクト */
 .qz-feedback{
-  border-radius:14px;padding:10px 15px;margin-bottom:7px;
-  display:none;flex-direction:row;align-items:center;gap:10px;flex-shrink:0;
+  border-radius:14px;padding:18px 18px;margin-bottom:7px;
+  display:none;flex-direction:row;align-items:center;gap:12px;flex-shrink:0;
 }
 .qz-feedback.ok{
   background:linear-gradient(135deg,rgba(68,200,120,.22),rgba(68,200,120,.08));
@@ -203,20 +203,21 @@ html,body{height:100%;font-family:'Noto Sans JP',sans-serif;background:var(--bg)
   animation:fbSlideIn .3s ease;
 }
 @keyframes fbSlideIn{from{opacity:0;transform:translateY(6px)}to{opacity:1;transform:translateY(0)}}
-.qz-fb-icon{font-size:1.6rem;flex-shrink:0}  /* アイコン大きく */
+.qz-fb-icon{font-size:2rem;flex-shrink:0}  /* アイコン大きく */
 .qz-fb-body{flex:1}
 .qz-fb-title{font-weight:900;margin-bottom:3px}
-.qz-fb-title.ok{color:#44cc88;font-size:1.05rem}  /* 正解タイトル大きく */
+.qz-fb-title.ok{color:#44cc88;font-size:1.3rem}  /* 正解タイトル大きく */
 .qz-fb-title.ng{color:#ff8888;font-size:.9rem}
-.qz-fb-explain{font-size:.85rem;color:#ccc;line-height:1.5}  /* 解説大きく */
+.qz-fb-explain{font-size:.95rem;color:#ccc;line-height:1.6}  /* 解説大きく */
 
 /* 次へ */
 .qz-next{
-  width:100%;padding:13px;border:none;border-radius:13px;
+  width:50%;padding:20px 13px;border:none;border-radius:14px;
   font-family:inherit;font-size:1rem;font-weight:900;
   cursor:pointer;color:white;display:none;
   align-items:center;justify-content:center;gap:5px;
   flex-shrink:0;
+  align-self:center;
 }
 .qz-next.show{display:flex;animation:fadeIn .3s}
 .qz-next:active{transform:scale(.97)}
