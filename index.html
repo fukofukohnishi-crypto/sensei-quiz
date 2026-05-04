@@ -70,111 +70,147 @@ html,body{height:100%;font-family:'Noto Sans JP',sans-serif;background:var(--bg)
 .intro-lbl{font-size:.7rem;font-weight:700;letter-spacing:1px;margin-bottom:5px}
 .intro-txt{font-size:1rem;font-weight:900;line-height:1.7;margin-bottom:14px}
 
-/* ════════ QUIZ ════════ */
+/* ════════ QUIZ ════════
+   PDF参照レイアウト:
+   - ヘッダー: スコア(左) + 進捗(右)
+   - 中央カード: キャラ(左) + 科目/問題(右)
+   - 下: 選択肢2×2
+════════════════════════ */
 #quiz{background:var(--bg)}
 
-/* ヘッダー */
-.qz-header{background:#111120;border-bottom:1px solid var(--border);padding:8px 14px 0;flex-shrink:0}
-.qz-header-row1{display:flex;align-items:center;justify-content:space-between;margin-bottom:7px}
-.qz-subject-badge{display:flex;align-items:center;gap:6px;font-size:.62rem;font-weight:700;color:var(--muted);letter-spacing:1px}
-.qz-dot{width:8px;height:8px;border-radius:50%;flex-shrink:0}
-.qz-subject-name{font-size:.82rem;font-weight:900;color:white}
-.qz-score-row{display:flex;align-items:center;gap:8px}
-.qz-score{background:rgba(255,215,0,.12);border:1px solid rgba(255,215,0,.25);border-radius:99px;padding:3px 10px;font-size:.76rem;font-weight:900;color:#ffd700}
-.qz-streak{background:rgba(255,80,80,.15);border:1px solid rgba(255,80,80,.3);border-radius:99px;padding:3px 10px;font-size:.76rem;font-weight:900;color:#ff8888}
-.qz-segs-row{display:flex;align-items:center;gap:3px;padding-bottom:8px}
+/* スコアバー */
+.qz-bar{
+  display:flex;align-items:center;justify-content:space-between;
+  padding:8px 14px 6px;
+  flex-shrink:0;
+}
+.qz-score-badge{font-size:.9rem;font-weight:900;color:#ffd700}
+.qz-right-badges{display:flex;align-items:center;gap:8px}
+.qz-streak-badge{background:rgba(255,80,80,.18);border:1px solid rgba(255,80,80,.3);border-radius:99px;padding:3px 10px;font-size:.76rem;font-weight:900;color:#ff8888}
+.qz-num-badge{background:rgba(255,255,255,.07);border-radius:99px;padding:3px 10px;font-size:.74rem;font-weight:700;color:var(--muted)}
+
+/* セグメント進捗 */
+.qz-segs-row{display:flex;gap:3px;padding:0 14px 8px}
 .qz-seg{flex:1;height:5px;border-radius:99px;background:rgba(255,255,255,.1);transition:background .3s}
 .qz-seg.ok{background:#44cc88}
 .qz-seg.ng{background:#ff5555}
 .qz-seg.cur{background:#ffd700;animation:segPulse 1.2s ease-in-out infinite}
-.qz-prog-lbl{font-size:.63rem;color:var(--muted);white-space:nowrap;margin-left:4px}
-@keyframes segPulse{0%,100%{opacity:1}50%{opacity:.5}}
+@keyframes segPulse{0%,100%{opacity:1}50%{opacity:.45}}
 
-/* 中央：キャラ＋問題 */
-.qz-middle{
-  flex:1;display:flex;flex-direction:row;
-  min-height:0;overflow:hidden;
-  padding:8px 11px 5px;gap:8px;
-}
-
-/* キャラ列（小さめ・固定） */
-.qz-char-col{
-  width:110px;flex-shrink:0;
-  display:flex;flex-direction:column;
-  align-items:center;justify-content:flex-end;
-  position:relative;gap:0;
-}
-.qz-char-img{
-  width:110px;height:110px;
-  object-fit:contain;object-position:bottom center;
-  filter:drop-shadow(0 3px 14px rgba(0,0,0,.55));
+/* メインカード（キャラ＋問題） */
+.qz-card{
+  margin:0 12px 8px;
+  background:var(--card);
+  border-radius:18px;
+  display:flex;
+  flex-direction:row;
+  overflow:hidden;
   flex-shrink:0;
 }
-/* セリフバブル（常時表示） */
+
+/* キャラ列 */
+.qz-char-col{
+  width:160px;        /* PDFに近いサイズ */
+  flex-shrink:0;
+  display:flex;
+  flex-direction:column;
+  align-items:center;
+  justify-content:flex-end;
+  padding:10px 8px 0;
+  background:rgba(0,0,0,.15);
+  position:relative;
+}
+.qz-char-img{
+  width:150px;
+  height:150px;
+  object-fit:contain;
+  object-position:bottom center;
+  filter:drop-shadow(0 3px 12px rgba(0,0,0,.5));
+}
+/* セリフバブル（キャラの下に固定） */
 .qz-bubble{
   width:100%;
-  background:rgba(22,22,42,.97);
-  border:1.5px solid rgba(255,255,255,.14);
-  border-radius:11px;
-  padding:7px 9px;
-  font-size:.72rem;font-weight:700;line-height:1.5;
-  text-align:center;color:white;
-  backdrop-filter:blur(6px);
-  margin-top:6px;
+  background:rgba(10,10,24,.92);
+  border-top:1px solid rgba(255,255,255,.1);
+  padding:6px 8px;
+  text-align:center;
+  flex-shrink:0;
 }
-.qz-bubble-name{font-size:.58rem;font-weight:700;opacity:.55;margin-bottom:2px}
-.qz-bubble-txt{font-size:.72rem;font-weight:700;line-height:1.4}
+.qz-bubble-name{font-size:.58rem;font-weight:700;opacity:.5;margin-bottom:1px}
+.qz-bubble-txt{font-size:.72rem;font-weight:700;line-height:1.4;color:white}
 
 /* 問題列 */
 .qz-q-col{
-  flex:1;display:flex;flex-direction:column;justify-content:center;
+  flex:1;
+  display:flex;
+  flex-direction:column;
+  justify-content:center;
+  padding:14px 14px;
 }
-.qz-q-num{font-size:.7rem;font-weight:700;color:var(--muted);margin-bottom:6px}
-.qz-q-txt{
-  font-size:1.22rem;   /* ← 大きく */
-  font-weight:900;line-height:1.65;color:white;
-}
+.qz-q-tag{font-size:.68rem;font-weight:700;opacity:.7;margin-bottom:6px;letter-spacing:.5px}
+.qz-q-txt{font-size:1.15rem;font-weight:900;line-height:1.65;color:white}
 
-/* 下部：選択肢＋フィードバック＋次へ */
-.qz-bottom{flex-shrink:0;padding:7px 11px 12px}
+/* 下部：選択肢＋FB＋次へ */
+.qz-bottom{
+  flex:1;
+  display:flex;
+  flex-direction:column;
+  padding:0 12px 12px;
+  min-height:0;
+  overflow:hidden;
+}
 
 /* 選択肢 */
-.qz-choices{display:grid;grid-template-columns:1fr 1fr;gap:8px;margin-bottom:8px}
+.qz-choices{
+  display:grid;
+  grid-template-columns:1fr 1fr;
+  gap:8px;
+  margin-bottom:8px;
+  flex:1;
+}
 .qz-cbtn{
-  min-height:72px;        /* ← 縦幅アップ */
-  padding:12px 10px;
   background:var(--card2);
   border:2px solid rgba(255,255,255,.08);
   border-radius:14px;
   color:var(--text);
   font-family:inherit;
-  font-size:1.05rem;      /* ← 文字大きく */
+  font-size:1.05rem;
   font-weight:700;
-  cursor:pointer;text-align:center;
+  cursor:pointer;
+  text-align:center;
   display:flex;align-items:center;justify-content:center;
-  line-height:1.4;transition:all .15s;
+  padding:10px 8px;
+  line-height:1.4;
+  transition:all .15s;
+  width:100%;height:100%;
 }
 .qz-cbtn:active:not(:disabled){transform:scale(.96);background:#20203a}
-.qz-cbtn.correct{background:rgba(68,200,120,.2);border-color:#44cc88;color:#44cc88;animation:correctPop .3s ease}
+.qz-cbtn.correct{background:rgba(68,200,120,.2);border-color:#44cc88;color:#44cc88;animation:correctPop .3s}
 .qz-cbtn.wrong{background:rgba(255,80,80,.18);border-color:#ff5555;color:#ff8888}
 .qz-cbtn:disabled{cursor:default}
 @keyframes correctPop{0%{transform:scale(1)}50%{transform:scale(1.04)}100%{transform:scale(1)}}
 
 /* フィードバックバナー */
 .qz-feedback{
-  border-radius:12px;padding:10px 13px;margin-bottom:8px;
-  display:none;flex-direction:row;align-items:flex-start;gap:9px;
+  border-radius:12px;padding:9px 13px;margin-bottom:8px;
+  display:none;flex-direction:row;align-items:flex-start;gap:8px;flex-shrink:0;
 }
-.qz-feedback.ok{background:rgba(68,200,120,.12);border:1.5px solid rgba(68,200,120,.3);display:flex}
-.qz-feedback.ng{background:rgba(255,80,80,.1);border:1.5px solid rgba(255,80,80,.25);display:flex}
-.qz-fb-icon{font-size:1rem;flex-shrink:0;margin-top:1px}
-.qz-fb-title{font-size:.82rem;font-weight:900;margin-bottom:2px}
+.qz-feedback.ok{background:rgba(68,200,120,.12);border:1.5px solid rgba(68,200,120,.28);display:flex}
+.qz-feedback.ng{background:rgba(255,80,80,.1);border:1.5px solid rgba(255,80,80,.22);display:flex}
+.qz-fb-icon{font-size:.95rem;flex-shrink:0;margin-top:1px}
+.qz-fb-title{font-size:.8rem;font-weight:900;margin-bottom:2px}
 .qz-fb-title.ok{color:#44cc88}
 .qz-fb-title.ng{color:#ff8888}
-.qz-fb-explain{font-size:.8rem;color:#bbb;line-height:1.55}  /* ← 解説 */
+.qz-fb-explain{font-size:.78rem;color:#bbb;line-height:1.5}
 
 /* 次へ */
-.qz-next{width:100%;padding:15px;border:none;border-radius:13px;font-family:inherit;font-size:1rem;font-weight:900;cursor:pointer;color:white;display:none;align-items:center;justify-content:center;gap:5px}
+.qz-next{
+  width:100%;padding:14px;border:none;border-radius:13px;
+  font-family:inherit;font-size:1rem;font-weight:900;
+  cursor:pointer;color:white;display:none;
+  align-items:center;justify-content:center;gap:5px;
+  flex-shrink:0;
+}
 .qz-next.show{display:flex;animation:fadeIn .3s}
 .qz-next:active{transform:scale(.97)}
 
@@ -296,23 +332,21 @@ html,body{height:100%;font-family:'Noto Sans JP',sans-serif;background:var(--bg)
 
 <!-- QUIZ -->
 <div class="screen" id="quiz">
-  <div class="qz-header">
-    <div class="qz-header-row1">
-      <div class="qz-subject-badge">
-        <div class="qz-dot" id="qz-dot"></div>
-        <span>SUBJECT</span>
-        <span class="qz-subject-name" id="qz-subj-name"></span>
-      </div>
-      <div class="qz-score-row">
-        <div class="qz-score">⭐ <span id="q-score">0</span></div>
-        <div class="qz-streak" id="streak-pill">🔥 0</div>
-      </div>
+
+  <!-- スコアバー -->
+  <div class="qz-bar">
+    <div class="qz-score-badge">⭐ <span id="q-score">0</span></div>
+    <div class="qz-right-badges">
+      <div class="qz-streak-badge" id="streak-pill">🔥 0</div>
+      <div class="qz-num-badge" id="qz-num-badge">1 / 10</div>
     </div>
-    <div class="qz-segs-row" id="qz-segs"></div>
   </div>
 
-  <div class="qz-middle">
-    <!-- キャラ列（左・小さめ固定） -->
+  <!-- セグメント進捗 -->
+  <div class="qz-segs-row" id="qz-segs"></div>
+
+  <!-- メインカード：キャラ(左) + 問題(右) -->
+  <div class="qz-card">
     <div class="qz-char-col">
       <img class="qz-char-img" id="quiz-char" src="" alt=""/>
       <div class="qz-bubble">
@@ -320,13 +354,13 @@ html,body{height:100%;font-family:'Noto Sans JP',sans-serif;background:var(--bg)
         <div class="qz-bubble-txt" id="qz-bubble-txt">…</div>
       </div>
     </div>
-    <!-- 問題列 -->
     <div class="qz-q-col">
-      <div class="qz-q-num" id="qz-q-num"></div>
+      <div class="qz-q-tag" id="qtag"></div>
       <div class="qz-q-txt" id="qtxt"></div>
     </div>
   </div>
 
+  <!-- 下部：選択肢＋FB＋次へ -->
   <div class="qz-bottom">
     <div class="qz-choices" id="choices"></div>
     <div class="qz-feedback" id="fbtxt">
@@ -380,13 +414,13 @@ const CHARS = {
     res:{g:'何でもできる！',o:'いい感じだよ！',t:'一緒に頑張ろう！'}},
   rika:{key:'kaga',name:'カガ先生',subject:'理科',color:'#44cc88',btn:'#228855',
     start:'科学の世界を一緒に探求しよう！',
-    thinking:['さて、科学的に考えると…','よく思い出して！','実験結果を思い出せ！','落ち着いて考えよう！'],
+    thinking:['科学的に考えると…','よく思い出して！','実験を思い出せ！','落ち着いて考えよう！'],
     ok:['やったじゃねえか！','科学は面白いだろ！','さすがだぜ！','正解！'],
     ng:['惜しいな。いい考えだ。','あと少しだった…','ドンマイ！'],
     res:{g:'科学の世界は最高だろ！',o:'もっと先に進めるぞ！',t:'一緒に極めよう！'}}
 };
 const SUBJ_ORDER=['rika','shakai','sansu','kokugo'];
-const STORE_KEY='sensei-quiz-v11';
+const STORE_KEY='sensei-quiz-v12';
 
 let DB={tests:{}};
 function loadDB(){try{const s=localStorage.getItem(STORE_KEY);if(s)DB=JSON.parse(s);}catch(e){}}
@@ -543,8 +577,6 @@ function beginQuiz(){
   qIdx=0;score=0;streak=0;maxStreak=0;correct=0;wrong=0;answered=false;
   segResults=new Array(questions.length).fill(null);
   const cfg=CHARS[currentSubject];
-  document.getElementById('qz-dot').style.background=cfg.color;
-  document.getElementById('qz-subj-name').textContent=cfg.subject;
   document.getElementById('qz-bubble-name').textContent=cfg.name;
   document.getElementById('quiz-char').src=IMGS[cfg.key].ganbaro;
   document.getElementById('q-score').textContent='0';
@@ -560,7 +592,7 @@ function renderSegs(){
     else if(segResults[i]===true)c+=' ok';
     else if(segResults[i]===false)c+=' ng';
     return `<div class="${c}"></div>`;
-  }).join('')+`<span class="qz-prog-lbl">${qIdx+1} / ${questions.length}</span>`;
+  }).join('');
 }
 
 function setBubble(txt){
@@ -570,12 +602,13 @@ function setBubble(txt){
 function renderQ(){
   answered=false;const q=questions[qIdx];
   const cfg=CHARS[currentSubject];
-  document.getElementById('qz-q-num').textContent=`問題 ${qIdx+1} / ${questions.length}`;
+  document.getElementById('qz-num-badge').textContent=`${qIdx+1} / ${questions.length}`;
+  document.getElementById('qtag').textContent=cfg.subject+' — '+cfg.name;
+  document.getElementById('qtag').style.color=cfg.color;
   document.getElementById('qtxt').textContent=q.q;
   document.getElementById('fbtxt').className='qz-feedback';
   document.getElementById('nxt-btn').className='qz-next';
   document.getElementById('quiz-char').src=IMGS[cfg.key].ganbaro;
-  // 回答前のセリフ（thinking）
   setBubble(cfg.thinking[Math.floor(Math.random()*cfg.thinking.length)]);
   renderSegs();
   const choices=[...q.choices].sort(()=>Math.random()-.5);
@@ -595,21 +628,15 @@ function doAnswer(chosen,ans,btn,explain){
   if(isOk){
     streak++;if(streak>maxStreak)maxStreak=streak;correct++;
     const pts=streak>=3?streak*20:100;score+=pts;
-    const msg=cfg.ok[Math.floor(Math.random()*cfg.ok.length)];
-    // セリフバブル（回答後：先生のセリフ）
-    setBubble(msg);
+    setBubble(cfg.ok[Math.floor(Math.random()*cfg.ok.length)]);
     document.getElementById('quiz-char').src=IMGS[cfg.key].correct;
-    // フィードバックバナー（解説）
-    showFB(true,`+${pts}pts！${streak>=3?' 🔥×'+streak+'ボーナス！':''}`,explain||'正解です！よく覚えていたね。');
+    showFB(true,`正解！+${pts}pts${streak>=3?' 🔥×'+streak+'ボーナス！':''}`,explain||'よく覚えていたね！');
     nb.style.background=`linear-gradient(135deg,${cfg.color},${cfg.btn})`;
     if(streak>=3)spawnConfetti();
   }else{
     btn.classList.add('wrong');streak=0;wrong++;
-    const msg=cfg.ng[Math.floor(Math.random()*cfg.ng.length)];
-    // セリフバブル（回答後：先生のセリフ）
-    setBubble(msg);
+    setBubble(cfg.ng[Math.floor(Math.random()*cfg.ng.length)]);
     document.getElementById('quiz-char').src=IMGS[cfg.key].wrong;
-    // フィードバックバナー（解説）
     showFB(false,'正解は：'+ans,explain||'もう一度確認してみよう！');
     nb.style.background='#333';
   }
