@@ -236,8 +236,7 @@ html,body{height:100%;font-family:'Noto Sans JP',sans-serif;background:var(--bg)
   <div class="hdr">
     <button class="hdr-back" onclick="showScreen('home')">←</button>
     <div class="hdr-title" id="ss-title"></div>
-    <button class="hdr-act" onclick="showStats()">📊</button>
-    <button class="hdr-act" onclick="goAddPhotos()">📷</button>
+    <button class="hdr-act" onclick="showStats()">📊 成績</button>
   </div>
   <div class="scrollbody">
     <div class="subj-grid" id="ss-grid"></div>
@@ -528,10 +527,11 @@ function openSubject(subj){
   const t=DB.tests[currentTestId];
   const rounds=t.questions[subj]||{};
   const roundNums=Object.keys(rounds).map(Number).sort((a,b)=>a-b);
-  document.getElementById('rs-title').textContent=cfg.subject+' — 回を選ぶ';
+  document.getElementById('rs-title').textContent=cfg.subject+' — '+cfg.name;
 
   let html='';
-  // 全回ミックス
+
+  // 全回ミックス（2回以上ある場合）
   const totalQ=Object.values(rounds).reduce((s,qs)=>s+qs.length,0);
   if(roundNums.length>1){
     html+=`<div class="round-card mix" onclick="startQuiz('mix')">
@@ -542,10 +542,10 @@ function openSubject(subj){
       <div class="round-arrow">›</div>
     </div>`;
   }
-  // 各回
+
+  // 既存の回
   roundNums.forEach(r=>{
     const qs=rounds[r]||[];
-    // 成績計算
     const testStats=DB.stats[currentTestId]||{};
     let seenCount=0;
     qs.forEach((_,i)=>{
@@ -553,22 +553,75 @@ function openSubject(subj){
       if((testStats[key]||{}).seen>0)seenCount++;
     });
     const pct=qs.length>0?Math.round(seenCount/qs.length*100):0;
-    html+=`<div class="round-card" onclick="startQuiz(${r})">
+    html+=`<div class="round-card" style="cursor:pointer" onclick="startQuiz(${r})">
       <div style="flex:1">
         <div class="round-label">第${r}回</div>
-        <div class="round-count">${qs.length}問 / 挑戦済み${seenCount}問</div>
+        <div class="round-count">${qs.length}問 ／ 挑戦済み ${seenCount}問</div>
         <div class="round-bar-wrap" style="margin-top:6px">
           <div class="round-bar-fill" style="width:${pct}%;background:${cfg.color}"></div>
         </div>
       </div>
-      <div class="round-arrow">›</div>
+      <div style="display:flex;gap:8px;align-items:center">
+        <button onclick="event.stopPropagation();goAddPhotosSubj('${subj}',${r})" style="background:rgba(255,215,0,.15);border:1px solid rgba(255,215,0,.4);border-radius:8px;color:#ffd700;font-size:.75rem;font-weight:700;padding:5px 10px;cursor:pointer;white-space:nowrap">📷 追加</button>
+        <div class="round-arrow">›</div>
+      </div>
     </div>`;
   });
+
+  // 「＋ 新しい回を追加」ボタン
+  html+=`<div class="round-card" style="border-style:dashed;cursor:pointer;justify-content:center" onclick="goAddPhotosSubj('${subj}',null)">
+    <div style="text-align:center;width:100%">
+      <div style="font-size:1.4rem;margin-bottom:4px">📷</div>
+      <div style="font-size:.9rem;font-weight:700;color:#ffd700">新しい回を追加する</div>
+      <div style="font-size:.72rem;color:var(--muted);margin-top:2px">写真をアップして問題を自動生成</div>
+    </div>
+  </div>`;
+
   if(!roundNums.length){
-    html='<div style="text-align:center;padding:40px 16px;color:var(--muted)">まだ問題がないよ！<br>📷 追加してね</div>';
+    // 問題なし時のメッセージはなくして追加ボタンだけ表示（上で表示済み）
   }
+
   document.getElementById('rs-list').innerHTML=html;
   showScreen('roundselect');
+}
+
+// 科目＋回を指定してaddphotos画面へ
+function goAddPhotosSubj(subj,round){
+  apPhotos=[];
+  apCurrentSubj=subj;
+  apSelectedRound=round||1;
+  document.getElementById('ap-upl').classList.remove('has-files');
+  document.getElementById('ap-upl-txt').textContent='タップして写真を選ぶ';
+  document.getElementById('ap-thumbs').style.display='none';
+  document.getElementById('ap-thumbs').innerHTML='';
+  document.getElementById('ap-prog-wrap').style.display='none';
+  document.getElementById('ap-log').innerHTML='';
+  document.getElementById('ap-gen-btn').disabled=true;
+  document.getElementById('ap-title').textContent='📷 '+DB.tests[currentTestId].name;
+
+  // 科目チップを該当科目にセット
+  buildChips();
+  // 選択中の科目を強制セット
+  apCurrentSubj=subj;
+  document.querySelectorAll('#ap-chips .chip').forEach(b=>{
+    const m={'理科':'rika','社会':'shakai','算数':'sansu','国語':'kokugo'};
+    const s=Object.entries(m).find(([l])=>b.textContent.includes(l))?.[1]||'rika';
+    b.className='chip '+(s===subj?'active-'+subj:'');
+  });
+
+  // 回ボタン生成（1〜10）、既存の回はハイライト
+  const t=DB.tests[currentTestId];
+  const existingRounds=Object.keys(t.questions[subj]||{}).map(Number);
+  const roundBtns=document.getElementById('ap-round-btns');
+  roundBtns.innerHTML=Array.from({length:10},(_,i)=>i+1).map(n=>{
+    const exists=existingRounds.includes(n);
+    const isSelected=n===apSelectedRound;
+    return `<button class="round-num-btn${isSelected?' active':''}" 
+      style="${exists?'border-color:'+CHARS[subj].color+'66;':''}" 
+      onclick="selectRound(${n},this)">第${n}回${exists?' ✓':''}</button>`;
+  }).join('');
+
+  showScreen('addphotos');
 }
 
 function startQuiz(round){
