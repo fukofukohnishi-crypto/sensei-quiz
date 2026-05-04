@@ -11,316 +11,147 @@
 html,body{height:100%;font-family:'Noto Sans JP',sans-serif;background:var(--bg);color:var(--text);overflow:hidden}
 .screen{display:none;height:100vh;flex-direction:column;overflow:hidden}
 .screen.active{display:flex}
-
-/* SHARED */
-.hdr{background:#111120;border-bottom:1px solid var(--border);padding:11px 14px;display:flex;align-items:center;gap:10px;flex-shrink:0}
+.hdr{background:#111120;border-bottom:1px solid var(--border);padding:11px 14px;display:flex;align-items:center;gap:8px;flex-shrink:0}
 .hdr-back{background:none;border:none;color:var(--muted);font-size:1.3rem;cursor:pointer;padding:2px 6px}
-.hdr-title{font-size:1.15rem;font-weight:900;color:white;flex:1}
-.hdr-act{background:none;border:none;color:#ffd700;font-size:1rem;font-weight:700;cursor:pointer}
-.scrollbody{flex:1;overflow-y:auto;padding:16px 15px 40px;-webkit-overflow-scrolling:touch}
+.hdr-title{font-size:1.1rem;font-weight:900;color:white;flex:1}
+.hdr-act{background:none;border:none;color:#ffd700;font-size:.95rem;font-weight:700;cursor:pointer;padding:4px 6px}
+.scrollbody{flex:1;overflow-y:auto;padding:14px 14px 40px;-webkit-overflow-scrolling:touch}
 .btn{width:100%;padding:15px;border:none;border-radius:13px;font-family:inherit;font-size:1rem;font-weight:900;cursor:pointer;color:white;margin-bottom:9px;transition:transform .15s}
 .btn:active{transform:scale(.97)}
 .btn:disabled{opacity:.45;cursor:not-allowed}
-.inp{width:100%;background:var(--card);border:1.5px solid var(--border);border-radius:11px;padding:13px 15px;color:white;font-family:inherit;font-size:.95rem;margin-bottom:15px;outline:none}
+.inp{width:100%;background:var(--card);border:1.5px solid var(--border);border-radius:11px;padding:13px 15px;color:white;font-family:inherit;font-size:.95rem;margin-bottom:14px;outline:none}
 .inp:focus{border-color:#ffd700}
 .lbl{font-size:.72rem;font-weight:700;color:var(--muted);letter-spacing:1px;margin-bottom:7px;display:block}
-.chip{padding:8px 15px;border-radius:99px;border:2px solid rgba(255,255,255,.1);background:var(--card);color:var(--muted);font-family:inherit;font-size:.8rem;font-weight:700;cursor:pointer;margin-right:7px;margin-bottom:7px}
+.chip{padding:8px 15px;border-radius:99px;border:2px solid rgba(255,255,255,.1);background:var(--card);color:var(--muted);font-family:inherit;font-size:.8rem;font-weight:700;cursor:pointer;margin-right:7px;margin-bottom:7px;transition:all .15s}
 .chip.active-shakai{border-color:#ff6666;background:rgba(255,80,80,.18);color:#ff6666}
 .chip.active-sansu{border-color:#ffaa44;background:rgba(255,170,30,.18);color:#ffaa44}
 .chip.active-kokugo{border-color:#6699ff;background:rgba(30,100,200,.18);color:#6699ff}
 .chip.active-rika{border-color:#44cc88;background:rgba(30,160,80,.18);color:#44cc88}
-.upl{width:100%;border:2px dashed rgba(255,255,255,.12);border-radius:15px;padding:24px 15px;text-align:center;cursor:pointer;position:relative;margin-bottom:13px}
+.upl{width:100%;border:2px dashed rgba(255,255,255,.12);border-radius:15px;padding:22px 14px;text-align:center;cursor:pointer;position:relative;margin-bottom:12px}
 .upl.has-files{border-color:#44cc88}
 .upl input{position:absolute;inset:0;opacity:0;cursor:pointer;width:100%;height:100%}
-.log-wrap{background:#090910;border-radius:9px;padding:11px;margin-bottom:11px;font-size:.76rem;font-family:monospace;max-height:170px;overflow-y:auto;line-height:1.9}
+.log-wrap{background:#090910;border-radius:9px;padding:10px;margin-bottom:10px;font-size:.76rem;font-family:monospace;max-height:150px;overflow-y:auto;line-height:1.9}
 .log-ok{color:#44cc88}.log-err{color:#ff6666}.log-info{color:#ffd700}
-.prog-bar{height:4px;background:rgba(255,255,255,.07);border-radius:99px;overflow:hidden;margin-bottom:9px}
+.prog-bar{height:4px;background:rgba(255,255,255,.07);border-radius:99px;overflow:hidden;margin-bottom:8px}
 .prog-fill{height:100%;background:linear-gradient(90deg,#ffd700,#ff6b35);transition:width .4s}
-.thumb-strip{display:flex;gap:5px;overflow-x:auto;margin-bottom:13px;padding-bottom:5px}
-.thumb-strip img{width:60px;height:60px;border-radius:7px;object-fit:cover;flex-shrink:0}
-.thumb-more{width:60px;height:60px;border-radius:7px;background:rgba(255,255,255,.05);display:flex;align-items:center;justify-content:center;color:var(--muted);flex-shrink:0;font-size:.74rem}
+.thumb-strip{display:flex;gap:5px;overflow-x:auto;margin-bottom:12px;padding-bottom:5px}
+.thumb-strip img{width:56px;height:56px;border-radius:7px;object-fit:cover;flex-shrink:0}
+.thumb-more{width:56px;height:56px;border-radius:7px;background:rgba(255,255,255,.05);display:flex;align-items:center;justify-content:center;color:var(--muted);flex-shrink:0;font-size:.74rem}
 
 /* HOME */
 #home{overflow:hidden;background:radial-gradient(ellipse at 25% 15%,#1a0a2e,transparent 55%),radial-gradient(ellipse at 80% 85%,#0a182e,transparent 50%),var(--bg)}
-.home-logo{font-size:2.1rem;font-weight:900;color:#ffd700;text-align:center;padding:30px 16px 5px}
-.home-sub{color:var(--muted);font-size:.75rem;letter-spacing:2px;text-align:center;margin-bottom:22px}
-.test-card{background:var(--card);border:1.5px solid var(--border);border-radius:15px;padding:14px 15px;margin-bottom:11px;cursor:pointer;display:flex;justify-content:space-between;align-items:flex-start}
+.home-logo{font-size:2.1rem;font-weight:900;color:#ffd700;text-align:center;padding:28px 16px 4px}
+.home-sub{color:var(--muted);font-size:.75rem;letter-spacing:2px;text-align:center;margin-bottom:20px}
+.test-card{background:var(--card);border:1.5px solid var(--border);border-radius:15px;padding:14px 15px;margin-bottom:10px;cursor:pointer;display:flex;justify-content:space-between;align-items:flex-start}
 .test-card:active{opacity:.8}
-.tc-name{font-size:1rem;font-weight:900;margin-bottom:3px}
+.tc-name{font-size:1.05rem;font-weight:900;margin-bottom:4px}
 .tc-meta{font-size:.72rem;color:var(--muted)}
 .tc-del{background:none;border:none;color:#444;cursor:pointer;font-size:1rem;padding:3px}
 .new-btn{width:100%;padding:15px;border:2px dashed rgba(255,255,255,.12);border-radius:13px;background:transparent;color:var(--muted);font-family:inherit;font-size:.9rem;font-weight:700;cursor:pointer;margin-top:3px}
 
-/* DETAIL */
-.subj-grid{display:grid;grid-template-columns:1fr 1fr;gap:16px}
+/* SUBJECT SELECT（科目一覧） */
+.subj-grid{display:grid;grid-template-columns:1fr 1fr;gap:14px}
 .subj-card{background:var(--card);border-radius:16px;overflow:hidden;cursor:pointer}
 .subj-card:active{opacity:.8}
-.subj-card img{width:100%;height:240px;object-fit:contain;display:block;padding:10px;background:rgba(0,0,0,.2)}
-.subj-card .si{padding:14px 16px}
-.si-sub{font-size:1.5rem;font-weight:900;opacity:1;margin-bottom:6px}
-.si-name{font-size:1.3rem;font-weight:900}
-.si-count{font-size:.9rem;color:var(--muted);margin-top:4px}
+.subj-card img{width:100%;height:200px;object-fit:contain;display:block;padding:8px;background:rgba(0,0,0,.15)}
+.subj-card .si{padding:12px 14px}
+.si-sub{font-size:1.5rem;font-weight:900;opacity:1;margin-bottom:4px}
+.si-name{font-size:1rem;font-weight:700}
+.si-count{font-size:.85rem;color:var(--muted);margin-top:4px;font-weight:700}
+
+/* ROUND SELECT（第N回選択） */
+.round-list{display:flex;flex-direction:column;gap:10px}
+.round-card{background:var(--card);border:1.5px solid var(--border);border-radius:14px;padding:14px 16px;cursor:pointer;display:flex;align-items:center;justify-content:space-between;transition:all .15s}
+.round-card:active{opacity:.8}
+.round-card.mix{border-color:rgba(255,215,0,.4);background:rgba(255,215,0,.06)}
+.round-label{font-size:1.1rem;font-weight:900}
+.round-label.mix{color:#ffd700}
+.round-count{font-size:.82rem;color:var(--muted);font-weight:700}
+.round-arrow{color:var(--muted);font-size:1.1rem}
+.round-bar-wrap{height:4px;background:rgba(255,255,255,.07);border-radius:99px;overflow:hidden;margin-top:6px}
+.round-bar-fill{height:100%;border-radius:99px;transition:width .6s}
 
 /* INTRO */
 #intro{position:relative;overflow:hidden;justify-content:flex-end}
 .intro-bg{position:absolute;inset:0}
-.intro-test-name{
-  position:absolute;top:18px;left:50%;transform:translateX(-50%);
-  background:rgba(255,255,255,.1);border:1px solid rgba(255,255,255,.18);
-  border-radius:99px;padding:5px 20px;
-  font-size:.8rem;font-weight:700;color:rgba(255,255,255,.7);
-  white-space:nowrap;z-index:2;letter-spacing:1px;
-}
-.intro-char-wrap{position:absolute;bottom:230px;left:50%;transform:translateX(-50%);width:260px;z-index:1}
-.intro-char-wrap img{width:100%;filter:drop-shadow(0 8px 32px rgba(0,0,0,.8))}
-.intro-panel{position:relative;width:100%;background:#15152a;border-top:2px solid rgba(255,255,255,.1);padding:16px 22px 28px;z-index:2}
-.intro-lbl{font-size:.72rem;font-weight:700;letter-spacing:1px;margin-bottom:6px;opacity:.8}
-.intro-cheer{
-  font-size:1.15rem;font-weight:900;line-height:1.5;
-  margin-bottom:6px;color:white;
-}
-.intro-txt{font-size:.9rem;font-weight:700;line-height:1.6;margin-bottom:14px;color:rgba(255,255,255,.7)}
-.intro-start-btn{
-  width:auto !important;
-  min-width:200px;
-  padding:15px 40px !important;
-  border-radius:99px !important;
-  font-size:1.1rem !important;
-}
+.intro-test-name{position:absolute;top:16px;left:50%;transform:translateX(-50%);background:rgba(255,255,255,.1);border:1px solid rgba(255,255,255,.18);border-radius:99px;padding:5px 18px;font-size:.78rem;font-weight:700;color:rgba(255,255,255,.7);white-space:nowrap;z-index:2;letter-spacing:1px}
+.intro-char-wrap{position:absolute;bottom:220px;left:50%;transform:translateX(-50%);width:250px;z-index:1}
+.intro-char-wrap img{width:100%;filter:drop-shadow(0 8px 28px rgba(0,0,0,.8))}
+.intro-panel{position:relative;width:100%;background:#15152a;border-top:2px solid rgba(255,255,255,.1);padding:16px 20px 28px;z-index:2}
+.intro-lbl{font-size:.72rem;font-weight:700;letter-spacing:1px;margin-bottom:5px;opacity:.8}
+.intro-cheer{font-size:1.1rem;font-weight:900;line-height:1.5;margin-bottom:5px;color:white}
+.intro-txt{font-size:.88rem;font-weight:700;line-height:1.6;margin-bottom:14px;color:rgba(255,255,255,.7)}
+.intro-start-btn{width:auto!important;min-width:200px;padding:15px 40px!important;border-radius:99px!important;font-size:1.1rem!important}
 
-/* ════════ QUIZ ════════ */
+/* QUIZ */
 #quiz{background:var(--bg)}
-
-/* スコアバー */
 .qz-bar{display:flex;align-items:center;justify-content:space-between;padding:7px 14px 5px;flex-shrink:0}
-.qz-back-btn{background:rgba(255,255,255,.08);border:1px solid rgba(255,255,255,.15);border-radius:99px;color:#aaa;font-family:inherit;font-size:.78rem;font-weight:700;padding:4px 12px;cursor:pointer;}
-.qz-back-btn:active{opacity:.7}
+.qz-back-btn{background:rgba(255,255,255,.08);border:1px solid rgba(255,255,255,.15);border-radius:99px;color:#aaa;font-family:inherit;font-size:.78rem;font-weight:700;padding:4px 12px;cursor:pointer}
 .qz-score-badge{font-size:.95rem;font-weight:900;color:#ffd700}
 .qz-right-badges{display:flex;align-items:center;gap:7px}
 .qz-streak-badge{background:rgba(255,80,80,.18);border:1px solid rgba(255,80,80,.3);border-radius:99px;padding:3px 10px;font-size:.78rem;font-weight:900;color:#ff8888}
 .qz-num-badge{background:rgba(255,255,255,.07);border-radius:99px;padding:3px 10px;font-size:.76rem;font-weight:700;color:var(--muted)}
-
-/* セグメント進捗 */
 .qz-segs-row{display:flex;gap:3px;padding:0 14px 7px}
 .qz-seg{flex:1;height:5px;border-radius:99px;background:rgba(255,255,255,.1);transition:background .3s}
 .qz-seg.ok{background:#44cc88}
 .qz-seg.ng{background:#ff5555}
 .qz-seg.cur{background:#ffd700;animation:segPulse 1.2s ease-in-out infinite}
 @keyframes segPulse{0%,100%{opacity:1}50%{opacity:.4}}
-
-/* メインカード */
-.qz-card{
-  margin:0 11px 7px;
-  background:var(--card);
-  border-radius:18px;
-  display:flex;
-  flex-direction:row;
-  overflow:hidden;
-  flex-shrink:0;
-}
-
-/* キャラ列 ← 2回り大きく */
-.qz-char-col{
-  width:300px;
-  flex-shrink:0;
-  display:flex;
-  flex-direction:column;
-  align-items:center;
-  justify-content:flex-end;
-  background:rgba(0,0,0,.18);
-  position:relative;
-}
-.qz-char-img{
-  width:300px;
-  height:300px;
-  object-fit:contain;
-  object-position:bottom center;
-  filter:drop-shadow(0 4px 16px rgba(0,0,0,.5));
-}
-/* セリフバブル ← 大きく */
-.qz-bubble{
-  width:100%;
-  background:rgba(8,8,20,.94);
-  border-top:1px solid rgba(255,255,255,.1);
-  padding:8px 10px;
-  text-align:center;
-  flex-shrink:0;
-}
-.qz-bubble-name{font-size:.9rem;font-weight:700;opacity:.6;margin-bottom:3px}
-.qz-bubble-txt{font-size:1.1rem;font-weight:700;line-height:1.5;color:white}
-
-/* 問題列 */
-.qz-q-col{
-  flex:1;
-  display:flex;
-  flex-direction:column;
-  justify-content:center;
-  padding:14px 14px;
-}
+.qz-card{margin:0 11px 7px;background:var(--card);border-radius:18px;display:flex;flex-direction:row;overflow:hidden;flex-shrink:0}
+.qz-char-col{width:300px;flex-shrink:0;display:flex;flex-direction:column;align-items:center;justify-content:flex-end;background:rgba(0,0,0,.18)}
+.qz-char-img{width:300px;height:300px;object-fit:contain;object-position:bottom center;filter:drop-shadow(0 4px 16px rgba(0,0,0,.5))}
+.qz-bubble{width:100%;background:rgba(8,8,20,.94);border-top:1px solid rgba(255,255,255,.1);padding:8px 10px;text-align:center;flex-shrink:0}
+.qz-bubble-name{font-size:.65rem;font-weight:700;opacity:.5;margin-bottom:2px}
+.qz-bubble-txt{font-size:.82rem;font-weight:700;line-height:1.45;color:white}
+.qz-q-col{flex:1;display:flex;flex-direction:column;justify-content:center;padding:14px}
 .qz-q-tag{display:none}
-.qz-q-txt{
-  font-size:2.4rem;
-  font-weight:900;
-  line-height:1.5;
-  color:white;
-}
-
-/* 下部 */
-.qz-bottom{
-  flex:1;
-  display:flex;
-  flex-direction:column;
-  padding:0 11px 11px;
-  min-height:0;
-  overflow:hidden;
-}
-
-/* 選択肢 ← 少し小さく */
-.qz-choices{
-  display:grid;
-  grid-template-columns:1fr 1fr;
-  gap:7px;
-  margin-bottom:7px;
-  flex:1;
-}
-.qz-cbtn{
-  background:var(--card2);
-  border:2px solid rgba(255,255,255,.08);
-  border-radius:13px;
-  color:var(--text);
-  font-family:inherit;
-  font-size:2rem;
-  font-weight:700;
-  cursor:pointer;
-  text-align:center;
-  display:flex;align-items:center;justify-content:center;
-  padding:4px 7px;
-  line-height:1.2;
-  transition:all .15s;
-  width:100%;height:100%;
-}
-.qz-cbtn:active:not(:disabled){transform:scale(.96);background:#20203a}
+.qz-q-num{font-size:.7rem;font-weight:700;color:var(--muted);margin-bottom:6px}
+.qz-q-txt{font-size:1.35rem;font-weight:900;line-height:1.6;color:white}
+.qz-bottom{flex:1;display:flex;flex-direction:column;padding:0 11px 11px;min-height:0;overflow:hidden}
+.qz-choices{display:grid;grid-template-columns:1fr 1fr;gap:7px;margin-bottom:7px;flex:1}
+.qz-cbtn{background:var(--card2);border:2px solid rgba(255,255,255,.08);border-radius:13px;color:var(--text);font-family:inherit;font-size:1.1rem;font-weight:700;cursor:pointer;text-align:center;display:flex;align-items:center;justify-content:center;padding:4px 7px;line-height:1.35;transition:all .15s;width:100%;height:100%}
+.qz-cbtn:active:not(:disabled){transform:scale(.96)}
 .qz-cbtn.correct{background:rgba(68,200,120,.2);border-color:#44cc88;color:#44cc88;animation:correctPop .3s}
 .qz-cbtn.wrong{background:rgba(255,80,80,.18);border-color:#ff5555;color:#ff8888}
 .qz-cbtn:disabled{cursor:default}
 @keyframes correctPop{0%{transform:scale(1)}50%{transform:scale(1.04)}100%{transform:scale(1)}}
-
-/* フィードバックバナー ← 正解時は大きくインパクト */
-.qz-feedback{
-  border-radius:14px;padding:18px 18px;margin-bottom:7px;
-  display:none;flex-direction:row;align-items:center;gap:12px;flex-shrink:0;
-}
-.qz-feedback.ok{
-  background:linear-gradient(135deg,rgba(68,200,120,.22),rgba(68,200,120,.08));
-  border:2px solid rgba(68,200,120,.5);
-  display:flex;
-  animation:fbSlideIn .3s ease;
-}
-.qz-feedback.ng{
-  background:rgba(255,80,80,.1);
-  border:1.5px solid rgba(255,80,80,.3);
-  display:flex;
-  animation:fbSlideIn .3s ease;
-}
+.qz-feedback{border-radius:14px;padding:18px;margin-bottom:7px;display:none;flex-direction:row;align-items:center;gap:12px;flex-shrink:0;animation:fbSlideIn .3s ease}
+.qz-feedback.ok{background:linear-gradient(135deg,rgba(68,200,120,.22),rgba(68,200,120,.08));border:2px solid rgba(68,200,120,.5);display:flex}
+.qz-feedback.ng{background:rgba(255,80,80,.1);border:1.5px solid rgba(255,80,80,.3);display:flex}
 @keyframes fbSlideIn{from{opacity:0;transform:translateY(6px)}to{opacity:1;transform:translateY(0)}}
-.qz-fb-icon{font-size:2rem;flex-shrink:0}  /* アイコン大きく */
+.qz-fb-icon{font-size:2rem;flex-shrink:0}
 .qz-fb-body{flex:1}
 .qz-fb-title{font-weight:900;margin-bottom:3px}
-.qz-fb-title.ok{color:#44cc88;font-size:1.3rem}  /* 正解タイトル大きく */
+.qz-fb-title.ok{color:#44cc88;font-size:1.05rem}
 .qz-fb-title.ng{color:#ff8888;font-size:.9rem}
-.qz-fb-explain{font-size:.95rem;color:#ccc;line-height:1.6}  /* 解説大きく */
-
-/* 次へ */
-.qz-next{
-  width:50%;padding:20px 13px;border:none;border-radius:14px;
-  font-family:inherit;font-size:1rem;font-weight:900;
-  cursor:pointer;color:white;display:none;
-  align-items:center;justify-content:center;gap:5px;
-  flex-shrink:0;
-  align-self:center;
-}
+.qz-fb-explain{font-size:.85rem;color:#ccc;line-height:1.5}
+.qz-next{width:50%;padding:20px 13px;border:none;border-radius:14px;font-family:inherit;font-size:1rem;font-weight:900;cursor:pointer;color:white;display:none;align-items:center;justify-content:center;gap:5px;flex-shrink:0;align-self:center}
 .qz-next.show{display:flex;animation:fadeIn .3s}
 .qz-next:active{transform:scale(.97)}
 
 /* RESULT */
-#result{justify-content:center;align-items:center;overflow-y:auto;padding:22px 17px 38px}
-.res-char{width:180px;margin-bottom:5px}
-.res-char img{width:100%;filter:drop-shadow(0 8px 24px rgba(0,0,0,.5))}
-.res-title{font-size:1.8rem;font-weight:900;text-align:center;margin-bottom:2px}
-.res-pts{font-size:2.7rem;font-weight:900;color:#ffd700;text-align:center}
-.res-ptslbl{color:var(--muted);font-size:.72rem;text-align:center;margin-bottom:16px}
-.res-stats{display:grid;grid-template-columns:1fr 1fr 1fr;gap:9px;margin-bottom:18px;width:100%;max-width:330px}
-.rstat{background:var(--card);border-radius:11px;padding:11px 7px;text-align:center;border:1px solid var(--border)}
-.rstat .rl{font-size:.62rem;color:var(--muted)}
-.rstat .rv{font-size:1.25rem;font-weight:900;margin-top:2px}
-.res-msg{font-size:.9rem;font-weight:700;text-align:center;margin-bottom:16px;color:#bbb;padding:0 14px;line-height:1.7}
-
-/* MISC */
-.toast{position:fixed;bottom:26px;left:50%;transform:translateX(-50%);padding:9px 20px;border-radius:99px;font-size:.85rem;font-weight:700;opacity:0;pointer-events:none;transition:opacity .3s;z-index:9999;white-space:nowrap;color:white}
-.toast.show{opacity:1}
-.confetti-c{position:fixed;inset:0;pointer-events:none;z-index:9999;overflow:hidden}
-.cf{position:absolute;top:-20px;border-radius:2px;animation:cfFall linear forwards}
-@keyframes cfFall{0%{transform:translateY(0) rotate(0);opacity:1}100%{transform:translateY(110vh) rotate(720deg);opacity:0}}
-@keyframes fadeIn{from{opacity:0;transform:translateY(5px)}to{opacity:1;transform:translateY(0)}}
-
-/* RESULT拡張 */
 #result{overflow:hidden;padding:0}
+.res-scrollbody{flex:1;overflow-y:auto;padding:14px 14px 40px;display:flex;flex-direction:column;align-items:center}
 .res-char{width:160px;margin-bottom:4px;flex-shrink:0}
 .res-char img{width:100%;filter:drop-shadow(0 8px 24px rgba(0,0,0,.5))}
-.res-title{font-size:1.7rem;font-weight:900;text-align:center;margin-bottom:2px}
-.res-pts{font-size:2.5rem;font-weight:900;color:#ffd700;text-align:center}
-.res-ptslbl{color:var(--muted);font-size:.72rem;text-align:center;margin-bottom:12px}
+.res-title{font-size:1.8rem;font-weight:900;text-align:center;margin-bottom:2px}
+.res-pts{font-size:2.6rem;font-weight:900;color:#ffd700;text-align:center}
+.res-ptslbl{color:var(--muted);font-size:.72rem;text-align:center;margin-bottom:14px}
 .res-stats{display:grid;grid-template-columns:1fr 1fr 1fr;gap:8px;margin-bottom:12px;width:100%;max-width:330px}
 .rstat{background:var(--card);border-radius:11px;padding:10px 7px;text-align:center;border:1px solid var(--border)}
 .rstat .rl{font-size:.62rem;color:var(--muted)}
 .rstat .rv{font-size:1.2rem;font-weight:900;margin-top:2px}
 .res-msg{font-size:.88rem;font-weight:700;text-align:center;margin-bottom:12px;color:#bbb;padding:0 14px;line-height:1.7}
-
-/* 間違え直しボタン */
-.res-revenge-btn{
-  background:linear-gradient(135deg,#ff5555,#cc2222) !important;
-  border-radius:13px;font-size:1rem;
-  animation:revengePulse 1.8s ease-in-out infinite;
-}
+.res-revenge-btn{background:linear-gradient(135deg,#ff5555,#cc2222)!important;border-radius:13px;font-size:1rem;animation:revengePulse 1.8s ease-in-out infinite}
 @keyframes revengePulse{0%,100%{box-shadow:0 0 0 0 rgba(255,80,80,.4)}50%{box-shadow:0 0 0 10px rgba(255,80,80,0)}}
-.res-wrong-list{
-  background:rgba(255,80,80,.08);border:1px solid rgba(255,80,80,.2);
-  border-radius:11px;padding:10px 12px;margin-top:6px;
-  font-size:.78rem;color:#ff8888;line-height:2;
-}
+.res-wrong-list{background:rgba(255,80,80,.08);border:1px solid rgba(255,80,80,.2);border-radius:11px;padding:10px 12px;margin-top:6px;font-size:.78rem;color:#ff8888;line-height:2}
 .res-wrong-item{display:flex;align-items:flex-start;gap:6px;padding:2px 0}
 .res-wrong-item::before{content:'❌';flex-shrink:0}
-
-/* リベンジモード演出 */
-.revenge-banner{
-  position:fixed;top:0;left:0;right:0;
-  background:linear-gradient(135deg,#ff5555,#ff8800);
-  color:white;text-align:center;
-  font-size:1rem;font-weight:900;
-  padding:10px;z-index:9998;
-  animation:bannerSlide .5s ease;
-}
+.revenge-banner{position:fixed;top:0;left:0;right:0;background:linear-gradient(135deg,#ff5555,#ff8800);color:white;text-align:center;font-size:1rem;font-weight:900;padding:10px;z-index:9998;animation:bannerSlide .5s ease}
 @keyframes bannerSlide{from{transform:translateY(-100%)}to{transform:translateY(0)}}
-
-/* リベンジ正解演出 */
-.revenge-badge{
-  position:fixed;top:60px;left:50%;transform:translateX(-50%);
-  background:linear-gradient(135deg,#ff6b35,#ffd700);
-  color:white;font-size:1.1rem;font-weight:900;
-  padding:10px 28px;border-radius:99px;
-  z-index:9998;white-space:nowrap;
-  animation:revBadge .6s cubic-bezier(.175,.885,.32,1.275);
-  box-shadow:0 4px 20px rgba(255,107,53,.5);
-}
+.revenge-badge{position:fixed;top:60px;left:50%;transform:translateX(-50%);background:linear-gradient(135deg,#ff6b35,#ffd700);color:white;font-size:1.1rem;font-weight:900;padding:10px 28px;border-radius:99px;z-index:9998;white-space:nowrap;animation:revBadge .6s cubic-bezier(.175,.885,.32,1.275);box-shadow:0 4px 20px rgba(255,107,53,.5)}
 @keyframes revBadge{0%{transform:translateX(-50%) scale(0)}70%{transform:translateX(-50%) scale(1.12)}100%{transform:translateX(-50%) scale(1)}}
-
-/* 科目グラフ */
-.res-graph-wrap{
-  width:100%;max-width:330px;
-  background:var(--card);border-radius:14px;
-  padding:14px 16px;margin-bottom:12px;
-  border:1px solid var(--border);
-}
+.res-graph-wrap{width:100%;max-width:330px;background:var(--card);border-radius:14px;padding:14px 16px;margin-bottom:12px;border:1px solid var(--border)}
 .res-graph-title{font-size:.82rem;font-weight:900;margin-bottom:12px;color:white}
 .res-graph-row{display:flex;align-items:center;gap:10px;margin-bottom:10px}
 .res-graph-lbl{font-size:.75rem;font-weight:700;width:60px;flex-shrink:0;color:var(--muted)}
@@ -329,66 +160,43 @@ html,body{height:100%;font-family:'Noto Sans JP',sans-serif;background:var(--bg)
 .res-graph-pct{font-size:.65rem;font-weight:900;color:white}
 .res-graph-cnt{font-size:.7rem;font-weight:700;width:36px;text-align:right;color:var(--muted);flex-shrink:0}
 
-/* パーフェクトポップアップ */
-.perfect-popup{
-  position:fixed;inset:0;z-index:9998;
-  display:flex;flex-direction:column;align-items:center;justify-content:center;
-  background:rgba(0,0,0,.75);backdrop-filter:blur(4px);
-  animation:fadeIn .4s ease;
-}
-.perfect-inner{
-  background:linear-gradient(135deg,#1a1a30,#0d0d20);
-  border:2px solid #ffd700;border-radius:24px;
-  padding:28px 24px;max-width:320px;width:90%;
-  text-align:center;
-  animation:popupBounce .5s cubic-bezier(.175,.885,.32,1.275);
-}
+/* STATS */
+.stats-subj-header{font-size:1rem;font-weight:900;padding:12px 0 8px;border-bottom:2px solid rgba(255,255,255,.08);margin-bottom:10px;display:flex;align-items:center;gap:8px}
+.stats-subj-dot{width:10px;height:10px;border-radius:50%;flex-shrink:0}
+.stats-item{background:var(--card);border-radius:12px;padding:11px 13px;margin-bottom:8px;border:1px solid var(--border)}
+.stats-q{font-size:.9rem;font-weight:700;line-height:1.5;margin-bottom:7px;color:white}
+.stats-row{display:flex;align-items:center;gap:8px}
+.stats-bar-wrap{flex:1;background:rgba(255,255,255,.07);border-radius:99px;height:14px;overflow:hidden}
+.stats-bar-ok{height:100%;border-radius:99px 0 0 99px;background:#44cc88;float:left}
+.stats-bar-ng{height:100%;border-radius:0 99px 99px 0;background:#ff5555;float:left}
+.stats-nums{display:flex;gap:10px;flex-shrink:0;font-size:.8rem;font-weight:700}
+.stats-ok{color:#44cc88}
+.stats-ng{color:#ff5555}
+.stats-unseen{color:var(--muted);font-size:.78rem;font-style:italic}
+.stats-summary{background:var(--card2);border-radius:14px;padding:13px 15px;margin-bottom:14px;display:grid;grid-template-columns:1fr 1fr 1fr;gap:8px}
+.stats-sum-item{text-align:center}
+.stats-sum-val{font-size:1.4rem;font-weight:900}
+.stats-sum-lbl{font-size:.65rem;color:var(--muted);margin-top:2px}
+.stats-reset-btn{width:100%;padding:11px;border:1px solid rgba(255,80,80,.3);border-radius:10px;background:rgba(255,80,80,.08);color:#ff8888;font-family:inherit;font-size:.82rem;font-weight:700;cursor:pointer;margin-top:6px}
+
+/* PERFECT POPUP */
+.perfect-popup{position:fixed;inset:0;z-index:9998;display:flex;flex-direction:column;align-items:center;justify-content:center;background:rgba(0,0,0,.75);backdrop-filter:blur(4px);animation:fadeIn .4s ease}
+.perfect-inner{background:linear-gradient(135deg,#1a1a30,#0d0d20);border:2px solid #ffd700;border-radius:24px;padding:28px 24px;max-width:320px;width:90%;text-align:center;animation:popupBounce .5s cubic-bezier(.175,.885,.32,1.275)}
 @keyframes popupBounce{0%{transform:scale(0)}70%{transform:scale(1.06)}100%{transform:scale(1)}}
-.perfect-star{font-size:3rem;margin-bottom:8px;animation:starSpin 1s ease}
-@keyframes starSpin{0%{transform:rotate(-20deg) scale(0)}100%{transform:rotate(0) scale(1)}}
+.perfect-star{font-size:3rem;margin-bottom:8px}
 .perfect-title{font-size:1.6rem;font-weight:900;color:#ffd700;margin-bottom:6px}
 .perfect-char{width:120px;margin:10px auto}
 .perfect-char img{width:100%}
 .perfect-msg{font-size:1rem;font-weight:700;line-height:1.6;color:white;margin-bottom:18px}
 .perfect-close{background:linear-gradient(135deg,#ffd700,#ff6b35);border:none;border-radius:13px;color:#1a0a00;font-family:inherit;font-size:1rem;font-weight:900;padding:13px 32px;cursor:pointer;width:100%}
 
-/* 成績表 */
-.stats-subj-header{
-  font-size:1rem;font-weight:900;
-  padding:12px 0 8px;
-  border-bottom:2px solid rgba(255,255,255,.08);
-  margin-bottom:10px;
-  display:flex;align-items:center;gap:8px;
-}
-.stats-subj-dot{width:10px;height:10px;border-radius:50%;flex-shrink:0}
-.stats-item{
-  background:var(--card);border-radius:12px;
-  padding:11px 13px;margin-bottom:8px;
-  border:1px solid var(--border);
-}
-.stats-q{font-size:.9rem;font-weight:700;line-height:1.5;margin-bottom:7px;color:white}
-.stats-row{display:flex;align-items:center;gap:8px}
-.stats-bar-wrap{flex:1;background:rgba(255,255,255,.07);border-radius:99px;height:14px;overflow:hidden;position:relative}
-.stats-bar-ok{height:100%;border-radius:99px 0 0 99px;background:#44cc88;transition:width .6s ease;float:left}
-.stats-bar-ng{height:100%;border-radius:0 99px 99px 0;background:#ff5555;transition:width .6s ease;float:left}
-.stats-nums{display:flex;gap:10px;flex-shrink:0;font-size:.8rem;font-weight:700}
-.stats-ok{color:#44cc88}
-.stats-ng{color:#ff5555}
-.stats-unseen{color:var(--muted);font-size:.78rem;font-style:italic}
-.stats-summary{
-  background:var(--card2);border-radius:14px;
-  padding:13px 15px;margin-bottom:16px;
-  display:grid;grid-template-columns:1fr 1fr 1fr;gap:8px;
-}
-.stats-sum-item{text-align:center}
-.stats-sum-val{font-size:1.4rem;font-weight:900}
-.stats-sum-lbl{font-size:.65rem;color:var(--muted);margin-top:2px}
-.stats-reset-btn{
-  width:100%;padding:11px;border:1px solid rgba(255,80,80,.3);
-  border-radius:10px;background:rgba(255,80,80,.08);
-  color:#ff8888;font-family:inherit;font-size:.82rem;font-weight:700;
-  cursor:pointer;margin-top:8px;
-}
+/* MISC */
+.toast{position:fixed;bottom:26px;left:50%;transform:translateX(-50%);padding:9px 20px;border-radius:99px;font-size:.85rem;font-weight:700;opacity:0;pointer-events:none;transition:opacity .3s;z-index:9999;white-space:nowrap;color:white}
+.toast.show{opacity:1}
+.confetti-c{position:fixed;inset:0;pointer-events:none;z-index:9999;overflow:hidden}
+.cf{position:absolute;top:-20px;border-radius:2px;animation:cfFall linear forwards}
+@keyframes cfFall{0%{transform:translateY(0) rotate(0);opacity:1}100%{transform:translateY(110vh) rotate(720deg);opacity:0}}
+@keyframes fadeIn{from{opacity:0;transform:translateY(5px)}to{opacity:1;transform:translateY(0)}}
 </style>
 </head>
 <body>
@@ -405,16 +213,62 @@ html,body{height:100%;font-family:'Noto Sans JP',sans-serif;background:var(--bg)
   </div>
 </div>
 
-<!-- TEST DETAIL -->
-<div class="screen" id="testdetail">
+<!-- SUBJECT SELECT（科目一覧） -->
+<div class="screen" id="subjectselect">
   <div class="hdr">
     <button class="hdr-back" onclick="showScreen('home')">←</button>
-    <div class="hdr-title" id="td-title"></div>
-    <button class="hdr-act" onclick="showStats()" style="margin-right:8px">📊 成績</button>
-    <button class="hdr-act" onclick="goAddPhotos()">📷 追加</button>
+    <div class="hdr-title" id="ss-title"></div>
+    <button class="hdr-act" onclick="showStats()">📊</button>
+    <button class="hdr-act" onclick="goAddPhotos()">📷</button>
   </div>
   <div class="scrollbody">
-    <div class="subj-grid" id="td-grid"></div>
+    <div class="subj-grid" id="ss-grid"></div>
+  </div>
+</div>
+
+<!-- ROUND SELECT（第N回選択） -->
+<div class="screen" id="roundselect">
+  <div class="hdr">
+    <button class="hdr-back" onclick="showScreen('subjectselect')">←</button>
+    <div class="hdr-title" id="rs-title"></div>
+  </div>
+  <div class="scrollbody">
+    <div class="round-list" id="rs-list"></div>
+  </div>
+</div>
+
+<!-- ADD PHOTOS（回を指定してアップ） -->
+<div class="screen" id="addphotos">
+  <div class="hdr">
+    <button class="hdr-back" onclick="showScreen('subjectselect')">←</button>
+    <div class="hdr-title">📷 問題を追加</div>
+  </div>
+  <div class="scrollbody">
+    <span class="lbl">科目</span>
+    <div id="ap-chips" style="margin-bottom:14px"></div>
+    <span class="lbl">回（第N回）</span>
+    <div style="display:flex;gap:8px;margin-bottom:14px;align-items:center">
+      <select id="ap-round" style="flex:1;background:var(--card);border:1.5px solid var(--border);border-radius:11px;padding:12px 14px;color:white;font-family:inherit;font-size:.95rem;outline:none">
+        <option value="1">第1回</option>
+        <option value="2">第2回</option>
+        <option value="3">第3回</option>
+        <option value="4">第4回</option>
+        <option value="5">第5回</option>
+      </select>
+    </div>
+    <span class="lbl">写真（最大20枚）</span>
+    <label class="upl" id="ap-upl">
+      <input type="file" accept="image/*" multiple onchange="onPhotos(event,true)"/>
+      <div style="font-size:2rem;margin-bottom:6px">📷</div>
+      <div id="ap-upl-txt" style="color:#ccc;font-weight:700;font-size:.9rem">タップして写真を選ぶ</div>
+    </label>
+    <div class="thumb-strip" id="ap-thumbs" style="display:none"></div>
+    <div id="ap-prog-wrap" style="display:none">
+      <div style="display:flex;justify-content:space-between;font-size:.73rem;color:var(--muted);margin-bottom:4px"><span>処理中…</span><span id="ap-prog-pct">0%</span></div>
+      <div class="prog-bar"><div class="prog-fill" id="ap-prog-fill" style="width:0%"></div></div>
+      <div class="log-wrap" id="ap-log"></div>
+    </div>
+    <button class="btn" id="ap-gen-btn" style="background:linear-gradient(135deg,#ffd700,#ff6b35);color:#1a0a00" onclick="apGenerateAll()" disabled>✨ AIで問題を追加する</button>
   </div>
 </div>
 
@@ -426,14 +280,24 @@ html,body{height:100%;font-family:'Noto Sans JP',sans-serif;background:var(--bg)
   </div>
   <div class="scrollbody">
     <span class="lbl">テスト名</span>
-    <input class="inp" id="nt-name" placeholder="例：前期第1回" maxlength="30"/>
-    <span class="lbl">科目（複数OK）</span>
-    <div id="nt-chips" style="margin-bottom:15px"></div>
+    <input class="inp" id="nt-name" placeholder="例：前期第1回マンスリー" maxlength="30"/>
+    <span class="lbl">科目</span>
+    <div id="nt-chips" style="margin-bottom:14px"></div>
+    <span class="lbl">回（第N回）</span>
+    <div style="display:flex;gap:8px;margin-bottom:14px">
+      <select id="nt-round" style="flex:1;background:var(--card);border:1.5px solid var(--border);border-radius:11px;padding:12px 14px;color:white;font-family:inherit;font-size:.95rem;outline:none">
+        <option value="1">第1回</option>
+        <option value="2">第2回</option>
+        <option value="3">第3回</option>
+        <option value="4">第4回</option>
+        <option value="5">第5回</option>
+      </select>
+    </div>
     <span class="lbl">写真（最大20枚）</span>
     <label class="upl" id="nt-upl">
       <input type="file" accept="image/*" multiple onchange="onPhotos(event,false)"/>
-      <div style="font-size:2.2rem;margin-bottom:7px">📷</div>
-      <div id="nt-upl-txt" style="color:#ccc;font-weight:700;font-size:.92rem">タップして写真を選ぶ</div>
+      <div style="font-size:2rem;margin-bottom:6px">📷</div>
+      <div id="nt-upl-txt" style="color:#ccc;font-weight:700;font-size:.9rem">タップして写真を選ぶ</div>
       <div style="font-size:.72rem;color:var(--muted);margin-top:3px">プリント・教科書（最大20枚）</div>
     </label>
     <div class="thumb-strip" id="nt-thumbs" style="display:none"></div>
@@ -446,39 +310,11 @@ html,body{height:100%;font-family:'Noto Sans JP',sans-serif;background:var(--bg)
   </div>
 </div>
 
-<!-- ADD PHOTOS -->
-<div class="screen" id="addphotos">
-  <div class="hdr">
-    <button class="hdr-back" onclick="showScreen('testdetail')">←</button>
-    <div class="hdr-title">📷 問題を追加</div>
-  </div>
-  <div class="scrollbody">
-    <span class="lbl">科目</span>
-    <div id="ap-chips" style="margin-bottom:15px"></div>
-    <span class="lbl">写真（最大20枚）</span>
-    <label class="upl" id="ap-upl">
-      <input type="file" accept="image/*" multiple onchange="onPhotos(event,true)"/>
-      <div style="font-size:2.2rem;margin-bottom:7px">📷</div>
-      <div id="ap-upl-txt" style="color:#ccc;font-weight:700;font-size:.92rem">タップして写真を選ぶ</div>
-    </label>
-    <div class="thumb-strip" id="ap-thumbs" style="display:none"></div>
-    <div id="ap-prog-wrap" style="display:none">
-      <div style="display:flex;justify-content:space-between;font-size:.73rem;color:var(--muted);margin-bottom:4px"><span>処理中…</span><span id="ap-prog-pct">0%</span></div>
-      <div class="prog-bar"><div class="prog-fill" id="ap-prog-fill" style="width:0%"></div></div>
-      <div class="log-wrap" id="ap-log"></div>
-    </div>
-    <button class="btn" id="ap-gen-btn" style="background:linear-gradient(135deg,#ffd700,#ff6b35);color:#1a0a00" onclick="apGenerateAll()" disabled>✨ AIで問題を追加する</button>
-  </div>
-</div>
-
 <!-- INTRO -->
 <div class="screen" id="intro">
   <div class="intro-bg" id="intro-bg"></div>
-  <!-- テスト名バッジ -->
   <div class="intro-test-name" id="intro-test-name"></div>
-  <!-- キャラ -->
   <div class="intro-char-wrap"><img id="intro-img" src="" alt=""/></div>
-  <!-- パネル -->
   <div class="intro-panel">
     <div class="intro-lbl" id="intro-lbl"></div>
     <div class="intro-cheer" id="intro-cheer"></div>
@@ -500,7 +336,6 @@ html,body{height:100%;font-family:'Noto Sans JP',sans-serif;background:var(--bg)
     </div>
   </div>
   <div class="qz-segs-row" id="qz-segs"></div>
-
   <div class="qz-card">
     <div class="qz-char-col">
       <img class="qz-char-img" id="quiz-char" src="" alt=""/>
@@ -510,11 +345,10 @@ html,body{height:100%;font-family:'Noto Sans JP',sans-serif;background:var(--bg)
       </div>
     </div>
     <div class="qz-q-col">
-      <div class="qz-q-tag" id="qtag"></div>
+      <div class="qz-q-num" id="qz-q-num"></div>
       <div class="qz-q-txt" id="qtxt"></div>
     </div>
   </div>
-
   <div class="qz-bottom">
     <div class="qz-choices" id="choices"></div>
     <div class="qz-feedback" id="fbtxt">
@@ -530,7 +364,11 @@ html,body{height:100%;font-family:'Noto Sans JP',sans-serif;background:var(--bg)
 
 <!-- RESULT -->
 <div class="screen" id="result">
-  <div class="scrollbody" style="display:flex;flex-direction:column;align-items:center">
+  <div class="hdr">
+    <button class="hdr-back" onclick="showScreen('subjectselect')">←</button>
+    <div class="hdr-title">結果</div>
+  </div>
+  <div class="res-scrollbody">
     <div class="res-char"><img id="res-img" src="" alt=""/></div>
     <div class="res-title" id="res-title"></div>
     <div class="res-pts" id="res-pts">0</div>
@@ -541,30 +379,23 @@ html,body{height:100%;font-family:'Noto Sans JP',sans-serif;background:var(--bg)
       <div class="rstat"><div class="rl">🔥 最高連続</div><div class="rv" id="r-str" style="color:#ffd700"></div></div>
     </div>
     <div class="res-msg" id="res-msg"></div>
-
-    <!-- 間違え直しボタン -->
     <div id="res-retry-wrap" style="display:none;width:100%;max-width:330px;margin-bottom:10px">
-      <button class="btn res-revenge-btn" id="res-revenge" onclick="startRevenge()">
-        🔥 間違えた問題をやり直す
-      </button>
+      <button class="btn res-revenge-btn" onclick="startRevenge()">🔥 間違えた問題をやり直す</button>
       <div class="res-wrong-list" id="res-wrong-list"></div>
     </div>
-
-    <!-- 科目別成績グラフ -->
     <div class="res-graph-wrap" id="res-graph-wrap" style="display:none">
-      <div class="res-graph-title">📊 科目別せいせき</div>
+      <div class="res-graph-title">📊 正解率</div>
       <div id="res-graph-bars"></div>
     </div>
-
     <button class="btn" id="res-retry" onclick="retryQuiz()" style="max-width:330px">もう一度！🔄</button>
-    <div style="color:var(--muted);font-size:.82rem;font-weight:700;cursor:pointer;text-decoration:underline;text-align:center;margin-top:3px" onclick="showScreen('testdetail')">テスト選択に戻る</div>
+    <div style="color:var(--muted);font-size:.82rem;font-weight:700;cursor:pointer;text-decoration:underline;text-align:center;margin-top:3px" onclick="showScreen('subjectselect')">科目選択に戻る</div>
   </div>
 </div>
 
 <!-- STATS -->
 <div class="screen" id="stats">
   <div class="hdr">
-    <button class="hdr-back" onclick="showScreen('testdetail')">←</button>
+    <button class="hdr-back" onclick="showScreen('subjectselect')">←</button>
     <div class="hdr-title" id="stats-title">📊 成績表</div>
   </div>
   <div class="scrollbody" id="stats-body"></div>
@@ -575,91 +406,399 @@ const IMGS = {"bakuso": {"wrong": "data:image/webp;base64,UklGRh4rAABXRUJQVlA4IB
 
 const CHARS = {
   shakai:{key:'zanpanman',name:'ザンパンマン先生',subject:'社会',color:'#ff5555',btn:'#cc2222',
-    start:'さあ、一緒にやっていこうぜ！',perfect:'すげぇぞ。お前ならザンパン流を使えるかもな',
+    perfect:'すげぇぞ。お前ならザンパン流を使えるかもな',
+    start:'さあ、一緒にやっていこうぜ！',
     thinking:['さて、どれだ？','よく考えろ！','落ち着いて！','オレを信じろ！'],
     ok:['やるじゃねえか！','その調子だぜ！','なかなかやるな！','完璧だ！'],
     ng:['惜しいなぁ…','もう一息！','次は負けないぞ！','ドンマイ！'],
     res:{g:'強くなったな！',o:'まだまだいけるぞ！',t:'もっと練習だ！'}},
   sansu:{key:'yabai',name:'ヤバイヤツ先生',subject:'算数',color:'#ffaa44',btn:'#cc7700',
-    start:'絶対できるようにしてやる！',perfect:'いいぞ。これなら算数とともに筋肉を磨く余裕がありそうだ。',
+    perfect:'いいぞ。これなら算数とともに筋肉を磨く余裕がありそうだ。',
+    start:'絶対できるようにしてやる！',
     thinking:['うーん…','よく考えろ！','落ち着いていけ！','集中だ！'],
     ok:['よくやった！','完璧だぜ！','さすがだな！','その調子！'],
     ng:['惜しいな…','ドンマイ！','もう少しだ！'],
     res:{g:'完璧な仕上がりだぜ！',o:'もっと上を目指せ！',t:'鍛え直しだ！'}},
   kokugo:{key:'bakuso',name:'バクソウ先生',subject:'国語',color:'#6699ff',btn:'#2244cc',
-    start:'一緒に頑張っていこう！',perfect:'超すごいよ！これからも頑張っていこう。',
+    perfect:'超すごいよ！これからも頑張っていこう。',
+    start:'一緒に頑張っていこう！',
     thinking:['さて、どれかな？','じっくり考えてみて！','ヒントは問題の中に！','落ち着いて！'],
     ok:['やったね！大正解！','よし！もっといこう！','やっぱりできる！','すごいよ！'],
     ng:['惜しいなあ…','一緒に考えよう！','もう少しだよ！'],
     res:{g:'何でもできる！',o:'いい感じだよ！',t:'一緒に頑張ろう！'}},
   rika:{key:'kaga',name:'カガ先生',subject:'理科',color:'#44cc88',btn:'#228855',
-    start:'科学の世界を一緒に探求しよう！',perfect:'ばっちりだ。もっと科学を一緒に学んでいこうぜ！',
+    perfect:'ばっちりだ。もっと科学を一緒に学んでいこうぜ！',
+    start:'科学の世界を一緒に探求しよう！',
     thinking:['科学的に考えると…','よく思い出して！','実験を思い出せ！','落ち着いて考えよう！'],
     ok:['やったじゃねえか！','科学は面白いだろ！','さすがだぜ！','正解！'],
     ng:['惜しいな。いい考えだ。','あと少しだった…','ドンマイ！'],
     res:{g:'科学の世界は最高だろ！',o:'もっと先に進めるぞ！',t:'一緒に極めよう！'}}
 };
 const SUBJ_ORDER=['rika','shakai','sansu','kokugo'];
-const STORE_KEY='sensei-quiz-v14';
+const STORE_KEY='sensei-quiz-v15';
 
-let DB={tests:{}};
-function loadDB(){try{const s=localStorage.getItem(STORE_KEY);if(s)DB=JSON.parse(s);}catch(e){}}
+// DB構造:
+// DB.tests[id] = {id, name, createdAt,
+//   questions: { rika: { 1:[{q,a,choices,explain}], 2:[...] }, shakai:{...}, ... }
+// }
+// DB.stats[testId][statKey] = {correct,wrong,seen}
+
+let DB={tests:{},stats:{}};
+function loadDB(){try{const s=localStorage.getItem(STORE_KEY);if(s)DB=JSON.parse(s);if(!DB.stats)DB.stats={};}catch(e){}}
 function saveDB(){try{localStorage.setItem(STORE_KEY,JSON.stringify(DB));}catch(e){}}
 loadDB();
 
-let currentTestId=null,currentSubject=null;
-let questions=[],qIdx=0,score=0,streak=0,maxStreak=0,correct=0,wrong=0;
-let answered=false,ntPhotos=[],apPhotos=[],apCurrentSubj='rika',ntSelectedSubjs=['rika'];
-let toastTimer=null,segResults=[],wrongQuestions=[],isRevengeMode=false,questionKeys=[];
+let currentTestId=null,currentSubject=null,currentRound=null;
+let questions=[],questionKeys=[],qIdx=0,score=0,streak=0,maxStreak=0,correct=0,wrong=0;
+let answered=false,ntPhotos=[],apPhotos=[],apCurrentSubj='rika',ntSelectedSubj='rika';
+let toastTimer=null,segResults=[],wrongQuestions=[],isRevengeMode=false;
 
 window.onload=()=>{renderHome();buildChips();};
 
 function buildChips(){
   const defs=[['rika','🔬 理科'],['shakai','⚔️ 社会'],['sansu','💪 算数'],['kokugo','📚 国語']];
   document.getElementById('nt-chips').innerHTML=defs.map(([k,lbl])=>
-    `<button class="chip ${ntSelectedSubjs.includes(k)?'active-'+k:''}" onclick="toggleNtSubj('${k}',this)">${lbl}</button>`).join('');
+    `<button class="chip ${ntSelectedSubj===k?'active-'+k:''}" onclick="selectNtSubj('${k}',this)">${lbl}</button>`).join('');
   document.getElementById('ap-chips').innerHTML=defs.map(([k,lbl])=>
-    `<button class="chip ${apCurrentSubj===k?'active-'+k:''}" onclick="selectApSubj('${k}')">${lbl}</button>`).join('');
+    `<button class="chip ${apCurrentSubj===k?'active-'+k:''}" onclick="selectApSubj('${k}',this)">${lbl}</button>`).join('');
 }
-function toggleNtSubj(k,btn){
-  if(ntSelectedSubjs.includes(k))ntSelectedSubjs=ntSelectedSubjs.filter(x=>x!==k);
-  else ntSelectedSubjs.push(k);
-  btn.className='chip '+(ntSelectedSubjs.includes(k)?'active-'+k:'');
+function selectNtSubj(k,btn){
+  ntSelectedSubj=k;
+  document.querySelectorAll('#nt-chips .chip').forEach(b=>b.className='chip');
+  btn.className='chip active-'+k;
 }
-function selectApSubj(k){
+function selectApSubj(k,btn){
   apCurrentSubj=k;
-  document.querySelectorAll('#ap-chips .chip').forEach(b=>{
-    const m={'理科':'rika','社会':'shakai','算数':'sansu','国語':'kokugo'};
-    const s=Object.entries(m).find(([l])=>b.textContent.includes(l))?.[1]||'rika';
-    b.className='chip '+(s===k?'active-'+k:'');
-  });
+  document.querySelectorAll('#ap-chips .chip').forEach(b=>b.className='chip');
+  btn.className='chip active-'+k;
 }
 function showScreen(id){document.querySelectorAll('.screen').forEach(s=>s.classList.remove('active'));document.getElementById(id).classList.add('active');}
 
 function renderHome(){
   const list=document.getElementById('test-list');
   const tests=Object.values(DB.tests).sort((a,b)=>b.createdAt-a.createdAt);
-  if(!tests.length){list.innerHTML=`<div style="text-align:center;padding:38px 18px;color:var(--muted)"><div style="font-size:2.4rem;margin-bottom:9px">📚</div>まだテストがないよ！<br>下のボタンから作ろう！</div>`;return;}
+  if(!tests.length){list.innerHTML=`<div style="text-align:center;padding:36px 16px;color:var(--muted)"><div style="font-size:2.4rem;margin-bottom:9px">📚</div>まだテストがないよ！<br>下のボタンから作ろう！</div>`;return;}
   list.innerHTML=tests.map(t=>{
-    const total=SUBJ_ORDER.reduce((s,k)=>s+(t.questions[k]?.length||0),0);
+    const total=SUBJ_ORDER.reduce((sum,k)=>{
+      const rounds=t.questions[k]||{};
+      return sum+Object.values(rounds).reduce((s,qs)=>s+qs.length,0);
+    },0);
     const date=new Date(t.createdAt).toLocaleDateString('ja-JP',{month:'short',day:'numeric'});
-    const badges=SUBJ_ORDER.filter(k=>(t.questions[k]?.length||0)>0).map(k=>`<span style="color:${CHARS[k].color};margin-left:5px">${CHARS[k].subject}:${t.questions[k].length}問</span>`).join('');
-    return `<div class="test-card" onclick="openTest('${t.id}')"><div><div class="tc-name">${t.name}</div><div class="tc-meta">${date} / ${total}問${badges}</div></div><button class="tc-del" onclick="event.stopPropagation();deleteTest('${t.id}')">🗑</button></div>`;
+    const badges=SUBJ_ORDER.filter(k=>Object.keys(t.questions[k]||{}).length>0)
+      .map(k=>{
+        const rounds=t.questions[k]||{};
+        const n=Object.values(rounds).reduce((s,qs)=>s+qs.length,0);
+        return `<span style="color:${CHARS[k].color};margin-left:5px">${CHARS[k].subject}:${n}問</span>`;
+      }).join('');
+    return `<div class="test-card" onclick="openTest('${t.id}')"><div><div class="tc-name">${t.name}</div><div class="tc-meta">${date} / 合計${total}問${badges}</div></div><button class="tc-del" onclick="event.stopPropagation();deleteTest('${t.id}')">🗑</button></div>`;
   }).join('');
 }
 function deleteTest(id){if(!confirm('削除しますか？'))return;delete DB.tests[id];saveDB();renderHome();showToast('削除しました','#888');}
+
 function openTest(id){
-  currentTestId=id;const t=DB.tests[id];
-  document.getElementById('td-title').textContent=t.name;
-  document.getElementById('td-grid').innerHTML=SUBJ_ORDER.map(subj=>{
-    const c=CHARS[subj];const n=t.questions[subj]?.length||0;
-    return `<div class="subj-card" style="border:2px solid ${c.color}44" onclick="startSubject('${subj}')"><img src="${IMGS[c.key].start}" alt=""/><div class="si"><div class="si-sub" style="color:${c.color}">${c.subject}</div><div class="si-name" style="color:${c.color}">${c.name}</div><div class="si-count">${n>0?n+'問':'問題なし'}</div></div></div>`;
+  currentTestId=id;
+  const t=DB.tests[id];
+  document.getElementById('ss-title').textContent=t.name;
+  document.getElementById('ss-grid').innerHTML=SUBJ_ORDER.map(subj=>{
+    const c=CHARS[subj];
+    const rounds=t.questions[subj]||{};
+    const roundCount=Object.keys(rounds).length;
+    const totalQ=Object.values(rounds).reduce((s,qs)=>s+qs.length,0);
+    return `<div class="subj-card" style="border:2px solid ${c.color}44" onclick="openSubject('${subj}')">
+      <img src="${IMGS[c.key].start}" alt=""/>
+      <div class="si">
+        <div class="si-sub" style="color:${c.color}">${c.subject}</div>
+        <div class="si-name" style="color:${c.color}">${c.name}</div>
+        <div class="si-count">${roundCount>0?roundCount+'回分 / '+totalQ+'問':'問題なし'}</div>
+      </div>
+    </div>`;
   }).join('');
-  showScreen('testdetail');
+  showScreen('subjectselect');
 }
+
+function openSubject(subj){
+  currentSubject=subj;
+  const cfg=CHARS[subj];
+  const t=DB.tests[currentTestId];
+  const rounds=t.questions[subj]||{};
+  const roundNums=Object.keys(rounds).map(Number).sort((a,b)=>a-b);
+  document.getElementById('rs-title').textContent=cfg.subject+' — 回を選ぶ';
+
+  let html='';
+  // 全回ミックス
+  const totalQ=Object.values(rounds).reduce((s,qs)=>s+qs.length,0);
+  if(roundNums.length>1){
+    html+=`<div class="round-card mix" onclick="startQuiz('mix')">
+      <div>
+        <div class="round-label mix">⚡ 全回ミックス</div>
+        <div class="round-count">全${totalQ}問からランダム10問</div>
+      </div>
+      <div class="round-arrow">›</div>
+    </div>`;
+  }
+  // 各回
+  roundNums.forEach(r=>{
+    const qs=rounds[r]||[];
+    // 成績計算
+    const testStats=DB.stats[currentTestId]||{};
+    let seenCount=0;
+    qs.forEach((_,i)=>{
+      const key=subj+'_r'+r+'_'+i;
+      if((testStats[key]||{}).seen>0)seenCount++;
+    });
+    const pct=qs.length>0?Math.round(seenCount/qs.length*100):0;
+    html+=`<div class="round-card" onclick="startQuiz(${r})">
+      <div style="flex:1">
+        <div class="round-label">第${r}回</div>
+        <div class="round-count">${qs.length}問 / 挑戦済み${seenCount}問</div>
+        <div class="round-bar-wrap" style="margin-top:6px">
+          <div class="round-bar-fill" style="width:${pct}%;background:${cfg.color}"></div>
+        </div>
+      </div>
+      <div class="round-arrow">›</div>
+    </div>`;
+  });
+  if(!roundNums.length){
+    html='<div style="text-align:center;padding:40px 16px;color:var(--muted)">まだ問題がないよ！<br>📷 追加してね</div>';
+  }
+  document.getElementById('rs-list').innerHTML=html;
+  showScreen('roundselect');
+}
+
+function startQuiz(round){
+  currentRound=round;
+  const cfg=CHARS[currentSubject];
+  const t=DB.tests[currentTestId];
+  const rounds=t.questions[currentSubject]||{};
+  let allQs=[];
+  if(round==='mix'){
+    Object.entries(rounds).forEach(([r,qs])=>qs.forEach((q,i)=>allQs.push({...q,_r:r,_i:i})));
+  } else {
+    (rounds[round]||[]).forEach((q,i)=>allQs.push({...q,_r:round,_i:i}));
+  }
+  if(!allQs.length){showToast('問題がないよ！📷 追加してね','#ffaa44');return;}
+  const roundLabel=round==='mix'?'全回ミックス':'第'+round+'回';
+  document.getElementById('intro-img').src=IMGS[cfg.key].start;
+  document.getElementById('intro-lbl').textContent=cfg.subject+' — '+cfg.name+' / '+roundLabel;
+  document.getElementById('intro-lbl').style.color=cfg.color;
+  document.getElementById('intro-test-name').textContent='📚 '+DB.tests[currentTestId].name+' ／ '+allQs.length+'問中10問';
+  const cheers=['ぜんぶ正解目指してがんばろう！💪','全力でいこう！🔥','さあ、集中してやっていこう！⚡','まちがえても大丈夫！最後までやりきれ！'];
+  document.getElementById('intro-cheer').textContent=cheers[Math.floor(Math.random()*cheers.length)];
+  document.getElementById('intro-txt').textContent=cfg.start;
+  document.getElementById('intro-start-btn').style.background='linear-gradient(135deg,'+cfg.color+','+cfg.btn+')';
+  document.getElementById('intro-bg').style.background='radial-gradient(ellipse at 50% 30%,'+cfg.color+'33 0%,transparent 65%),var(--bg)';
+  // 10問スマート選出
+  const selected=selectSmartQuestions(allQs,10);
+  questions=selected.map(x=>x.q);
+  questionKeys=selected.map(x=>x.key);
+  showScreen('intro');
+}
+
+function selectSmartQuestions(allQs,n){
+  const testStats=DB.stats[currentTestId]||{};
+  const scored=allQs.map(q=>{
+    const key=currentSubject+'_r'+q._r+'_'+q._i;
+    const st=testStats[key]||{correct:0,wrong:0,seen:0};
+    let weight=10;
+    if(st.seen===0)weight=20;
+    else if(st.wrong>st.correct)weight=15;
+    else weight=Math.max(1,10-st.correct*2);
+    return {q,key,weight,st};
+  });
+  const selected=[];
+  const pool=[...scored];
+  const count=Math.min(n,pool.length);
+  for(let i=0;i<count;i++){
+    const totalW=pool.reduce((s,x)=>s+x.weight,0);
+    let rand=Math.random()*totalW;
+    let idx=0;
+    for(let j=0;j<pool.length;j++){rand-=pool[j].weight;if(rand<=0){idx=j;break;}}
+    selected.push(pool[idx]);
+    pool.splice(idx,1);
+  }
+  return selected;
+}
+
+function beginQuiz(){
+  qIdx=0;score=0;streak=0;maxStreak=0;correct=0;wrong=0;answered=false;
+  segResults=new Array(questions.length).fill(null);
+  wrongQuestions=[];
+  const cfg=CHARS[currentSubject];
+  document.getElementById('qz-bubble-name').textContent=cfg.subject+' '+cfg.name;
+  document.getElementById('quiz-char').src=IMGS[cfg.key].ganbaro;
+  document.getElementById('q-score').textContent='0';
+  document.getElementById('streak-pill').textContent='🔥 0';
+  renderSegs();showScreen('quiz');renderQ();
+}
+function renderSegs(){
+  document.getElementById('qz-segs').innerHTML=questions.map((_,i)=>{
+    let c='qz-seg';
+    if(i===qIdx)c+=' cur';
+    else if(segResults[i]===true)c+=' ok';
+    else if(segResults[i]===false)c+=' ng';
+    return '<div class="'+c+'"></div>';
+  }).join('');
+}
+function setBubble(txt){document.getElementById('qz-bubble-txt').textContent=txt;}
+function renderQ(){
+  answered=false;const q=questions[qIdx];
+  const cfg=CHARS[currentSubject];
+  document.getElementById('qz-num-badge').textContent=(qIdx+1)+' / '+questions.length;
+  document.getElementById('qtxt').textContent=q.q;
+  document.getElementById('fbtxt').className='qz-feedback';
+  document.getElementById('nxt-btn').className='qz-next';
+  document.getElementById('quiz-char').src=IMGS[cfg.key].ganbaro;
+  setBubble(cfg.thinking[Math.floor(Math.random()*cfg.thinking.length)]);
+  renderSegs();
+  const choices=[...q.choices].sort(()=>Math.random()-.5);
+  const grid=document.getElementById('choices');grid.innerHTML='';
+  choices.forEach(c=>{
+    const btn=document.createElement('button');btn.className='qz-cbtn';btn.textContent=c;
+    btn.onclick=()=>doAnswer(c,q.a,btn,q.explain||'');grid.appendChild(btn);
+  });
+}
+function doAnswer(chosen,ans,btn,explain){
+  if(answered)return;answered=true;
+  const cfg=CHARS[currentSubject];const isOk=chosen===ans;
+  document.querySelectorAll('.qz-cbtn').forEach(b=>{b.disabled=true;if(b.textContent===ans)b.classList.add('correct');});
+  segResults[qIdx]=isOk;renderSegs();
+  const nb=document.getElementById('nxt-btn');
+  if(isOk){
+    streak++;if(streak>maxStreak)maxStreak=streak;correct++;
+    const pts=streak>=3?streak*20:100;score+=pts;
+    setBubble(cfg.ok[Math.floor(Math.random()*cfg.ok.length)]);
+    document.getElementById('quiz-char').src=IMGS[cfg.key].correct;
+    showFB(true,'✅ 正解！ +'+pts+'pts'+(streak>=3?' 🔥×'+streak+' ボーナス！':''),explain||'よく覚えていたね！');
+    nb.style.background='linear-gradient(135deg,'+cfg.color+','+cfg.btn+')';
+    if(streak>=3)spawnConfetti();
+    if(isRevengeMode)showRevengeBadge();
+  }else{
+    btn.classList.add('wrong');streak=0;wrong++;
+    setBubble(cfg.ng[Math.floor(Math.random()*cfg.ng.length)]);
+    document.getElementById('quiz-char').src=IMGS[cfg.key].wrong;
+    showFB(false,'❌ 正解は「'+ans+'」',explain||'もう一度確認してみよう！');
+    nb.style.background='linear-gradient(135deg,'+cfg.color+','+cfg.btn+')';
+    if(!isRevengeMode)wrongQuestions.push(questions[qIdx]);
+  }
+  document.getElementById('q-score').textContent=score;
+  document.getElementById('streak-pill').textContent='🔥 '+streak;
+  nb.className='qz-next show';
+  recordStat(questionKeys[qIdx],isOk);
+}
+function showFB(isOk,title,explain){
+  const el=document.getElementById('fbtxt');
+  el.className='qz-feedback '+(isOk?'ok':'ng');
+  document.getElementById('fb-icon').textContent=isOk?'🎉':'💡';
+  const t=document.getElementById('fb-title');t.className='qz-fb-title '+(isOk?'ok':'ng');t.textContent=title;
+  document.getElementById('fb-explain').textContent=explain;
+}
+function nextQ(){qIdx++;qIdx>=questions.length?showResult():renderQ();}
+function quitQuiz(){
+  if(!confirm('問題をやめて戻りますか？'))return;
+  const rb=document.getElementById('revenge-banner');if(rb)rb.remove();
+  isRevengeMode=false;
+  showScreen('roundselect');
+}
+function recordStat(key,isOk){
+  if(!key)return;
+  if(!DB.stats[currentTestId])DB.stats[currentTestId]={};
+  const st=DB.stats[currentTestId][key]||{correct:0,wrong:0,seen:0};
+  st.seen++;if(isOk)st.correct++;else st.wrong++;
+  DB.stats[currentTestId][key]=st;saveDB();
+}
+function showResult(){
+  const cfg=CHARS[currentSubject];const pct=correct/questions.length;
+  let emoji,title,rk;
+  if(isRevengeMode){
+    if(pct>=.8){emoji='🔥';title='リベンジ完了！';rk='g';document.getElementById('res-img').src=IMGS[cfg.key].correct;spawnConfetti();}
+    else if(pct>=.5){emoji='💪';title='いい感じ！';rk='o';document.getElementById('res-img').src=IMGS[cfg.key].ganbaro;}
+    else{emoji='😤';title='もう一回！';rk='t';document.getElementById('res-img').src=IMGS[cfg.key].wrong;}
+  }else{
+    if(pct>=1.0){emoji='🌟';title='パーフェクト！';rk='g';document.getElementById('res-img').src=IMGS[cfg.key].correct;setTimeout(showPerfectPopup,600);}
+    else if(pct>=.8){emoji='🏆';title='最高だぜ！';rk='g';document.getElementById('res-img').src=IMGS[cfg.key].correct;spawnConfetti();}
+    else if(pct>=.5){emoji='👍';title='いい感じ！';rk='o';document.getElementById('res-img').src=IMGS[cfg.key].ganbaro;}
+    else{emoji='💪';title='もう一回！';rk='t';document.getElementById('res-img').src=IMGS[cfg.key].wrong;}
+  }
+  document.getElementById('res-title').textContent=emoji+' '+title;
+  document.getElementById('res-pts').textContent=score;
+  document.getElementById('res-msg').textContent='"'+cfg.res[rk]+'"';
+  document.getElementById('r-ok').textContent=correct;
+  document.getElementById('r-ng').textContent=wrong;
+  document.getElementById('r-str').textContent=maxStreak;
+  document.getElementById('res-retry').style.background='linear-gradient(135deg,'+cfg.color+','+cfg.btn+')';
+  const rw=document.getElementById('res-retry-wrap');
+  if(!isRevengeMode&&wrongQuestions.length>0){
+    rw.style.display='block';
+    document.getElementById('res-wrong-list').innerHTML=wrongQuestions.map(q=>'<div class="res-wrong-item">'+q.q+'</div>').join('');
+  }else{rw.style.display='none';}
+  document.getElementById('res-graph-wrap').style.display='none';
+  const rb=document.getElementById('revenge-banner');if(rb)rb.remove();
+  isRevengeMode=false;
+  showScreen('result');
+}
+function showPerfectPopup(){
+  const cfg=CHARS[currentSubject];
+  const popup=document.createElement('div');
+  popup.className='perfect-popup';popup.id='perfect-popup';
+  const msg=cfg.perfect||'すばらしい！全問正解だ！';
+  const div=document.createElement('div');div.className='perfect-inner';
+  div.innerHTML='<div class="perfect-star">🌟</div><div class="perfect-title">パーフェクト！！</div>';
+  const charDiv=document.createElement('div');charDiv.className='perfect-char';
+  const charImg=document.createElement('img');charImg.src=IMGS[cfg.key].correct;
+  charDiv.appendChild(charImg);div.appendChild(charDiv);
+  const msgDiv=document.createElement('div');msgDiv.className='perfect-msg';msgDiv.textContent=msg;
+  div.appendChild(msgDiv);
+  const closeBtn=document.createElement('button');closeBtn.className='perfect-close';
+  closeBtn.textContent='やったー！ →';closeBtn.onclick=()=>popup.remove();
+  div.appendChild(closeBtn);popup.appendChild(div);
+  document.body.appendChild(popup);spawnConfetti();
+}
+function startRevenge(){
+  if(!wrongQuestions.length)return;
+  isRevengeMode=true;
+  const cfg=CHARS[currentSubject];
+  questions=[...wrongQuestions].sort(()=>Math.random()-.5);
+  questionKeys=new Array(questions.length).fill(null);
+  wrongQuestions=[];
+  qIdx=0;score=0;streak=0;maxStreak=0;correct=0;wrong=0;answered=false;
+  segResults=new Array(questions.length).fill(null);
+  const old=document.getElementById('revenge-banner');if(old)old.remove();
+  const banner=document.createElement('div');banner.id='revenge-banner';banner.className='revenge-banner';
+  banner.textContent='🔥 リベンジモード！間違えた'+questions.length+'問に挑戦！';
+  document.body.appendChild(banner);
+  document.getElementById('qz-bubble-name').textContent=cfg.subject+' '+cfg.name;
+  document.getElementById('quiz-char').src=IMGS[cfg.key].ganbaro;
+  document.getElementById('q-score').textContent='0';
+  document.getElementById('streak-pill').textContent='🔥 0';
+  renderSegs();showScreen('quiz');renderQ();
+}
+function showRevengeBadge(){
+  const old=document.getElementById('revenge-badge');if(old)old.remove();
+  const badge=document.createElement('div');badge.id='revenge-badge';badge.className='revenge-badge';
+  badge.textContent='🎯 リベンジ成功！';document.body.appendChild(badge);
+  setTimeout(()=>badge.remove(),2000);
+}
+function retryQuiz(){
+  const cfg=CHARS[currentSubject];
+  const t=DB.tests[currentTestId];
+  const rounds=t.questions[currentSubject]||{};
+  let allQs=[];
+  if(currentRound==='mix'){
+    Object.entries(rounds).forEach(([r,qs])=>qs.forEach((q,i)=>allQs.push({...q,_r:r,_i:i})));
+  }else{
+    (rounds[currentRound]||[]).forEach((q,i)=>allQs.push({...q,_r:currentRound,_i:i}));
+  }
+  const selected=selectSmartQuestions(allQs,10);
+  questions=selected.map(x=>x.q);
+  questionKeys=selected.map(x=>x.key);
+  beginQuiz();
+}
+
+// ---- PHOTO / GENERATE ----
 function goNewTest(){
-  ntPhotos=[];ntSelectedSubjs=['rika'];
+  ntPhotos=[];ntSelectedSubj='rika';
   document.getElementById('nt-name').value='';
+  document.getElementById('nt-round').value='1';
   document.getElementById('nt-upl').classList.remove('has-files');
   document.getElementById('nt-upl-txt').textContent='タップして写真を選ぶ';
   document.getElementById('nt-thumbs').style.display='none';document.getElementById('nt-thumbs').innerHTML='';
@@ -668,6 +807,7 @@ function goNewTest(){
 }
 function goAddPhotos(){
   apPhotos=[];apCurrentSubj='rika';
+  document.getElementById('ap-round').value='1';
   document.getElementById('ap-upl').classList.remove('has-files');
   document.getElementById('ap-upl-txt').textContent='タップして写真を選ぶ';
   document.getElementById('ap-thumbs').style.display='none';document.getElementById('ap-thumbs').innerHTML='';
@@ -706,372 +846,121 @@ async function callAPI(b64,subjects){
   const d=await r.json();if(!r.ok)throw new Error(d.error||'API error');return d.questions||[];
 }
 function addLog(el,msg,type){const d=document.createElement('div');d.className='log-'+type;d.textContent=msg;el.appendChild(d);el.scrollTop=el.scrollHeight;}
-async function runGen(photos,subjects,testObj,logEl,fillEl,pctEl){
-  let total=0;
-  for(let i=0;i<photos.length;i++){
-    const pct=Math.round(i/photos.length*100);fillEl.style.width=pct+'%';pctEl.textContent=pct+'%';
-    const fname=photos[i].name.slice(0,20);
-    try{const b64=await fileToB64(photos[i]);const qs=await callAPI(b64,subjects);qs.forEach(q=>{const s=(q.subject&&testObj.questions[q.subject]!==undefined)?q.subject:subjects[0];testObj.questions[s].push({q:q.q,a:q.a,choices:q.choices,explain:q.explain||''});total++;});addLog(logEl,'✅ '+fname+': '+qs.length+'問生成','ok');}
-    catch(err){addLog(logEl,'❌ '+fname+': '+err.message.slice(0,60),'err');}
-  }
-  fillEl.style.width='100%';pctEl.textContent='100%';addLog(logEl,'完了！合計 '+total+'問','info');return total;
-}
+
 async function generateAll(){
   const name=document.getElementById('nt-name').value.trim();
   if(!name){showToast('テスト名を入力してね','#ffaa44');return;}
-  if(!ntSelectedSubjs.length){showToast('科目を選んでね','#ffaa44');return;}
   if(!ntPhotos.length){showToast('写真を選んでね','#ffaa44');return;}
+  const round=parseInt(document.getElementById('nt-round').value);
+  const subj=ntSelectedSubj;
   document.getElementById('nt-gen-btn').disabled=true;document.getElementById('nt-prog-wrap').style.display='block';
-  const tid='test_'+Date.now();
-  const nt={id:tid,name,createdAt:Date.now(),questions:{shakai:[],sansu:[],kokugo:[],rika:[]}};
-  const total=await runGen(ntPhotos,ntSelectedSubjs,nt,document.getElementById('nt-log'),document.getElementById('nt-prog-fill'),document.getElementById('nt-prog-pct'));
-  DB.tests[tid]=nt;saveDB();
-  if(total>0){spawnConfetti();showToast('「'+name+'」に'+total+'問追加しました🎉','#44cc88');setTimeout(()=>openTest(tid),1800);}
+  const logEl=document.getElementById('nt-log');logEl.innerHTML='';
+
+  // 既存テストがあれば追加、なければ新規作成
+  let testId=Object.keys(DB.tests).find(id=>DB.tests[id].name===name);
+  if(!testId){
+    testId='test_'+Date.now();
+    DB.tests[testId]={id:testId,name,createdAt:Date.now(),questions:{shakai:{},sansu:{},kokugo:{},rika:{}}};
+  }
+  const t=DB.tests[testId];
+  if(!t.questions[subj])t.questions[subj]={};
+  if(!t.questions[subj][round])t.questions[subj][round]=[];
+
+  let total=0;
+  for(let i=0;i<ntPhotos.length;i++){
+    const pct=Math.round(i/ntPhotos.length*100);
+    document.getElementById('nt-prog-fill').style.width=pct+'%';document.getElementById('nt-prog-pct').textContent=pct+'%';
+    const fname=ntPhotos[i].name.slice(0,20);
+    try{
+      const b64=await fileToB64(ntPhotos[i]);
+      const qs=await callAPI(b64,[subj]);
+      qs.forEach(q=>t.questions[subj][round].push({q:q.q,a:q.a,choices:q.choices,explain:q.explain||''}));
+      total+=qs.length;
+      addLog(logEl,'✅ '+fname+': '+qs.length+'問生成','ok');
+    }catch(err){addLog(logEl,'❌ '+fname+': '+err.message.slice(0,60),'err');}
+  }
+  document.getElementById('nt-prog-fill').style.width='100%';document.getElementById('nt-prog-pct').textContent='100%';
+  addLog(logEl,'完了！合計 '+total+'問','info');
+  saveDB();
+  if(total>0){spawnConfetti();showToast('「'+name+'」'+CHARS[subj].subject+' 第'+round+'回に'+total+'問追加しました🎉','#44cc88');setTimeout(()=>openTest(testId),1800);}
   else{showToast('問題を生成できませんでした','#ff5555');document.getElementById('nt-gen-btn').disabled=false;}
 }
+
 async function apGenerateAll(){
   if(!apPhotos.length){showToast('写真を選んでね','#ffaa44');return;}
+  const round=parseInt(document.getElementById('ap-round').value);
+  const subj=apCurrentSubj;
   document.getElementById('ap-gen-btn').disabled=true;document.getElementById('ap-prog-wrap').style.display='block';
+  const logEl=document.getElementById('ap-log');logEl.innerHTML='';
   const t=DB.tests[currentTestId];
-  const total=await runGen(apPhotos,[apCurrentSubj],t,document.getElementById('ap-log'),document.getElementById('ap-prog-fill'),document.getElementById('ap-prog-pct'));
+  if(!t.questions[subj])t.questions[subj]={};
+  if(!t.questions[subj][round])t.questions[subj][round]=[];
+  let total=0;
+  for(let i=0;i<apPhotos.length;i++){
+    const pct=Math.round(i/apPhotos.length*100);
+    document.getElementById('ap-prog-fill').style.width=pct+'%';document.getElementById('ap-prog-pct').textContent=pct+'%';
+    const fname=apPhotos[i].name.slice(0,20);
+    try{
+      const b64=await fileToB64(apPhotos[i]);
+      const qs=await callAPI(b64,[subj]);
+      qs.forEach(q=>t.questions[subj][round].push({q:q.q,a:q.a,choices:q.choices,explain:q.explain||''}));
+      total+=qs.length;
+      addLog(logEl,'✅ '+fname+': '+qs.length+'問生成','ok');
+    }catch(err){addLog(logEl,'❌ '+fname+': '+err.message.slice(0,60),'err');}
+  }
+  document.getElementById('ap-prog-fill').style.width='100%';document.getElementById('ap-prog-pct').textContent='100%';
+  addLog(logEl,'完了！合計 '+total+'問','info');
   saveDB();
-  if(total>0){spawnConfetti();showToast(total+'問追加しました🎉','#44cc88');setTimeout(()=>openTest(currentTestId),1800);}
+  if(total>0){spawnConfetti();showToast(CHARS[subj].subject+' 第'+round+'回に'+total+'問追加しました🎉','#44cc88');setTimeout(()=>openTest(currentTestId),1800);}
   else{showToast('問題を生成できませんでした','#ff5555');document.getElementById('ap-gen-btn').disabled=false;}
 }
 
-function startSubject(subj){
-  const qs=DB.tests[currentTestId]?.questions?.[subj]||[];
-  if(!qs.length){showToast('まだ問題がないよ！📷 追加してね','#ffaa44');return;}
-  currentSubject=subj;const cfg=CHARS[subj];
-  const t=DB.tests[currentTestId];
-  const qCount=qs.length;
-  document.getElementById('intro-img').src=IMGS[cfg.key].start;
-  document.getElementById('intro-lbl').textContent=cfg.subject+' — '+cfg.name;
-  document.getElementById('intro-lbl').style.color=cfg.color;
-  document.getElementById('intro-test-name').textContent='📚 '+t.name+' ／ '+qCount+'問';
-  const cheers=['ぜんぶ正解目指してがんばろう！💪','全'+qCount+'問！全力でいこう！🔥','さあ、集中してやっていこう！⚡','まちがえても大丈夫！最後までやりきれ！'];
-  document.getElementById('intro-cheer').textContent=cheers[Math.floor(Math.random()*cheers.length)];
-  document.getElementById('intro-txt').textContent=cfg.start;
-  document.getElementById('intro-start-btn').style.background='linear-gradient(135deg,'+cfg.color+','+cfg.btn+')';
-  document.getElementById('intro-bg').style.background='radial-gradient(ellipse at 50% 30%,'+cfg.color+'33 0%,transparent 65%),var(--bg)';
-  showScreen('intro');
-}
-function selectSmartQuestions(allQs, n){
-  // 各問題にスコアを付けてスマートに選出
-  // stats: {correct:0, wrong:0} を各問題のIDで管理
-  if(!DB.stats)DB.stats={};
-  const testStats=DB.stats[currentTestId]||{};
-  // 問題にIDを付与（なければインデックスベース）
-  const scored=allQs.map((q,i)=>{
-    const key=currentSubject+'_'+i+'_'+q.q.slice(0,10);
-    const st=testStats[key]||{correct:0,wrong:0,seen:0};
-    // 重み計算：未出題は高い、間違えた問題は高い、正解した問題は低い
-    let weight=10;
-    if(st.seen===0)weight=20;           // 未出題：最優先
-    else if(st.wrong>st.correct)weight=15; // 間違え多い：優先
-    else if(st.correct>0)weight=Math.max(1,10-st.correct*2); // 正解済み：徐々に下げる
-    return {q, key, weight, st};
-  });
-  // 重み付きランダム選出
-  const selected=[];
-  const pool=[...scored];
-  const count=Math.min(n, pool.length);
-  for(let i=0;i<count;i++){
-    const totalW=pool.reduce((s,x)=>s+x.weight,0);
-    let rand=Math.random()*totalW;
-    let idx=0;
-    for(let j=0;j<pool.length;j++){rand-=pool[j].weight;if(rand<=0){idx=j;break;}}
-    selected.push(pool[idx]);
-    pool.splice(idx,1);
-  }
-  return selected;
-}
-
-function beginQuiz(){
-  const allQs=DB.tests[currentTestId].questions[currentSubject]||[];
-  const selected=selectSmartQuestions(allQs, 10);
-  questions=selected.map(x=>({...x.q, _key:x.key}));
-  questionKeys=selected.map(x=>x.key);
-  qIdx=0;score=0;streak=0;maxStreak=0;correct=0;wrong=0;answered=false;
-  segResults=new Array(questions.length).fill(null);
-  wrongQuestions=[];
-  const cfg=CHARS[currentSubject];
-  document.getElementById('qz-bubble-name').textContent=cfg.subject+' '+cfg.name;
-  document.getElementById('quiz-char').src=IMGS[cfg.key].ganbaro;
-  document.getElementById('q-score').textContent='0';
-  document.getElementById('streak-pill').textContent='🔥 0';
-  renderSegs();showScreen('quiz');renderQ();
-}
-function renderSegs(){
-  document.getElementById('qz-segs').innerHTML=questions.map((_,i)=>{
-    let c='qz-seg';
-    if(i===qIdx)c+=' cur';
-    else if(segResults[i]===true)c+=' ok';
-    else if(segResults[i]===false)c+=' ng';
-    return '<div class="'+c+'"></div>';
-  }).join('');
-}
-function setBubble(txt){document.getElementById('qz-bubble-txt').textContent=txt;}
-function renderQ(){
-  answered=false;const q=questions[qIdx];
-  const cfg=CHARS[currentSubject];
-  document.getElementById('qz-num-badge').textContent=(qIdx+1)+' / '+questions.length;
-  document.getElementById('qtag').textContent=cfg.subject+' — '+cfg.name;
-  document.getElementById('qtag').style.color=cfg.color;
-  document.getElementById('qtxt').textContent=q.q;
-  document.getElementById('fbtxt').className='qz-feedback';
-  document.getElementById('nxt-btn').className='qz-next';
-  document.getElementById('quiz-char').src=IMGS[cfg.key].ganbaro;
-  setBubble(cfg.thinking[Math.floor(Math.random()*cfg.thinking.length)]);
-  renderSegs();
-  const choices=[...q.choices].sort(()=>Math.random()-.5);
-  const grid=document.getElementById('choices');grid.innerHTML='';
-  choices.forEach(c=>{
-    const btn=document.createElement('button');btn.className='qz-cbtn';btn.textContent=c;
-    btn.onclick=()=>doAnswer(c,q.a,btn,q.explain||'');grid.appendChild(btn);
-  });
-}
-function doAnswer(chosen,ans,btn,explain){
-  if(answered)return;answered=true;
-  const cfg=CHARS[currentSubject];const isOk=chosen===ans;
-  document.querySelectorAll('.qz-cbtn').forEach(b=>{b.disabled=true;if(b.textContent===ans)b.classList.add('correct');});
-  segResults[qIdx]=isOk;renderSegs();
-  const nb=document.getElementById('nxt-btn');
-  if(isOk){
-    streak++;if(streak>maxStreak)maxStreak=streak;correct++;
-    const pts=streak>=3?streak*20:100;score+=pts;
-    setBubble(cfg.ok[Math.floor(Math.random()*cfg.ok.length)]);
-    document.getElementById('quiz-char').src=IMGS[cfg.key].correct;
-    const bonusTxt=streak>=3?' 🔥×'+streak+' ボーナス！':'';
-    showFB(true,'✅ 正解！ +'+pts+'pts'+bonusTxt,explain||'よく覚えていたね！');
-    nb.style.background='linear-gradient(135deg,'+cfg.color+','+cfg.btn+')';
-    if(streak>=3)spawnConfetti();
-    if(isRevengeMode){showRevengeBadge();}
-  }else{
-    btn.classList.add('wrong');streak=0;wrong++;
-    setBubble(cfg.ng[Math.floor(Math.random()*cfg.ng.length)]);
-    document.getElementById('quiz-char').src=IMGS[cfg.key].wrong;
-    showFB(false,'❌ 正解は「'+ans+'」',explain||'もう一度確認してみよう！');
-    nb.style.background='linear-gradient(135deg,'+cfg.color+','+cfg.btn+')';
-    if(!isRevengeMode)wrongQuestions.push(questions[qIdx]);
-  }
-  document.getElementById('q-score').textContent=score;
-  document.getElementById('streak-pill').textContent='🔥 '+streak;
-  nb.className='qz-next show';
-  // 統計記録
-  recordStat(questionKeys[qIdx], isOk);
-}
-function showFB(isOk,title,explain){
-  const el=document.getElementById('fbtxt');
-  el.className='qz-feedback '+(isOk?'ok':'ng');
-  document.getElementById('fb-icon').textContent=isOk?'🎉':'💡';
-  const t=document.getElementById('fb-title');t.className='qz-fb-title '+(isOk?'ok':'ng');t.textContent=title;
-  document.getElementById('fb-explain').textContent=explain;
-}
-function nextQ(){qIdx++;qIdx>=questions.length?showResult():renderQ();}
-function showResult(){
-  const cfg=CHARS[currentSubject];const pct=correct/questions.length;
-  let emoji,title,rk;
-  if(isRevengeMode){
-    if(pct>=.8){emoji='🔥';title='リベンジ完了！';rk='g';document.getElementById('res-img').src=IMGS[cfg.key].correct;spawnConfetti();}
-    else if(pct>=.5){emoji='💪';title='いい感じ！';rk='o';document.getElementById('res-img').src=IMGS[cfg.key].ganbaro;}
-    else{emoji='😤';title='もう一回！';rk='t';document.getElementById('res-img').src=IMGS[cfg.key].wrong;}
-  }else{
-    if(pct>=1.0){emoji='🌟';title='パーフェクト！';rk='g';document.getElementById('res-img').src=IMGS[cfg.key].correct;setTimeout(showPerfectPopup,600);}
-  else if(pct>=.8){emoji='🏆';title='最高だぜ！';rk='g';document.getElementById('res-img').src=IMGS[cfg.key].correct;spawnConfetti();}
-    else if(pct>=.5){emoji='👍';title='いい感じ！';rk='o';document.getElementById('res-img').src=IMGS[cfg.key].ganbaro;}
-    else{emoji='💪';title='もう一回！';rk='t';document.getElementById('res-img').src=IMGS[cfg.key].wrong;}
-  }
-  document.getElementById('res-title').textContent=emoji+' '+title;
-  document.getElementById('res-pts').textContent=score;
-  document.getElementById('res-msg').textContent='"'+cfg.res[rk]+'"';
-  document.getElementById('r-ok').textContent=correct;
-  document.getElementById('r-ng').textContent=wrong;
-  document.getElementById('r-str').textContent=maxStreak;
-  document.getElementById('res-retry').style.background='linear-gradient(135deg,'+cfg.color+','+cfg.btn+')';
-  const rw=document.getElementById('res-retry-wrap');
-  const wl=document.getElementById('res-wrong-list');
-  if(!isRevengeMode&&wrongQuestions.length>0){
-    rw.style.display='block';
-    wl.innerHTML=wrongQuestions.map(q=>'<div class="res-wrong-item">'+q.q+'</div>').join('');
-  }else{rw.style.display='none';}
-  renderGraph();
-  const rb=document.getElementById('revenge-banner');if(rb)rb.remove();
-  isRevengeMode=false;
-  showScreen('result');
-}
-function renderGraph(){
-  const t=DB.tests[currentTestId];if(!t)return;
-  const rows=SUBJ_ORDER.filter(s=>(t.questions[s]?.length||0)>0);
-  const wrap=document.getElementById('res-graph-wrap');
-  const bars=document.getElementById('res-graph-bars');
-  if(rows.length<2){wrap.style.display='none';return;}
-  wrap.style.display='block';
-  const subj=currentSubject;
-  const subjCorrect={};const subjTotal={};
-  questions.forEach((q,i)=>{
-    const s=q.subject||subj;
-    subjTotal[s]=(subjTotal[s]||0)+1;
-    if(segResults[i]===true)subjCorrect[s]=(subjCorrect[s]||0)+1;
-  });
-  bars.innerHTML=rows.map(s=>{
-    const c=CHARS[s];const tot=subjTotal[s]||0;const ok=subjCorrect[s]||0;
-    const pct=tot>0?Math.round(ok/tot*100):0;
-    return '<div class="res-graph-row"><div class="res-graph-lbl">'+c.subject+'</div><div class="res-graph-bar-wrap"><div class="res-graph-bar" style="width:'+pct+'%;background:linear-gradient(90deg,'+c.color+'99,'+c.color+')">'+(pct>20?'<span class="res-graph-pct">'+pct+'%</span>':'')+'</div></div><div class="res-graph-cnt">'+ok+'/'+tot+'</div></div>';
-  }).join('');
-}
-function startRevenge(){
-  if(!wrongQuestions.length)return;
-  isRevengeMode=true;
-  const cfg=CHARS[currentSubject];
-  questions=[...wrongQuestions].sort(()=>Math.random()-.5);
-  wrongQuestions=[];
-  qIdx=0;score=0;streak=0;maxStreak=0;correct=0;wrong=0;answered=false;
-  segResults=new Array(questions.length).fill(null);
-  const old=document.getElementById('revenge-banner');if(old)old.remove();
-  const banner=document.createElement('div');
-  banner.id='revenge-banner';banner.className='revenge-banner';
-  banner.textContent='🔥 リベンジモード！間違えた'+questions.length+'問に挑戦！';
-  document.body.appendChild(banner);
-  document.getElementById('qz-bubble-name').textContent=cfg.subject+' '+cfg.name;
-  document.getElementById('quiz-char').src=IMGS[cfg.key].ganbaro;
-  document.getElementById('q-score').textContent='0';
-  document.getElementById('streak-pill').textContent='🔥 0';
-  renderSegs();showScreen('quiz');renderQ();
-}
-function showRevengeBadge(){
-  const old=document.getElementById('revenge-badge');if(old)old.remove();
-  const badge=document.createElement('div');
-  badge.id='revenge-badge';badge.className='revenge-badge';
-  badge.textContent='🎯 リベンジ成功！';
-  document.body.appendChild(badge);
-  setTimeout(()=>badge.remove(),2000);
-}
-function retryQuiz(){beginQuiz();}
-
+// ---- STATS ----
 function showStats(){
-  const t=DB.tests[currentTestId];
-  if(!t){return;}
-  const testStats=DB.stats&&DB.stats[currentTestId]||{};
+  const t=DB.tests[currentTestId];if(!t)return;
+  const testStats=DB.stats[currentTestId]||{};
   document.getElementById('stats-title').textContent='📊 '+t.name+' 成績表';
-
   let totalSeen=0,totalOk=0,totalNg=0;
   let html='';
-
   SUBJ_ORDER.forEach(subj=>{
-    const qs=t.questions[subj]||[];
-    if(!qs.length)return;
+    const rounds=t.questions[subj]||{};
+    const roundNums=Object.keys(rounds).map(Number).sort((a,b)=>a-b);
+    if(!roundNums.length)return;
     const cfg=CHARS[subj];
-    html+=`<div class="stats-subj-header">
-      <div class="stats-subj-dot" style="background:${cfg.color}"></div>
-      <span style="color:${cfg.color}">${cfg.subject} — ${cfg.name}</span>
-      <span style="color:var(--muted);font-size:.75rem;margin-left:auto">${qs.length}問</span>
-    </div>`;
-
-    qs.forEach((q,i)=>{
-      const key=subj+'_'+i+'_'+q.q.slice(0,10);
-      const st=testStats[key]||{correct:0,wrong:0,seen:0};
-      totalSeen+=st.seen;totalOk+=st.correct;totalNg+=st.wrong;
-      const total=st.correct+st.wrong;
-      const okPct=total>0?Math.round(st.correct/total*100):0;
-      const ngPct=total>0?100-okPct:0;
-      const pctStyle=okPct>0?`width:${okPct}%`:'width:0%';
-      const ngStyle=ngPct>0?`width:${ngPct}%`:'width:0%';
-
-      if(st.seen===0){
-        html+=`<div class="stats-item">
-          <div class="stats-q">${q.q}</div>
-          <div class="stats-unseen">まだ挑戦していない</div>
-        </div>`;
-      } else {
-        html+=`<div class="stats-item">
-          <div class="stats-q">${q.q}</div>
-          <div class="stats-row">
-            <div class="stats-bar-wrap">
-              <div class="stats-bar-ok" style="${pctStyle}"></div>
-              <div class="stats-bar-ng" style="${ngStyle}"></div>
-            </div>
-            <div class="stats-nums">
-              <span class="stats-ok">✅${st.correct}</span>
-              <span class="stats-ng">❌${st.wrong}</span>
-            </div>
-          </div>
-        </div>`;
-      }
+    html+='<div class="stats-subj-header"><div class="stats-subj-dot" style="background:'+cfg.color+'"></div><span style="color:'+cfg.color+'">'+cfg.subject+' — '+cfg.name+'</span></div>';
+    roundNums.forEach(r=>{
+      const qs=rounds[r]||[];
+      html+='<div style="font-size:.78rem;font-weight:700;color:var(--muted);margin:8px 0 4px">第'+r+'回（'+qs.length+'問）</div>';
+      qs.forEach((q,i)=>{
+        const key=subj+'_r'+r+'_'+i;
+        const st=testStats[key]||{correct:0,wrong:0,seen:0};
+        totalSeen+=st.seen;totalOk+=st.correct;totalNg+=st.wrong;
+        const tot=st.correct+st.wrong;
+        const okPct=tot>0?Math.round(st.correct/tot*100):0;
+        const ngPct=tot>0?100-okPct:0;
+        if(st.seen===0){
+          html+='<div class="stats-item"><div class="stats-q">'+q.q+'</div><div class="stats-unseen">まだ挑戦していない</div></div>';
+        }else{
+          html+='<div class="stats-item"><div class="stats-q">'+q.q+'</div><div class="stats-row"><div class="stats-bar-wrap"><div class="stats-bar-ok" style="width:'+okPct+'%"></div><div class="stats-bar-ng" style="width:'+ngPct+'%"></div></div><div class="stats-nums"><span class="stats-ok">✅'+st.correct+'</span><span class="stats-ng">❌'+st.wrong+'</span></div></div></div>';
+        }
+      });
     });
     html+='<div style="margin-bottom:16px"></div>';
   });
-
-  // サマリー
-  const summaryHtml=`<div class="stats-summary">
-    <div class="stats-sum-item"><div class="stats-sum-val" style="color:#44cc88">${totalOk}</div><div class="stats-sum-lbl">合計正解</div></div>
-    <div class="stats-sum-item"><div class="stats-sum-val" style="color:#ff5555">${totalNg}</div><div class="stats-sum-lbl">合計不正解</div></div>
-    <div class="stats-sum-item"><div class="stats-sum-val" style="color:#ffd700">${totalSeen>0?Math.round(totalOk/totalSeen*100):0}%</div><div class="stats-sum-lbl">正解率</div></div>
-  </div>
-  <button class="stats-reset-btn" onclick="resetStats()">🗑 この成績をリセット</button>
-  <div style="margin-bottom:16px"></div>`;
-
-  document.getElementById('stats-body').innerHTML=summaryHtml+html;
+  const summary='<div class="stats-summary"><div class="stats-sum-item"><div class="stats-sum-val" style="color:#44cc88">'+totalOk+'</div><div class="stats-sum-lbl">合計正解</div></div><div class="stats-sum-item"><div class="stats-sum-val" style="color:#ff5555">'+totalNg+'</div><div class="stats-sum-lbl">合計不正解</div></div><div class="stats-sum-item"><div class="stats-sum-val" style="color:#ffd700">'+(totalSeen>0?Math.round(totalOk/totalSeen*100):0)+'%</div><div class="stats-sum-lbl">正解率</div></div></div><button class="stats-reset-btn" onclick="resetStats()">🗑 この成績をリセット</button><div style="margin-bottom:16px"></div>';
+  document.getElementById('stats-body').innerHTML=summary+html;
   showScreen('stats');
 }
-
 function resetStats(){
   if(!confirm('この成績をリセットしますか？'))return;
-  if(!DB.stats)DB.stats={};
-  DB.stats[currentTestId]={};
-  saveDB();
-  showToast('成績をリセットしました','#888');
-  showStats();
+  DB.stats[currentTestId]={};saveDB();showToast('成績をリセットしました','#888');showStats();
 }
 
-function quitQuiz(){
-  if(!confirm('問題をやめて戻りますか？'))return;
-  const rb=document.getElementById('revenge-banner');if(rb)rb.remove();
-  isRevengeMode=false;
-  showScreen('testdetail');
-}
-
-function recordStat(key, isOk){
-  if(!key)return;
-  if(!DB.stats)DB.stats={};
-  if(!DB.stats[currentTestId])DB.stats[currentTestId]={};
-  const st=DB.stats[currentTestId][key]||{correct:0,wrong:0,seen:0};
-  st.seen++;
-  if(isOk)st.correct++;else st.wrong++;
-  DB.stats[currentTestId][key]=st;
-  saveDB();
-}
-
-function showPerfectPopup(){
-  const cfg=CHARS[currentSubject];
-  const popup=document.createElement('div');
-  popup.className='perfect-popup';
-  popup.id='perfect-popup';
-  popup.innerHTML=`
-    <div class="perfect-inner">
-      <div class="perfect-star">🌟</div>
-      <div class="perfect-title">パーフェクト！！</div>
-      <div class="perfect-char"><img src="${IMGS[cfg.key].correct}" alt=""/></div>
-      <div class="perfect-msg">"${cfg.perfect||'すばらしい！全問正解だ！'}"</div>
-      <button class="perfect-close" onclick="document.getElementById('perfect-popup').remove()">つぎへ →</button>
-    </div>
-  `;
-  document.body.appendChild(popup);
-  spawnConfetti();
-}
-function showToast(msg,color){
-  const t=document.getElementById('toast');t.textContent=msg;t.style.background=color||'#44cc88';
-  t.classList.add('show');clearTimeout(toastTimer);toastTimer=setTimeout(()=>t.classList.remove('show'),2800);
-}
+function showToast(msg,color){const t=document.getElementById('toast');t.textContent=msg;t.style.background=color||'#44cc88';t.classList.add('show');clearTimeout(toastTimer);toastTimer=setTimeout(()=>t.classList.remove('show'),2800);}
 function spawnConfetti(){
   const c=document.getElementById('ccont');const cols=['#ffd700','#ff6b35','#44cc88','#4d96ff','#ff55aa','#cc55ff'];
-  for(let i=0;i<44;i++){
-    const el=document.createElement('div');el.className='cf';
-    el.style.cssText='left:'+Math.random()*100+'%;background:'+cols[~~(Math.random()*cols.length)]+';width:'+(6+Math.random()*8)+'px;height:'+(6+Math.random()*8)+'px;animation-duration:'+(1.2+Math.random()*1.2)+'s;animation-delay:'+Math.random()*.4+'s;border-radius:'+( Math.random()>.5?'50%':'2px');
-    c.appendChild(el);setTimeout(()=>el.remove(),2600);
-  }
+  for(let i=0;i<44;i++){const el=document.createElement('div');el.className='cf';el.style.cssText='left:'+Math.random()*100+'%;background:'+cols[~~(Math.random()*cols.length)]+';width:'+(6+Math.random()*8)+'px;height:'+(6+Math.random()*8)+'px;animation-duration:'+(1.2+Math.random()*1.2)+'s;animation-delay:'+Math.random()*.4+'s;border-radius:'+(Math.random()>.5?'50%':'2px');c.appendChild(el);setTimeout(()=>el.remove(),2600);}
 }
-
 </script>
 </body>
 </html>
