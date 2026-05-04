@@ -351,6 +351,44 @@ html,body{height:100%;font-family:'Noto Sans JP',sans-serif;background:var(--bg)
 .perfect-char img{width:100%}
 .perfect-msg{font-size:1rem;font-weight:700;line-height:1.6;color:white;margin-bottom:18px}
 .perfect-close{background:linear-gradient(135deg,#ffd700,#ff6b35);border:none;border-radius:13px;color:#1a0a00;font-family:inherit;font-size:1rem;font-weight:900;padding:13px 32px;cursor:pointer;width:100%}
+
+/* 成績表 */
+.stats-subj-header{
+  font-size:1rem;font-weight:900;
+  padding:12px 0 8px;
+  border-bottom:2px solid rgba(255,255,255,.08);
+  margin-bottom:10px;
+  display:flex;align-items:center;gap:8px;
+}
+.stats-subj-dot{width:10px;height:10px;border-radius:50%;flex-shrink:0}
+.stats-item{
+  background:var(--card);border-radius:12px;
+  padding:11px 13px;margin-bottom:8px;
+  border:1px solid var(--border);
+}
+.stats-q{font-size:.9rem;font-weight:700;line-height:1.5;margin-bottom:7px;color:white}
+.stats-row{display:flex;align-items:center;gap:8px}
+.stats-bar-wrap{flex:1;background:rgba(255,255,255,.07);border-radius:99px;height:14px;overflow:hidden;position:relative}
+.stats-bar-ok{height:100%;border-radius:99px 0 0 99px;background:#44cc88;transition:width .6s ease;float:left}
+.stats-bar-ng{height:100%;border-radius:0 99px 99px 0;background:#ff5555;transition:width .6s ease;float:left}
+.stats-nums{display:flex;gap:10px;flex-shrink:0;font-size:.8rem;font-weight:700}
+.stats-ok{color:#44cc88}
+.stats-ng{color:#ff5555}
+.stats-unseen{color:var(--muted);font-size:.78rem;font-style:italic}
+.stats-summary{
+  background:var(--card2);border-radius:14px;
+  padding:13px 15px;margin-bottom:16px;
+  display:grid;grid-template-columns:1fr 1fr 1fr;gap:8px;
+}
+.stats-sum-item{text-align:center}
+.stats-sum-val{font-size:1.4rem;font-weight:900}
+.stats-sum-lbl{font-size:.65rem;color:var(--muted);margin-top:2px}
+.stats-reset-btn{
+  width:100%;padding:11px;border:1px solid rgba(255,80,80,.3);
+  border-radius:10px;background:rgba(255,80,80,.08);
+  color:#ff8888;font-family:inherit;font-size:.82rem;font-weight:700;
+  cursor:pointer;margin-top:8px;
+}
 </style>
 </head>
 <body>
@@ -372,6 +410,7 @@ html,body{height:100%;font-family:'Noto Sans JP',sans-serif;background:var(--bg)
   <div class="hdr">
     <button class="hdr-back" onclick="showScreen('home')">←</button>
     <div class="hdr-title" id="td-title"></div>
+    <button class="hdr-act" onclick="showStats()" style="margin-right:8px">📊 成績</button>
     <button class="hdr-act" onclick="goAddPhotos()">📷 追加</button>
   </div>
   <div class="scrollbody">
@@ -520,6 +559,15 @@ html,body{height:100%;font-family:'Noto Sans JP',sans-serif;background:var(--bg)
     <button class="btn" id="res-retry" onclick="retryQuiz()" style="max-width:330px">もう一度！🔄</button>
     <div style="color:var(--muted);font-size:.82rem;font-weight:700;cursor:pointer;text-decoration:underline;text-align:center;margin-top:3px" onclick="showScreen('testdetail')">テスト選択に戻る</div>
   </div>
+</div>
+
+<!-- STATS -->
+<div class="screen" id="stats">
+  <div class="hdr">
+    <button class="hdr-back" onclick="showScreen('testdetail')">←</button>
+    <div class="hdr-title" id="stats-title">📊 成績表</div>
+  </div>
+  <div class="scrollbody" id="stats-body"></div>
 </div>
 
 <script>
@@ -900,6 +948,81 @@ function showRevengeBadge(){
   setTimeout(()=>badge.remove(),2000);
 }
 function retryQuiz(){beginQuiz();}
+
+function showStats(){
+  const t=DB.tests[currentTestId];
+  if(!t){return;}
+  const testStats=DB.stats&&DB.stats[currentTestId]||{};
+  document.getElementById('stats-title').textContent='📊 '+t.name+' 成績表';
+
+  let totalSeen=0,totalOk=0,totalNg=0;
+  let html='';
+
+  SUBJ_ORDER.forEach(subj=>{
+    const qs=t.questions[subj]||[];
+    if(!qs.length)return;
+    const cfg=CHARS[subj];
+    html+=`<div class="stats-subj-header">
+      <div class="stats-subj-dot" style="background:${cfg.color}"></div>
+      <span style="color:${cfg.color}">${cfg.subject} — ${cfg.name}</span>
+      <span style="color:var(--muted);font-size:.75rem;margin-left:auto">${qs.length}問</span>
+    </div>`;
+
+    qs.forEach((q,i)=>{
+      const key=subj+'_'+i+'_'+q.q.slice(0,10);
+      const st=testStats[key]||{correct:0,wrong:0,seen:0};
+      totalSeen+=st.seen;totalOk+=st.correct;totalNg+=st.wrong;
+      const total=st.correct+st.wrong;
+      const okPct=total>0?Math.round(st.correct/total*100):0;
+      const ngPct=total>0?100-okPct:0;
+      const pctStyle=okPct>0?`width:${okPct}%`:'width:0%';
+      const ngStyle=ngPct>0?`width:${ngPct}%`:'width:0%';
+
+      if(st.seen===0){
+        html+=`<div class="stats-item">
+          <div class="stats-q">${q.q}</div>
+          <div class="stats-unseen">まだ挑戦していない</div>
+        </div>`;
+      } else {
+        html+=`<div class="stats-item">
+          <div class="stats-q">${q.q}</div>
+          <div class="stats-row">
+            <div class="stats-bar-wrap">
+              <div class="stats-bar-ok" style="${pctStyle}"></div>
+              <div class="stats-bar-ng" style="${ngStyle}"></div>
+            </div>
+            <div class="stats-nums">
+              <span class="stats-ok">✅${st.correct}</span>
+              <span class="stats-ng">❌${st.wrong}</span>
+            </div>
+          </div>
+        </div>`;
+      }
+    });
+    html+='<div style="margin-bottom:16px"></div>';
+  });
+
+  // サマリー
+  const summaryHtml=`<div class="stats-summary">
+    <div class="stats-sum-item"><div class="stats-sum-val" style="color:#44cc88">${totalOk}</div><div class="stats-sum-lbl">合計正解</div></div>
+    <div class="stats-sum-item"><div class="stats-sum-val" style="color:#ff5555">${totalNg}</div><div class="stats-sum-lbl">合計不正解</div></div>
+    <div class="stats-sum-item"><div class="stats-sum-val" style="color:#ffd700">${totalSeen>0?Math.round(totalOk/totalSeen*100):0}%</div><div class="stats-sum-lbl">正解率</div></div>
+  </div>
+  <button class="stats-reset-btn" onclick="resetStats()">🗑 この成績をリセット</button>
+  <div style="margin-bottom:16px"></div>`;
+
+  document.getElementById('stats-body').innerHTML=summaryHtml+html;
+  showScreen('stats');
+}
+
+function resetStats(){
+  if(!confirm('この成績をリセットしますか？'))return;
+  if(!DB.stats)DB.stats={};
+  DB.stats[currentTestId]={};
+  saveDB();
+  showToast('成績をリセットしました','#888');
+  showStats();
+}
 
 function quitQuiz(){
   if(!confirm('問題をやめて戻りますか？'))return;
