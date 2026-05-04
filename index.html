@@ -64,11 +64,29 @@ html,body{height:100%;font-family:'Noto Sans JP',sans-serif;background:var(--bg)
 /* INTRO */
 #intro{position:relative;overflow:hidden;justify-content:flex-end}
 .intro-bg{position:absolute;inset:0}
-.intro-char-wrap{position:absolute;bottom:215px;left:50%;transform:translateX(-50%);width:210px}
-.intro-char-wrap img{width:100%;filter:drop-shadow(0 8px 28px rgba(0,0,0,.7))}
-.intro-panel{position:relative;width:100%;background:#15152a;border-top:2px solid rgba(255,255,255,.08);padding:18px 19px 30px}
-.intro-lbl{font-size:.7rem;font-weight:700;letter-spacing:1px;margin-bottom:5px}
-.intro-txt{font-size:1rem;font-weight:900;line-height:1.7;margin-bottom:14px}
+.intro-test-name{
+  position:absolute;top:18px;left:50%;transform:translateX(-50%);
+  background:rgba(255,255,255,.1);border:1px solid rgba(255,255,255,.18);
+  border-radius:99px;padding:5px 20px;
+  font-size:.8rem;font-weight:700;color:rgba(255,255,255,.7);
+  white-space:nowrap;z-index:2;letter-spacing:1px;
+}
+.intro-char-wrap{position:absolute;bottom:230px;left:50%;transform:translateX(-50%);width:260px;z-index:1}
+.intro-char-wrap img{width:100%;filter:drop-shadow(0 8px 32px rgba(0,0,0,.8))}
+.intro-panel{position:relative;width:100%;background:#15152a;border-top:2px solid rgba(255,255,255,.1);padding:16px 22px 28px;z-index:2}
+.intro-lbl{font-size:.72rem;font-weight:700;letter-spacing:1px;margin-bottom:6px;opacity:.8}
+.intro-cheer{
+  font-size:1.15rem;font-weight:900;line-height:1.5;
+  margin-bottom:6px;color:white;
+}
+.intro-txt{font-size:.9rem;font-weight:700;line-height:1.6;margin-bottom:14px;color:rgba(255,255,255,.7)}
+.intro-start-btn{
+  width:auto !important;
+  min-width:200px;
+  padding:15px 40px !important;
+  border-radius:99px !important;
+  font-size:1.1rem !important;
+}
 
 /* ════════ QUIZ ════════ */
 #quiz{background:var(--bg)}
@@ -242,6 +260,72 @@ html,body{height:100%;font-family:'Noto Sans JP',sans-serif;background:var(--bg)
 .cf{position:absolute;top:-20px;border-radius:2px;animation:cfFall linear forwards}
 @keyframes cfFall{0%{transform:translateY(0) rotate(0);opacity:1}100%{transform:translateY(110vh) rotate(720deg);opacity:0}}
 @keyframes fadeIn{from{opacity:0;transform:translateY(5px)}to{opacity:1;transform:translateY(0)}}
+
+/* RESULT拡張 */
+#result{overflow:hidden;padding:0}
+.res-char{width:160px;margin-bottom:4px;flex-shrink:0}
+.res-char img{width:100%;filter:drop-shadow(0 8px 24px rgba(0,0,0,.5))}
+.res-title{font-size:1.7rem;font-weight:900;text-align:center;margin-bottom:2px}
+.res-pts{font-size:2.5rem;font-weight:900;color:#ffd700;text-align:center}
+.res-ptslbl{color:var(--muted);font-size:.72rem;text-align:center;margin-bottom:12px}
+.res-stats{display:grid;grid-template-columns:1fr 1fr 1fr;gap:8px;margin-bottom:12px;width:100%;max-width:330px}
+.rstat{background:var(--card);border-radius:11px;padding:10px 7px;text-align:center;border:1px solid var(--border)}
+.rstat .rl{font-size:.62rem;color:var(--muted)}
+.rstat .rv{font-size:1.2rem;font-weight:900;margin-top:2px}
+.res-msg{font-size:.88rem;font-weight:700;text-align:center;margin-bottom:12px;color:#bbb;padding:0 14px;line-height:1.7}
+
+/* 間違え直しボタン */
+.res-revenge-btn{
+  background:linear-gradient(135deg,#ff5555,#cc2222) !important;
+  border-radius:13px;font-size:1rem;
+  animation:revengePulse 1.8s ease-in-out infinite;
+}
+@keyframes revengePulse{0%,100%{box-shadow:0 0 0 0 rgba(255,80,80,.4)}50%{box-shadow:0 0 0 10px rgba(255,80,80,0)}}
+.res-wrong-list{
+  background:rgba(255,80,80,.08);border:1px solid rgba(255,80,80,.2);
+  border-radius:11px;padding:10px 12px;margin-top:6px;
+  font-size:.78rem;color:#ff8888;line-height:2;
+}
+.res-wrong-item{display:flex;align-items:flex-start;gap:6px;padding:2px 0}
+.res-wrong-item::before{content:'❌';flex-shrink:0}
+
+/* リベンジモード演出 */
+.revenge-banner{
+  position:fixed;top:0;left:0;right:0;
+  background:linear-gradient(135deg,#ff5555,#ff8800);
+  color:white;text-align:center;
+  font-size:1rem;font-weight:900;
+  padding:10px;z-index:9998;
+  animation:bannerSlide .5s ease;
+}
+@keyframes bannerSlide{from{transform:translateY(-100%)}to{transform:translateY(0)}}
+
+/* リベンジ正解演出 */
+.revenge-badge{
+  position:fixed;top:60px;left:50%;transform:translateX(-50%);
+  background:linear-gradient(135deg,#ff6b35,#ffd700);
+  color:white;font-size:1.1rem;font-weight:900;
+  padding:10px 28px;border-radius:99px;
+  z-index:9998;white-space:nowrap;
+  animation:revBadge .6s cubic-bezier(.175,.885,.32,1.275);
+  box-shadow:0 4px 20px rgba(255,107,53,.5);
+}
+@keyframes revBadge{0%{transform:translateX(-50%) scale(0)}70%{transform:translateX(-50%) scale(1.12)}100%{transform:translateX(-50%) scale(1)}}
+
+/* 科目グラフ */
+.res-graph-wrap{
+  width:100%;max-width:330px;
+  background:var(--card);border-radius:14px;
+  padding:14px 16px;margin-bottom:12px;
+  border:1px solid var(--border);
+}
+.res-graph-title{font-size:.82rem;font-weight:900;margin-bottom:12px;color:white}
+.res-graph-row{display:flex;align-items:center;gap:10px;margin-bottom:10px}
+.res-graph-lbl{font-size:.75rem;font-weight:700;width:60px;flex-shrink:0;color:var(--muted)}
+.res-graph-bar-wrap{flex:1;background:rgba(255,255,255,.07);border-radius:99px;height:18px;overflow:hidden}
+.res-graph-bar{height:100%;border-radius:99px;transition:width 1s ease;display:flex;align-items:center;justify-content:flex-end;padding-right:6px}
+.res-graph-pct{font-size:.65rem;font-weight:900;color:white}
+.res-graph-cnt{font-size:.7rem;font-weight:700;width:36px;text-align:right;color:var(--muted);flex-shrink:0}
 </style>
 </head>
 <body>
@@ -326,11 +410,18 @@ html,body{height:100%;font-family:'Noto Sans JP',sans-serif;background:var(--bg)
 <!-- INTRO -->
 <div class="screen" id="intro">
   <div class="intro-bg" id="intro-bg"></div>
+  <!-- テスト名バッジ -->
+  <div class="intro-test-name" id="intro-test-name"></div>
+  <!-- キャラ -->
   <div class="intro-char-wrap"><img id="intro-img" src="" alt=""/></div>
+  <!-- パネル -->
   <div class="intro-panel">
     <div class="intro-lbl" id="intro-lbl"></div>
+    <div class="intro-cheer" id="intro-cheer"></div>
     <div class="intro-txt" id="intro-txt"></div>
-    <button class="btn" id="intro-start-btn" onclick="beginQuiz()">スタート！⚡</button>
+    <div style="display:flex;justify-content:center;margin-top:4px">
+      <button class="btn intro-start-btn" id="intro-start-btn" onclick="beginQuiz()">スタート！⚡</button>
+    </div>
   </div>
 </div>
 
@@ -374,18 +465,35 @@ html,body{height:100%;font-family:'Noto Sans JP',sans-serif;background:var(--bg)
 
 <!-- RESULT -->
 <div class="screen" id="result">
-  <div class="res-char"><img id="res-img" src="" alt=""/></div>
-  <div class="res-title" id="res-title"></div>
-  <div class="res-pts" id="res-pts">0</div>
-  <div class="res-ptslbl">ポイント獲得！</div>
-  <div class="res-stats">
-    <div class="rstat"><div class="rl">✅ 正解</div><div class="rv" id="r-ok" style="color:#44cc88"></div></div>
-    <div class="rstat"><div class="rl">❌ まちがい</div><div class="rv" id="r-ng" style="color:#ff6666"></div></div>
-    <div class="rstat"><div class="rl">🔥 最高連続</div><div class="rv" id="r-str" style="color:#ffd700"></div></div>
+  <div class="scrollbody" style="display:flex;flex-direction:column;align-items:center">
+    <div class="res-char"><img id="res-img" src="" alt=""/></div>
+    <div class="res-title" id="res-title"></div>
+    <div class="res-pts" id="res-pts">0</div>
+    <div class="res-ptslbl">ポイント獲得！</div>
+    <div class="res-stats">
+      <div class="rstat"><div class="rl">✅ 正解</div><div class="rv" id="r-ok" style="color:#44cc88"></div></div>
+      <div class="rstat"><div class="rl">❌ まちがい</div><div class="rv" id="r-ng" style="color:#ff6666"></div></div>
+      <div class="rstat"><div class="rl">🔥 最高連続</div><div class="rv" id="r-str" style="color:#ffd700"></div></div>
+    </div>
+    <div class="res-msg" id="res-msg"></div>
+
+    <!-- 間違え直しボタン -->
+    <div id="res-retry-wrap" style="display:none;width:100%;max-width:330px;margin-bottom:10px">
+      <button class="btn res-revenge-btn" id="res-revenge" onclick="startRevenge()">
+        🔥 間違えた問題をやり直す
+      </button>
+      <div class="res-wrong-list" id="res-wrong-list"></div>
+    </div>
+
+    <!-- 科目別成績グラフ -->
+    <div class="res-graph-wrap" id="res-graph-wrap" style="display:none">
+      <div class="res-graph-title">📊 科目別せいせき</div>
+      <div id="res-graph-bars"></div>
+    </div>
+
+    <button class="btn" id="res-retry" onclick="retryQuiz()" style="max-width:330px">もう一度！🔄</button>
+    <div style="color:var(--muted);font-size:.82rem;font-weight:700;cursor:pointer;text-decoration:underline;text-align:center;margin-top:3px" onclick="showScreen('testdetail')">テスト選択に戻る</div>
   </div>
-  <div class="res-msg" id="res-msg"></div>
-  <button class="btn" id="res-retry" onclick="retryQuiz()" style="max-width:330px">もう一度！🔄</button>
-  <div style="color:var(--muted);font-size:.82rem;font-weight:700;cursor:pointer;text-decoration:underline;text-align:center;margin-top:3px" onclick="showScreen('testdetail')">テスト選択に戻る</div>
 </div>
 
 <script>
@@ -427,7 +535,7 @@ loadDB();
 let currentTestId=null,currentSubject=null;
 let questions=[],qIdx=0,score=0,streak=0,maxStreak=0,correct=0,wrong=0;
 let answered=false,ntPhotos=[],apPhotos=[],apCurrentSubj='rika',ntSelectedSubjs=['rika'];
-let toastTimer=null,segResults=[];
+let toastTimer=null,segResults=[],wrongQuestions=[],isRevengeMode=false;
 
 window.onload=()=>{renderHome();buildChips();};
 
@@ -560,18 +668,33 @@ function startSubject(subj){
   const qs=DB.tests[currentTestId]?.questions?.[subj]||[];
   if(!qs.length){showToast('まだ問題がないよ！📷 追加してね','#ffaa44');return;}
   currentSubject=subj;const cfg=CHARS[subj];
+  const t=DB.tests[currentTestId];
+  const qCount=qs.length;
   document.getElementById('intro-img').src=IMGS[cfg.key].start;
   document.getElementById('intro-lbl').textContent=cfg.subject+' — '+cfg.name;
   document.getElementById('intro-lbl').style.color=cfg.color;
+  document.getElementById('intro-test-name').textContent='📚 '+t.name+' ／ '+qCount+'問';
+  const cheers=[
+    'ぜんぶ正解目指して
+がんばろう！💪',
+    '全'+qCount+'問！
+全力でいこう！🔥',
+    'さあ、集中して
+やっていこう！⚡',
+    'まちがえても大丈夫！
+最後までやりきれ！',
+  ];
+  document.getElementById('intro-cheer').textContent=cheers[Math.floor(Math.random()*cheers.length)];
   document.getElementById('intro-txt').textContent=cfg.start;
   document.getElementById('intro-start-btn').style.background=`linear-gradient(135deg,${cfg.color},${cfg.btn})`;
-  document.getElementById('intro-bg').style.background=`radial-gradient(ellipse at 50% 30%,${cfg.color}22 0%,transparent 60%),var(--bg)`;
+  document.getElementById('intro-bg').style.background=`radial-gradient(ellipse at 50% 30%,${cfg.color}33 0%,transparent 65%),var(--bg)`;
   showScreen('intro');
 }
 function beginQuiz(){
   questions=[...(DB.tests[currentTestId].questions[currentSubject]||[])].sort(()=>Math.random()-.5);
   qIdx=0;score=0;streak=0;maxStreak=0;correct=0;wrong=0;answered=false;
   segResults=new Array(questions.length).fill(null);
+  wrongQuestions=[];
   const cfg=CHARS[currentSubject];
   document.getElementById('qz-bubble-name').textContent=cfg.subject+' '+cfg.name;
   document.getElementById('quiz-char').src=IMGS[cfg.key].ganbaro;
@@ -623,12 +746,14 @@ function doAnswer(chosen,ans,btn,explain){
     showFB(true,`✅ 正解！ +${pts}pts${bonusTxt}`,explain||'よく覚えていたね！');
     nb.style.background=`linear-gradient(135deg,${cfg.color},${cfg.btn})`;
     if(streak>=3)spawnConfetti();
+    if(isRevengeMode){showRevengeBadge();}
   }else{
     btn.classList.add('wrong');streak=0;wrong++;
     setBubble(cfg.ng[Math.floor(Math.random()*cfg.ng.length)]);
     document.getElementById('quiz-char').src=IMGS[cfg.key].wrong;
     showFB(false,`❌ 正解は「${ans}」`,explain||'もう一度確認してみよう！');
     nb.style.background=`linear-gradient(135deg,${cfg.color},${cfg.btn})`;
+    if(!isRevengeMode) wrongQuestions.push(questions[qIdx]);
   }
   document.getElementById('q-score').textContent=score;
   document.getElementById('streak-pill').textContent='🔥 '+streak;
@@ -647,9 +772,15 @@ function nextQ(){qIdx++;qIdx>=questions.length?showResult():renderQ();}
 function showResult(){
   const cfg=CHARS[currentSubject];const pct=correct/questions.length;
   let emoji,title,rk;
-  if(pct>=.8){emoji='🏆';title='最高だぜ！';rk='g';document.getElementById('res-img').src=IMGS[cfg.key].correct;spawnConfetti();}
-  else if(pct>=.5){emoji='👍';title='いい感じ！';rk='o';document.getElementById('res-img').src=IMGS[cfg.key].ganbaro;}
-  else{emoji='💪';title='もう一回！';rk='t';document.getElementById('res-img').src=IMGS[cfg.key].wrong;}
+  if(isRevengeMode){
+    if(pct>=.8){emoji='🔥';title='リベンジ完了！';rk='g';document.getElementById('res-img').src=IMGS[cfg.key].correct;spawnConfetti();}
+    else if(pct>=.5){emoji='💪';title='いい感じ！';rk='o';document.getElementById('res-img').src=IMGS[cfg.key].ganbaro;}
+    else{emoji='😤';title='もう一回！';rk='t';document.getElementById('res-img').src=IMGS[cfg.key].wrong;}
+  } else {
+    if(pct>=.8){emoji='🏆';title='最高だぜ！';rk='g';document.getElementById('res-img').src=IMGS[cfg.key].correct;spawnConfetti();}
+    else if(pct>=.5){emoji='👍';title='いい感じ！';rk='o';document.getElementById('res-img').src=IMGS[cfg.key].ganbaro;}
+    else{emoji='💪';title='もう一回！';rk='t';document.getElementById('res-img').src=IMGS[cfg.key].wrong;}
+  }
   document.getElementById('res-title').textContent=emoji+' '+title;
   document.getElementById('res-pts').textContent=score;
   document.getElementById('res-msg').textContent='"'+cfg.res[rk]+'"';
@@ -657,7 +788,87 @@ function showResult(){
   document.getElementById('r-ng').textContent=wrong;
   document.getElementById('r-str').textContent=maxStreak;
   document.getElementById('res-retry').style.background=`linear-gradient(135deg,${cfg.color},${cfg.btn})`;
+
+  // 間違え直しボタン
+  const rw=document.getElementById('res-retry-wrap');
+  const wl=document.getElementById('res-wrong-list');
+  if(!isRevengeMode && wrongQuestions.length>0){
+    rw.style.display='block';
+    wl.innerHTML=wrongQuestions.map(q=>`<div class="res-wrong-item">${q.q}</div>`).join('');
+  } else { rw.style.display='none'; }
+
+  // 科目グラフ（複数科目テストの場合）
+  renderGraph();
+
+  // リベンジバナー消去
+  const rb=document.getElementById('revenge-banner');
+  if(rb)rb.remove();
+  isRevengeMode=false;
+
   showScreen('result');
+}
+
+function renderGraph(){
+  const t=DB.tests[currentTestId];
+  if(!t)return;
+  const rows=SUBJ_ORDER.filter(s=>(t.questions[s]?.length||0)>0);
+  const wrap=document.getElementById('res-graph-wrap');
+  const bars=document.getElementById('res-graph-bars');
+  if(rows.length<2){wrap.style.display='none';return;}
+  wrap.style.display='block';
+  // 今回のクイズ結果を科目別に集計（segResultsとquestionsから）
+  const subj=currentSubject;
+  const subjCorrect={};const subjTotal={};
+  questions.forEach((q,i)=>{
+    const s=q.subject||subj;
+    subjTotal[s]=(subjTotal[s]||0)+1;
+    if(segResults[i]===true)subjCorrect[s]=(subjCorrect[s]||0)+1;
+  });
+  bars.innerHTML=rows.map(s=>{
+    const c=CHARS[s];
+    const tot=subjTotal[s]||0;
+    const ok=subjCorrect[s]||0;
+    const pct=tot>0?Math.round(ok/tot*100):0;
+    return `<div class="res-graph-row">
+      <div class="res-graph-lbl">${c.subject}</div>
+      <div class="res-graph-bar-wrap">
+        <div class="res-graph-bar" style="width:${pct}%;background:linear-gradient(90deg,${c.color}99,${c.color})">
+          ${pct>20?`<span class="res-graph-pct">${pct}%</span>`:''}
+        </div>
+      </div>
+      <div class="res-graph-cnt">${ok}/${tot}</div>
+    </div>`;
+  }).join('');
+}
+
+function startRevenge(){
+  if(wrongQuestions.length===0)return;
+  isRevengeMode=true;
+  const cfg=CHARS[currentSubject];
+  questions=[...wrongQuestions].sort(()=>Math.random()-.5);
+  wrongQuestions=[];
+  qIdx=0;score=0;streak=0;maxStreak=0;correct=0;wrong=0;answered=false;
+  segResults=new Array(questions.length).fill(null);
+  // リベンジバナー表示
+  const old=document.getElementById('revenge-banner');if(old)old.remove();
+  const banner=document.createElement('div');
+  banner.id='revenge-banner';banner.className='revenge-banner';
+  banner.textContent='🔥 リベンジモード！間違えた'+questions.length+'問に挑戦！';
+  document.body.appendChild(banner);
+  document.getElementById('qz-bubble-name').textContent=cfg.subject+' '+cfg.name;
+  document.getElementById('quiz-char').src=IMGS[cfg.key].ganbaro;
+  document.getElementById('q-score').textContent='0';
+  document.getElementById('streak-pill').textContent='🔥 0';
+  renderSegs();showScreen('quiz');renderQ();
+}
+
+function showRevengeBadge(){
+  const old=document.getElementById('revenge-badge');if(old)old.remove();
+  const badge=document.createElement('div');
+  badge.id='revenge-badge';badge.className='revenge-badge';
+  badge.textContent='🎯 リベンジ成功！';
+  document.body.appendChild(badge);
+  setTimeout(()=>badge.remove(),2000);
 }
 function retryQuiz(){beginQuiz();}
 function showToast(msg,color){const t=document.getElementById('toast');t.textContent=msg;t.style.background=color||'#44cc88';t.classList.add('show');clearTimeout(toastTimer);toastTimer=setTimeout(()=>t.classList.remove('show'),2800);}
