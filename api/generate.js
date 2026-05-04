@@ -11,6 +11,15 @@ export default async function handler(req, res) {
       return res.status(400).json({ error: 'imageBase64 and subjects are required' });
     }
 
+    // 画像形式を自動判定
+    let mediaType = 'image/jpeg';
+    try {
+      const decoded = Buffer.from(imageBase64.slice(0, 16), 'base64');
+      if (decoded[0] === 0x89 && decoded[1] === 0x50) mediaType = 'image/png';
+      else if (decoded[0] === 0x47 && decoded[1] === 0x49) mediaType = 'image/gif';
+      else if (decoded[0] === 0x52 && decoded[1] === 0x49) mediaType = 'image/webp';
+    } catch (e) {}
+
     const NAMES = { shakai:'社会', sansu:'算数', kokugo:'国語', rika:'理科' };
     const subjList = subjects.map(s => NAMES[s] || s).join('・');
 
@@ -37,7 +46,7 @@ subjectの値は次のいずれか：${subjects.join(', ')}
         messages: [{
           role: 'user',
           content: [
-            { type: 'image', source: { type: 'base64', media_type: 'image/jpeg', data: imageBase64 } },
+            { type: 'image', source: { type: 'base64', media_type: mediaType, data: imageBase64 } },
             { type: 'text', text: prompt }
           ]
         }]
