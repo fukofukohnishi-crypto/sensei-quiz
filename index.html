@@ -675,14 +675,10 @@ function startSubject(subj){
   document.getElementById('intro-lbl').style.color=cfg.color;
   document.getElementById('intro-test-name').textContent='📚 '+t.name+' ／ '+qCount+'問';
   const cheers=[
-    'ぜんぶ正解目指して
-がんばろう！💪',
-    '全'+qCount+'問！
-全力でいこう！🔥',
-    'さあ、集中して
-やっていこう！⚡',
-    'まちがえても大丈夫！
-最後までやりきれ！',
+    'ぜんぶ正解目指して がんばろう！💪',
+    '全'+qCount+'問！全力でいこう！🔥',
+    'さあ、集中してやっていこう！⚡',
+    'まちがえても大丈夫！最後までやりきれ！',
   ];
   document.getElementById('intro-cheer').textContent=cheers[Math.floor(Math.random()*cheers.length)];
   document.getElementById('intro-txt').textContent=cfg.start;
