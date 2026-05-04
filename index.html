@@ -600,13 +600,17 @@ function goAddPhotosSubj(subj,round){
   const t=DB.tests[currentTestId];
   const existingRounds=Object.keys(t.questions[subj]||{}).map(Number);
   const roundBtns=document.getElementById('ap-round-btns');
-  roundBtns.innerHTML=Array.from({length:10},(_,i)=>i+1).map(n=>{
-    const exists=existingRounds.includes(n);
-    const isSelected=n===apSelectedRound;
-    return `<button class="round-num-btn${isSelected?' active':''}" 
-      style="${exists?'border-color:'+CHARS[subj].color+'66;':''}" 
-      onclick="selectRound(${n},this)">第${n}回${exists?' ✓':''}</button>`;
-  }).join('');
+  roundBtns.innerHTML='';
+  for(var n=1;n<=10;n++){
+    var exists=existingRounds.includes(n);
+    var isSelected=n===apSelectedRound;
+    var btn=document.createElement('button');
+    btn.className='round-num-btn'+(isSelected?' active':'');
+    if(exists)btn.style.borderColor=CHARS[subj].color;
+    btn.textContent='第'+n+'回'+(exists?' ✓':'');
+    (function(num){btn.onclick=function(){selectRound(num,btn);};})(n);
+    roundBtns.appendChild(btn);
+  }
 
   showScreen('addphotos');
 }
