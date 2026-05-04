@@ -523,65 +523,52 @@ function openTest(id){
 
 function openSubject(subj){
   currentSubject=subj;
-  const cfg=CHARS[subj];
-  const t=DB.tests[currentTestId];
-  const rounds=t.questions[subj]||{};
-  const roundNums=Object.keys(rounds).map(Number).sort((a,b)=>a-b);
-  document.getElementById('rs-title').textContent=cfg.subject+' — '+cfg.name;
+  var cfg=CHARS[subj];
+  var t=DB.tests[currentTestId];
+  var rounds=t.questions[subj]||{};
+  var roundNums=Object.keys(rounds).map(Number).sort(function(a,b){return a-b;});
+  document.getElementById('rs-title').textContent=cfg.subject+' - '+cfg.name;
+  var testStats=DB.stats[currentTestId]||{};
+  var totalQ=Object.values(rounds).reduce(function(s,qs){return s+qs.length;},0);
+  var list=document.getElementById('rs-list');
+  list.innerHTML='';
 
-  let html='';
-
-  // 全回ミックス（2回以上ある場合）
-  const totalQ=Object.values(rounds).reduce((s,qs)=>s+qs.length,0);
+  // 全回ミックス
   if(roundNums.length>1){
-    html+=`<div class="round-card mix" onclick="startQuiz('mix')">
-      <div>
-        <div class="round-label mix">⚡ 全回ミックス</div>
-        <div class="round-count">全${totalQ}問からランダム10問</div>
-      </div>
-      <div class="round-arrow">›</div>
-    </div>`;
+    var mixDiv=document.createElement('div');
+    mixDiv.className='round-card mix';
+    mixDiv.innerHTML='<div><div class="round-label mix">⚡ 全回ミックス</div><div class="round-count">全'+totalQ+'問からランダム10問</div></div><div class="round-arrow">›</div>';
+    mixDiv.onclick=function(){startQuiz('mix');};
+    list.appendChild(mixDiv);
   }
 
   // 既存の回
-  roundNums.forEach(r=>{
-    const qs=rounds[r]||[];
-    const testStats=DB.stats[currentTestId]||{};
-    let seenCount=0;
-    qs.forEach((_,i)=>{
-      const key=subj+'_r'+r+'_'+i;
+  roundNums.forEach(function(r){
+    var qs=rounds[r]||[];
+    var seenCount=0;
+    qs.forEach(function(_,i){
+      var key=subj+'_r'+r+'_'+i;
       if((testStats[key]||{}).seen>0)seenCount++;
     });
-    const pct=qs.length>0?Math.round(seenCount/qs.length*100):0;
-    html+=`<div class="round-card" style="cursor:pointer" onclick="startQuiz(${r})">
-      <div style="flex:1">
-        <div class="round-label">第${r}回</div>
-        <div class="round-count">${qs.length}問 ／ 挑戦済み ${seenCount}問</div>
-        <div class="round-bar-wrap" style="margin-top:6px">
-          <div class="round-bar-fill" style="width:${pct}%;background:${cfg.color}"></div>
-        </div>
-      </div>
-      <div style="display:flex;gap:8px;align-items:center">
-        <button onclick="event.stopPropagation();goAddPhotosSubj('${subj}',${r})" style="background:rgba(255,215,0,.15);border:1px solid rgba(255,215,0,.4);border-radius:8px;color:#ffd700;font-size:.75rem;font-weight:700;padding:5px 10px;cursor:pointer;white-space:nowrap">📷 追加</button>
-        <div class="round-arrow">›</div>
-      </div>
-    </div>`;
+    var pct=qs.length>0?Math.round(seenCount/qs.length*100):0;
+    var card=document.createElement('div');
+    card.className='round-card';
+    card.style.cursor='pointer';
+    var barDiv='<div class="round-bar-wrap" style="margin-top:6px"><div class="round-bar-fill" style="width:'+pct+'%;background:'+cfg.color+'"></div></div>';
+    card.innerHTML='<div style="flex:1"><div class="round-label">第'+r+'回</div><div class="round-count">'+qs.length+'問 ／ 挑戦済み '+seenCount+'問</div>'+barDiv+'</div><div style="display:flex;gap:8px;align-items:center"><button class="ap-add-btn" style="background:rgba(255,215,0,.15);border:1px solid rgba(255,215,0,.4);border-radius:8px;color:#ffd700;font-size:.75rem;font-weight:700;padding:5px 10px;cursor:pointer;white-space:nowrap">📷 追加</button><div class="round-arrow">›</div></div>';
+    card.onclick=function(){startQuiz(r);};
+    card.querySelector('.ap-add-btn').onclick=function(e){e.stopPropagation();goAddPhotosSubj(subj,r);};
+    list.appendChild(card);
   });
 
-  // 「＋ 新しい回を追加」ボタン
-  html+=`<div class="round-card" style="border-style:dashed;cursor:pointer;justify-content:center" onclick="goAddPhotosSubj('${subj}',null)">
-    <div style="text-align:center;width:100%">
-      <div style="font-size:1.4rem;margin-bottom:4px">📷</div>
-      <div style="font-size:.9rem;font-weight:700;color:#ffd700">新しい回を追加する</div>
-      <div style="font-size:.72rem;color:var(--muted);margin-top:2px">写真をアップして問題を自動生成</div>
-    </div>
-  </div>`;
+  // 新しい回を追加ボタン
+  var addDiv=document.createElement('div');
+  addDiv.className='round-card';
+  addDiv.style.cssText='border-style:dashed;cursor:pointer;justify-content:center';
+  addDiv.innerHTML='<div style="text-align:center;width:100%"><div style="font-size:1.4rem;margin-bottom:4px">📷</div><div style="font-size:.9rem;font-weight:700;color:#ffd700">新しい回を追加する</div><div style="font-size:.72rem;color:var(--muted);margin-top:2px">写真をアップして問題を自動生成</div></div>';
+  addDiv.onclick=function(){goAddPhotosSubj(subj,null);};
+  list.appendChild(addDiv);
 
-  if(!roundNums.length){
-    // 問題なし時のメッセージはなくして追加ボタンだけ表示（上で表示済み）
-  }
-
-  document.getElementById('rs-list').innerHTML=html;
   showScreen('roundselect');
 }
 
