@@ -12,13 +12,13 @@ html,body{height:100%;font-family:'Noto Sans JP',sans-serif;background:var(--bg)
 .screen{display:none;height:100vh;flex-direction:column;overflow:hidden}
 .screen.active{display:flex}
 
-/* ── SHARED ── */
+/* SHARED */
 .hdr{background:#111120;border-bottom:1px solid var(--border);padding:11px 14px;display:flex;align-items:center;gap:10px;flex-shrink:0}
 .hdr-back{background:none;border:none;color:var(--muted);font-size:1.3rem;cursor:pointer;padding:2px 6px}
 .hdr-title{font-size:.95rem;font-weight:900;color:white;flex:1}
 .hdr-act{background:none;border:none;color:#ffd700;font-size:.82rem;font-weight:700;cursor:pointer}
 .scrollbody{flex:1;overflow-y:auto;padding:16px 15px 40px;-webkit-overflow-scrolling:touch}
-.btn{width:100%;padding:15px;border:none;border-radius:13px;font-family:inherit;font-size:1rem;font-weight:900;cursor:pointer;color:white;margin-bottom:9px;transition:transform .15s,opacity .15s}
+.btn{width:100%;padding:15px;border:none;border-radius:13px;font-family:inherit;font-size:1rem;font-weight:900;cursor:pointer;color:white;margin-bottom:9px;transition:transform .15s}
 .btn:active{transform:scale(.97)}
 .btn:disabled{opacity:.45;cursor:not-allowed}
 .inp{width:100%;background:var(--card);border:1.5px solid var(--border);border-radius:11px;padding:13px 15px;color:white;font-family:inherit;font-size:.95rem;margin-bottom:15px;outline:none}
@@ -40,9 +40,9 @@ html,body{height:100%;font-family:'Noto Sans JP',sans-serif;background:var(--bg)
 .thumb-strip img{width:60px;height:60px;border-radius:7px;object-fit:cover;flex-shrink:0}
 .thumb-more{width:60px;height:60px;border-radius:7px;background:rgba(255,255,255,.05);display:flex;align-items:center;justify-content:center;color:var(--muted);flex-shrink:0;font-size:.74rem}
 
-/* ── HOME ── */
+/* HOME */
 #home{overflow:hidden;background:radial-gradient(ellipse at 25% 15%,#1a0a2e,transparent 55%),radial-gradient(ellipse at 80% 85%,#0a182e,transparent 50%),var(--bg)}
-.home-logo{font-size:2.1rem;font-weight:900;color:#ffd700;text-align:center;padding:30px 16px 5px;text-shadow:0 0 30px rgba(255,215,0,.35)}
+.home-logo{font-size:2.1rem;font-weight:900;color:#ffd700;text-align:center;padding:30px 16px 5px}
 .home-sub{color:var(--muted);font-size:.75rem;letter-spacing:2px;text-align:center;margin-bottom:22px}
 .test-card{background:var(--card);border:1.5px solid var(--border);border-radius:15px;padding:14px 15px;margin-bottom:11px;cursor:pointer;display:flex;justify-content:space-between;align-items:flex-start}
 .test-card:active{opacity:.8}
@@ -51,17 +51,17 @@ html,body{height:100%;font-family:'Noto Sans JP',sans-serif;background:var(--bg)
 .tc-del{background:none;border:none;color:#444;cursor:pointer;font-size:1rem;padding:3px}
 .new-btn{width:100%;padding:15px;border:2px dashed rgba(255,255,255,.12);border-radius:13px;background:transparent;color:var(--muted);font-family:inherit;font-size:.9rem;font-weight:700;cursor:pointer;margin-top:3px}
 
-/* ── DETAIL ── */
+/* DETAIL */
 .subj-grid{display:grid;grid-template-columns:1fr 1fr;gap:13px}
 .subj-card{background:var(--card);border-radius:16px;overflow:hidden;cursor:pointer}
 .subj-card:active{opacity:.8}
-.subj-card img{width:100%;height:125px;object-fit:contain;object-position:center;display:block;padding:8px;background:rgba(0,0,0,.2)}
+.subj-card img{width:100%;height:125px;object-fit:contain;display:block;padding:8px;background:rgba(0,0,0,.2)}
 .subj-card .si{padding:9px 11px}
 .si-sub{font-size:.65rem;opacity:.55;font-weight:700}
 .si-name{font-size:.88rem;font-weight:900}
 .si-count{font-size:.65rem;color:var(--muted);margin-top:2px}
 
-/* ── INTRO ── */
+/* INTRO */
 #intro{position:relative;overflow:hidden;justify-content:flex-end}
 .intro-bg{position:absolute;inset:0}
 .intro-char-wrap{position:absolute;bottom:215px;left:50%;transform:translateX(-50%);width:195px}
@@ -70,138 +70,115 @@ html,body{height:100%;font-family:'Noto Sans JP',sans-serif;background:var(--bg)
 .intro-lbl{font-size:.7rem;font-weight:700;letter-spacing:1px;margin-bottom:5px}
 .intro-txt{font-size:1rem;font-weight:900;line-height:1.7;margin-bottom:14px}
 
-/* ════════════════════════
-   QUIZ — Gemini風レイアウト
-════════════════════════ */
+/* ════════ QUIZ ════════ */
 #quiz{background:var(--bg)}
 
-/* ── ヘッダー ── */
-.qz-header{
-  background:#111120;
-  border-bottom:1px solid var(--border);
-  padding:8px 14px 0;
-  flex-shrink:0;
-}
-.qz-header-row1{
-  display:flex;align-items:center;justify-content:space-between;
-  margin-bottom:7px;
-}
-.qz-subject-badge{
-  display:flex;align-items:center;gap:6px;
-  font-size:.68rem;font-weight:700;color:var(--muted);letter-spacing:1px;text-transform:uppercase;
-}
-.qz-subject-badge .dot{width:8px;height:8px;border-radius:50%;flex-shrink:0}
+/* ヘッダー */
+.qz-header{background:#111120;border-bottom:1px solid var(--border);padding:8px 14px 0;flex-shrink:0}
+.qz-header-row1{display:flex;align-items:center;justify-content:space-between;margin-bottom:7px}
+.qz-subject-badge{display:flex;align-items:center;gap:6px;font-size:.62rem;font-weight:700;color:var(--muted);letter-spacing:1px}
+.qz-dot{width:8px;height:8px;border-radius:50%;flex-shrink:0}
 .qz-subject-name{font-size:.82rem;font-weight:900;color:white}
-.qz-score-row{display:flex;align-items:center;gap:10px}
-.qz-score{background:rgba(255,215,0,.12);border:1px solid rgba(255,215,0,.25);border-radius:99px;padding:3px 11px;font-size:.76rem;font-weight:900;color:#ffd700}
-.qz-streak{background:rgba(255,80,80,.15);border:1px solid rgba(255,80,80,.3);border-radius:99px;padding:3px 11px;font-size:.76rem;font-weight:900;color:#ff8888}
-
-/* セグメント進捗 */
-.qz-progress-row{display:flex;align-items:center;gap:3px;padding-bottom:9px}
+.qz-score-row{display:flex;align-items:center;gap:8px}
+.qz-score{background:rgba(255,215,0,.12);border:1px solid rgba(255,215,0,.25);border-radius:99px;padding:3px 10px;font-size:.76rem;font-weight:900;color:#ffd700}
+.qz-streak{background:rgba(255,80,80,.15);border:1px solid rgba(255,80,80,.3);border-radius:99px;padding:3px 10px;font-size:.76rem;font-weight:900;color:#ff8888}
+.qz-segs-row{display:flex;align-items:center;gap:3px;padding-bottom:8px}
 .qz-seg{flex:1;height:5px;border-radius:99px;background:rgba(255,255,255,.1);transition:background .3s}
 .qz-seg.ok{background:#44cc88}
 .qz-seg.ng{background:#ff5555}
 .qz-seg.cur{background:#ffd700;animation:segPulse 1.2s ease-in-out infinite}
-.qz-prog-label{font-size:.65rem;color:var(--muted);white-space:nowrap;margin-left:4px}
-@keyframes segPulse{0%,100%{opacity:1}50%{opacity:.55}}
+.qz-prog-lbl{font-size:.63rem;color:var(--muted);white-space:nowrap;margin-left:4px}
+@keyframes segPulse{0%,100%{opacity:1}50%{opacity:.5}}
 
-/* ── 中央エリア ── */
+/* 中央：キャラ＋問題 */
 .qz-middle{
   flex:1;display:flex;flex-direction:row;
   min-height:0;overflow:hidden;
-  padding:10px 12px 6px;
-  gap:10px;
+  padding:8px 11px 5px;gap:8px;
 }
 
-/* キャラ列 */
+/* キャラ列（小さめ・固定） */
 .qz-char-col{
-  width:36%;flex-shrink:0;
+  width:110px;flex-shrink:0;
   display:flex;flex-direction:column;
   align-items:center;justify-content:flex-end;
-  position:relative;
+  position:relative;gap:0;
 }
-.qz-char-col img{
-  width:100%;max-height:100%;
-  object-fit:contain;object-position:bottom;
-  filter:drop-shadow(0 4px 18px rgba(0,0,0,.55));
+.qz-char-img{
+  width:110px;height:110px;
+  object-fit:contain;object-position:bottom center;
+  filter:drop-shadow(0 3px 14px rgba(0,0,0,.55));
+  flex-shrink:0;
 }
-/* セリフバブル */
+/* セリフバブル（常時表示） */
 .qz-bubble{
-  position:absolute;bottom:4px;left:0;right:0;
-  background:rgba(22,22,42,.95);
-  border:1.5px solid rgba(255,255,255,.12);
-  border-radius:12px;
-  padding:8px 10px;
+  width:100%;
+  background:rgba(22,22,42,.97);
+  border:1.5px solid rgba(255,255,255,.14);
+  border-radius:11px;
+  padding:7px 9px;
   font-size:.72rem;font-weight:700;line-height:1.5;
   text-align:center;color:white;
-  opacity:0;pointer-events:none;transition:opacity .3s;
   backdrop-filter:blur(6px);
+  margin-top:6px;
 }
-.qz-bubble.show{opacity:1;animation:bubblePop .25s ease}
-.qz-bubble-name{font-size:.6rem;font-weight:700;opacity:.6;margin-bottom:2px}
+.qz-bubble-name{font-size:.58rem;font-weight:700;opacity:.55;margin-bottom:2px}
+.qz-bubble-txt{font-size:.72rem;font-weight:700;line-height:1.4}
 
 /* 問題列 */
 .qz-q-col{
-  flex:1;display:flex;flex-direction:column;
-  justify-content:center;
+  flex:1;display:flex;flex-direction:column;justify-content:center;
 }
-.qz-q-num{font-size:.68rem;font-weight:700;color:var(--muted);margin-bottom:6px}
-.qz-q-txt{font-size:1.08rem;font-weight:900;line-height:1.7;color:white}
+.qz-q-num{font-size:.7rem;font-weight:700;color:var(--muted);margin-bottom:6px}
+.qz-q-txt{
+  font-size:1.22rem;   /* ← 大きく */
+  font-weight:900;line-height:1.65;color:white;
+}
 
-/* ── 下部エリア ── */
-.qz-bottom{
-  flex-shrink:0;
-  padding:8px 12px 14px;
-}
+/* 下部：選択肢＋フィードバック＋次へ */
+.qz-bottom{flex-shrink:0;padding:7px 11px 12px}
 
 /* 選択肢 */
-.qz-choices{display:grid;grid-template-columns:1fr 1fr;gap:8px;margin-bottom:9px}
+.qz-choices{display:grid;grid-template-columns:1fr 1fr;gap:8px;margin-bottom:8px}
 .qz-cbtn{
-  min-height:60px;padding:10px 10px;
+  min-height:72px;        /* ← 縦幅アップ */
+  padding:12px 10px;
   background:var(--card2);
   border:2px solid rgba(255,255,255,.08);
-  border-radius:13px;
+  border-radius:14px;
   color:var(--text);
-  font-family:inherit;font-size:.92rem;font-weight:700;
+  font-family:inherit;
+  font-size:1.05rem;      /* ← 文字大きく */
+  font-weight:700;
   cursor:pointer;text-align:center;
   display:flex;align-items:center;justify-content:center;
   line-height:1.4;transition:all .15s;
 }
 .qz-cbtn:active:not(:disabled){transform:scale(.96);background:#20203a}
-.qz-cbtn.correct{
-  background:rgba(68,200,120,.2);border-color:#44cc88;color:#44cc88;
-  animation:correctPop .3s ease;
-}
+.qz-cbtn.correct{background:rgba(68,200,120,.2);border-color:#44cc88;color:#44cc88;animation:correctPop .3s ease}
 .qz-cbtn.wrong{background:rgba(255,80,80,.18);border-color:#ff5555;color:#ff8888}
 .qz-cbtn:disabled{cursor:default}
 @keyframes correctPop{0%{transform:scale(1)}50%{transform:scale(1.04)}100%{transform:scale(1)}}
 
 /* フィードバックバナー */
 .qz-feedback{
-  border-radius:12px;padding:11px 14px;
-  margin-bottom:9px;display:none;
-  flex-direction:row;align-items:flex-start;gap:10px;
+  border-radius:12px;padding:10px 13px;margin-bottom:8px;
+  display:none;flex-direction:row;align-items:flex-start;gap:9px;
 }
 .qz-feedback.ok{background:rgba(68,200,120,.12);border:1.5px solid rgba(68,200,120,.3);display:flex}
 .qz-feedback.ng{background:rgba(255,80,80,.1);border:1.5px solid rgba(255,80,80,.25);display:flex}
-.qz-fb-icon{font-size:1.1rem;flex-shrink:0;margin-top:1px}
-.qz-fb-body{}
+.qz-fb-icon{font-size:1rem;flex-shrink:0;margin-top:1px}
 .qz-fb-title{font-size:.82rem;font-weight:900;margin-bottom:2px}
 .qz-fb-title.ok{color:#44cc88}
 .qz-fb-title.ng{color:#ff8888}
-.qz-fb-msg{font-size:.78rem;color:#bbb;line-height:1.5}
+.qz-fb-explain{font-size:.8rem;color:#bbb;line-height:1.55}  /* ← 解説 */
 
-/* 次へボタン */
-.qz-next{
-  width:100%;padding:15px;border:none;border-radius:13px;
-  font-family:inherit;font-size:1rem;font-weight:900;
-  cursor:pointer;color:white;display:none;
-  align-items:center;justify-content:center;gap:6px;
-}
+/* 次へ */
+.qz-next{width:100%;padding:15px;border:none;border-radius:13px;font-family:inherit;font-size:1rem;font-weight:900;cursor:pointer;color:white;display:none;align-items:center;justify-content:center;gap:5px}
 .qz-next.show{display:flex;animation:fadeIn .3s}
 .qz-next:active{transform:scale(.97)}
 
-/* ── RESULT ── */
+/* RESULT */
 #result{justify-content:center;align-items:center;overflow-y:auto;padding:22px 17px 38px}
 .res-char{width:170px;margin-bottom:5px}
 .res-char img{width:100%;filter:drop-shadow(0 8px 24px rgba(0,0,0,.5))}
@@ -214,14 +191,13 @@ html,body{height:100%;font-family:'Noto Sans JP',sans-serif;background:var(--bg)
 .rstat .rv{font-size:1.25rem;font-weight:900;margin-top:2px}
 .res-msg{font-size:.9rem;font-weight:700;text-align:center;margin-bottom:16px;color:#bbb;padding:0 14px;line-height:1.7}
 
-/* ── MISC ── */
+/* MISC */
 .toast{position:fixed;bottom:26px;left:50%;transform:translateX(-50%);padding:9px 20px;border-radius:99px;font-size:.85rem;font-weight:700;opacity:0;pointer-events:none;transition:opacity .3s;z-index:9999;white-space:nowrap;color:white}
 .toast.show{opacity:1}
 .confetti-c{position:fixed;inset:0;pointer-events:none;z-index:9999;overflow:hidden}
 .cf{position:absolute;top:-20px;border-radius:2px;animation:cfFall linear forwards}
 @keyframes cfFall{0%{transform:translateY(0) rotate(0);opacity:1}100%{transform:translateY(110vh) rotate(720deg);opacity:0}}
 @keyframes fadeIn{from{opacity:0;transform:translateY(5px)}to{opacity:1;transform:translateY(0)}}
-@keyframes bubblePop{0%{transform:scale(.85);opacity:0}100%{transform:scale(1);opacity:1}}
 </style>
 </head>
 <body>
@@ -320,13 +296,11 @@ html,body{height:100%;font-family:'Noto Sans JP',sans-serif;background:var(--bg)
 
 <!-- QUIZ -->
 <div class="screen" id="quiz">
-
-  <!-- ヘッダー -->
   <div class="qz-header">
     <div class="qz-header-row1">
       <div class="qz-subject-badge">
-        <div class="dot" id="qz-dot"></div>
-        <span style="text-transform:uppercase;font-size:.62rem">Current Subject</span>
+        <div class="qz-dot" id="qz-dot"></div>
+        <span>SUBJECT</span>
         <span class="qz-subject-name" id="qz-subj-name"></span>
       </div>
       <div class="qz-score-row">
@@ -334,18 +308,16 @@ html,body{height:100%;font-family:'Noto Sans JP',sans-serif;background:var(--bg)
         <div class="qz-streak" id="streak-pill">🔥 0</div>
       </div>
     </div>
-    <!-- セグメント進捗バー -->
-    <div class="qz-progress-row" id="qz-segs"></div>
+    <div class="qz-segs-row" id="qz-segs"></div>
   </div>
 
-  <!-- 中央：キャラ＋問題 -->
   <div class="qz-middle">
-    <!-- キャラ列 -->
+    <!-- キャラ列（左・小さめ固定） -->
     <div class="qz-char-col">
-      <img id="quiz-char" src="" alt=""/>
-      <div class="qz-bubble" id="quiz-bubble">
+      <img class="qz-char-img" id="quiz-char" src="" alt=""/>
+      <div class="qz-bubble">
         <div class="qz-bubble-name" id="qz-bubble-name"></div>
-        <div id="qz-bubble-txt"></div>
+        <div class="qz-bubble-txt" id="qz-bubble-txt">…</div>
       </div>
     </div>
     <!-- 問題列 -->
@@ -355,14 +327,13 @@ html,body{height:100%;font-family:'Noto Sans JP',sans-serif;background:var(--bg)
     </div>
   </div>
 
-  <!-- 下部：選択肢＋フィードバック＋次へ -->
   <div class="qz-bottom">
     <div class="qz-choices" id="choices"></div>
     <div class="qz-feedback" id="fbtxt">
       <div class="qz-fb-icon" id="fb-icon"></div>
-      <div class="qz-fb-body">
+      <div>
         <div class="qz-fb-title" id="fb-title"></div>
-        <div class="qz-fb-msg" id="fb-msg"></div>
+        <div class="qz-fb-explain" id="fb-explain"></div>
       </div>
     </div>
     <button class="qz-next" id="nxt-btn" onclick="nextQ()">次の問題へ →</button>
@@ -391,27 +362,31 @@ const IMGS = {"bakuso": {"wrong": "data:image/png;base64,iVBORw0KGgoAAAANSUhEUgA
 const CHARS = {
   shakai:{key:'zanpanman',name:'ザンパンマン先生',subject:'社会',color:'#ff5555',btn:'#cc2222',
     start:'さあ、一緒にやっていこうぜ！',
+    thinking:['さて、どれだ？','よく考えろ！','落ち着いて考えよう！','オレを信じろ！'],
     ok:['やるじゃねえか！','その調子だぜ！','なかなかやるな！','完璧だ！'],
-    ng:['惜しいなぁ…','もう一息だったな…','次は負けないぞ！','ドンマイ！'],
+    ng:['惜しいなぁ…','もう一息！','次は負けないぞ！','ドンマイ！'],
     res:{g:'強くなったな！',o:'まだまだいけるぞ！',t:'もっと練習だ！'}},
   sansu:{key:'yabai',name:'ヤバイヤツ先生',subject:'算数',color:'#ffaa44',btn:'#cc7700',
     start:'絶対できるようにしてやる！',
+    thinking:['うーん…','よく考えろ！','落ち着いていけ！','集中だ！'],
     ok:['よくやった！','完璧だぜ！','さすがだな！','その調子！'],
-    ng:['惜しいな…','ドンマイ！次いこう！','もう少しだ！'],
+    ng:['惜しいな…','ドンマイ！','もう少しだ！'],
     res:{g:'完璧な仕上がりだぜ！',o:'もっと上を目指せ！',t:'鍛え直しだ！'}},
   kokugo:{key:'bakuso',name:'バクソウ先生',subject:'国語',color:'#6699ff',btn:'#2244cc',
     start:'一緒に頑張っていこう！',
+    thinking:['さて、どれかな？','じっくり考えてみて！','ヒントは問題の中に！','落ち着いて！'],
     ok:['やったね！大正解！','よし！もっといこう！','やっぱりできる！','すごいよ！'],
     ng:['惜しいなあ…','一緒に考えよう！','もう少しだよ！'],
     res:{g:'何でもできる！',o:'いい感じだよ！',t:'一緒に頑張ろう！'}},
   rika:{key:'kaga',name:'カガ先生',subject:'理科',color:'#44cc88',btn:'#228855',
     start:'科学の世界を一緒に探求しよう！',
+    thinking:['さて、科学的に考えると…','よく思い出して！','実験結果を思い出せ！','落ち着いて考えよう！'],
     ok:['やったじゃねえか！','科学は面白いだろ！','さすがだぜ！','正解！'],
     ng:['惜しいな。いい考えだ。','あと少しだった…','ドンマイ！'],
     res:{g:'科学の世界は最高だろ！',o:'もっと先に進めるぞ！',t:'一緒に極めよう！'}}
 };
 const SUBJ_ORDER=['rika','shakai','sansu','kokugo'];
-const STORE_KEY='sensei-quiz-v10';
+const STORE_KEY='sensei-quiz-v11';
 
 let DB={tests:{}};
 function loadDB(){try{const s=localStorage.getItem(STORE_KEY);if(s)DB=JSON.parse(s);}catch(e){}}
@@ -421,7 +396,7 @@ loadDB();
 let currentTestId=null,currentSubject=null;
 let questions=[],qIdx=0,score=0,streak=0,maxStreak=0,correct=0,wrong=0;
 let answered=false,ntPhotos=[],apPhotos=[],apCurrentSubj='rika',ntSelectedSubjs=['rika'];
-let toastTimer=null,bubbleTimer=null,segResults=[];
+let toastTimer=null,segResults=[];
 
 window.onload=()=>{renderHome();buildChips();};
 
@@ -522,7 +497,7 @@ async function runGen(photos,subjects,testObj,logEl,fillEl,pctEl){
   for(let i=0;i<photos.length;i++){
     const pct=Math.round(i/photos.length*100);fillEl.style.width=pct+'%';pctEl.textContent=pct+'%';
     const fname=photos[i].name.slice(0,20);
-    try{const b64=await fileToB64(photos[i]);const qs=await callAPI(b64,subjects);qs.forEach(q=>{const s=(q.subject&&testObj.questions[q.subject]!==undefined)?q.subject:subjects[0];testObj.questions[s].push({q:q.q,a:q.a,choices:q.choices});total++;});addLog(logEl,`✅ ${fname}: ${qs.length}問生成`,'ok');}
+    try{const b64=await fileToB64(photos[i]);const qs=await callAPI(b64,subjects);qs.forEach(q=>{const s=(q.subject&&testObj.questions[q.subject]!==undefined)?q.subject:subjects[0];testObj.questions[s].push({q:q.q,a:q.a,choices:q.choices,explain:q.explain||''});total++;});addLog(logEl,`✅ ${fname}: ${qs.length}問生成`,'ok');}
     catch(err){addLog(logEl,`❌ ${fname}: ${err.message.slice(0,60)}`,'err');}
   }
   fillEl.style.width='100%';pctEl.textContent='100%';addLog(logEl,`完了！合計 ${total}問`,'info');return total;
@@ -562,12 +537,12 @@ function startSubject(subj){
   document.getElementById('intro-bg').style.background=`radial-gradient(ellipse at 50% 30%,${cfg.color}22 0%,transparent 60%),var(--bg)`;
   showScreen('intro');
 }
+
 function beginQuiz(){
   questions=[...(DB.tests[currentTestId].questions[currentSubject]||[])].sort(()=>Math.random()-.5);
   qIdx=0;score=0;streak=0;maxStreak=0;correct=0;wrong=0;answered=false;
   segResults=new Array(questions.length).fill(null);
   const cfg=CHARS[currentSubject];
-  // ヘッダー設定
   document.getElementById('qz-dot').style.background=cfg.color;
   document.getElementById('qz-subj-name').textContent=cfg.subject;
   document.getElementById('qz-bubble-name').textContent=cfg.name;
@@ -576,6 +551,7 @@ function beginQuiz(){
   document.getElementById('streak-pill').textContent='🔥 0';
   renderSegs();showScreen('quiz');renderQ();
 }
+
 function renderSegs(){
   const el=document.getElementById('qz-segs');
   el.innerHTML=questions.map((_,i)=>{
@@ -584,63 +560,74 @@ function renderSegs(){
     else if(segResults[i]===true)c+=' ok';
     else if(segResults[i]===false)c+=' ng';
     return `<div class="${c}"></div>`;
-  }).join('')+`<span class="qz-prog-label">${qIdx+1} / ${questions.length}</span>`;
+  }).join('')+`<span class="qz-prog-lbl">${qIdx+1} / ${questions.length}</span>`;
 }
-function showBubble(txt){
-  const b=document.getElementById('quiz-bubble');
+
+function setBubble(txt){
   document.getElementById('qz-bubble-txt').textContent=txt;
-  b.classList.remove('show');void b.offsetWidth;b.classList.add('show');
-  clearTimeout(bubbleTimer);bubbleTimer=setTimeout(()=>b.classList.remove('show'),3200);
 }
+
 function renderQ(){
   answered=false;const q=questions[qIdx];
+  const cfg=CHARS[currentSubject];
   document.getElementById('qz-q-num').textContent=`問題 ${qIdx+1} / ${questions.length}`;
   document.getElementById('qtxt').textContent=q.q;
   document.getElementById('fbtxt').className='qz-feedback';
   document.getElementById('nxt-btn').className='qz-next';
-  document.getElementById('quiz-char').src=IMGS[CHARS[currentSubject].key].ganbaro;
-  document.getElementById('quiz-bubble').classList.remove('show');
+  document.getElementById('quiz-char').src=IMGS[cfg.key].ganbaro;
+  // 回答前のセリフ（thinking）
+  setBubble(cfg.thinking[Math.floor(Math.random()*cfg.thinking.length)]);
   renderSegs();
   const choices=[...q.choices].sort(()=>Math.random()-.5);
   const grid=document.getElementById('choices');grid.innerHTML='';
   choices.forEach(c=>{
     const btn=document.createElement('button');btn.className='qz-cbtn';btn.textContent=c;
-    btn.onclick=()=>doAnswer(c,q.a,btn);grid.appendChild(btn);
+    btn.onclick=()=>doAnswer(c,q.a,btn,q.explain||'');grid.appendChild(btn);
   });
 }
-function doAnswer(chosen,ans,btn){
+
+function doAnswer(chosen,ans,btn,explain){
   if(answered)return;answered=true;
   const cfg=CHARS[currentSubject];const isOk=chosen===ans;
   document.querySelectorAll('.qz-cbtn').forEach(b=>{b.disabled=true;if(b.textContent===ans)b.classList.add('correct');});
   segResults[qIdx]=isOk;renderSegs();
   const nb=document.getElementById('nxt-btn');
   if(isOk){
-    streak++;if(streak>maxStreak)maxStreak=streak;correct++;score+=streak>=3?streak*20:100;
+    streak++;if(streak>maxStreak)maxStreak=streak;correct++;
+    const pts=streak>=3?streak*20:100;score+=pts;
     const msg=cfg.ok[Math.floor(Math.random()*cfg.ok.length)];
-    const full=streak>=3?msg+' 🔥×'+streak+'ボーナス！':msg;
-    showFB(true,full,'');showBubble(full);
+    // セリフバブル（回答後：先生のセリフ）
+    setBubble(msg);
     document.getElementById('quiz-char').src=IMGS[cfg.key].correct;
+    // フィードバックバナー（解説）
+    showFB(true,`+${pts}pts！${streak>=3?' 🔥×'+streak+'ボーナス！':''}`,explain||'正解です！よく覚えていたね。');
     nb.style.background=`linear-gradient(135deg,${cfg.color},${cfg.btn})`;
     if(streak>=3)spawnConfetti();
   }else{
     btn.classList.add('wrong');streak=0;wrong++;
     const msg=cfg.ng[Math.floor(Math.random()*cfg.ng.length)];
-    showFB(false,msg,'正解：'+ans);showBubble(msg);
+    // セリフバブル（回答後：先生のセリフ）
+    setBubble(msg);
     document.getElementById('quiz-char').src=IMGS[cfg.key].wrong;
+    // フィードバックバナー（解説）
+    showFB(false,'正解は：'+ans,explain||'もう一度確認してみよう！');
     nb.style.background='#333';
   }
   document.getElementById('q-score').textContent=score;
   document.getElementById('streak-pill').textContent='🔥 '+streak;
   nb.className='qz-next show';
 }
-function showFB(isOk,title,msg){
+
+function showFB(isOk,title,explain){
   const el=document.getElementById('fbtxt');
   el.className='qz-feedback '+(isOk?'ok':'ng');
   document.getElementById('fb-icon').textContent=isOk?'✅':'❌';
-  const t=document.getElementById('fb-title');t.className='qz-fb-title '+(isOk?'ok':'ng');t.textContent=isOk?'SUCCESS! +'+( streak>=3?streak*20:100)+'pts':title;
-  document.getElementById('fb-msg').textContent=isOk?title:msg;
+  const t=document.getElementById('fb-title');t.className='qz-fb-title '+(isOk?'ok':'ng');t.textContent=title;
+  document.getElementById('fb-explain').textContent=explain;
 }
+
 function nextQ(){qIdx++;qIdx>=questions.length?showResult():renderQ();}
+
 function showResult(){
   const cfg=CHARS[currentSubject];const pct=correct/questions.length;
   let emoji,title,rk;
