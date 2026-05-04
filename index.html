@@ -93,6 +93,8 @@ html,body{height:100%;font-family:'Noto Sans JP',sans-serif;background:var(--bg)
 
 /* スコアバー */
 .qz-bar{display:flex;align-items:center;justify-content:space-between;padding:7px 14px 5px;flex-shrink:0}
+.qz-back-btn{background:rgba(255,255,255,.08);border:1px solid rgba(255,255,255,.15);border-radius:99px;color:#aaa;font-family:inherit;font-size:.78rem;font-weight:700;padding:4px 12px;cursor:pointer;}
+.qz-back-btn:active{opacity:.7}
 .qz-score-badge{font-size:.95rem;font-weight:900;color:#ffd700}
 .qz-right-badges{display:flex;align-items:center;gap:7px}
 .qz-streak-badge{background:rgba(255,80,80,.18);border:1px solid rgba(255,80,80,.3);border-radius:99px;padding:3px 10px;font-size:.78rem;font-weight:900;color:#ff8888}
@@ -326,6 +328,29 @@ html,body{height:100%;font-family:'Noto Sans JP',sans-serif;background:var(--bg)
 .res-graph-bar{height:100%;border-radius:99px;transition:width 1s ease;display:flex;align-items:center;justify-content:flex-end;padding-right:6px}
 .res-graph-pct{font-size:.65rem;font-weight:900;color:white}
 .res-graph-cnt{font-size:.7rem;font-weight:700;width:36px;text-align:right;color:var(--muted);flex-shrink:0}
+
+/* パーフェクトポップアップ */
+.perfect-popup{
+  position:fixed;inset:0;z-index:9998;
+  display:flex;flex-direction:column;align-items:center;justify-content:center;
+  background:rgba(0,0,0,.75);backdrop-filter:blur(4px);
+  animation:fadeIn .4s ease;
+}
+.perfect-inner{
+  background:linear-gradient(135deg,#1a1a30,#0d0d20);
+  border:2px solid #ffd700;border-radius:24px;
+  padding:28px 24px;max-width:320px;width:90%;
+  text-align:center;
+  animation:popupBounce .5s cubic-bezier(.175,.885,.32,1.275);
+}
+@keyframes popupBounce{0%{transform:scale(0)}70%{transform:scale(1.06)}100%{transform:scale(1)}}
+.perfect-star{font-size:3rem;margin-bottom:8px;animation:starSpin 1s ease}
+@keyframes starSpin{0%{transform:rotate(-20deg) scale(0)}100%{transform:rotate(0) scale(1)}}
+.perfect-title{font-size:1.6rem;font-weight:900;color:#ffd700;margin-bottom:6px}
+.perfect-char{width:120px;margin:10px auto}
+.perfect-char img{width:100%}
+.perfect-msg{font-size:1rem;font-weight:700;line-height:1.6;color:white;margin-bottom:18px}
+.perfect-close{background:linear-gradient(135deg,#ffd700,#ff6b35);border:none;border-radius:13px;color:#1a0a00;font-family:inherit;font-size:1rem;font-weight:900;padding:13px 32px;cursor:pointer;width:100%}
 </style>
 </head>
 <body>
@@ -428,6 +453,7 @@ html,body{height:100%;font-family:'Noto Sans JP',sans-serif;background:var(--bg)
 <!-- QUIZ -->
 <div class="screen" id="quiz">
   <div class="qz-bar">
+    <button class="qz-back-btn" onclick="quitQuiz()">✕ やめる</button>
     <div class="qz-score-badge">⭐ <span id="q-score">0</span></div>
     <div class="qz-right-badges">
       <div class="qz-streak-badge" id="streak-pill">🔥 0</div>
@@ -501,32 +527,32 @@ const IMGS = {"bakuso": {"wrong": "data:image/webp;base64,UklGRh4rAABXRUJQVlA4IB
 
 const CHARS = {
   shakai:{key:'zanpanman',name:'ザンパンマン先生',subject:'社会',color:'#ff5555',btn:'#cc2222',
-    start:'さあ、一緒にやっていこうぜ！',
+    start:'さあ、一緒にやっていこうぜ！',perfect:'すげぇぞ。お前ならザンパン流を使えるかもな',
     thinking:['さて、どれだ？','よく考えろ！','落ち着いて！','オレを信じろ！'],
     ok:['やるじゃねえか！','その調子だぜ！','なかなかやるな！','完璧だ！'],
     ng:['惜しいなぁ…','もう一息！','次は負けないぞ！','ドンマイ！'],
     res:{g:'強くなったな！',o:'まだまだいけるぞ！',t:'もっと練習だ！'}},
   sansu:{key:'yabai',name:'ヤバイヤツ先生',subject:'算数',color:'#ffaa44',btn:'#cc7700',
-    start:'絶対できるようにしてやる！',
+    start:'絶対できるようにしてやる！',perfect:'いいぞ。これなら算数とともに筋肉を磨く余裕がありそうだ。',
     thinking:['うーん…','よく考えろ！','落ち着いていけ！','集中だ！'],
     ok:['よくやった！','完璧だぜ！','さすがだな！','その調子！'],
     ng:['惜しいな…','ドンマイ！','もう少しだ！'],
     res:{g:'完璧な仕上がりだぜ！',o:'もっと上を目指せ！',t:'鍛え直しだ！'}},
   kokugo:{key:'bakuso',name:'バクソウ先生',subject:'国語',color:'#6699ff',btn:'#2244cc',
-    start:'一緒に頑張っていこう！',
+    start:'一緒に頑張っていこう！',perfect:'超すごいよ！これからも頑張っていこう。',
     thinking:['さて、どれかな？','じっくり考えてみて！','ヒントは問題の中に！','落ち着いて！'],
     ok:['やったね！大正解！','よし！もっといこう！','やっぱりできる！','すごいよ！'],
     ng:['惜しいなあ…','一緒に考えよう！','もう少しだよ！'],
     res:{g:'何でもできる！',o:'いい感じだよ！',t:'一緒に頑張ろう！'}},
   rika:{key:'kaga',name:'カガ先生',subject:'理科',color:'#44cc88',btn:'#228855',
-    start:'科学の世界を一緒に探求しよう！',
+    start:'科学の世界を一緒に探求しよう！',perfect:'ばっちりだ。もっと科学を一緒に学んでいこうぜ！',
     thinking:['科学的に考えると…','よく思い出して！','実験を思い出せ！','落ち着いて考えよう！'],
     ok:['やったじゃねえか！','科学は面白いだろ！','さすがだぜ！','正解！'],
     ng:['惜しいな。いい考えだ。','あと少しだった…','ドンマイ！'],
     res:{g:'科学の世界は最高だろ！',o:'もっと先に進めるぞ！',t:'一緒に極めよう！'}}
 };
 const SUBJ_ORDER=['rika','shakai','sansu','kokugo'];
-const STORE_KEY='sensei-quiz-v13';
+const STORE_KEY='sensei-quiz-v14';
 
 let DB={tests:{}};
 function loadDB(){try{const s=localStorage.getItem(STORE_KEY);if(s)DB=JSON.parse(s);}catch(e){}}
@@ -536,7 +562,7 @@ loadDB();
 let currentTestId=null,currentSubject=null;
 let questions=[],qIdx=0,score=0,streak=0,maxStreak=0,correct=0,wrong=0;
 let answered=false,ntPhotos=[],apPhotos=[],apCurrentSubj='rika',ntSelectedSubjs=['rika'];
-let toastTimer=null,segResults=[],wrongQuestions=[],isRevengeMode=false;
+let toastTimer=null,segResults=[],wrongQuestions=[],isRevengeMode=false,questionKeys=[];
 
 window.onload=()=>{renderHome();buildChips();};
 
@@ -682,8 +708,42 @@ function startSubject(subj){
   document.getElementById('intro-bg').style.background='radial-gradient(ellipse at 50% 30%,'+cfg.color+'33 0%,transparent 65%),var(--bg)';
   showScreen('intro');
 }
+function selectSmartQuestions(allQs, n){
+  // 各問題にスコアを付けてスマートに選出
+  // stats: {correct:0, wrong:0} を各問題のIDで管理
+  if(!DB.stats)DB.stats={};
+  const testStats=DB.stats[currentTestId]||{};
+  // 問題にIDを付与（なければインデックスベース）
+  const scored=allQs.map((q,i)=>{
+    const key=currentSubject+'_'+i+'_'+q.q.slice(0,10);
+    const st=testStats[key]||{correct:0,wrong:0,seen:0};
+    // 重み計算：未出題は高い、間違えた問題は高い、正解した問題は低い
+    let weight=10;
+    if(st.seen===0)weight=20;           // 未出題：最優先
+    else if(st.wrong>st.correct)weight=15; // 間違え多い：優先
+    else if(st.correct>0)weight=Math.max(1,10-st.correct*2); // 正解済み：徐々に下げる
+    return {q, key, weight, st};
+  });
+  // 重み付きランダム選出
+  const selected=[];
+  const pool=[...scored];
+  const count=Math.min(n, pool.length);
+  for(let i=0;i<count;i++){
+    const totalW=pool.reduce((s,x)=>s+x.weight,0);
+    let rand=Math.random()*totalW;
+    let idx=0;
+    for(let j=0;j<pool.length;j++){rand-=pool[j].weight;if(rand<=0){idx=j;break;}}
+    selected.push(pool[idx]);
+    pool.splice(idx,1);
+  }
+  return selected;
+}
+
 function beginQuiz(){
-  questions=[...(DB.tests[currentTestId].questions[currentSubject]||[])].sort(()=>Math.random()-.5);
+  const allQs=DB.tests[currentTestId].questions[currentSubject]||[];
+  const selected=selectSmartQuestions(allQs, 10);
+  questions=selected.map(x=>({...x.q, _key:x.key}));
+  questionKeys=selected.map(x=>x.key);
   qIdx=0;score=0;streak=0;maxStreak=0;correct=0;wrong=0;answered=false;
   segResults=new Array(questions.length).fill(null);
   wrongQuestions=[];
@@ -750,6 +810,8 @@ function doAnswer(chosen,ans,btn,explain){
   document.getElementById('q-score').textContent=score;
   document.getElementById('streak-pill').textContent='🔥 '+streak;
   nb.className='qz-next show';
+  // 統計記録
+  recordStat(questionKeys[qIdx], isOk);
 }
 function showFB(isOk,title,explain){
   const el=document.getElementById('fbtxt');
@@ -767,7 +829,8 @@ function showResult(){
     else if(pct>=.5){emoji='💪';title='いい感じ！';rk='o';document.getElementById('res-img').src=IMGS[cfg.key].ganbaro;}
     else{emoji='😤';title='もう一回！';rk='t';document.getElementById('res-img').src=IMGS[cfg.key].wrong;}
   }else{
-    if(pct>=.8){emoji='🏆';title='最高だぜ！';rk='g';document.getElementById('res-img').src=IMGS[cfg.key].correct;spawnConfetti();}
+    if(pct>=1.0){emoji='🌟';title='パーフェクト！';rk='g';document.getElementById('res-img').src=IMGS[cfg.key].correct;setTimeout(showPerfectPopup,600);}
+  else if(pct>=.8){emoji='🏆';title='最高だぜ！';rk='g';document.getElementById('res-img').src=IMGS[cfg.key].correct;spawnConfetti();}
     else if(pct>=.5){emoji='👍';title='いい感じ！';rk='o';document.getElementById('res-img').src=IMGS[cfg.key].ganbaro;}
     else{emoji='💪';title='もう一回！';rk='t';document.getElementById('res-img').src=IMGS[cfg.key].wrong;}
   }
@@ -837,6 +900,42 @@ function showRevengeBadge(){
   setTimeout(()=>badge.remove(),2000);
 }
 function retryQuiz(){beginQuiz();}
+
+function quitQuiz(){
+  if(!confirm('問題をやめて戻りますか？'))return;
+  const rb=document.getElementById('revenge-banner');if(rb)rb.remove();
+  isRevengeMode=false;
+  showScreen('testdetail');
+}
+
+function recordStat(key, isOk){
+  if(!key)return;
+  if(!DB.stats)DB.stats={};
+  if(!DB.stats[currentTestId])DB.stats[currentTestId]={};
+  const st=DB.stats[currentTestId][key]||{correct:0,wrong:0,seen:0};
+  st.seen++;
+  if(isOk)st.correct++;else st.wrong++;
+  DB.stats[currentTestId][key]=st;
+  saveDB();
+}
+
+function showPerfectPopup(){
+  const cfg=CHARS[currentSubject];
+  const popup=document.createElement('div');
+  popup.className='perfect-popup';
+  popup.id='perfect-popup';
+  popup.innerHTML=`
+    <div class="perfect-inner">
+      <div class="perfect-star">🌟</div>
+      <div class="perfect-title">パーフェクト！！</div>
+      <div class="perfect-char"><img src="${IMGS[cfg.key].correct}" alt=""/></div>
+      <div class="perfect-msg">"${cfg.perfect||'すばらしい！全問正解だ！'}"</div>
+      <button class="perfect-close" onclick="document.getElementById('perfect-popup').remove()">つぎへ →</button>
+    </div>
+  `;
+  document.body.appendChild(popup);
+  spawnConfetti();
+}
 function showToast(msg,color){
   const t=document.getElementById('toast');t.textContent=msg;t.style.background=color||'#44cc88';
   t.classList.add('show');clearTimeout(toastTimer);toastTimer=setTimeout(()=>t.classList.remove('show'),2800);
