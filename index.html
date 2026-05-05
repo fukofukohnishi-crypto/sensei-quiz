@@ -615,9 +615,14 @@ function openSubject(subj){
     card.className='round-card';
     card.style.cursor='pointer';
     var barDiv='<div class="round-bar-wrap" style="margin-top:6px"><div class="round-bar-fill" style="width:'+pct+'%;background:'+cfg.color+'"></div></div>';
-    card.innerHTML='<div style="flex:1"><div class="round-label">第'+r+'回</div><div class="round-count">'+qs.length+'問 ／ 挑戦済み '+seenCount+'問</div>'+barDiv+'</div><div style="display:flex;gap:8px;align-items:center"><button class="ap-add-btn" style="background:rgba(255,215,0,.15);border:1px solid rgba(255,215,0,.4);border-radius:8px;color:#ffd700;font-size:.75rem;font-weight:700;padding:5px 10px;cursor:pointer;white-space:nowrap">📷 追加</button><div class="round-arrow">›</div></div>';
+    card.innerHTML='<div style="flex:1"><div class="round-label">第'+r+'回</div><div class="round-count">'+qs.length+'問 ／ 挑戦済み '+seenCount+'問</div>'+barDiv+'</div>'
+      +'<div style="display:flex;gap:6px;align-items:center">'
+      +'<button class="ap-add-btn" style="background:rgba(255,215,0,.15);border:1px solid rgba(255,215,0,.4);border-radius:8px;color:#ffd700;font-size:.75rem;font-weight:700;padding:5px 10px;cursor:pointer;white-space:nowrap">📷 追加</button>'
+      +'<button class="ap-clear-btn" style="background:rgba(255,80,80,.12);border:1px solid rgba(255,80,80,.3);border-radius:8px;color:#ff8888;font-size:.75rem;font-weight:700;padding:5px 10px;cursor:pointer;white-space:nowrap">🗑 クリア</button>'
+      +'<div class="round-arrow">›</div></div>';
     card.onclick=function(){startQuiz(r);};
     card.querySelector('.ap-add-btn').onclick=function(e){e.stopPropagation();goAddPhotosSubj(subj,r);};
+    card.querySelector('.ap-clear-btn').onclick=function(e){e.stopPropagation();clearRound(subj,r);};
     list.appendChild(card);
   });
 
@@ -676,6 +681,25 @@ function goAddPhotosSubj(subj,round){
   buildRoundBtns(subj);
 
   showScreen('addphotos');
+}
+
+function clearRound(subj,round){
+  if(!confirm('第'+round+'回の問題（'+((DB.tests[currentTestId].questions[subj]||{})[round]||[]).length+'問）を全て削除しますか？\nこの操作は元に戻せません。')){return;}
+  var t=DB.tests[currentTestId];
+  if(t.questions[subj]&&t.questions[subj][round]){
+    delete t.questions[subj][round];
+    // 成績データもクリア
+    if(DB.stats[currentTestId]){
+      Object.keys(DB.stats[currentTestId]).forEach(function(key){
+        if(key.startsWith(subj+'_r'+round+'_')){
+          delete DB.stats[currentTestId][key];
+        }
+      });
+    }
+    saveDB();
+    showToast('第'+round+'回の問題をクリアしました','#888');
+    openSubject(subj);// 画面を更新
+  }
 }
 
 function buildRoundBtns(subj){
