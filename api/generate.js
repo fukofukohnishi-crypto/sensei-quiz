@@ -33,12 +33,11 @@ export default async function handler(req, res) {
             role: 'user',
             content: [
               { type: 'image', source: { type: 'base64', media_type: mediaType, data: imageBase64 } },
-              { type: 'text', text: `この画像に書かれた漢字・文字を読んでください。正解は「${correctAnswer}」です。書かれた文字が正解と同じか判定してください。多少の字形の乱れは許容してください。JSONのみで返答：{"correct":true}または{"correct":false,"written":"実際に書かれた文字"}` }
+              { type: 'text', text: `この画像に書かれた漢字を読んでください。正解は「${correctAnswer}」です。書かれた文字が正解と同じか判定してください。多少の字形の乱れは許容してください。JSONのみで返答：{"correct":true}または{"correct":false,"written":"実際に書かれた文字"}` }
             ]
           }]
         })
       });
-
       const data = await response.json();
       const raw = (data.content || []).filter(c => c.type === 'text').map(c => c.text).join('');
       const match = raw.match(/\{[\s\S]*\}/);
@@ -60,8 +59,6 @@ export default async function handler(req, res) {
     } catch (e) {}
 
     const subj = subjects[0];
-
-    // 科目別プロンプト
     let prompt = '';
 
     if (subj === 'sansu') {
@@ -70,69 +67,45 @@ export default async function handler(req, res) {
 
 必ずJSONのみで返してください。説明文・マークダウン不要。
 形式：
-{"questions":[
-  {
-    "q":"問題文（例：34 × 12 ＝）",
-    "a":"答え（数字のみ、例：408）",
-    "choices":[],
-    "subject":"sansu",
-    "type":"calc",
-    "explain":"解き方の簡単な説明（1〜2文）"
-  }
-]}
+{"questions":[{"q":"問題文（例：34 × 12 ＝）","a":"408","choices":[],"subject":"sansu","type":"calc","explain":"解き方の説明"}]}
 
-注意：
-- typeは必ず"calc"
-- aは数字のみ（単位不要、例：408）
-- 小学3年生レベルの計算（たし算・ひき算・かけ算・わり算・文章題）
-- 画像の内容から問題を作る`;
+注意：typeは必ず"calc"、aは数字のみ`;
 
     } else if (subj === 'kokugo') {
       prompt = `あなたは小学3年生向けの国語問題を作る先生です。
-この画像（教科書・プリント）から、小学3年生向けの問題を3〜6問作ってください。
+この画像（教科書・プリント）を注意深く見て、2ステップで問題を作ってください。
 
-漢字の読み方問題は type:"kanji_read"、熟語・意味・文法問題は type:"4choice" にしてください。
+【ステップ1：漢字の書き取り問題】
+画像に登場する漢字を全て書き出してください。
+その漢字1つ1つについて、読み仮名を示して「書き取り問題」を作ってください。
+例：「山」→ {"q":"「やま」を漢字で書こう","a":"山","choices":[],"subject":"kokugo","type":"kanji_write","explain":"山は訓読みで「やま」と読みます"}
+漢字が10個あれば10問作ってください。漢字は必ず全て取り上げてください。
+
+【ステップ2：言葉・読み問題】
+画像の内容から、言葉の意味・使い方・読み方の4択問題を2〜4問作ってください。
+例：{"q":"「美しい」の読み方は？","a":"うつくしい","choices":["うつくしい","たのしい","やさしい","かなしい"],"subject":"kokugo","type":"kanji_read","explain":"美しいは「うつくしい」と読みます"}
 
 必ずJSONのみで返してください。説明文・マークダウン不要。
 形式：
 {"questions":[
-  {
-    "q":"問題文",
-    "a":"正解",
-    "choices":["正解","不正解1","不正解2","不正解3"],
-    "subject":"kokugo",
-    "type":"kanji_read",
-    "explain":"解説（1〜2文）"
-  }
+  {"q":"問題文","a":"正解","choices":[],"subject":"kokugo","type":"kanji_write","explain":"解説"},
+  {"q":"問題文","a":"正解","choices":["正解","不正解1","不正解2","不正解3"],"subject":"kokugo","type":"kanji_read","explain":"解説"}
 ]}
 
-注意：
-- kanji_read: 漢字の読み方問題、choicesは4つ（ひらがな）
-- 4choice: 意味・文法・熟語問題、choicesは4つ
-- 小学3年生がわかる言葉を使う
-- 画像の内容から問題を作る`;
+重要：
+- kanji_write問題を必ず作る（画像の漢字を全て網羅）
+- kanji_writeのchoicesは空配列[]
+- kanji_read/4choiceのchoicesは必ず4つ
+- 小学3年生レベルの問題`;
 
     } else {
-      // 理科・社会：4択
       const NAMES = { shakai: '社会', rika: '理科' };
       const subjName = NAMES[subj] || subj;
       prompt = `あなたは小学3年生向けの${subjName}問題を作る先生です。
-この画像（教科書・プリント）から、小学3年生向けの4択問題を3〜6問作ってください。
-
-必ずJSONのみで返してください。説明文・マークダウン不要。
-形式：
-{"questions":[
-  {
-    "q":"問題文",
-    "a":"正解の選択肢",
-    "choices":["正解","不正解1","不正解2","不正解3"],
-    "subject":"${subj}",
-    "type":"4choice",
-    "explain":"解説（1〜2文）"
-  }
-]}
-
-注意：choicesは必ず4つ、choicesの中にaが含まれる、小学3年生がわかる言葉を使う`;
+この画像から小学3年生向けの4択問題を3〜6問作ってください。
+JSONのみで返してください。
+形式：{"questions":[{"q":"問題文","a":"正解","choices":["正解","不正解1","不正解2","不正解3"],"subject":"${subj}","type":"4choice","explain":"解説"}]}
+注意：choicesは必ず4つ、小学3年生がわかる言葉を使う`;
     }
 
     const response = await fetch('https://api.anthropic.com/v1/messages', {
@@ -144,7 +117,7 @@ export default async function handler(req, res) {
       },
       body: JSON.stringify({
         model: 'claude-opus-4-6',
-        max_tokens: 2000,
+        max_tokens: 3000,
         messages: [{
           role: 'user',
           content: [
@@ -168,7 +141,7 @@ export default async function handler(req, res) {
 
     const questions = (parsed.questions || []).filter(q => {
       if (!q.q || !q.a) return false;
-      if (q.type === 'calc') return true; // 算数は選択肢不要
+      if (q.type === 'calc' || q.type === 'kanji_write') return true;
       return Array.isArray(q.choices) && q.choices.length === 4;
     });
 
