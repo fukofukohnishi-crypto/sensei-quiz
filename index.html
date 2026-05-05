@@ -805,30 +805,76 @@ function buildRoundBtns(subj){
 }
 function startQuiz(round){
   currentRound=round;
-  const cfg=CHARS[currentSubject];
-  const t=DB.tests[currentTestId];
-  const rounds=t.questions[currentSubject]||{};
-  let allQs=[];
+  var cfg=CHARS[currentSubject];
+  var t=DB.tests[currentTestId];
+  var rounds=t.questions[currentSubject]||{};
+  var allQs=[];
+  var isKanjiMode=(round==='mix_kanji');
+
   if(round==='mix'){
-    Object.entries(rounds).forEach(([r,qs])=>qs.forEach((q,i)=>allQs.push({...q,_r:r,_i:i})));
+    // 全科目ミックス（国語以外）
+    Object.keys(rounds).forEach(function(r){
+      (rounds[r]||[]).forEach(function(q,i){
+        allQs.push(Object.assign({},q,{_r:r,_i:i}));
+      });
+    });
+  } else if(round==='mix_word'){
+    // 国語：言葉問題のみ（kanji_write/kanji_read/kanjiを除く）
+    Object.keys(rounds).forEach(function(r){
+      (rounds[r]||[]).forEach(function(q,i){
+        var tp=q.type||'4choice';
+        if(tp!=='kanji_write'&&tp!=='kanji_read'&&tp!=='kanji'){
+          allQs.push(Object.assign({},q,{_r:r,_i:i}));
+        }
+      });
+    });
+  } else if(round==='mix_kanji'){
+    // 国語：漢字のみ（kanji_write/kanji_read/kanjiのみ）
+    Object.keys(rounds).forEach(function(r){
+      (rounds[r]||[]).forEach(function(q,i){
+        var tp=q.type||'4choice';
+        if(tp==='kanji_write'||tp==='kanji_read'||tp==='kanji'){
+          allQs.push(Object.assign({},q,{_r:r,_i:i}));
+        }
+      });
+    });
   } else {
-    (rounds[round]||[]).forEach((q,i)=>allQs.push({...q,_r:round,_i:i}));
+    // 特定の回
+    var qs=rounds[round]||[];
+    qs.forEach(function(q,i){
+      if(currentSubject==='kokugo'){
+        // 国語の各回は言葉問題のみ
+        var tp=q.type||'4choice';
+        if(tp!=='kanji_write'&&tp!=='kanji_read'&&tp!=='kanji'){
+          allQs.push(Object.assign({},q,{_r:round,_i:i}));
+        }
+      } else {
+        allQs.push(Object.assign({},q,{_r:round,_i:i}));
+      }
+    });
   }
+
   if(!allQs.length){showToast('問題がないよ！📷 追加してね','#ffaa44');return;}
-  const roundLabel=round==='mix'?'全回ミックス':'第'+round+'回';
+
+  var roundLabel=round==='mix'?'全回ミックス'
+    :round==='mix_word'?'全回ミックス（言葉）'
+    :round==='mix_kanji'?'漢字ミックス'
+    :'第'+round+'回';
+
   document.getElementById('intro-img').src=IMGS[cfg.key].start;
   document.getElementById('intro-lbl').textContent=cfg.subject+' — '+cfg.name+' / '+roundLabel;
   document.getElementById('intro-lbl').style.color=cfg.color;
   document.getElementById('intro-test-name').textContent='📚 '+DB.tests[currentTestId].name+' ／ '+allQs.length+'問中10問';
-  const cheers=['ぜんぶ正解目指してがんばろう！💪','全力でいこう！🔥','さあ、集中してやっていこう！⚡','まちがえても大丈夫！最後までやりきれ！'];
+  var cheers=['ぜんぶ正解目指してがんばろう！💪','全力でいこう！🔥','さあ、集中してやっていこう！⚡','まちがえても大丈夫！最後までやりきれ！'];
   document.getElementById('intro-cheer').textContent=cheers[Math.floor(Math.random()*cheers.length)];
   document.getElementById('intro-txt').textContent=cfg.start;
   document.getElementById('intro-start-btn').style.background='linear-gradient(135deg,'+cfg.color+','+cfg.btn+')';
   document.getElementById('intro-bg').style.background='radial-gradient(ellipse at 50% 30%,'+cfg.color+'33 0%,transparent 65%),var(--bg)';
+
   // 10問スマート選出
-  const selected=selectSmartQuestions(allQs,10);
-  questions=selected.map(x=>x.q);
-  questionKeys=selected.map(x=>x.key);
+  var selected=selectSmartQuestions(allQs,10);
+  questions=selected.map(function(x){return x.q;});
+  questionKeys=selected.map(function(x){return x.key;});
   showScreen('intro');
 }
 
