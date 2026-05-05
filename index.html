@@ -366,6 +366,26 @@ html,body{height:100%;font-family:'Noto Sans JP',sans-serif;background:var(--bg)
     <!-- 4択（理科・社会・国語読み） -->
     <div class="qz-choices" id="choices"></div>
 
+    <!-- 国語：漢字書き取りフラッシュカード -->
+    <div id="kanji-write-area" style="display:none;margin-bottom:8px">
+      <div style="background:var(--card);border-radius:16px;padding:18px;text-align:center;border:2px solid rgba(102,153,255,.3)">
+        <div style="font-size:.75rem;color:#6699ff;font-weight:700;margin-bottom:6px;letter-spacing:1px">✏️ ノートに書いてみよう！</div>
+        <div style="font-size:2.2rem;font-weight:900;color:white;margin-bottom:6px" id="kanji-write-hint"></div>
+        <div style="font-size:.8rem;color:var(--muted)">を漢字で書いてください</div>
+      </div>
+      <div id="kanji-write-answer" style="display:none;background:rgba(102,153,255,.1);border:2px solid rgba(102,153,255,.4);border-radius:14px;padding:16px;text-align:center;margin-top:8px">
+        <div style="font-size:.72rem;color:#6699ff;font-weight:700;margin-bottom:4px">正解</div>
+        <div style="font-size:3rem;font-weight:900;color:white" id="kanji-write-ans-txt"></div>
+        <div style="font-size:.78rem;color:#bbb;margin-top:4px" id="kanji-write-explain-txt"></div>
+      </div>
+      <div style="display:flex;gap:8px;margin-top:10px" id="kanji-write-btns">
+        <button onclick="showKanjiAnswer()"
+          style="flex:1;padding:14px;background:linear-gradient(135deg,#6699ff,#2244cc);border:none;border-radius:13px;color:white;font-family:inherit;font-size:.95rem;font-weight:900;cursor:pointer">
+          答えを見る 👀
+        </button>
+      </div>
+    </div>
+
     <!-- 算数：テキスト入力 -->
     <div id="sansu-input-area" style="display:none;margin-bottom:8px">
       <div style="display:flex;gap:8px;align-items:center">
@@ -587,44 +607,104 @@ function openSubject(subj){
   var t=DB.tests[currentTestId];
   var rounds=t.questions[subj]||{};
   var roundNums=Object.keys(rounds).map(Number).sort(function(a,b){return a-b;});
-  document.getElementById('rs-title').textContent=cfg.subject+' - '+cfg.name;
+  document.getElementById('rs-title').textContent=cfg.subject+' — '+cfg.name;
   var testStats=DB.stats[currentTestId]||{};
-  var totalQ=Object.values(rounds).reduce(function(s,qs){return s+qs.length;},0);
   var list=document.getElementById('rs-list');
   list.innerHTML='';
 
-  // 全回ミックス
-  if(roundNums.length>1){
-    var mixDiv=document.createElement('div');
-    mixDiv.className='round-card mix';
-    mixDiv.innerHTML='<div><div class="round-label mix">⚡ 全回ミックス</div><div class="round-count">全'+totalQ+'問からランダム10問</div></div><div class="round-arrow">›</div>';
-    mixDiv.onclick=function(){startQuiz('mix');};
-    list.appendChild(mixDiv);
-  }
-
-  // 既存の回
-  roundNums.forEach(function(r){
-    var qs=rounds[r]||[];
-    var seenCount=0;
-    qs.forEach(function(_,i){
-      var key=subj+'_r'+r+'_'+i;
-      if((testStats[key]||{}).seen>0)seenCount++;
+  // 国語の場合：言葉問題と漢字を分けて表示
+  if(subj==='kokugo'){
+    // 言葉問題のみの全問数
+    var wordTotal=0;
+    var kanjiTotal=0;
+    roundNums.forEach(function(r){
+      var qs=rounds[r]||[];
+      qs.forEach(function(q){
+        if(q.type==='kanji_write'||q.type==='kanji_read'||q.type==='kanji')kanjiTotal++;
+        else wordTotal++;
+      });
     });
-    var pct=qs.length>0?Math.round(seenCount/qs.length*100):0;
-    var card=document.createElement('div');
-    card.className='round-card';
-    card.style.cursor='pointer';
-    var barDiv='<div class="round-bar-wrap" style="margin-top:6px"><div class="round-bar-fill" style="width:'+pct+'%;background:'+cfg.color+'"></div></div>';
-    card.innerHTML='<div style="flex:1"><div class="round-label">第'+r+'回</div><div class="round-count">'+qs.length+'問 ／ 挑戦済み '+seenCount+'問</div>'+barDiv+'</div>'
-      +'<div style="display:flex;gap:6px;align-items:center">'
-      +'<button class="ap-add-btn" style="background:rgba(255,215,0,.15);border:1px solid rgba(255,215,0,.4);border-radius:8px;color:#ffd700;font-size:.75rem;font-weight:700;padding:5px 10px;cursor:pointer;white-space:nowrap">📷 追加</button>'
-      +'<button class="ap-clear-btn" style="background:rgba(255,80,80,.12);border:1px solid rgba(255,80,80,.3);border-radius:8px;color:#ff8888;font-size:.75rem;font-weight:700;padding:5px 10px;cursor:pointer;white-space:nowrap">🗑 クリア</button>'
-      +'<div class="round-arrow">›</div></div>';
-    card.onclick=function(){startQuiz(r);};
-    card.querySelector('.ap-add-btn').onclick=function(e){e.stopPropagation();goAddPhotosSubj(subj,r);};
-    card.querySelector('.ap-clear-btn').onclick=function(e){e.stopPropagation();clearRound(subj,r);};
-    list.appendChild(card);
-  });
+
+    // 全回ミックス（言葉のみ）
+    if(roundNums.length>1&&wordTotal>0){
+      var mixDiv=document.createElement('div');
+      mixDiv.className='round-card mix';
+      mixDiv.innerHTML='<div><div class="round-label mix">⚡ 全回ミックス（言葉）</div><div class="round-count">言葉問題 全'+wordTotal+'問からランダム10問</div></div><div class="round-arrow">›</div>';
+      mixDiv.onclick=function(){startQuiz('mix_word');};
+      list.appendChild(mixDiv);
+    }
+
+    // 漢字ミックス（全回の漢字読み＋書き取り）
+    if(kanjiTotal>0){
+      var kanjiDiv=document.createElement('div');
+      kanjiDiv.className='round-card mix';
+      kanjiDiv.style.borderColor='rgba(102,153,255,.5)';
+      kanjiDiv.style.background='rgba(102,153,255,.06)';
+      kanjiDiv.innerHTML='<div><div class="round-label" style="color:#6699ff">📝 漢字ミックス（第1〜'+roundNums[roundNums.length-1]+'回）</div><div class="round-count">漢字 全'+kanjiTotal+'問からランダム10問</div></div><div class="round-arrow" style="color:#6699ff">›</div>';
+      kanjiDiv.onclick=function(){startQuiz('mix_kanji');};
+      list.appendChild(kanjiDiv);
+    }
+
+    // 各回
+    roundNums.forEach(function(r){
+      var qs=rounds[r]||[];
+      var wordQs=qs.filter(function(q){return q.type!=='kanji_write'&&q.type!=='kanji_read'&&q.type!=='kanji';});
+      var seenCount=0;
+      wordQs.forEach(function(_,i){
+        var key=subj+'_r'+r+'_word_'+i;
+        if((testStats[key]||{}).seen>0)seenCount++;
+      });
+      var pct=wordQs.length>0?Math.round(seenCount/wordQs.length*100):0;
+      var card=document.createElement('div');
+      card.className='round-card';
+      card.style.cursor='pointer';
+      var barDiv='<div class="round-bar-wrap" style="margin-top:6px"><div class="round-bar-fill" style="width:'+pct+'%;background:'+cfg.color+'"></div></div>';
+      card.innerHTML='<div style="flex:1"><div class="round-label">第'+r+'回（言葉）</div>'
+        +'<div class="round-count">'+wordQs.length+'問 ／ 挑戦済み '+seenCount+'問</div>'+barDiv+'</div>'
+        +'<div style="display:flex;gap:6px;align-items:center">'
+        +'<button class="ap-add-btn" style="background:rgba(255,215,0,.15);border:1px solid rgba(255,215,0,.4);border-radius:8px;color:#ffd700;font-size:.75rem;font-weight:700;padding:5px 10px;cursor:pointer;white-space:nowrap">📷 追加</button>'
+        +'<button class="ap-clear-btn" style="background:rgba(255,80,80,.12);border:1px solid rgba(255,80,80,.3);border-radius:8px;color:#ff8888;font-size:.75rem;font-weight:700;padding:5px 10px;cursor:pointer;white-space:nowrap">🗑 クリア</button>'
+        +'<div class="round-arrow">›</div></div>';
+      card.onclick=function(){startQuiz(r);};
+      card.querySelector('.ap-add-btn').onclick=function(e){e.stopPropagation();goAddPhotosSubj(subj,r);};
+      card.querySelector('.ap-clear-btn').onclick=function(e){e.stopPropagation();clearRound(subj,r);};
+      list.appendChild(card);
+    });
+
+  } else {
+    // 理科・社会・算数：従来通り
+    var totalQ=Object.values(rounds).reduce(function(s,qs){return s+qs.length;},0);
+    if(roundNums.length>1){
+      var mixDiv=document.createElement('div');
+      mixDiv.className='round-card mix';
+      mixDiv.innerHTML='<div><div class="round-label mix">⚡ 全回ミックス</div><div class="round-count">全'+totalQ+'問からランダム10問</div></div><div class="round-arrow">›</div>';
+      mixDiv.onclick=function(){startQuiz('mix');};
+      list.appendChild(mixDiv);
+    }
+    roundNums.forEach(function(r){
+      var qs=rounds[r]||[];
+      var seenCount=0;
+      qs.forEach(function(_,i){
+        var key=subj+'_r'+r+'_'+i;
+        if((testStats[key]||{}).seen>0)seenCount++;
+      });
+      var pct=qs.length>0?Math.round(seenCount/qs.length*100):0;
+      var card=document.createElement('div');
+      card.className='round-card';
+      card.style.cursor='pointer';
+      var barDiv='<div class="round-bar-wrap" style="margin-top:6px"><div class="round-bar-fill" style="width:'+pct+'%;background:'+cfg.color+'"></div></div>';
+      card.innerHTML='<div style="flex:1"><div class="round-label">第'+r+'回</div>'
+        +'<div class="round-count">'+qs.length+'問 ／ 挑戦済み '+seenCount+'問</div>'+barDiv+'</div>'
+        +'<div style="display:flex;gap:6px;align-items:center">'
+        +'<button class="ap-add-btn" style="background:rgba(255,215,0,.15);border:1px solid rgba(255,215,0,.4);border-radius:8px;color:#ffd700;font-size:.75rem;font-weight:700;padding:5px 10px;cursor:pointer;white-space:nowrap">📷 追加</button>'
+        +'<button class="ap-clear-btn" style="background:rgba(255,80,80,.12);border:1px solid rgba(255,80,80,.3);border-radius:8px;color:#ff8888;font-size:.75rem;font-weight:700;padding:5px 10px;cursor:pointer;white-space:nowrap">🗑 クリア</button>'
+        +'<div class="round-arrow">›</div></div>';
+      card.onclick=function(){startQuiz(r);};
+      card.querySelector('.ap-add-btn').onclick=function(e){e.stopPropagation();goAddPhotosSubj(subj,r);};
+      card.querySelector('.ap-clear-btn').onclick=function(e){e.stopPropagation();clearRound(subj,r);};
+      list.appendChild(card);
+    });
+  }
 
   // 新しい回を追加ボタン
   var addDiv=document.createElement('div');
@@ -810,20 +890,29 @@ function renderQ(){
   renderSegs();
 
   // エリアの表示切り替え
+  var isKanjiWrite=currentSubject==='kokugo'&&q.type==='kanji_write';
   var isKanji=currentSubject==='kokugo'&&q.type==='kanji';
   var isSansu=currentSubject==='sansu';
-  document.getElementById('choices').style.display=(isSansu||isKanji)?'none':'';
+  var is4choice=!isSansu&&!isKanji&&!isKanjiWrite;
+  document.getElementById('choices').style.display=is4choice?'':'none';
   document.getElementById('sansu-input-area').style.display=isSansu?'block':'none';
   document.getElementById('kokugo-canvas-area').style.display=isKanji?'block':'none';
+  document.getElementById('kanji-write-area').style.display=isKanjiWrite?'block':'none';
 
   if(isSansu){
-    // 算数：入力リセット
     var inp=document.getElementById('sansu-input');
     inp.value='';inp.disabled=false;inp.style.borderColor='rgba(255,255,255,.15)';
     document.getElementById('sansu-check-btn').disabled=false;
     setTimeout(function(){inp.focus();},300);
+  } else if(isKanjiWrite){
+    // 書き取りフラッシュカードリセット
+    var hint=q.q.replace(/を漢字で書こう|を漢字でかこう|「|」/g,'').replace(/.*[「（(](.+)[」）)].*/,'$1').trim();
+    // 読み仮名を問題文から抽出
+    document.getElementById('kanji-write-hint').textContent=q.q;
+    document.getElementById('kanji-write-answer').style.display='none';
+    document.getElementById('kanji-write-btns').innerHTML=
+      '<button onclick="showKanjiAnswer()" style="flex:1;padding:14px;background:linear-gradient(135deg,#6699ff,#2244cc);border:none;border-radius:13px;color:white;font-family:inherit;font-size:.95rem;font-weight:900;cursor:pointer">答えを見る 👀</button>';
   } else if(isKanji){
-    // 国語Canvas：リセット
     initCanvas();
   } else {
     // 4択
@@ -835,6 +924,24 @@ function renderQ(){
       grid.appendChild(btn);
     });
   }
+}
+
+// ── 漢字書き取り ──
+function showKanjiAnswer(){
+  var q=questions[qIdx];
+  document.getElementById('kanji-write-answer').style.display='block';
+  document.getElementById('kanji-write-ans-txt').textContent=q.a;
+  document.getElementById('kanji-write-explain-txt').textContent=q.explain||'';
+  // 自己採点ボタンに切り替え
+  document.getElementById('kanji-write-btns').innerHTML=
+    '<button onclick="kanjiSelfScore(true)" style="flex:1;padding:14px;background:linear-gradient(135deg,#44cc88,#228855);border:none;border-radius:13px;color:white;font-family:inherit;font-size:.95rem;font-weight:900;cursor:pointer">✅ できた！</button>'
+    +'<button onclick="kanjiSelfScore(false)" style="flex:1;padding:14px;background:linear-gradient(135deg,#ff5555,#cc2222);border:none;border-radius:13px;color:white;font-family:inherit;font-size:.95rem;font-weight:900;cursor:pointer">❌ まだ</button>';
+}
+function kanjiSelfScore(isOk){
+  var q=questions[qIdx];
+  // ボタンを無効化
+  document.getElementById('kanji-write-btns').innerHTML='';
+  doAnswerResult(isOk,q.a,q.explain||'');
 }
 
 // ── 算数チェック ──
