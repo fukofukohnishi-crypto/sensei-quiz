@@ -223,6 +223,11 @@ html,body{height:100%;font-family:'Noto Sans JP',sans-serif;background:var(--bg)
   display:flex;align-items:center;justify-content:center;
 }
 .io-btn:active{opacity:.7}
+
+/* 算数入力 */
+#sansu-input:focus{border-color:#ffaa44}
+/* Canvas */
+#kanji-canvas{cursor:crosshair}
 </style>
 </head>
 <body>
@@ -358,7 +363,42 @@ html,body{height:100%;font-family:'Noto Sans JP',sans-serif;background:var(--bg)
     </div>
   </div>
   <div class="qz-bottom">
+    <!-- 4択（理科・社会・国語読み） -->
     <div class="qz-choices" id="choices"></div>
+
+    <!-- 算数：テキスト入力 -->
+    <div id="sansu-input-area" style="display:none;margin-bottom:8px">
+      <div style="display:flex;gap:8px;align-items:center">
+        <input id="sansu-input" type="number" inputmode="numeric"
+          style="flex:1;background:var(--card2);border:2px solid rgba(255,255,255,.15);border-radius:13px;padding:16px;color:white;font-family:inherit;font-size:1.8rem;font-weight:900;text-align:center;outline:none"
+          placeholder="答えを入力"/>
+        <button onclick="checkSansu()" id="sansu-check-btn"
+          style="padding:16px 20px;background:linear-gradient(135deg,#ffaa44,#cc7700);border:none;border-radius:13px;color:white;font-family:inherit;font-size:1rem;font-weight:900;cursor:pointer;white-space:nowrap">
+          答え合わせ
+        </button>
+      </div>
+    </div>
+
+    <!-- 国語：Canvas手書き -->
+    <div id="kokugo-canvas-area" style="display:none;margin-bottom:8px">
+      <div style="text-align:center;font-size:.75rem;color:var(--muted);margin-bottom:6px">指またはペンで書いてください</div>
+      <div style="position:relative;display:inline-block;width:100%">
+        <canvas id="kanji-canvas"
+          style="background:#1a1a2e;border:2px solid rgba(255,255,255,.15);border-radius:14px;display:block;width:100%;touch-action:none">
+        </canvas>
+        <button onclick="clearCanvas()"
+          style="position:absolute;top:8px;right:8px;background:rgba(255,255,255,.1);border:none;border-radius:8px;color:#aaa;padding:6px 10px;font-size:.75rem;cursor:pointer">
+          消す
+        </button>
+      </div>
+      <div style="display:flex;gap:8px;margin-top:8px">
+        <button onclick="checkKanji()" id="kanji-check-btn"
+          style="flex:1;padding:14px;background:linear-gradient(135deg,#6699ff,#2244cc);border:none;border-radius:13px;color:white;font-family:inherit;font-size:1rem;font-weight:900;cursor:pointer">
+          答え合わせ 🤖
+        </button>
+      </div>
+    </div>
+
     <div class="qz-feedback" id="fbtxt">
       <div class="qz-fb-icon" id="fb-icon"></div>
       <div class="qz-fb-body">
@@ -735,8 +775,8 @@ function renderSegs(){
 }
 function setBubble(txt){document.getElementById('qz-bubble-txt').textContent=txt;}
 function renderQ(){
-  answered=false;const q=questions[qIdx];
-  const cfg=CHARS[currentSubject];
+  answered=false;var q=questions[qIdx];
+  var cfg=CHARS[currentSubject];
   document.getElementById('qz-num-badge').textContent=(qIdx+1)+' / '+questions.length;
   document.getElementById('qtxt').textContent=q.q;
   document.getElementById('fbtxt').className='qz-feedback';
@@ -744,12 +784,157 @@ function renderQ(){
   document.getElementById('quiz-char').src=IMGS[cfg.key].ganbaro;
   setBubble(cfg.thinking[Math.floor(Math.random()*cfg.thinking.length)]);
   renderSegs();
-  const choices=[...q.choices].sort(()=>Math.random()-.5);
-  const grid=document.getElementById('choices');grid.innerHTML='';
-  choices.forEach(c=>{
-    const btn=document.createElement('button');btn.className='qz-cbtn';btn.textContent=c;
-    btn.onclick=()=>doAnswer(c,q.a,btn,q.explain||'');grid.appendChild(btn);
-  });
+
+  // エリアの表示切り替え
+  var isKanji=currentSubject==='kokugo'&&q.type==='kanji';
+  var isSansu=currentSubject==='sansu';
+  document.getElementById('choices').style.display=(isSansu||isKanji)?'none':'';
+  document.getElementById('sansu-input-area').style.display=isSansu?'block':'none';
+  document.getElementById('kokugo-canvas-area').style.display=isKanji?'block':'none';
+
+  if(isSansu){
+    // 算数：入力リセット
+    var inp=document.getElementById('sansu-input');
+    inp.value='';inp.disabled=false;inp.style.borderColor='rgba(255,255,255,.15)';
+    document.getElementById('sansu-check-btn').disabled=false;
+    setTimeout(function(){inp.focus();},300);
+  } else if(isKanji){
+    // 国語Canvas：リセット
+    initCanvas();
+  } else {
+    // 4択
+    var choices=[...q.choices].sort(()=>Math.random()-.5);
+    var grid=document.getElementById('choices');grid.innerHTML='';
+    choices.forEach(function(c){
+      var btn=document.createElement('button');btn.className='qz-cbtn';btn.textContent=c;
+      btn.onclick=function(){doAnswer(c,q.a,btn,q.explain||'');};
+      grid.appendChild(btn);
+    });
+  }
+}
+
+// ── 算数チェック ──
+function checkSansu(){
+  if(answered)return;
+  var q=questions[qIdx];
+  var inp=document.getElementById('sansu-input');
+  var val=inp.value.trim();
+  if(!val){showToast('答えを入力してね','#ffaa44');return;}
+  inp.disabled=true;
+  document.getElementById('sansu-check-btn').disabled=true;
+  var correct_ans=String(q.a).trim();
+  var isOk=val===correct_ans||Number(val)===Number(correct_ans);
+  if(isOk){
+    inp.style.borderColor='#44cc88';
+  } else {
+    inp.style.borderColor='#ff5555';
+  }
+  doAnswerResult(isOk,q.a,q.explain||'');
+}
+
+// ── 国語Canvas ──
+var canvasDrawing=false,canvasCtx=null;
+function initCanvas(){
+  var canvas=document.getElementById('kanji-canvas');
+  // サイズ設定
+  var w=canvas.offsetWidth||300;
+  canvas.width=w;canvas.height=w;
+  canvasCtx=canvas.getContext('2d');
+  canvasCtx.fillStyle='#1a1a2e';
+  canvasCtx.fillRect(0,0,w,w);
+  // ガイド線
+  canvasCtx.strokeStyle='rgba(255,255,255,.08)';
+  canvasCtx.lineWidth=1;
+  canvasCtx.beginPath();
+  canvasCtx.moveTo(w/2,0);canvasCtx.lineTo(w/2,w);
+  canvasCtx.moveTo(0,w/2);canvasCtx.lineTo(w,w/2);
+  canvasCtx.stroke();
+  canvasDrawing=false;
+  // イベント
+  canvas.onpointerdown=function(e){canvasDrawing=true;canvasCtx.beginPath();var p=getPos(e);canvasCtx.moveTo(p.x,p.y);};
+  canvas.onpointermove=function(e){
+    if(!canvasDrawing)return;
+    canvasCtx.strokeStyle='white';canvasCtx.lineWidth=4;canvasCtx.lineCap='round';canvasCtx.lineJoin='round';
+    var p=getPos(e);canvasCtx.lineTo(p.x,p.y);canvasCtx.stroke();
+  };
+  canvas.onpointerup=function(){canvasDrawing=false;};
+  canvas.onpointerleave=function(){canvasDrawing=false;};
+}
+function getPos(e){
+  var canvas=document.getElementById('kanji-canvas');
+  var rect=canvas.getBoundingClientRect();
+  var scaleX=canvas.width/rect.width;
+  var scaleY=canvas.height/rect.height;
+  return {x:(e.clientX-rect.left)*scaleX,y:(e.clientY-rect.top)*scaleY};
+}
+function clearCanvas(){
+  if(!canvasCtx)return;
+  var canvas=document.getElementById('kanji-canvas');
+  canvasCtx.fillStyle='#1a1a2e';
+  canvasCtx.fillRect(0,0,canvas.width,canvas.height);
+  canvasCtx.strokeStyle='rgba(255,255,255,.08)';
+  canvasCtx.lineWidth=1;
+  canvasCtx.beginPath();
+  canvasCtx.moveTo(canvas.width/2,0);canvasCtx.lineTo(canvas.width/2,canvas.height);
+  canvasCtx.moveTo(0,canvas.height/2);canvasCtx.lineTo(canvas.width,canvas.height/2);
+  canvasCtx.stroke();
+}
+async function checkKanji(){
+  if(answered)return;
+  var q=questions[qIdx];
+  var canvas=document.getElementById('kanji-canvas');
+  var btn=document.getElementById('kanji-check-btn');
+  // 何も書いていないチェック
+  var ctx=canvas.getContext('2d');
+  var data=ctx.getImageData(0,0,canvas.width,canvas.height).data;
+  var hasDrawing=false;
+  for(var i=0;i<data.length;i+=4){
+    if(data[i]>50||data[i+1]>50||data[i+2]>50){hasDrawing=true;break;}
+  }
+  if(!hasDrawing){showToast('まず漢字を書いてね✏️','#ffaa44');return;}
+  btn.disabled=true;btn.textContent='判定中… 🤖';
+  var b64=canvas.toDataURL('image/jpeg',0.8).split(',')[1];
+  try{
+    var res=await fetch('/api/generate',{
+      method:'POST',
+      headers:{'Content-Type':'application/json'},
+      body:JSON.stringify({checkKanji:true,imageBase64:b64,correctAnswer:q.a})
+    });
+    var data2=await res.json();
+    var isOk=data2.correct===true;
+    doAnswerResult(isOk,q.a,q.explain||'');
+  }catch(e){
+    // API失敗時は文字認識なしで不正解
+    btn.textContent='答え合わせ 🤖';btn.disabled=false;
+    showToast('判定に失敗しました。もう一度試してね','#ff5555');
+  }
+}
+
+// 算数・国語共通の結果処理
+function doAnswerResult(isOk,ans,explain){
+  answered=true;
+  var cfg=CHARS[currentSubject];
+  var nb=document.getElementById('nxt-btn');
+  if(isOk){
+    streak++;if(streak>maxStreak)maxStreak=streak;correct++;
+    var pts=streak>=3?streak*20:100;score+=pts;
+    setBubble(cfg.ok[Math.floor(Math.random()*cfg.ok.length)]);
+    document.getElementById('quiz-char').src=IMGS[cfg.key].correct;
+    showFB(true,'✅ 正解！ +'+pts+'pts'+(streak>=3?' 🔥×'+streak+' ボーナス！':''),explain||'よく覚えていたね！');
+    if(streak>=3)spawnConfetti();
+    if(isRevengeMode)showRevengeBadge();
+  }else{
+    streak=0;wrong++;
+    setBubble(cfg.ng[Math.floor(Math.random()*cfg.ng.length)]);
+    document.getElementById('quiz-char').src=IMGS[cfg.key].wrong;
+    showFB(false,'❌ 正解は「'+ans+'」',explain||'もう一度確認してみよう！');
+    if(!isRevengeMode)wrongQuestions.push(questions[qIdx]);
+  }
+  document.getElementById('q-score').textContent=score;
+  document.getElementById('streak-pill').textContent='🔥 '+streak;
+  nb.className='qz-next show';
+  nb.style.background='linear-gradient(135deg,'+cfg.color+','+cfg.btn+')';
+  recordStat(questionKeys[qIdx],isOk);
 }
 function doAnswer(chosen,ans,btn,explain){
   if(answered)return;answered=true;
