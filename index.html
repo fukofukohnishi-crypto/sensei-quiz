@@ -1317,31 +1317,56 @@ async function generateAll(){
 
 async function apGenerateAll(){
   if(!apPhotos.length){showToast('写真を選んでね','#ffaa44');return;}
-  const round=apSelectedRound||1;
-  const subj=apCurrentSubj;
-  document.getElementById('ap-gen-btn').disabled=true;document.getElementById('ap-prog-wrap').style.display='block';
-  const logEl=document.getElementById('ap-log');logEl.innerHTML='';
-  const t=DB.tests[currentTestId];
+  var round=apSelectedRound||1;
+  var subj=apCurrentSubj;
+  var genBtn=document.getElementById('ap-gen-btn');
+  genBtn.disabled=true;
+  document.getElementById('ap-prog-wrap').style.display='block';
+  var logEl=document.getElementById('ap-log');logEl.innerHTML='';
+  var t=DB.tests[currentTestId];
   if(!t.questions[subj])t.questions[subj]={};
   if(!t.questions[subj][round])t.questions[subj][round]=[];
-  let total=0;
-  for(let i=0;i<apPhotos.length;i++){
-    const pct=Math.round(i/apPhotos.length*100);
-    document.getElementById('ap-prog-fill').style.width=pct+'%';document.getElementById('ap-prog-pct').textContent=pct+'%';
-    const fname=apPhotos[i].name.slice(0,20);
+  var total=0;
+  for(var i=0;i<apPhotos.length;i++){
+    var pct=Math.round(i/apPhotos.length*100);
+    document.getElementById('ap-prog-fill').style.width=pct+'%';
+    document.getElementById('ap-prog-pct').textContent=pct+'%';
+    var fname=apPhotos[i].name.slice(0,20);
     try{
-      const b64=await fileToB64(apPhotos[i]);
-      const qs=await callAPI(b64,[subj]);
-      qs.forEach(q=>t.questions[subj][round].push({q:q.q,a:q.a,choices:q.choices,explain:q.explain||''}));
-      total+=qs.length;
-      addLog(logEl,'✅ '+fname+': '+qs.length+'問生成','ok');
-    }catch(err){addLog(logEl,'❌ '+fname+': '+err.message.slice(0,60),'err');}
+      var b64=await fileToB64(apPhotos[i]);
+      var qs=await callAPI(b64,[subj]);
+      var kanjiCount=0,wordCount=0;
+      for(var j=0;j<qs.length;j++){
+        var q=qs[j];
+        t.questions[subj][round].push({
+          q:q.q,
+          a:q.a,
+          choices:q.choices||[],
+          type:q.type||'4choice',
+          explain:q.explain||''
+        });
+        if(q.type==='kanji_write'||q.type==='kanji_read')kanjiCount++;
+        else wordCount++;
+        total++;
+      }
+      addLog(logEl,'✅ '+fname+': 合計'+qs.length+'問（言葉'+wordCount+'・漢字'+kanjiCount+'）','ok');
+    }catch(err){
+      addLog(logEl,'❌ '+fname+': '+err.message.slice(0,60),'err');
+    }
   }
-  document.getElementById('ap-prog-fill').style.width='100%';document.getElementById('ap-prog-pct').textContent='100%';
+  document.getElementById('ap-prog-fill').style.width='100%';
+  document.getElementById('ap-prog-pct').textContent='100%';
   addLog(logEl,'完了！合計 '+total+'問','info');
   saveDB();
-  if(total>0){spawnConfetti();showToast(CHARS[subj].subject+' 第'+round+'回に'+total+'問追加しました🎉','#44cc88');setTimeout(()=>openTest(currentTestId),1800);}
-  else{showToast('問題を生成できませんでした','#ff5555');document.getElementById('ap-gen-btn').disabled=false;}
+  if(total>0){
+    spawnConfetti();
+    showToast(CHARS[subj].subject+' 第'+round+'回に'+total+'問追加しました🎉','#44cc88');
+    setTimeout(function(){openTest(currentTestId);},1800);
+  }else{
+    showToast('問題を生成できませんでした','#ff5555');
+    genBtn.disabled=false;
+    genBtn.style.opacity='1';
+  }
 }
 
 // ---- STATS ----
