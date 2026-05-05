@@ -212,6 +212,17 @@ html,body{height:100%;font-family:'Noto Sans JP',sans-serif;background:var(--bg)
 }
 .round-num-btn.active{border-color:#ffd700;background:rgba(255,215,0,.15);color:#ffd700}
 .round-num-btn:active{transform:scale(.95)}
+
+/* エクスポート/インポートボタン */
+.io-btn{
+  flex:1;padding:11px 8px;
+  border:1.5px solid rgba(255,255,255,.12);
+  border-radius:12px;background:var(--card);
+  color:#aaa;font-family:inherit;font-size:.82rem;font-weight:700;
+  cursor:pointer;text-align:center;transition:all .15s;
+  display:flex;align-items:center;justify-content:center;
+}
+.io-btn:active{opacity:.7}
 </style>
 </head>
 <body>
@@ -228,6 +239,13 @@ html,body{height:100%;font-family:'Noto Sans JP',sans-serif;background:var(--bg)
   <div class="scrollbody">
     <div id="test-list"></div>
     <button class="new-btn" onclick="goNewTest()">＋ 新しいテストを作る</button>
+    <div style="display:flex;gap:8px;margin-top:8px">
+      <button class="io-btn" onclick="exportData()">📤 データを書き出す</button>
+      <label class="io-btn" style="cursor:pointer;position:relative">
+        📥 データを読み込む
+        <input type="file" accept=".json" onchange="importData(event)" style="position:absolute;inset:0;opacity:0;cursor:pointer"/>
+      </label>
+    </div>
   </div>
 </div>
 
@@ -1049,6 +1067,65 @@ function showStats(){
 function resetStats(){
   if(!confirm('この成績をリセットしますか？'))return;
   DB.stats[currentTestId]={};saveDB();showToast('成績をリセットしました','#888');showStats();
+}
+
+function exportData(){
+  var data=JSON.stringify(DB,null,2);
+  var blob=new Blob([data],{type:'application/json'});
+  var url=URL.createObjectURL(blob);
+  var a=document.createElement('a');
+  var date=new Date().toLocaleDateString('ja-JP',{year:'2-digit',month:'2-digit',day:'2-digit'}).replace(/\//g,'');
+  a.href=url;
+  a.download='sensei-quiz-'+date+'.json';
+  a.click();
+  URL.revokeObjectURL(url);
+  showToast('データを書き出しました📤','#44cc88');
+}
+
+function importData(e){
+  var file=e.target.files[0];
+  if(!file)return;
+  var reader=new FileReader();
+  reader.onload=function(ev){
+    try{
+      var imported=JSON.parse(ev.target.result);
+      if(!imported.tests){showToast('ファイルが正しくありません','#ff5555');return;}
+      // 既存データとマージ
+      if(!imported.stats)imported.stats={};
+      var mergeCount=0;
+      Object.keys(imported.tests).forEach(function(id){
+        if(!DB.tests[id]){
+          DB.tests[id]=imported.tests[id];
+          mergeCount++;
+        } else {
+          // 既存テストがある場合は問題をマージ
+          var src=imported.tests[id].questions;
+          var dst=DB.tests[id].questions;
+          Object.keys(src).forEach(function(subj){
+            if(!dst[subj])dst[subj]={};
+            Object.keys(src[subj]).forEach(function(round){
+              if(!dst[subj][round]){
+                dst[subj][round]=src[subj][round];
+                mergeCount++;
+              }
+            });
+          });
+        }
+      });
+      // 統計もマージ
+      Object.keys(imported.stats||{}).forEach(function(testId){
+        if(!DB.stats[testId])DB.stats[testId]={};
+        Object.assign(DB.stats[testId],imported.stats[testId]);
+      });
+      saveDB();
+      renderHome();
+      showToast(mergeCount+'件のデータを読み込みました📥','#44cc88');
+    }catch(err){
+      showToast('読み込みに失敗しました：'+err.message,'#ff5555');
+    }
+    e.target.value='';
+  };
+  reader.readAsText(file);
 }
 
 function showToast(msg,color){const t=document.getElementById('toast');t.textContent=msg;t.style.background=color||'#44cc88';t.classList.add('show');clearTimeout(toastTimer);toastTimer=setTimeout(()=>t.classList.remove('show'),2800);}
