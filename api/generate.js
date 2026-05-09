@@ -101,7 +101,9 @@ export default async function handler(req, res) {
 - kanji_writeのchoicesは空配列[]
 - kanji_read・4choiceのchoicesは必ず4つ
 - 3〜8問作る
-- 小学3年生レベルの問題`;
+- 小学3年生レベルの問題
+- 印刷された文字だけを使う（手書きの回答・赤ペンの丸やバツは無視する）
+- 問題文が不完全・意味不明な場合は作らない`;
 
     } else {
       const NAMES = { shakai: '社会', rika: '理科' };
