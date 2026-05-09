@@ -59,6 +59,7 @@ export default async function handler(req, res) {
     } catch (e) {}
 
     const subj = subjects[0];
+    const qType = req.body.qType || 'auto';
     let prompt = '';
 
     if (subj === 'sansu') {
@@ -72,7 +73,51 @@ export default async function handler(req, res) {
 注意：typeは必ず"calc"、aは数字のみ。余りがある割り算の場合は a を「5あまり2」の形式にする`;
 
     } else if (subj === 'kokugo') {
-      prompt = `あなたは小学3年生向けの国語問題を作る先生です。
+      if (qType === 'kanji') {
+        // 漢字のみ
+        prompt = `あなたは小学3年生向けの国語問題を作る先生です。
+この画像から漢字の問題だけを作ってください。
+
+【漢字書き取り問題（type:"kanji_write"）】
+画像に出てくる漢字を全て取り上げ、読み仮名を示して書き取り問題を作る。
+例：{"q":"「やま」を漢字で書こう","a":"山","choices":[],"type":"kanji_write","explain":"山は「やま」と読みます"}
+
+【漢字読み方問題（type:"kanji_read"）】
+漢字の読み方を4択で問う。
+例：{"q":"「山」の読み方は？","a":"やま","choices":["やま","かわ","うみ","そら"],"type":"kanji_read","explain":"山は「やま」と読みます"}
+
+JSONのみで返してください。
+形式：{"questions":[{"q":"問題文","a":"正解","choices":[],"subject":"kokugo","type":"kanji_write","explain":"解説"}]}
+注意：kanji_writeのchoicesは[]、kanji_readのchoicesは4つ、印刷文字のみ使用`;
+
+      } else if (qType === 'word') {
+        // 言葉・文法のみ
+        prompt = `あなたは小学3年生向けの国語問題を作る先生です。
+この画像から言葉・文法の問題だけを作ってください。漢字の書き取り問題は作らないでください。
+
+問題タイプは type:"4choice" または type:"kanji_read" を使ってください。
+全て4択形式です。
+
+JSONのみで返してください。
+形式：{"questions":[{"q":"問題文","a":"正解","choices":["正解","不正解1","不正解2","不正解3"],"subject":"kokugo","type":"4choice","explain":"解説"}]}
+注意：choicesは必ず4つ、印刷文字のみ使用、手書き回答・赤丸バツは無視、意味不明な問題は作らない`;
+
+      } else if (qType === 'mixed') {
+        // 漢字＋言葉（自動判定より明示的に両方）
+        prompt = `あなたは小学3年生向けの国語問題を作る先生です。
+この画像から漢字問題と言葉・文法問題の両方を作ってください。
+
+漢字書き取り → type:"kanji_write"、choices:[]
+漢字読み方 → type:"kanji_read"、choices:4つ
+言葉・文法 → type:"4choice"、choices:4つ
+
+JSONのみで返してください。
+形式：{"questions":[{"q":"問題文","a":"正解","choices":[],"subject":"kokugo","type":"kanji_write","explain":"解説"}]}
+注意：印刷文字のみ使用、手書き回答・赤丸バツは無視、意味不明な問題は作らない`;
+
+      } else {
+        // 自動判定
+        prompt = `あなたは小学3年生向けの国語問題を作る先生です。
 この画像（教科書・プリント）を注意深く見て、内容に応じて適切な問題を作ってください。
 
 【画像の内容を判断して問題タイプを選ぶ】
@@ -104,6 +149,7 @@ export default async function handler(req, res) {
 - 小学3年生レベルの問題
 - 印刷された文字だけを使う（手書きの回答・赤ペンの丸やバツは無視する）
 - 問題文が不完全・意味不明な場合は作らない`;
+      }
 
     } else {
       const NAMES = { shakai: '社会', rika: '理科' };
