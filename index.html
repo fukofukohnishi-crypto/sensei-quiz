@@ -1336,7 +1336,7 @@ async function callAPI(b64,subjects){
   }
   var r=await fetch('/api/generate',{method:'POST',headers:{'Content-Type':'application/json'},body:bodyStr});
   var d=await r.json();
-  if(!r.ok)throw new Error((d.error||'API error').slice(0,100));
+  if(!r.ok)throw new Error(JSON.stringify(d).slice(0,200));
   return d.questions||[];
 }
 function addLog(el,msg,type){const d=document.createElement('div');d.className='log-'+type;d.textContent=msg;el.appendChild(d);el.scrollTop=el.scrollHeight;}
