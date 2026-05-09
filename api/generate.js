@@ -28,7 +28,7 @@ export default async function handler(req, res) {
         },
         body: JSON.stringify({
           model: 'claude-sonnet-4-20250514',
-          max_tokens: 100,
+          max_tokens: 200,
           messages: [{
             role: 'user',
             content: [
@@ -73,29 +73,34 @@ export default async function handler(req, res) {
 
     } else if (subj === 'kokugo') {
       prompt = `あなたは小学3年生向けの国語問題を作る先生です。
-この画像（教科書・プリント）を注意深く見て、2ステップで問題を作ってください。
+この画像（教科書・プリント）を注意深く見て、内容に応じて適切な問題を作ってください。
 
-【ステップ1：漢字の書き取り問題】
-画像に登場する漢字を全て書き出してください。
-その漢字1つ1つについて、読み仮名を示して「書き取り問題」を作ってください。
-例：「山」→ {"q":"「やま」を漢字で書こう","a":"山","choices":[],"subject":"kokugo","type":"kanji_write","explain":"山は訓読みで「やま」と読みます"}
-漢字が10個あれば10問作ってください。漢字は必ず全て取り上げてください。
+【画像の内容を判断して問題タイプを選ぶ】
 
-【ステップ2：言葉・読み問題】
-画像の内容から、言葉の意味・使い方・読み方の4択問題を2〜4問作ってください。
-例：{"q":"「美しい」の読み方は？","a":"うつくしい","choices":["うつくしい","たのしい","やさしい","かなしい"],"subject":"kokugo","type":"kanji_read","explain":"美しいは「うつくしい」と読みます"}
+■ 画像に漢字の書き取り練習・漢字ドリルがある場合：
+→ 漢字書き取り問題（type:"kanji_write"）を多く作る
+→ 例：{"q":"「やま」を漢字で書こう","a":"山","choices":[],"type":"kanji_write","explain":"山は訓読みで「やま」"}
+
+■ 画像に漢字の読み方問題がある場合：
+→ 読み方4択問題（type:"kanji_read"）を作る
+→ 例：{"q":"「山」の読み方は？","a":"やま","choices":["やま","かわ","うみ","そら"],"type":"kanji_read","explain":"山は「やま」と読みます"}
+
+■ 画像に文法・主語述語・言葉の意味・文章読解問題がある場合：
+→ 4択問題（type:"4choice"）を作る
+→ 例：{"q":"「きりが晴れる」の述語はどれ？","a":"晴れる","choices":["晴れる","きり","が","晴"],"type":"4choice","explain":"述語は動詞や形容詞です"}
 
 必ずJSONのみで返してください。説明文・マークダウン不要。
 形式：
 {"questions":[
-  {"q":"問題文","a":"正解","choices":[],"subject":"kokugo","type":"kanji_write","explain":"解説"},
-  {"q":"問題文","a":"正解","choices":["正解","不正解1","不正解2","不正解3"],"subject":"kokugo","type":"kanji_read","explain":"解説"}
+  {"q":"問題文","a":"正解","choices":["正解","不正解1","不正解2","不正解3"],"subject":"kokugo","type":"4choice","explain":"解説"},
+  {"q":"問題文","a":"正解","choices":[],"subject":"kokugo","type":"kanji_write","explain":"解説"}
 ]}
 
 重要：
-- kanji_write問題を必ず作る（画像の漢字を全て網羅）
+- 画像の内容に合ったtypeを選ぶ（文法問題に kanji_write は使わない）
 - kanji_writeのchoicesは空配列[]
-- kanji_read/4choiceのchoicesは必ず4つ
+- kanji_read・4choiceのchoicesは必ず4つ
+- 3〜8問作る
 - 小学3年生レベルの問題`;
 
     } else {
@@ -130,7 +135,7 @@ JSONのみで返してください。
 
     if (!response.ok) {
       const errText = await response.text();
-      return res.status(response.status).json({ error: `Claude API error: ${errText.slice(0, 200)}` });
+      return res.status(response.status).json({ error: `Claude API error: ${errText.slice(0, 500)}` });
     }
 
     const data = await response.json();
