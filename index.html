@@ -228,6 +228,17 @@ html,body{height:100%;font-family:'Noto Sans JP',sans-serif;background:var(--bg)
 #sansu-input:focus{border-color:#ffaa44}
 /* Canvas */
 #kanji-canvas{cursor:crosshair}
+
+.type-sel-btn{
+  padding:11px 6px;border-radius:11px;
+  border:2px solid rgba(255,255,255,.1);
+  background:var(--card);color:#aaa;
+  font-family:inherit;font-size:.82rem;font-weight:700;
+  cursor:pointer;text-align:center;transition:all .15s;
+}
+.type-sel-btn.selected{
+  border-color:#ffd700;background:rgba(255,215,0,.15);color:#ffd700;
+}
 </style>
 </head>
 <body>
@@ -288,6 +299,15 @@ html,body{height:100%;font-family:'Noto Sans JP',sans-serif;background:var(--bg)
     <div id="ap-chips" style="margin-bottom:14px"></div>
     <span class="lbl">回（第N回）を選ぶ</span>
     <div id="ap-round-btns" style="display:grid;grid-template-columns:repeat(5,1fr);gap:6px;margin-bottom:14px"></div>
+    <div id="ap-type-select" style="display:none;margin-bottom:14px">
+      <span class="lbl">問題の種類を選ぶ</span>
+      <div style="display:grid;grid-template-columns:1fr 1fr;gap:8px;margin-top:6px">
+        <button class="type-sel-btn" id="type-btn-auto" onclick="selectQType('auto',this)">🤖 自動判定</button>
+        <button class="type-sel-btn" id="type-btn-kanji" onclick="selectQType('kanji',this)">📝 漢字のみ</button>
+        <button class="type-sel-btn" id="type-btn-word" onclick="selectQType('word',this)">📚 言葉・文法のみ</button>
+        <button class="type-sel-btn" id="type-btn-mixed" onclick="selectQType('mixed',this)">📖 漢字＋言葉</button>
+      </div>
+    </div>
     <span class="lbl">写真（最大20枚）</span>
     <label class="upl" id="ap-upl" style="display:block">
       <input type="file" accept="image/*" multiple onchange="onPhotos(event,true)" style="position:absolute;inset:0;width:100%;height:100%;opacity:0;cursor:pointer"/>
@@ -784,17 +804,9 @@ function goAddPhotosSubj(subj,round){
   }
   apSelectedQType='auto';
   // ボタンをリセット
-  document.querySelectorAll('.type-sel-btn').forEach(function(b){
-    b.style.borderColor='rgba(255,255,255,.1)';
-    b.style.background='var(--card)';
-    b.style.color='#aaa';
-  });
+  document.querySelectorAll('.type-sel-btn').forEach(function(b){b.classList.remove('selected');});
   var autoBtn=document.getElementById('type-btn-auto');
-  if(autoBtn){
-    autoBtn.style.borderColor='#ffd700';
-    autoBtn.style.background='rgba(255,215,0,.15)';
-    autoBtn.style.color='#ffd700';
-  }
+  if(autoBtn)autoBtn.classList.add('selected');
   showScreen('addphotos');
 }
 
@@ -819,14 +831,8 @@ function clearRound(subj,round){
 
 function selectQType(type, btn){
   apSelectedQType=type;
-  document.querySelectorAll('.type-sel-btn').forEach(function(b){
-    b.style.borderColor='rgba(255,255,255,.1)';
-    b.style.background='var(--card)';
-    b.style.color='#aaa';
-  });
-  btn.style.borderColor='#ffd700';
-  btn.style.background='rgba(255,215,0,.15)';
-  btn.style.color='#ffd700';
+  document.querySelectorAll('.type-sel-btn').forEach(function(b){b.classList.remove('selected');});
+  btn.classList.add('selected');
 }
 
 function buildRoundBtns(subj){
