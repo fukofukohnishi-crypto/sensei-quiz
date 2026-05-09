@@ -112,7 +112,7 @@ html,body{height:100%;font-family:'Noto Sans JP',sans-serif;background:var(--bg)
 .qz-q-tag{display:none}
 .qz-q-num{font-size:.7rem;font-weight:700;color:var(--muted);margin-bottom:6px}
 .qz-q-txt{font-size:1.35rem;font-weight:900;line-height:1.6;color:white}
-.qz-bottom{flex:1;display:flex;flex-direction:column;padding:0 11px 11px;min-height:0;overflow:hidden}
+.qz-bottom{flex:1;display:flex;flex-direction:column;padding:0 11px 11px;min-height:0;overflow-y:auto;overflow-x:hidden}
 .qz-choices{display:grid;grid-template-columns:1fr 1fr;gap:7px;margin-bottom:7px;flex:1}
 .qz-cbtn{background:var(--card2);border:2px solid rgba(255,255,255,.08);border-radius:13px;color:var(--text);font-family:inherit;font-size:1.1rem;font-weight:700;cursor:pointer;text-align:center;display:flex;align-items:center;justify-content:center;padding:4px 7px;line-height:1.35;transition:all .15s;width:100%;height:100%}
 .qz-cbtn:active:not(:disabled){transform:scale(.96)}
@@ -367,7 +367,7 @@ html,body{height:100%;font-family:'Noto Sans JP',sans-serif;background:var(--bg)
     <div class="qz-choices" id="choices"></div>
 
     <!-- 国語：漢字書き取りフラッシュカード -->
-    <div id="kanji-write-area" style="display:none;margin-bottom:8px">
+    <div id="kanji-write-area" style="display:none;margin-bottom:8px;flex-shrink:0">
       <div style="background:var(--card);border-radius:16px;padding:18px;text-align:center;border:2px solid rgba(102,153,255,.3)">
         <div style="font-size:.75rem;color:#6699ff;font-weight:700;margin-bottom:6px;letter-spacing:1px">✏️ ノートに書いてみよう！</div>
         <div style="font-size:2.2rem;font-weight:900;color:white;margin-bottom:6px" id="kanji-write-hint"></div>
@@ -426,7 +426,7 @@ html,body{height:100%;font-family:'Noto Sans JP',sans-serif;background:var(--bg)
         <div class="qz-fb-explain" id="fb-explain"></div>
       </div>
     </div>
-    <button class="qz-next" id="nxt-btn" onclick="nextQ()">次の問題へ →</button>
+    <button class="qz-next" id="nxt-btn" onclick="nextQ()" style="flex-shrink:0">次の問題へ →</button>
   </div>
 </div>
 
