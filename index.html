@@ -1453,7 +1453,7 @@ async function generateAll(){
     const fname=ntPhotos[i].name.slice(0,20);
     try{
       const b64=await fileToB64(ntPhotos[i]);
-      const qs=await callAPI(b64,[subj]);
+      const qs=await callAPI(b64,[subj],apSelectedQType);
       qs.forEach(q=>t.questions[subj][round].push({q:q.q,a:q.a,choices:q.choices,explain:q.explain||''}));
       total+=qs.length;
       addLog(logEl,'✅ '+fname+': '+qs.length+'問生成','ok');
