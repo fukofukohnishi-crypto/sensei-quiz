@@ -69,7 +69,7 @@ export default async function handler(req, res) {
 形式：
 {"questions":[{"q":"問題文（例：34 × 12 ＝）","a":"408","choices":[],"subject":"sansu","type":"calc","explain":"解き方の説明"}]}
 
-注意：typeは必ず"calc"、aは数字のみ`;
+注意：typeは必ず"calc"、aは数字のみ。余りがある割り算の場合は a を「5あまり2」の形式にする`;
 
     } else if (subj === 'kokugo') {
       prompt = `あなたは小学3年生向けの国語問題を作る先生です。
