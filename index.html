@@ -1455,7 +1455,12 @@ async function generateAll(){
     try{
       const b64=await fileToB64(ntPhotos[i]);
       const qs=await callAPI(b64,[subj],apSelectedQType);
-      qs.forEach(q=>t.questions[subj][round].push({q:q.q,a:q.a,choices:q.choices,explain:q.explain||''}));
+      var kanjiC=0,wordC=0;
+      qs.forEach(function(q){
+        t.questions[subj][round].push({q:q.q,a:q.a,choices:q.choices||[],type:q.type||'4choice',explain:q.explain||''});
+        if(q.type==='kanji_write'||q.type==='kanji_read')kanjiC++;
+        else wordC++;
+      });
       total+=qs.length;
       addLog(logEl,'✅ '+fname+': '+qs.length+'問生成','ok');
     }catch(err){addLog(logEl,'❌ '+fname+': '+err.message.slice(0,60),'err');}
