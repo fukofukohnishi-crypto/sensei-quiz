@@ -1304,22 +1304,40 @@ function onPhotos(e,isAp){
   if(files.length>8){const d=document.createElement('div');d.className='thumb-more';d.textContent='+' +(files.length-8);te.appendChild(d);}
 }
 function fileToB64(file){
-  return new Promise((res,rej)=>{
-    const img=new Image(),url=URL.createObjectURL(file);
-    img.onload=()=>{
-      const c=document.createElement('canvas'),max=1200;
-      let w=img.width,h=img.height;
-      if(w>max||h>max){if(w>h){h=Math.round(h*max/w);w=max;}else{w=Math.round(w*max/h);h=max;}}
-      c.width=w;c.height=h;c.getContext('2d').drawImage(img,0,0,w,h);
-      URL.revokeObjectURL(url);res(c.toDataURL('image/jpeg',0.85).split(',')[1]);
+  return new Promise(function(res,rej){
+    var img=new Image();
+    var url=URL.createObjectURL(file);
+    img.onload=function(){
+      var c=document.createElement('canvas');
+      var max=1000;
+      var w=img.width,h=img.height;
+      if(w>max||h>max){
+        if(w>h){h=Math.round(h*max/w);w=max;}
+        else{w=Math.round(w*max/h);h=max;}
+      }
+      c.width=w;c.height=h;
+      c.getContext('2d').drawImage(img,0,0,w,h);
+      URL.revokeObjectURL(url);
+      var b64=c.toDataURL('image/jpeg',0.75).split(',')[1];
+      res(b64);
     };
-    img.onerror=()=>{URL.revokeObjectURL(url);const r=new FileReader();r.onload=e=>res(e.target.result.split(',')[1]);r.onerror=()=>rej(new Error('読み込み失敗'));r.readAsDataURL(file);};
+    img.onerror=function(){
+      URL.revokeObjectURL(url);
+      rej(new Error('画像の読み込みに失敗しました'));
+    };
     img.src=url;
   });
 }
 async function callAPI(b64,subjects){
-  const r=await fetch('/api/generate',{method:'POST',headers:{'Content-Type':'application/json'},body:JSON.stringify({imageBase64:b64,subjects})});
-  const d=await r.json();if(!r.ok)throw new Error(d.error||'API error');return d.questions||[];
+  var bodyStr=JSON.stringify({imageBase64:b64,subjects:subjects});
+  var sizeMB=(bodyStr.length/1024/1024).toFixed(2);
+  if(bodyStr.length>4*1024*1024){
+    throw new Error('画像サイズが大きすぎます('+sizeMB+'MB)。写真を減らしてください');
+  }
+  var r=await fetch('/api/generate',{method:'POST',headers:{'Content-Type':'application/json'},body:bodyStr});
+  var d=await r.json();
+  if(!r.ok)throw new Error((d.error||'API error').slice(0,100));
+  return d.questions||[];
 }
 function addLog(el,msg,type){const d=document.createElement('div');d.className='log-'+type;d.textContent=msg;el.appendChild(d);el.scrollTop=el.scrollHeight;}
 
