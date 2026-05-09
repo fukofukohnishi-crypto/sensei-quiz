@@ -649,56 +649,61 @@ function openSubject(subj){
   var list=document.getElementById('rs-list');
   list.innerHTML='';
 
-  // 国語の場合：言葉問題と漢字を分けて表示
   if(subj==='kokugo'){
-    // 言葉問題のみの全問数
-    var wordTotal=0;
-    var kanjiTotal=0;
+    var wordTotal=0,kanjiTotal=0,allTotal=0;
     roundNums.forEach(function(r){
-      var qs=rounds[r]||[];
-      qs.forEach(function(q){
+      (rounds[r]||[]).forEach(function(q){
         var tp=q.type||'4choice';
-        if(tp==='kanji_write'||tp==='kanji_read'||tp==='kanji')kanjiTotal++;
+        allTotal++;
+        if(tp==='kanji_write')kanjiTotal++;
         else wordTotal++;
       });
     });
 
-    // 全回ミックス（言葉のみ）
-    if(roundNums.length>1&&wordTotal>0){
-      var mixDiv=document.createElement('div');
-      mixDiv.className='round-card mix';
-      mixDiv.innerHTML='<div><div class="round-label mix">⚡ 全回ミックス（言葉）</div><div class="round-count">言葉問題 全'+wordTotal+'問からランダム10問</div></div><div class="round-arrow">›</div>';
-      mixDiv.onclick=function(){startQuiz('mix_word');};
-      list.appendChild(mixDiv);
+    // 全回ミックス（全部）
+    if(allTotal>0&&roundNums.length>1){
+      var d=document.createElement('div');
+      d.className='round-card mix';
+      d.innerHTML='<div><div class="round-label mix">⚡ 全回ミックス</div><div class="round-count">全'+allTotal+'問からランダム10問</div></div><div class="round-arrow">›</div>';
+      d.onclick=function(){startQuiz('mix_all');};
+      list.appendChild(d);
     }
 
-    // 漢字ミックス（全回の漢字読み＋書き取り）
+    // 言葉ミックス（kanji_write以外）
+    if(wordTotal>0){
+      var d=document.createElement('div');
+      d.className='round-card mix';
+      d.style.cssText='border-color:rgba(102,153,255,.5);background:rgba(102,153,255,.06)';
+      d.innerHTML='<div><div class="round-label" style="color:#6699ff">📚 言葉ミックス</div><div class="round-count">言葉・読み 全'+wordTotal+'問からランダム10問</div></div><div class="round-arrow" style="color:#6699ff">›</div>';
+      d.onclick=function(){startQuiz('mix_word');};
+      list.appendChild(d);
+    }
+
+    // 漢字ミックス（kanji_writeのみ）
     if(kanjiTotal>0){
-      var kanjiDiv=document.createElement('div');
-      kanjiDiv.className='round-card mix';
-      kanjiDiv.style.borderColor='rgba(102,153,255,.5)';
-      kanjiDiv.style.background='rgba(102,153,255,.06)';
-      kanjiDiv.innerHTML='<div><div class="round-label" style="color:#6699ff">📝 漢字ミックス（第1〜'+roundNums[roundNums.length-1]+'回）</div><div class="round-count">漢字 全'+kanjiTotal+'問からランダム10問</div></div><div class="round-arrow" style="color:#6699ff">›</div>';
-      kanjiDiv.onclick=function(){startQuiz('mix_kanji');};
-      list.appendChild(kanjiDiv);
+      var d=document.createElement('div');
+      d.className='round-card mix';
+      d.style.cssText='border-color:rgba(255,170,68,.5);background:rgba(255,170,68,.06)';
+      d.innerHTML='<div><div class="round-label" style="color:#ffaa44">📝 漢字ミックス</div><div class="round-count">書き取り 全'+kanjiTotal+'問からランダム10問</div></div><div class="round-arrow" style="color:#ffaa44">›</div>';
+      d.onclick=function(){startQuiz('mix_kanji');};
+      list.appendChild(d);
     }
 
-    // 各回
+    // 各回（全問題）
     roundNums.forEach(function(r){
       var qs=rounds[r]||[];
-      var wordQs=qs.filter(function(q){var tp=q.type||'4choice';return tp==='4choice'||tp==='';});
       var seenCount=0;
-      wordQs.forEach(function(_,i){
-        var key=subj+'_r'+r+'_word_'+i;
+      qs.forEach(function(q,i){
+        var key=subj+'_r'+r+'_'+i;
         if((testStats[key]||{}).seen>0)seenCount++;
       });
-      var pct=wordQs.length>0?Math.round(seenCount/wordQs.length*100):0;
+      var pct=qs.length>0?Math.round(seenCount/qs.length*100):0;
       var card=document.createElement('div');
       card.className='round-card';
       card.style.cursor='pointer';
       var barDiv='<div class="round-bar-wrap" style="margin-top:6px"><div class="round-bar-fill" style="width:'+pct+'%;background:'+cfg.color+'"></div></div>';
-      card.innerHTML='<div style="flex:1"><div class="round-label">第'+r+'回（言葉）</div>'
-        +'<div class="round-count">'+wordQs.length+'問 ／ 挑戦済み '+seenCount+'問</div>'+barDiv+'</div>'
+      card.innerHTML='<div style="flex:1"><div class="round-label">第'+r+'回</div>'
+        +'<div class="round-count">'+qs.length+'問 ／ 挑戦済み '+seenCount+'問</div>'+barDiv+'</div>'
         +'<div style="display:flex;gap:6px;align-items:center">'
         +'<button class="ap-add-btn" style="background:rgba(255,215,0,.15);border:1px solid rgba(255,215,0,.4);border-radius:8px;color:#ffd700;font-size:.75rem;font-weight:700;padding:5px 10px;cursor:pointer;white-space:nowrap">📷 追加</button>'
         +'<button class="ap-clear-btn" style="background:rgba(255,80,80,.12);border:1px solid rgba(255,80,80,.3);border-radius:8px;color:#ff8888;font-size:.75rem;font-weight:700;padding:5px 10px;cursor:pointer;white-space:nowrap">🗑 クリア</button>'
@@ -710,19 +715,19 @@ function openSubject(subj){
     });
 
   } else {
-    // 理科・社会・算数：従来通り
+    // 理科・社会・算数
     var totalQ=Object.values(rounds).reduce(function(s,qs){return s+qs.length;},0);
     if(roundNums.length>1){
-      var mixDiv=document.createElement('div');
-      mixDiv.className='round-card mix';
-      mixDiv.innerHTML='<div><div class="round-label mix">⚡ 全回ミックス</div><div class="round-count">全'+totalQ+'問からランダム10問</div></div><div class="round-arrow">›</div>';
-      mixDiv.onclick=function(){startQuiz('mix');};
-      list.appendChild(mixDiv);
+      var d=document.createElement('div');
+      d.className='round-card mix';
+      d.innerHTML='<div><div class="round-label mix">⚡ 全回ミックス</div><div class="round-count">全'+totalQ+'問からランダム10問</div></div><div class="round-arrow">›</div>';
+      d.onclick=function(){startQuiz('mix');};
+      list.appendChild(d);
     }
     roundNums.forEach(function(r){
       var qs=rounds[r]||[];
       var seenCount=0;
-      qs.forEach(function(_,i){
+      qs.forEach(function(q,i){
         var key=subj+'_r'+r+'_'+i;
         if((testStats[key]||{}).seen>0)seenCount++;
       });
@@ -751,7 +756,6 @@ function openSubject(subj){
   addDiv.innerHTML='<div style="text-align:center;width:100%"><div style="font-size:1.4rem;margin-bottom:4px">📷</div><div style="font-size:.9rem;font-weight:700;color:#ffd700">新しい回を追加する</div><div style="font-size:.72rem;color:var(--muted);margin-top:2px">写真をアップして問題を自動生成</div></div>';
   addDiv.onclick=function(){goAddPhotosSubj(subj,null);};
   list.appendChild(addDiv);
-
   showScreen('roundselect');
 }
 
@@ -897,11 +901,8 @@ function startQuiz(round){
     var qs=rounds[round]||[];
     qs.forEach(function(q,i){
       if(currentSubject==='kokugo'){
-        // 国語の各回は言葉問題のみ（4choiceのみ）
-        var tp=q.type||'4choice';
-        if(tp==='4choice'||tp===''){
-          allQs.push(Object.assign({},q,{_r:round,_i:i}));
-        }
+        // 国語の各回は全問題
+        allQs.push(Object.assign({},q,{_r:round,_i:i}));
       } else {
         allQs.push(Object.assign({},q,{_r:round,_i:i}));
       }
@@ -910,8 +911,8 @@ function startQuiz(round){
 
   if(!allQs.length){showToast('問題がないよ！📷 追加してね','#ffaa44');return;}
 
-  var roundLabel=round==='mix'?'全回ミックス'
-    :round==='mix_word'?'全回ミックス（言葉）'
+  var roundLabel=round==='mix'||round==='mix_all'?'全回ミックス'
+    :round==='mix_word'?'言葉ミックス'
     :round==='mix_kanji'?'漢字ミックス'
     :'第'+round+'回';
 
