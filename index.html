@@ -777,6 +777,24 @@ function goAddPhotosSubj(subj,round){
   // 回ボタン
   buildRoundBtns(subj);
 
+  // 国語の時だけ種類選択を表示
+  var typeSelect=document.getElementById('ap-type-select');
+  if(typeSelect){
+    typeSelect.style.display=(subj==='kokugo')?'block':'none';
+  }
+  apSelectedQType='auto';
+  // ボタンをリセット
+  document.querySelectorAll('.type-sel-btn').forEach(function(b){
+    b.style.borderColor='rgba(255,255,255,.1)';
+    b.style.background='var(--card)';
+    b.style.color='#aaa';
+  });
+  var autoBtn=document.getElementById('type-btn-auto');
+  if(autoBtn){
+    autoBtn.style.borderColor='#ffd700';
+    autoBtn.style.background='rgba(255,215,0,.15)';
+    autoBtn.style.color='#ffd700';
+  }
   showScreen('addphotos');
 }
 
@@ -797,6 +815,18 @@ function clearRound(subj,round){
     showToast('第'+round+'回の問題をクリアしました','#888');
     openSubject(subj);// 画面を更新
   }
+}
+
+function selectQType(type, btn){
+  apSelectedQType=type;
+  document.querySelectorAll('.type-sel-btn').forEach(function(b){
+    b.style.borderColor='rgba(255,255,255,.1)';
+    b.style.background='var(--card)';
+    b.style.color='#aaa';
+  });
+  btn.style.borderColor='#ffd700';
+  btn.style.background='rgba(255,215,0,.15)';
+  btn.style.color='#ffd700';
 }
 
 function buildRoundBtns(subj){
@@ -1383,8 +1413,8 @@ function fileToB64(file){
     img.src=url;
   });
 }
-async function callAPI(b64,subjects){
-  var r=await fetch('/api/generate',{method:'POST',headers:{'Content-Type':'application/json'},body:JSON.stringify({imageBase64:b64,subjects:subjects})});
+async function callAPI(b64,subjects,qType){
+  var r=await fetch('/api/generate',{method:'POST',headers:{'Content-Type':'application/json'},body:JSON.stringify({imageBase64:b64,subjects:subjects,qType:qType||'auto'})});
   var d=await r.json();
   if(!r.ok)throw new Error((d.error||'API error').slice(0,100));
   return d.questions||[];
@@ -1449,7 +1479,7 @@ async function apGenerateAll(){
     var fname=apPhotos[i].name.slice(0,20);
     try{
       var b64=await fileToB64(apPhotos[i]);
-      var qs=await callAPI(b64,[subj]);
+      var qs=await callAPI(b64,[subj],apSelectedQType);
       var kanjiCount=0,wordCount=0;
       for(var j=0;j<qs.length;j++){
         var q=qs[j];
