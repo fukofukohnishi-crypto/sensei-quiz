@@ -388,12 +388,29 @@ html,body{height:100%;font-family:'Noto Sans JP',sans-serif;background:var(--bg)
 
     <!-- 算数：テキスト入力 -->
     <div id="sansu-input-area" style="display:none;margin-bottom:8px">
-      <div style="display:flex;gap:8px;align-items:center">
+      <!-- 通常の答え入力 -->
+      <div id="sansu-normal-input" style="display:flex;gap:8px;align-items:center">
         <input id="sansu-input" type="number" inputmode="numeric"
           style="flex:1;background:var(--card2);border:2px solid rgba(255,255,255,.15);border-radius:13px;padding:16px;color:white;font-family:inherit;font-size:1.8rem;font-weight:900;text-align:center;outline:none"
           placeholder="答えを入力"/>
         <button onclick="checkSansu()" id="sansu-check-btn"
           style="padding:16px 20px;background:linear-gradient(135deg,#ffaa44,#cc7700);border:none;border-radius:13px;color:white;font-family:inherit;font-size:1rem;font-weight:900;cursor:pointer;white-space:nowrap">
+          答え合わせ
+        </button>
+      </div>
+      <!-- あまりあり入力 -->
+      <div id="sansu-amari-input" style="display:none">
+        <div style="display:flex;gap:8px;align-items:center;margin-bottom:6px">
+          <input id="sansu-input-main" type="number" inputmode="numeric"
+            style="flex:1;background:var(--card2);border:2px solid rgba(255,255,255,.15);border-radius:13px;padding:14px;color:white;font-family:inherit;font-size:1.6rem;font-weight:900;text-align:center;outline:none"
+            placeholder="商"/>
+          <div style="color:#aaa;font-size:1rem;font-weight:700;white-space:nowrap">あまり</div>
+          <input id="sansu-input-amari" type="number" inputmode="numeric"
+            style="flex:1;background:var(--card2);border:2px solid rgba(255,255,255,.15);border-radius:13px;padding:14px;color:white;font-family:inherit;font-size:1.6rem;font-weight:900;text-align:center;outline:none"
+            placeholder="余り"/>
+        </div>
+        <button onclick="checkSansu()" id="sansu-check-btn-amari"
+          style="width:100%;padding:14px;background:linear-gradient(135deg,#ffaa44,#cc7700);border:none;border-radius:13px;color:white;font-family:inherit;font-size:1rem;font-weight:900;cursor:pointer">
           答え合わせ
         </button>
       </div>
@@ -947,10 +964,24 @@ function renderQ(){
   document.getElementById('kanji-write-area').style.display=isKanjiWrite?'block':'none';
 
   if(isSansu){
-    var inp=document.getElementById('sansu-input');
-    inp.value='';inp.disabled=false;inp.style.borderColor='rgba(255,255,255,.15)';
-    document.getElementById('sansu-check-btn').disabled=false;
-    setTimeout(function(){inp.focus();},300);
+    // あまりが答えに含まれるか判定
+    var ans=String(questions[qIdx].a||'');
+    var hasAmari=ans.indexOf('あまり')>-1||ans.indexOf('余り')>-1||ans.indexOf('r')>-1;
+    document.getElementById('sansu-normal-input').style.display=hasAmari?'none':'flex';
+    document.getElementById('sansu-amari-input').style.display=hasAmari?'block':'none';
+    if(hasAmari){
+      var ainp=document.getElementById('sansu-input-main');
+      var binp=document.getElementById('sansu-input-amari');
+      ainp.value='';ainp.disabled=false;ainp.style.borderColor='rgba(255,255,255,.15)';
+      binp.value='';binp.disabled=false;binp.style.borderColor='rgba(255,255,255,.15)';
+      document.getElementById('sansu-check-btn-amari').disabled=false;
+      setTimeout(function(){ainp.focus();},300);
+    } else {
+      var inp=document.getElementById('sansu-input');
+      inp.value='';inp.disabled=false;inp.style.borderColor='rgba(255,255,255,.15)';
+      document.getElementById('sansu-check-btn').disabled=false;
+      setTimeout(function(){inp.focus();},300);
+    }
   } else if(isKanjiWrite){
     // 書き取りフラッシュカードリセット
     var hint=q.q.replace(/を漢字で書こう|を漢字でかこう|「|」/g,'').replace(/.*[「（(](.+)[」）)].*/,'$1').trim();
@@ -995,19 +1026,43 @@ function kanjiSelfScore(isOk){
 function checkSansu(){
   if(answered)return;
   var q=questions[qIdx];
-  var inp=document.getElementById('sansu-input');
-  var val=inp.value.trim();
-  if(!val){showToast('答えを入力してね','#ffaa44');return;}
-  inp.disabled=true;
-  document.getElementById('sansu-check-btn').disabled=true;
   var correct_ans=String(q.a).trim();
-  var isOk=val===correct_ans||Number(val)===Number(correct_ans);
-  if(isOk){
-    inp.style.borderColor='#44cc88';
+  var hasAmari=correct_ans.indexOf('あまり')>-1||correct_ans.indexOf('余り')>-1;
+
+  if(hasAmari){
+    // あまりあり：2つの入力を結合して比較
+    var mainInp=document.getElementById('sansu-input-main');
+    var amariInp=document.getElementById('sansu-input-amari');
+    var mainVal=mainInp.value.trim();
+    var amariVal=amariInp.value.trim();
+    if(!mainVal||!amariVal){showToast('商とあまりを両方入力してね','#ffaa44');return;}
+    mainInp.disabled=true;amariInp.disabled=true;
+    document.getElementById('sansu-check-btn-amari').disabled=true;
+
+    // 正解から数字を抽出して比較
+    var correctParts=correct_ans.replace(/[あまり余り]/g,'|').split('|').filter(function(x){return x.trim()!=='';});
+    var correctMain=correctParts[0]?correctParts[0].trim():'';
+    var correctAmari=correctParts[1]?correctParts[1].trim():'';
+    var isOk=mainVal===correctMain&&amariVal===correctAmari;
+    if(isOk){
+      mainInp.style.borderColor='#44cc88';amariInp.style.borderColor='#44cc88';
+    } else {
+      if(mainVal!==correctMain)mainInp.style.borderColor='#ff5555';
+      if(amariVal!==correctAmari)amariInp.style.borderColor='#ff5555';
+    }
+    doAnswerResult(isOk,q.a,q.explain||'');
   } else {
-    inp.style.borderColor='#ff5555';
+    // 通常の答え
+    var inp=document.getElementById('sansu-input');
+    var val=inp.value.trim();
+    if(!val){showToast('答えを入力してね','#ffaa44');return;}
+    inp.disabled=true;
+    document.getElementById('sansu-check-btn').disabled=true;
+    var isOk=val===correct_ans||Number(val)===Number(correct_ans);
+    if(isOk){inp.style.borderColor='#44cc88';}
+    else{inp.style.borderColor='#ff5555';}
+    doAnswerResult(isOk,q.a,q.explain||'');
   }
-  doAnswerResult(isOk,q.a,q.explain||'');
 }
 
 // ── 国語Canvas ──
