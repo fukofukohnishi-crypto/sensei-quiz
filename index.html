@@ -657,7 +657,8 @@ function openSubject(subj){
     roundNums.forEach(function(r){
       var qs=rounds[r]||[];
       qs.forEach(function(q){
-        if(q.type==='kanji_write')kanjiTotal++;
+        var tp=q.type||'4choice';
+        if(tp==='kanji_write'||tp==='kanji_read'||tp==='kanji')kanjiTotal++;
         else wordTotal++;
       });
     });
@@ -685,7 +686,7 @@ function openSubject(subj){
     // 各回
     roundNums.forEach(function(r){
       var qs=rounds[r]||[];
-      var wordQs=qs.filter(function(q){var tp=q.type||'4choice';return tp!=='kanji_write';});
+      var wordQs=qs.filter(function(q){var tp=q.type||'4choice';return tp==='4choice'||tp==='';});
       var seenCount=0;
       wordQs.forEach(function(_,i){
         var key=subj+'_r'+r+'_word_'+i;
@@ -872,22 +873,21 @@ function startQuiz(round){
       });
     });
   } else if(round==='mix_word'){
-    // 国語：言葉問題（kanji_write以外は全部）
-    // typeなし・4choice・kanji_read は言葉側
+    // 国語：言葉問題のみ（4choice・typeなしのみ）
     Object.keys(rounds).forEach(function(r){
       (rounds[r]||[]).forEach(function(q,i){
         var tp=q.type||'4choice';
-        if(tp!=='kanji_write'){
+        if(tp==='4choice'||tp===''){
           allQs.push(Object.assign({},q,{_r:r,_i:i}));
         }
       });
     });
   } else if(round==='mix_kanji'){
-    // 国語：漢字書き取りのみ（kanji_writeのみ）
+    // 国語：漢字（kanji_write＋kanji_read）
     Object.keys(rounds).forEach(function(r){
       (rounds[r]||[]).forEach(function(q,i){
         var tp=q.type||'4choice';
-        if(tp==='kanji_write'){
+        if(tp==='kanji_write'||tp==='kanji_read'||tp==='kanji'){
           allQs.push(Object.assign({},q,{_r:r,_i:i}));
         }
       });
@@ -897,9 +897,9 @@ function startQuiz(round){
     var qs=rounds[round]||[];
     qs.forEach(function(q,i){
       if(currentSubject==='kokugo'){
-        // 国語の各回は言葉問題のみ（kanji_write以外）
+        // 国語の各回は言葉問題のみ（4choiceのみ）
         var tp=q.type||'4choice';
-        if(tp!=='kanji_write'){
+        if(tp==='4choice'||tp===''){
           allQs.push(Object.assign({},q,{_r:round,_i:i}));
         }
       } else {
