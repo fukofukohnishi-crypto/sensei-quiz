@@ -239,6 +239,15 @@ html,body{height:100%;font-family:'Noto Sans JP',sans-serif;background:var(--bg)
 .type-sel-btn.selected{
   border-color:#ffd700;background:rgba(255,215,0,.15);color:#ffd700;
 }
+
+.stats-subj-card{
+  background:var(--card);border:1.5px solid var(--border);
+  border-radius:16px;padding:14px 16px;
+  margin-bottom:10px;cursor:pointer;
+  transition:all .15s;
+}
+.stats-subj-card:active{opacity:.8}
+.stats-subj-top{display:flex;align-items:center;justify-content:space-between}
 </style>
 </head>
 <body>
@@ -1528,39 +1537,161 @@ async function apGenerateAll(){
 
 // ---- STATS ----
 function showStats(){
-  const t=DB.tests[currentTestId];if(!t)return;
-  const testStats=DB.stats[currentTestId]||{};
-  document.getElementById('stats-title').textContent='📊 '+t.name+' 成績表';
-  let totalSeen=0,totalOk=0,totalNg=0;
-  let html='';
-  SUBJ_ORDER.forEach(subj=>{
-    const rounds=t.questions[subj]||{};
-    const roundNums=Object.keys(rounds).map(Number).sort((a,b)=>a-b);
-    if(!roundNums.length)return;
-    const cfg=CHARS[subj];
-    html+='<div class="stats-subj-header"><div class="stats-subj-dot" style="background:'+cfg.color+'"></div><span style="color:'+cfg.color+'">'+cfg.subject+' — '+cfg.name+'</span></div>';
-    roundNums.forEach(r=>{
-      const qs=rounds[r]||[];
-      html+='<div style="font-size:.78rem;font-weight:700;color:var(--muted);margin:8px 0 4px">第'+r+'回（'+qs.length+'問）</div>';
-      qs.forEach((q,i)=>{
-        const key=subj+'_r'+r+'_'+i;
-        const st=testStats[key]||{correct:0,wrong:0,seen:0};
-        totalSeen+=st.seen;totalOk+=st.correct;totalNg+=st.wrong;
-        const tot=st.correct+st.wrong;
-        const okPct=tot>0?Math.round(st.correct/tot*100):0;
-        const ngPct=tot>0?100-okPct:0;
-        if(st.seen===0){
-          html+='<div class="stats-item"><div class="stats-q">'+q.q+'</div><div class="stats-unseen">まだ挑戦していない</div></div>';
-        }else{
-          html+='<div class="stats-item"><div class="stats-q">'+q.q+'</div><div class="stats-row"><div class="stats-bar-wrap"><div class="stats-bar-ok" style="width:'+okPct+'%"></div><div class="stats-bar-ng" style="width:'+ngPct+'%"></div></div><div class="stats-nums"><span class="stats-ok">✅'+st.correct+'</span><span class="stats-ng">❌'+st.wrong+'</span></div></div></div>';
-        }
+  var t=DB.tests[currentTestId];
+  if(!t)return;
+  var testStats=DB.stats[currentTestId]||{};
+  document.getElementById('stats-title').textContent='📊 '+t.name;
+
+  var totalOk=0,totalNg=0,totalSeen=0;
+  var body=document.getElementById('stats-body');
+  body.innerHTML='';
+
+  // サマリー計算
+  SUBJ_ORDER.forEach(function(subj){
+    var rounds=t.questions[subj]||{};
+    Object.keys(rounds).forEach(function(r){
+      (rounds[r]||[]).forEach(function(q,i){
+        var key=subj+'_r'+r+'_'+i;
+        var st=testStats[key]||{correct:0,wrong:0,seen:0};
+        totalOk+=st.correct;totalNg+=st.wrong;totalSeen+=st.seen;
       });
     });
-    html+='<div style="margin-bottom:16px"></div>';
   });
-  const summary='<div class="stats-summary"><div class="stats-sum-item"><div class="stats-sum-val" style="color:#44cc88">'+totalOk+'</div><div class="stats-sum-lbl">合計正解</div></div><div class="stats-sum-item"><div class="stats-sum-val" style="color:#ff5555">'+totalNg+'</div><div class="stats-sum-lbl">合計不正解</div></div><div class="stats-sum-item"><div class="stats-sum-val" style="color:#ffd700">'+(totalSeen>0?Math.round(totalOk/totalSeen*100):0)+'%</div><div class="stats-sum-lbl">正解率</div></div></div><button class="stats-reset-btn" onclick="resetStats()">🗑 この成績をリセット</button><div style="margin-bottom:16px"></div>';
-  document.getElementById('stats-body').innerHTML=summary+html;
+
+  // サマリーカード
+  var totalPct=totalSeen>0?Math.round(totalOk/totalSeen*100):0;
+  var sumDiv=document.createElement('div');
+  sumDiv.className='stats-summary';
+  sumDiv.innerHTML='<div class="stats-sum-item"><div class="stats-sum-val" style="color:#44cc88">'+totalOk+'</div><div class="stats-sum-lbl">合計正解</div></div>'
+    +'<div class="stats-sum-item"><div class="stats-sum-val" style="color:#ff5555">'+totalNg+'</div><div class="stats-sum-lbl">合計不正解</div></div>'
+    +'<div class="stats-sum-item"><div class="stats-sum-val" style="color:#ffd700">'+totalPct+'%</div><div class="stats-sum-lbl">正解率</div></div>';
+  body.appendChild(sumDiv);
+
+  var resetBtn=document.createElement('button');
+  resetBtn.className='stats-reset-btn';
+  resetBtn.textContent='🗑 この成績をリセット';
+  resetBtn.onclick=function(){resetStats();};
+  body.appendChild(resetBtn);
+
+  var spacer=document.createElement('div');
+  spacer.style.marginBottom='14px';
+  body.appendChild(spacer);
+
+  // 科目ごとのカード
+  SUBJ_ORDER.forEach(function(subj){
+    var rounds=t.questions[subj]||{};
+    var roundNums=Object.keys(rounds).map(Number).sort(function(a,b){return a-b;});
+    if(!roundNums.length)return;
+    var cfg=CHARS[subj];
+
+    var sOk=0,sNg=0,sSeen=0;
+    var roundStats=[];
+    roundNums.forEach(function(r){
+      var qs=rounds[r]||[];
+      var rOk=0,rNg=0,rSeen=0;
+      qs.forEach(function(q,i){
+        var key=subj+'_r'+r+'_'+i;
+        var st=testStats[key]||{correct:0,wrong:0,seen:0};
+        sOk+=st.correct;sNg+=st.wrong;sSeen+=st.seen;
+        rOk+=st.correct;rNg+=st.wrong;rSeen+=st.seen;
+      });
+      roundStats.push({r:r,qs:qs,ok:rOk,ng:rNg,seen:rSeen});
+    });
+
+    var pct=sSeen>0?Math.round(sOk/sSeen*100):0;
+    var pctColor=pct>=80?'#44cc88':pct>=50?'#ffd700':'#ff5555';
+
+    // 科目カード
+    var card=document.createElement('div');
+    card.className='stats-subj-card';
+    card.style.marginBottom='10px';
+
+    // ヘッダー部分
+    var header=document.createElement('div');
+    header.style.cssText='display:flex;align-items:center;justify-content:space-between';
+    header.innerHTML='<div style="display:flex;align-items:center;gap:10px;flex:1">'
+      +'<div style="width:12px;height:12px;border-radius:50%;background:'+cfg.color+';flex-shrink:0"></div>'
+      +'<div><div style="font-size:1rem;font-weight:900;color:'+cfg.color+'">'+cfg.subject+'</div>'
+      +'<div style="font-size:.75rem;color:var(--muted)">'+cfg.name+'</div></div></div>'
+      +'<div style="text-align:right;flex-shrink:0">'
+      +'<div style="font-size:1.5rem;font-weight:900;color:'+pctColor+'">'+pct+'%</div>'
+      +'<div style="font-size:.7rem;color:var(--muted)">'+sOk+' / '+sSeen+'問</div></div>';
+    card.appendChild(header);
+
+    // 正解率バー
+    var barWrap=document.createElement('div');
+    barWrap.style.cssText='background:rgba(255,255,255,.07);border-radius:99px;height:10px;overflow:hidden;margin:10px 0 6px';
+    var barFill=document.createElement('div');
+    barFill.style.cssText='width:'+pct+'%;height:100%;border-radius:99px;background:linear-gradient(90deg,'+cfg.color+'88,'+cfg.color+');transition:width .8s ease';
+    barWrap.appendChild(barFill);
+    card.appendChild(barWrap);
+
+    // 第N回サマリーバッジ
+    var badges=document.createElement('div');
+    badges.style.cssText='display:flex;gap:6px;flex-wrap:wrap;margin-bottom:8px';
+    roundStats.forEach(function(rs){
+      var rPct=rs.seen>0?Math.round(rs.ok/rs.seen*100):null;
+      var rColor=rPct===null?'#555':rPct>=80?'#44cc88':rPct>=50?'#ffd700':'#ff5555';
+      var badge=document.createElement('div');
+      badge.style.cssText='background:rgba(255,255,255,.05);border-radius:8px;padding:4px 10px;font-size:.72rem;font-weight:700';
+      badge.innerHTML='<span style="color:var(--muted)">第'+rs.r+'回 </span><span style="color:'+rColor+'">'+(rPct===null?'未挑戦':rPct+'%')+'</span>';
+      badges.appendChild(badge);
+    });
+    card.appendChild(badges);
+
+    // 展開ボタン
+    var expandBtn=document.createElement('div');
+    expandBtn.style.cssText='font-size:.72rem;color:var(--muted);text-align:right;cursor:pointer;padding:2px 0';
+    expandBtn.textContent='▼ 問題別を見る';
+
+    // 詳細エリア
+    var detail=document.createElement('div');
+    detail.style.display='none';
+    detail.style.marginTop='8px';
+
+    roundStats.forEach(function(rs){
+      var rHdr=document.createElement('div');
+      rHdr.style.cssText='font-size:.78rem;font-weight:700;color:var(--muted);padding:8px 4px 4px';
+      rHdr.textContent='第'+rs.r+'回（'+rs.qs.length+'問）';
+      detail.appendChild(rHdr);
+
+      rs.qs.forEach(function(q,i){
+        var key=subj+'_r'+rs.r+'_'+i;
+        var st=testStats[key]||{correct:0,wrong:0,seen:0};
+        var item=document.createElement('div');
+        item.className='stats-item';
+        var tot=st.correct+st.wrong;
+        var okPct=tot>0?Math.round(st.correct/tot*100):0;
+        var ngPct=100-okPct;
+        if(st.seen===0){
+          item.innerHTML='<div class="stats-q">'+q.q+'</div><div class="stats-unseen">まだ挑戦していない</div>';
+        }else{
+          item.innerHTML='<div class="stats-q">'+q.q+'</div>'
+            +'<div class="stats-row"><div class="stats-bar-wrap">'
+            +'<div class="stats-bar-ok" style="width:'+okPct+'%"></div>'
+            +'<div class="stats-bar-ng" style="width:'+ngPct+'%"></div>'
+            +'</div><div class="stats-nums"><span class="stats-ok">✅'+st.correct+'</span><span class="stats-ng">❌'+st.wrong+'</span></div></div>';
+        }
+        detail.appendChild(item);
+      });
+    });
+
+    expandBtn.onclick=function(){
+      var isOpen=detail.style.display!=='none';
+      detail.style.display=isOpen?'none':'block';
+      expandBtn.textContent=isOpen?'▼ 問題別を見る':'▲ 閉じる';
+    };
+    card.appendChild(expandBtn);
+    card.appendChild(detail);
+    body.appendChild(card);
+  });
+
   showScreen('stats');
+}
+
+function toggleStatsDetail(id){
+  var el=document.getElementById(id);
+  if(el)el.style.display=el.style.display==='none'?'block':'none';
 }
 function resetStats(){
   if(!confirm('この成績をリセットしますか？'))return;
