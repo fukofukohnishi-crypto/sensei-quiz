@@ -1969,6 +1969,14 @@ function showStats(){
       expandBtn.textContent=isOpen?'▼ 問題別を見る':'▲ 閉じる';
     };
     card.appendChild(expandBtn);
+
+    // 科目別リセットボタン
+    var resetBtn=document.createElement('button');
+    resetBtn.style.cssText='width:100%;margin-top:8px;padding:8px;border:1px solid rgba(255,80,80,.3);border-radius:9px;background:rgba(255,80,80,.08);color:#ff8888;font-family:inherit;font-size:.75rem;font-weight:700;cursor:pointer';
+    resetBtn.textContent='🗑 '+cfg.subject+'の成績をリセット';
+    (function(s){resetBtn.onclick=function(){resetSubjStats(s);};})(subj);
+    card.appendChild(resetBtn);
+
     card.appendChild(detail);
     body.appendChild(card);
   });
@@ -1981,8 +1989,22 @@ function toggleStatsDetail(id){
   if(el)el.style.display=el.style.display==='none'?'block':'none';
 }
 function resetStats(){
-  if(!confirm('この成績をリセットしますか？'))return;
-  DB.stats[currentTestId]={};saveDB();showToast('成績をリセットしました','#888');showStats();
+  if(!confirm('全科目の成績をリセットしますか？'))return;
+  DB.stats[currentTestId]={};saveDB();showToast('全成績をリセットしました','#888');showStats();
+}
+
+function resetSubjStats(subj){
+  var cfg=CHARS[subj];
+  if(!confirm(cfg.subject+'の成績をリセットしますか？'))return;
+  if(!DB.stats[currentTestId])return;
+  var t=DB.tests[currentTestId];
+  var rounds=t.questions[subj]||{};
+  Object.keys(rounds).forEach(function(r){
+    Object.keys(DB.stats[currentTestId]).forEach(function(key){
+      if(key.startsWith(subj+'_r'+r+'_'))delete DB.stats[currentTestId][key];
+    });
+  });
+  saveDB();showToast(cfg.subject+'の成績をリセットしました','#888');showStats();
 }
 
 function exportData(){
