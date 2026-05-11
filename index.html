@@ -1520,32 +1520,15 @@ function doAnswerResult(isOk,ans,explain){
   if(isOk)addGachaPoint();
 }
 function doAnswer(chosen,ans,btn,explain){
-  if(answered)return;answered=true;
-  const cfg=CHARS[currentSubject];const isOk=chosen===ans;
-  document.querySelectorAll('.qz-cbtn').forEach(b=>{b.disabled=true;if(b.textContent===ans)b.classList.add('correct');});
-  segResults[qIdx]=isOk;renderSegs();
-  const nb=document.getElementById('nxt-btn');
-  if(isOk){
-    streak++;if(streak>maxStreak)maxStreak=streak;correct++;
-    const pts=streak>=3?streak*20:100;score+=pts;
-    setBubble(cfg.ok[Math.floor(Math.random()*cfg.ok.length)]);
-    document.getElementById('quiz-char').src=IMGS[cfg.key].correct;
-    showFB(true,'✅ 正解！ +'+pts+'pts'+(streak>=3?' 🔥×'+streak+' ボーナス！':''),explain||'よく覚えていたね！');
-    nb.style.background='linear-gradient(135deg,'+cfg.color+','+cfg.btn+')';
-    if(streak>=3)spawnConfetti();
-    if(isRevengeMode)showRevengeBadge();
-  }else{
-    btn.classList.add('wrong');streak=0;wrong++;
-    setBubble(cfg.ng[Math.floor(Math.random()*cfg.ng.length)]);
-    document.getElementById('quiz-char').src=IMGS[cfg.key].wrong;
-    showFB(false,'❌ 正解は「'+ans+'」',explain||'もう一度確認してみよう！');
-    nb.style.background='linear-gradient(135deg,'+cfg.color+','+cfg.btn+')';
-    if(!isRevengeMode)wrongQuestions.push(questions[qIdx]);
-  }
-  document.getElementById('q-score').textContent=score;
-  document.getElementById('streak-pill').textContent='🔥 '+streak;
-  nb.className='qz-next show';
-  recordStat(questionKeys[qIdx],isOk);
+  if(answered)return;
+  document.querySelectorAll('.qz-cbtn').forEach(function(b){
+    b.disabled=true;
+    if(b.textContent===ans)b.classList.add('correct');
+  });
+  if(chosen!==ans)btn.classList.add('wrong');
+  segResults[qIdx]=(chosen===ans);
+  renderSegs();
+  doAnswerResult(chosen===ans,ans,explain);
 }
 function showFB(isOk,title,explain){
   const el=document.getElementById('fbtxt');
