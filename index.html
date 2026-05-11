@@ -685,7 +685,7 @@ function drawGacha(){
 }
 
 function showGachaResult(card){
-  var cfg=CHARS[card.char]||CHARS['kaga'];
+  var charImgKey=card.char||'kaga';
   var rarityColor=RARITY_COLORS[card.rarity];
   var rarityName=RARITY_NAMES[card.rarity];
   var popup=document.createElement('div');
@@ -702,13 +702,13 @@ function showGachaResult(card){
   inner.innerHTML='<div style="font-size:.85rem;font-weight:700;color:'+rarityColor+';letter-spacing:2px;margin-bottom:6px">'+rarityName+'</div>'
     +'<div style="font-size:1.3rem;font-weight:900;color:white;margin-bottom:12px">'+card.name+'</div>'
     +'<div style="width:140px;height:140px;margin:0 auto 12px;border-radius:16px;overflow:hidden;border:3px solid '+rarityColor+';background:rgba(0,0,0,.3)">'
-    +'<img src="'+IMGS[cfg.key][card.img]+'" style="width:100%;height:100%;object-fit:cover"/></div>'
+    +'<img src="'+IMGS[charImgKey][card.img]+'" style="width:100%;height:100%;object-fit:cover"/></div>'
     +'<div style="font-size:.82rem;color:#ccc;line-height:1.6;margin-bottom:8px">'+card.power+'</div>'
     +(isNew?'<div style="background:'+rarityColor+';color:white;border-radius:99px;padding:4px 16px;font-size:.78rem;font-weight:900;display:inline-block;margin-bottom:12px">NEW！</div>':'<div style="color:var(--muted);font-size:.75rem;margin-bottom:12px">'+count+'枚目</div>');
 
   var closeBtn=document.createElement('button');
   closeBtn.textContent='やったー！ →';
-  closeBtn.style.cssText='width:100%;padding:13px;background:linear-gradient(135deg,'+rarityColor+','+cfg.color+');border:none;border-radius:13px;color:white;font-family:inherit;font-size:1rem;font-weight:900;cursor:pointer';
+  closeBtn.style.cssText='width:100%;padding:13px;background:linear-gradient(135deg,'+rarityColor+',#ffd700);border:none;border-radius:13px;color:white;font-family:inherit;font-size:1rem;font-weight:900;cursor:pointer';
   closeBtn.onclick=function(){popup.remove();};
   inner.appendChild(closeBtn);
   popup.appendChild(inner);
@@ -753,9 +753,9 @@ function showCollection(){
       grid.style.cssText='display:grid;grid-template-columns:1fr 1fr;gap:10px;margin-bottom:14px';
 
       rarityCards.forEach(function(card){
-        var charKey=card.char||'kaga';
-        var cfg=CHARS[charKey]||CHARS['kaga'];
         var imgKey=card.img||'start';
+        var charKey=card.char||'kaga';
+        // IMGSは直接キャラ名でアクセス
         var count=db.collection[card.id]||0;
         var hasCard=count>0;
 
@@ -768,7 +768,7 @@ function showCollection(){
         var imgDiv=document.createElement('div');
         imgDiv.style.cssText='height:100px;overflow:hidden;background:rgba(0,0,0,.3);position:relative';
         var imgEl=document.createElement('img');
-        imgEl.src=IMGS[cfg.key]?IMGS[cfg.key][imgKey]||IMGS[cfg.key]['start']:'';
+        imgEl.src=IMGS[charKey]?IMGS[charKey][imgKey]||IMGS[charKey]['start']:'';
         imgEl.style.cssText='width:100%;height:100%;object-fit:cover'+(hasCard?'':';filter:grayscale(1)');
         imgDiv.appendChild(imgEl);
 
