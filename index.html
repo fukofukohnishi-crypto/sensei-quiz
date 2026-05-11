@@ -749,7 +749,7 @@ function showCollection(){
     grid.style.cssText='display:grid;grid-template-columns:1fr 1fr;gap:10px;margin-bottom:14px';
 
     cards.forEach(function(card){
-      var cfg=CHARS[card.card]||CHARS[card.char]||CHARS['kaga'];
+      var cfg=CHARS[card.char]||CHARS['kaga'];
       var count=db.collection[card.id]||0;
       var hasCard=count>0;
       var cardEl=document.createElement('div');
