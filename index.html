@@ -927,7 +927,15 @@ function renderHome(){
     return `<div class="test-card" onclick="openTest('${t.id}')"><div><div class="tc-name">${t.name}</div><div class="tc-meta">${date} / 合計${total}問${badges}</div></div><button class="tc-del" onclick="event.stopPropagation();deleteTest('${t.id}')">🗑</button></div>`;
   }).join('');
 }
-function deleteTest(id){if(!confirm('削除しますか？'))return;delete DB.tests[id];saveDB();renderHome();showToast('削除しました','#888');}
+function deleteTest(id){
+  var t=DB.tests[id];
+  if(!t)return;
+  var input=prompt('削除するには「'+t.name+'」と入力してください');
+  if(input!==t.name){showToast('テスト名が一致しません','#ff5555');return;}
+  delete DB.tests[id];
+  if(DB.stats)delete DB.stats[id];
+  saveDB();renderHome();showToast('削除しました','#888');
+}
 
 function openTest(id){
   currentTestId=id;
