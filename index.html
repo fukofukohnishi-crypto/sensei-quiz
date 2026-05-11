@@ -667,14 +667,17 @@ function saveGachaDB(db){
 function addGachaPoint(){
   var db=getGachaDB();
   db.totalCorrect++;
-  // 5問正解ごとにチケット1枚
+  showToast('⭐ 正解！あと'+(5-(db.totalCorrect%5))+'問でチケット！','#44cc88');
   if(db.totalCorrect % 5 === 0){
     db.tickets++;
     saveGachaDB(db);
-    showToast('🎴 ガチャチケット獲得！（'+db.tickets+'枚）','#ff88cc');
-    // ホームのチケット数を更新
+    setTimeout(function(){
+      showToast('🎴 ガチャチケット獲得！（'+db.tickets+'枚）','#ff88cc');
+    },1000);
     var el=document.getElementById('gacha-ticket-count');
     if(el)el.textContent=db.tickets;
+    var el2=document.getElementById('gacha-ticket-big');
+    if(el2)el2.textContent=db.tickets;
     return true;
   }
   saveGachaDB(db);
