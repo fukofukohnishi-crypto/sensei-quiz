@@ -686,39 +686,61 @@ function addGachaPoint(){
 
 // ガチャを引く
 function drawGacha(){
+  // CARDSが読み込まれているか確認
+  if(!CARDS||CARDS.length===0){
+    showToast('カードデータ読み込み中…少し待ってね','#ffaa44');
+    return;
+  }
+
   var db=getGachaDB();
-  if(db.tickets<=0){showToast('チケットがないよ！正解してゲットしよう','#ff5555');return;}
+  if(db.tickets<=0){
+    showToast('チケットがないよ！正解してゲットしよう','#ff5555');
+    return;
+  }
+
+  // チケット消費＆即保存
   db.tickets--;
+  saveGachaDB(db);
+  updateGachaUI();
 
   // レアリティ抽選
   var rand=Math.random()*100;
   var rarity=1;
-  if(rand<RARITY_WEIGHTS[4])rarity=4;
-  else if(rand<RARITY_WEIGHTS[4]+RARITY_WEIGHTS[3])rarity=3;
-  else if(rand<RARITY_WEIGHTS[4]+RARITY_WEIGHTS[3]+RARITY_WEIGHTS[2])rarity=2;
+  var w4=RARITY_WEIGHTS[4];
+  var w3=w4+RARITY_WEIGHTS[3];
+  var w2=w3+RARITY_WEIGHTS[2];
+  if(rand<w4)rarity=4;
+  else if(rand<w3)rarity=3;
+  else if(rand<w2)rarity=2;
 
   // そのレアリティのカードからランダム選出
   var pool=CARDS.filter(function(c){return c.rarity===rarity;});
-  if(!pool.length)pool=CARDS; // フォールバック
-  if(!pool.length){showToast('カードデータが読み込めていません','#ff5555');db.tickets++;saveGachaDB(db);return;}
+  if(!pool.length)pool=CARDS.slice(); // フォールバック：全カード
   var card=pool[Math.floor(Math.random()*pool.length)];
 
   // コレクションに追加
-  if(!db.collection[card.id])db.collection[card.id]=0;
-  db.collection[card.id]++;
-  db.history.unshift({cardId:card.id,date:Date.now()});
-  if(db.history.length>50)db.history=db.history.slice(0,50);
-  saveGachaDB(db);
+  var db2=getGachaDB(); // 再取得
+  if(!db2.collection[card.id])db2.collection[card.id]=0;
+  db2.collection[card.id]++;
+  db2.history.unshift({cardId:card.id,date:Date.now()});
+  if(db2.history.length>50)db2.history=db2.history.slice(0,50);
+  saveGachaDB(db2);
 
   // ガチャ演出
   showGachaResult(card);
-  updateGachaUI();
 }
 
 function showGachaResult(card){
-  var charImgKey=card.char||'kaga';
-  var rarityColor=RARITY_COLORS[card.rarity];
-  var rarityName=RARITY_NAMES[card.rarity];
+  var rarityColor=RARITY_COLORS[card.rarity]||'#aaa';
+  var rarityName=RARITY_NAMES[card.rarity]||'★';
+  var db=getGachaDB();
+  var count=db.collection[card.id]||1;
+  var isNew=count===1;
+
+  // 画像URL決定：imgUrl優先、なければキャラのstart画像
+  var charKey=card.char||'kaga';
+  var imgSrc=card.imgUrl||(IMGS[charKey]?IMGS[charKey]['correct']||IMGS[charKey]['start']:'');
+
   var popup=document.createElement('div');
   popup.id='gacha-result-popup';
   popup.style.cssText='position:fixed;inset:0;z-index:9999;display:flex;align-items:center;justify-content:center;background:rgba(0,0,0,.85);backdrop-filter:blur(6px)';
@@ -726,20 +748,45 @@ function showGachaResult(card){
   var inner=document.createElement('div');
   inner.style.cssText='background:linear-gradient(135deg,#1a1a2e,#0d0d20);border:3px solid '+rarityColor+';border-radius:24px;padding:24px 20px;max-width:300px;width:90%;text-align:center;animation:popupBounce .5s cubic-bezier(.175,.885,.32,1.275)';
 
-  var db=getGachaDB();
-  var count=db.collection[card.id]||1;
-  var isNew=count===1;
+  // レアリティ
+  var rarDiv=document.createElement('div');
+  rarDiv.style.cssText='font-size:.85rem;font-weight:700;color:'+rarityColor+';letter-spacing:2px;margin-bottom:6px';
+  rarDiv.textContent=rarityName;
+  inner.appendChild(rarDiv);
 
-  inner.innerHTML='<div style="font-size:.85rem;font-weight:700;color:'+rarityColor+';letter-spacing:2px;margin-bottom:6px">'+rarityName+'</div>'
-    +'<div style="font-size:1.3rem;font-weight:900;color:white;margin-bottom:12px">'+card.name+'</div>'
-    +'<div style="width:140px;height:140px;margin:0 auto 12px;border-radius:16px;overflow:hidden;border:3px solid '+rarityColor+';background:rgba(0,0,0,.3)">'
-    +'<img src="'+(card.imgUrl?card.imgUrl:IMGS[charImgKey][card.img]||IMGS[charImgKey]['start'])+'" style="width:100%;height:100%;object-fit:cover"/></div>'
-    +'<div style="font-size:.82rem;color:#ccc;line-height:1.6;margin-bottom:8px">'+card.power+'</div>'
-    +(isNew?'<div style="background:'+rarityColor+';color:white;border-radius:99px;padding:4px 16px;font-size:.78rem;font-weight:900;display:inline-block;margin-bottom:12px">NEW！</div>':'<div style="color:var(--muted);font-size:.75rem;margin-bottom:12px">'+count+'枚目</div>');
+  // カード名
+  var nameDiv=document.createElement('div');
+  nameDiv.style.cssText='font-size:1.3rem;font-weight:900;color:white;margin-bottom:12px';
+  nameDiv.textContent=card.name;
+  inner.appendChild(nameDiv);
 
+  // カード画像
+  var imgWrap=document.createElement('div');
+  imgWrap.style.cssText='width:160px;height:213px;margin:0 auto 12px;border-radius:16px;overflow:hidden;border:3px solid '+rarityColor+';background:rgba(0,0,0,.3)';
+  var imgEl=document.createElement('img');
+  imgEl.src=imgSrc;
+  imgEl.style.cssText='width:100%;height:100%;object-fit:cover';
+  imgWrap.appendChild(imgEl);
+  inner.appendChild(imgWrap);
+
+  // 能力
+  var powerDiv=document.createElement('div');
+  powerDiv.style.cssText='font-size:.82rem;color:#ccc;line-height:1.6;margin-bottom:8px';
+  powerDiv.textContent=card.power;
+  inner.appendChild(powerDiv);
+
+  // NEW or 枚数
+  var badgeDiv=document.createElement('div');
+  badgeDiv.style.cssText=isNew
+    ?'background:'+rarityColor+';color:white;border-radius:99px;padding:4px 16px;font-size:.78rem;font-weight:900;display:inline-block;margin-bottom:12px'
+    :'color:var(--muted);font-size:.75rem;margin-bottom:12px';
+  badgeDiv.textContent=isNew?'NEW！':count+'枚目';
+  inner.appendChild(badgeDiv);
+
+  // 閉じるボタン
   var closeBtn=document.createElement('button');
   closeBtn.textContent='やったー！ →';
-  closeBtn.style.cssText='width:100%;padding:13px;background:linear-gradient(135deg,'+rarityColor+',#ffd700);border:none;border-radius:13px;color:white;font-family:inherit;font-size:1rem;font-weight:900;cursor:pointer';
+  closeBtn.style.cssText='width:100%;padding:13px;background:linear-gradient(135deg,'+rarityColor+',#ffd700);border:none;border-radius:13px;color:white;font-family:inherit;font-size:1rem;font-weight:900;cursor:pointer;margin-top:4px';
   closeBtn.onclick=function(){popup.remove();};
   inner.appendChild(closeBtn);
   popup.appendChild(inner);
