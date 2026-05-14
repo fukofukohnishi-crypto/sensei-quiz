@@ -757,23 +757,25 @@ function showGachaResult(card){
   // カード名
   var nameDiv=document.createElement('div');
   nameDiv.style.cssText='font-size:1.3rem;font-weight:900;color:white;margin-bottom:12px';
-  nameDiv.textContent=card.name;
-  inner.appendChild(nameDiv);
+  nameDiv.textContent=(card.name&&card.name!=='準備中')?card.name:'';
+  if(nameDiv.textContent)inner.appendChild(nameDiv);
 
   // カード画像
   var imgWrap=document.createElement('div');
   imgWrap.style.cssText='width:160px;height:213px;margin:0 auto 12px;border-radius:16px;overflow:hidden;border:3px solid '+rarityColor+';background:rgba(0,0,0,.3)';
   var imgEl=document.createElement('img');
   imgEl.src=imgSrc;
-  imgEl.style.cssText='width:100%;height:100%;object-fit:cover';
+  imgEl.style.cssText='width:100%;height:100%;object-fit:contain;background:#111';
   imgWrap.appendChild(imgEl);
   inner.appendChild(imgWrap);
 
   // 能力
-  var powerDiv=document.createElement('div');
-  powerDiv.style.cssText='font-size:.82rem;color:#ccc;line-height:1.6;margin-bottom:8px';
-  powerDiv.textContent=card.power;
-  inner.appendChild(powerDiv);
+  if(card.power&&card.power!=='準備中'){
+    var powerDiv=document.createElement('div');
+    powerDiv.style.cssText='font-size:.82rem;color:#ccc;line-height:1.6;margin-bottom:8px';
+    powerDiv.textContent=card.power;
+    inner.appendChild(powerDiv);
+  }
 
   // NEW or 枚数
   var badgeDiv=document.createElement('div');
@@ -785,10 +787,17 @@ function showGachaResult(card){
 
   // 閉じるボタン
   var closeBtn=document.createElement('button');
-  closeBtn.textContent='やったー！ →';
-  closeBtn.style.cssText='width:100%;padding:13px;background:linear-gradient(135deg,'+rarityColor+',#ffd700);border:none;border-radius:13px;color:white;font-family:inherit;font-size:1rem;font-weight:900;cursor:pointer;margin-top:4px';
+  closeBtn.textContent='やったー！ 🎴';
+  closeBtn.style.cssText='width:100%;padding:13px;background:linear-gradient(135deg,'+rarityColor+',#ffd700);border:none;border-radius:13px;color:white;font-family:inherit;font-size:1rem;font-weight:900;cursor:pointer;margin-top:4px;margin-bottom:8px';
   closeBtn.onclick=function(){popup.remove();};
   inner.appendChild(closeBtn);
+
+  var colBtn=document.createElement('button');
+  colBtn.textContent='📚 コレクションを見る';
+  colBtn.style.cssText='width:100%;padding:10px;background:rgba(255,255,255,.08);border:1px solid rgba(255,255,255,.2);border-radius:13px;color:white;font-family:inherit;font-size:.85rem;font-weight:700;cursor:pointer';
+  colBtn.onclick=function(){popup.remove();showCollection();};
+  inner.appendChild(colBtn);
+
   popup.appendChild(inner);
   document.body.appendChild(popup);
   if(card.rarity>=3)spawnConfetti();
@@ -849,7 +858,7 @@ function showCollection(){
         imgDiv.style.cssText='height:120px;overflow:hidden;background:rgba(0,0,0,.3);position:relative';
         var imgEl=document.createElement('img');
         imgEl.src=card.imgUrl?card.imgUrl:(IMGS[charKey]?IMGS[charKey][imgKey]||IMGS[charKey]['start']:'');
-        imgEl.style.cssText='width:100%;height:100%;object-fit:cover'+(hasCard?'':';filter:brightness(0)');
+        imgEl.style.cssText='width:100%;height:100%;object-fit:contain;background:#111'+(hasCard?'':';filter:brightness(0)');
         imgDiv.appendChild(imgEl);
 
         if(count>1){
@@ -871,11 +880,11 @@ function showCollection(){
         textDiv.style.cssText='padding:5px 7px';
         var nameDiv=document.createElement('div');
         nameDiv.style.cssText='font-size:.68rem;font-weight:900;color:'+(hasCard?'white':'#444')+';line-height:1.3;margin-bottom:2px';
-        nameDiv.textContent=hasCard?card.name:'？？？';
+        nameDiv.textContent=hasCard?(card.name&&card.name!=='準備中'?card.name:''):'？？？';
         textDiv.appendChild(nameDiv);
         var powerDiv=document.createElement('div');
         powerDiv.style.cssText='font-size:.6rem;color:'+(hasCard?'var(--muted)':'#333')+';line-height:1.3';
-        powerDiv.textContent=hasCard?card.power:'？？？';
+        powerDiv.textContent=hasCard?(card.power&&card.power!=='準備中'?card.power:''):'？？？';
         textDiv.appendChild(powerDiv);
         cardEl.appendChild(textDiv);
         grid.appendChild(cardEl);
