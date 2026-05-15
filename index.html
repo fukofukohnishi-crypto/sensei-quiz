@@ -504,7 +504,7 @@ html,body{height:100%;font-family:'Noto Sans JP',sans-serif;background:var(--bg)
       🎴 ガチャを引く！
     </button>
     <div style="font-size:.72rem;color:var(--muted);text-align:center;line-height:1.8">
-      ★ノーマル 60% / ★★レア 30%<br>★★★超レア 8% / ★★★★伝説 2%
+      ★N 50% / ★★SR 30% / ★★★SSR 12%<br>★★★★レア 6% / ★★★★★伝説 2%
     </div>
   </div>
 </div>
@@ -592,66 +592,37 @@ const CHARS = {
 };
 const SUBJ_ORDER=['rika','shakai','sansu','kokugo'];
 
+// cards.jsonから動的に読み込む（window.onload内でfetch）
+// ここはフォールバック用デフォルト値（cards.jsonが取得できない場合のみ使用）
 let CARDS = [
-  // ★ ノーマル（20枚）
-  {id:'n001',char:'zanpanman',rarity:1,name:'準備中',power:'準備中',img:'start'},
-  {id:'n002',char:'zanpanman',rarity:1,name:'準備中',power:'準備中',img:'wrong'},
-  {id:'n003',char:'zanpanman',rarity:1,name:'準備中',power:'準備中',img:'ganbaro'},
-  {id:'n004',char:'zanpanman',rarity:1,name:'準備中',power:'準備中',img:'correct'},
-  {id:'n005',char:'zanpanman',rarity:1,name:'準備中',power:'準備中',img:'start'},
-  {id:'n006',char:'yabai',rarity:1,name:'準備中',power:'準備中',img:'start'},
-  {id:'n007',char:'yabai',rarity:1,name:'準備中',power:'準備中',img:'wrong'},
-  {id:'n008',char:'yabai',rarity:1,name:'準備中',power:'準備中',img:'ganbaro'},
-  {id:'n009',char:'yabai',rarity:1,name:'準備中',power:'準備中',img:'correct'},
-  {id:'n010',char:'yabai',rarity:1,name:'準備中',power:'準備中',img:'start'},
-  {id:'n011',char:'bakuso',rarity:1,name:'準備中',power:'準備中',img:'start'},
-  {id:'n012',char:'bakuso',rarity:1,name:'準備中',power:'準備中',img:'wrong'},
-  {id:'n013',char:'bakuso',rarity:1,name:'準備中',power:'準備中',img:'ganbaro'},
-  {id:'n014',char:'bakuso',rarity:1,name:'準備中',power:'準備中',img:'correct'},
-  {id:'n015',char:'bakuso',rarity:1,name:'準備中',power:'準備中',img:'start'},
-  {id:'n016',char:'kaga',rarity:1,name:'準備中',power:'準備中',img:'start'},
-  {id:'n017',char:'kaga',rarity:1,name:'準備中',power:'準備中',img:'wrong'},
-  {id:'n018',char:'kaga',rarity:1,name:'準備中',power:'準備中',img:'ganbaro'},
-  {id:'n019',char:'kaga',rarity:1,name:'準備中',power:'準備中',img:'correct'},
-  {id:'n020',char:'kaga',rarity:1,name:'準備中',power:'準備中',img:'start'},
-  // ★★ 必殺技（14枚）
-  {id:'h001',char:'zanpanman',rarity:2,name:'準備中',power:'準備中',img:'correct'},
-  {id:'h002',char:'zanpanman',rarity:2,name:'準備中',power:'準備中',img:'correct'},
-  {id:'h003',char:'zanpanman',rarity:2,name:'準備中',power:'準備中',img:'correct'},
-  {id:'h004',char:'zanpanman',rarity:2,name:'準備中',power:'準備中',img:'correct'},
-  {id:'h005',char:'yabai',rarity:2,name:'準備中',power:'準備中',img:'correct'},
-  {id:'h006',char:'yabai',rarity:2,name:'準備中',power:'準備中',img:'correct'},
-  {id:'h007',char:'yabai',rarity:2,name:'準備中',power:'準備中',img:'correct'},
-  {id:'h008',char:'bakuso',rarity:2,name:'準備中',power:'準備中',img:'correct'},
-  {id:'h009',char:'bakuso',rarity:2,name:'準備中',power:'準備中',img:'correct'},
-  {id:'h010',char:'bakuso',rarity:2,name:'準備中',power:'準備中',img:'correct'},
-  {id:'h011',char:'kaga',rarity:2,name:'準備中',power:'準備中',img:'correct'},
-  {id:'h012',char:'kaga',rarity:2,name:'準備中',power:'準備中',img:'correct'},
-  {id:'h013',char:'kaga',rarity:2,name:'準備中',power:'準備中',img:'correct'},
-  {id:'h014',char:'kaga',rarity:2,name:'準備中',power:'準備中',img:'correct'},
-  // ★★★ レア（12枚）
-  {id:'r001',char:'zanpanman',rarity:3,name:'準備中',power:'準備中',img:'correct'},
-  {id:'r002',char:'zanpanman',rarity:3,name:'準備中',power:'準備中',img:'correct'},
-  {id:'r003',char:'zanpanman',rarity:3,name:'準備中',power:'準備中',img:'correct'},
-  {id:'r004',char:'yabai',rarity:3,name:'準備中',power:'準備中',img:'correct'},
-  {id:'r005',char:'yabai',rarity:3,name:'準備中',power:'準備中',img:'correct'},
-  {id:'r006',char:'yabai',rarity:3,name:'準備中',power:'準備中',img:'correct'},
-  {id:'r007',char:'bakuso',rarity:3,name:'準備中',power:'準備中',img:'correct'},
-  {id:'r008',char:'bakuso',rarity:3,name:'準備中',power:'準備中',img:'correct'},
-  {id:'r009',char:'bakuso',rarity:3,name:'準備中',power:'準備中',img:'correct'},
-  {id:'r010',char:'kaga',rarity:3,name:'準備中',power:'準備中',img:'correct'},
-  {id:'r011',char:'kaga',rarity:3,name:'準備中',power:'準備中',img:'correct'},
-  {id:'r012',char:'kaga',rarity:3,name:'準備中',power:'準備中',img:'correct'},
-  // ★★★★ 伝説（4枚）
-  {id:'l001',char:'zanpanman',rarity:4,name:'準備中',power:'準備中',img:'correct'},
-  {id:'l002',char:'yabai',rarity:4,name:'準備中',power:'準備中',img:'correct'},
-  {id:'l003',char:'bakuso',rarity:4,name:'準備中',power:'準備中',img:'correct'},
-  {id:'l004',char:'kaga',rarity:4,name:'準備中',power:'準備中',img:'correct'},
+  // ★ ノーマル
+  {id:'n001',char:'zanpanman',rarity:1,name:'準備中',power:'準備中',imgUrl:'/card-images/01_zanpanman.png'},
+  {id:'n002',char:'yabai',    rarity:1,name:'準備中',power:'準備中',imgUrl:'/card-images/02_yabaiyatsu.png'},
+  {id:'n003',char:'bakuso',   rarity:1,name:'準備中',power:'準備中',imgUrl:'/card-images/03_bakuso.png'},
+  {id:'n004',char:'kaga',     rarity:1,name:'準備中',power:'準備中',imgUrl:'/card-images/04_kaga.png'},
+  {id:'n005',char:'bakudanma',rarity:1,name:'準備中',power:'準備中',imgUrl:'/card-images/05_bakudanma.png'},
+  {id:'n006',char:'kanpanman',rarity:1,name:'準備中',power:'準備中',imgUrl:'/card-images/06_kanpanman.png'},
+  {id:'n007',char:'tsukkomi', rarity:1,name:'準備中',power:'準備中',imgUrl:'/card-images/07_tsukkomi.png'},
+  // ★★ 必殺技
+  {id:'h001',char:'zanpanman',rarity:2,name:'準備中',power:'準備中',imgUrl:''},
+  {id:'h002',char:'yabai',    rarity:2,name:'準備中',power:'準備中',imgUrl:''},
+  {id:'h003',char:'bakuso',   rarity:2,name:'準備中',power:'準備中',imgUrl:''},
+  {id:'h004',char:'kaga',     rarity:2,name:'準備中',power:'準備中',imgUrl:''},
+  // ★★★ レア
+  {id:'r001',char:'zanpanman',rarity:3,name:'準備中',power:'準備中',imgUrl:''},
+  {id:'r002',char:'yabai',    rarity:3,name:'準備中',power:'準備中',imgUrl:''},
+  {id:'r003',char:'bakuso',   rarity:3,name:'準備中',power:'準備中',imgUrl:''},
+  {id:'r004',char:'kaga',     rarity:3,name:'準備中',power:'準備中',imgUrl:''},
+  // ★★★★ 伝説
+  {id:'l001',char:'zanpanman',rarity:4,name:'準備中',power:'準備中',imgUrl:''},
+  {id:'l002',char:'yabai',    rarity:4,name:'準備中',power:'準備中',imgUrl:''},
+  {id:'l003',char:'bakuso',   rarity:4,name:'準備中',power:'準備中',imgUrl:''},
+  {id:'l004',char:'kaga',     rarity:4,name:'準備中',power:'準備中',imgUrl:''},
 ];
 
-const RARITY_NAMES = ['','★ノーマル','★★ 必殺技','★★★ レア','★★★★ 伝説'];
-const RARITY_COLORS = ['','#aaaaaa','#44ccff','#ff8800','#ff2288'];
-const RARITY_WEIGHTS = [0, 55, 30, 12, 3]; // 出現確率(%)
+const RARITY_NAMES = ['','★ N','★★ SR 必殺技','★★★ SSR 覚醒','★★★★ レア','★★★★★ 伝説'];
+const RARITY_COLORS = ['','#aaaaaa','#44ccff','#ff8800','#dd44ff','#ff2288'];
+const RARITY_WEIGHTS = [0, 50, 30, 12, 6, 2]; // 出現確率(%)
 
 // ガチャ・コレクション管理
 function getGachaDB(){
@@ -703,13 +674,15 @@ function drawGacha(){
   saveGachaDB(db);
   updateGachaUI();
 
-  // レアリティ抽選
+  // レアリティ抽選（5段階）
   var rand=Math.random()*100;
   var rarity=1;
-  var w4=RARITY_WEIGHTS[4];
+  var w5=RARITY_WEIGHTS[5];
+  var w4=w5+RARITY_WEIGHTS[4];
   var w3=w4+RARITY_WEIGHTS[3];
   var w2=w3+RARITY_WEIGHTS[2];
-  if(rand<w4)rarity=4;
+  if(rand<w5)rarity=5;
+  else if(rand<w4)rarity=4;
   else if(rand<w3)rarity=3;
   else if(rand<w2)rarity=2;
 
@@ -737,9 +710,11 @@ function showGachaResult(card){
   var count=db.collection[card.id]||1;
   var isNew=count===1;
 
-  // 画像URL決定：imgUrl優先、なければキャラのstart画像
+  // 画像URL決定：imgUrl優先、なければキャラのstart画像、それもなければプレースホルダー
   var charKey=card.char||'kaga';
-  var imgSrc=card.imgUrl||(IMGS[charKey]?IMGS[charKey]['correct']||IMGS[charKey]['start']:'');
+  var imgSrc=card.imgUrl||'';
+  if(!imgSrc&&IMGS[charKey]){imgSrc=IMGS[charKey]['correct']||IMGS[charKey]['start']||'';}
+  if(!imgSrc){imgSrc='data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 160 213"><rect fill="%23111" width="160" height="213"/><text x="80" y="115" fill="%23444" text-anchor="middle" font-size="40">📸</text><text x="80" y="150" fill="%23333" text-anchor="middle" font-size="12">%E6%BA%96%E5%82%99%E4%B8%AD</text></svg>';}
 
   var popup=document.createElement('div');
   popup.id='gacha-result-popup';
@@ -800,7 +775,7 @@ function showGachaResult(card){
 
   popup.appendChild(inner);
   document.body.appendChild(popup);
-  if(card.rarity>=3)spawnConfetti();
+  if(card.rarity>=4)spawnConfetti();
 }
 
 function updateGachaUI(){
@@ -839,53 +814,70 @@ function showCollection(){
       body.appendChild(hdr);
 
       var grid=document.createElement('div');
-      grid.style.cssText='display:grid;grid-template-columns:1fr 1fr 1fr;gap:6px;margin-bottom:14px';
+      grid.style.cssText='display:grid;grid-template-columns:1fr 1fr 1fr 1fr;gap:6px;margin-bottom:16px';
 
       rarityCards.forEach(function(card){
-        var imgKey=card.img||'start';
         var charKey=card.char||'kaga';
-        // IMGSは直接キャラ名でアクセス
         var count=db.collection[card.id]||0;
         var hasCard=count>0;
+        var rc=RARITY_COLORS[rarity];
 
+        // カード外枠
         var cardEl=document.createElement('div');
         cardEl.style.cssText='background:var(--card2);border:2px solid '
-          +(hasCard?RARITY_COLORS[rarity]:'rgba(255,255,255,.1)')
-          +';border-radius:14px;overflow:hidden';
+          +(hasCard?rc:'rgba(255,255,255,.08)')
+          +';border-radius:16px;overflow:hidden;position:relative;'
+          +(hasCard&&card.rarity>=3?'box-shadow:0 0 12px '+rc+'55;':'');
 
-        // 画像
+        // 画像エリア（縦長カード比率 3:4）
         var imgDiv=document.createElement('div');
-        imgDiv.style.cssText='height:120px;overflow:hidden;background:rgba(0,0,0,.3);position:relative';
+        imgDiv.style.cssText='position:relative;width:100%;padding-top:120%;overflow:hidden;background:#0a0a14';
+
         var imgEl=document.createElement('img');
-        imgEl.src=card.imgUrl?card.imgUrl:(IMGS[charKey]?IMGS[charKey][imgKey]||IMGS[charKey]['start']:'');
-        imgEl.style.cssText='width:100%;height:100%;object-fit:contain;background:#111'+(hasCard?'':';filter:brightness(0)');
+        var imgSrc2=card.imgUrl||'';
+        if(!imgSrc2&&IMGS&&IMGS[charKey]){imgSrc2=IMGS[charKey]['start']||'';}
+        // 未入手は裏面画像、入手済みは正面画像
+        imgEl.src=hasCard
+          ?(imgSrc2||'data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 90 120"><rect fill="%230a0a14" width="90" height="120"/><text x="45" y="68" fill="%23333" text-anchor="middle" font-size="26">📸</text></svg>')
+          :'/card-images/card_back.png';
+        imgEl.style.cssText='position:absolute;top:0;left:0;width:100%;height:100%;object-fit:cover;object-position:top center;';
+        imgEl.onerror=function(){this.style.opacity='0';};
         imgDiv.appendChild(imgEl);
 
-        if(count>1){
-          var badge=document.createElement('div');
-          badge.style.cssText='position:absolute;top:5px;right:5px;background:rgba(0,0,0,.7);color:#ffd700;border-radius:99px;padding:2px 8px;font-size:.7rem;font-weight:900';
-          badge.textContent='x'+count;
-          imgDiv.appendChild(badge);
-        }
+        // GETバッジ
         if(hasCard&&count===1){
           var newBadge=document.createElement('div');
-          newBadge.style.cssText='position:absolute;top:4px;left:4px;background:'+RARITY_COLORS[rarity]+';color:white;border-radius:99px;padding:2px 6px;font-size:.6rem;font-weight:900';
+          newBadge.style.cssText='position:absolute;top:7px;left:7px;background:'+rc+';color:white;border-radius:99px;padding:3px 9px;font-size:.65rem;font-weight:900;letter-spacing:.5px;box-shadow:0 2px 6px rgba(0,0,0,.5)';
           newBadge.textContent='GET!';
           imgDiv.appendChild(newBadge);
         }
+        // 枚数バッジ
+        if(count>1){
+          var cntBadge=document.createElement('div');
+          cntBadge.style.cssText='position:absolute;top:7px;right:7px;background:rgba(0,0,0,.75);color:#ffd700;border-radius:99px;padding:3px 9px;font-size:.65rem;font-weight:900';
+          cntBadge.textContent='×'+count;
+          imgDiv.appendChild(cntBadge);
+        }
         cardEl.appendChild(imgDiv);
 
-        // テキスト
+        // テキストエリア
         var textDiv=document.createElement('div');
-        textDiv.style.cssText='padding:5px 7px';
+        textDiv.style.cssText='padding:4px 5px 5px';
+
+        // レアリティ表示
+        var rarLbl=document.createElement('div');
+        rarLbl.style.cssText='font-size:.48rem;font-weight:900;color:'+rc+';letter-spacing:.3px;margin-bottom:1px';
+        rarLbl.textContent=RARITY_NAMES[rarity]||'';
+        textDiv.appendChild(rarLbl);
+
+        // カード名
         var nameDiv=document.createElement('div');
-        nameDiv.style.cssText='font-size:.68rem;font-weight:900;color:'+(hasCard?'white':'#444')+';line-height:1.3;margin-bottom:2px';
-        nameDiv.textContent=hasCard?(card.name&&card.name!=='準備中'?card.name:''):'？？？';
+        nameDiv.style.cssText='font-size:.6rem;font-weight:900;color:'+(hasCard?'white':'#444')+';line-height:1.3;margin-bottom:0';
+        nameDiv.textContent=hasCard?(card.name||''):'？？？';
         textDiv.appendChild(nameDiv);
-        var powerDiv=document.createElement('div');
-        powerDiv.style.cssText='font-size:.6rem;color:'+(hasCard?'var(--muted)':'#333')+';line-height:1.3';
-        powerDiv.textContent=hasCard?(card.power&&card.power!=='準備中'?card.power:''):'？？？';
-        textDiv.appendChild(powerDiv);
+
+        // 必殺技（タップで詳細表示のため一覧では省略）
+
         cardEl.appendChild(textDiv);
         grid.appendChild(cardEl);
       });
