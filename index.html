@@ -839,7 +839,7 @@ function showCollection(){
         // 未入手は裏面画像、入手済みは正面画像
         imgEl.src=hasCard
           ?(imgSrc2||'data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 90 120"><rect fill="%230a0a14" width="90" height="120"/><text x="45" y="68" fill="%23333" text-anchor="middle" font-size="26">📸</text></svg>')
-          :'/card-images/card_back.png';
+          :'/card-images/card_back.jpg';
         imgEl.style.cssText='position:absolute;top:0;left:0;width:100%;height:100%;object-fit:cover;object-position:top center;';
         imgEl.onerror=function(){this.style.opacity='0';};
         imgDiv.appendChild(imgEl);
