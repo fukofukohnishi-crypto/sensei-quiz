@@ -803,8 +803,8 @@ function showCollection(){
     infoDiv.textContent='コレクション '+owned+' / '+total+'枚';
     body.appendChild(infoDiv);
 
-    // レアリティ順に表示
-    [4,3,2,1].forEach(function(rarity){
+    // レアリティ順に表示（高い順）
+    [5,4,3,2,1].forEach(function(rarity){
       var rarityCards=CARDS.filter(function(c){return c.rarity===rarity;});
       if(!rarityCards.length)return;
 
@@ -841,8 +841,11 @@ function showCollection(){
           ?(imgSrc2||'data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 90 120"><rect fill="%230a0a14" width="90" height="120"/><text x="45" y="68" fill="%23333" text-anchor="middle" font-size="26">📸</text></svg>')
           :'/card-images/card_back.jpg';
         imgEl.style.cssText='position:absolute;top:0;left:0;width:100%;height:100%;object-fit:cover;object-position:top center;';
-        imgEl.onerror=function(){this.style.opacity='0';};
-        imgDiv.appendChild(imgEl);
+        imgEl.onerror=function(){
+          // 裏面画像が見つからない場合はSVGで代替表示
+          this.src='data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 90 120"><rect fill="%230a0820" width="90" height="120" rx="4"/><rect fill="none" stroke="%23886600" stroke-width="2" x="4" y="4" width="82" height="112" rx="3"/><text x="45" y="55" fill="%23886600" text-anchor="middle" font-size="18" font-weight="bold">先生</text><text x="45" y="75" fill="%23664400" text-anchor="middle" font-size="8">ORIGINAL</text><text x="45" y="86" fill="%23664400" text-anchor="middle" font-size="8">SENSEI</text></svg>';
+          this.onerror=null;
+        };
 
         // GETバッジ
         if(hasCard&&count===1){
