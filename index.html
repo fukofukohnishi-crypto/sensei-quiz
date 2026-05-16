@@ -277,21 +277,21 @@ html,body{height:100%;font-family:'Noto Sans JP',sans-serif;background:var(--bg)
   <div class="home-chars" id="home-chars-wrap">
     <!-- JSで描画 -->
   </div>
+  <div style="display:flex;gap:6px;padding:0 14px 6px">
+    <button id="btn-go-gacha" onclick="showScreen('gacha')" style="flex:1;padding:9px 4px;border:1px solid rgba(255,34,136,.35);border-radius:10px;background:rgba(255,34,136,.1);color:#ff88bb;font-family:inherit;font-size:.75rem;font-weight:700;cursor:pointer">
+      🎴 ガチャ <span id="gacha-ticket-count">0</span>枚
+    </button>
+    <button id="btn-go-collection" onclick="showCollection()" style="flex:1;padding:9px 4px;border:1px solid rgba(68,136,255,.35);border-radius:10px;background:rgba(68,136,255,.1);color:#88aaff;font-family:inherit;font-size:.75rem;font-weight:700;cursor:pointer">
+      📚 コレクション
+    </button>
+    <button id="btn-go-stats" onclick="showStats()" style="flex:1;padding:9px 4px;border:1px solid rgba(34,204,136,.35);border-radius:10px;background:rgba(34,204,136,.1);color:#44cc88;font-family:inherit;font-size:.75rem;font-weight:700;cursor:pointer">
+      📊 成績
+    </button>
+  </div>
   <div class="scrollbody">
     <div id="test-list"></div>
     <button class="new-btn" onclick="goNewTest()">＋ 新しいテストを作る</button>
-    <div style="display:flex;gap:6px;margin-top:10px;margin-bottom:4px">
-      <button id="btn-go-gacha" onclick="showScreen('gacha')" style="flex:1;padding:9px 4px;border:1px solid rgba(255,34,136,.35);border-radius:10px;background:rgba(255,34,136,.1);color:#ff88bb;font-family:inherit;font-size:.75rem;font-weight:700;cursor:pointer">
-        🎴 ガチャ <span id="gacha-ticket-count">0</span>枚
-      </button>
-      <button id="btn-go-collection" onclick="showCollection()" style="flex:1;padding:9px 4px;border:1px solid rgba(68,136,255,.35);border-radius:10px;background:rgba(68,136,255,.1);color:#88aaff;font-family:inherit;font-size:.75rem;font-weight:700;cursor:pointer">
-        📚 コレクション
-      </button>
-      <button id="btn-go-stats" onclick="showStats()" style="flex:1;padding:9px 4px;border:1px solid rgba(34,204,136,.35);border-radius:10px;background:rgba(34,204,136,.1);color:#44cc88;font-family:inherit;font-size:.75rem;font-weight:700;cursor:pointer">
-        📊 成績
-      </button>
-    </div>
-    <div style="display:flex;gap:8px;margin-top:4px">
+    <div style="display:flex;gap:8px;margin-top:10px">
       <button class="io-btn" onclick="exportData()">📤 データを書き出す</button>
       <label class="io-btn" style="cursor:pointer;position:relative">
         📥 データを読み込む
@@ -1021,7 +1021,7 @@ function selectApSubj(k,btn){
   document.querySelectorAll('#ap-chips .chip').forEach(b=>b.className='chip');
   btn.className='chip active-'+k;
 }
-function showScreen(id){document.querySelectorAll('.screen').forEach(s=>s.classList.remove('active'));document.getElementById(id).classList.add('active');if(id==='collection')showCollection();}
+function showScreen(id){document.querySelectorAll('.screen').forEach(s=>s.classList.remove('active'));document.getElementById(id).classList.add('active');}
 
 function renderHome(){
   updateGachaUI();
