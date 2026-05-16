@@ -989,7 +989,7 @@ function selectApSubj(k,btn){
   document.querySelectorAll('#ap-chips .chip').forEach(b=>b.className='chip');
   btn.className='chip active-'+k;
 }
-function showScreen(id){document.querySelectorAll('.screen').forEach(s=>s.classList.remove('active'));document.getElementById(id).classList.add('active');}
+function showScreen(id){document.querySelectorAll('.screen').forEach(s=>s.classList.remove('active'));document.getElementById(id).classList.add('active');if(id==='collection')showCollection();}
 
 function renderHome(){
   updateGachaUI();
