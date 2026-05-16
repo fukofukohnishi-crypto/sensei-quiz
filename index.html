@@ -819,8 +819,8 @@ function showCollection(){
       var emptyDB={tickets:0,totalCorrect:0,collection:{},history:[]};
       saveGachaDB(emptyDB);
       showToast('リセットしました！','#ff6666');
-      renderCollection();
       updateGachaUI();
+      showCollection(); // 画面ごと再描画
     };
     infoDiv.appendChild(resetBtn);
     body.appendChild(infoDiv);
