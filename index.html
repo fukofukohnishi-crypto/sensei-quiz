@@ -6,17 +6,23 @@
 <title>オリジナル先生</title>
 <!-- PWA / ホーム画面アイコン -->
 <link rel="apple-touch-icon" href="/icon-512.png">
+<link rel="apple-touch-icon" sizes="512x512" href="/icon-512.png">
 <meta name="apple-mobile-web-app-capable" content="yes">
-<meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+<meta name="apple-mobile-web-app-status-bar-style" content="black">
 <meta name="apple-mobile-web-app-title" content="オリジナル先生">
-<meta name="theme-color" content="#0d0d20">
+<meta name="theme-color" content="#0d0d14">
 <link rel="manifest" href="/manifest.json">
+<script>
+// iPad PWA: 100vh問題を修正
+function fixVh(){document.documentElement.style.setProperty('--vh',''+window.innerHeight*0.01+'px');}
+fixVh();window.addEventListener('resize',fixVh);
+</script>
 <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@400;700;900&display=swap" rel="stylesheet">
 <style>
 :root{--bg:#0d0d14;--card:#16162a;--card2:#1c1c30;--border:rgba(255,255,255,0.07);--text:#f0f0f0;--muted:#666}
 *{box-sizing:border-box;margin:0;padding:0;-webkit-tap-highlight-color:transparent}
 html,body{height:100%;font-family:'Noto Sans JP',sans-serif;background:var(--bg);color:var(--text);overflow:hidden}
-.screen{display:none;height:100vh;flex-direction:column;overflow:hidden}
+.screen{display:none;height:100vh;height:calc(var(--vh,1vh)*100);flex-direction:column;overflow:hidden}
 .screen.active{display:flex}
 .hdr{background:#111120;border-bottom:1px solid var(--border);padding:11px 14px;display:flex;align-items:center;gap:8px;flex-shrink:0}
 .hdr-back{background:none;border:none;color:var(--muted);font-size:1.3rem;cursor:pointer;padding:2px 6px}
