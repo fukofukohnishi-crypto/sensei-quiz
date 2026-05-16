@@ -61,6 +61,7 @@ html,body{height:100%;font-family:'Noto Sans JP',sans-serif;background:var(--bg)
 .home-chars{display:flex;justify-content:center;align-items:flex-end;gap:3px;margin-bottom:10px;padding:0 6px;overflow:hidden;pointer-events:none}
 .home-char-item{flex:1;display:flex;flex-direction:column;align-items:center;cursor:default}
 .home-char-item img{width:100%;object-fit:cover;object-position:top center;border-radius:0;max-height:90px;opacity:.85}
+@media(min-width:600px){.home-char-item img{max-height:200px}}
 .home-char-label{display:none}
 .test-card{background:var(--card);border:1.5px solid var(--border);border-radius:15px;padding:14px 15px;margin-bottom:10px;cursor:pointer;display:flex;justify-content:space-between;align-items:flex-start}
 .test-card:active{opacity:.8}
@@ -308,6 +309,7 @@ html,body{height:100%;font-family:'Noto Sans JP',sans-serif;background:var(--bg)
     <button class="hdr-act" onclick="showStats()">📊 成績</button>
   </div>
   <div class="scrollbody">
+    <div id="matome-btn-wrap" style="margin-bottom:12px"></div>
     <div class="subj-grid" id="ss-grid"></div>
   </div>
 </div>
@@ -545,6 +547,10 @@ html,body{height:100%;font-family:'Noto Sans JP',sans-serif;background:var(--bg)
   <div class="res-scrollbody">
     <div class="res-char"><img id="res-img" src="" alt=""/></div>
     <div class="res-title" id="res-title"></div>
+    <div id="res-score-big" style="display:none;text-align:center;margin:8px 0 4px">
+      <div style="font-size:3.5rem;font-weight:900;color:#ffd700;line-height:1" id="res-score-num"></div>
+      <div style="font-size:1rem;font-weight:700;color:var(--muted);margin-top:4px" id="res-score-label"></div>
+    </div>
     <div class="res-pts" id="res-pts">0</div>
     <div class="res-ptslbl">ポイント獲得！</div>
     <div class="res-stats">
@@ -1119,13 +1125,22 @@ function openSubject(subj){
       });
     });
 
-    // 全回ミックス（全部）
+    // 確認テスト（全回ミックス）— 別枠
     if(allTotal>0&&roundNums.length>1){
+      var testSection=document.createElement('div');
+      testSection.style.cssText='margin-bottom:14px';
+      testSection.innerHTML='<div style="font-size:.72rem;font-weight:900;color:#ffd700;letter-spacing:1px;margin-bottom:6px;text-transform:uppercase">📝 確認テスト</div>';
       var d=document.createElement('div');
       d.className='round-card mix';
-      d.innerHTML='<div><div class="round-label mix">⚡ 全回ミックス</div><div class="round-count">全'+allTotal+'問からランダム10問</div></div><div class="round-arrow">›</div>';
+      d.style.cssText='border-color:rgba(255,215,0,.5);background:rgba(255,215,0,.08);';
+      d.innerHTML='<div><div class="round-label mix">🏆 まとめて全部チャレンジ！</div><div class="round-count">全'+allTotal+'問から出題・点数がでるよ</div></div><div class="round-arrow">›</div>';
       d.onclick=function(){startQuiz('mix_all');};
-      list.appendChild(d);
+      testSection.appendChild(d);
+      list.appendChild(testSection);
+      var sep=document.createElement('div');
+      sep.style.cssText='font-size:.72rem;font-weight:900;color:var(--muted);letter-spacing:1px;margin-bottom:6px';
+      sep.textContent='📚 回ごとに練習する';
+      list.appendChild(sep);
     }
 
     // 言葉ミックス（kanji_write以外）
@@ -1176,12 +1191,22 @@ function openSubject(subj){
   } else {
     // 理科・社会・算数
     var totalQ=Object.values(rounds).reduce(function(s,qs){return s+qs.length;},0);
+    // 確認テスト（全回ミックス）— 別枠
     if(roundNums.length>1){
+      var testSection=document.createElement('div');
+      testSection.style.cssText='margin-bottom:14px';
+      testSection.innerHTML='<div style="font-size:.72rem;font-weight:900;color:#ffd700;letter-spacing:1px;margin-bottom:6px">📝 確認テスト</div>';
       var d=document.createElement('div');
       d.className='round-card mix';
-      d.innerHTML='<div><div class="round-label mix">⚡ 全回ミックス</div><div class="round-count">全'+totalQ+'問からランダム10問</div></div><div class="round-arrow">›</div>';
+      d.style.cssText='border-color:rgba(255,215,0,.5);background:rgba(255,215,0,.08)';
+      d.innerHTML='<div><div class="round-label mix">🏆 まとめて全部チャレンジ！</div><div class="round-count">全'+totalQ+'問から出題・点数がでるよ</div></div><div class="round-arrow">›</div>';
       d.onclick=function(){startQuiz('mix');};
-      list.appendChild(d);
+      testSection.appendChild(d);
+      list.appendChild(testSection);
+      var sep=document.createElement('div');
+      sep.style.cssText='font-size:.72rem;font-weight:900;color:var(--muted);letter-spacing:1px;margin-bottom:6px';
+      sep.textContent='📚 回ごとに練習する';
+      list.appendChild(sep);
     }
     roundNums.forEach(function(r){
       var qs=rounds[r]||[];
@@ -1717,6 +1742,16 @@ function showResult(){
   document.getElementById('r-ok').textContent=correct;
   document.getElementById('r-ng').textContent=wrong;
   document.getElementById('r-str').textContent=maxStreak;
+  // まとめテスト（全回ミックス）のとき点数を大きく表示
+  var scoreBig=document.getElementById('res-score-big');
+  if(currentRound===0){
+    var pct100=Math.round(correct/questions.length*100);
+    document.getElementById('res-score-num').textContent=correct+' / '+questions.length+'問正解';
+    document.getElementById('res-score-label').textContent='正解率 '+pct100+'%';
+    scoreBig.style.display='block';
+  }else{
+    scoreBig.style.display='none';
+  }
   document.getElementById('res-retry').style.background='linear-gradient(135deg,'+cfg.color+','+cfg.btn+')';
   const rw=document.getElementById('res-retry-wrap');
   if(!isRevengeMode&&wrongQuestions.length>0){
