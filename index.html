@@ -438,11 +438,11 @@ html,body{height:100%;font-family:'Noto Sans JP',sans-serif;background:var(--bg)
       <!-- あまりあり入力 -->
       <div id="sansu-amari-input" style="display:none">
         <div style="display:flex;gap:8px;align-items:center;margin-bottom:6px">
-          <input id="sansu-input-main" type="number" inputmode="numeric"
+          <input id="sansu-input-main" type="text" inputmode="numeric" pattern="[0-9]*"
             style="flex:1;background:var(--card2);border:2px solid rgba(255,255,255,.15);border-radius:13px;padding:14px;color:white;font-family:inherit;font-size:1.6rem;font-weight:900;text-align:center;outline:none"
             placeholder="商"/>
           <div style="color:#aaa;font-size:1rem;font-weight:700;white-space:nowrap">あまり</div>
-          <input id="sansu-input-amari" type="number" inputmode="numeric"
+          <input id="sansu-input-amari" type="text" inputmode="numeric" pattern="[0-9]*"
             style="flex:1;background:var(--card2);border:2px solid rgba(255,255,255,.15);border-radius:13px;padding:14px;color:white;font-family:inherit;font-size:1.6rem;font-weight:900;text-align:center;outline:none"
             placeholder="余り"/>
         </div>
