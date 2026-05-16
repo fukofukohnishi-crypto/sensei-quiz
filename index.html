@@ -806,6 +806,7 @@ function showCollection(){
     infoDiv.style.cssText='display:flex;align-items:center;justify-content:space-between;padding:10px 0 16px';
 
     var countSpan=document.createElement('span');
+    countSpan.id='collection-count';
     countSpan.style.cssText='color:var(--muted);font-size:.82rem;font-weight:700';
     countSpan.textContent='コレクション '+owned+' / '+total+'枚';
     infoDiv.appendChild(countSpan);
@@ -815,7 +816,8 @@ function showCollection(){
     resetBtn.style.cssText='background:rgba(255,50,50,.15);border:1px solid rgba(255,50,50,.4);color:#ff6666;border-radius:99px;padding:5px 14px;font-size:.72rem;font-weight:700;cursor:pointer';
     resetBtn.onclick=function(){
       if(!confirm('コレクションとチケットを全てリセットしますか？\nこの操作は元に戻せません。')){return;}
-      localStorage.removeItem('gachaDB');
+      var emptyDB={tickets:0,totalCorrect:0,collection:{},history:[]};
+      saveGachaDB(emptyDB);
       showToast('リセットしました！','#ff6666');
       renderCollection();
       updateGachaUI();
