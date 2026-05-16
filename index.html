@@ -908,7 +908,7 @@ function showCollection(){
 
         var imgEl=document.createElement('img');
         var imgSrc2=card.imgUrl||'';
-        if(!imgSrc2&&IMGS&&IMGS[charKey]){imgSrc2=IMGS[charKey]['start']||'';}
+        if(!imgSrc2&&IMGS&&IMGS[charKey]){imgSrc2=(IMGS[charKey]['start'])||'';}
         // 未入手は裏面画像、入手済みは正面画像
         imgEl.src=hasCard
           ?(imgSrc2||'data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 90 120"><rect fill="%230a0a14" width="90" height="120"/><text x="45" y="68" fill="%23333" text-anchor="middle" font-size="26">📸</text></svg>')
@@ -961,6 +961,7 @@ function showCollection(){
     });
     showScreen('collection');
   }catch(e){
+    console.error('showCollection error:',e);
     showToast('エラー: '+e.message,'#ff5555');
   }
 }
@@ -1997,6 +1998,12 @@ async function apGenerateAll(){
 
 // ---- STATS ----
 function showStats(){
+  // currentTestIdが未設定の場合は最初のテストを使う
+  if(!currentTestId){
+    var ids=Object.keys(DB.tests);
+    if(!ids.length){showToast('まずテストを作ってね','#ffaa44');return;}
+    currentTestId=ids[0];
+  }
   var t=DB.tests[currentTestId];
   if(!t)return;
   var testStats=DB.stats[currentTestId]||{};
