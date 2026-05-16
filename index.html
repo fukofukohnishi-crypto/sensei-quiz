@@ -1462,7 +1462,7 @@ function renderQ(){
   if(isSansu){
     // あまりが答えに含まれるか判定
     var ans=String(questions[qIdx].a||'');
-    var hasAmari=ans.indexOf('あまり')>-1||ans.indexOf('余り')>-1||ans.indexOf('r')>-1;
+    var hasAmari=ans.indexOf('あまり')>-1||ans.indexOf('余り')>-1||ans.indexOf('r')>-1||ans.indexOf('...')>-1||ans.indexOf('…')>-1;
     document.getElementById('sansu-normal-input').style.display=hasAmari?'none':'flex';
     document.getElementById('sansu-amari-input').style.display=hasAmari?'block':'none';
     if(hasAmari){
@@ -1523,7 +1523,7 @@ function checkSansu(){
   if(answered)return;
   var q=questions[qIdx];
   var correct_ans=String(q.a).trim();
-  var hasAmari=correct_ans.indexOf('あまり')>-1||correct_ans.indexOf('余り')>-1;
+  var hasAmari=correct_ans.indexOf('あまり')>-1||correct_ans.indexOf('余り')>-1||correct_ans.indexOf('...')>-1||correct_ans.indexOf('…')>-1;
 
   if(hasAmari){
     // あまりあり：2つの入力を結合して比較
@@ -1535,8 +1535,8 @@ function checkSansu(){
     mainInp.disabled=true;amariInp.disabled=true;
     document.getElementById('sansu-check-btn-amari').disabled=true;
 
-    // 正解から数字を抽出して比較
-    var correctParts=correct_ans.replace(/[あまり余り]/g,'|').split('|').filter(function(x){return x.trim()!=='';});
+    // 正解から数字を抽出して比較（あまり・余り・...・…で分割）
+    var correctParts=correct_ans.replace(/あまり|余り|\.\.\.|…/g,'|').split('|').filter(function(x){return x.trim()!=='';});
     var correctMain=correctParts[0]?correctParts[0].trim():'';
     var correctAmari=correctParts[1]?correctParts[1].trim():'';
     var isOk=mainVal===correctMain&&amariVal===correctAmari;
