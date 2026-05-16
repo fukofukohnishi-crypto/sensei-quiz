@@ -1,0 +1,18 @@
+{
+  "name": "オリジナル先生",
+  "short_name": "オリジナル先生",
+  "description": "早稲アカ小3向けクイズアプリ",
+  "start_url": "/",
+  "display": "standalone",
+  "background_color": "#0d0d14",
+  "theme_color": "#0d0d20",
+  "orientation": "portrait",
+  "icons": [
+    {
+      "src": "/icon-512.png",
+      "sizes": "512x512",
+      "type": "image/png",
+      "purpose": "any maskable"
+    }
+  ]
+}
