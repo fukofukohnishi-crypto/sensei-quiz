@@ -58,11 +58,10 @@ html,body{height:100%;font-family:'Noto Sans JP',sans-serif;background:var(--bg)
 #home{overflow:hidden;background:radial-gradient(ellipse at 25% 15%,#1a0a2e,transparent 55%),radial-gradient(ellipse at 80% 85%,#0a182e,transparent 50%),var(--bg)}
 .home-logo{font-size:1.8rem;font-weight:900;color:#ffd700;text-align:center;padding:14px 16px 2px;text-shadow:0 0 20px rgba(255,215,0,.4)}
 .home-sub{color:var(--muted);font-size:.72rem;letter-spacing:2px;text-align:center;margin-bottom:6px}
-.home-chars{display:flex;justify-content:center;align-items:flex-end;gap:3px;margin-bottom:10px;padding:0 6px;overflow:hidden}
-.home-char-item{flex:1;display:flex;flex-direction:column;align-items:center;cursor:pointer}
-.home-char-item img{width:100%;object-fit:cover;object-position:top center;border-radius:12px 12px 0 0;max-height:180px;transition:transform .2s}
-.home-char-item:active img{transform:scale(.97)}
-.home-char-label{font-size:.65rem;font-weight:900;padding:4px 4px;border-radius:0 0 10px 10px;width:100%;text-align:center;color:white;letter-spacing:.5px}
+.home-chars{display:flex;justify-content:center;align-items:flex-end;gap:3px;margin-bottom:10px;padding:0 6px;overflow:hidden;pointer-events:none}
+.home-char-item{flex:1;display:flex;flex-direction:column;align-items:center;cursor:default}
+.home-char-item img{width:100%;object-fit:cover;object-position:top center;border-radius:0;max-height:90px;opacity:.85}
+.home-char-label{display:none}
 .test-card{background:var(--card);border:1.5px solid var(--border);border-radius:15px;padding:14px 15px;margin-bottom:10px;cursor:pointer;display:flex;justify-content:space-between;align-items:flex-start}
 .test-card:active{opacity:.8}
 .tc-name{font-size:1.05rem;font-weight:900;margin-bottom:4px}
@@ -130,7 +129,7 @@ html,body{height:100%;font-family:'Noto Sans JP',sans-serif;background:var(--bg)
 .qz-q-txt{font-size:1.35rem;font-weight:900;line-height:1.6;color:white}
 .qz-bottom{flex:1;display:flex;flex-direction:column;padding:0 11px 11px;min-height:0;overflow-y:auto;overflow-x:hidden}
 .qz-choices{display:grid;grid-template-columns:1fr 1fr;gap:7px;margin-bottom:7px;flex:1}
-.qz-cbtn{background:var(--card2);border:2px solid rgba(255,255,255,.08);border-radius:13px;color:var(--text);font-family:inherit;font-size:1.1rem;font-weight:700;cursor:pointer;text-align:center;display:flex;align-items:center;justify-content:center;padding:4px 7px;line-height:1.35;transition:all .15s;width:100%;height:100%}
+.qz-cbtn{background:var(--card2);border:2px solid rgba(255,255,255,.08);border-radius:13px;color:var(--text);font-family:inherit;font-size:1.5rem;font-weight:700;cursor:pointer;text-align:center;display:flex;align-items:center;justify-content:center;padding:6px 7px;line-height:1.35;transition:all .15s;width:100%;height:100%}
 .qz-cbtn:active:not(:disabled){transform:scale(.96)}
 .qz-cbtn.correct{background:rgba(68,200,120,.2);border-color:#44cc88;color:#44cc88;animation:correctPop .3s}
 .qz-cbtn.wrong{background:rgba(255,80,80,.18);border-color:#ff5555;color:#ff8888}
@@ -279,16 +278,19 @@ html,body{height:100%;font-family:'Noto Sans JP',sans-serif;background:var(--bg)
   </div>
   <div class="scrollbody">
     <div id="test-list"></div>
-    <div style="display:flex;gap:8px;margin-bottom:8px">
-      <button id="btn-go-gacha" style="flex:1;padding:14px;border:none;border-radius:13px;background:linear-gradient(135deg,#ff2288,#ff8800);color:white;font-family:inherit;font-size:.95rem;font-weight:900;cursor:pointer">
+    <button class="new-btn" onclick="goNewTest()">＋ 新しいテストを作る</button>
+    <div style="display:flex;gap:6px;margin-top:10px;margin-bottom:4px">
+      <button id="btn-go-gacha" style="flex:1;padding:9px 4px;border:1px solid rgba(255,34,136,.35);border-radius:10px;background:rgba(255,34,136,.1);color:#ff88bb;font-family:inherit;font-size:.75rem;font-weight:700;cursor:pointer">
         🎴 ガチャ <span id="gacha-ticket-count">0</span>枚
       </button>
-      <button id="btn-go-collection" style="flex:1;padding:14px;border:none;border-radius:13px;background:linear-gradient(135deg,#4488ff,#8844ff);color:white;font-family:inherit;font-size:.95rem;font-weight:900;cursor:pointer">
+      <button id="btn-go-collection" style="flex:1;padding:9px 4px;border:1px solid rgba(68,136,255,.35);border-radius:10px;background:rgba(68,136,255,.1);color:#88aaff;font-family:inherit;font-size:.75rem;font-weight:700;cursor:pointer">
         📚 コレクション
       </button>
+      <button id="btn-go-stats" style="flex:1;padding:9px 4px;border:1px solid rgba(34,204,136,.35);border-radius:10px;background:rgba(34,204,136,.1);color:#44cc88;font-family:inherit;font-size:.75rem;font-weight:700;cursor:pointer">
+        📊 成績
+      </button>
     </div>
-    <button class="new-btn" onclick="goNewTest()">＋ 新しいテストを作る</button>
-    <div style="display:flex;gap:8px;margin-top:8px">
+    <div style="display:flex;gap:8px;margin-top:4px">
       <button class="io-btn" onclick="exportData()">📤 データを書き出す</button>
       <label class="io-btn" style="cursor:pointer;position:relative">
         📥 データを読み込む
@@ -997,6 +999,11 @@ window.onload=async function(){
   if(btnCol){
     btnCol.addEventListener('touchend',function(e){e.preventDefault();showCollection();},{passive:false});
     btnCol.addEventListener('click',function(){showCollection();});
+  }
+  var btnStats=document.getElementById('btn-go-stats');
+  if(btnStats){
+    btnStats.addEventListener('touchend',function(e){e.preventDefault();showStats();},{passive:false});
+    btnStats.addEventListener('click',function(){showStats();});
   }
 };
 
