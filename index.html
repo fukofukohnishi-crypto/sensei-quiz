@@ -21,6 +21,9 @@ fixVh();window.addEventListener('resize',fixVh);
 <style>
 :root{--bg:#0d0d14;--card:#16162a;--card2:#1c1c30;--border:rgba(255,255,255,0.07);--text:#f0f0f0;--muted:#666}
 *{box-sizing:border-box;margin:0;padding:0;-webkit-tap-highlight-color:transparent}
+/* iPad PWA タッチ対応 */
+button{cursor:pointer;-webkit-tap-highlight-color:transparent;touch-action:manipulation}
+*{touch-action:manipulation}
 html,body{height:100%;font-family:'Noto Sans JP',sans-serif;background:var(--bg);color:var(--text);overflow:hidden}
 .screen{display:none;height:100vh;height:calc(var(--vh,1vh)*100);flex-direction:column;overflow:hidden}
 .screen.active{display:flex}
@@ -277,10 +280,10 @@ html,body{height:100%;font-family:'Noto Sans JP',sans-serif;background:var(--bg)
   <div class="scrollbody">
     <div id="test-list"></div>
     <div style="display:flex;gap:8px;margin-bottom:8px">
-      <button onclick="showScreen('gacha')" style="flex:1;padding:14px;border:none;border-radius:13px;background:linear-gradient(135deg,#ff2288,#ff8800);color:white;font-family:inherit;font-size:.95rem;font-weight:900;cursor:pointer">
+      <button id="btn-go-gacha" style="flex:1;padding:14px;border:none;border-radius:13px;background:linear-gradient(135deg,#ff2288,#ff8800);color:white;font-family:inherit;font-size:.95rem;font-weight:900;cursor:pointer">
         🎴 ガチャ <span id="gacha-ticket-count">0</span>枚
       </button>
-      <button onclick="showCollection()" style="flex:1;padding:14px;border:none;border-radius:13px;background:linear-gradient(135deg,#4488ff,#8844ff);color:white;font-family:inherit;font-size:.95rem;font-weight:900;cursor:pointer">
+      <button id="btn-go-collection" style="flex:1;padding:14px;border:none;border-radius:13px;background:linear-gradient(135deg,#4488ff,#8844ff);color:white;font-family:inherit;font-size:.95rem;font-weight:900;cursor:pointer">
         📚 コレクション
       </button>
     </div>
@@ -983,6 +986,18 @@ window.onload=async function(){
     console.log('cards.json読み込み失敗、デフォルト使用');
   }
   renderHome();buildChips();
+
+  // iPad PWA対応：ガチャ・コレクションボタンをaddEventListenerで登録
+  var btnGacha=document.getElementById('btn-go-gacha');
+  var btnCol=document.getElementById('btn-go-collection');
+  if(btnGacha){
+    btnGacha.addEventListener('touchend',function(e){e.preventDefault();showScreen('gacha');},{passive:false});
+    btnGacha.addEventListener('click',function(){showScreen('gacha');});
+  }
+  if(btnCol){
+    btnCol.addEventListener('touchend',function(e){e.preventDefault();showCollection();},{passive:false});
+    btnCol.addEventListener('click',function(){showCollection();});
+  }
 };
 
 function buildChips(){
