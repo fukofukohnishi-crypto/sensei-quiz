@@ -1,52 +1,402 @@
 [
-  {"id":"sr001","char":"zanpanman", "rarity":2,"name":"ザンパンマン先生",   "power":"鍋歴史大噴火：巨大な鍋から歴史の力を解き放ち、敵全体に大ダメージを与える！",                    "imgUrl":"/card-images/01_zanpanman.png"},
-  {"id":"sr002","char":"yabai",     "rarity":2,"name":"ヤバイヤツ先生",     "power":"超速九九ラッシュ：高速で九九を唱え続け、敵1体に超連続ダメージ＋混乱！",                         "imgUrl":"/card-images/02_yabaiyatsu.png"},
-  {"id":"sr003","char":"bakuso",    "rarity":2,"name":"バクソウ先生",       "power":"漢字爆裂弾：膨大な語彙力で言葉の壁をぶち壊し、敵全体に大ダメージ＋混乱！",                       "imgUrl":"/card-images/03_bakuso.png"},
-  {"id":"sr004","char":"kaga",      "rarity":2,"name":"カガ先生",           "power":"化学連鎖リアクション：化学反応を連鎖させ、敵全体に持続ダメージ＋毒・麻痺！",                     "imgUrl":"/card-images/04_kaga.png"},
-  {"id":"sr005","char":"bakudanma", "rarity":2,"name":"爆弾魔先生",         "power":"ダイナマイトスパーク：爆発的パワーで敵の体力を粉砕し、やる気UP＋スタン！",                       "imgUrl":"/card-images/05_bakudanma.png"},
-  {"id":"sr006","char":"kanpanman", "rarity":2,"name":"乾パンマン先生",     "power":"忍法・カンパンアート！：忍びの集中力で創造力を極限まで高め、完成度とスピードを大幅UP！",         "imgUrl":"/card-images/06_kanpanman.png"},
-  {"id":"sr007","char":"tsukkomi",  "rarity":2,"name":"ツッコミマン先生",   "power":"ツッコミ・リズムブレイク！：5本のツッコミでリズムを整え、味方全体のテンポを最大化！",           "imgUrl":"/card-images/07_tsukkomiman.png"},
-  {"id":"sr008","char":"uzan",      "rarity":2,"name":"ウザン先生",         "power":"ウザ知識シャワー：膨大な知識で敵全体を圧倒し、理解不能に陥らせる！確率でイラつき状態！",         "imgUrl":"/card-images/08_uzan.png"},
-  {"id":"l001","char":"nomisoramen","rarity":5,"name":"NO味噌ラーメン先生", "power":"NO MISO, NO LIFE.：敵全体の味噌依存をリセットし、NO味噌の真理を叩き込む！",                    "imgUrl":"/card-images/09_nomisoramen.png"},
-  {"id":"l002","char":"hiyakozo",   "rarity":5,"name":"飛躍 孝像先生",     "power":"ハイパー・ジャンプドライブ：味方全体の可能性を最大限に引き上げ、一瞬でステージを上の次元へ！", "imgUrl":"/card-images/10_hiyakozo.png"},
-  {"id":"n001","char":"zanpanman",  "rarity":1,"name":"準備中","power":"準備中","imgUrl":""},
-  {"id":"n002","char":"yabai",      "rarity":1,"name":"準備中","power":"準備中","imgUrl":""},
-  {"id":"n003","char":"bakuso",     "rarity":1,"name":"準備中","power":"準備中","imgUrl":""},
-  {"id":"n004","char":"kaga",       "rarity":1,"name":"準備中","power":"準備中","imgUrl":""},
-  {"id":"n005","char":"bakudanma",  "rarity":1,"name":"準備中","power":"準備中","imgUrl":""},
-  {"id":"n006","char":"kanpanman",  "rarity":1,"name":"準備中","power":"準備中","imgUrl":""},
-  {"id":"n007","char":"tsukkomi",   "rarity":1,"name":"準備中","power":"準備中","imgUrl":""},
-  {"id":"n008","char":"uzan",       "rarity":1,"name":"準備中","power":"準備中","imgUrl":""},
-  {"id":"n009","char":"nomisoramen","rarity":1,"name":"準備中","power":"準備中","imgUrl":""},
-  {"id":"n010","char":"hiyakozo",   "rarity":1,"name":"準備中","power":"準備中","imgUrl":""},
-  {"id":"n011","char":"zanpanman",  "rarity":1,"name":"準備中","power":"準備中","imgUrl":""},
-  {"id":"n012","char":"yabai",      "rarity":1,"name":"準備中","power":"準備中","imgUrl":""},
-  {"id":"n013","char":"bakuso",     "rarity":1,"name":"準備中","power":"準備中","imgUrl":""},
-  {"id":"n014","char":"kaga",       "rarity":1,"name":"準備中","power":"準備中","imgUrl":""},
-  {"id":"n015","char":"bakudanma",  "rarity":1,"name":"準備中","power":"準備中","imgUrl":""},
-  {"id":"n016","char":"kanpanman",  "rarity":1,"name":"準備中","power":"準備中","imgUrl":""},
-  {"id":"ssr001","char":"zanpanman","rarity":3,"name":"準備中","power":"準備中","imgUrl":""},
-  {"id":"ssr002","char":"yabai",    "rarity":3,"name":"準備中","power":"準備中","imgUrl":""},
-  {"id":"ssr003","char":"bakuso",   "rarity":3,"name":"準備中","power":"準備中","imgUrl":""},
-  {"id":"ssr004","char":"kaga",     "rarity":3,"name":"準備中","power":"準備中","imgUrl":""},
-  {"id":"ssr005","char":"bakudanma","rarity":3,"name":"準備中","power":"準備中","imgUrl":""},
-  {"id":"ssr006","char":"kanpanman","rarity":3,"name":"準備中","power":"準備中","imgUrl":""},
-  {"id":"ssr007","char":"tsukkomi", "rarity":3,"name":"準備中","power":"準備中","imgUrl":""},
-  {"id":"ssr008","char":"uzan",     "rarity":3,"name":"準備中","power":"準備中","imgUrl":""},
-  {"id":"r001","char":"zanpanman",  "rarity":4,"name":"準備中","power":"準備中","imgUrl":""},
-  {"id":"r002","char":"yabai",      "rarity":4,"name":"準備中","power":"準備中","imgUrl":""},
-  {"id":"r003","char":"bakuso",     "rarity":4,"name":"準備中","power":"準備中","imgUrl":""},
-  {"id":"r004","char":"kaga",       "rarity":4,"name":"準備中","power":"準備中","imgUrl":""},
-  {"id":"r005","char":"bakudanma",  "rarity":4,"name":"準備中","power":"準備中","imgUrl":""},
-  {"id":"r006","char":"kanpanman",  "rarity":4,"name":"準備中","power":"準備中","imgUrl":""},
-  {"id":"r007","char":"tsukkomi",   "rarity":4,"name":"準備中","power":"準備中","imgUrl":""},
-  {"id":"r008","char":"uzan",       "rarity":4,"name":"準備中","power":"準備中","imgUrl":""},
-  {"id":"r009","char":"nomisoramen","rarity":4,"name":"準備中","power":"準備中","imgUrl":""},
-  {"id":"r010","char":"hiyakozo",   "rarity":4,"name":"準備中","power":"準備中","imgUrl":""},
-  {"id":"r011","char":"zanpanman",  "rarity":4,"name":"準備中","power":"準備中","imgUrl":""},
-  {"id":"r012","char":"yabai",      "rarity":4,"name":"準備中","power":"準備中","imgUrl":""},
-  {"id":"l003","char":"zanpanman",  "rarity":5,"name":"準備中","power":"準備中","imgUrl":""},
-  {"id":"l004","char":"yabai",      "rarity":5,"name":"準備中","power":"準備中","imgUrl":""},
-  {"id":"l005","char":"bakuso",     "rarity":5,"name":"準備中","power":"準備中","imgUrl":""},
-  {"id":"l006","char":"kaga",       "rarity":5,"name":"準備中","power":"準備中","imgUrl":""}
+  {
+    "id": "sr001",
+    "char": "zanpanman",
+    "rarity": 2,
+    "name": "ザンパンマン先生",
+    "power": "鍋歴史大噴火：巨大な鍋から歴史の力を解き放ち、敵全体に大ダメージを与える！",
+    "imgUrl": "/card-images/01_zanpanman.png"
+  },
+  {
+    "id": "sr002",
+    "char": "yabai",
+    "rarity": 2,
+    "name": "ヤバイヤツ先生",
+    "power": "超速九九ラッシュ：高速で九九を唱え続け、敵1体に超連続ダメージ＋混乱！",
+    "imgUrl": "/card-images/02_yabaiyatsu.png"
+  },
+  {
+    "id": "sr003",
+    "char": "bakuso",
+    "rarity": 2,
+    "name": "バクソウ先生",
+    "power": "漢字爆裂弾：膨大な語彙力で言葉の壁をぶち壊し、敵全体に大ダメージ＋混乱！",
+    "imgUrl": "/card-images/03_bakuso.png"
+  },
+  {
+    "id": "sr004",
+    "char": "kaga",
+    "rarity": 2,
+    "name": "カガ先生",
+    "power": "化学連鎖リアクション：化学反応を連鎖させ、敵全体に持続ダメージ＋毒・麻痺！",
+    "imgUrl": "/card-images/04_kaga.png"
+  },
+  {
+    "id": "sr005",
+    "char": "bakudanma",
+    "rarity": 2,
+    "name": "爆弾魔先生",
+    "power": "ダイナマイトスパーク：爆発的パワーで敵の体力を粉砕し、やる気UP＋スタン！",
+    "imgUrl": "/card-images/05_bakudanma.png"
+  },
+  {
+    "id": "sr006",
+    "char": "kanpanman",
+    "rarity": 2,
+    "name": "乾パンマン先生",
+    "power": "忍法・カンパンアート！：忍びの集中力で創造力を極限まで高め、完成度とスピードを大幅UP！",
+    "imgUrl": "/card-images/06_kanpanman.png"
+  },
+  {
+    "id": "sr007",
+    "char": "tsukkomi",
+    "rarity": 2,
+    "name": "ツッコミマン先生",
+    "power": "ツッコミ・リズムブレイク！：5本のツッコミでリズムを整え、味方全体のテンポを最大化！",
+    "imgUrl": "/card-images/07_tsukkomiman.png"
+  },
+  {
+    "id": "sr008",
+    "char": "uzan",
+    "rarity": 2,
+    "name": "ウザン先生",
+    "power": "ウザ知識シャワー：膨大な知識で敵全体を圧倒し、理解不能に陥らせる！確率でイラつき状態！",
+    "imgUrl": "/card-images/08_uzan.png"
+  },
+  {
+    "id": "l001",
+    "char": "nomisoramen",
+    "rarity": 5,
+    "name": "NO味噌ラーメン先生",
+    "power": "NO MISO, NO LIFE.：敵全体の味噌依存をリセットし、NO味噌の真理を叩き込む！",
+    "imgUrl": "/card-images/09_nomisoramen.png"
+  },
+  {
+    "id": "l002",
+    "char": "hiyakozo",
+    "rarity": 5,
+    "name": "飛躍 孝像先生",
+    "power": "ハイパー・ジャンプドライブ：味方全体の可能性を最大限に引き上げ、一瞬でステージを上の次元へ！",
+    "imgUrl": "/card-images/10_hiyakozo.png"
+  },
+  {
+    "id": "n001",
+    "char": "zanpanman",
+    "rarity": 1,
+    "name": "ザンパンマン先生",
+    "power": "防御無視の斬撃：鍋の力で敵の防御を無視し、単体に大ダメージ！",
+    "imgUrl": "/card-images/n01_zanpanman.png"
+  },
+  {
+    "id": "n002",
+    "char": "yabai",
+    "rarity": 1,
+    "name": "ヤバイヤツ先生",
+    "power": "単体攻撃：筋肉と根性で敵1体に直撃ダメージ！",
+    "imgUrl": "/card-images/n02_yabaiyatsu.png"
+  },
+  {
+    "id": "n003",
+    "char": "bakuso",
+    "rarity": 1,
+    "name": "準備中",
+    "power": "準備中",
+    "imgUrl": ""
+  },
+  {
+    "id": "n004",
+    "char": "kaga",
+    "rarity": 1,
+    "name": "準備中",
+    "power": "準備中",
+    "imgUrl": ""
+  },
+  {
+    "id": "n005",
+    "char": "bakudanma",
+    "rarity": 1,
+    "name": "準備中",
+    "power": "準備中",
+    "imgUrl": ""
+  },
+  {
+    "id": "n006",
+    "char": "kanpanman",
+    "rarity": 1,
+    "name": "準備中",
+    "power": "準備中",
+    "imgUrl": ""
+  },
+  {
+    "id": "n007",
+    "char": "tsukkomi",
+    "rarity": 1,
+    "name": "準備中",
+    "power": "準備中",
+    "imgUrl": ""
+  },
+  {
+    "id": "n008",
+    "char": "uzan",
+    "rarity": 1,
+    "name": "準備中",
+    "power": "準備中",
+    "imgUrl": ""
+  },
+  {
+    "id": "n009",
+    "char": "nomisoramen",
+    "rarity": 1,
+    "name": "準備中",
+    "power": "準備中",
+    "imgUrl": ""
+  },
+  {
+    "id": "n010",
+    "char": "hiyakozo",
+    "rarity": 1,
+    "name": "準備中",
+    "power": "準備中",
+    "imgUrl": ""
+  },
+  {
+    "id": "n011",
+    "char": "zanpanman",
+    "rarity": 1,
+    "name": "準備中",
+    "power": "準備中",
+    "imgUrl": ""
+  },
+  {
+    "id": "n012",
+    "char": "yabai",
+    "rarity": 1,
+    "name": "準備中",
+    "power": "準備中",
+    "imgUrl": ""
+  },
+  {
+    "id": "n013",
+    "char": "bakuso",
+    "rarity": 1,
+    "name": "準備中",
+    "power": "準備中",
+    "imgUrl": ""
+  },
+  {
+    "id": "n014",
+    "char": "kaga",
+    "rarity": 1,
+    "name": "準備中",
+    "power": "準備中",
+    "imgUrl": ""
+  },
+  {
+    "id": "n015",
+    "char": "bakudanma",
+    "rarity": 1,
+    "name": "準備中",
+    "power": "準備中",
+    "imgUrl": ""
+  },
+  {
+    "id": "n016",
+    "char": "kanpanman",
+    "rarity": 1,
+    "name": "準備中",
+    "power": "準備中",
+    "imgUrl": ""
+  },
+  {
+    "id": "ssr001",
+    "char": "zanpanman",
+    "rarity": 3,
+    "name": "準備中",
+    "power": "準備中",
+    "imgUrl": ""
+  },
+  {
+    "id": "ssr002",
+    "char": "yabai",
+    "rarity": 3,
+    "name": "準備中",
+    "power": "準備中",
+    "imgUrl": ""
+  },
+  {
+    "id": "ssr003",
+    "char": "bakuso",
+    "rarity": 3,
+    "name": "準備中",
+    "power": "準備中",
+    "imgUrl": ""
+  },
+  {
+    "id": "ssr004",
+    "char": "kaga",
+    "rarity": 3,
+    "name": "準備中",
+    "power": "準備中",
+    "imgUrl": ""
+  },
+  {
+    "id": "ssr005",
+    "char": "bakudanma",
+    "rarity": 3,
+    "name": "準備中",
+    "power": "準備中",
+    "imgUrl": ""
+  },
+  {
+    "id": "ssr006",
+    "char": "kanpanman",
+    "rarity": 3,
+    "name": "準備中",
+    "power": "準備中",
+    "imgUrl": ""
+  },
+  {
+    "id": "ssr007",
+    "char": "tsukkomi",
+    "rarity": 3,
+    "name": "準備中",
+    "power": "準備中",
+    "imgUrl": ""
+  },
+  {
+    "id": "ssr008",
+    "char": "uzan",
+    "rarity": 3,
+    "name": "準備中",
+    "power": "準備中",
+    "imgUrl": ""
+  },
+  {
+    "id": "r001",
+    "char": "zanpanman",
+    "rarity": 4,
+    "name": "準備中",
+    "power": "準備中",
+    "imgUrl": ""
+  },
+  {
+    "id": "r002",
+    "char": "yabai",
+    "rarity": 4,
+    "name": "準備中",
+    "power": "準備中",
+    "imgUrl": ""
+  },
+  {
+    "id": "r003",
+    "char": "bakuso",
+    "rarity": 4,
+    "name": "準備中",
+    "power": "準備中",
+    "imgUrl": ""
+  },
+  {
+    "id": "r004",
+    "char": "kaga",
+    "rarity": 4,
+    "name": "準備中",
+    "power": "準備中",
+    "imgUrl": ""
+  },
+  {
+    "id": "r005",
+    "char": "bakudanma",
+    "rarity": 4,
+    "name": "準備中",
+    "power": "準備中",
+    "imgUrl": ""
+  },
+  {
+    "id": "r006",
+    "char": "kanpanman",
+    "rarity": 4,
+    "name": "準備中",
+    "power": "準備中",
+    "imgUrl": ""
+  },
+  {
+    "id": "r007",
+    "char": "tsukkomi",
+    "rarity": 4,
+    "name": "準備中",
+    "power": "準備中",
+    "imgUrl": ""
+  },
+  {
+    "id": "r008",
+    "char": "uzan",
+    "rarity": 4,
+    "name": "準備中",
+    "power": "準備中",
+    "imgUrl": ""
+  },
+  {
+    "id": "r009",
+    "char": "nomisoramen",
+    "rarity": 4,
+    "name": "準備中",
+    "power": "準備中",
+    "imgUrl": ""
+  },
+  {
+    "id": "r010",
+    "char": "hiyakozo",
+    "rarity": 4,
+    "name": "準備中",
+    "power": "準備中",
+    "imgUrl": ""
+  },
+  {
+    "id": "r011",
+    "char": "zanpanman",
+    "rarity": 4,
+    "name": "準備中",
+    "power": "準備中",
+    "imgUrl": ""
+  },
+  {
+    "id": "r012",
+    "char": "yabai",
+    "rarity": 4,
+    "name": "準備中",
+    "power": "準備中",
+    "imgUrl": ""
+  },
+  {
+    "id": "l003",
+    "char": "zanpanman",
+    "rarity": 5,
+    "name": "準備中",
+    "power": "準備中",
+    "imgUrl": ""
+  },
+  {
+    "id": "l004",
+    "char": "yabai",
+    "rarity": 5,
+    "name": "準備中",
+    "power": "準備中",
+    "imgUrl": ""
+  },
+  {
+    "id": "l005",
+    "char": "bakuso",
+    "rarity": 5,
+    "name": "準備中",
+    "power": "準備中",
+    "imgUrl": ""
+  },
+  {
+    "id": "l006",
+    "char": "kaga",
+    "rarity": 5,
+    "name": "準備中",
+    "power": "準備中",
+    "imgUrl": ""
+  }
 ]
