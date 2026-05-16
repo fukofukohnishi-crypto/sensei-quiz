@@ -686,9 +686,13 @@ function drawGacha(){
   else if(rand<w3)rarity=3;
   else if(rand<w2)rarity=2;
 
-  // そのレアリティのカードからランダム選出
-  var pool=CARDS.filter(function(c){return c.rarity===rarity;});
-  if(!pool.length)pool=CARDS.slice(); // フォールバック：全カード
+  // そのレアリティのカードからランダム選出（imgUrlがあるものだけ）
+  var pool=CARDS.filter(function(c){return c.rarity===rarity&&c.imgUrl;});
+  if(!pool.length){
+    // そのレアリティに画像付きカードがなければ、画像付き全カードからフォールバック
+    pool=CARDS.filter(function(c){return c.imgUrl;});
+  }
+  if(!pool.length)pool=CARDS.slice();
   var card=pool[Math.floor(Math.random()*pool.length)];
 
   // コレクションに追加
@@ -797,10 +801,26 @@ function showCollection(){
     var owned=Object.keys(db.collection).length;
     var total=CARDS.length;
 
-    // ヘッダー情報
+    // ヘッダー情報＋リセットボタン
     var infoDiv=document.createElement('div');
-    infoDiv.style.cssText='text-align:center;padding:10px 0 16px;color:var(--muted);font-size:.82rem;font-weight:700';
-    infoDiv.textContent='コレクション '+owned+' / '+total+'枚';
+    infoDiv.style.cssText='display:flex;align-items:center;justify-content:space-between;padding:10px 0 16px';
+
+    var countSpan=document.createElement('span');
+    countSpan.style.cssText='color:var(--muted);font-size:.82rem;font-weight:700';
+    countSpan.textContent='コレクション '+owned+' / '+total+'枚';
+    infoDiv.appendChild(countSpan);
+
+    var resetBtn=document.createElement('button');
+    resetBtn.textContent='🗑 リセット';
+    resetBtn.style.cssText='background:rgba(255,50,50,.15);border:1px solid rgba(255,50,50,.4);color:#ff6666;border-radius:99px;padding:5px 14px;font-size:.72rem;font-weight:700;cursor:pointer';
+    resetBtn.onclick=function(){
+      if(!confirm('コレクションとチケットを全てリセットしますか？\nこの操作は元に戻せません。')){return;}
+      localStorage.removeItem('gachaDB');
+      showToast('リセットしました！','#ff6666');
+      renderCollection();
+      updateGachaUI();
+    };
+    infoDiv.appendChild(resetBtn);
     body.appendChild(infoDiv);
 
     // レアリティ順に表示（高い順）
