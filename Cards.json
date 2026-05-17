@@ -5,86 +5,118 @@
     "rarity": 2,
     "name": "ザンパンマン先生",
     "power": "鍋歴史大噴火：巨大な鍋から歴史の力を解き放ち、敵全体に大ダメージを与える！",
-    "imgUrl": "/card-images/01_zanpanman.png"
+    "imgUrl": "/card-images/sr01_zanpanman.png"
   },
   {
     "id": "sr002",
     "char": "yabai",
     "rarity": 2,
     "name": "ヤバイヤツ先生",
-    "power": "超速九九ラッシュ：高速で九九を唱え続け、敵1体に超連続ダメージ＋混乱！",
-    "imgUrl": "/card-images/02_yabaiyatsu.png"
+    "power": "超速九九ラッシュ：高速で九九を唱え続け、敵1体に超連続ダメージを与える！確率で「混乱」状態にする！",
+    "imgUrl": "/card-images/sr02_yabaiyatsu.png"
   },
   {
     "id": "sr003",
     "char": "bakuso",
     "rarity": 2,
     "name": "バクソウ先生",
-    "power": "漢字爆裂弾：膨大な語彙力で言葉の壁をぶち壊し、敵全体に大ダメージ＋混乱！",
-    "imgUrl": "/card-images/03_bakuso.png"
+    "power": "漢字爆裂弾：膨大な語彙力で言葉の壁をぶち壊し、敵全体に大ダメージ＋混乱を与える！",
+    "imgUrl": "/card-images/sr03_bakuso.png"
   },
   {
     "id": "sr004",
     "char": "kaga",
     "rarity": 2,
     "name": "カガ先生",
-    "power": "化学連鎖リアクション：化学反応を連鎖させ、敵全体に持続ダメージ＋毒・麻痺！",
-    "imgUrl": "/card-images/04_kaga.png"
+    "power": "化学連鎖リアクション：化学反応を連鎖させ、敵全体に持続ダメージ＋確率で「毒」や「麻痺」状態にする！",
+    "imgUrl": "/card-images/sr04_kaga.png"
   },
   {
     "id": "sr005",
     "char": "bakudanma",
     "rarity": 2,
     "name": "爆弾魔先生",
-    "power": "ダイナマイトスパーク：爆発的パワーで敵の体力を粉砕し、やる気UP＋スタン！",
-    "imgUrl": "/card-images/05_bakudanma.png"
+    "power": "ダイナマイトスパーク：爆発的パワーで敵の体力を粉砕し、確率で「やる気」UP＋スタン状態にする！",
+    "imgUrl": "/card-images/sr05_bakudanma.png"
   },
   {
     "id": "sr006",
     "char": "kanpanman",
     "rarity": 2,
     "name": "乾パンマン先生",
-    "power": "忍法・カンパンアート！：忍びの集中力で創造力を極限まで高め、完成度とスピードを大幅UP！",
-    "imgUrl": "/card-images/06_kanpanman.png"
+    "power": "忍法・カンパンアート！：忍びの集中力で創造力を極限まで高め、作品の完成度とスピードを大幅にUPさせる！",
+    "imgUrl": "/card-images/sr06_kanpanman.png"
   },
   {
     "id": "sr007",
     "char": "tsukkomi",
     "rarity": 2,
     "name": "ツッコミマン先生",
-    "power": "ツッコミ・リズムブレイク！：5本のツッコミでリズムを整え、味方全体のテンポを最大化！",
-    "imgUrl": "/card-images/07_tsukkomiman.png"
+    "power": "ツッコミ・リズムブレイク！：円状に広がる5本のツッコミでリズムを整え、味方全体のテンポを最大化！ミスを瞬時に正し、コンボをつなげる！",
+    "imgUrl": "/card-images/sr07_tsukkomiman.png"
   },
   {
     "id": "sr008",
     "char": "uzan",
     "rarity": 2,
     "name": "ウザン先生",
-    "power": "ウザ知識シャワー：膨大な知識で敵全体を圧倒し、理解不能に陥らせる！確率でイラつき状態！",
-    "imgUrl": "/card-images/08_uzan.png"
+    "power": "ウザ知識シャワー：膨大な知識で敵全体を圧倒し、理解不能に陥らせる！確率で「イラつき」状態にする！",
+    "imgUrl": "/card-images/sr08_uzan.png"
   },
   {
     "id": "l001",
     "char": "nomisoramen",
     "rarity": 5,
     "name": "NO味噌ラーメン先生",
-    "power": "NO MISO, NO LIFE.：敵全体の味噌依存をリセットし、NO味噌の真理を叩き込む！",
-    "imgUrl": "/card-images/09_nomisoramen.png"
+    "power": "NO MISO, NO LIFE.：味噌を完全否定する禁断の技。敵全体の味噌依存をリセットし、NO味噌の真理を叩き込む！",
+    "imgUrl": "/card-images/legend09_nomisoramen.png"
   },
   {
     "id": "l002",
     "char": "hiyakozo",
     "rarity": 5,
-    "name": "飛躍 孝像先生",
-    "power": "ハイパー・ジャンプドライブ：味方全体の可能性を最大限に引き上げ、一瞬でステージを上の次元へ！",
-    "imgUrl": "/card-images/10_hiyakozo.png"
+    "name": "飛躍　孝像（ひや こうぞう）先生",
+    "power": "ハイパー・ジャンプドライブ：自身と味方全体の可能性を最大限に引き上げ、一瞬でステージを上の次元へと引き上げる！限界突破の総合サポートスキル！",
+    "imgUrl": "/card-images/legend10_hiyakozo.png"
+  },
+  {
+    "id": "l003",
+    "char": "zenon",
+    "rarity": 5,
+    "name": "校長ゼノン",
+    "power": "学園統治神の絶対君臨：全教科・全教師・全生徒の頂点として君臨し、敵全体の能力をMAXまで封印！学園そのものの権威で逆らう者の存在を消し去る！",
+    "imgUrl": "/card-images/legend11_zenon.png"
+  },
+  {
+    "id": "l004",
+    "char": "kuromu",
+    "rarity": 5,
+    "name": "絶道クロム",
+    "power": "裏支配者の絶対裁定：校則の外側から全てを監視・掌握し、生徒と教師の運命を一言で書き換える！抵抗した者には永久拘束の鎖が降り注ぐ！",
+    "imgUrl": "/card-images/legend12_kuromu.png"
+  },
+  {
+    "id": "l005",
+    "char": "moguriana",
+    "rarity": 5,
+    "name": "モグリアーナ",
+    "power": "母性の奇跡・大饗宴：無限の料理創造力で学園全体を栄養と愛で包み込み、味方全体のHP・状態を完全回復＋幸福バフ付与！お腹も心もいつも満たす！",
+    "imgUrl": "/card-images/legend13_moguriana.png"
+  },
+  {
+    "id": "l006",
+    "char": "rumina",
+    "rarity": 5,
+    "name": "癒月ルミナ",
+    "power": "白衣の守護神・聖域展開：味方全体の全状態異常を即時解除し、生命回復力・防御力・再生力をMAXへ引き上げる！絶望を希望へと変える癒しの奇跡！",
+    "imgUrl": "/card-images/legend14_rumina.png"
   },
   {
     "id": "n001",
     "char": "zanpanman",
     "rarity": 1,
     "name": "ザンパンマン先生",
-    "power": "防御無視の斬撃：鍋の力で敵の防御を無視し、単体に大ダメージ！",
+    "power": "",
     "imgUrl": "/card-images/n01_zanpanman.png"
   },
   {
@@ -92,63 +124,63 @@
     "char": "yabai",
     "rarity": 1,
     "name": "ヤバイヤツ先生",
-    "power": "単体攻撃：筋肉と根性で敵1体に直撃ダメージ！",
+    "power": "",
     "imgUrl": "/card-images/n02_yabaiyatsu.png"
   },
   {
     "id": "n003",
     "char": "bakuso",
     "rarity": 1,
-    "name": "準備中",
-    "power": "準備中",
-    "imgUrl": ""
+    "name": "バクソウ先生",
+    "power": "",
+    "imgUrl": "/card-images/n03_bakuso.png"
   },
   {
     "id": "n004",
     "char": "kaga",
     "rarity": 1,
-    "name": "準備中",
-    "power": "準備中",
-    "imgUrl": ""
+    "name": "カガ先生",
+    "power": "",
+    "imgUrl": "/card-images/n04_kaga.png"
   },
   {
     "id": "n005",
     "char": "bakudanma",
     "rarity": 1,
-    "name": "準備中",
-    "power": "準備中",
-    "imgUrl": ""
+    "name": "爆弾魔先生",
+    "power": "",
+    "imgUrl": "/card-images/n05_bakudanma.png"
   },
   {
     "id": "n006",
     "char": "kanpanman",
     "rarity": 1,
-    "name": "準備中",
-    "power": "準備中",
-    "imgUrl": ""
+    "name": "乾パンマン先生",
+    "power": "",
+    "imgUrl": "/card-images/n06_kanpanman.png"
   },
   {
     "id": "n007",
     "char": "tsukkomi",
     "rarity": 1,
-    "name": "準備中",
-    "power": "準備中",
-    "imgUrl": ""
+    "name": "ツッコミマン先生",
+    "power": "",
+    "imgUrl": "/card-images/n07_tsukkomiman.png"
   },
   {
     "id": "n008",
     "char": "uzan",
     "rarity": 1,
-    "name": "準備中",
-    "power": "準備中",
-    "imgUrl": ""
+    "name": "ウザン先生",
+    "power": "",
+    "imgUrl": "/card-images/n08_uzan.png"
   },
   {
     "id": "n009",
     "char": "nomisoramen",
     "rarity": 1,
     "name": "準備中",
-    "power": "準備中",
+    "power": "",
     "imgUrl": ""
   },
   {
@@ -156,7 +188,7 @@
     "char": "hiyakozo",
     "rarity": 1,
     "name": "準備中",
-    "power": "準備中",
+    "power": "",
     "imgUrl": ""
   },
   {
@@ -164,7 +196,7 @@
     "char": "zanpanman",
     "rarity": 1,
     "name": "準備中",
-    "power": "準備中",
+    "power": "",
     "imgUrl": ""
   },
   {
@@ -172,7 +204,7 @@
     "char": "yabai",
     "rarity": 1,
     "name": "準備中",
-    "power": "準備中",
+    "power": "",
     "imgUrl": ""
   },
   {
@@ -180,7 +212,7 @@
     "char": "bakuso",
     "rarity": 1,
     "name": "準備中",
-    "power": "準備中",
+    "power": "",
     "imgUrl": ""
   },
   {
@@ -188,7 +220,7 @@
     "char": "kaga",
     "rarity": 1,
     "name": "準備中",
-    "power": "準備中",
+    "power": "",
     "imgUrl": ""
   },
   {
@@ -196,7 +228,7 @@
     "char": "bakudanma",
     "rarity": 1,
     "name": "準備中",
-    "power": "準備中",
+    "power": "",
     "imgUrl": ""
   },
   {
@@ -204,72 +236,72 @@
     "char": "kanpanman",
     "rarity": 1,
     "name": "準備中",
-    "power": "準備中",
+    "power": "",
     "imgUrl": ""
   },
   {
     "id": "ssr001",
     "char": "zanpanman",
     "rarity": 3,
-    "name": "準備中",
-    "power": "準備中",
-    "imgUrl": ""
+    "name": "真・ザンパン魔皇",
+    "power": "鍋歴史終焉砲：歴史そのものを煮沸し、敵全体の能力を文明崩壊状態にする超絶攻撃！／超陣効果【天下統一・煮込み陣】：味方全体の全能力を超絶強化し、一定ターン無敵状態にする！",
+    "imgUrl": "/card-images/ssr01_zanpanman.png"
   },
   {
     "id": "ssr002",
     "char": "yabai",
     "rarity": 3,
-    "name": "準備中",
-    "power": "準備中",
-    "imgUrl": ""
+    "name": "ヤバイヤツ鬼神",
+    "power": "超速九九崩拳：九九を超高速で詠唱し、敵全体に演算破壊ダメージを与える！／超陣効果【演算暴走領域】：味方全体の攻撃力・速度を超絶強化！一定ターン、演算ミスを完全無効化！",
+    "imgUrl": "/card-images/ssr02_yabaiyatu.png"
   },
   {
     "id": "ssr003",
     "char": "bakuso",
     "rarity": 3,
-    "name": "準備中",
-    "power": "準備中",
-    "imgUrl": ""
+    "name": "真言霊文豪 バクソウ",
+    "power": "言霊万葉陣：万葉の言霊を解き放ち、敵全体に超絶ダメージを与え、一定確率で沈黙状態にする！／超陣効果【文章神域・心動陣】：味方全体の知識力を超絶強化し、一定ターン全ての状態異常を無効化！さらに、スキルのクールタイムを短縮！",
+    "imgUrl": "/card-images/ssr03_bakuso.png"
   },
   {
     "id": "ssr004",
     "char": "kaga",
     "rarity": 3,
-    "name": "準備中",
-    "power": "準備中",
-    "imgUrl": ""
+    "name": "科学創造神 カガ",
+    "power": "真理解放・方程式崩壊：全ての謎を数式で解き明かし、敵全体に超絶ダメージを与える！一定確率で行動不能にする！／超陣効果【科学神域・叡智陣】：味方全体の知識力を超絶強化し、一定ターン全ての状態異常を無効化！さらに、スキルのクールタイムを短縮！",
+    "imgUrl": "/card-images/ssr04_kaga.png"
   },
   {
     "id": "ssr005",
     "char": "bakudanma",
     "rarity": 3,
-    "name": "準備中",
-    "power": "準備中",
-    "imgUrl": ""
+    "name": "爆弾魔煉獄王",
+    "power": "爆裂！限界ブレイク：全身の力を一気に解放し、敵全体に超絶ダメージを与える！一定確率で気絶状態にする！／超陣効果【爆燃根性陣・MAX】：味方全体の運動能力と精神力を超絶強化し、一定ターン全ての状態異常を無効化！さらに、スキルのクールタイムを短縮！",
+    "imgUrl": "/card-images/ssr05_bakudanma.png"
   },
   {
     "id": "ssr006",
     "char": "kanpanman",
     "rarity": 3,
-    "name": "準備中",
-    "power": "準備中",
-    "imgUrl": ""
+    "name": "忍法創造神 乾パンマン",
+    "power": "忍法・創造極意筆舞：全ての創造力を筆に込め、敵全体に超絶ダメージを与える！一定確率で創造封印にする！／超陣効果【忍術美術陣・極彩奥義】：味方全体の全ステータスを超強化し、一定ターン全ての状態異常を無効化！さらに、スキルのクールタイムを短縮！",
+    "imgUrl": "/card-images/ssr06_kanpanman.png"
   },
   {
     "id": "ssr007",
     "char": "tsukkomi",
     "rarity": 3,
-    "name": "準備中",
-    "power": "準備中",
-    "imgUrl": ""
+    "name": "音速指揮神 ツッコミマン",
+    "power": "五指音速ツッコミ・カデンツァ：5本の指でリズムを完全掌握し、敵全体に超絶ダメージを与える！一定確率で即ツッコミ状態にする！／超陣効果【音速指揮陣・MAXノリ】：味方全体のリズム・テンポ・表現力を超絶強化し、一定ターン全ての状態異常を無効化！さらに、スキルのクールタイムを大幅短縮！",
+    "imgUrl": "/card-images/ssr07_tsukkomiman.png"
   },
   {
     "id": "ssr008",
     "char": "uzan",
     "rarity": 3,
-    "name": "準備中",
-    "power": "準備中",
-    "imgUrl": ""
+    "name": "完全知識体 真・ウザン",
+    "power": "全知識解放・完全体：その知識量は人智を超え、理解者は存在しない。完全体へと至ったことで、彼は『何も教えなくなった』。全ステータス9999の超越存在！",
+    "imgUrl": "/card-images/ssr08_uzan.png"
   },
   {
     "id": "r001",
@@ -368,7 +400,7 @@
     "imgUrl": ""
   },
   {
-    "id": "l003",
+    "id": "l007",
     "char": "zanpanman",
     "rarity": 5,
     "name": "準備中",
@@ -376,7 +408,7 @@
     "imgUrl": ""
   },
   {
-    "id": "l004",
+    "id": "l008",
     "char": "yabai",
     "rarity": 5,
     "name": "準備中",
@@ -384,7 +416,7 @@
     "imgUrl": ""
   },
   {
-    "id": "l005",
+    "id": "l009",
     "char": "bakuso",
     "rarity": 5,
     "name": "準備中",
@@ -392,7 +424,7 @@
     "imgUrl": ""
   },
   {
-    "id": "l006",
+    "id": "l010",
     "char": "kaga",
     "rarity": 5,
     "name": "準備中",
