@@ -264,6 +264,62 @@ html,body{height:100%;font-family:'Noto Sans JP',sans-serif;background:var(--bg)
 }
 .stats-subj-card:active{opacity:.8}
 .stats-subj-top{display:flex;align-items:center;justify-content:space-between}
+
+/* カード拡大モーダル */
+.card-modal-overlay{
+  position:fixed;inset:0;z-index:10000;
+  display:flex;align-items:center;justify-content:center;
+  background:rgba(0,0,0,.85);backdrop-filter:blur(8px);
+  animation:fadeIn .25s ease;
+}
+.card-modal-inner{
+  max-width:300px;width:88%;
+  background:linear-gradient(135deg,#1a1a2e,#0d0d20);
+  border-radius:24px;
+  padding:20px 18px 22px;
+  text-align:center;
+  animation:popupBounce .35s cubic-bezier(.175,.885,.32,1.275);
+  position:relative;
+  max-height:90vh;
+  overflow-y:auto;
+}
+.card-modal-close{
+  position:absolute;top:12px;right:14px;
+  background:rgba(255,255,255,.1);border:none;
+  border-radius:99px;color:#aaa;
+  width:30px;height:30px;font-size:1rem;cursor:pointer;
+  display:flex;align-items:center;justify-content:center;
+}
+.card-modal-rarity{font-size:.85rem;font-weight:900;letter-spacing:2px;margin-bottom:4px}
+.card-modal-name{font-size:1.3rem;font-weight:900;color:white;margin-bottom:14px}
+.card-modal-img-wrap{
+  width:240px;height:320px;
+  margin:0 auto 14px;
+  border-radius:16px;overflow:hidden;
+  border-width:3px;border-style:solid;
+  background:rgba(0,0,0,.3);
+}
+.card-modal-img-wrap img{width:100%;height:100%;object-fit:contain;background:#111}
+.card-modal-power{
+  font-size:.85rem;color:#ddd;line-height:1.7;
+  background:rgba(255,255,255,.05);
+  border-radius:12px;padding:12px 14px;
+  margin-bottom:14px;text-align:left;
+}
+.card-modal-power-label{
+  font-size:.65rem;font-weight:900;letter-spacing:1px;
+  margin-bottom:6px;opacity:.7;
+}
+.card-modal-count{
+  font-size:.8rem;font-weight:700;color:var(--muted);margin-bottom:12px;
+}
+.card-modal-btn{
+  width:100%;padding:13px;border:none;border-radius:13px;
+  color:white;font-family:inherit;font-size:.95rem;font-weight:900;cursor:pointer;
+}
+/* タップ可能ヒント */
+.card-tappable{cursor:pointer;transition:transform .15s,opacity .15s}
+.card-tappable:active{transform:scale(.93);opacity:.8}
 </style>
 </head>
 <body>
@@ -737,11 +793,11 @@ function drawGacha(){
   else if(rand<w3)rarity=3;
   else if(rand<w2)rarity=2;
 
-  // そのレアリティのカードからランダム選出（imgUrlがあるものだけ）
-  var pool=CARDS.filter(function(c){return c.rarity===rarity&&c.imgUrl;});
+  // そのレアリティのカードからランダム選出（imgUrlなしも含む）
+  var pool=CARDS.filter(function(c){return c.rarity===rarity;});
   if(!pool.length){
-    // そのレアリティに画像付きカードがなければ、画像付き全カードからフォールバック
-    pool=CARDS.filter(function(c){return c.imgUrl;});
+    // そのレアリティにカードがなければ全カードからフォールバック
+    pool=CARDS.slice();
   }
   if(!pool.length)pool=CARDS.slice();
   var card=pool[Math.floor(Math.random()*pool.length)];
@@ -902,6 +958,12 @@ function showCollection(){
           +';border-radius:8px;overflow:hidden;position:relative;'
           +(hasCard&&card.rarity>=3?'box-shadow:0 0 8px '+rc+'55;':'');
 
+        // カードクリックで拡大モーダル
+        cardEl.classList.add('card-tappable');
+        (function(c,hc,cnt){
+          cardEl.onclick=function(){showCardModal(c,hc,cnt);};
+        })(card,hasCard,count);
+
         // 画像エリア（縦長カード比率 3:4）
         var imgDiv=document.createElement('div');
         imgDiv.style.cssText='position:relative;width:100%;padding-top:133%;overflow:hidden;background:#0a0a14';
@@ -964,6 +1026,101 @@ function showCollection(){
     console.error('showCollection error:',e);
     showToast('エラー: '+e.message,'#ff5555');
   }
+}
+
+// カード拡大モーダル
+function showCardModal(card, hasCard, count){
+  var rc=RARITY_COLORS[card.rarity]||'#aaa';
+  var rarityName=RARITY_NAMES[card.rarity]||'★';
+  var charKey=card.char||'kaga';
+
+  // 画像URL
+  var imgSrc=card.imgUrl||'';
+  if(!imgSrc&&IMGS&&IMGS[charKey]){imgSrc=IMGS[charKey]['start']||'';}
+  var dispSrc=hasCard
+    ?(imgSrc||'data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 160 213"><rect fill="%230a0a14" width="160" height="213"/><text x="80" y="115" fill="%23333" text-anchor="middle" font-size="40">📸</text></svg>')
+    :'/card-images/card_back.jpg';
+
+  // オーバーレイ
+  var overlay=document.createElement('div');
+  overlay.className='card-modal-overlay';
+  overlay.onclick=function(e){if(e.target===overlay)overlay.remove();};
+
+  var inner=document.createElement('div');
+  inner.className='card-modal-inner';
+  inner.style.borderColor=rc;
+  inner.style.border='2px solid '+rc;
+
+  // 閉じるボタン
+  var closeBtn=document.createElement('button');
+  closeBtn.className='card-modal-close';
+  closeBtn.textContent='✕';
+  closeBtn.onclick=function(){overlay.remove();};
+  inner.appendChild(closeBtn);
+
+  // レアリティ
+  var rarDiv=document.createElement('div');
+  rarDiv.className='card-modal-rarity';
+  rarDiv.style.color=rc;
+  rarDiv.textContent=rarityName;
+  inner.appendChild(rarDiv);
+
+  // カード名
+  var nameDiv=document.createElement('div');
+  nameDiv.className='card-modal-name';
+  nameDiv.textContent=(hasCard&&card.name&&card.name!=='準備中')?card.name:'？？？';
+  inner.appendChild(nameDiv);
+
+  // 画像
+  var imgWrap=document.createElement('div');
+  imgWrap.className='card-modal-img-wrap';
+  imgWrap.style.borderColor=rc;
+  if(card.rarity>=3&&hasCard){imgWrap.style.boxShadow='0 0 20px '+rc+'55';}
+  var imgEl=document.createElement('img');
+  imgEl.src=dispSrc;
+  imgEl.onerror=function(){
+    this.src='data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 160 213"><rect fill="%230a0820" width="160" height="213" rx="6"/><rect fill="none" stroke="%23886600" stroke-width="3" x="6" y="6" width="148" height="201" rx="5"/><text x="80" y="100" fill="%23886600" text-anchor="middle" font-size="32" font-weight="bold">先生</text><text x="80" y="130" fill="%23664400" text-anchor="middle" font-size="14">ORIGINAL SENSEI</text></svg>';
+    this.onerror=null;
+  };
+  imgWrap.appendChild(imgEl);
+  inner.appendChild(imgWrap);
+
+  // 所持枚数
+  var cntDiv=document.createElement('div');
+  cntDiv.className='card-modal-count';
+  if(!hasCard){
+    cntDiv.textContent='未入手';
+    cntDiv.style.color='#555';
+  }else{
+    cntDiv.textContent='所持数：'+count+'枚';
+  }
+  inner.appendChild(cntDiv);
+
+  // 必殺技（入手済みかつ情報あり）
+  if(hasCard&&card.power&&card.power!=='準備中'){
+    var powerWrap=document.createElement('div');
+    powerWrap.className='card-modal-power';
+    var powerLabel=document.createElement('div');
+    powerLabel.className='card-modal-power-label';
+    powerLabel.style.color=rc;
+    powerLabel.textContent='⚡ 必殺技';
+    powerWrap.appendChild(powerLabel);
+    var powerText=document.createElement('div');
+    powerText.textContent=card.power;
+    powerWrap.appendChild(powerText);
+    inner.appendChild(powerWrap);
+  }
+
+  // 閉じるボタン（下部）
+  var okBtn=document.createElement('button');
+  okBtn.className='card-modal-btn';
+  okBtn.style.background='linear-gradient(135deg,'+rc+',#ffd700)';
+  okBtn.textContent='閉じる';
+  okBtn.onclick=function(){overlay.remove();};
+  inner.appendChild(okBtn);
+
+  overlay.appendChild(inner);
+  document.body.appendChild(overlay);
 }
 
 const STORE_KEY='sensei-quiz-v15';
