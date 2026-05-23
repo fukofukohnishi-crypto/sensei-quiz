@@ -986,19 +986,19 @@ let toastTimer=null,segResults=[],wrongQuestions=[],isRevengeMode=false;
 
 window.onload=async function(){
   try{
-    var resp=await fetch('/cards.json');
+    var resp=await fetch('/Cards.json');
     if(resp.ok){
       var data=await resp.json();
       if(Array.isArray(data)&&data.length>0)CARDS=data;
     } else {
       try{
-        var resp2=await fetch('https://raw.githubusercontent.com/fukofukohnishi-crypto/sensei-quiz/main/cards.json');
+        var resp2=await fetch('https://raw.githubusercontent.com/fukofukohnishi-crypto/sensei-quiz/main/Cards.json');
         if(resp2.ok){var data2=await resp2.json();if(Array.isArray(data2)&&data2.length>0)CARDS=data2;}
       }catch(e2){console.log('GitHub Raw取得失敗、デフォルト使用');}
     }
   }catch(e){
     try{
-      var resp3=await fetch('https://raw.githubusercontent.com/fukofukohnishi-crypto/sensei-quiz/main/cards.json');
+      var resp3=await fetch('https://raw.githubusercontent.com/fukofukohnishi-crypto/sensei-quiz/main/Cards.json');
       if(resp3.ok){var data3=await resp3.json();if(Array.isArray(data3)&&data3.length>0)CARDS=data3;}
     }catch(e3){console.log('cards.json読み込み失敗、デフォルト使用');}
   }
