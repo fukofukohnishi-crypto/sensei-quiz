@@ -118,9 +118,9 @@ html,body{height:100%;font-family:'Noto Sans JP',sans-serif;background:var(--bg)
 .qz-seg.ng{background:#ff5555}
 .qz-seg.cur{background:#ffd700;animation:segPulse 1.2s ease-in-out infinite}
 @keyframes segPulse{0%,100%{opacity:1}50%{opacity:.4}}
-.qz-card{margin:0 11px 7px;background:var(--card);border-radius:18px;display:flex;flex-direction:row;overflow:hidden;flex-shrink:0}
-.qz-char-col{width:300px;flex-shrink:0;display:flex;flex-direction:column;align-items:center;justify-content:flex-end;background:rgba(0,0,0,.05)}
-.qz-char-img{width:300px;height:300px;object-fit:contain;object-position:bottom center;filter:drop-shadow(0 4px 16px rgba(0,0,0,.5))}
+.qz-card{margin:0 11px 7px;background:var(--card);border-radius:18px;display:flex;flex-direction:column;overflow:hidden;flex-shrink:0}
+.qz-char-col{width:100%;flex-shrink:0;display:flex;flex-direction:column;align-items:center;justify-content:flex-end;background:rgba(0,0,0,.05)}
+.qz-char-img{width:100%;max-height:220px;object-fit:contain;object-position:bottom center;filter:drop-shadow(0 4px 16px rgba(0,0,0,.5))}
 .qz-bubble{width:100%;background:rgba(8,8,20,.94);border-top:1px solid rgba(255,255,255,.1);padding:8px 10px;text-align:center;flex-shrink:0}
 .qz-bubble-name{font-size:.65rem;font-weight:700;opacity:.5;margin-bottom:2px}
 .qz-bubble-txt{font-size:.82rem;font-weight:700;line-height:1.45;color:white}
