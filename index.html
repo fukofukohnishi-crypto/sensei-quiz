@@ -4,12 +4,28 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width,initial-scale=1.0,maximum-scale=1.0,user-scalable=no">
 <title>オリジナル先生</title>
+<!-- PWA / ホーム画面アイコン -->
+<link rel="apple-touch-icon" href="/icon-512.png">
+<link rel="apple-touch-icon" sizes="512x512" href="/icon-512.png">
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-status-bar-style" content="black">
+<meta name="apple-mobile-web-app-title" content="オリジナル先生">
+<meta name="theme-color" content="#0d0d14">
+<link rel="manifest" href="/manifest.json">
+<script>
+// iPad PWA: 100vh問題を修正
+function fixVh(){document.documentElement.style.setProperty('--vh',''+window.innerHeight*0.01+'px');}
+fixVh();window.addEventListener('resize',fixVh);
+</script>
 <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@400;700;900&display=swap" rel="stylesheet">
 <style>
 :root{--bg:#0d0d14;--card:#16162a;--card2:#1c1c30;--border:rgba(255,255,255,0.07);--text:#f0f0f0;--muted:#666}
 *{box-sizing:border-box;margin:0;padding:0;-webkit-tap-highlight-color:transparent}
+/* iPad PWA タッチ対応 */
+button{cursor:pointer;-webkit-tap-highlight-color:transparent;touch-action:manipulation}
+*{touch-action:manipulation}
 html,body{height:100%;font-family:'Noto Sans JP',sans-serif;background:var(--bg);color:var(--text);overflow:hidden}
-.screen{display:none;height:100vh;flex-direction:column;overflow:hidden}
+.screen{display:none;height:100vh;height:calc(var(--vh,1vh)*100);flex-direction:column;overflow:hidden}
 .screen.active{display:flex}
 .hdr{background:#111120;border-bottom:1px solid var(--border);padding:11px 14px;display:flex;align-items:center;gap:8px;flex-shrink:0}
 .hdr-back{background:none;border:none;color:var(--muted);font-size:1.3rem;cursor:pointer;padding:2px 6px}
@@ -42,11 +58,11 @@ html,body{height:100%;font-family:'Noto Sans JP',sans-serif;background:var(--bg)
 #home{overflow:hidden;background:radial-gradient(ellipse at 25% 15%,#1a0a2e,transparent 55%),radial-gradient(ellipse at 80% 85%,#0a182e,transparent 50%),var(--bg)}
 .home-logo{font-size:1.8rem;font-weight:900;color:#ffd700;text-align:center;padding:14px 16px 2px;text-shadow:0 0 20px rgba(255,215,0,.4)}
 .home-sub{color:var(--muted);font-size:.72rem;letter-spacing:2px;text-align:center;margin-bottom:6px}
-.home-chars{display:flex;justify-content:center;align-items:flex-end;gap:3px;margin-bottom:10px;padding:0 6px;overflow:hidden}
-.home-char-item{flex:1;display:flex;flex-direction:column;align-items:center;cursor:pointer}
-.home-char-item img{width:100%;object-fit:cover;object-position:top center;border-radius:12px 12px 0 0;max-height:180px;transition:transform .2s}
-.home-char-item:active img{transform:scale(.97)}
-.home-char-label{font-size:.65rem;font-weight:900;padding:4px 4px;border-radius:0 0 10px 10px;width:100%;text-align:center;color:white;letter-spacing:.5px}
+.home-chars{display:flex;justify-content:center;align-items:flex-end;gap:3px;margin-bottom:10px;padding:0 6px;overflow:hidden;pointer-events:none}
+.home-char-item{flex:1;display:flex;flex-direction:column;align-items:center;cursor:default}
+.home-char-item img{width:100%;object-fit:cover;object-position:top center;border-radius:0;max-height:90px;opacity:.85}
+@media(min-width:600px){.home-char-item img{max-height:200px}}
+.home-char-label{display:none}
 .test-card{background:var(--card);border:1.5px solid var(--border);border-radius:15px;padding:14px 15px;margin-bottom:10px;cursor:pointer;display:flex;justify-content:space-between;align-items:flex-start}
 .test-card:active{opacity:.8}
 .tc-name{font-size:1.05rem;font-weight:900;margin-bottom:4px}
@@ -114,7 +130,7 @@ html,body{height:100%;font-family:'Noto Sans JP',sans-serif;background:var(--bg)
 .qz-q-txt{font-size:1.35rem;font-weight:900;line-height:1.6;color:white}
 .qz-bottom{flex:1;display:flex;flex-direction:column;padding:0 11px 11px;min-height:0;overflow-y:auto;overflow-x:hidden}
 .qz-choices{display:grid;grid-template-columns:1fr 1fr;gap:7px;margin-bottom:7px;flex:1}
-.qz-cbtn{background:var(--card2);border:2px solid rgba(255,255,255,.08);border-radius:13px;color:var(--text);font-family:inherit;font-size:1.1rem;font-weight:700;cursor:pointer;text-align:center;display:flex;align-items:center;justify-content:center;padding:4px 7px;line-height:1.35;transition:all .15s;width:100%;height:100%}
+.qz-cbtn{background:var(--card2);border:2px solid rgba(255,255,255,.08);border-radius:13px;color:var(--text);font-family:inherit;font-size:1.5rem;font-weight:700;cursor:pointer;text-align:center;display:flex;align-items:center;justify-content:center;padding:6px 7px;line-height:1.35;transition:all .15s;width:100%;height:100%}
 .qz-cbtn:active:not(:disabled){transform:scale(.96)}
 .qz-cbtn.correct{background:rgba(68,200,120,.2);border-color:#44cc88;color:#44cc88;animation:correctPop .3s}
 .qz-cbtn.wrong{background:rgba(255,80,80,.18);border-color:#ff5555;color:#ff8888}
@@ -196,7 +212,7 @@ html,body{height:100%;font-family:'Noto Sans JP',sans-serif;background:var(--bg)
 .perfect-close{background:linear-gradient(135deg,#ffd700,#ff6b35);border:none;border-radius:13px;color:#1a0a00;font-family:inherit;font-size:1rem;font-weight:900;padding:13px 32px;cursor:pointer;width:100%}
 
 /* MISC */
-.toast{position:fixed;bottom:26px;left:50%;transform:translateX(-50%);padding:9px 20px;border-radius:99px;font-size:.85rem;font-weight:700;opacity:0;pointer-events:none;transition:opacity .3s;z-index:9999;white-space:nowrap;color:white}
+.toast{position:fixed;top:72px;left:50%;transform:translateX(-50%);padding:9px 20px;border-radius:99px;font-size:.85rem;font-weight:700;opacity:0;pointer-events:none;transition:opacity .3s;z-index:9999;white-space:nowrap;color:white}
 .toast.show{opacity:1}
 .confetti-c{position:fixed;inset:0;pointer-events:none;z-index:9999;overflow:hidden}
 .cf{position:absolute;top:-20px;border-radius:2px;animation:cfFall linear forwards}
@@ -261,18 +277,21 @@ html,body{height:100%;font-family:'Noto Sans JP',sans-serif;background:var(--bg)
   <div class="home-chars" id="home-chars-wrap">
     <!-- JSで描画 -->
   </div>
+  <div style="display:flex;gap:6px;padding:0 14px 6px">
+    <button id="btn-go-gacha" onclick="showScreen('gacha')" style="flex:1;padding:9px 4px;border:1px solid rgba(255,34,136,.35);border-radius:10px;background:rgba(255,34,136,.1);color:#ff88bb;font-family:inherit;font-size:.75rem;font-weight:700;cursor:pointer">
+      🎴 ガチャ <span id="gacha-ticket-count">0</span>枚
+    </button>
+    <button id="btn-go-collection" onclick="showCollection()" style="flex:1;padding:9px 4px;border:1px solid rgba(68,136,255,.35);border-radius:10px;background:rgba(68,136,255,.1);color:#88aaff;font-family:inherit;font-size:.75rem;font-weight:700;cursor:pointer">
+      📚 コレクション
+    </button>
+    <button id="btn-go-stats" onclick="showStats()" style="flex:1;padding:9px 4px;border:1px solid rgba(34,204,136,.35);border-radius:10px;background:rgba(34,204,136,.1);color:#44cc88;font-family:inherit;font-size:.75rem;font-weight:700;cursor:pointer">
+      📊 成績
+    </button>
+  </div>
   <div class="scrollbody">
     <div id="test-list"></div>
-    <div style="display:flex;gap:8px;margin-bottom:8px">
-      <button onclick="showScreen('gacha')" style="flex:1;padding:14px;border:none;border-radius:13px;background:linear-gradient(135deg,#ff2288,#ff8800);color:white;font-family:inherit;font-size:.95rem;font-weight:900;cursor:pointer">
-        🎴 ガチャ <span id="gacha-ticket-count">0</span>枚
-      </button>
-      <button onclick="showCollection()" style="flex:1;padding:14px;border:none;border-radius:13px;background:linear-gradient(135deg,#4488ff,#8844ff);color:white;font-family:inherit;font-size:.95rem;font-weight:900;cursor:pointer">
-        📚 コレクション
-      </button>
-    </div>
     <button class="new-btn" onclick="goNewTest()">＋ 新しいテストを作る</button>
-    <div style="display:flex;gap:8px;margin-top:8px">
+    <div style="display:flex;gap:8px;margin-top:10px">
       <button class="io-btn" onclick="exportData()">📤 データを書き出す</button>
       <label class="io-btn" style="cursor:pointer;position:relative">
         📥 データを読み込む
@@ -291,6 +310,7 @@ html,body{height:100%;font-family:'Noto Sans JP',sans-serif;background:var(--bg)
     <button class="hdr-act" onclick="showScreen('gacha')" style="color:#ff88cc">🎴<span id="ss-ticket-count" style="font-size:.7rem"></span></button>
   </div>
   <div class="scrollbody">
+    <div id="matome-btn-wrap" style="margin-bottom:12px"></div>
     <div class="subj-grid" id="ss-grid"></div>
   </div>
 </div>
@@ -440,11 +460,11 @@ html,body{height:100%;font-family:'Noto Sans JP',sans-serif;background:var(--bg)
       <!-- あまりあり入力 -->
       <div id="sansu-amari-input" style="display:none">
         <div style="display:flex;gap:8px;align-items:center;margin-bottom:6px">
-          <input id="sansu-input-main" type="number" inputmode="numeric"
+          <input id="sansu-input-main" type="text" inputmode="numeric" pattern="[0-9]*"
             style="flex:1;background:var(--card2);border:2px solid rgba(255,255,255,.15);border-radius:13px;padding:14px;color:white;font-family:inherit;font-size:1.6rem;font-weight:900;text-align:center;outline:none"
             placeholder="商"/>
           <div style="color:#aaa;font-size:1rem;font-weight:700;white-space:nowrap">あまり</div>
-          <input id="sansu-input-amari" type="number" inputmode="numeric"
+          <input id="sansu-input-amari" type="text" inputmode="numeric" pattern="[0-9]*"
             style="flex:1;background:var(--card2);border:2px solid rgba(255,255,255,.15);border-radius:13px;padding:14px;color:white;font-family:inherit;font-size:1.6rem;font-weight:900;text-align:center;outline:none"
             placeholder="余り"/>
         </div>
@@ -506,7 +526,7 @@ html,body{height:100%;font-family:'Noto Sans JP',sans-serif;background:var(--bg)
       🎴 ガチャを引く！
     </button>
     <div style="font-size:.72rem;color:var(--muted);text-align:center;line-height:1.8">
-      ★ノーマル 60% / ★★レア 30%<br>★★★超レア 8% / ★★★★伝説 2%
+      ★N 50% / ★★SR 30% / ★★★SSR 12%<br>★★★★レア 6% / ★★★★★伝説 2%
     </div>
   </div>
 </div>
@@ -529,6 +549,10 @@ html,body{height:100%;font-family:'Noto Sans JP',sans-serif;background:var(--bg)
   <div class="res-scrollbody">
     <div class="res-char"><img id="res-img" src="" alt=""/></div>
     <div class="res-title" id="res-title"></div>
+    <div id="res-score-big" style="display:none;text-align:center;margin:8px 0 4px">
+      <div style="font-size:3.5rem;font-weight:900;color:#ffd700;line-height:1" id="res-score-num"></div>
+      <div style="font-size:1rem;font-weight:700;color:var(--muted);margin-top:4px" id="res-score-label"></div>
+    </div>
     <div class="res-pts" id="res-pts">0</div>
     <div class="res-ptslbl">ポイント獲得！</div>
     <div class="res-stats">
@@ -594,66 +618,64 @@ const CHARS = {
 };
 const SUBJ_ORDER=['rika','shakai','sansu','kokugo'];
 
+// cards.jsonから動的に読み込む（window.onload内でfetch）
+// ここはフォールバック用デフォルト値（cards.jsonが取得できない場合のみ使用）
 let CARDS = [
-  // ★ ノーマル（20枚）
-  {id:'n001',char:'zanpanman',rarity:1,name:'準備中',power:'準備中',img:'start'},
-  {id:'n002',char:'zanpanman',rarity:1,name:'準備中',power:'準備中',img:'wrong'},
-  {id:'n003',char:'zanpanman',rarity:1,name:'準備中',power:'準備中',img:'ganbaro'},
-  {id:'n004',char:'zanpanman',rarity:1,name:'準備中',power:'準備中',img:'correct'},
-  {id:'n005',char:'zanpanman',rarity:1,name:'準備中',power:'準備中',img:'start'},
-  {id:'n006',char:'yabai',rarity:1,name:'準備中',power:'準備中',img:'start'},
-  {id:'n007',char:'yabai',rarity:1,name:'準備中',power:'準備中',img:'wrong'},
-  {id:'n008',char:'yabai',rarity:1,name:'準備中',power:'準備中',img:'ganbaro'},
-  {id:'n009',char:'yabai',rarity:1,name:'準備中',power:'準備中',img:'correct'},
-  {id:'n010',char:'yabai',rarity:1,name:'準備中',power:'準備中',img:'start'},
-  {id:'n011',char:'bakuso',rarity:1,name:'準備中',power:'準備中',img:'start'},
-  {id:'n012',char:'bakuso',rarity:1,name:'準備中',power:'準備中',img:'wrong'},
-  {id:'n013',char:'bakuso',rarity:1,name:'準備中',power:'準備中',img:'ganbaro'},
-  {id:'n014',char:'bakuso',rarity:1,name:'準備中',power:'準備中',img:'correct'},
-  {id:'n015',char:'bakuso',rarity:1,name:'準備中',power:'準備中',img:'start'},
-  {id:'n016',char:'kaga',rarity:1,name:'準備中',power:'準備中',img:'start'},
-  {id:'n017',char:'kaga',rarity:1,name:'準備中',power:'準備中',img:'wrong'},
-  {id:'n018',char:'kaga',rarity:1,name:'準備中',power:'準備中',img:'ganbaro'},
-  {id:'n019',char:'kaga',rarity:1,name:'準備中',power:'準備中',img:'correct'},
-  {id:'n020',char:'kaga',rarity:1,name:'準備中',power:'準備中',img:'start'},
-  // ★★ 必殺技（14枚）
-  {id:'h001',char:'zanpanman',rarity:2,name:'準備中',power:'準備中',img:'correct'},
-  {id:'h002',char:'zanpanman',rarity:2,name:'準備中',power:'準備中',img:'correct'},
-  {id:'h003',char:'zanpanman',rarity:2,name:'準備中',power:'準備中',img:'correct'},
-  {id:'h004',char:'zanpanman',rarity:2,name:'準備中',power:'準備中',img:'correct'},
-  {id:'h005',char:'yabai',rarity:2,name:'準備中',power:'準備中',img:'correct'},
-  {id:'h006',char:'yabai',rarity:2,name:'準備中',power:'準備中',img:'correct'},
-  {id:'h007',char:'yabai',rarity:2,name:'準備中',power:'準備中',img:'correct'},
-  {id:'h008',char:'bakuso',rarity:2,name:'準備中',power:'準備中',img:'correct'},
-  {id:'h009',char:'bakuso',rarity:2,name:'準備中',power:'準備中',img:'correct'},
-  {id:'h010',char:'bakuso',rarity:2,name:'準備中',power:'準備中',img:'correct'},
-  {id:'h011',char:'kaga',rarity:2,name:'準備中',power:'準備中',img:'correct'},
-  {id:'h012',char:'kaga',rarity:2,name:'準備中',power:'準備中',img:'correct'},
-  {id:'h013',char:'kaga',rarity:2,name:'準備中',power:'準備中',img:'correct'},
-  {id:'h014',char:'kaga',rarity:2,name:'準備中',power:'準備中',img:'correct'},
-  // ★★★ レア（12枚）
-  {id:'r001',char:'zanpanman',rarity:3,name:'準備中',power:'準備中',img:'correct'},
-  {id:'r002',char:'zanpanman',rarity:3,name:'準備中',power:'準備中',img:'correct'},
-  {id:'r003',char:'zanpanman',rarity:3,name:'準備中',power:'準備中',img:'correct'},
-  {id:'r004',char:'yabai',rarity:3,name:'準備中',power:'準備中',img:'correct'},
-  {id:'r005',char:'yabai',rarity:3,name:'準備中',power:'準備中',img:'correct'},
-  {id:'r006',char:'yabai',rarity:3,name:'準備中',power:'準備中',img:'correct'},
-  {id:'r007',char:'bakuso',rarity:3,name:'準備中',power:'準備中',img:'correct'},
-  {id:'r008',char:'bakuso',rarity:3,name:'準備中',power:'準備中',img:'correct'},
-  {id:'r009',char:'bakuso',rarity:3,name:'準備中',power:'準備中',img:'correct'},
-  {id:'r010',char:'kaga',rarity:3,name:'準備中',power:'準備中',img:'correct'},
-  {id:'r011',char:'kaga',rarity:3,name:'準備中',power:'準備中',img:'correct'},
-  {id:'r012',char:'kaga',rarity:3,name:'準備中',power:'準備中',img:'correct'},
-  // ★★★★ 伝説（4枚）
-  {id:'l001',char:'zanpanman',rarity:4,name:'準備中',power:'準備中',img:'correct'},
-  {id:'l002',char:'yabai',rarity:4,name:'準備中',power:'準備中',img:'correct'},
-  {id:'l003',char:'bakuso',rarity:4,name:'準備中',power:'準備中',img:'correct'},
-  {id:'l004',char:'kaga',rarity:4,name:'準備中',power:'準備中',img:'correct'},
+  {id:'sr001',char:'zanpanman', rarity:2,name:'ザンパンマン先生',  power:'鍋歴史大噴火：巨大な鍋から歴史の力を解き放ち、敵全体に大ダメージを与える！',                   imgUrl:'/card-images/sr01_zanpanman.png'},
+  {id:'sr002',char:'yabai',     rarity:2,name:'ヤバイヤツ先生',    power:'超速九九ラッシュ：高速で九九を唱え続け、敵1体に超連続ダメージ＋混乱！',                        imgUrl:'/card-images/sr02_yabaiyatsu.png'},
+  {id:'sr003',char:'bakuso',    rarity:2,name:'バクソウ先生',      power:'漢字爆裂弾：膨大な語彙力で言葉の壁をぶち壊し、敵全体に大ダメージ＋混乱！',                      imgUrl:'/card-images/sr03_bakuso.png'},
+  {id:'sr004',char:'kaga',      rarity:2,name:'カガ先生',          power:'化学連鎖リアクション：化学反応を連鎖させ、敵全体に持続ダメージ＋毒・麻痺！',                    imgUrl:'/card-images/sr04_kaga.png'},
+  {id:'sr005',char:'bakudanma', rarity:2,name:'爆弾魔先生',        power:'ダイナマイトスパーク：爆発的パワーで敵の体力を粉砕し、やる気UP＋スタン！',                      imgUrl:'/card-images/sr05_bakudanma.png'},
+  {id:'sr006',char:'kanpanman', rarity:2,name:'乾パンマン先生',    power:'忍法・カンパンアート！：忍びの集中力で創造力を極限まで高め、完成度とスピードを大幅UP！',        imgUrl:'/card-images/sr06_kanpanman.png'},
+  {id:'sr007',char:'tsukkomi',  rarity:2,name:'ツッコミマン先生',  power:'ツッコミ・リズムブレイク！：5本のツッコミでリズムを整え、味方全体のテンポを最大化！',          imgUrl:'/card-images/sr07_tsukkomiman.png'},
+  {id:'sr008',char:'uzan',      rarity:2,name:'ウザン先生',        power:'ウザ知識シャワー：膨大な知識で敵全体を圧倒し、理解不能に陥らせる！確率でイラつき状態！',        imgUrl:'/card-images/sr08_uzan.png'},
+  {id:'l001', char:'nomisoramen',rarity:5,name:'NO味噌ラーメン先生',power:'NO MISO, NO LIFE.：敵全体の味噌依存をリセットし、NO味噌の真理を叩き込む！',                  imgUrl:'/card-images/legend09_nomisoramen.png'},
+  {id:'l002', char:'hiyakozo',  rarity:5,name:'飛躍 孝像先生',    power:'ハイパー・ジャンプドライブ：味方全体の可能性を最大限に引き上げ、一瞬でステージを上の次元へ！',imgUrl:'/card-images/legend10_hiyakozo.png'},
+  {id:'n001',char:'zanpanman',  rarity:1,name:'ザンパンマン先生',power:'',imgUrl:'/card-images/n01_zanpanman.png'},
+  {id:'n002',char:'yabai',      rarity:1,name:'ヤバイヤツ先生',  power:'',imgUrl:'/card-images/n02_yabaiyatsu.png'},
+  {id:'n003',char:'bakuso',     rarity:1,name:'バクソウ先生',    power:'',imgUrl:'/card-images/n03_bakuso.png'},
+  {id:'n004',char:'kaga',       rarity:1,name:'カガ先生',        power:'',imgUrl:'/card-images/n04_kaga.png'},
+  {id:'n005',char:'bakudanma',  rarity:1,name:'爆弾魔先生',      power:'',imgUrl:'/card-images/n05_bakudanma.png'},
+  {id:'n006',char:'kanpanman',  rarity:1,name:'乾パンマン先生',  power:'',imgUrl:'/card-images/n06_kanpanman.png'},
+  {id:'n007',char:'tsukkomi',   rarity:1,name:'ツッコミマン先生',power:'',imgUrl:'/card-images/n07_tsukkomiman.png'},
+  {id:'n008',char:'uzan',       rarity:1,name:'ウザン先生',      power:'',imgUrl:'/card-images/n08_uzan.png'},
+  {id:'n009',char:'nomisoramen',rarity:1,name:'準備中',power:'',imgUrl:''},
+  {id:'n010',char:'hiyakozo',   rarity:1,name:'準備中',power:'',imgUrl:''},
+  {id:'n011',char:'zanpanman',  rarity:1,name:'準備中',power:'',imgUrl:''},
+  {id:'n012',char:'yabai',      rarity:1,name:'準備中',power:'',imgUrl:''},
+  {id:'n013',char:'bakuso',     rarity:1,name:'準備中',power:'',imgUrl:''},
+  {id:'n014',char:'kaga',       rarity:1,name:'準備中',power:'',imgUrl:''},
+  {id:'n015',char:'bakudanma',  rarity:1,name:'準備中',power:'',imgUrl:''},
+  {id:'n016',char:'kanpanman',  rarity:1,name:'準備中',power:'',imgUrl:''},
+  {id:'ssr001',char:'zanpanman',rarity:3,name:'真・ザンパン魔皇',    power:'鍋歴史終焉砲：歴史そのものを煮沸し、敵全体の能力を文明崩壊状態にする超絶攻撃！／超陣効果【天下統一・煮込み陣】：味方全体の全能力を超絶強化し、一定ターン無敵状態にする！',imgUrl:'/card-images/ssr01_zanpanman.png'},
+  {id:'ssr002',char:'yabai',    rarity:3,name:'ヤバイヤツ鬼神',      power:'超速九九崩拳：九九を超高速で詠唱し、敵全体に演算破壊ダメージ！／超陣効果【演算暴走領域】：味方全体の攻撃力・速度を超絶強化！',imgUrl:'/card-images/ssr02_yabaiyatu.png'},
+  {id:'ssr003',char:'bakuso',   rarity:3,name:'真言霊文豪 バクソウ', power:'言霊万葉陣：万葉の言霊を解き放ち、敵全体に超絶ダメージ＋沈黙！／超陣効果【文章神域・心動陣】：味方全体の知識力を超絶強化！',imgUrl:'/card-images/ssr03_bakuso.png'},
+  {id:'ssr004',char:'kaga',     rarity:3,name:'科学創造神 カガ',     power:'真理解放・方程式崩壊：全ての謎を数式で解き明かし、敵全体に超絶ダメージ！／超陣効果【科学神域・叡智陣】：味方全体の知識力を超絶強化！',imgUrl:'/card-images/ssr04_kaga.png'},
+  {id:'ssr005',char:'bakudanma',rarity:3,name:'爆弾魔煉獄王',        power:'爆裂！限界ブレイク：全身の力を一気に解放し、敵全体に超絶ダメージ！／超陣効果【爆燃根性陣・MAX】：味方全体の運動能力と精神力を超絶強化！',imgUrl:'/card-images/ssr05_bakudanma.png'},
+  {id:'ssr006',char:'kanpanman',rarity:3,name:'忍法創造神 乾パンマン',power:'忍法・創造極意筆舞：全ての創造力を筆に込め、敵全体に超絶ダメージ！／超陣効果【忍術美術陣・極彩奥義】：味方全体の全ステータスを超強化！',imgUrl:'/card-images/ssr06_kanpanman.png'},
+  {id:'ssr007',char:'tsukkomi', rarity:3,name:'音速指揮神 ツッコミマン',power:'五指音速ツッコミ・カデンツァ：5本の指でリズムを完全掌握し、敵全体に超絶ダメージ！／超陣効果【音速指揮陣・MAXノリ】：味方全体のリズム・テンポ・表現力を超絶強化！',imgUrl:'/card-images/ssr07_tsukkomiman.png'},
+  {id:'ssr008',char:'uzan',     rarity:3,name:'完全知識体 真・ウザン',power:'全知識解放・完全体：その知識量は人智を超え、全ステータス9999の超越存在！',imgUrl:'/card-images/ssr08_uzan.png'},
+  {id:'r001',char:'zanpanman',  rarity:4,name:'準備中',power:'準備中',imgUrl:''},
+  {id:'r002',char:'yabai',      rarity:4,name:'準備中',power:'準備中',imgUrl:''},
+  {id:'r003',char:'bakuso',     rarity:4,name:'準備中',power:'準備中',imgUrl:''},
+  {id:'r004',char:'kaga',       rarity:4,name:'準備中',power:'準備中',imgUrl:''},
+  {id:'r005',char:'bakudanma',  rarity:4,name:'準備中',power:'準備中',imgUrl:''},
+  {id:'r006',char:'kanpanman',  rarity:4,name:'準備中',power:'準備中',imgUrl:''},
+  {id:'r007',char:'tsukkomi',   rarity:4,name:'準備中',power:'準備中',imgUrl:''},
+  {id:'r008',char:'uzan',       rarity:4,name:'準備中',power:'準備中',imgUrl:''},
+  {id:'r009',char:'nomisoramen',rarity:4,name:'準備中',power:'準備中',imgUrl:''},
+  {id:'r010',char:'hiyakozo',   rarity:4,name:'準備中',power:'準備中',imgUrl:''},
+  {id:'r011',char:'zanpanman',  rarity:4,name:'準備中',power:'準備中',imgUrl:''},
+  {id:'r012',char:'yabai',      rarity:4,name:'準備中',power:'準備中',imgUrl:''},
+  {id:'l003',char:'zenon',      rarity:5,name:'校長ゼノン',    power:'学園統治神の絶対君臨：全教科・全教師・全生徒の頂点として君臨し、敵全体の能力をMAXまで封印！',imgUrl:'/card-images/legend11_zenon.png'},
+  {id:'l004',char:'kuromu',     rarity:5,name:'絶道クロム',    power:'裏支配者の絶対裁定：校則の外側から全てを監視・掌握し、生徒と教師の運命を一言で書き換える！',imgUrl:'/card-images/legend12_kuromu.png'},
+  {id:'l005',char:'moguriana',  rarity:5,name:'モグリアーナ',  power:'母性の奇跡・大饗宴：無限の料理創造力で学園全体を栄養と愛で包み込み、味方全体のHP・状態を完全回復！',imgUrl:'/card-images/legend13_moguriana.png'},
+  {id:'l006',char:'rumina',     rarity:5,name:'癒月ルミナ',    power:'白衣の守護神・聖域展開：味方全体の全状態異常を即時解除し、生命回復力・防御力・再生力をMAXへ！',imgUrl:'/card-images/legend14_rumina.png'},
 ];
 
-const RARITY_NAMES = ['','★ノーマル','★★ 必殺技','★★★ レア','★★★★ 伝説'];
-const RARITY_COLORS = ['','#aaaaaa','#44ccff','#ff8800','#ff2288'];
-const RARITY_WEIGHTS = [0, 55, 30, 12, 3]; // 出現確率(%)
+const RARITY_NAMES = ['','★ N','★★ SR 必殺技','★★★ SSR 覚醒','★★★★ レア','★★★★★ 伝説'];
+const RARITY_COLORS = ['','#aaaaaa','#44ccff','#ff8800','#dd44ff','#ff2288'];
+const RARITY_WEIGHTS = [0, 50, 30, 12, 6, 2]; // 出現確率(%)
 
 // ガチャ・コレクション管理
 function getGachaDB(){
@@ -705,19 +727,25 @@ function drawGacha(){
   saveGachaDB(db);
   updateGachaUI();
 
-  // レアリティ抽選
+  // レアリティ抽選（5段階）
   var rand=Math.random()*100;
   var rarity=1;
-  var w4=RARITY_WEIGHTS[4];
+  var w5=RARITY_WEIGHTS[5];
+  var w4=w5+RARITY_WEIGHTS[4];
   var w3=w4+RARITY_WEIGHTS[3];
   var w2=w3+RARITY_WEIGHTS[2];
-  if(rand<w4)rarity=4;
+  if(rand<w5)rarity=5;
+  else if(rand<w4)rarity=4;
   else if(rand<w3)rarity=3;
   else if(rand<w2)rarity=2;
 
-  // そのレアリティのカードからランダム選出
-  var pool=CARDS.filter(function(c){return c.rarity===rarity;});
-  if(!pool.length)pool=CARDS.slice(); // フォールバック：全カード
+  // そのレアリティのカードからランダム選出（imgUrlがあるものだけ）
+  var pool=CARDS.filter(function(c){return c.rarity===rarity&&c.imgUrl;});
+  if(!pool.length){
+    // そのレアリティに画像付きカードがなければ、画像付き全カードからフォールバック
+    pool=CARDS.filter(function(c){return c.imgUrl;});
+  }
+  if(!pool.length)pool=CARDS.slice();
   var card=pool[Math.floor(Math.random()*pool.length)];
 
   // コレクションに追加
@@ -739,9 +767,11 @@ function showGachaResult(card){
   var count=db.collection[card.id]||1;
   var isNew=count===1;
 
-  // 画像URL決定：imgUrl優先、なければキャラのstart画像
+  // 画像URL決定：imgUrl優先、なければキャラのstart画像、それもなければプレースホルダー
   var charKey=card.char||'kaga';
-  var imgSrc=card.imgUrl||(IMGS[charKey]?IMGS[charKey]['correct']||IMGS[charKey]['start']:'');
+  var imgSrc=card.imgUrl||'';
+  if(!imgSrc&&IMGS[charKey]){imgSrc=IMGS[charKey]['correct']||IMGS[charKey]['start']||'';}
+  if(!imgSrc){imgSrc='data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 160 213"><rect fill="%23111" width="160" height="213"/><text x="80" y="115" fill="%23444" text-anchor="middle" font-size="40">📸</text><text x="80" y="150" fill="%23333" text-anchor="middle" font-size="12">%E6%BA%96%E5%82%99%E4%B8%AD</text></svg>';}
 
   var popup=document.createElement('div');
   popup.id='gacha-result-popup';
@@ -750,13 +780,13 @@ function showGachaResult(card){
   var inner=document.createElement('div');
   inner.style.cssText='background:linear-gradient(135deg,#1a1a2e,#0d0d20);border:3px solid '+rarityColor+';border-radius:24px;padding:24px 20px;max-width:300px;width:90%;text-align:center;animation:popupBounce .5s cubic-bezier(.175,.885,.32,1.275)';
 
-  // レアリティ
+  // レアリティ＋先生名
   var rarDiv=document.createElement('div');
-  rarDiv.style.cssText='font-size:.85rem;font-weight:700;color:'+rarityColor+';letter-spacing:2px;margin-bottom:6px';
+  rarDiv.style.cssText='font-size:.85rem;font-weight:700;color:'+rarityColor+';letter-spacing:2px;margin-bottom:2px';
   rarDiv.textContent=rarityName;
   inner.appendChild(rarDiv);
 
-  // カード名
+  // カード名（レアリティの直下に大きく）
   var nameDiv=document.createElement('div');
   nameDiv.style.cssText='font-size:1.3rem;font-weight:900;color:white;margin-bottom:12px';
   nameDiv.textContent=(card.name&&card.name!=='準備中')?card.name:'';
@@ -787,9 +817,9 @@ function showGachaResult(card){
   badgeDiv.textContent=isNew?'NEW！':count+'枚目';
   inner.appendChild(badgeDiv);
 
-  // 閉じるボタン
+  // ガチャに戻るボタン
   var closeBtn=document.createElement('button');
-  closeBtn.textContent='やったー！ 🎴';
+  closeBtn.textContent='🎴 ガチャに戻る';
   closeBtn.style.cssText='width:100%;padding:13px;background:linear-gradient(135deg,'+rarityColor+',#ffd700);border:none;border-radius:13px;color:white;font-family:inherit;font-size:1rem;font-weight:900;cursor:pointer;margin-top:4px;margin-bottom:8px';
   closeBtn.onclick=function(){popup.remove();};
   inner.appendChild(closeBtn);
@@ -802,17 +832,18 @@ function showGachaResult(card){
 
   popup.appendChild(inner);
   document.body.appendChild(popup);
-  if(card.rarity>=3)spawnConfetti();
+  if(card.rarity>=4)spawnConfetti();
 }
 
 function updateGachaUI(){
   var db=getGachaDB();
   var t=db.tickets;
-  var tStr=t>0?t+'':'';
-  ['gacha-ticket-count','gacha-ticket-big','ss-ticket-count','rs-ticket-count'].forEach(function(id){
+  ['gacha-ticket-count','ss-ticket-count','rs-ticket-count'].forEach(function(id){
     var el=document.getElementById(id);
-    if(el)el.textContent=(id==='gacha-ticket-big'?t:tStr);
+    if(el)el.textContent=t>0?t:'';
   });
+  var el2=document.getElementById('gacha-ticket-big');
+  if(el2)el2.textContent=t;
 }
 
 // コレクション画面表示
@@ -826,14 +857,32 @@ function showCollection(){
     var owned=Object.keys(db.collection).length;
     var total=CARDS.length;
 
-    // ヘッダー情報
+    // ヘッダー情報＋リセットボタン
     var infoDiv=document.createElement('div');
-    infoDiv.style.cssText='text-align:center;padding:10px 0 16px;color:var(--muted);font-size:.82rem;font-weight:700';
-    infoDiv.textContent='コレクション '+owned+' / '+total+'枚';
+    infoDiv.style.cssText='display:flex;align-items:center;justify-content:space-between;padding:10px 0 16px';
+
+    var countSpan=document.createElement('span');
+    countSpan.id='collection-count';
+    countSpan.style.cssText='color:var(--muted);font-size:.82rem;font-weight:700';
+    countSpan.textContent='コレクション '+owned+' / '+total+'枚';
+    infoDiv.appendChild(countSpan);
+
+    var resetBtn=document.createElement('button');
+    resetBtn.textContent='🗑 リセット';
+    resetBtn.style.cssText='background:rgba(255,50,50,.15);border:1px solid rgba(255,50,50,.4);color:#ff6666;border-radius:99px;padding:5px 14px;font-size:.72rem;font-weight:700;cursor:pointer';
+    resetBtn.onclick=function(){
+      if(!confirm('コレクションとチケットを全てリセットしますか？\nこの操作は元に戻せません。')){return;}
+      var emptyDB={tickets:0,totalCorrect:0,collection:{},history:[]};
+      saveGachaDB(emptyDB);
+      showToast('リセットしました！','#ff6666');
+      updateGachaUI();
+      showCollection(); // 画面ごと再描画
+    };
+    infoDiv.appendChild(resetBtn);
     body.appendChild(infoDiv);
 
-    // レアリティ順に表示
-    [4,3,2,1].forEach(function(rarity){
+    // レアリティ順に表示（高い順）
+    [5,4,3,2,1].forEach(function(rarity){
       var rarityCards=CARDS.filter(function(c){return c.rarity===rarity;});
       if(!rarityCards.length)return;
 
@@ -843,55 +892,74 @@ function showCollection(){
       body.appendChild(hdr);
 
       var grid=document.createElement('div');
-      grid.style.cssText='display:grid;grid-template-columns:repeat(4,1fr);gap:5px;margin-bottom:14px';
+      grid.style.cssText='display:grid;grid-template-columns:repeat(8,1fr);gap:4px;margin-bottom:12px';
 
       rarityCards.forEach(function(card){
-        var imgKey=card.img||'start';
         var charKey=card.char||'kaga';
-        // IMGSは直接キャラ名でアクセス
         var count=db.collection[card.id]||0;
         var hasCard=count>0;
+        var rc=RARITY_COLORS[rarity];
 
+        // カード外枠
         var cardEl=document.createElement('div');
-        cardEl.style.cssText='background:var(--card2);border:2px solid '
-          +(hasCard?RARITY_COLORS[rarity]:'rgba(255,255,255,.1)')
-          +';border-radius:14px;overflow:hidden';
+        cardEl.style.cssText='background:var(--card2);border:1px solid '
+          +(hasCard?rc:'rgba(255,255,255,.08)')
+          +';border-radius:8px;overflow:hidden;position:relative;'
+          +(hasCard&&card.rarity>=3?'box-shadow:0 0 8px '+rc+'55;':'');
 
-        // 画像
+        // 画像エリア（縦長カード比率 3:4）
         var imgDiv=document.createElement('div');
         imgDiv.style.cssText='width:100%;aspect-ratio:1086/1448;overflow:hidden;background:#111;position:relative';
+
         var imgEl=document.createElement('img');
-        imgEl.src=card.imgUrl?card.imgUrl:(IMGS[charKey]?IMGS[charKey][imgKey]||IMGS[charKey]['start']:'');
-        imgEl.style.cssText='width:100%;height:100%;object-fit:contain;background:#111'+(hasCard?'':';filter:brightness(0)');
+        var imgSrc2=card.imgUrl||'';
+        if(!imgSrc2&&IMGS&&IMGS[charKey]){imgSrc2=(IMGS[charKey]['start'])||'';}
+        // 未入手は裏面画像、入手済みは正面画像
+        imgEl.src=hasCard
+          ?(imgSrc2||'data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 90 120"><rect fill="%230a0a14" width="90" height="120"/><text x="45" y="68" fill="%23333" text-anchor="middle" font-size="26">📸</text></svg>')
+          :'/card-images/card_back.jpg';
+        imgEl.style.cssText='position:absolute;top:0;left:0;width:100%;height:100%;object-fit:cover;object-position:top center;';
+        imgEl.onerror=function(){
+          this.src='data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 90 120"><rect fill="%230a0820" width="90" height="120" rx="4"/><rect fill="none" stroke="%23886600" stroke-width="2" x="4" y="4" width="82" height="112" rx="3"/><text x="45" y="55" fill="%23886600" text-anchor="middle" font-size="18" font-weight="bold">先生</text><text x="45" y="75" fill="%23664400" text-anchor="middle" font-size="8">ORIGINAL</text><text x="45" y="86" fill="%23664400" text-anchor="middle" font-size="8">SENSEI</text></svg>';
+          this.onerror=null;
+        };
         imgDiv.appendChild(imgEl);
 
-        if(count>1){
-          var badge=document.createElement('div');
-          badge.style.cssText='position:absolute;top:5px;right:5px;background:rgba(0,0,0,.7);color:#ffd700;border-radius:99px;padding:2px 8px;font-size:.7rem;font-weight:900';
-          badge.textContent='x'+count;
-          imgDiv.appendChild(badge);
-        }
+        // GETバッジ
         if(hasCard&&count===1){
           var newBadge=document.createElement('div');
-          newBadge.style.cssText='position:absolute;top:4px;left:4px;background:'+RARITY_COLORS[rarity]+';color:white;border-radius:99px;padding:2px 6px;font-size:.6rem;font-weight:900';
+          newBadge.style.cssText='position:absolute;top:3px;left:3px;background:'+rc+';color:white;border-radius:99px;padding:1px 4px;font-size:.45rem;font-weight:900';
           newBadge.textContent='GET!';
           imgDiv.appendChild(newBadge);
         }
+        // 枚数バッジ
+        if(count>1){
+          var cntBadge=document.createElement('div');
+          cntBadge.style.cssText='position:absolute;top:3px;right:3px;background:rgba(0,0,0,.75);color:#ffd700;border-radius:99px;padding:1px 4px;font-size:.45rem;font-weight:900';
+          cntBadge.textContent='×'+count;
+          imgDiv.appendChild(cntBadge);
+        }
         cardEl.appendChild(imgDiv);
 
-        // テキスト
+        // テキストエリア
         var textDiv=document.createElement('div');
-        textDiv.style.cssText='padding:4px 5px';
+        textDiv.style.cssText='padding:3px 3px 4px';
+
+        // レアリティ表示
+        var rarLbl=document.createElement('div');
+        rarLbl.style.cssText='font-size:.42rem;font-weight:900;color:'+rc+';letter-spacing:.2px;margin-bottom:1px';
+        rarLbl.textContent=RARITY_NAMES[rarity]||'';
+        textDiv.appendChild(rarLbl);
+
+        // カード名
         var nameDiv=document.createElement('div');
-        nameDiv.style.cssText='font-size:.58rem;font-weight:900;color:'+(hasCard?'white':'#444')+';line-height:1.2;margin-bottom:1px';
-        nameDiv.textContent=hasCard?(card.name&&card.name!=='準備中'?card.name:''):'？？？';
+        nameDiv.style.cssText='font-size:.5rem;font-weight:900;color:'+(hasCard&&card.name&&card.name!=='準備中'?'white':'#444')+';line-height:1.2;margin-bottom:0;overflow:hidden;white-space:nowrap;text-overflow:ellipsis';
+        nameDiv.textContent=(hasCard&&card.name&&card.name!=='準備中')?card.name:'？？？';
         textDiv.appendChild(nameDiv);
-        var powerDiv=document.createElement('div');
-        powerDiv.style.display='none';
-        powerDiv.textContent=hasCard?(card.power&&card.power!=='準備中'?card.power:''):'？？？';
-        textDiv.appendChild(powerDiv);
+
+        // 必殺技（タップで詳細表示のため一覧では省略）
+
         cardEl.appendChild(textDiv);
-        // タップで拡大
         (function(c){cardEl.onclick=function(){showCardDetail(c);};})(card);
         cardEl.style.cursor='pointer';
         grid.appendChild(cardEl);
@@ -900,6 +968,7 @@ function showCollection(){
     });
     showScreen('collection');
   }catch(e){
+    console.error('showCollection error:',e);
     showToast('エラー: '+e.message,'#ff5555');
   }
 }
@@ -924,15 +993,31 @@ let toastTimer=null,segResults=[],wrongQuestions=[],isRevengeMode=false;
 
 window.onload=async function(){
   try{
-    var resp=await fetch('/cards.json');
+    var resp=await fetch('/Cards.json');
     if(resp.ok){
       var data=await resp.json();
       if(Array.isArray(data)&&data.length>0)CARDS=data;
+    } else {
+      try{
+        var resp2=await fetch('https://raw.githubusercontent.com/fukofukohnishi-crypto/sensei-quiz/main/Cards.json');
+        if(resp2.ok){var data2=await resp2.json();if(Array.isArray(data2)&&data2.length>0)CARDS=data2;}
+      }catch(e2){console.log('GitHub Raw取得失敗、デフォルト使用');}
     }
   }catch(e){
-    console.log('cards.json読み込み失敗、デフォルト使用');
+    try{
+      var resp3=await fetch('https://raw.githubusercontent.com/fukofukohnishi-crypto/sensei-quiz/main/Cards.json');
+      if(resp3.ok){var data3=await resp3.json();if(Array.isArray(data3)&&data3.length>0)CARDS=data3;}
+    }catch(e3){console.log('cards.json読み込み失敗、デフォルト使用');}
   }
   renderHome();buildChips();
+
+  // iPad PWA対応：ガチャ・コレクションボタンをaddEventListenerで登録
+  var btnGacha=document.getElementById('btn-go-gacha');
+  var btnCol=document.getElementById('btn-go-collection');
+  if(btnGacha){btnGacha.onclick=function(){showScreen('gacha');};}
+  if(btnCol){btnCol.onclick=function(){showCollection();};}
+  var btnStats=document.getElementById('btn-go-stats');
+  if(btnStats){btnStats.onclick=function(){showStats();};}
 };
 
 function buildChips(){
@@ -1008,7 +1093,6 @@ function openTest(id){
   currentTestId=id;
   const t=DB.tests[id];
   document.getElementById('ss-title').textContent=t.name;
-  updateGachaUI();
   document.getElementById('ss-grid').innerHTML=SUBJ_ORDER.map(subj=>{
     const c=CHARS[subj];
     const rounds=t.questions[subj]||{};
@@ -1048,13 +1132,22 @@ function openSubject(subj){
       });
     });
 
-    // 全回ミックス（全部）
+    // 確認テスト（全回ミックス）— 別枠
     if(allTotal>0&&roundNums.length>1){
+      var testSection=document.createElement('div');
+      testSection.style.cssText='margin-bottom:14px';
+      testSection.innerHTML='<div style="font-size:.72rem;font-weight:900;color:#ffd700;letter-spacing:1px;margin-bottom:6px;text-transform:uppercase">📝 確認テスト</div>';
       var d=document.createElement('div');
       d.className='round-card mix';
-      d.innerHTML='<div><div class="round-label mix">⚡ 全回ミックス</div><div class="round-count">全'+allTotal+'問からランダム10問</div></div><div class="round-arrow">›</div>';
+      d.style.cssText='border-color:rgba(255,215,0,.5);background:rgba(255,215,0,.08);';
+      d.innerHTML='<div><div class="round-label mix">🏆 まとめて全部チャレンジ！</div><div class="round-count">全'+allTotal+'問から出題・点数がでるよ</div></div><div class="round-arrow">›</div>';
       d.onclick=function(){startQuiz('mix_all');};
-      list.appendChild(d);
+      testSection.appendChild(d);
+      list.appendChild(testSection);
+      var sep=document.createElement('div');
+      sep.style.cssText='font-size:.72rem;font-weight:900;color:var(--muted);letter-spacing:1px;margin-bottom:6px';
+      sep.textContent='📚 回ごとに練習する';
+      list.appendChild(sep);
     }
 
     // 言葉ミックス（kanji_write以外）
@@ -1105,12 +1198,22 @@ function openSubject(subj){
   } else {
     // 理科・社会・算数
     var totalQ=Object.values(rounds).reduce(function(s,qs){return s+qs.length;},0);
+    // 確認テスト（全回ミックス）— 別枠
     if(roundNums.length>1){
+      var testSection=document.createElement('div');
+      testSection.style.cssText='margin-bottom:14px';
+      testSection.innerHTML='<div style="font-size:.72rem;font-weight:900;color:#ffd700;letter-spacing:1px;margin-bottom:6px">📝 確認テスト</div>';
       var d=document.createElement('div');
       d.className='round-card mix';
-      d.innerHTML='<div><div class="round-label mix">⚡ 全回ミックス</div><div class="round-count">全'+totalQ+'問からランダム10問</div></div><div class="round-arrow">›</div>';
+      d.style.cssText='border-color:rgba(255,215,0,.5);background:rgba(255,215,0,.08)';
+      d.innerHTML='<div><div class="round-label mix">🏆 まとめて全部チャレンジ！</div><div class="round-count">全'+totalQ+'問から出題・点数がでるよ</div></div><div class="round-arrow">›</div>';
       d.onclick=function(){startQuiz('mix');};
-      list.appendChild(d);
+      testSection.appendChild(d);
+      list.appendChild(testSection);
+      var sep=document.createElement('div');
+      sep.style.cssText='font-size:.72rem;font-weight:900;color:var(--muted);letter-spacing:1px;margin-bottom:6px';
+      sep.textContent='📚 回ごとに練習する';
+      list.appendChild(sep);
     }
     roundNums.forEach(function(r){
       var qs=rounds[r]||[];
@@ -1144,7 +1247,6 @@ function openSubject(subj){
   addDiv.innerHTML='<div style="text-align:center;width:100%"><div style="font-size:1.4rem;margin-bottom:4px">📷</div><div style="font-size:.9rem;font-weight:700;color:#ffd700">新しい回を追加する</div><div style="font-size:.72rem;color:var(--muted);margin-top:2px">写真をアップして問題を自動生成</div></div>';
   addDiv.onclick=function(){goAddPhotosSubj(subj,null);};
   list.appendChild(addDiv);
-  updateGachaUI();
   showScreen('roundselect');
 }
 
@@ -1392,7 +1494,7 @@ function renderQ(){
   if(isSansu){
     // あまりが答えに含まれるか判定
     var ans=String(questions[qIdx].a||'');
-    var hasAmari=ans.indexOf('あまり')>-1||ans.indexOf('余り')>-1||ans.indexOf('r')>-1;
+    var hasAmari=ans.indexOf('あまり')>-1||ans.indexOf('余り')>-1||ans.indexOf('r')>-1||ans.indexOf('...')>-1||ans.indexOf('…')>-1;
     document.getElementById('sansu-normal-input').style.display=hasAmari?'none':'flex';
     document.getElementById('sansu-amari-input').style.display=hasAmari?'block':'none';
     if(hasAmari){
@@ -1453,7 +1555,7 @@ function checkSansu(){
   if(answered)return;
   var q=questions[qIdx];
   var correct_ans=String(q.a).trim();
-  var hasAmari=correct_ans.indexOf('あまり')>-1||correct_ans.indexOf('余り')>-1;
+  var hasAmari=correct_ans.indexOf('あまり')>-1||correct_ans.indexOf('余り')>-1||correct_ans.indexOf('...')>-1||correct_ans.indexOf('…')>-1;
 
   if(hasAmari){
     // あまりあり：2つの入力を結合して比較
@@ -1465,8 +1567,8 @@ function checkSansu(){
     mainInp.disabled=true;amariInp.disabled=true;
     document.getElementById('sansu-check-btn-amari').disabled=true;
 
-    // 正解から数字を抽出して比較
-    var correctParts=correct_ans.replace(/[あまり余り]/g,'|').split('|').filter(function(x){return x.trim()!=='';});
+    // 正解から数字を抽出して比較（あまり・余り・...・…で分割）
+    var correctParts=correct_ans.replace(/あまり|余り|\.\.\.|…/g,'|').split('|').filter(function(x){return x.trim()!=='';});
     var correctMain=correctParts[0]?correctParts[0].trim():'';
     var correctAmari=correctParts[1]?correctParts[1].trim():'';
     var isOk=mainVal===correctMain&&amariVal===correctAmari;
@@ -1647,6 +1749,16 @@ function showResult(){
   document.getElementById('r-ok').textContent=correct;
   document.getElementById('r-ng').textContent=wrong;
   document.getElementById('r-str').textContent=maxStreak;
+  // まとめテスト（全回ミックス）のとき点数を大きく表示
+  var scoreBig=document.getElementById('res-score-big');
+  if(currentRound===0){
+    var pct100=Math.round(correct/questions.length*100);
+    document.getElementById('res-score-num').textContent=correct+' / '+questions.length+'問正解';
+    document.getElementById('res-score-label').textContent='正解率 '+pct100+'%';
+    scoreBig.style.display='block';
+  }else{
+    scoreBig.style.display='none';
+  }
   document.getElementById('res-retry').style.background='linear-gradient(135deg,'+cfg.color+','+cfg.btn+')';
   const rw=document.getElementById('res-retry-wrap');
   if(!isRevengeMode&&wrongQuestions.length>0){
@@ -1901,6 +2013,12 @@ async function apGenerateAll(){
 
 // ---- STATS ----
 function showStats(){
+  // currentTestIdが未設定の場合は最初のテストを使う
+  if(!currentTestId){
+    var ids=Object.keys(DB.tests);
+    if(!ids.length){showToast('まずテストを作ってね','#ffaa44');return;}
+    currentTestId=ids[0];
+  }
   var t=DB.tests[currentTestId];
   if(!t)return;
   var testStats=DB.stats[currentTestId]||{};
@@ -2078,75 +2196,52 @@ function showCardDetail(card){
   var rarityName=RARITY_NAMES[card.rarity]||'★';
   var charKey=card.char||'kaga';
   var imgSrc=card.imgUrl||(IMGS[charKey]?IMGS[charKey]['correct']||IMGS[charKey]['start']:'');
-
   var popup=document.createElement('div');
   popup.style.cssText='position:fixed;inset:0;z-index:9999;display:flex;align-items:center;justify-content:center;background:rgba(0,0,0,.88);backdrop-filter:blur(6px)';
   popup.onclick=function(){popup.remove();};
-
   var inner=document.createElement('div');
-  inner.style.cssText='position:relative;max-width:320px;width:88%;animation:popupBounce .4s cubic-bezier(.175,.885,.32,1.275)';
+  inner.style.cssText='position:relative;max-width:300px;width:85%;animation:popupBounce .4s cubic-bezier(.175,.885,.32,1.275)';
   inner.onclick=function(e){e.stopPropagation();};
-
-  // カード本体
   var card_el=document.createElement('div');
   card_el.style.cssText='background:linear-gradient(160deg,#1a1a2e,#0d0d20);border:3px solid '+rarityColor+';border-radius:20px;overflow:hidden;box-shadow:0 0 40px '+rarityColor+'66';
-
-  // 画像
   var imgWrap=document.createElement('div');
   imgWrap.style.cssText='width:100%;aspect-ratio:1086/1448;background:#111;position:relative';
   var imgEl=document.createElement('img');
   imgEl.src=hasCard?imgSrc:'';
   imgEl.style.cssText='width:100%;height:100%;object-fit:contain'+(hasCard?'':';filter:brightness(0)');
   imgWrap.appendChild(imgEl);
-
-  // 未入手オーバーレイ
   if(!hasCard){
-    var overlay=document.createElement('div');
-    overlay.style.cssText='position:absolute;inset:0;display:flex;align-items:center;justify-content:center;flex-direction:column;gap:8px';
-    overlay.innerHTML='<div style="font-size:3rem">🔒</div><div style="color:#555;font-weight:700;font-size:.9rem">未入手</div>';
-    imgWrap.appendChild(overlay);
+    var ov=document.createElement('div');
+    ov.style.cssText='position:absolute;inset:0;display:flex;align-items:center;justify-content:center;flex-direction:column;gap:8px';
+    ov.innerHTML='<div style="font-size:3rem">🔒</div><div style="color:#555;font-weight:700;font-size:.9rem">未入手</div>';
+    imgWrap.appendChild(ov);
   }
   card_el.appendChild(imgWrap);
-
-  // テキスト部分
-  var textArea=document.createElement('div');
-  textArea.style.cssText='padding:14px 16px';
-
-  var rarDiv=document.createElement('div');
-  rarDiv.style.cssText='font-size:.75rem;font-weight:900;color:'+rarityColor+';letter-spacing:1px;margin-bottom:4px';
-  rarDiv.textContent=rarityName;
-  textArea.appendChild(rarDiv);
-
-  var nameDiv=document.createElement('div');
-  nameDiv.style.cssText='font-size:1.1rem;font-weight:900;color:'+(hasCard?'white':'#444')+';margin-bottom:6px';
-  nameDiv.textContent=hasCard?(card.name&&card.name!=='準備中'?card.name:'(名前準備中)'):'？？？';
-  textArea.appendChild(nameDiv);
-
+  var ta=document.createElement('div');
+  ta.style.cssText='padding:14px 16px';
+  var rd=document.createElement('div');
+  rd.style.cssText='font-size:.75rem;font-weight:900;color:'+rarityColor+';letter-spacing:1px;margin-bottom:4px';
+  rd.textContent=rarityName;ta.appendChild(rd);
+  var nd=document.createElement('div');
+  nd.style.cssText='font-size:1.1rem;font-weight:900;color:'+(hasCard?'white':'#444')+';margin-bottom:6px';
+  nd.textContent=hasCard?(card.name&&card.name!=='準備中'?card.name:'(名前準備中)'):'？？？';
+  ta.appendChild(nd);
   if(hasCard&&card.power&&card.power!=='準備中'){
-    var powerDiv=document.createElement('div');
-    powerDiv.style.cssText='font-size:.82rem;color:#bbb;line-height:1.6';
-    powerDiv.textContent=card.power;
-    textArea.appendChild(powerDiv);
+    var pd=document.createElement('div');
+    pd.style.cssText='font-size:.82rem;color:#bbb;line-height:1.6';
+    pd.textContent=card.power;ta.appendChild(pd);
   }
-
   if(count>0){
-    var countDiv=document.createElement('div');
-    countDiv.style.cssText='font-size:.72rem;color:var(--muted);margin-top:6px';
-    countDiv.textContent='所持枚数：'+count+'枚';
-    textArea.appendChild(countDiv);
+    var cd=document.createElement('div');
+    cd.style.cssText='font-size:.72rem;color:var(--muted);margin-top:6px';
+    cd.textContent='所持枚数：'+count+'枚';ta.appendChild(cd);
   }
-  card_el.appendChild(textArea);
-  inner.appendChild(card_el);
-
-  // 閉じるボタン
-  var closeBtn=document.createElement('button');
-  closeBtn.textContent='✕ 閉じる';
-  closeBtn.style.cssText='width:100%;margin-top:10px;padding:12px;background:rgba(255,255,255,.1);border:1px solid rgba(255,255,255,.2);border-radius:13px;color:white;font-family:inherit;font-size:.9rem;font-weight:700;cursor:pointer';
-  closeBtn.onclick=function(){popup.remove();};
-  inner.appendChild(closeBtn);
-
-  popup.appendChild(inner);
-  document.body.appendChild(popup);
+  card_el.appendChild(ta);inner.appendChild(card_el);
+  var cb=document.createElement('button');
+  cb.textContent='✕ 閉じる';
+  cb.style.cssText='width:100%;margin-top:10px;padding:12px;background:rgba(255,255,255,.1);border:1px solid rgba(255,255,255,.2);border-radius:13px;color:white;font-family:inherit;font-size:.9rem;font-weight:700;cursor:pointer';
+  cb.onclick=function(){popup.remove();};
+  inner.appendChild(cb);popup.appendChild(inner);document.body.appendChild(popup);
 }
 
 function resetSubjStats(subj){
