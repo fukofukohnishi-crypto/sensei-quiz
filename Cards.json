@@ -430,5 +430,13 @@
     "name": "準備中",
     "power": "準備中",
     "imgUrl": ""
+  },
+  {
+    "id": "l015",
+    "char": "koorihiramon",
+    "rarity": 5,
+    "name": "氷火羅門先生",
+    "power": "氷火の羅門・真髄発動：氷と炎を同時に解き放ち、敵全体の能力を完全封印！味方全体のHP・全ステータスをMAXへ引き上げ、学級崩壊を絶対無効化する！どんな絶望も突破口に変える、伝説の担任教師の最終奥義！",
+    "imgUrl": "/card-images/legend15_koorihiramon.png"
   }
 ]
