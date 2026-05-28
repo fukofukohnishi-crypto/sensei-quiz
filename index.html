@@ -730,12 +730,10 @@ function drawGacha(){
   // レアリティ抽選（5段階）
   var rand=Math.random()*100;
   var rarity=1;
-  var w5=RARITY_WEIGHTS[5];
-  var w4=w5+RARITY_WEIGHTS[4];
+  var w4=RARITY_WEIGHTS[4];
   var w3=w4+RARITY_WEIGHTS[3];
   var w2=w3+RARITY_WEIGHTS[2];
-  if(rand<w5)rarity=5;
-  else if(rand<w4)rarity=4;
+  if(rand<w4)rarity=4;
   else if(rand<w3)rarity=3;
   else if(rand<w2)rarity=2;
 
