@@ -177,11 +177,11 @@
   },
   {
     "id": "n009",
-    "char": "nomisoramen",
+    "char": "heart",
     "rarity": 1,
-    "name": "準備中",
+    "name": "スクールカウンセラー はぁとさん",
     "power": "",
-    "imgUrl": ""
+    "imgUrl": "/card-images/n09_heart.png"
   },
   {
     "id": "n010",
@@ -233,11 +233,27 @@
   },
   {
     "id": "n016",
-    "char": "kanpanman",
+    "char": "kofukumanpuku",
     "rarity": 1,
-    "name": "準備中",
+    "name": "幸福満腹∞先生",
     "power": "",
-    "imgUrl": ""
+    "imgUrl": "/card-images/n16_kofukumanpuku.png"
+  },
+  {
+    "id": "n033",
+    "char": "inemurinemuru",
+    "rarity": 1,
+    "name": "居眠 ネムル",
+    "power": "",
+    "imgUrl": "/card-images/n33_inemurinemuru.png"
+  },
+  {
+    "id": "n034",
+    "char": "gokuhiininma",
+    "rarity": 1,
+    "name": "極秘院 隠真",
+    "power": "",
+    "imgUrl": "/card-images/n34_gokuhiininma.png"
   },
   {
     "id": "ssr001",
@@ -302,6 +318,22 @@
     "name": "完全知識体 真・ウザン",
     "power": "全知識解放・完全体：その知識量は人智を超え、理解者は存在しない。完全体へと至ったことで、彼は『何も教えなくなった』。全ステータス9999の超越存在！",
     "imgUrl": "/card-images/ssr08_uzan.png"
+  },
+  {
+    "id": "ssr016",
+    "char": "kofukumanpuku",
+    "rarity": 3,
+    "name": "幸福満腹∞先生",
+    "power": "幸福満腹∞の奇跡・大饗宴：無限の愛と魔法の料理で全てを満たし、全てを幸せにする！味方全体のHP・全ステータス・全状態異常を完全回復し、幸福バフを付与！失敗すら奇跡の美味しさに変える神の料理力で、世界全体を幸福で包み込む！",
+    "imgUrl": "/card-images/ssr16_kofukumanpuku.png"
+  },
+  {
+    "id": "ssr031",
+    "char": "niwatori",
+    "rarity": 3,
+    "name": "ニワニワニワニワトリ【進化・覚醒】不思議鶏神（とりしん）",
+    "power": "幻惑鶏神の絶対支配：三羽にも二羽にも見える幻惑の力で敵全体を完全混乱状態にし、幸運の極大覚醒で味方全体のHP・全ステータスを超絶強化！産卵による極・アイテム生成で更なる奇跡をもたらす！",
+    "imgUrl": "/card-images/ssr31_niwatori.png"
   },
   {
     "id": "r001",
@@ -398,6 +430,30 @@
     "name": "準備中",
     "power": "準備中",
     "imgUrl": ""
+  },
+  {
+    "id": "r030",
+    "char": "sharohomu",
+    "rarity": 4,
+    "name": "超優等生 者郎方無",
+    "power": "準備中",
+    "imgUrl": "/card-images/r30_sharohomu.png"
+  },
+  {
+    "id": "r031",
+    "char": "niwatori",
+    "rarity": 4,
+    "name": "ニワニワニワニワトリ",
+    "power": "準備中",
+    "imgUrl": "/card-images/r31_niwatori.png"
+  },
+  {
+    "id": "r032",
+    "char": "toirenohanyako",
+    "rarity": 4,
+    "name": "トイレのはにゃこさん",
+    "power": "準備中",
+    "imgUrl": "/card-images/r32_toirenohanyako.png"
   },
   {
     "id": "l007",
