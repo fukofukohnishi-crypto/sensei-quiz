@@ -1,3 +1,75 @@
+e// /api/generate.js
+// オリジナル先生 — 理科・社会特化 / 中学受験優先
+// モード:
+//   1) yomimono : 漫画のコマ画像(順番) → コマごとの「重要解説」＋ 読み物全体の4択クイズ
+//   2) topics   : 早稲アカのテキスト写真 → 中学受験で重要なトピック一覧（漫画づくりの材料）
+//   3) (legacy) : 理科/社会の教材写真 → 4択クイズ（漫画なしでも使える簡易モード）
+
+const SUBJ_NAMES = { shakai: '社会', rika: '理科' };
+
+// 中学受験を最優先する共通方針（全プロンプトに差し込む）
+const JUKEN_POLICY = `
+【最重要方針：中学受験を見すえた小3教材】
+- これは将来の中学入試につながる教材です。ただの雑学より、中学入試で「頻出・重要」な事項を最優先で扱う。
+- 社会（地理）：地形・気候・川・平野、産業・特産物・伝統的工芸品、世界遺産や遺跡、そして「自然条件や立地と人々のくらしの“つながり（なぜそうなるか）”」を重視。
+- 社会（歴史）：その遺跡・建造物・できごとが「いつの時代の何か」、時代区分、重要人物。
+- 理科：生き物の分類・特徴・育ち方、季節と自然、もののすがた・しくみを「観察できる実物・ビジュアル」と結びつける。
+- 用語は入試で使う正式名称を使う。ただし小3が読めるよう、むずかしい漢字には（ふりがな）をカッコ書きで添える。
+- 丸暗記用の説明ではなく、実物・ビジュアル・因果で印象に残る説明にする。`;
+
+// ── 画像のメディアタイプ判定 ──
+function detectMedia(b64) {
+  try {
+    const d = Buffer.from(b64.slice(0, 16), 'base64');
+    if (d[0] === 0x89 && d[1] === 0x50) return 'image/png';
+    if (d[0] === 0x47 && d[1] === 0x49) return 'image/gif';
+    if (d[0] === 0x52 && d[1] === 0x49) return 'image/webp';
+  } catch (e) {}
+  return 'image/jpeg';
+}
+function imgBlock(b64) {
+  return { type: 'image', source: { type: 'base64', media_type: detectMedia(b64), data: b64 } };
+}
+
+// ── Claude 呼び出し ──
+async function callClaude(content, maxTokens) {
+  const response = await fetch('https://api.anthropic.com/v1/messages', {
+    method: 'POST',
+    headers: {
+      'Content-Type': 'application/json',
+      'x-api-key': process.env.ANTHROPIC_API_KEY,
+      'anthropic-version': '2023-06-01'
+    },
+    body: JSON.stringify({
+      // 品質を上げたいときは 'claude-sonnet-4-6' などに変更可
+      model: 'claude-sonnet-4-20250514',
+      max_tokens: maxTokens || 4000,
+      messages: [{ role: 'user', content }]
+    })
+  });
+  if (!response.ok) {
+    const errText = await response.text();
+    throw new Error(`Claude API error: ${errText.slice(0, 500)}`);
+  }
+  const data = await response.json();
+  const raw = (data.content || []).filter(c => c.type === 'text').map(c => c.text).join('');
+  return raw;
+}
+function parseJSON(raw) {
+  const match = raw.match(/\{[\s\S]*\}/);
+  const jsonStr = match ? match[0] : raw.replace(/```json|```/g, '').trim();
+  return JSON.parse(jsonStr);
+}
+function cleanQuiz(arr) {
+  return (arr || []).filter(q =>
+    q && q.q && q.a && Array.isArray(q.choices) && q.choices.length === 4
+  ).map(q => ({
+    q: q.q, a: q.a, choices: q.choices,
+    explain: q.explain || '', juken: q.juken || '',
+    subject: q.subject, type: '4choice'
+  }));
+}
+
 export default async function handler(req, res) {
   res.setHeader('Access-Control-Allow-Origin', '*');
   res.setHeader('Access-Control-Allow-Methods', 'POST, OPTIONS');
@@ -6,207 +78,129 @@ export default async function handler(req, res) {
   if (req.method !== 'POST') return res.status(405).json({ error: 'Method not allowed' });
 
   try {
-    const { imageBase64, subjects, checkKanji, correctAnswer } = req.body;
+    const body = req.body || {};
+    const mode = body.mode || (body.panels ? 'yomimono' : 'legacy');
+    const subject = body.subject || (Array.isArray(body.subjects) ? body.subjects[0] : 'shakai');
+    const subjName = SUBJ_NAMES[subject] || '社会';
 
-    // ── 漢字判定モード ──
-    if (checkKanji) {
-      if (!imageBase64 || !correctAnswer) {
-        return res.status(400).json({ error: 'imageBase64 and correctAnswer required' });
-      }
-      let mediaType = 'image/jpeg';
-      try {
-        const decoded = Buffer.from(imageBase64.slice(0, 16), 'base64');
-        if (decoded[0] === 0x89) mediaType = 'image/png';
-      } catch (e) {}
+    // ===== モード1：読み物（漫画コマ → 解説＋クイズ） =====
+    if (mode === 'yomimono') {
+      const panels = body.panels || [];
+      if (!panels.length) return res.status(400).json({ error: 'panels (コマ画像の配列) が必要です' });
+      const title = body.title || 'この読み物';
+      const N = panels.length;
 
-      const response = await fetch('https://api.anthropic.com/v1/messages', {
-        method: 'POST',
-        headers: {
-          'Content-Type': 'application/json',
-          'x-api-key': process.env.ANTHROPIC_API_KEY,
-          'anthropic-version': '2023-06-01'
-        },
-        body: JSON.stringify({
-          model: 'claude-sonnet-4-20250514',
-          max_tokens: 200,
-          messages: [{
-            role: 'user',
-            content: [
-              { type: 'image', source: { type: 'base64', media_type: mediaType, data: imageBase64 } },
-              { type: 'text', text: `この画像に書かれた漢字を読んでください。正解は「${correctAnswer}」です。書かれた文字が正解と同じか判定してください。多少の字形の乱れは許容してください。JSONのみで返答：{"correct":true}または{"correct":false,"written":"実際に書かれた文字"}` }
-            ]
-          }]
-        })
+      const content = [];
+      panels.forEach((b64, i) => {
+        content.push({ type: 'text', text: `■コマ${i + 1}` });
+        content.push(imgBlock(b64));
       });
-      const data = await response.json();
-      const raw = (data.content || []).filter(c => c.type === 'text').map(c => c.text).join('');
-      const match = raw.match(/\{[\s\S]*\}/);
-      const result = JSON.parse(match ? match[0] : raw);
-      return res.status(200).json(result);
-    }
-
-    // ── 問題生成モード ──
-    if (!imageBase64 || !subjects || subjects.length === 0) {
-      return res.status(400).json({ error: 'imageBase64 and subjects are required' });
-    }
-
-    let mediaType = 'image/jpeg';
-    try {
-      const decoded = Buffer.from(imageBase64.slice(0, 16), 'base64');
-      if (decoded[0] === 0x89 && decoded[1] === 0x50) mediaType = 'image/png';
-      else if (decoded[0] === 0x47 && decoded[1] === 0x49) mediaType = 'image/gif';
-      else if (decoded[0] === 0x52 && decoded[1] === 0x49) mediaType = 'image/webp';
-    } catch (e) {}
-
-    const subj = subjects[0];
-    const qType = req.body.qType || 'auto';
-    let prompt = '';
-
-    if (subj === 'sansu') {
-      prompt = `あなたは小学3年生向けの算数問題を作る先生です。
-この画像（教科書・プリント）から、小学3年生向けの計算問題・文章題を3〜6問作ってください。
-
-必ずJSONのみで返してください。説明文・マークダウン不要。
-形式：
-{"questions":[{"q":"問題文（例：34 × 12 ＝）","a":"408","choices":[],"subject":"sansu","type":"calc","explain":"解き方の説明"}]}
-
-注意：typeは必ず"calc"、aは数字のみ。余りがある割り算の場合は a を「6あまり3」の形式（必ず「あまり」という文字を使う、「...」や「…」は使わない）にする`;
-
-    } else if (subj === 'kokugo') {
-      if (qType === 'kanji') {
-        // 漢字のみ
-        prompt = `あなたは小学3年生向けの国語問題を作る先生です。
-この画像から漢字の問題だけを作ってください。
-
-【漢字書き取り問題（type:"kanji_write"）】
-画像に出てくる漢字を全て取り上げ、読み仮名を示して書き取り問題を作る。
-例：{"q":"「やま」を漢字で書こう","a":"山","choices":[],"type":"kanji_write","explain":"山は「やま」と読みます"}
-
-【漢字読み方問題（type:"kanji_read"）】
-必ず「文中の一部」として漢字の読み方を問うこと。漢字単体で問わない。
-例：「広場」という言葉があれば →「広場の『場』の読み方は？」
-例：「図書館に行く」という文があれば →「図書館に行くの『館』の読み方は？」
-こうすることで読みが文脈上一つに定まる。
-不正解の選択肢は「その文脈では絶対に使わない読み（ひらがな）」にすること。
-例：{"q":"「広場」の「場」の読み方は？","a":"ば","choices":["ば","き","て","む"],"type":"kanji_read","explain":"「広場」の「場」は「ば」と読みます"}
-
-JSONのみで返してください。
-形式：{"questions":[{"q":"問題文","a":"正解","choices":[],"subject":"kokugo","type":"kanji_write","explain":"解説"}]}
-注意：kanji_writeのchoicesは[]、kanji_readのchoicesは4つ、印刷文字のみ使用`;
-
-      } else if (qType === 'word') {
-        // 言葉・文法のみ
-        prompt = `あなたは小学3年生向けの国語問題を作る先生です。
-この画像から言葉・文法の問題だけを作ってください。漢字の書き取り問題は作らないでください。
-
-問題タイプは type:"4choice" または type:"kanji_read" を使ってください。
-全て4択形式です。
-kanji_readを使う場合：文中での読み方のみを正解にし、不正解選択肢にその漢字の別の正しい読みは入れないこと。
-
-JSONのみで返してください。
-形式：{"questions":[{"q":"問題文","a":"正解","choices":["正解","不正解1","不正解2","不正解3"],"subject":"kokugo","type":"4choice","explain":"解説"}]}
-注意：choicesは必ず4つ、印刷文字のみ使用、手書き回答・赤丸バツは無視、意味不明な問題は作らない`;
-
-      } else if (qType === 'mixed') {
-        // 漢字＋言葉（自動判定より明示的に両方）
-        prompt = `あなたは小学3年生向けの国語問題を作る先生です。
-この画像から漢字問題と言葉・文法問題の両方を作ってください。
-
-漢字書き取り → type:"kanji_write"、choices:[]
-漢字読み方 → type:"kanji_read"、choices:4つ（不正解選択肢にその漢字の別の正しい読みは入れない）
-言葉・文法 → type:"4choice"、choices:4つ
-
-JSONのみで返してください。
-形式：{"questions":[{"q":"問題文","a":"正解","choices":[],"subject":"kokugo","type":"kanji_write","explain":"解説"}]}
-注意：印刷文字のみ使用、手書き回答・赤丸バツは無視、意味不明な問題は作らない`;
-
-      } else {
-        // 自動判定
-        prompt = `あなたは小学3年生向けの国語問題を作る先生です。
-この画像（教科書・プリント）を注意深く見て、内容に応じて適切な問題を作ってください。
-
-【画像の内容を判断して問題タイプを選ぶ】
-
-■ 画像に漢字の書き取り練習・漢字ドリルがある場合：
-→ 漢字書き取り問題（type:"kanji_write"）を多く作る
-→ 例：{"q":"「やま」を漢字で書こう","a":"山","choices":[],"type":"kanji_write","explain":"山は訓読みで「やま」"}
-
-■ 画像に漢字の読み方問題がある場合：
-→ 読み方4択問題（type:"kanji_read"）を作る
-→ 必ず「文中の一部」として問うこと。漢字単体で問わない。
-→ 例：「図書館」という言葉 →「図書館の『館』の読み方は？」のように問う
-→ 不正解選択肢はその漢字の別読みではなく、全く別のひらがなにする
-→ 例：{"q":"「広場」の「場」の読み方は？","a":"ば","choices":["ば","き","て","む"],"type":"kanji_read","explain":"「広場」の「場」は「ば」と読みます"}
-
-■ 画像に文法・主語述語・言葉の意味・文章読解問題がある場合：
-→ 4択問題（type:"4choice"）を作る
-→ 例：{"q":"「きりが晴れる」の述語はどれ？","a":"晴れる","choices":["晴れる","きり","が","晴"],"type":"4choice","explain":"述語は動詞や形容詞です"}
-
-必ずJSONのみで返してください。説明文・マークダウン不要。
-形式：
-{"questions":[
-  {"q":"問題文","a":"正解","choices":["正解","不正解1","不正解2","不正解3"],"subject":"kokugo","type":"4choice","explain":"解説"},
-  {"q":"問題文","a":"正解","choices":[],"subject":"kokugo","type":"kanji_write","explain":"解説"}
-]}
-
-重要：
-- 画像の内容に合ったtypeを選ぶ（文法問題に kanji_write は使わない）
-- kanji_writeのchoicesは空配列[]
-- kanji_read・4choiceのchoicesは必ず4つ
-- 3〜8問作る
-- 小学3年生レベルの問題
-- 印刷された文字だけを使う（手書きの回答・赤ペンの丸やバツは無視する）
-- 問題文が不完全・意味不明な場合は作らない`;
+      if (body.textbookBase64) {
+        content.push({ type: 'text', text: '■参考（早稲アカのテキスト。学習範囲の参考にする）' });
+        content.push(imgBlock(body.textbookBase64));
       }
+      if (body.workbookBase64) {
+        content.push({ type: 'text', text: '■参考（宿題の問題集。クイズはこの問われ方に寄せる）' });
+        content.push(imgBlock(body.workbookBase64));
+      }
+      content.push({ type: 'text', text:
+`あなたは中学受験の指導もする、小学3年生向け${subjName}の先生「氷火羅門先生（こおりひらもん）」です。
+学習まんが「${title}」のテーマのコマを上から順に${N}枚見せました。${body.textbookBase64 ? '最後の画像は早稲アカのテキストで、学習範囲の参考です。' : ''}
+${JUKEN_POLICY}
 
-    } else {
-      const NAMES = { shakai: '社会', rika: '理科' };
-      const subjName = NAMES[subj] || subj;
-      prompt = `あなたは小学3年生向けの${subjName}問題を作る先生です。
-この画像から小学3年生向けの4択問題を3〜6問作ってください。
-JSONのみで返してください。
-形式：{"questions":[{"q":"問題文","a":"正解","choices":["正解","不正解1","不正解2","不正解3"],"subject":"${subj}","type":"4choice","explain":"解説"}]}
-注意：choicesは必ず4つ、小学3年生がわかる言葉を使う`;
+やること：
+1) 各コマ（コマ1〜コマ${N}）について、その題材の「重要解説」を作る。
+2) この読み物全体から、4択クイズを5問作る（中学受験で問われやすい切り口で）。
+
+出力はJSONのみ（説明文・マークダウン不要）：
+{
+ "themes":[
+   {"title":"短い見出し(例:有明海)","key":"覚える1語","hook":"氷火羅門先生の短いひとこと(1〜2文・熱い口調・つかみ)","kaisetsu":"重要解説(2〜3文。中学受験で問われる切り口で。小3が読める。むずかしい漢字には(ふりがな))"}
+ ],
+ "quiz":[
+   {"q":"問題文","a":"正解","choices":["正解","誤り1","誤り2","誤り3"],"explain":"小3向けの解説","juken":"中学受験での出題ポイントを一言"}
+ ]
+}
+
+厳守：
+- themes は必ず${N}個、順番はコマ1→コマ${N}と同じ。
+- quiz は5問。choices は必ず4つ。
+- コマの絵から題材が読み取れない場合でも、見出しから推測して中学受験で重要な内容を書く。` });
+
+      const raw = await callClaude(content, 4000);
+      const parsed = parseJSON(raw);
+      let themes = Array.isArray(parsed.themes) ? parsed.themes : [];
+      // コマ数に合わせて整える
+      themes = themes.slice(0, N);
+      while (themes.length < N) themes.push({ title: '', key: '', hook: '', kaisetsu: '' });
+      const quiz = cleanQuiz((parsed.quiz || []).map(q => ({ ...q, subject })));
+      return res.status(200).json({ themes, quiz });
     }
 
-    const response = await fetch('https://api.anthropic.com/v1/messages', {
-      method: 'POST',
-      headers: {
-        'Content-Type': 'application/json',
-        'x-api-key': process.env.ANTHROPIC_API_KEY,
-        'anthropic-version': '2023-06-01'
-      },
-      body: JSON.stringify({
-        model: 'claude-sonnet-4-20250514',
-        max_tokens: 3000,
-        messages: [{
-          role: 'user',
-          content: [
-            { type: 'image', source: { type: 'base64', media_type: mediaType, data: imageBase64 } },
-            { type: 'text', text: prompt }
-          ]
-        }]
-      })
-    });
+    // ===== モード2：compose（テキスト＋問題集 → 漫画の構成案＋ChatGPTプロンプト） =====
+    if (mode === 'compose' || mode === 'topics') {
+      const tb = body.textbookBase64 || body.imageBase64;
+      if (!tb) return res.status(400).json({ error: 'textbookBase64（テキスト写真）が必要です' });
+      const title = body.title || 'この単元';
+      const content = [];
+      content.push({ type: 'text', text: '■早稲アカのテキスト（学習範囲の概要）' });
+      content.push(imgBlock(tb));
+      if (body.workbookBase64) {
+        content.push({ type: 'text', text: '■宿題の問題集（実際に問われる内容。最優先で反映する）' });
+        content.push(imgBlock(body.workbookBase64));
+      }
+      content.push({ type: 'text', text:
+`あなたは中学受験にくわしい、小学3年生向け${subjName}の先生「氷火羅門先生」です。
+1枚目は早稲アカのテキスト（学習範囲の概要）${body.workbookBase64 ? '、2枚目は宿題の問題集（実際に問われる内容）' : ''}です。
+${JUKEN_POLICY}
+これらをもとに、子ども向け学習まんが「${title}」の構成案を作ってください。中学入試で重要で、かつ絵にしやすいテーマを4〜5個に厳選。${body.workbookBase64 ? '問題集で実際に問われている内容を最優先にする。' : ''}
 
-    if (!response.ok) {
-      const errText = await response.text();
-      return res.status(response.status).json({ error: `Claude API error: ${errText.slice(0, 500)}` });
+出力はJSONのみ（説明文・マークダウン不要）：
+{
+ "title":"読み物のタイトル案",
+ "panels":[{"title":"コマ見出し","juken":"中学受験で重要な理由(一言)","draw":"漫画で描く“本物のビジュアル”の例","line":"氷火羅門先生の短いセリフ案"}],
+ "summary":["キーワード","..."],
+ "chatgptPrompt":"ChatGPTにそのまま貼れる日本語の作画プロンプト"
+}
+
+chatgptPrompt の中身は次の規定を必ず満たす文章にする：
+- 小学3年生向けの学習まんがを「1枚の縦長シート・1列の縦積み」で描く（2列にしない）
+- 上から：表紙コマ → 上で選んだテーマのコマ（1テーマ1コマ）→ まとめコマ
+- 各コマの間に「白い太わく」を入れる（あとで切り分けるため）
+- 先生は氷火羅門先生（赤と青の髪・自信家で熱い口調）。毎回同じ見た目で
+- 各コマのセリフは短く（1文40字以内）、覚える言葉だけ目立たせる、漢字にふりがな
+- 上で選んだ panels の各テーマ名・描くビジュアルを、プロンプト本文に具体的に書き込む` });
+
+      const raw = await callClaude(content, 2500);
+      const parsed = parseJSON(raw);
+      return res.status(200).json({
+        title: parsed.title || title,
+        panels: parsed.panels || [],
+        summary: parsed.summary || [],
+        chatgptPrompt: parsed.chatgptPrompt || ''
+      });
     }
 
-    const data = await response.json();
-    const raw = (data.content || []).filter(c => c.type === 'text').map(c => c.text).join('');
-    const match = raw.match(/\{[\s\S]*\}/);
-    const jsonStr = match ? match[0] : raw.replace(/```json|```/g, '').trim();
-    const parsed = JSON.parse(jsonStr);
-
-    const questions = (parsed.questions || []).filter(q => {
-      if (!q.q || !q.a) return false;
-      if (q.type === 'calc' || q.type === 'kanji_write') return true;
-      return Array.isArray(q.choices) && q.choices.length === 4;
-    });
-
+    // ===== モード3（legacy）：教材写真 → 4択クイズ（漫画なし簡易） =====
+    if (!body.imageBase64) return res.status(400).json({ error: 'imageBase64 が必要です' });
+    if (subject !== 'rika' && subject !== 'shakai') {
+      return res.status(400).json({ error: 'このアプリは理科・社会のみ対応です' });
+    }
+    const content = [
+      imgBlock(body.imageBase64),
+      { type: 'text', text:
+`あなたは中学受験の指導もする、小学3年生向け${subjName}の先生です。
+この教材写真から、小学3年生向けの4択問題を5問作ってください。
+${JUKEN_POLICY}
+出力はJSONのみ：
+{"questions":[{"q":"問題文","a":"正解","choices":["正解","誤り1","誤り2","誤り3"],"explain":"解説","juken":"中学受験での出題ポイント"}]}
+注意：choices は必ず4つ。小3がわかる言葉。` }
+    ];
+    const raw = await callClaude(content, 3000);
+    const parsed = parseJSON(raw);
+    const questions = cleanQuiz((parsed.questions || []).map(q => ({ ...q, subject })));
     return res.status(200).json({ questions });
+
   } catch (err) {
     return res.status(500).json({ error: err.message });
   }
