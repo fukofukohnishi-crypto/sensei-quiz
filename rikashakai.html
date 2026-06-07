@@ -248,10 +248,10 @@ button{cursor:pointer;font-family:inherit}
       <span class="lbl">第N回・単元名</span>
       <input class="inp" id="up-round" placeholder="例：第5回／九州地方" maxlength="24">
       <span class="lbl">テキスト（複数可・見開きは2枚。何回でも追加できます）</span>
-      <label class="upl small" id="up-tb-l"><input type="file" accept="image/*" multiple onchange="onUp('textbook',event)"><div class="em">📘</div><div id="up-tb-t">タップしてテキストを追加</div></label>
+      <button class="upl small" id="up-tb-l" style="width:100%" onclick="addPhotos('textbook')"><div class="em">📘</div><div id="up-tb-t">タップしてテキストを追加</div></button>
       <div id="up-tb-thumbs" class="upthumbs"></div>
       <span class="lbl">問題集（任意・複数可）</span>
-      <label class="upl small" id="up-wb-l"><input type="file" accept="image/*" multiple onchange="onUp('workbook',event)"><div class="em">📝</div><div id="up-wb-t">タップして問題集を追加</div></label>
+      <button class="upl small" id="up-wb-l" style="width:100%" onclick="addPhotos('workbook')"><div class="em">📝</div><div id="up-wb-t">タップして問題集を追加</div></button>
       <div id="up-wb-thumbs" class="upthumbs"></div>
       <button class="bigbtn" style="margin-top:16px" onclick="saveMaterial()">💾 保管する</button>
       <span class="lbl" style="margin-top:20px">保管ずみ教材</span>
@@ -504,7 +504,18 @@ function renderUpThumbs(){
   document.getElementById('up-tb-l').classList.toggle('done',!!upTb.length);
   document.getElementById('up-wb-l').classList.toggle('done',!!upWb.length);
 }
-function onUp(kind,e){const files=[...e.target.files];if(!files.length)return;const arr=kind==='textbook'?upTb:upWb;let done=0;files.forEach(f=>{const r=new FileReader();r.onload=ev=>{arr.push(ev.target.result);done++;if(done===files.length)renderUpThumbs();};r.readAsDataURL(f);});e.target.value='';}
+function addPhotos(kind){
+  const inp=document.createElement('input');
+  inp.type='file';inp.accept='image/*';inp.multiple=true;
+  inp.style.cssText='position:fixed;left:-9999px;top:0';
+  document.body.appendChild(inp);
+  inp.addEventListener('change',()=>{
+    const files=[...inp.files];const arr=(kind==='textbook')?upTb:upWb;let done=0;
+    if(files.length){files.forEach(f=>{const r=new FileReader();r.onload=ev=>{arr.push(ev.target.result);if(++done===files.length)renderUpThumbs();};r.readAsDataURL(f);});}
+    setTimeout(()=>inp.remove(),1500);
+  });
+  inp.click();
+}
 function saveMaterial(){const round=document.getElementById('up-round').value.trim();if(!round){toast('第N回・単元名を入れてね','#ffaa44');return;}if(!upTb.length&&!upWb.length){toast('テキストか問題集を選んでね','#ffaa44');return;}
   const key=matKey(upSubj,round),ex=materials[key]||{};materials[key]={subj:upSubj,round,textbooks:upTb.length?upTb.slice():(ex.textbooks||[]),workbooks:upWb.length?upWb.slice():(ex.workbooks||[])};saveMaterials();
   upTb=[];upWb=[];document.getElementById('up-round').value='';renderUpThumbs();
