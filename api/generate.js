@@ -1,4 +1,4 @@
-e// /api/generate.js
+// /api/generate.js
 // オリジナル先生 — 理科・社会特化 / 中学受験優先
 // モード:
 //   1) yomimono : 漫画のコマ画像(順番) → コマごとの「重要解説」＋ 読み物全体の4択クイズ
@@ -95,17 +95,19 @@ export default async function handler(req, res) {
         content.push({ type: 'text', text: `■コマ${i + 1}` });
         content.push(imgBlock(b64));
       });
-      if (body.textbookBase64) {
+      const tbs = body.textbookBase64s || (body.textbookBase64 ? [body.textbookBase64] : []);
+      const wbs = body.workbookBase64s || (body.workbookBase64 ? [body.workbookBase64] : []);
+      if (tbs.length) {
         content.push({ type: 'text', text: '■参考（早稲アカのテキスト。学習範囲の参考にする）' });
-        content.push(imgBlock(body.textbookBase64));
+        tbs.forEach(b => content.push(imgBlock(b)));
       }
-      if (body.workbookBase64) {
+      if (wbs.length) {
         content.push({ type: 'text', text: '■参考（宿題の問題集。クイズはこの問われ方に寄せる）' });
-        content.push(imgBlock(body.workbookBase64));
+        wbs.forEach(b => content.push(imgBlock(b)));
       }
       content.push({ type: 'text', text:
 `あなたは中学受験の指導もする、小学3年生向け${subjName}の先生「氷火羅門先生（こおりひらもん）」です。
-学習まんが「${title}」のテーマのコマを上から順に${N}枚見せました。${body.textbookBase64 ? '最後の画像は早稲アカのテキストで、学習範囲の参考です。' : ''}
+学習まんが「${title}」のテーマのコマを上から順に${N}枚見せました。${tbs.length ? 'コマのあとに早稲アカのテキスト画像があり、学習範囲の参考です。' : ''}${wbs.length ? '続けて宿題の問題集の画像もあります。クイズはこの問われ方に寄せてください。' : ''}
 ${JUKEN_POLICY}
 
 やること：
@@ -139,21 +141,22 @@ ${JUKEN_POLICY}
 
     // ===== モード2：compose（テキスト＋問題集 → 漫画の構成案＋ChatGPTプロンプト） =====
     if (mode === 'compose' || mode === 'topics') {
-      const tb = body.textbookBase64 || body.imageBase64;
-      if (!tb) return res.status(400).json({ error: 'textbookBase64（テキスト写真）が必要です' });
+      const tbs = body.textbookBase64s || (body.textbookBase64 ? [body.textbookBase64] : (body.imageBase64 ? [body.imageBase64] : []));
+      const wbs = body.workbookBase64s || (body.workbookBase64 ? [body.workbookBase64] : []);
+      if (!tbs.length) return res.status(400).json({ error: 'textbook（テキスト写真）が必要です' });
       const title = body.title || 'この単元';
       const content = [];
-      content.push({ type: 'text', text: '■早稲アカのテキスト（学習範囲の概要）' });
-      content.push(imgBlock(tb));
-      if (body.workbookBase64) {
+      content.push({ type: 'text', text: '■早稲アカのテキスト（学習範囲の概要。複数枚は見開き等）' });
+      tbs.forEach(b => content.push(imgBlock(b)));
+      if (wbs.length) {
         content.push({ type: 'text', text: '■宿題の問題集（実際に問われる内容。最優先で反映する）' });
-        content.push(imgBlock(body.workbookBase64));
+        wbs.forEach(b => content.push(imgBlock(b)));
       }
       content.push({ type: 'text', text:
 `あなたは中学受験にくわしい、小学3年生向け${subjName}の先生「氷火羅門先生」です。
-1枚目は早稲アカのテキスト（学習範囲の概要）${body.workbookBase64 ? '、2枚目は宿題の問題集（実際に問われる内容）' : ''}です。
+1〜${tbs.length}枚目は早稲アカのテキスト（学習範囲の概要）${wbs.length ? '、続く画像は宿題の問題集（実際に問われる内容）' : ''}です。
 ${JUKEN_POLICY}
-これらをもとに、子ども向け学習まんが「${title}」の構成案を作ってください。中学入試で重要で、かつ絵にしやすいテーマを4〜5個に厳選。${body.workbookBase64 ? '問題集で実際に問われている内容を最優先にする。' : ''}
+これらをもとに、子ども向け学習まんが「${title}」の構成案を作ってください。中学入試で重要で、かつ絵にしやすいテーマを4〜5個に厳選。${wbs.length ? '問題集で実際に問われている内容を最優先にする。' : ''}
 
 出力はJSONのみ（説明文・マークダウン不要）：
 {
