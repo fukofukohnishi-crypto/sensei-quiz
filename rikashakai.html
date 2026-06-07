@@ -504,14 +504,15 @@ function renderUpThumbs(){
   document.getElementById('up-tb-l').classList.toggle('done',!!upTb.length);
   document.getElementById('up-wb-l').classList.toggle('done',!!upWb.length);
 }
+function compressFile(file,maxDim,q){return new Promise((res,rej)=>{const r=new FileReader();r.onload=()=>{const img=new Image();img.onload=()=>{let w=img.naturalWidth,h=img.naturalHeight;const sc=Math.min(1,maxDim/Math.max(w,h));w=Math.round(w*sc);h=Math.round(h*sc);const cv=document.createElement('canvas');cv.width=w;cv.height=h;cv.getContext('2d').drawImage(img,0,0,w,h);res(cv.toDataURL('image/jpeg',q));};img.onerror=rej;img.src=r.result;};r.onerror=rej;r.readAsDataURL(file);});}
 function addPhotos(kind){
   const inp=document.createElement('input');
   inp.type='file';inp.accept='image/*';inp.multiple=true;
   inp.style.cssText='position:fixed;left:-9999px;top:0';
   document.body.appendChild(inp);
-  inp.addEventListener('change',()=>{
-    const files=[...inp.files];const arr=(kind==='textbook')?upTb:upWb;let done=0;
-    if(files.length){files.forEach(f=>{const r=new FileReader();r.onload=ev=>{arr.push(ev.target.result);if(++done===files.length)renderUpThumbs();};r.readAsDataURL(f);});}
+  inp.addEventListener('change',async()=>{
+    const files=[...inp.files];const arr=(kind==='textbook')?upTb:upWb;
+    for(const f of files){try{const d=await compressFile(f,1600,0.8);arr.push(d);renderUpThumbs();}catch(e){}}
     setTimeout(()=>inp.remove(),1500);
   });
   inp.click();
@@ -545,7 +546,7 @@ function loadSheet(e){const f=e.target.files[0];if(!f)return;const r=new FileRea
 function renderLines(){stage.querySelectorAll('.cut').forEach(c=>c.remove());const H=stage.clientHeight;fracs.sort((a,b)=>a-b);fracs.forEach((fr,i)=>{const c=document.createElement('div');c.className='cut';c.style.top=(fr*H)+'px';c.innerHTML='<div class="num">'+(i+1)+'</div><div class="grab">⇕<span class="x" data-i="'+i+'">✕</span></div>';stage.appendChild(c);makeDrag(c,i);c.querySelector('.x').addEventListener('click',ev=>{ev.stopPropagation();fracs.splice(i,1);renderLines();});});document.getElementById('lc').textContent=fracs.length;document.getElementById('sc').textContent=fracs.length+1;}
 function makeDrag(el,i){let act=false;const st=e=>{act=true;e.preventDefault();};const mv=e=>{if(!act)return;const r=stage.getBoundingClientRect();const y=(e.touches?e.touches[0].clientY:e.clientY)-r.top;let fr=Math.max(.02,Math.min(.98,y/r.height));fracs[i]=fr;el.style.top=(fr*stage.clientHeight)+'px';};const en=()=>{if(act){act=false;fracs.sort((a,b)=>a-b);renderLines();}};el.addEventListener('touchstart',st,{passive:false});el.addEventListener('mousedown',st);window.addEventListener('touchmove',mv,{passive:false});window.addEventListener('mousemove',mv);window.addEventListener('touchend',en);window.addEventListener('mouseup',en);}
 function addLine(){fracs.push(.5);renderLines();}function removeLine(){if(fracs.length){fracs.pop();renderLines();}}
-function doSlice(){fracs.sort((a,b)=>a-b);const bd=[0,...fracs,1];sliceData=[];const cv=document.createElement('canvas'),ctx=cv.getContext('2d');for(let i=0;i<bd.length-1;i++){const sy=Math.round(bd[i]*natH),eh=Math.round((bd[i+1]-bd[i])*natH);if(eh<8)continue;cv.width=natW;cv.height=eh;ctx.drawImage(sheetimg,0,sy,natW,eh,0,0,natW,eh);sliceData.push(cv.toDataURL('image/jpeg',.85));}
+function doSlice(){fracs.sort((a,b)=>a-b);const bd=[0,...fracs,1];sliceData=[];const cv=document.createElement('canvas'),ctx=cv.getContext('2d');const tw=Math.min(natW,1100),sc=tw/natW;for(let i=0;i<bd.length-1;i++){const sy=Math.round(bd[i]*natH),eh=Math.round((bd[i+1]-bd[i])*natH);if(eh<8)continue;cv.width=tw;cv.height=Math.round(eh*sc);ctx.clearRect(0,0,cv.width,cv.height);ctx.drawImage(sheetimg,0,sy,natW,eh,0,0,cv.width,cv.height);sliceData.push(cv.toDataURL('image/jpeg',.8));}
   const wrap=document.getElementById('slices');wrap.innerHTML='';sliceData.forEach((d,i)=>{const role=i===0?'cover':(i===sliceData.length-1?'summary':'theme');const el=document.createElement('div');el.className='slice';el.innerHTML='<img src="'+d+'"><div class="role"><div class="tnum">コマ '+(i+1)+'</div><select data-i="'+i+'"><option value="cover"'+(role==='cover'?' selected':'')+'>表紙</option><option value="theme"'+(role==='theme'?' selected':'')+'>テーマ</option><option value="summary"'+(role==='summary'?' selected':'')+'>まとめ</option></select></div>';wrap.appendChild(el);});
   document.getElementById('add-step2').style.display='none';document.getElementById('add-step3').style.display='block';}
 async function generate(){
