@@ -505,6 +505,8 @@ function renderUpThumbs(){
   document.getElementById('up-wb-l').classList.toggle('done',!!upWb.length);
 }
 function compressFile(file,maxDim,q){return new Promise((res,rej)=>{const r=new FileReader();r.onload=()=>{const img=new Image();img.onload=()=>{let w=img.naturalWidth,h=img.naturalHeight;const sc=Math.min(1,maxDim/Math.max(w,h));w=Math.round(w*sc);h=Math.round(h*sc);const cv=document.createElement('canvas');cv.width=w;cv.height=h;cv.getContext('2d').drawImage(img,0,0,w,h);res(cv.toDataURL('image/jpeg',q));};img.onerror=rej;img.src=r.result;};r.onerror=rej;r.readAsDataURL(file);});}
+function compressDataURL(dataURL,maxDim,q){return new Promise(res=>{const img=new Image();img.onload=()=>{let w=img.naturalWidth,h=img.naturalHeight;const sc=Math.min(1,maxDim/Math.max(w,h));w=Math.round(w*sc);h=Math.round(h*sc);const cv=document.createElement('canvas');cv.width=w;cv.height=h;cv.getContext('2d').drawImage(img,0,0,w,h);res(cv.toDataURL('image/jpeg',q));};img.onerror=()=>res(dataURL);img.src=dataURL;});}
+async function prepBodies(arr,maxDim,q){const out=[];for(const d of (arr||[])){const c=await compressDataURL(d,maxDim,q);out.push(c.split(',')[1]);}return out;}
 function addPhotos(kind){
   const inp=document.createElement('input');
   inp.type='file';inp.accept='image/*';inp.multiple=true;
@@ -530,10 +532,11 @@ function b64(d){return d?d.split(',')[1]:null;}
 function initCompose(){document.getElementById('comp-form').style.display='block';document.getElementById('comp-result').style.display='none';fillMaterialSelect(document.getElementById('comp-material'),false);}
 async function doCompose(){const key=document.getElementById('comp-material').value,m=materials[key];if(!m||!(m.textbooks&&m.textbooks.length)){toast('テキスト付きの教材を選んでね','#ffaa44');return;}
   const title=document.getElementById('comp-title').value.trim()||m.round;document.getElementById('load-t').textContent='構成案を考え中…';document.getElementById('load').classList.add('show');
-  try{const r=await fetch(API_URL,{method:'POST',headers:{'Content-Type':'application/json'},body:JSON.stringify({mode:'compose',subject:m.subj,title,textbookBase64s:(m.textbooks||[]).map(b64),workbookBase64s:(m.workbooks||[]).map(b64)})});if(!r.ok)throw new Error('API '+r.status);const d=await r.json();if(d.error)throw new Error(d.error);
+  try{const tb=await prepBodies(m.textbooks,1280,0.7),wb=await prepBodies(m.workbooks,1280,0.7);
+    const r=await fetch(API_URL,{method:'POST',headers:{'Content-Type':'application/json'},body:JSON.stringify({mode:'compose',subject:m.subj,title,textbookBase64s:tb,workbookBase64s:wb})});if(!r.ok)throw new Error('API '+r.status);const d=await r.json();if(d.error)throw new Error(d.error);
     document.getElementById('comp-rtitle').textContent=d.title||title;const pc=document.getElementById('comp-panels');pc.innerHTML='';(d.panels||[]).forEach(p=>{const el=document.createElement('div');el.className='panelplan';el.innerHTML='<b>'+(p.title||'')+'</b>'+(p.juken?'<div class="pj">🎯 '+p.juken+'</div>':'')+(p.draw?'<div class="pd">🖼 '+p.draw+'</div>':'');pc.appendChild(el);});
     document.getElementById('comp-prompt').textContent=d.chatgptPrompt||'(プロンプトが生成されませんでした)';document.getElementById('comp-form').style.display='none';document.getElementById('comp-result').style.display='block';
-  }catch(err){toast('⚠️ 構成生成に失敗（'+err.message+'）','#ffaa44');}
+  }catch(err){const msg=(''+err.message).includes('413')?'画像が大きすぎます。枚数を減らすか、もう一度お試しを':err.message;toast('⚠️ 構成生成に失敗（'+msg+'）','#ffaa44');}
   document.getElementById('load-t').textContent='氷火羅門先生が考え中…';document.getElementById('load').classList.remove('show');}
 function copyPrompt(){const t=document.getElementById('comp-prompt').textContent;if(navigator.clipboard)navigator.clipboard.writeText(t).then(()=>toast('コピーしたよ📋','#44cc88'),()=>toast('コピーできませんでした','#ffaa44'));else toast('長押しで選択してコピーしてね','#ffaa44');}
 
@@ -560,10 +563,10 @@ async function generate(){
   document.getElementById('load-t').textContent='氷火羅門先生が考え中…';document.getElementById('load').classList.add('show');
   let themes,quiz;
   try{
-    const payloads=themePanels.map(d=>d.split(',')[1]);
+    const payloads=await prepBodies(themePanels,1100,0.78);
     const mk=document.getElementById('add-material').value,m=materials[mk];
     const reqBody={mode:'yomimono',subject:addSubj,title,panels:payloads};
-    if(m){if(m.textbooks&&m.textbooks.length)reqBody.textbookBase64s=m.textbooks.map(b64);if(m.workbooks&&m.workbooks.length)reqBody.workbookBase64s=m.workbooks.map(b64);}
+    if(m){const tb=await prepBodies(m.textbooks,1280,0.7),wb=await prepBodies(m.workbooks,1280,0.7);if(tb.length)reqBody.textbookBase64s=tb;if(wb.length)reqBody.workbookBase64s=wb;}
     const r=await fetch(API_URL,{method:'POST',headers:{'Content-Type':'application/json'},body:JSON.stringify(reqBody)});
     if(!r.ok)throw new Error('API '+r.status);const data=await r.json();if(data.error)throw new Error(data.error);
     themes=(data.themes||[]).map((t,i)=>({img:themePanels[i],title:t.title||('テーマ'+(i+1)),key:t.key||'',hook:t.hook||'',kaisetsu:t.kaisetsu||''}));
