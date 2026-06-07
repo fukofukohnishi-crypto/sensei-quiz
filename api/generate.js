@@ -5,6 +5,9 @@
 //   2) topics   : 早稲アカのテキスト写真 → 中学受験で重要なトピック一覧（漫画づくりの材料）
 //   3) (legacy) : 理科/社会の教材写真 → 4択クイズ（漫画なしでも使える簡易モード）
 
+// Next.js APIルート構成の場合のボディ上限引き上げ（plain Vercel関数では無害）
+export const config = { api: { bodyParser: { sizeLimit: '12mb' } } };
+
 const SUBJ_NAMES = { shakai: '社会', rika: '理科' };
 
 // 中学受験を最優先する共通方針（全プロンプトに差し込む）
