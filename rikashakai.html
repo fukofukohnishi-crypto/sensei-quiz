@@ -133,6 +133,11 @@ button{cursor:pointer;font-family:inherit}
 .panelplan{background:var(--card);border:1px solid var(--border);border-left:3px solid var(--gold);border-radius:10px;padding:11px 13px;margin-bottom:8px}.panelplan b{font-size:.9rem}.panelplan .pj{font-size:.74rem;color:#ffcf66;margin-top:3px}.panelplan .pd{font-size:.76rem;color:#aac;margin-top:3px}
 
 .col-top{background:var(--card);border-radius:14px;padding:13px 15px;margin-bottom:6px;text-align:center}
+.upthumbs{display:flex;flex-wrap:wrap;gap:7px;margin-top:8px}
+.upthumb{position:relative;width:58px;height:58px;border-radius:9px;overflow:hidden;border:1px solid var(--border)}
+.upthumb img{width:100%;height:100%;object-fit:cover}
+.upthumb .rm{position:absolute;top:1px;right:1px;background:rgba(0,0,0,.72);color:#fff;border:none;border-radius:50%;width:19px;height:19px;font-size:.72rem;font-weight:900;line-height:1;padding:0}
+.upthumb .pgn{position:absolute;bottom:0;left:0;right:0;background:rgba(0,0,0,.55);color:#fff;font-size:.56rem;font-weight:900;text-align:center}
 .col-top .big{font-size:1.7rem;font-weight:900;color:var(--gold);line-height:1}
 .col-top .lbl2{font-size:.74rem;color:var(--muted);font-weight:700;margin-top:3px}
 .col-rar{margin:16px 2px 8px;font-weight:900;font-size:.92rem;display:flex;align-items:center;justify-content:space-between}
@@ -242,10 +247,12 @@ button{cursor:pointer;font-family:inherit}
       <div class="chips"><button class="chip2 sel-shakai" id="up-shakai" onclick="setUpSubj('shakai')">社会</button><button class="chip2" id="up-rika" onclick="setUpSubj('rika')">理科</button></div>
       <span class="lbl">第N回・単元名</span>
       <input class="inp" id="up-round" placeholder="例：第5回／九州地方" maxlength="24">
-      <div class="chips" style="margin-top:14px">
-        <label class="upl small" id="up-tb-l" style="flex:1"><input type="file" accept="image/*" onchange="onUp('textbook',event)"><div class="em">📘</div><div id="up-tb-t">テキスト</div></label>
-        <label class="upl small" id="up-wb-l" style="flex:1"><input type="file" accept="image/*" onchange="onUp('workbook',event)"><div class="em">📝</div><div id="up-wb-t">問題集（任意）</div></label>
-      </div>
+      <span class="lbl">テキスト（複数可・見開きは2枚。何回でも追加できます）</span>
+      <label class="upl small" id="up-tb-l"><input type="file" accept="image/*" multiple onchange="onUp('textbook',event)"><div class="em">📘</div><div id="up-tb-t">タップしてテキストを追加</div></label>
+      <div id="up-tb-thumbs" class="upthumbs"></div>
+      <span class="lbl">問題集（任意・複数可）</span>
+      <label class="upl small" id="up-wb-l"><input type="file" accept="image/*" multiple onchange="onUp('workbook',event)"><div class="em">📝</div><div id="up-wb-t">タップして問題集を追加</div></label>
+      <div id="up-wb-thumbs" class="upthumbs"></div>
       <button class="bigbtn" style="margin-top:16px" onclick="saveMaterial()">💾 保管する</button>
       <span class="lbl" style="margin-top:20px">保管ずみ教材</span>
       <div id="mat-list"></div>
@@ -484,24 +491,34 @@ function showResult(){const total=qList.length;
 }
 
 /* ===== 管理者：教材 ===== */
-let upSubj='shakai',upTb=null,upWb=null;
+let upSubj='shakai',upTb=[],upWb=[];
 function matKey(s,r){return s+'|'+r;}
 function setUpSubj(s){upSubj=s;document.getElementById('up-shakai').className='chip2'+(s==='shakai'?' sel-shakai':'');document.getElementById('up-rika').className='chip2'+(s==='rika'?' sel-rika':'');}
-function onUp(kind,e){const f=e.target.files[0];if(!f)return;const r=new FileReader();r.onload=ev=>{if(kind==='textbook'){upTb=ev.target.result;document.getElementById('up-tb-t').textContent='✓ テキスト';document.getElementById('up-tb-l').classList.add('done');}else{upWb=ev.target.result;document.getElementById('up-wb-t').textContent='✓ 問題集';document.getElementById('up-wb-l').classList.add('done');}};r.readAsDataURL(f);}
-function saveMaterial(){const round=document.getElementById('up-round').value.trim();if(!round){toast('第N回・単元名を入れてね','#ffaa44');return;}if(!upTb&&!upWb){toast('テキストか問題集を選んでね','#ffaa44');return;}
-  const key=matKey(upSubj,round),ex=materials[key]||{};materials[key]={subj:upSubj,round,textbook:upTb||ex.textbook||null,workbook:upWb||ex.workbook||null};saveMaterials();
-  upTb=null;upWb=null;document.getElementById('up-round').value='';document.getElementById('up-tb-t').textContent='テキスト';document.getElementById('up-tb-l').classList.remove('done');document.getElementById('up-wb-t').textContent='問題集（任意）';document.getElementById('up-wb-l').classList.remove('done');
+function renderUpThumbs(){
+  [['textbook',upTb,'up-tb-thumbs'],['workbook',upWb,'up-wb-thumbs']].forEach(([kind,arr,id])=>{
+    const wrap=document.getElementById(id);wrap.innerHTML='';
+    arr.forEach((d,i)=>{const el=document.createElement('div');el.className='upthumb';el.innerHTML='<img src="'+d+'"><div class="pgn">'+(i+1)+'</div><button class="rm">×</button>';el.querySelector('.rm').onclick=()=>{arr.splice(i,1);renderUpThumbs();};wrap.appendChild(el);});
+  });
+  document.getElementById('up-tb-t').textContent=upTb.length?('テキスト '+upTb.length+'枚 ・タップで追加'):'タップしてテキストを追加';
+  document.getElementById('up-wb-t').textContent=upWb.length?('問題集 '+upWb.length+'枚 ・タップで追加'):'タップして問題集を追加';
+  document.getElementById('up-tb-l').classList.toggle('done',!!upTb.length);
+  document.getElementById('up-wb-l').classList.toggle('done',!!upWb.length);
+}
+function onUp(kind,e){const files=[...e.target.files];if(!files.length)return;const arr=kind==='textbook'?upTb:upWb;let done=0;files.forEach(f=>{const r=new FileReader();r.onload=ev=>{arr.push(ev.target.result);done++;if(done===files.length)renderUpThumbs();};r.readAsDataURL(f);});e.target.value='';}
+function saveMaterial(){const round=document.getElementById('up-round').value.trim();if(!round){toast('第N回・単元名を入れてね','#ffaa44');return;}if(!upTb.length&&!upWb.length){toast('テキストか問題集を選んでね','#ffaa44');return;}
+  const key=matKey(upSubj,round),ex=materials[key]||{};materials[key]={subj:upSubj,round,textbooks:upTb.length?upTb.slice():(ex.textbooks||[]),workbooks:upWb.length?upWb.slice():(ex.workbooks||[])};saveMaterials();
+  upTb=[];upWb=[];document.getElementById('up-round').value='';renderUpThumbs();
   renderMaterials();toast('教材を保管したよ💾','#44cc88');}
 function renderMaterials(){const wrap=document.getElementById('mat-list');wrap.innerHTML='';const keys=Object.keys(materials);if(!keys.length){wrap.innerHTML='<div class="admin-note">まだ教材がありません。</div>';return;}
-  keys.forEach(k=>{const m=materials[k];const el=document.createElement('div');el.className='matrow';el.innerHTML='<div class="info">'+m.round+'<span class="mini '+m.subj+'">'+(m.subj==='shakai'?'社会':'理科')+'</span><small>'+(m.textbook?'📘テキスト ':'')+(m.workbook?'📝問題集':(m.textbook?'':'なし'))+'</small></div><button class="del">削除</button>';el.querySelector('.del').onclick=()=>{delete materials[k];saveMaterials();renderMaterials();};wrap.appendChild(el);});}
+  keys.forEach(k=>{const m=materials[k];const tn=(m.textbooks||[]).length,wn=(m.workbooks||[]).length;const el=document.createElement('div');el.className='matrow';el.innerHTML='<div class="info">'+m.round+'<span class="mini '+m.subj+'">'+(m.subj==='shakai'?'社会':'理科')+'</span><small>'+(tn?'📘テキスト'+tn+'枚 ':'')+(wn?'📝問題集'+wn+'枚':(tn?'':'なし'))+'</small></div><button class="del">削除</button>';el.querySelector('.del').onclick=()=>{delete materials[k];saveMaterials();renderMaterials();};wrap.appendChild(el);});}
 function fillMaterialSelect(sel,withNone){sel.innerHTML=withNone?'<option value="">使わない</option>':'';Object.keys(materials).forEach(k=>{const m=materials[k];const o=document.createElement('option');o.value=k;o.textContent=(m.subj==='shakai'?'社会':'理科')+'／'+m.round;sel.appendChild(o);});if(!withNone&&!Object.keys(materials).length)sel.innerHTML='<option value="">教材なし（①でアップ）</option>';}
 function b64(d){return d?d.split(',')[1]:null;}
 
 /* ===== 管理者：構成 ===== */
 function initCompose(){document.getElementById('comp-form').style.display='block';document.getElementById('comp-result').style.display='none';fillMaterialSelect(document.getElementById('comp-material'),false);}
-async function doCompose(){const key=document.getElementById('comp-material').value,m=materials[key];if(!m||!m.textbook){toast('テキスト付きの教材を選んでね','#ffaa44');return;}
+async function doCompose(){const key=document.getElementById('comp-material').value,m=materials[key];if(!m||!(m.textbooks&&m.textbooks.length)){toast('テキスト付きの教材を選んでね','#ffaa44');return;}
   const title=document.getElementById('comp-title').value.trim()||m.round;document.getElementById('load-t').textContent='構成案を考え中…';document.getElementById('load').classList.add('show');
-  try{const r=await fetch(API_URL,{method:'POST',headers:{'Content-Type':'application/json'},body:JSON.stringify({mode:'compose',subject:m.subj,title,textbookBase64:b64(m.textbook),workbookBase64:b64(m.workbook)})});if(!r.ok)throw new Error('API '+r.status);const d=await r.json();if(d.error)throw new Error(d.error);
+  try{const r=await fetch(API_URL,{method:'POST',headers:{'Content-Type':'application/json'},body:JSON.stringify({mode:'compose',subject:m.subj,title,textbookBase64s:(m.textbooks||[]).map(b64),workbookBase64s:(m.workbooks||[]).map(b64)})});if(!r.ok)throw new Error('API '+r.status);const d=await r.json();if(d.error)throw new Error(d.error);
     document.getElementById('comp-rtitle').textContent=d.title||title;const pc=document.getElementById('comp-panels');pc.innerHTML='';(d.panels||[]).forEach(p=>{const el=document.createElement('div');el.className='panelplan';el.innerHTML='<b>'+(p.title||'')+'</b>'+(p.juken?'<div class="pj">🎯 '+p.juken+'</div>':'')+(p.draw?'<div class="pd">🖼 '+p.draw+'</div>':'');pc.appendChild(el);});
     document.getElementById('comp-prompt').textContent=d.chatgptPrompt||'(プロンプトが生成されませんでした)';document.getElementById('comp-form').style.display='none';document.getElementById('comp-result').style.display='block';
   }catch(err){toast('⚠️ 構成生成に失敗（'+err.message+'）','#ffaa44');}
@@ -534,7 +551,7 @@ async function generate(){
     const payloads=themePanels.map(d=>d.split(',')[1]);
     const mk=document.getElementById('add-material').value,m=materials[mk];
     const reqBody={mode:'yomimono',subject:addSubj,title,panels:payloads};
-    if(m){if(m.textbook)reqBody.textbookBase64=b64(m.textbook);if(m.workbook)reqBody.workbookBase64=b64(m.workbook);}
+    if(m){if(m.textbooks&&m.textbooks.length)reqBody.textbookBase64s=m.textbooks.map(b64);if(m.workbooks&&m.workbooks.length)reqBody.workbookBase64s=m.workbooks.map(b64);}
     const r=await fetch(API_URL,{method:'POST',headers:{'Content-Type':'application/json'},body:JSON.stringify(reqBody)});
     if(!r.ok)throw new Error('API '+r.status);const data=await r.json();if(data.error)throw new Error(data.error);
     themes=(data.themes||[]).map((t,i)=>({img:themePanels[i],title:t.title||('テーマ'+(i+1)),key:t.key||'',hook:t.hook||'',kaisetsu:t.kaisetsu||''}));
