@@ -271,11 +271,9 @@ button{cursor:pointer;font-family:inherit}
       </div>
       <div id="comp-result" style="display:none">
         <div class="zsec-head"><b id="comp-rtitle"></b></div>
-        <div id="comp-panels"></div>
-        <span class="lbl" style="margin-top:14px">ChatGPTにそのまま貼るプロンプト</span>
-        <div class="promptbox" id="comp-prompt"></div>
-        <button class="bigbtn" style="margin-top:12px" onclick="copyPrompt()">📋 プロンプトをコピー</button>
-        <button class="menu-item" style="margin-top:10px;justify-content:center" onclick="initCompose()"><b>← 別の構成をつくる</b></button>
+        <div class="admin-note">前編・後編の2枚ぶんのプロンプトです。それぞれコピーしてChatGPTで描き、③で前編→後編の順に取り込んでください（後編は「既存の読み物に追加」を選ぶ）。</div>
+        <div id="comp-parts"></div>
+        <button class="menu-item" style="margin-top:14px;justify-content:center" onclick="initCompose()"><b>← 別の構成をつくる</b></button>
       </div>
     </div>
   </div>
@@ -291,6 +289,8 @@ button{cursor:pointer;font-family:inherit}
         <div class="chips"><button class="chip2 sel-shakai" id="add-shakai" onclick="setAddSubj('shakai')">社会</button><button class="chip2" id="add-rika" onclick="setAddSubj('rika')">理科</button></div>
         <span class="lbl">タイトル（県名・単元）</span>
         <input class="inp" id="add-name" placeholder="例：宮崎県／アゲハチョウの一生" maxlength="24">
+        <span class="lbl">追加先（後編は既存の読み物に足す）</span>
+        <select class="sel-inline" id="add-target"><option value="">新しい読み物として作成</option></select>
         <span class="lbl">この読み物の先生</span>
         <select class="sel-inline" id="add-teacher">
           <option value="">科目のデフォルト（社会=ザンパンマン／理科=カガ）</option>
@@ -534,16 +534,27 @@ async function doCompose(){const key=document.getElementById('comp-material').va
   const title=document.getElementById('comp-title').value.trim()||m.round;document.getElementById('load-t').textContent='構成案を考え中…';document.getElementById('load').classList.add('show');
   try{const tb=await prepBodies(m.textbooks,1280,0.7),wb=await prepBodies(m.workbooks,1280,0.7);
     const r=await fetch(API_URL,{method:'POST',headers:{'Content-Type':'application/json'},body:JSON.stringify({mode:'compose',subject:m.subj,title,textbookBase64s:tb,workbookBase64s:wb})});if(!r.ok)throw new Error('API '+r.status);const d=await r.json();if(d.error)throw new Error(d.error);
-    document.getElementById('comp-rtitle').textContent=d.title||title;const pc=document.getElementById('comp-panels');pc.innerHTML='';(d.panels||[]).forEach(p=>{const el=document.createElement('div');el.className='panelplan';el.innerHTML='<b>'+(p.title||'')+'</b>'+(p.juken?'<div class="pj">🎯 '+p.juken+'</div>':'')+(p.draw?'<div class="pd">🖼 '+p.draw+'</div>':'')+(p.gag?'<div class="pd">😆 '+p.gag+'</div>':'');pc.appendChild(el);});
-    document.getElementById('comp-prompt').textContent=d.chatgptPrompt||'(プロンプトが生成されませんでした)';document.getElementById('comp-form').style.display='none';document.getElementById('comp-result').style.display='block';
+    document.getElementById('comp-rtitle').textContent=d.title||title;
+    const parts=(d.parts&&d.parts.length)?d.parts:[{part:'',subtitle:'',panels:d.panels||[],chatgptPrompt:d.chatgptPrompt||''}];
+    const pc=document.getElementById('comp-parts');pc.innerHTML='';
+    parts.forEach((pt,idx)=>{
+      const box=document.createElement('div');box.style.cssText='margin-bottom:20px';
+      let ph='<div class="zsec-head" style="margin-top:6px"><b>'+(pt.part||('シート'+(idx+1)))+(pt.subtitle?'　'+pt.subtitle:'')+'</b></div>';
+      (pt.panels||[]).forEach(p=>{ph+='<div class="panelplan"><b>'+(p.title||'')+'</b>'+(p.juken?'<div class="pj">🎯 '+p.juken+'</div>':'')+(p.draw?'<div class="pd">🖼 '+p.draw+'</div>':'')+(p.gag?'<div class="pd">😆 '+p.gag+'</div>':'')+'</div>';});
+      ph+='<span class="lbl" style="margin-top:12px">ChatGPTに貼るプロンプト（'+(pt.part||('シート'+(idx+1)))+'）</span><div class="promptbox" id="cprompt'+idx+'">'+(pt.chatgptPrompt||'(なし)').replace(/</g,'&lt;')+'</div>';
+      ph+='<button class="bigbtn" style="margin-top:10px" onclick="copyPromptN('+idx+')">📋 '+(pt.part||('シート'+(idx+1)))+'をコピー</button>';
+      box.innerHTML=ph;pc.appendChild(box);
+    });
+    document.getElementById('comp-form').style.display='none';document.getElementById('comp-result').style.display='block';
   }catch(err){const msg=(''+err.message).includes('413')?'画像が大きすぎます。枚数を減らすか、もう一度お試しを':err.message;toast('⚠️ 構成生成に失敗（'+msg+'）','#ffaa44');}
   document.getElementById('load-t').textContent='氷火羅門先生が考え中…';document.getElementById('load').classList.remove('show');}
-function copyPrompt(){const t=document.getElementById('comp-prompt').textContent;if(navigator.clipboard)navigator.clipboard.writeText(t).then(()=>toast('コピーしたよ📋','#44cc88'),()=>toast('コピーできませんでした','#ffaa44'));else toast('長押しで選択してコピーしてね','#ffaa44');}
+function copyPromptN(i){const el=document.getElementById('cprompt'+i);const t=el?el.textContent:'';if(navigator.clipboard)navigator.clipboard.writeText(t).then(()=>toast('コピーしたよ📋','#44cc88'),()=>toast('コピーできませんでした','#ffaa44'));else toast('長押しで選択してコピーしてね','#ffaa44');}
 
 /* ===== 管理者：取り込み ===== */
 let addSubj='shakai',natW=0,natH=0,fracs=[],sliceData=[];
-function setAddSubj(s){addSubj=s;document.getElementById('add-shakai').className='chip2'+(s==='shakai'?' sel-shakai':'');document.getElementById('add-rika').className='chip2'+(s==='rika'?' sel-rika':'');}
-function resetAdd(){setAddSubj('shakai');document.getElementById('add-step1').style.display='block';document.getElementById('add-step2').style.display='none';document.getElementById('add-step3').style.display='none';document.getElementById('add-name').value='';document.getElementById('add-teacher').value='';sliceData=[];fillMaterialSelect(document.getElementById('add-material'),true);}
+function fillTargetSelect(subj){const sel=document.getElementById('add-target');if(!sel)return;sel.innerHTML='<option value="">新しい読み物として作成</option>';entries.filter(e=>e.subj===subj).forEach(e=>{const o=document.createElement('option');o.value=e.id;o.textContent='＋「'+e.title+'」に追加';sel.appendChild(o);});}
+function setAddSubj(s){addSubj=s;document.getElementById('add-shakai').className='chip2'+(s==='shakai'?' sel-shakai':'');document.getElementById('add-rika').className='chip2'+(s==='rika'?' sel-rika':'');fillTargetSelect(s);}
+function resetAdd(){setAddSubj('shakai');document.getElementById('add-step1').style.display='block';document.getElementById('add-step2').style.display='none';document.getElementById('add-step3').style.display='none';document.getElementById('add-name').value='';document.getElementById('add-teacher').value='';document.getElementById('add-target').value='';sliceData=[];fillMaterialSelect(document.getElementById('add-material'),true);}
 const stage=document.getElementById('stage'),sheetimg=document.getElementById('sheetimg');
 function loadSheet(e){const f=e.target.files[0];if(!f)return;const r=new FileReader();r.onload=ev=>{sheetimg.onload=()=>{natW=sheetimg.naturalWidth;natH=sheetimg.naturalHeight;fracs=[];const n=5;for(let i=1;i<=n;i++)fracs.push(i/(n+1));document.getElementById('add-step1').style.display='none';document.getElementById('add-step2').style.display='block';renderLines();};sheetimg.src=ev.target.result;};r.readAsDataURL(f);}
 function renderLines(){stage.querySelectorAll('.cut').forEach(c=>c.remove());const H=stage.clientHeight;fracs.sort((a,b)=>a-b);fracs.forEach((fr,i)=>{const c=document.createElement('div');c.className='cut';c.style.top=(fr*H)+'px';c.innerHTML='<div class="num">'+(i+1)+'</div><div class="grab">⇕<span class="x" data-i="'+i+'">✕</span></div>';stage.appendChild(c);makeDrag(c,i);c.querySelector('.x').addEventListener('click',ev=>{ev.stopPropagation();fracs.splice(i,1);renderLines();});});document.getElementById('lc').textContent=fracs.length;document.getElementById('sc').textContent=fracs.length+1;}
@@ -574,8 +585,22 @@ async function generate(){
     if(!themes.length||!quiz.length)throw new Error('生成結果が空');
   }catch(err){document.getElementById('load').classList.remove('show');toast('⚠️ 生成に失敗（'+err.message+'）。もう一度お試しください','#ff5555');return;}
   document.getElementById('load').classList.remove('show');
+  const targetId=document.getElementById('add-target').value;
+  const newKW=themes.map(t=>[(t.title||'').replace(/^[①-⑨\s]*/,''),t.key]);
+  if(targetId){
+    const tgt=entries.find(e=>e.id===targetId);
+    if(tgt){
+      tgt.themes=tgt.themes.concat(themes);
+      tgt.quiz=tgt.quiz.concat(quiz);
+      tgt.summaryKW=(tgt.summaryKW||[]).concat(newKW);
+      if(summaryImg)tgt.summaryImg=summaryImg;
+      tgt.done=false;tgt.isNew=true;
+      saveEntries();setTab(tgt.subj);go('zukan');toast('「'+tgt.title+'」に追加したよ（計'+tgt.quiz.length+'問）🎉','#44cc88');
+      return;
+    }
+  }
   const id='e'+Date.now();
-  entries.unshift({id,subj:addSubj,title,sub:'新しい読み物',teacher,cover:coverImg,summaryImg,summaryKW:themes.map(t=>[(t.title||'').replace(/^[①-⑨\s]*/,''),t.key]),themes,quiz,done:false,isNew:true});
+  entries.unshift({id,subj:addSubj,title,sub:'新しい読み物',teacher,cover:coverImg,summaryImg,summaryKW:newKW,themes,quiz,done:false,isNew:true});
   saveEntries();setTab(addSubj);go('zukan');toast('「'+title+'」を図鑑に追加したよ🎉','#44cc88');
 }
 
