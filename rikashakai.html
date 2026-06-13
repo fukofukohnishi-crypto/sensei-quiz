@@ -64,6 +64,8 @@ button{cursor:pointer;font-family:inherit}
 .kaisetsu{margin-top:13px;background:var(--card);border:1px solid var(--border);border-left:4px solid var(--gold);border-radius:12px;padding:12px 14px}
 .kaisetsu .kh{font-size:.72rem;font-weight:900;color:var(--gold);letter-spacing:1px;margin-bottom:5px}
 .kaisetsu .kt{font-size:.86rem;color:#ddd;line-height:1.7}.kaisetsu .kt em{color:var(--gold);font-style:normal;font-weight:700}
+.moreBtn{margin-top:10px;width:100%;padding:11px;border:1px solid rgba(102,153,255,.4);background:rgba(102,153,255,.1);color:#9bf;font-family:inherit;font-weight:900;font-size:.85rem;border-radius:11px}
+.moreBtn:active{transform:scale(.99)}
 .cover-ttl{font-size:1.5rem;font-weight:900;text-align:center;margin-top:14px;line-height:1.4}.cover-ttl em{color:var(--gold);font-style:normal}
 .cover-hint{text-align:center;color:var(--muted);font-size:.8rem;font-weight:700;margin-top:10px}
 .kw{display:flex;flex-direction:column;gap:8px;margin-top:14px}
@@ -235,6 +237,7 @@ button{cursor:pointer;font-family:inherit}
         <button class="menu-item" onclick="go('adminCompose');initCompose();"><div class="mi">🧩</div><div class="mt"><b>② 漫画の構成をつくる</b><span>構成案＋ChatGPTプロンプトを生成</span></div><div class="ar">›</div></button>
         <button class="menu-item" onclick="resetAdd();go('add');"><div class="mi">✂️</div><div class="mt"><b>③ 漫画を取り込む</b><span>分割→解説＋クイズ生成→図鑑へ</span></div><div class="ar">›</div></button>
         <button class="menu-item" onclick="go('adminManage');renderManage();"><div class="mi">🗂️</div><div class="mt"><b>④ 読み物の管理</b><span>確認・削除</span></div><div class="ar">›</div></button>
+        <button class="menu-item" onclick="go('adminSync');setImportMode('merge');document.getElementById('sync-stat').innerHTML='';"><div class="mi">🔄</div><div class="mt"><b>⑤ データの書き出し／読み込み</b><span>別の端末（iPad等）に読み物を移す</span></div><div class="ar">›</div></button>
       </div>
     </div>
   </div>
@@ -320,6 +323,24 @@ button{cursor:pointer;font-family:inherit}
   <div class="screen" id="adminManage">
     <div class="hdr"><button class="hdr-back" onclick="go('admin')">←</button><div class="hdr-title">④ 読み物の管理</div></div>
     <div class="body"><div id="manage-list"></div></div>
+  </div>
+
+  <!-- ⑤ データ書き出し／読み込み -->
+  <div class="screen" id="adminSync">
+    <div class="hdr"><button class="hdr-back" onclick="go('admin')">←</button><div class="hdr-title">⑤ 書き出し／読み込み</div></div>
+    <div class="body">
+      <div class="admin-note">この端末で作った読み物を、別の端末（iPad等）に移せます。<b>書き出し</b>でファイルを保存→AirDrap等で相手の端末へ送り、相手の端末でこの画面の<b>読み込み</b>で取り込みます。</div>
+      <span class="lbl">書き出し（この端末の読み物を保存）</span>
+      <button class="bigbtn" onclick="exportData()">⬇️ 読み物をファイルに書き出す</button>
+      <div id="sync-stat" class="admin-note" style="margin-top:10px"></div>
+      <span class="lbl" style="margin-top:18px">読み込み（ファイルから取り込む）</span>
+      <label class="upl small" style="width:100%"><input type="file" accept="application/json,.json" onchange="importData(event)"><div class="em">⬆️</div><div>タップしてJSONファイルを選ぶ</div></label>
+      <div class="chips" style="margin-top:12px">
+        <button class="chip2" onclick="setImportMode('merge')" id="imp-merge">追加で取り込む</button>
+        <button class="chip2" onclick="setImportMode('replace')" id="imp-replace">全部入れ替える</button>
+      </div>
+      <div class="hint">「追加で取り込む」＝今ある読み物を残して足す（同じIDは上書き）。「全部入れ替える」＝この端末の読み物を消して、ファイルの内容に置き換え。迷ったら「追加」。</div>
+    </div>
   </div>
 
 </div>
@@ -419,7 +440,7 @@ function openReader(e){
     if(p.type==='cover'){el.innerHTML='<div style="height:6px"></div><div class="frame"><img src="'+e.cover+'"></div><div class="cover-ttl"><em>'+e.title+'</em></div><div class="cover-hint">'+tnm+'が教えるぞ！スワイプで読もう</div>';}
     else if(p.type==='summary'){let kw=(e.summaryKW||[]).filter(k=>k[0]).map(k=>'<div class="k">'+k[0]+(k[1]?'<span>'+k[1]+'</span>':'')+'</div>').join('');
       el.innerHTML='<div style="height:6px"></div><span class="chip" style="color:var(--gold);background:rgba(255,215,0,.12);border-color:rgba(255,215,0,.35)">まとめ</span>'+(e.summaryImg?'<div class="frame"><img src="'+e.summaryImg+'"></div>':'')+(kw?'<div class="kw">'+kw+'</div>':'')+'<button class="bigbtn" style="margin-top:16px" onclick="startQuiz()">⚡ クイズに挑戦（'+e.quiz.length+'問）</button>';}
-    else{const t=p.t;el.innerHTML='<div style="height:6px"></div><span class="'+chipCls+'">'+(t.title||'テーマ')+'</span><div class="frame"><img src="'+t.img+'"></div><div class="say"><img class="av" src="'+tav+'"><div class="tx"><div class="who">'+tnm+'</div><div class="line">'+(t.hook||'')+'</div></div></div><div class="kaisetsu"><div class="kh">📖 重要解説</div><div class="kt">'+(t.kaisetsu||'')+'</div></div>';}
+    else{const t=p.t;el.innerHTML='<div style="height:6px"></div><span class="'+chipCls+'">'+(t.title||'テーマ')+'</span><div class="frame"><img src="'+t.img+'"></div><div class="say"><img class="av" src="'+tav+'"><div class="tx"><div class="who">'+tnm+'</div><div class="line">'+(t.hook||'')+'</div></div></div><div class="kaisetsu"><div class="kh">📖 重要解説</div><div class="kt">'+(t.kaisetsu||'')+'</div></div>'+((t.deep||t.point)?('<button class="moreBtn" onclick="this.nextElementSibling.style.display=\'block\';this.style.display=\'none\'">🔍 もっとくわしく</button><div class="kaisetsu" style="display:none;border-left-color:#6699ff">'+(t.deep?'<div class="kh" style="color:#9bf">🔍 もっとくわしく</div><div class="kt">'+t.deep+'</div>':'')+(t.point?'<div class="kt" style="margin-top:9px;color:#ffcf66"><b>🎯 入試ポイント</b>　'+t.point+'</div>':'')+'</div>'):'');}
     track.appendChild(el);});
   const dots=document.getElementById('rd-dots');dots.innerHTML='';rPages.forEach((_,i)=>{const d=document.createElement('div');d.className='rd-dot';d.onclick=()=>{ri=i;rrender();};dots.appendChild(d);});
   document.getElementById('rd-n').textContent=rPages.length;ri=0;rrender();go('reader');
@@ -580,7 +601,7 @@ async function generate(){
     if(m){const tb=await prepBodies(m.textbooks,1280,0.7),wb=await prepBodies(m.workbooks,1280,0.7);if(tb.length)reqBody.textbookBase64s=tb;if(wb.length)reqBody.workbookBase64s=wb;}
     const r=await fetch(API_URL,{method:'POST',headers:{'Content-Type':'application/json'},body:JSON.stringify(reqBody)});
     if(!r.ok)throw new Error('API '+r.status);const data=await r.json();if(data.error)throw new Error(data.error);
-    themes=(data.themes||[]).map((t,i)=>({img:themePanels[i],title:t.title||('テーマ'+(i+1)),key:t.key||'',hook:t.hook||'',kaisetsu:t.kaisetsu||''}));
+    themes=(data.themes||[]).map((t,i)=>({img:themePanels[i],title:t.title||('テーマ'+(i+1)),key:t.key||'',hook:t.hook||'',kaisetsu:t.kaisetsu||'',deep:t.deep||'',point:t.point||''}));
     quiz=(data.quiz||[]).map(q=>({q:q.q,a:q.a,choices:q.choices,explain:q.explain||'',juken:q.juken||'',subj:addSubj}));
     if(!themes.length||!quiz.length)throw new Error('生成結果が空');
   }catch(err){document.getElementById('load').classList.remove('show');toast('⚠️ 生成に失敗（'+err.message+'）。もう一度お試しください','#ff5555');return;}
@@ -605,6 +626,45 @@ async function generate(){
 }
 
 /* ===== 管理者：読み物管理 ===== */
+/* ===== ⑤ 書き出し／読み込み ===== */
+let importMode='merge';
+function setImportMode(m){importMode=m;document.getElementById('imp-merge').className='chip2'+(m==='merge'?' sel-shakai':'');document.getElementById('imp-replace').className='chip2'+(m==='replace'?' sel-rika':'');}
+function exportData(){
+  try{
+    const data={app:'rikashakai',version:1,exportedAt:new Date().toISOString(),entries:entries};
+    const blob=new Blob([JSON.stringify(data)],{type:'application/json'});
+    const url=URL.createObjectURL(blob);
+    const a=document.createElement('a');
+    a.href=url;a.download='rikashakai-yomimono-'+new Date().toISOString().slice(0,10)+'.json';
+    document.body.appendChild(a);a.click();a.remove();
+    setTimeout(()=>URL.revokeObjectURL(url),2000);
+    const mb=(blob.size/1048576).toFixed(1);
+    document.getElementById('sync-stat').innerHTML='✅ 読み物 '+entries.length+'件を書き出しました（約'+mb+'MB）。AirDrop等でiPadに送ってください。';
+    toast('書き出しました⬇️','#44cc88');
+  }catch(e){toast('書き出しに失敗（'+e.message+'）','#ff5555');}
+}
+function importData(e){
+  const f=e.target.files[0];if(!f)return;
+  const r=new FileReader();
+  r.onload=ev=>{
+    try{
+      const data=JSON.parse(ev.target.result);
+      const inc=Array.isArray(data)?data:(data.entries||[]);
+      if(!inc.length){toast('読み物が入っていないファイルです','#ffaa44');return;}
+      if(importMode==='replace'){
+        entries=inc;
+      }else{
+        const byId={};entries.forEach(x=>byId[x.id]=true);
+        inc.forEach(x=>{if(byId[x.id]){entries=entries.map(o=>o.id===x.id?x:o);}else{entries.push(x);}});
+      }
+      saveEntries();
+      document.getElementById('sync-stat').innerHTML='✅ '+inc.length+'件を取り込みました（現在の合計 '+entries.length+'件）。図鑑で確認できます。';
+      toast('読み込み完了🎉（'+inc.length+'件）','#44cc88');
+    }catch(err){toast('読み込みに失敗（形式が違うかも）','#ff5555');}
+  };
+  r.readAsText(f);e.target.value='';
+}
+
 function renderManage(){const wrap=document.getElementById('manage-list');wrap.innerHTML='';if(!entries.length){wrap.innerHTML='<div class="admin-note">まだ読み物がありません。</div>';return;}
   entries.forEach(e=>{const el=document.createElement('div');el.className='matrow';el.innerHTML='<div class="info">'+e.title+'<span class="mini '+e.subj+'">'+(e.subj==='shakai'?'社会':'理科')+'</span><small>'+(e.themes?e.themes.length+'テーマ・':'')+(e.quiz?e.quiz.length+'問':'')+(e.done?'・✓コンプ':'')+'</small></div><button class="del">削除</button>';
     el.querySelector('.del').onclick=()=>{if(confirm('「'+e.title+'」を削除しますか？')){entries=entries.filter(x=>x!==e);saveEntries();renderManage();}};wrap.appendChild(el);});}
