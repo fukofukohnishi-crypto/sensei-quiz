@@ -294,13 +294,6 @@ button{cursor:pointer;font-family:inherit}
         <input class="inp" id="add-name" placeholder="例：宮崎県／アゲハチョウの一生" maxlength="24">
         <span class="lbl">追加先（後編は既存の読み物に足す）</span>
         <select class="sel-inline" id="add-target"><option value="">新しい読み物として作成</option></select>
-        <span class="lbl">この読み物の先生</span>
-        <select class="sel-inline" id="add-teacher">
-          <option value="">科目のデフォルト（社会=ザンパンマン／理科=カガ）</option>
-          <option value="zanpanman">ザンパンマン先生</option>
-          <option value="kaga">カガ先生</option>
-          <option value="koorihiramon">氷火羅門先生</option>
-        </select>
         <span class="lbl">教材を文脈に使う（任意・クイズが問題集に寄る）</span>
         <select class="sel-inline" id="add-material"><option value="">使わない</option></select>
       </div>
@@ -440,7 +433,7 @@ function openReader(e){
     if(p.type==='cover'){el.innerHTML='<div style="height:6px"></div><div class="frame"><img src="'+e.cover+'"></div><div class="cover-ttl"><em>'+e.title+'</em></div><div class="cover-hint">'+tnm+'が教えるぞ！スワイプで読もう</div>';}
     else if(p.type==='summary'){let kw=(e.summaryKW||[]).filter(k=>k[0]).map(k=>'<div class="k">'+k[0]+(k[1]?'<span>'+k[1]+'</span>':'')+'</div>').join('');
       el.innerHTML='<div style="height:6px"></div><span class="chip" style="color:var(--gold);background:rgba(255,215,0,.12);border-color:rgba(255,215,0,.35)">まとめ</span>'+(e.summaryImg?'<div class="frame"><img src="'+e.summaryImg+'"></div>':'')+(kw?'<div class="kw">'+kw+'</div>':'')+'<button class="bigbtn" style="margin-top:16px" onclick="startQuiz()">⚡ クイズに挑戦（'+e.quiz.length+'問）</button>';}
-    else{const t=p.t;el.innerHTML='<div style="height:6px"></div><span class="'+chipCls+'">'+(t.title||'テーマ')+'</span><div class="frame"><img src="'+t.img+'"></div><div class="say"><img class="av" src="'+tav+'"><div class="tx"><div class="who">'+tnm+'</div><div class="line">'+(t.hook||'')+'</div></div></div><div class="kaisetsu"><div class="kh">📖 重要解説</div><div class="kt">'+(t.kaisetsu||'')+'</div></div>'+((t.deep||t.point)?('<button class="moreBtn" onclick="this.nextElementSibling.style.display=\'block\';this.style.display=\'none\'">🔍 もっとくわしく</button><div class="kaisetsu" style="display:none;border-left-color:#6699ff">'+(t.deep?'<div class="kh" style="color:#9bf">🔍 もっとくわしく</div><div class="kt">'+t.deep+'</div>':'')+(t.point?'<div class="kt" style="margin-top:9px;color:#ffcf66"><b>🎯 入試ポイント</b>　'+t.point+'</div>':'')+'</div>'):'');}
+    else{const t=p.t;el.innerHTML='<div style="height:6px"></div><span class="'+chipCls+'">'+(t.title||'テーマ')+'</span><div class="frame"><img src="'+t.img+'"></div><div class="say"><img class="av" src="'+tav+'"><div class="tx"><div class="who">'+tnm+'</div><div class="line">'+(t.hook||'')+'</div></div></div><div class="kaisetsu"><div class="kh">📖 重要解説</div><div class="kt">'+(t.kaisetsu||'')+'</div></div>'+(t.deep?'<div class="kaisetsu" style="border-left-color:#6699ff"><div class="kh" style="color:#9bf">🔍 もっとくわしく</div><div class="kt">'+t.deep+'</div></div>':'')+(t.point?'<div class="kaisetsu" style="border-left-color:#ffcf66"><div class="kh" style="color:#ffcf66">🎯 入試ポイント</div><div class="kt">'+t.point+'</div></div>':'');}
     track.appendChild(el);});
   const dots=document.getElementById('rd-dots');dots.innerHTML='';rPages.forEach((_,i)=>{const d=document.createElement('div');d.className='rd-dot';d.onclick=()=>{ri=i;rrender();};dots.appendChild(d);});
   document.getElementById('rd-n').textContent=rPages.length;ri=0;rrender();go('reader');
@@ -506,7 +499,7 @@ function showResult(){const total=qList.length;
   if(pass){curEntry.done=true;curEntry.isNew=false;saveEntries();
     document.getElementById('res-unlock').style.display='block';document.getElementById('res-unlock-name').textContent=curEntry.title;
     document.getElementById('res-msg').textContent=(qOk===total?'全問正解！レアのチャンス！':'図鑑にコンプ！')+'　クリア報酬のカードをゲット！';
-    const {card,isNew}=drawReward(teacherOf(curEntry),qOk===total);setTimeout(()=>showCardGet(card,isNew),650);
+    const {card,isNew}=drawReward('',qOk===total);setTimeout(()=>showCardGet(card,isNew),650);
   }else{document.getElementById('res-unlock').style.display='none';document.getElementById('res-msg').textContent='あと少し！読み直して挑戦してみよう。';}
   saveCards();go('result');
 }
@@ -575,7 +568,7 @@ function copyPromptN(i){const el=document.getElementById('cprompt'+i);const t=el
 let addSubj='shakai',natW=0,natH=0,fracs=[],sliceData=[];
 function fillTargetSelect(subj){const sel=document.getElementById('add-target');if(!sel)return;sel.innerHTML='<option value="">新しい読み物として作成</option>';entries.filter(e=>e.subj===subj).forEach(e=>{const o=document.createElement('option');o.value=e.id;o.textContent='＋「'+e.title+'」に追加';sel.appendChild(o);});}
 function setAddSubj(s){addSubj=s;document.getElementById('add-shakai').className='chip2'+(s==='shakai'?' sel-shakai':'');document.getElementById('add-rika').className='chip2'+(s==='rika'?' sel-rika':'');fillTargetSelect(s);}
-function resetAdd(){setAddSubj('shakai');document.getElementById('add-step1').style.display='block';document.getElementById('add-step2').style.display='none';document.getElementById('add-step3').style.display='none';document.getElementById('add-name').value='';document.getElementById('add-teacher').value='';document.getElementById('add-target').value='';sliceData=[];fillMaterialSelect(document.getElementById('add-material'),true);}
+function resetAdd(){setAddSubj('shakai');document.getElementById('add-step1').style.display='block';document.getElementById('add-step2').style.display='none';document.getElementById('add-step3').style.display='none';document.getElementById('add-name').value='';document.getElementById('add-target').value='';sliceData=[];fillMaterialSelect(document.getElementById('add-material'),true);}
 const stage=document.getElementById('stage'),sheetimg=document.getElementById('sheetimg');
 function loadSheet(e){const f=e.target.files[0];if(!f)return;const r=new FileReader();r.onload=ev=>{sheetimg.onload=()=>{natW=sheetimg.naturalWidth;natH=sheetimg.naturalHeight;fracs=[];const n=5;for(let i=1;i<=n;i++)fracs.push(i/(n+1));document.getElementById('add-step1').style.display='none';document.getElementById('add-step2').style.display='block';renderLines();};sheetimg.src=ev.target.result;};r.readAsDataURL(f);}
 function renderLines(){stage.querySelectorAll('.cut').forEach(c=>c.remove());const H=stage.clientHeight;fracs.sort((a,b)=>a-b);fracs.forEach((fr,i)=>{const c=document.createElement('div');c.className='cut';c.style.top=(fr*H)+'px';c.innerHTML='<div class="num">'+(i+1)+'</div><div class="grab">⇕<span class="x" data-i="'+i+'">✕</span></div>';stage.appendChild(c);makeDrag(c,i);c.querySelector('.x').addEventListener('click',ev=>{ev.stopPropagation();fracs.splice(i,1);renderLines();});});document.getElementById('lc').textContent=fracs.length;document.getElementById('sc').textContent=fracs.length+1;}
@@ -586,7 +579,7 @@ function doSlice(){fracs.sort((a,b)=>a-b);const bd=[0,...fracs,1];sliceData=[];c
   document.getElementById('add-step2').style.display='none';document.getElementById('add-step3').style.display='block';}
 async function generate(){
   const title=document.getElementById('add-name').value.trim()||'新しい読み物';
-  const teacher=document.getElementById('add-teacher').value||'';
+  const teacher='';
   const roles=[...document.querySelectorAll('#slices select')].map(s=>s.value);
   const coverImg=sliceData[roles.indexOf('cover')]||sliceData[0];
   const summaryImg=roles.lastIndexOf('summary')>=0?sliceData[roles.lastIndexOf('summary')]:null;
