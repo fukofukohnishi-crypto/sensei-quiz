@@ -547,7 +547,7 @@ function initCompose(){document.getElementById('comp-form').style.display='block
 async function doCompose(){const key=document.getElementById('comp-material').value,m=materials[key];if(!m||!(m.textbooks&&m.textbooks.length)){toast('テキスト付きの教材を選んでね','#ffaa44');return;}
   const title=document.getElementById('comp-title').value.trim()||m.round;document.getElementById('load-t').textContent='構成案を考え中…';document.getElementById('load').classList.add('show');
   try{const tb=await prepBodies(m.textbooks,1280,0.7),wb=await prepBodies(m.workbooks,1280,0.7);
-    const r=await fetch(API_URL,{method:'POST',headers:{'Content-Type':'application/json'},body:JSON.stringify({mode:'compose',subject:m.subj,title,textbookBase64s:tb,workbookBase64s:wb})});if(!r.ok)throw new Error('API '+r.status);const d=await r.json();if(d.error)throw new Error(d.error);
+    const r=await fetch(API_URL,{method:'POST',headers:{'Content-Type':'application/json'},body:JSON.stringify({mode:'compose',subject:m.subj,title,textbookBase64s:tb,workbookBase64s:wb})});const d=await r.json().catch(()=>({}));if(!r.ok||d.error)throw new Error(d.error||('API '+r.status));
     document.getElementById('comp-rtitle').textContent=d.title||title;
     const parts=(d.parts&&d.parts.length)?d.parts:[{part:'',subtitle:'',panels:d.panels||[],chatgptPrompt:d.chatgptPrompt||''}];
     const pc=document.getElementById('comp-parts');pc.innerHTML='';
@@ -593,7 +593,7 @@ async function generate(){
     const reqBody={mode:'yomimono',subject:addSubj,title,panels:payloads};
     if(m){const tb=await prepBodies(m.textbooks,1280,0.7),wb=await prepBodies(m.workbooks,1280,0.7);if(tb.length)reqBody.textbookBase64s=tb;if(wb.length)reqBody.workbookBase64s=wb;}
     const r=await fetch(API_URL,{method:'POST',headers:{'Content-Type':'application/json'},body:JSON.stringify(reqBody)});
-    if(!r.ok)throw new Error('API '+r.status);const data=await r.json();if(data.error)throw new Error(data.error);
+    const data=await r.json().catch(()=>({}));if(!r.ok||data.error)throw new Error(data.error||('API '+r.status));
     themes=(data.themes||[]).map((t,i)=>({img:themePanels[i],title:t.title||('テーマ'+(i+1)),key:t.key||'',hook:t.hook||'',kaisetsu:t.kaisetsu||'',deep:t.deep||'',point:t.point||''}));
     quiz=(data.quiz||[]).map(q=>({q:q.q,a:q.a,choices:q.choices,explain:q.explain||'',juken:q.juken||'',subj:addSubj}));
     if(!themes.length||!quiz.length)throw new Error('生成結果が空');
