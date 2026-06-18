@@ -45,7 +45,7 @@ async function callClaude(content, maxTokens) {
     },
     body: JSON.stringify({
       // 品質を上げたいときは 'claude-sonnet-4-6' などに変更可
-      model: 'claude-sonnet-4-20250514',
+      model: 'claude-sonnet-4-6',
       max_tokens: maxTokens || 4000,
       messages: [{ role: 'user', content }]
     })
