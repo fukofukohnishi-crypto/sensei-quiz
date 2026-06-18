@@ -2,11 +2,8 @@
 // オリジナル先生 — 理科・社会特化 / 中学受験優先
 // モード:
 //   1) yomimono : 漫画のコマ画像(順番) → コマごとの「重要解説」＋ 読み物全体の4択クイズ
-//   2) topics   : 早稲アカのテキスト写真 → 中学受験で重要なトピック一覧（漫画づくりの材料）
+//   2) compose  : テキスト＋問題集 → 漫画の構成案＋ChatGPTプロンプト（前編/後編）
 //   3) (legacy) : 理科/社会の教材写真 → 4択クイズ（漫画なしでも使える簡易モード）
-
-// Next.js APIルート構成の場合のボディ上限引き上げ（plain Vercel関数では無害）
-export const config = { api: { bodyParser: { sizeLimit: '12mb' } } };
 
 const SUBJ_NAMES = { shakai: '社会', rika: '理科' };
 
@@ -36,6 +33,9 @@ function imgBlock(b64) {
 
 // ── Claude 呼び出し ──
 async function callClaude(content, maxTokens) {
+  if (!process.env.ANTHROPIC_API_KEY) {
+    throw new Error('ANTHROPIC_API_KEY が未設定です（Vercelの環境変数を確認）');
+  }
   const response = await fetch('https://api.anthropic.com/v1/messages', {
     method: 'POST',
     headers: {
@@ -52,17 +52,53 @@ async function callClaude(content, maxTokens) {
   });
   if (!response.ok) {
     const errText = await response.text();
-    throw new Error(`Claude API error: ${errText.slice(0, 500)}`);
+    throw new Error(`Claude APIがエラー応答 (HTTP ${response.status}): ${errText.slice(0, 400)}`);
   }
   const data = await response.json();
   const raw = (data.content || []).filter(c => c.type === 'text').map(c => c.text).join('');
-  return raw;
+  const stop = data.stop_reason || '';
+  if (!raw) throw new Error('Claudeの応答が空でした');
+  return { raw, stop };
 }
+
+// ── JSON解析（末尾切れにある程度耐える） ──
 function parseJSON(raw) {
-  const match = raw.match(/\{[\s\S]*\}/);
-  const jsonStr = match ? match[0] : raw.replace(/```json|```/g, '').trim();
-  return JSON.parse(jsonStr);
+  let s = raw.replace(/```json|```/g, '').trim();
+  const start = s.indexOf('{');
+  if (start > 0) s = s.slice(start);
+  // まずそのまま
+  try { return JSON.parse(s); } catch (e) {}
+  // 末尾が途中で切れている場合、最後に閉じカッコを補って再挑戦
+  const lastBrace = s.lastIndexOf('}');
+  if (lastBrace > 0) {
+    let cand = s.slice(0, lastBrace + 1);
+    try { return JSON.parse(cand); } catch (e) {}
+  }
+  // 開いたカッコ/括弧の数を数えて不足分を補う
+  try {
+    let depthObj = 0, depthArr = 0, inStr = false, esc = false, cut = s.length;
+    for (let i = 0; i < s.length; i++) {
+      const ch = s[i];
+      if (esc) { esc = false; continue; }
+      if (ch === '\\') { esc = true; continue; }
+      if (ch === '"') inStr = !inStr;
+      if (inStr) continue;
+      if (ch === '{') depthObj++;
+      else if (ch === '}') depthObj--;
+      else if (ch === '[') depthArr++;
+      else if (ch === ']') depthArr--;
+    }
+    let fixed = s;
+    if (inStr) fixed += '"';
+    fixed = fixed.replace(/,\s*$/, '');
+    while (depthArr-- > 0) fixed += ']';
+    while (depthObj-- > 0) fixed += '}';
+    return JSON.parse(fixed);
+  } catch (e) {}
+  // それでもダメなら、生応答の冒頭を添えて投げる（原因が画面で見えるように）
+  throw new Error('JSON解析に失敗（応答が途中で切れた可能性）。応答冒頭: ' + raw.slice(0, 180));
 }
+
 function cleanQuiz(arr) {
   return (arr || []).filter(q =>
     q && q.q && q.a && Array.isArray(q.choices) && q.choices.length === 4
@@ -80,6 +116,7 @@ export default async function handler(req, res) {
   if (req.method === 'OPTIONS') return res.status(200).end();
   if (req.method !== 'POST') return res.status(405).json({ error: 'Method not allowed' });
 
+  let stage = 'init';
   try {
     const body = req.body || {};
     const mode = body.mode || (body.panels ? 'yomimono' : 'legacy');
@@ -88,6 +125,7 @@ export default async function handler(req, res) {
 
     // ===== モード1：読み物（漫画コマ → 解説＋クイズ） =====
     if (mode === 'yomimono') {
+      stage = 'yomimono';
       const panels = body.panels || [];
       if (!panels.length) return res.status(400).json({ error: 'panels (コマ画像の配列) が必要です' });
       const title = body.title || 'この読み物';
@@ -138,18 +176,19 @@ ${JUKEN_POLICY}
 - quiz は5問。choices は必ず4つ。
 - 題材が読み取れない場合でも、見出しから推測して中学受験で重要な内容を深く書く。` });
 
-      const raw = await callClaude(content, 5000);
+      const { raw } = await callClaude(content, 5000);
+      stage = 'yomimono-parse';
       const parsed = parseJSON(raw);
       let themes = Array.isArray(parsed.themes) ? parsed.themes : [];
-      // コマ数に合わせて整える
       themes = themes.slice(0, N);
-      while (themes.length < N) themes.push({ title: '', key: '', hook: '', kaisetsu: '' });
+      while (themes.length < N) themes.push({ title: '', key: '', hook: '', kaisetsu: '', deep: '', point: '' });
       const quiz = cleanQuiz((parsed.quiz || []).map(q => ({ ...q, subject })));
       return res.status(200).json({ themes, quiz });
     }
 
-    // ===== モード2：compose（テキスト＋問題集 → 漫画の構成案＋ChatGPTプロンプト） =====
+    // ===== モード2：compose（テキスト＋問題集 → 漫画の構成案＋ChatGPTプロンプト 前編/後編） =====
     if (mode === 'compose' || mode === 'topics') {
+      stage = 'compose';
       const tbs = body.textbookBase64s || (body.textbookBase64 ? [body.textbookBase64] : (body.imageBase64 ? [body.imageBase64] : []));
       const wbs = body.workbookBase64s || (body.workbookBase64 ? [body.workbookBase64] : []);
       if (!tbs.length) return res.status(400).json({ error: 'textbook（テキスト写真）が必要です' });
@@ -217,7 +256,8 @@ ${JUKEN_POLICY}
 ■ テーマ：その編の panels の各テーマ名・本物のビジュアル・覚える用語・ギャグを本文に具体的に書き込む
 ■ 絵柄：明るい少年ギャグマンガ風、表情は大げさに` });
 
-      const raw = await callClaude(content, 4000);
+      const { raw } = await callClaude(content, 8000);
+      stage = 'compose-parse';
       const parsed = parseJSON(raw);
       return res.status(200).json({
         title: parsed.title || title,
@@ -229,6 +269,7 @@ ${JUKEN_POLICY}
     }
 
     // ===== モード3（legacy）：教材写真 → 4択クイズ（漫画なし簡易） =====
+    stage = 'legacy';
     if (!body.imageBase64) return res.status(400).json({ error: 'imageBase64 が必要です' });
     if (subject !== 'rika' && subject !== 'shakai') {
       return res.status(400).json({ error: 'このアプリは理科・社会のみ対応です' });
@@ -243,12 +284,14 @@ ${JUKEN_POLICY}
 {"questions":[{"q":"問題文","a":"正解","choices":["正解","誤り1","誤り2","誤り3"],"explain":"解説","juken":"中学受験での出題ポイント"}]}
 注意：choices は必ず4つ。小3がわかる言葉。` }
     ];
-    const raw = await callClaude(content, 3000);
+    const { raw } = await callClaude(content, 3000);
+    stage = 'legacy-parse';
     const parsed = parseJSON(raw);
     const questions = cleanQuiz((parsed.questions || []).map(q => ({ ...q, subject })));
     return res.status(200).json({ questions });
 
   } catch (err) {
-    return res.status(500).json({ error: err.message });
+    // 本当の原因を返す（どの工程で失敗したかも）
+    return res.status(500).json({ error: `[${stage}] ${err.message}` });
   }
 }
