@@ -46,7 +46,7 @@ button{cursor:pointer;font-family:inherit}
 .empty{text-align:center;color:var(--muted);padding:30px 14px;font-size:.86rem;line-height:1.7}
 
 /* reader */
-#reader .body{padding:0}
+#reader .body{padding:0;display:flex;flex-direction:column;overflow:hidden}
 .rd-dots{display:flex;gap:5px;justify-content:center;padding:8px 0 6px;flex-wrap:wrap;flex-shrink:0}
 .rd-dot{width:7px;height:7px;border-radius:50%;background:rgba(255,255,255,.18);transition:.25s}
 .rd-dot.on{background:var(--gold);width:18px;border-radius:99px}.rd-dot.done{background:rgba(255,215,0,.5)}
@@ -80,7 +80,7 @@ button{cursor:pointer;font-family:inherit}
 .cover-hint{text-align:center;color:var(--muted);font-size:.8rem;font-weight:700;margin-top:10px}
 .kw{display:flex;flex-direction:column;gap:8px;margin-top:14px}
 .kw .k{background:var(--card);border:1px solid var(--border);border-left:4px solid var(--gold);border-radius:10px;padding:11px 14px;font-weight:900;font-size:.92rem}.kw .k span{color:var(--muted);font-weight:700;font-size:.74rem;margin-left:6px}
-.rd-nav{display:flex;gap:10px;padding:10px 16px 16px;flex-shrink:0}
+.rd-nav{display:flex;gap:10px;padding:8px 16px 10px;flex-shrink:0;border-bottom:1px solid var(--border)}
 .rd-nav button{flex:1;padding:14px;border:none;border-radius:13px;font-weight:900;font-size:.95rem}
 .rd-prev{background:rgba(255,255,255,.08);color:#ccc}.rd-prev:disabled{opacity:.3}.rd-next{background:linear-gradient(135deg,#6699ff,#2244cc);color:#fff}
 
@@ -205,10 +205,10 @@ button{cursor:pointer;font-family:inherit}
   <div class="screen" id="reader">
     <div class="hdr"><button class="hdr-back" onclick="go('zukan')">←</button><div class="hdr-title" id="rd-title"></div>
       <div style="color:var(--gold);font-weight:900;font-size:.8rem"><span id="rd-ix">1</span>/<span id="rd-n">1</span></div></div>
-    <div class="body">
-      <div class="rd-dots" id="rd-dots"></div>
+    <div class="rd-dots" id="rd-dots"></div>
+    <div class="rd-nav"><button class="rd-prev" id="rd-prev" onclick="rmove(-1)">← もどる</button><button class="rd-next" id="rd-next" onclick="rmove(1)">つぎへ →</button></div>
+    <div class="body" style="padding-top:0">
       <div class="rd-view"><div class="rd-track" id="rd-track"></div></div>
-      <div class="rd-nav"><button class="rd-prev" id="rd-prev" onclick="rmove(-1)">← もどる</button><button class="rd-next" id="rd-next" onclick="rmove(1)">つぎへ →</button></div>
     </div>
   </div>
 
@@ -696,8 +696,11 @@ function importData(e){
 }
 
 function renderManage(){const wrap=document.getElementById('manage-list');wrap.innerHTML='';if(!entries.length){wrap.innerHTML='<div class="admin-note">まだ読み物がありません。</div>';return;}
-  entries.forEach(e=>{const el=document.createElement('div');el.className='matrow';el.innerHTML='<div class="info">'+e.title+'<span class="mini '+e.subj+'">'+(e.subj==='shakai'?'社会':'理科')+'</span><small>'+(e.themes?e.themes.length+'テーマ・':'')+(e.quiz?e.quiz.length+'問':'')+(e.done?'・✓コンプ':'')+'</small></div><button class="del">削除</button>';
-    el.querySelector('.del').onclick=()=>{if(confirm('「'+e.title+'」を削除しますか？')){entries=entries.filter(x=>x!==e);saveEntries();renderManage();}};wrap.appendChild(el);});}
+  entries.forEach(e=>{const el=document.createElement('div');el.className='matrow';el.innerHTML='<div class="info">'+e.title+'<span class="mini '+e.subj+'">'+(e.subj==='shakai'?'社会':'理科')+'</span><small>'+(e.themes?e.themes.length+'テーマ・':'')+(e.quiz?e.quiz.length+'問':'')+(e.done?'・✓コンプ':'')+'</small></div><button class="del" style="background:rgba(102,153,255,.12);color:#9bf;margin-right:6px">✏️ 名前</button><button class="del">削除</button>';
+    const btns=el.querySelectorAll('.del');
+    btns[0].onclick=()=>{const nv=prompt('新しいタイトルを入力してください',e.title);if(nv&&nv.trim()){e.title=nv.trim();saveEntries();renderManage();toast('タイトルを変更したよ✏️','#44cc88');}};
+    btns[1].onclick=()=>{if(confirm('「'+e.title+'」を削除しますか？')){entries=entries.filter(x=>x!==e);saveEntries();renderManage();}};
+    wrap.appendChild(el);});}
 
 window.addEventListener('resize',()=>{if(natH&&document.getElementById('add-step2').style.display!=='none')renderLines();});
 
