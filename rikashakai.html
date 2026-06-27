@@ -423,7 +423,7 @@ function setTab(s){currentTab=s;document.getElementById('tab-shakai').className=
 function renderZukan(){
   updHdr();
   document.getElementById('zsec-name').textContent=(currentTab==='shakai'?'社会':'理科')+'の読み物';
-  const list=entries.filter(e=>e.subj===currentTab);
+  const list=entries.filter(e=>e.subj===currentTab).slice().reverse();
   document.getElementById('zsec-count').textContent='コンプ '+list.filter(e=>e.done).length+' / '+list.length;
   const grid=document.getElementById('zgrid');grid.innerHTML='';
   if(!list.length){grid.innerHTML='<div class="empty" style="grid-column:1/3">まだ読み物がないよ。<br>おとなの人に ⚙️ から作ってもらおう！</div>';return;}
