@@ -44,7 +44,7 @@ async function callClaude(content, maxTokens) {
       'anthropic-version': '2023-06-01'
     },
     body: JSON.stringify({
-      // 品質を上げたいときは 'claude-sonnet-4-6' などに変更可
+      // 現行モデル（旧 claude-sonnet-4-20250514 は2026/6/15に引退→404のため変更）
       model: 'claude-sonnet-4-6',
       max_tokens: maxTokens || 4000,
       messages: [{ role: 'user', content }]
@@ -265,6 +265,62 @@ ${JUKEN_POLICY}
         // 後方互換
         panels: parsed.panels || [],
         chatgptPrompt: parsed.chatgptPrompt || ''
+      });
+    }
+
+    // ===== モード4：factcheck（漫画コマ × 教材 を照合して事実チェック） =====
+    if (mode === 'factcheck') {
+      stage = 'factcheck';
+      const panels = body.panels || [];
+      if (!panels.length) return res.status(400).json({ error: 'panels (コマ画像の配列) が必要です' });
+      const title = body.title || 'この読み物';
+      const N = panels.length;
+      const tbs = body.textbookBase64s || (body.textbookBase64 ? [body.textbookBase64] : []);
+      const wbs = body.workbookBase64s || (body.workbookBase64 ? [body.workbookBase64] : []);
+
+      const content = [];
+      panels.forEach((b64, i) => {
+        content.push({ type: 'text', text: `■漫画コマ${i + 1}` });
+        content.push(imgBlock(b64));
+      });
+      if (tbs.length) {
+        content.push({ type: 'text', text: '■教材：早稲アカのテキスト（これを正とする）' });
+        tbs.forEach(b => content.push(imgBlock(b)));
+      }
+      if (wbs.length) {
+        content.push({ type: 'text', text: '■教材：宿題の問題集（これを正とする）' });
+        wbs.forEach(b => content.push(imgBlock(b)));
+      }
+      content.push({ type: 'text', text:
+`あなたは中学受験にくわしい${subjName}の校閲者です。
+上の「漫画コマ1〜${N}」は、子ども向け学習まんが「${title}」です（AIが描いたので事実ミスが混ざることがあります）。
+${tbs.length || wbs.length ? 'その後ろにある「教材」を“正しい基準”として、' : '中学受験レベルの正確な知識を基準として、'}漫画の文字・内容に事実の誤りがないか校閲してください。
+
+チェックする観点：
+- 地名・県名・位置の誤り（例：別の県のものになっている）
+- 人物の取り違え（例：別人の業績にしている）
+- 年代・時代区分の誤り
+- 因果や用語の誤り（例：原因と結果が逆、用語の誤用）
+- 中学受験的に「誤解を生む／不正確」な表現
+${tbs.length || wbs.length ? '※教材に書かれていないだけ（教材外の正しい補足）は誤りとしない。教材と食い違う・明確に事実誤認のものを指摘する。' : ''}
+
+出力はJSONのみ（説明文・マークダウン不要）：
+{
+ "verdict":"ok" または "warn" または "ng",
+ "summary":"全体所見を1〜2文",
+ "issues":[
+   {"panel":コマ番号(数字),"level":"重大" または "軽微","quote":"漫画中の問題箇所(短く)","problem":"何がどう誤りか","fix":"正しくはどうか"}
+ ]
+}
+判定基準：重大な事実誤りがあれば "ng"、軽微・紛らわしい程度なら "warn"、問題なければ "ok"（issuesは空配列）。` });
+
+      const { raw } = await callClaude(content, 3000);
+      stage = 'factcheck-parse';
+      const parsed = parseJSON(raw);
+      return res.status(200).json({
+        verdict: parsed.verdict || 'warn',
+        summary: parsed.summary || '',
+        issues: Array.isArray(parsed.issues) ? parsed.issues : []
       });
     }
 
