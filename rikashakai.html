@@ -65,6 +65,16 @@ button{cursor:pointer;font-family:inherit}
 .kaisetsu .kh{font-size:.72rem;font-weight:900;color:var(--gold);letter-spacing:1px;margin-bottom:5px}
 .kaisetsu .kt{font-size:.86rem;color:#ddd;line-height:1.7}.kaisetsu .kt em{color:var(--gold);font-style:normal;font-weight:700}
 .moreBtn{margin-top:10px;width:100%;padding:11px;border:1px solid rgba(102,153,255,.4);background:rgba(102,153,255,.1);color:#9bf;font-family:inherit;font-weight:900;font-size:.85rem;border-radius:11px}
+.fcbox{margin-top:12px;border-radius:13px;padding:13px 15px;border:1.5px solid var(--border);background:var(--card)}
+.fcbox .fch{font-weight:900;font-size:.95rem;margin-bottom:5px}
+.fcbox.ok{border-color:var(--rika)}.fcbox.ok .fch{color:var(--rika)}
+.fcbox.warn{border-color:#ffaa44}.fcbox.warn .fch{color:#ffaa44}
+.fcbox.ng{border-color:#ff5555}.fcbox.ng .fch{color:#ff7777}
+.fcbox .fcs{font-size:.82rem;color:#ccc;line-height:1.6;margin-bottom:8px}
+.fcissue{background:rgba(255,255,255,.04);border-radius:9px;padding:9px 11px;margin-top:7px;font-size:.8rem;line-height:1.6}
+.fcissue .lv{font-size:.66rem;font-weight:900;border-radius:99px;padding:2px 8px;margin-right:6px}
+.fcissue .lv.重大{background:rgba(255,85,85,.18);color:#ff8888}.fcissue .lv.軽微{background:rgba(255,170,68,.16);color:#ffc070}
+.fcissue b{color:#fff}.fcissue .fx{color:var(--rika)}
 .moreBtn:active{transform:scale(.99)}
 .cover-ttl{font-size:1.5rem;font-weight:900;text-align:center;margin-top:14px;line-height:1.4}.cover-ttl em{color:var(--gold);font-style:normal}
 .cover-hint{text-align:center;color:var(--muted);font-size:.8rem;font-weight:700;margin-top:10px}
@@ -306,8 +316,10 @@ button{cursor:pointer;font-family:inherit}
       <div id="add-step3" style="display:none">
         <span class="lbl">③ 各コマの役割</span>
         <div class="slices" id="slices"></div>
-        <button class="bigbtn" style="margin-top:14px" onclick="generate()">✨ 解説とクイズを生成（中学受験優先）</button>
-        <div class="hint">テーマのコマを Claude が読み、<b>中学受験で役立つ解説</b>と<b>クイズ5問</b>を作ります。</div>
+        <button class="bigbtn blue" style="margin-top:14px" onclick="factCheck()">🔍 教材と照合して事実チェック</button>
+        <div id="fc-result"></div>
+        <button class="bigbtn" style="margin-top:12px" onclick="generate()">✨ 解説とクイズを生成（中学受験優先）</button>
+        <div class="hint">まず「事実チェック」で、漫画の内容が教材と合っているか確認できます（教材を「文脈に使う」で選んでいるとより正確）。問題なければ生成へ。</div>
       </div>
     </div>
   </div>
@@ -576,7 +588,32 @@ function makeDrag(el,i){let act=false;const st=e=>{act=true;e.preventDefault();}
 function addLine(){fracs.push(.5);renderLines();}function removeLine(){if(fracs.length){fracs.pop();renderLines();}}
 function doSlice(){fracs.sort((a,b)=>a-b);const bd=[0,...fracs,1];sliceData=[];const cv=document.createElement('canvas'),ctx=cv.getContext('2d');const tw=Math.min(natW,1100),sc=tw/natW;for(let i=0;i<bd.length-1;i++){const sy=Math.round(bd[i]*natH),eh=Math.round((bd[i+1]-bd[i])*natH);if(eh<8)continue;cv.width=tw;cv.height=Math.round(eh*sc);ctx.clearRect(0,0,cv.width,cv.height);ctx.drawImage(sheetimg,0,sy,natW,eh,0,0,cv.width,cv.height);sliceData.push(cv.toDataURL('image/jpeg',.8));}
   const wrap=document.getElementById('slices');wrap.innerHTML='';sliceData.forEach((d,i)=>{const role=i===0?'cover':(i===sliceData.length-1?'summary':'theme');const el=document.createElement('div');el.className='slice';el.innerHTML='<img src="'+d+'"><div class="role"><div class="tnum">コマ '+(i+1)+'</div><select data-i="'+i+'"><option value="cover"'+(role==='cover'?' selected':'')+'>表紙</option><option value="theme"'+(role==='theme'?' selected':'')+'>テーマ</option><option value="summary"'+(role==='summary'?' selected':'')+'>まとめ</option></select></div>';wrap.appendChild(el);});
-  document.getElementById('add-step2').style.display='none';document.getElementById('add-step3').style.display='block';}
+  document.getElementById('add-step2').style.display='none';document.getElementById('add-step3').style.display='block';document.getElementById('fc-result').innerHTML='';}
+async function factCheck(){
+  const roles=[...document.querySelectorAll('#slices select')].map(s=>s.value);
+  const themePanels=sliceData.filter((_,i)=>roles[i]==='theme');
+  if(!themePanels.length){toast('テーマのコマを1つ以上えらんでね','#ffaa44');return;}
+  const title=document.getElementById('add-name').value.trim()||'この読み物';
+  const out=document.getElementById('fc-result');out.innerHTML='';
+  document.getElementById('load-t').textContent='教材と照合して校閲中…';document.getElementById('load').classList.add('show');
+  try{
+    const payloads=await prepBodies(themePanels,1100,0.78);
+    const mk=document.getElementById('add-material').value,m=materials[mk];
+    const reqBody={mode:'factcheck',subject:addSubj,title,panels:payloads};
+    if(m){const tb=await prepBodies(m.textbooks,1280,0.7),wb=await prepBodies(m.workbooks,1280,0.7);if(tb.length)reqBody.textbookBase64s=tb;if(wb.length)reqBody.workbookBase64s=wb;}
+    const r=await fetch(API_URL,{method:'POST',headers:{'Content-Type':'application/json'},body:JSON.stringify(reqBody)});
+    const d=await r.json().catch(()=>({}));if(!r.ok||d.error)throw new Error(d.error||('API '+r.status));
+    const v=d.verdict||'warn',cls=(v==='ok'?'ok':(v==='ng'?'ng':'warn'));
+    const head=(v==='ok'?'✅ 教材と大きな食い違いなし':(v==='ng'?'⛔ 重大な誤りの可能性あり':'⚠️ 要確認の点あり'));
+    let html='<div class="fcbox '+cls+'"><div class="fch">'+head+'</div>'+(d.summary?'<div class="fcs">'+d.summary+'</div>':'');
+    if(!m||(!(m.textbooks&&m.textbooks.length)&&!(m.workbooks&&m.workbooks.length))){html+='<div class="fcs" style="color:#ffaa44">※教材が選ばれていないため、一般知識でのチェックです。より正確には「教材を文脈に使う」で教材を選んでください。</div>';}
+    (d.issues||[]).forEach(it=>{html+='<div class="fcissue"><span class="lv '+(it.level==='重大'?'重大':'軽微')+'">'+(it.level||'軽微')+'</span>'+(it.panel?'コマ'+it.panel+'：':'')+'<b>'+(it.quote||'')+'</b><br>'+(it.problem||'')+(it.fix?'<br><span class="fx">→ 正しくは：'+it.fix+'</span>':'')+'</div>';});
+    if(!(d.issues||[]).length&&v==='ok')html+='<div class="fcs">そのまま生成して大丈夫そうです。</div>';
+    html+='<div class="fcs" style="margin-top:9px;color:var(--muted)">最終判断はご自身で。OKなら下の「生成」へ。直す場合は漫画を作り直してから取り込み直してください。</div></div>';
+    out.innerHTML=html;
+  }catch(err){toast('⚠️ チェック失敗（'+err.message+'）','#ff5555');}
+  document.getElementById('load-t').textContent='氷火羅門先生が考え中…';document.getElementById('load').classList.remove('show');
+}
 async function generate(){
   const title=document.getElementById('add-name').value.trim()||'新しい読み物';
   const teacher='';
