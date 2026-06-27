@@ -184,54 +184,6 @@
     "imgUrl": "/card-images/n09_heart.png"
   },
   {
-    "id": "n010",
-    "char": "hiyakozo",
-    "rarity": 1,
-    "name": "準備中",
-    "power": "",
-    "imgUrl": ""
-  },
-  {
-    "id": "n011",
-    "char": "zanpanman",
-    "rarity": 1,
-    "name": "準備中",
-    "power": "",
-    "imgUrl": ""
-  },
-  {
-    "id": "n012",
-    "char": "yabai",
-    "rarity": 1,
-    "name": "準備中",
-    "power": "",
-    "imgUrl": ""
-  },
-  {
-    "id": "n013",
-    "char": "bakuso",
-    "rarity": 1,
-    "name": "準備中",
-    "power": "",
-    "imgUrl": ""
-  },
-  {
-    "id": "n014",
-    "char": "kaga",
-    "rarity": 1,
-    "name": "準備中",
-    "power": "",
-    "imgUrl": ""
-  },
-  {
-    "id": "n015",
-    "char": "bakudanma",
-    "rarity": 1,
-    "name": "準備中",
-    "power": "",
-    "imgUrl": ""
-  },
-  {
     "id": "n016",
     "char": "kofukumanpuku",
     "rarity": 1,
@@ -336,102 +288,6 @@
     "imgUrl": "/card-images/ssr31_niwatori.png"
   },
   {
-    "id": "r001",
-    "char": "zanpanman",
-    "rarity": 4,
-    "name": "準備中",
-    "power": "準備中",
-    "imgUrl": ""
-  },
-  {
-    "id": "r002",
-    "char": "yabai",
-    "rarity": 4,
-    "name": "準備中",
-    "power": "準備中",
-    "imgUrl": ""
-  },
-  {
-    "id": "r003",
-    "char": "bakuso",
-    "rarity": 4,
-    "name": "準備中",
-    "power": "準備中",
-    "imgUrl": ""
-  },
-  {
-    "id": "r004",
-    "char": "kaga",
-    "rarity": 4,
-    "name": "準備中",
-    "power": "準備中",
-    "imgUrl": ""
-  },
-  {
-    "id": "r005",
-    "char": "bakudanma",
-    "rarity": 4,
-    "name": "準備中",
-    "power": "準備中",
-    "imgUrl": ""
-  },
-  {
-    "id": "r006",
-    "char": "kanpanman",
-    "rarity": 4,
-    "name": "準備中",
-    "power": "準備中",
-    "imgUrl": ""
-  },
-  {
-    "id": "r007",
-    "char": "tsukkomi",
-    "rarity": 4,
-    "name": "準備中",
-    "power": "準備中",
-    "imgUrl": ""
-  },
-  {
-    "id": "r008",
-    "char": "uzan",
-    "rarity": 4,
-    "name": "準備中",
-    "power": "準備中",
-    "imgUrl": ""
-  },
-  {
-    "id": "r009",
-    "char": "nomisoramen",
-    "rarity": 4,
-    "name": "準備中",
-    "power": "準備中",
-    "imgUrl": ""
-  },
-  {
-    "id": "r010",
-    "char": "hiyakozo",
-    "rarity": 4,
-    "name": "準備中",
-    "power": "準備中",
-    "imgUrl": ""
-  },
-  {
-    "id": "r011",
-    "char": "zanpanman",
-    "rarity": 4,
-    "name": "準備中",
-    "power": "準備中",
-    "imgUrl": ""
-  },
-  {
-    "id": "r012",
-    "char": "yabai",
-    "rarity": 4,
-    "name": "準備中",
-    "power": "準備中",
-    "imgUrl": ""
-  },
-  {
     "id": "r030",
     "char": "sharohomu",
     "rarity": 4,
@@ -454,38 +310,6 @@
     "name": "トイレのはにゃこさん",
     "power": "準備中",
     "imgUrl": "/card-images/r32_toirenohanyako.png"
-  },
-  {
-    "id": "l007",
-    "char": "zanpanman",
-    "rarity": 5,
-    "name": "準備中",
-    "power": "準備中",
-    "imgUrl": ""
-  },
-  {
-    "id": "l008",
-    "char": "yabai",
-    "rarity": 5,
-    "name": "準備中",
-    "power": "準備中",
-    "imgUrl": ""
-  },
-  {
-    "id": "l009",
-    "char": "bakuso",
-    "rarity": 5,
-    "name": "準備中",
-    "power": "準備中",
-    "imgUrl": ""
-  },
-  {
-    "id": "l010",
-    "char": "kaga",
-    "rarity": 5,
-    "name": "準備中",
-    "power": "準備中",
-    "imgUrl": ""
   },
   {
     "id": "l015",
