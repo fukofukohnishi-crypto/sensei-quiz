@@ -471,7 +471,8 @@ function renderQ(){const q=qList[qIdx];
   document.getElementById('q-bub').textContent=reviewMode?['もう一回いくぞ！','今度こそ！','覚えたか？','集中だ！','ラストだ！'][qIdx%5]:['さあ、どれだ！','よく考えろ！','落ち着け！','信じろ！','次で最後だ！'][qIdx%5];
   document.getElementById('q-text').textContent=q.q;
   const cc=document.getElementById('q-choices');cc.innerHTML='';
-  (q.choices||[]).forEach(txt=>{const b=document.createElement('button');b.className='choice';b.textContent=txt;b.onclick=()=>answer(txt,b);cc.appendChild(b);});
+  const shuffled=[...(q.choices||[])].sort(()=>Math.random()-.5);
+  shuffled.forEach(txt=>{const b=document.createElement('button');b.className='choice';b.textContent=txt;b.onclick=()=>answer(txt,b);cc.appendChild(b);});
   const segs=document.getElementById('q-segs');segs.innerHTML='';qList.forEach((_,i)=>{const d=document.createElement('div');d.className='qz-seg'+(i===qIdx?' cur':'');segs.appendChild(d);});
   document.getElementById('q-fb').className='fb';document.getElementById('q-next').className='nextbtn';
 }
@@ -481,7 +482,7 @@ function answer(txt,btn){const q=qList[qIdx];const ok=txt===q.a;
   document.querySelectorAll('.qz-seg')[qIdx].className='qz-seg '+(ok?'ok':'ng');
   if(ok){qScore+=10;qOk++;document.getElementById('q-score').textContent=qScore;correctCount++;
     if(reviewMode){review=review.filter(r=>!(r._entryId===q._entryId&&r._qi===q._qi));saveReview();}
-    if(correctCount%5===0){tickets++;setTimeout(()=>toast('🎴 ガチャチケット獲得！（'+tickets+'枚）','#ff88cc'),700);}
+    if(correctCount%5===0){tickets++;updHdr();toast('🎴 ガチャチケット獲得！（'+tickets+'枚）','#ff88cc');}
     saveCards();
   }else{
     if(!review.some(r=>r._entryId===q._entryId&&r._qi===q._qi)){
