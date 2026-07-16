@@ -371,8 +371,19 @@ function idbGet(k){return new Promise(res=>{try{const t=_db.transaction(STORE,'r
 function idbSet(k,v){return new Promise(res=>{try{const t=_db.transaction(STORE,'readwrite').objectStore(STORE).put(v,k);t.onsuccess=()=>res(true);t.onerror=()=>res(false);}catch(e){res(false);}});}
 function saveEntries(){idbSet('entries',entries);}
 function saveMaterials(){idbSet('materials',materials);}
-const LS_CARDS='sz_cards_v1',LS_REVIEW='sz_review_v1';
-function saveCards(){localStorage.setItem(LS_CARDS,JSON.stringify({collection,tickets,correctCount}));}
+const LS_GACHA='sensei-gacha-v1',LS_REVIEW='sz_review_v1';
+// メインアプリ（index.html）と同じキー・同じ構造で保存し、カード所持状況とチケットを完全共有する
+function getGachaDB(){
+  try{var raw=localStorage.getItem(LS_GACHA);if(raw)return JSON.parse(raw);}catch(e){}
+  return {tickets:0,totalCorrect:0,collection:{},history:[]};
+}
+function saveCards(){
+  var db=getGachaDB();
+  db.tickets=tickets;
+  db.totalCorrect=correctCount;
+  db.collection=collection;
+  localStorage.setItem(LS_GACHA,JSON.stringify(db));
+}
 function saveReview(){localStorage.setItem(LS_REVIEW,JSON.stringify(review));}
 
 /* ===== 状態 ===== */
@@ -394,7 +405,9 @@ const RWEIGHT=[0,50,30,12,6,2];
 function rollRarity(){let r=Math.random()*100,a=0;for(let i=5;i>=1;i--){a+=RWEIGHT[i];if(r<a)return i;}return 1;}
 function drawReward(featured,perfect){
   let rarity=rollRarity();if(perfect)rarity=Math.max(rarity,rollRarity());
-  let pool=CARDS.filter(c=>c.rarity===rarity);if(!pool.length)pool=CARDS.slice();
+  let pool=CARDS.filter(c=>c.rarity===rarity&&c.imgUrl);
+  if(!pool.length)pool=CARDS.filter(c=>c.imgUrl);
+  if(!pool.length)pool=CARDS.slice();
   let pick=pool.filter(c=>c.char===featured&&!collection[c.id]);
   if(!pick.length)pick=pool.filter(c=>!collection[c.id]);
   if(!pick.length)pick=pool.filter(c=>c.char===featured);
@@ -767,7 +780,7 @@ async function init(){
     materials=(await idbGet('materials'))||{};
   }catch(e){entries=null;materials={};}
   if(!entries){entries=[sagaSeed()];saveEntries();}
-  try{const c=JSON.parse(localStorage.getItem(LS_CARDS)||'{}');collection=c.collection||{};tickets=c.tickets||0;correctCount=c.correctCount||0;}catch(e){}
+  try{const db=getGachaDB();collection=db.collection||{};tickets=db.tickets||0;correctCount=db.totalCorrect||0;}catch(e){}
   try{review=JSON.parse(localStorage.getItem(LS_REVIEW)||'[]');}catch(e){review=[];}
   await loadCards();
   setTab('shakai');updHdr();
