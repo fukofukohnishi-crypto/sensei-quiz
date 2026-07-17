@@ -538,7 +538,7 @@ html,body{height:100%;font-family:'Noto Sans JP',sans-serif;background:var(--bg)
       🎴 ガチャを引く！
     </button>
     <div style="font-size:.72rem;color:var(--muted);text-align:center;line-height:1.8">
-      ★N 50% / ★★SR 30% / ★★★SSR 12%<br>★★★★レア 6% / ★★★★★伝説 2%
+      全カードから均等にランダム抽選！<br>持ってないカードが出やすいよ🎯
     </div>
   </div>
 </div>
@@ -728,26 +728,12 @@ function drawGacha(){
   saveGachaDB(db);
   updateGachaUI();
 
-  // レアリティ抽選（5段階）
-  var rand=Math.random()*100;
-  var rarity=1;
-  var w4=RARITY_WEIGHTS[4];
-  var w3=w4+RARITY_WEIGHTS[3];
-  var w2=w3+RARITY_WEIGHTS[2];
-  if(rand<w4)rarity=4;
-  else if(rand<w3)rarity=3;
-  else if(rand<w2)rarity=2;
-
-  // そのレアリティのカードからランダム選出（imgUrlがあるものだけ）
-  var pool=CARDS.filter(function(c){return c.rarity===rarity&&c.imgUrl;});
-  if(!pool.length){
-    // そのレアリティに画像付きカードがなければ、画像付き全カードからフォールバック
-    pool=CARDS.filter(function(c){return c.imgUrl;});
-  }
+  // レアリティによる当選確率は廃止。全カードから均等ランダムに選ぶ（画像があるものだけ）
+  var pool=CARDS.filter(function(c){return c.imgUrl;});
   if(!pool.length)pool=CARDS.slice();
 
-  // ダブりなし優先：同レアリティ内でまだ持っていないカードがあれば、そこから選ぶ
-  // 同レアリティを全部持っていたら通常抽選（ダブりあり）にフォールバック
+  // ダブりなし優先：まだ持っていないカードがあれば、そこから選ぶ
+  // 全部持っていたら通常抽選（ダブりあり）にフォールバック
   var dbForPick=getGachaDB();
   var unownedPool=pool.filter(function(c){return !dbForPick.collection[c.id];});
   var pickPool=unownedPool.length>0?unownedPool:pool;
