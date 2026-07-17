@@ -95,9 +95,9 @@ button{cursor:pointer;font-family:inherit}
 .qz-charline{display:flex;align-items:center;gap:11px;padding:12px 14px;background:rgba(0,0,0,.18)}
 .qz-charline img{width:52px;height:52px;border-radius:50%;object-fit:cover;border:2px solid rgba(255,255,255,.25)}
 .qz-charline .nm{font-size:.64rem;color:var(--muted);font-weight:700}.qz-charline .bub{font-size:.82rem;font-weight:700;color:#fff}
-.qz-q{padding:16px 16px 6px;font-size:1.16rem;font-weight:900;line-height:1.55}
+.qz-q{padding:16px 16px 6px;font-size:1.32rem;font-weight:900;line-height:1.55}
 .qz-choices{padding:6px 14px 14px;display:flex;flex-direction:column;gap:9px}
-.choice{width:100%;text-align:left;padding:14px 16px;border-radius:13px;border:2px solid var(--border);background:var(--card2);color:#fff;font-weight:700;font-size:.95rem}
+.choice{width:100%;text-align:left;padding:14px 16px;border-radius:13px;border:2px solid var(--border);background:var(--card2);color:#fff;font-weight:700;font-size:1.1rem}
 .choice.correct{border-color:var(--rika);background:rgba(68,204,136,.18);color:var(--rika)}.choice.wrong{border-color:#ff5555;background:rgba(255,85,85,.16);color:#ff8888}.choice:disabled{opacity:.55}
 .fb{background:var(--card);border-radius:14px;padding:14px 16px;margin-bottom:12px;display:none}.fb.show{display:block}
 .fb .ttl{font-weight:900;font-size:1rem;margin-bottom:5px}.fb .ex{font-size:.82rem;color:#bbb;line-height:1.6}
@@ -191,6 +191,7 @@ button{cursor:pointer;font-family:inherit}
         <button class="tab" id="tab-rika" onclick="setTab('rika')">理科</button>
       </div>
       <div class="zsec-head"><b id="zsec-name"></b><span id="zsec-count"></span></div>
+      <button class="bigbtn blue" id="summary-test-btn" style="margin:2px 0 14px" onclick="startSummaryQuiz(currentTab)"></button>
       <div class="grid" id="zgrid"></div>
     </div>
   </div>
@@ -373,11 +374,12 @@ function saveEntries(){idbSet('entries',entries);}
 function saveMaterials(){idbSet('materials',materials);}
 const LS_CARDS='sz_cards_v1',LS_REVIEW='sz_review_v1';
 // 理社専用のコレクション。メインアプリ（sensei-gacha-v1）とは別管理。
-function saveCards(){localStorage.setItem(LS_CARDS,JSON.stringify({collection,tickets,correctCount}));}
+// ガチャ機能がないので「10問答えるごとに1枚」で直接カードを獲得する。
+function saveCards(){localStorage.setItem(LS_CARDS,JSON.stringify({collection,answeredCount}));}
 function saveReview(){localStorage.setItem(LS_REVIEW,JSON.stringify(review));}
 
 /* ===== 状態 ===== */
-let entries=[],materials={},collection={},tickets=0,correctCount=0,review=[];
+let entries=[],materials={},collection={},answeredCount=0,review=[];
 let CARDS=[];
 let currentTab='shakai';
 
@@ -391,18 +393,24 @@ async function loadCards(){
   CARDS=FALLBACK_CARDS;
 }
 function colCount(){return Object.keys(collection).length;}
-const RWEIGHT=[0,50,30,12,6,2];
-function rollRarity(){let r=Math.random()*100,a=0;for(let i=5;i>=1;i--){a+=RWEIGHT[i];if(r<a)return i;}return 1;}
-function drawReward(featured,perfect){
-  let rarity=rollRarity();if(perfect)rarity=Math.max(rarity,rollRarity());
-  let pool=CARDS.filter(c=>c.rarity===rarity&&c.imgUrl);
-  if(!pool.length)pool=CARDS.filter(c=>c.imgUrl);
-  if(!pool.length)pool=CARDS.slice();
+function pickCard(pool,featured){
   let pick=pool.filter(c=>c.char===featured&&!collection[c.id]);
   if(!pick.length)pick=pool.filter(c=>!collection[c.id]);
   if(!pick.length)pick=pool.filter(c=>c.char===featured);
   if(!pick.length)pick=pool;
-  const card=pick[Math.floor(Math.random()*pick.length)],isNew=!collection[card.id];
+  return pick[Math.floor(Math.random()*pick.length)];
+}
+function drawReward(featured,perfect){
+  // レアリティによる当選確率は廃止。全カードから均等ランダムに選ぶ（画像があるものだけ）
+  let pool=CARDS.filter(c=>c.imgUrl);
+  if(!pool.length)pool=CARDS.slice();
+  let card=pickCard(pool,featured);
+  if(perfect){
+    // 満点の時はもう1枚候補を引いて、レアリティが高い方を採用
+    let card2=pickCard(pool,featured);
+    if(card2.rarity>card.rarity)card=card2;
+  }
+  const isNew=!collection[card.id];
   collection[card.id]=(collection[card.id]||0)+1;saveCards();return {card,isNew};
 }
 function showCardGet(card,isNew){
@@ -417,7 +425,7 @@ function showCardGet(card,isNew){
 /* ===== 画面遷移 ===== */
 function go(id){document.querySelectorAll('.screen').forEach(s=>s.classList.remove('active'));document.getElementById(id).classList.add('active');if(id==='zukan')renderZukan();}
 function toast(m,c){const t=document.getElementById('toast');t.textContent=m;t.style.background=c||'#44cc88';t.classList.add('show');clearTimeout(window._t);window._t=setTimeout(()=>t.classList.remove('show'),2600);}
-function updHdr(){const tkEl=document.getElementById('tk');if(tkEl)tkEl.textContent=tickets;const ccEl=document.getElementById('cc');if(ccEl)ccEl.textContent=colCount();
+function updHdr(){const ccEl=document.getElementById('cc');if(ccEl)ccEl.textContent=colCount();
   const rb=document.getElementById('reviewbtn'),rn=document.getElementById('review-n');rn.textContent=review.length;
   if(review.length===0){rb.classList.add('zero');rb.querySelector('.t').textContent='まちがいなし！';}else{rb.classList.remove('zero');rb.querySelector('.t').textContent='まちがい復習';}}
 
@@ -428,6 +436,11 @@ function renderZukan(){
   document.getElementById('zsec-name').textContent=(currentTab==='shakai'?'社会':'理科')+'の読み物';
   const list=entries.filter(e=>e.subj===currentTab).slice().reverse();
   document.getElementById('zsec-count').textContent='コンプ '+list.filter(e=>e.done).length+' / '+list.length;
+  const totalQ=list.reduce((s,e)=>s+((e.quiz||[]).length),0);
+  const btn=document.getElementById('summary-test-btn');
+  const n=Math.min(50,totalQ);
+  btn.textContent='🏆 '+(currentTab==='shakai'?'社会':'理科')+n+'問まとめテスト';
+  btn.disabled=totalQ===0;
   const grid=document.getElementById('zgrid');grid.innerHTML='';
   if(!list.length){grid.innerHTML='<div class="empty" style="grid-column:1/3">まだ読み物がないよ。<br>おとなの人に ⚙️ から作ってもらおう！</div>';return;}
   list.forEach(e=>{const d=document.createElement('div');d.className='zcard';d.onclick=()=>openReader(e);
@@ -460,10 +473,24 @@ rv.addEventListener('touchstart',e=>{sx=e.touches[0].clientX;sy=e.touches[0].cli
 rv.addEventListener('touchend',e=>{if(!drag)return;drag=false;const dx=e.changedTouches[0].clientX-sx,dy=e.changedTouches[0].clientY-sy;if(Math.abs(dx)>45&&Math.abs(dx)>Math.abs(dy))rmove(dx<0?1:-1);},{passive:true});
 
 /* ===== クイズ（通常＋復習） ===== */
-let qList=[],qIdx=0,qScore=0,qOk=0,reviewMode=false;
-function startQuiz(){reviewMode=false;qList=curEntry.quiz.map((q,i)=>({...q,_entryId:curEntry.id,_qi:i}));qIdx=0;qScore=0;qOk=0;
+let qList=[],qIdx=0,qScore=0,qOk=0,reviewMode=false,summaryMode=false,summarySubj=null;
+function startQuiz(){reviewMode=false;summaryMode=false;qList=curEntry.quiz.map((q,i)=>({...q,_entryId:curEntry.id,_qi:i}));qIdx=0;qScore=0;qOk=0;
   document.getElementById('q-char').src=teacherImg(curEntry);document.getElementById('q-charname').textContent=TEACHER_NAME[teacherOf(curEntry)]||'先生';
   document.getElementById('q-quit').onclick=()=>go('reader');renderQ();go('quiz');}
+function startSummaryQuiz(subj){
+  let pool=[];
+  entries.filter(e=>e.subj===subj).forEach(e=>{
+    (e.quiz||[]).forEach((q,i)=>{pool.push({...q,_entryId:e.id,_qi:i});});
+  });
+  if(!pool.length){toast('まだ問題がないよ','#ffaa44');return;}
+  pool.sort(()=>Math.random()-.5);
+  const n=Math.min(50,pool.length);
+  qList=pool.slice(0,n);qIdx=0;qScore=0;qOk=0;reviewMode=false;summaryMode=true;summarySubj=subj;
+  document.getElementById('q-char').src=subj==='shakai'?TEACHER_IMG[defTeacher('shakai')]:TEACHER_IMG[defTeacher('rika')];
+  document.getElementById('q-charname').textContent=(subj==='shakai'?'社会':'理科')+' まとめテスト';
+  document.getElementById('q-quit').onclick=()=>go('zukan');
+  renderQ();go('quiz');
+}
 function startReview(){
   if(!review.length){toast('まちがいはないよ！全部マスター🎉','#44cc88');return;}
   reviewMode=true;qList=review.slice(0,10).map(r=>({...r}));qIdx=0;qScore=0;qOk=0;
@@ -483,15 +510,19 @@ function answer(txt,btn){const q=qList[qIdx];const ok=txt===q.a;
   document.querySelectorAll('.choice').forEach(b=>{b.disabled=true;if(b.textContent===q.a)b.classList.add('correct');});
   if(!ok)btn.classList.add('wrong');
   document.querySelectorAll('.qz-seg')[qIdx].className='qz-seg '+(ok?'ok':'ng');
-  if(ok){qScore+=10;qOk++;document.getElementById('q-score').textContent=qScore;correctCount++;
+  answeredCount++;
+  if(ok){qScore+=10;qOk++;document.getElementById('q-score').textContent=qScore;
     if(reviewMode){review=review.filter(r=>!(r._entryId===q._entryId&&r._qi===q._qi));saveReview();}
-    if(correctCount%5===0){tickets++;updHdr();toast('🎴 ガチャチケット獲得！（'+tickets+'枚）','#ff88cc');}
-    saveCards();
   }else{
     if(!review.some(r=>r._entryId===q._entryId&&r._qi===q._qi)){
       review.push({_entryId:q._entryId,_qi:q._qi,q:q.q,a:q.a,choices:q.choices,explain:q.explain,juken:q.juken,subj:q.subj});saveReview();
     }
   }
+  if(answeredCount%10===0){
+    const {card,isNew}=drawReward('',false);
+    setTimeout(()=>showCardGet(card,isNew),700);
+  }
+  saveCards();
   document.getElementById('q-fb-ttl').innerHTML=ok?'<span style="color:#44cc88">⭕ 正解！</span>':'<span style="color:#ff6666">❌ ざんねん…</span>';
   document.getElementById('q-fb-ex').textContent=q.explain||'';
   const jk=document.getElementById('q-fb-jk');if(q.juken){jk.style.display='block';jk.innerHTML='<b>🎯 中学受験</b>　'+q.juken;}else jk.style.display='none';
@@ -506,6 +537,21 @@ function showResult(){const total=qList.length;
     document.getElementById('res-score').textContent=qOk+'/'+total;
     document.getElementById('res-unlock').style.display='none';
     document.getElementById('res-msg').textContent=review.length?'のこりのまちがい '+review.length+'問。また挑戦しよう！':'まちがいを全部やっつけた！すごい！';
+    saveCards();go('result');return;
+  }
+  if(summaryMode){
+    const pass=qOk>=Math.ceil(total*0.6);
+    document.getElementById('res-em').textContent=qOk===total?'🏆':(pass?'🎉':'💪');
+    document.getElementById('res-ttl').textContent=(summarySubj==='shakai'?'社会':'理科')+'まとめテスト '+(qOk===total?'パーフェクト！':(pass?'合格！':'もう一回いこう！'));
+    document.getElementById('res-score').textContent=qOk+'/'+total;
+    if(pass){
+      document.getElementById('res-unlock').style.display='none';
+      document.getElementById('res-msg').textContent=(qOk===total?'全問正解！レアのチャンス！':'まとめテスト合格！')+'　クリア報酬のカードをゲット！';
+      const {card,isNew}=drawReward('',qOk===total);setTimeout(()=>showCardGet(card,isNew),650);
+    }else{
+      document.getElementById('res-unlock').style.display='none';
+      document.getElementById('res-msg').textContent='あと少し！読み直してもう一度挑戦しよう。';
+    }
     saveCards();go('result');return;
   }
   const pass=qOk>=Math.ceil(total*0.6);
@@ -770,7 +816,7 @@ async function init(){
     materials=(await idbGet('materials'))||{};
   }catch(e){entries=null;materials={};}
   if(!entries){entries=[sagaSeed()];saveEntries();}
-  try{const c=JSON.parse(localStorage.getItem(LS_CARDS)||'{}');collection=c.collection||{};tickets=c.tickets||0;correctCount=c.correctCount||0;}catch(e){}
+  try{const c=JSON.parse(localStorage.getItem(LS_CARDS)||'{}');collection=c.collection||{};answeredCount=c.answeredCount||0;}catch(e){}
   try{review=JSON.parse(localStorage.getItem(LS_REVIEW)||'[]');}catch(e){review=[];}
   await loadCards();
   setTab('shakai');updHdr();
