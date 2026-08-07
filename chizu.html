@@ -342,7 +342,7 @@ button{cursor:pointer;font-family:inherit;border:none}
       <div class="legend">
         <span><i class="dot" style="background:#2a2a3e"></i>未挑戦</span>
         <span><i class="dot" style="background:#8a6a1e"></i>メダル集め中</span>
-        <span><i class="dot" style="background:#caa000"></i>守護神コンプ！</span>
+        <span><i class="dot" style="background:#caa000"></i>メダルクリア！</span>
       </div>
     </div>
   </div>
@@ -355,7 +355,7 @@ button{cursor:pointer;font-family:inherit;border:none}
       <div class="pd-name" id="pd-name"></div>
       <div class="pd-pref" id="pd-pref"></div>
       <div class="pd-progress" id="pd-progress"></div>
-      <div class="pd-guardian-banner" id="pd-guardian-banner" style="display:none">👑 守護神カード獲得ずみ！</div>
+      <div class="pd-guardian-banner" id="pd-guardian-banner" style="display:none">👑 メダルクリア！</div>
       <div class="pd-medal-row" id="pd-medal-row"></div>
       <button class="bigbtn" id="pd-cta-btn" onclick="goRevealForQuiz()"></button>
     </div>
@@ -397,33 +397,6 @@ button{cursor:pointer;font-family:inherit;border:none}
    絵文字プレースホルダーから実イラストに自動で切り替わります。
 ============================================================ */
 const PREF_DATA = {
-  "01":{ name:"北海道", emoji:"🐻", color:"#2a6ecb",
-    guardianName:"ホッカイドン",
-    guardianImage:"/chars/pref_01_hokkaido.png",
-    line:"オレは北海道の守護神！<b>とうもろこし</b>と<b>ジンギスカン</b>、そして真っ白な<b>雪まつり</b>…この3つを忘れるな！",
-    medals:[
-      {keyword:"とうもろこし", q:"北海道の畑でたくさん作られている、甘い野菜は？", choices:["とうもろこし","さつまいも","れんこん","ピーマン"], answer:0},
-      {keyword:"ジンギスカン", q:"北海道名物、羊の肉を鉄板で焼く料理は？", choices:["すき焼き","ジンギスカン","しゃぶしゃぶ","焼き鳥"], answer:1},
-      {keyword:"雪まつり", q:"毎年2月に札幌で開かれる、雪と氷の像で有名なお祭りは？", choices:["ねぶた祭","雪まつり","七夕まつり","阿波おどり"], answer:1}
-    ]},
-  "13":{ name:"東京都", emoji:"🗼", color:"#cc3355",
-    guardianName:"トウキョウタワーマン",
-    guardianImage:"/chars/pref_13_tokyo.png",
-    line:"オレは東京の守護神！<b>東京タワー</b>と日本の中心<b>国会議事堂</b>、世界一の乗降客数<b>新宿駅</b>…この3つを忘れるな！",
-    medals:[
-      {keyword:"東京タワー", q:"東京都港区にある、赤と白の電波塔は？", choices:["東京タワー","通天閣","あべのハルカス","さっぽろテレビ塔"], answer:0},
-      {keyword:"国会議事堂", q:"日本の法律を決める国会が開かれる建物は？", choices:["東京都庁","国会議事堂","最高裁判所","日本銀行"], answer:1},
-      {keyword:"新宿駅", q:"1日の乗り降りする人の数が世界一と言われる駅は？", choices:["東京駅","渋谷駅","新宿駅","上野駅"], answer:2}
-    ]},
-  "27":{ name:"大阪府", emoji:"🐙", color:"#e07b1a",
-    guardianName:"クイダオレ大将",
-    guardianImage:"/chars/pref_27_osaka.png",
-    line:"オレは大阪の守護神！うまいもんの街の代表<b>たこ焼き</b>、豊臣秀吉が築いた<b>大阪城</b>、笑いの本場<b>お笑い文化</b>…この3つを忘れるな！",
-    medals:[
-      {keyword:"たこ焼き", q:"大阪名物、丸い形の中にタコが入った料理は？", choices:["お好み焼き","たこ焼き","もんじゃ焼き","焼きそば"], answer:1},
-      {keyword:"大阪城", q:"豊臣秀吉が建てたことで有名な、大阪のシンボルとなるお城は？", choices:["姫路城","大阪城","名古屋城","熊本城"], answer:1},
-      {keyword:"お笑い文化", q:"大阪が本場として全国的に有名な文化は？", choices:["歌舞伎","お笑い","能","茶道"], answer:1}
-    ]},
   "31":{ name:"鳥取県", emoji:"🏜️", color:"#c9a35a",
     guardianName:"サキュウサマ",
     guardianImage:"/chars/portraits/tottori.png",
@@ -1262,7 +1235,7 @@ function onQuizCorrect(){
     medalEl.classList.add('guardian');
     medalEl.innerHTML = '';
     medalEl.textContent = data.emoji;
-    document.getElementById('result-ttl').textContent = `🎉 ${data.guardianName} コンプリート！`;
+    document.getElementById('result-ttl').textContent = `🎉 メダルクリア！（${data.guardianName}）`;
     document.getElementById('result-sub').textContent = `${data.name}のメダルを${total}個とも集めた！守護神カード獲得！`;
     document.getElementById('result-keyword').textContent = '';
   }else{
