@@ -318,5 +318,165 @@
     "name": "氷火羅門先生",
     "power": "氷火の羅門・真髄発動：氷と炎を同時に解き放ち、敵全体の能力を完全封印！味方全体のHP・全ステータスをMAXへ引き上げ、学級崩壊を絶対無効化する！どんな絶望も突破口に変える、伝説の担任教師の最終奥義！",
     "imgUrl": "/card-images/legend15_koorihiramon.png"
+  },
+  {
+    "id": "r063",
+    "char": "tottori",
+    "rarity": 4,
+    "name": "鳥取守護神　サキュウサマ",
+    "power": "サキュウウィンド・グレートビュー：砂丘に吹く風を味方に変え、砂を舞わせて絶景を作り出す！すべての人に自然のすばらしさを見せてくれるぞ！",
+    "imgUrl": "/card-images/r63_tottori.png"
+  },
+  {
+    "id": "r064",
+    "char": "shimane",
+    "rarity": 4,
+    "name": "島根守護神　エンムスビノカミ",
+    "power": "縁結び・神話結界：縁結びの糸を結界にして、仲間の力をつなぎ、人の心をひとつにするのじゃ！神話の力で、ピンチをチャンスに変えるぞ！",
+    "imgUrl": "/card-images/r64_shimane.png"
+  },
+  {
+    "id": "r065",
+    "char": "okayama",
+    "rarity": 4,
+    "name": "岡山守護神　モモタロウ晴天丸",
+    "power": "晴天スマイル・きびだんごパワー：晴れの力をためたきびだんごを使い、みんなの心をひとつにする！ピンチの時も太陽のように明るく、どんな困難も乗りこえるのじゃ！",
+    "imgUrl": "/card-images/r65_okayama.png"
+  },
+  {
+    "id": "r066",
+    "char": "hiroshima",
+    "rarity": 4,
+    "name": "広島の守り神　ひろしまんじゃけぇ",
+    "power": "ひろがるハートビーム：ハートの光をうちだして、みんなの心をあたたかくするんじゃ。ピンチのときに使うと、力がわいてくるぞ！（お好み焼きを食べるとパワーアップ！）",
+    "imgUrl": "/card-images/r66_hiroshima.png"
+  },
+  {
+    "id": "r067",
+    "char": "yamaguchi",
+    "rarity": 4,
+    "name": "山口の守護神　カンモンガー",
+    "power": "つなぎのブレイブブリッジ：関門海峡にかかる橋のようにエネルギーを放ち、人・物・文化のつながりをパワーに変える！すべての壁をこえて、未来への道をひらくのじゃ！",
+    "imgUrl": "/card-images/r67_yamaguchi.png"
+  },
+  {
+    "id": "r068",
+    "char": "tokushima",
+    "rarity": 4,
+    "name": "徳島の守護神　うずおどり姫",
+    "power": "鳴門うず潮ダンス：鳴門の渦潮の力をダンスにのせて大放出！渦のようにぐるぐる回って、みんなの心をつなぎ、元気にするのじゃ！",
+    "imgUrl": "/card-images/r68_tokushima.png"
+  },
+  {
+    "id": "r069",
+    "char": "kagawa",
+    "rarity": 4,
+    "name": "香川の守り神　うどんどん",
+    "power": "コシのびのび橋げたキック：うどんのコシでみんなを元気に！細くても強い橋のように、人と地域をつなぐ力なんじゃ！",
+    "imgUrl": "/card-images/r69_kagawa.png"
+  },
+  {
+    "id": "r070",
+    "char": "ehime",
+    "rarity": 4,
+    "name": "愛媛の守り神　タオルじい",
+    "power": "やさしさラップ：ふわふわタオルの波動で、みんなのつかれやかなしい気持ちをつつみこむ！パワーはやさしさから生まれるのじゃ！",
+    "imgUrl": "/card-images/r70_ehime.png"
+  },
+  {
+    "id": "r071",
+    "char": "kochi",
+    "rarity": 4,
+    "name": "土佐の守護神　龍馬ぜよ太郎",
+    "power": "土佐の志・時代を切りひらき斬り：龍馬の志と土佐の自然の力を刀にこめて放つ一閃！古い壁をぶった斬り、未来への道を切りひらくぜよ！",
+    "imgUrl": "/card-images/r71_kochi.png"
+  },
+  {
+    "id": "r072",
+    "char": "fukuoka",
+    "rarity": 4,
+    "name": "福岡守護神　フクオカン",
+    "power": "太宰府の知恵・八幡の鉄拳：太宰府天満宮のご神力で知恵を授け、八幡製鉄所の鉄を巨大な拳に変え、一撃で未来を切り開く！",
+    "imgUrl": "/card-images/r72_fukuoka.png"
+  },
+  {
+    "id": "r073",
+    "char": "saga",
+    "rarity": 4,
+    "name": "佐賀守護神　有田爆焼ゴーレム",
+    "power": "窯神オーバーファイア：超高温の窯を解放し、白い土を一瞬で日本で最初の磁器に焼き上げる熱線を放つ！どんな敵も、この炎でカチカチに焼き固めるのだ！",
+    "imgUrl": "/card-images/r73_saga.png"
+  },
+  {
+    "id": "r074",
+    "char": "nagasaki",
+    "rarity": 4,
+    "name": "長崎守護神　デジマスター",
+    "power": "出島開門：出島の門を開き、江戸時代、日本で唯一外国と交流できた窓口をよみがえらせる！世界の知識と文化を呼び込み、みんなの未来をひらく！",
+    "imgUrl": "/card-images/r74_nagasaki.png"
+  },
+  {
+    "id": "r075",
+    "char": "kumamoto",
+    "rarity": 4,
+    "name": "熊本守護神　モッコスケンジ",
+    "power": "カルデラの大地パワー：阿蘇カルデラの大地のエネルギーを爆発させ、すべての困難をふきとばす！熊本の未来を切りひらくぞ！",
+    "imgUrl": "/card-images/r75_kumamoto.png"
+  },
+  {
+    "id": "r076",
+    "char": "oita",
+    "rarity": 4,
+    "name": "大分守護神　オンセンノミコト",
+    "power": "地獄蒸気波：地球のエネルギー（地熱）を蒸気に変えて、すべてを包みこむあたたかさでみんなをいやす！大分の未来をぽかぽかに照らす！",
+    "imgUrl": "/card-images/r76_oita.png"
+  },
+  {
+    "id": "r077",
+    "char": "miyazaki",
+    "rarity": 4,
+    "name": "宮崎守護神　ヒュウガノヒカル",
+    "power": "フェニックスの舞：フェニックス（不死鳥）のように何度でもよみがえり、困難を乗りこえて未来を切り開く！みんなに元気と希望を届ける！",
+    "imgUrl": "/card-images/r77_miyazaki.png"
+  },
+  {
+    "id": "r078",
+    "char": "kagoshima",
+    "rarity": 4,
+    "name": "鹿児島守護神　サツマヒコ",
+    "power": "大噴火・桜島：桜島の噴火の力で大地を揺るがし、大地の恵みを生み出す！火山のエネルギーで未来を切り拓く！",
+    "imgUrl": "/card-images/r78_kagoshima.png"
+  },
+  {
+    "id": "r079",
+    "char": "okinawa",
+    "rarity": 4,
+    "name": "沖縄守護神　チュラウミ",
+    "power": "美ら島結界：サンゴの力で美ら島に結界を張り、豊かな自然と文化を守る！琉球の心をひとつにし、未来へつなぐ！",
+    "imgUrl": "/card-images/r79_okinawa.png"
+  },
+  {
+    "id": "l017",
+    "char": "hounobito_sakura",
+    "rarity": 5,
+    "name": "PTA会長　宝人桜",
+    "power": "PTA会長として、学校と家庭、地域をつなぐ架け橋。確かな判断力と強い行動力で、あらゆる課題を解決へと導くリーダー。子どもたちの笑顔と成長のために、今日も全力で未来を創り続ける。",
+    "imgUrl": "/card-images/legend17_sakura.png"
+  },
+  {
+    "id": "l016",
+    "char": "hounobito_hanabi",
+    "rarity": 5,
+    "name": "生徒会会長　宝人花火",
+    "power": "宝人桜の息子であり、生徒会を率いるカリスマ。冷静で頭脳明晰、誰よりも学校と仲間を想う。必要な場面では容赦なく決断を下すが、その本質は優しく誠実。",
+    "imgUrl": "/card-images/legend16_hanabi.png"
+  },
+  {
+    "id": "n010",
+    "char": "risaikuru",
+    "rarity": 1,
+    "name": "掃除委員会委員長　李祭久留",
+    "power": "学校をいつもきれいに保つ、掃除のスペシャリスト。無駄を嫌い、効率を重視するが、仲間思いで優しい性格。リサイクルや環境問題にも関心が高く、持続可能な学校づくりを目指している。",
+    "imgUrl": "/card-images/n10_risaikuru.png"
   }
 ]
