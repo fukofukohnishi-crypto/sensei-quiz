@@ -20,23 +20,16 @@ button{cursor:pointer;font-family:inherit;border:none}
 .hdr-title{font-size:1rem;font-weight:900;flex:1;text-align:center}
 .hdr-progress{font-size:.72rem;font-weight:900;color:var(--gold);background:rgba(255,215,0,.1);border:1px solid rgba(255,215,0,.3);border-radius:99px;padding:4px 10px;white-space:nowrap}
 .body{flex:1;overflow-y:auto;-webkit-overflow-scrolling:touch;padding:12px 14px 30px}
-@media(min-width:600px){.body{padding:10px 20px 24px}}
 
 /* ===== map screen ===== */
-.map-lead{text-align:center;font-size:.74rem;color:var(--muted);font-weight:700;margin-bottom:6px;line-height:1.5}
-@media(min-width:600px){.map-lead{font-size:.82rem;margin-bottom:8px}}
+.map-lead{text-align:center;font-size:.8rem;color:var(--muted);font-weight:700;margin-bottom:10px;line-height:1.6}
 .map-wrap{border-radius:18px;overflow:hidden;border:1px solid var(--border);background:var(--card);padding:8px}
-#japan-svg-map{max-height:calc(100dvh - 170px);max-height:calc(100vh - 170px)}
-@media(min-width:600px){#japan-svg-map{max-height:calc(100dvh - 140px);max-height:calc(100vh - 140px)}}
-@media(min-width:600px){.map-wrap{padding:10px}}
 #japan-svg-map .prefecture{fill:#2a2a3e;stroke:#7a7a99;stroke-width:1.3px;cursor:pointer;transition:fill .15s}
-@media(min-width:600px){#japan-svg-map .prefecture{stroke-width:1.8px}}
 #japan-svg-map .prefecture:active{opacity:.75}
 #japan-svg-map .prefecture.p-partial{fill:#8a6a1e}
 #japan-svg-map .prefecture.p-done{fill:#caa000}
 #japan-svg-map .prefecture.p-nodata{fill:#22222e;stroke:#44445a;cursor:default}
-.legend{display:flex;gap:14px;justify-content:center;margin-top:8px;font-size:.68rem;color:var(--muted);font-weight:700}
-@media(min-width:600px){.legend{margin-top:10px;gap:20px;font-size:.76rem}}
+.legend{display:flex;gap:14px;justify-content:center;margin-top:10px;font-size:.68rem;color:var(--muted);font-weight:700}
 .legend span{display:inline-flex;align-items:center;gap:5px}
 .dot{width:10px;height:10px;border-radius:3px;display:inline-block}
 
@@ -64,7 +57,8 @@ button{cursor:pointer;font-family:inherit;border:none}
 
 /* ===== result screen ===== */
 #result-screen .body{display:flex;flex-direction:column;align-items:center;justify-content:center;text-align:center}
-.medal{width:150px;height:150px;border-radius:50%;display:flex;align-items:center;justify-content:center;font-size:4.2rem;margin-bottom:16px;border:5px solid var(--gold);background:radial-gradient(circle at 35% 30%,#3a2e00,#1a1400);box-shadow:0 0 40px rgba(255,215,0,.35);animation:popin .5s cubic-bezier(.2,1.4,.4,1);overflow:hidden}
+.medal{width:200px;height:200px;border-radius:50%;display:flex;align-items:center;justify-content:center;font-size:5rem;margin-bottom:16px;border:5px solid var(--gold);background:radial-gradient(circle at 35% 30%,#3a2e00,#1a1400);box-shadow:0 0 40px rgba(255,215,0,.35);animation:popin .5s cubic-bezier(.2,1.4,.4,1);overflow:hidden}
+@media(min-width:600px){.medal{width:240px;height:240px;font-size:6rem}}
 .medal img{width:100%;height:100%;object-fit:cover}
 .medal.guardian{border-color:#ff2288;box-shadow:0 0 46px rgba(255,34,136,.4)}
 .result-ttl{font-size:1.3rem;font-weight:900;margin-bottom:6px}
@@ -104,13 +98,15 @@ button{cursor:pointer;font-family:inherit;border:none}
 
 /* ===== prefecture detail screen ===== */
 #pref-detail-screen .body{display:flex;flex-direction:column;align-items:center;text-align:center;padding:20px 16px}
-.pd-avatar{width:120px;height:120px;border-radius:50%;display:flex;align-items:center;justify-content:center;font-size:3.4rem;box-shadow:0 0 0 5px rgba(255,255,255,.06),0 10px 30px rgba(0,0,0,.5);margin-bottom:12px}
+.pd-avatar{width:200px;height:200px;border-radius:50%;display:flex;align-items:center;justify-content:center;font-size:5rem;box-shadow:0 0 0 5px rgba(255,255,255,.06),0 10px 30px rgba(0,0,0,.5);margin-bottom:14px}
+@media(min-width:600px){.pd-avatar{width:240px;height:240px;font-size:6rem}}
 .pd-name{font-size:1.2rem;font-weight:900;color:var(--gold);margin-bottom:2px}
 .pd-pref{font-size:.78rem;color:var(--muted);font-weight:700;margin-bottom:4px}
 .pd-progress{font-size:.85rem;font-weight:900;margin-bottom:16px}
 .pd-progress b{color:var(--gold)}
 .pd-medal-row{display:flex;flex-wrap:wrap;justify-content:center;gap:12px 10px;margin-bottom:20px;max-width:460px}
 .pd-medal-slot{width:64px;height:64px;border-radius:50%;display:flex;align-items:center;justify-content:center;font-size:1.4rem;border:3px solid var(--border);background:var(--card2);position:relative;overflow:hidden}
+@media(min-width:600px){.pd-medal-slot{width:80px;height:80px;font-size:1.7rem}.pd-medal-col{width:86px}.pd-medal-label{font-size:.64rem;max-width:82px}}
 .pd-medal-slot img{width:100%;height:100%;object-fit:cover}
 .pd-medal-slot.got{border-color:var(--gold);background:radial-gradient(circle at 35% 30%,#3a2e00,#1a1400);box-shadow:0 0 14px rgba(255,215,0,.3)}
 .pd-medal-slot.locked{opacity:.5}
@@ -120,7 +116,8 @@ button{cursor:pointer;font-family:inherit;border:none}
 
 /* ===== medal enlarge overlay ===== */
 .medal-enlarge-body{max-width:300px;width:100%;background:var(--card);border:1.5px solid var(--gold);border-radius:20px;padding:26px 20px;text-align:center}
-.medal-enlarge-icon{width:150px;height:150px;border-radius:50%;margin:0 auto 16px;display:flex;align-items:center;justify-content:center;font-size:4rem;border:5px solid var(--gold);background:radial-gradient(circle at 35% 30%,#3a2e00,#1a1400);box-shadow:0 0 40px rgba(255,215,0,.35);overflow:hidden}
+.medal-enlarge-icon{width:200px;height:200px;border-radius:50%;margin:0 auto 16px;display:flex;align-items:center;justify-content:center;font-size:5rem;border:5px solid var(--gold);background:radial-gradient(circle at 35% 30%,#3a2e00,#1a1400);box-shadow:0 0 40px rgba(255,215,0,.35);overflow:hidden}
+@media(min-width:600px){.medal-enlarge-icon{width:240px;height:240px}}
 .medal-enlarge-keyword{font-size:1.3rem;font-weight:900;color:var(--gold);margin-bottom:4px}
 .medal-enlarge-sub{font-size:.76rem;color:var(--muted);font-weight:700;margin-bottom:16px}
 </style>
@@ -137,7 +134,7 @@ button{cursor:pointer;font-family:inherit;border:none}
     </div>
     <div class="body">
       <div class="map-lead">県をタップして、守護神とメダルをあつめよう！</div>
-      <div class="map-wrap" id="map-wrap"><svg id="japan-svg-map" viewBox="0 0 1000 1000" xmlns="http://www.w3.org/2000/svg" style="width:100%;height:auto;display:block"><style>#japan-svg-map .prefecture{fill:#2a2a3e;stroke:#7a7a99;stroke-width:1.3px;cursor:pointer}#japan-svg-map .prefecture:active{opacity:.8}#japan-svg-map .prefecture.p-correct{fill:#228855!important;stroke:#44cc88!important}#japan-svg-map .prefecture.p-wrong{fill:#992222!important;stroke:#ff6666!important}#japan-svg-map .prefecture.p-disabled{cursor:default}</style>
+      <div class="map-wrap" id="map-wrap"><svg id="japan-svg-map" viewBox="0 0 1000 1000" xmlns="http://www.w3.org/2000/svg" style="width:100%;height:auto;display:block;max-height:340px"><style>#japan-svg-map .prefecture{fill:#2a2a3e;stroke:#7a7a99;stroke-width:1.3px;cursor:pointer}#japan-svg-map .prefecture:active{opacity:.8}#japan-svg-map .prefecture.p-correct{fill:#228855!important;stroke:#44cc88!important}#japan-svg-map .prefecture.p-wrong{fill:#992222!important;stroke:#ff6666!important}#japan-svg-map .prefecture.p-disabled{cursor:default}</style>
   <title>Japanese Prefectures</title>
   <desc>Created by Geolonia (https://geolonia.com/).</desc>
   <g class="svg-map" transform="matrix(1.453488, 0, 0, 1.453488, -435.334259, -216.944946)">
@@ -601,9 +598,6 @@ const PREF_DATA = {
       {keyword:"吉野川", image:"/chars/medals/shikoku/yoshinogawa.png",
         q:"四国を代表する大河で、徳島県を流れる川は？",
         choices:["吉野川","四万十川","仁淀川","那賀川"], answer:0},
-      {keyword:"吉野川水系", image:"/chars/medals/shikoku/yoshinogawasuikei.png",
-        q:"吉野川や、その支流がつくる川のつながり全体を何という？",
-        choices:["吉野川水系","吉野川平野","吉野川盆地","吉野川扇状地"], answer:0},
       {keyword:"四国三郎（吉野川）", image:"/chars/medals/shikoku/shikokusaburo.png",
         q:"「四国三郎」の異名を持つ、徳島県を流れる大きな川は？",
         choices:["吉野川","四万十川","那賀川","仁淀川"], answer:0},
@@ -654,7 +648,10 @@ const PREF_DATA = {
         choices:["瀬戸内海式気候","日本海側の気候","太平洋側の気候","内陸性の気候"], answer:0},
       {keyword:"讃岐平野", image:"/chars/medals/shikoku/sanukiheiya.png",
         q:"香川県に広がる、ため池を利用した農業がさかんな平野は？",
-        choices:["讃岐平野","濃尾平野","筑紫平野","越後平野"], answer:0}
+        choices:["讃岐平野","濃尾平野","筑紫平野","越後平野"], answer:0},
+      {keyword:"オリーブ", image:"/chars/medals/shikoku/olive.png",
+        q:"香川県の小豆島が日本での栽培発祥地として有名な、地中海原産の植物は？",
+        choices:["オリーブ","レモン","アボカド","バナナ"], answer:0}
     ]},
   "38":{ name:"愛媛県", emoji:"🍊", color:"#ff9933",
     guardianName:"タオルじい",
@@ -942,10 +939,7 @@ const PREF_DATA = {
         choices:["マンゴー","パパイヤ","ライチ","パイナップル"], answer:0},
       {keyword:"地鶏", image:"/chars/medals/kyushu/jidori.png",
         q:"宮崎県が炭火焼きなどで有名な、ブランド鶏肉は？",
-        choices:["地鶏","比内地鶏（秋田）","名古屋コーチン","会津地鶏"], answer:0},
-      {keyword:"焼酎", image:"/chars/medals/kyushu/shochu.png",
-        q:"宮崎県などで盛んに作られる、米・麦・いもなどを原料にした蒸留酒は？",
-        choices:["焼酎","日本酒","ワイン","ビール"], answer:0}
+        choices:["地鶏","比内地鶏（秋田）","名古屋コーチン","会津地鶏"], answer:0}
     ]},
   "46":{ name:"鹿児島県", emoji:"🌋", color:"#8a4a2a",
     guardianName:"サツマヒコ",
