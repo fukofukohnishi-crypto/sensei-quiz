@@ -157,6 +157,16 @@ body.viewing-collection .wrap{display:none}
   var CARDS=null, loading=false;
 
   /* 各アプリの保存先からコレクションを読む */
+  /* v2リセット：カード追加に伴い全コレクションを1回だけリセット */
+  (function(){
+    var RK='cards_reset_v2';
+    if(!localStorage.getItem(RK)){
+      localStorage.removeItem('sensei-gacha-v1');
+      localStorage.removeItem('sz_cards_v1');
+      localStorage.setItem(RK,'1');
+    }
+  })();
+
   function readStore(key,label){
     try{
       var raw=localStorage.getItem(key);
