@@ -136,7 +136,17 @@ button{cursor:pointer;font-family:inherit}
 .upl.small{padding:16px 12px}.upl.small .em{font-size:1.4rem;margin-bottom:3px}.upl.small.done{border-color:var(--rika);color:var(--rika)}
 .chips{display:flex;gap:8px}.chip2{flex:1;padding:11px;border-radius:12px;border:2px solid var(--border);background:var(--card);font-weight:900;font-size:.9rem;color:var(--muted)}
 .chip2.sel-rika{border-color:var(--rika);background:rgba(68,204,136,.14);color:var(--rika)}.chip2.sel-shakai{border-color:var(--shakai);background:rgba(255,102,85,.14);color:var(--shakai)}
-.inp,.sel-inline{width:100%;background:var(--card);border:1.5px solid var(--border);border-radius:11px;padding:13px 15px;color:#fff;font-family:inherit;font-size:.95rem;outline:none}.inp:focus{border-color:var(--gold)}
+.inp,.sel-inline{width:100%;background:var(--card);border:1.5px solid var(--border);border-radius:11px;padding:13px 15px;color:#fff;font-family:inherit;font-size:.95rem;outline:none}
+.ta{width:100%;background:var(--card);border:1.5px solid var(--border);border-radius:11px;padding:13px 15px;color:#fff;font-family:inherit;font-size:.9rem;line-height:1.7;outline:none;min-height:170px;resize:vertical}
+.tabs2{display:flex;gap:8px;margin:4px 0 8px}
+.tabs2 button{flex:1;padding:11px;border-radius:12px;border:2px solid var(--border);background:var(--card);color:var(--muted);font-family:inherit;font-weight:900;font-size:.88rem}
+.tabs2 button.on{border-color:var(--gold);background:rgba(255,215,0,.12);color:var(--gold)}
+.stock{display:flex;flex-direction:column;gap:8px;margin-top:4px}
+.stock .row{display:flex;align-items:center;gap:10px;background:var(--card);border:1px solid var(--border);border-radius:12px;padding:11px 13px}
+.stock .row .nm{flex:1;font-size:.84rem;font-weight:900}
+.stock .row .nm small{display:block;font-size:.66rem;font-weight:700;color:var(--muted);margin-top:2px}
+.stock .row .q{font-size:.86rem;font-weight:900;color:var(--gold)}
+.stock .row .q.zero{color:#ff7777}.inp:focus{border-color:var(--gold)}
 .toolbar{display:flex;align-items:center;gap:8px;margin:14px 0 10px}.toolbar .l{font-size:.8rem;font-weight:700;color:var(--muted);flex:1}
 .rbtn{width:40px;height:40px;border-radius:11px;border:1px solid var(--border);background:var(--card);color:#fff;font-size:1.3rem;font-weight:900}
 .cnt{font-weight:900;color:var(--gold);min-width:84px;text-align:center;font-size:.82rem}
@@ -517,6 +527,7 @@ button{cursor:pointer;font-family:inherit}
         <button class="menu-item" onclick="go('adminManage');renderManage();"><div class="mi">🗂️</div><div class="mt"><b>④ 読み物の管理</b><span>確認・削除</span></div><div class="ar">›</div></button>
         <button class="menu-item" onclick="go('zukan')"><div class="mi">📚</div><div class="mt"><b>読み物図鑑を見る</b><span>取り込んだ漫画を読む・まとめテスト</span></div><div class="ar">›</div></button>
         <button class="menu-item" onclick="go('adminSync');setImportMode('merge');document.getElementById('sync-stat').innerHTML='';"><div class="mi">🔄</div><div class="mt"><b>⑤ データの書き出し／読み込み</b><span>別の端末（iPad等）に読み物を移す</span></div><div class="ar">›</div></button>
+        <button class="menu-item" onclick="openQuizBank()"><div class="mi">⚡</div><div class="mt"><b>⑥ 問題だけをつくる</b><span>漫画なしで特訓の問題を追加（写真からAI生成／手入力）</span></div><div class="ar">›</div></button>
       </div>
     </div>
   </div>
@@ -590,6 +601,48 @@ button{cursor:pointer;font-family:inherit}
         <button class="bigbtn" style="margin-top:12px" onclick="generate()">✨ 解説とクイズを生成（中学受験優先）</button>
         <div class="hint">まず「事実チェック」で、漫画の内容が教材と合っているか確認できます（教材を「文脈に使う」で選んでいるとより正確）。問題なければ生成へ。</div>
       </div>
+    </div>
+  </div>
+
+  <!-- ⑥ 問題だけをつくる -->
+  <div class="screen" id="adminQuiz">
+    <div class="hdr"><button class="hdr-back" onclick="go('admin')">←</button><div class="hdr-title">⑥ 問題だけをつくる</div></div>
+    <div class="body">
+      <div class="admin-note">漫画を用意しなくても、夏休み特訓に出す問題を直接ふやせます。ここで作った問題は読み物図鑑には出ません。</div>
+
+      <span class="lbl">いまの在庫</span>
+      <div class="stock" id="qb-stock"></div>
+
+      <span class="lbl">科目</span>
+      <div class="chips"><button class="chip2 sel-shakai" id="qb-shakai" onclick="setQbSubj('shakai')">社会</button><button class="chip2" id="qb-rika" onclick="setQbSubj('rika')">理科</button></div>
+
+      <span class="lbl">単元名（何の問題か分かる名前）</span>
+      <input class="inp" id="qb-round" placeholder="例：第5回／こん虫のからだ" maxlength="24">
+
+      <div class="tabs2">
+        <button id="qb-tab-ai" class="on" onclick="setQbMode('ai')">📷 写真からAI生成</button>
+        <button id="qb-tab-manual" onclick="setQbMode('manual')">✍️ 手入力・貼り付け</button>
+      </div>
+
+      <div id="qb-ai">
+        <span class="lbl">テキスト・問題集の写真（複数可）</span>
+        <button class="upl small" style="width:100%" onclick="qbAddPhotos()"><div class="em">📘</div><div id="qb-photo-t">タップして写真を追加</div></button>
+        <div id="qb-thumbs" class="upthumbs"></div>
+        <button class="bigbtn" style="margin-top:16px" onclick="qbGenerate()">✨ この写真から問題をつくる</button>
+        <div class="hint">教科書やまとめページを撮って入れてください。中学受験で問われやすい所を優先して、10問前後つくります。生成後に内容を確認してから保存できます。</div>
+      </div>
+
+      <div id="qb-manual" style="display:none">
+        <span class="lbl">1行に1問（問題文 ｜ こたえ ｜ 解説）</span>
+        <textarea class="ta" id="qb-text" placeholder="こん虫のあしは何本？ | 6本 | むね から3対6本が出ている&#10;モンシロチョウの幼虫が食べる葉は？ | キャベツ&#10;たまご→よう虫→さなぎ→せい虫 とすがたを変えることを何という？ | 完全へんたい"></textarea>
+        <div class="hint">区切りは <b>|</b>（半角たてぼう）／<b>｜</b>（全角）／<b>／</b>（全角スラッシュ）／<b>タブ</b> のどれでもOK。半角の / は「cm/s」などで使うので区切りにはなりません。解説は省略できます。JSON配列を貼り付けることもできます。</div>
+        <button class="bigbtn" style="margin-top:14px" onclick="qbParseManual()">📝 この内容で登録する</button>
+      </div>
+
+      <div id="qb-preview" style="display:none;margin-top:18px"></div>
+
+      <span class="lbl" style="margin-top:22px">登録ずみの問題セット</span>
+      <div id="qb-list"></div>
     </div>
   </div>
 
@@ -669,6 +722,7 @@ function idbGet(k){return new Promise(res=>{try{const t=_db.transaction(STORE,'r
 function idbSet(k,v){return new Promise(res=>{try{const t=_db.transaction(STORE,'readwrite').objectStore(STORE).put(v,k);t.onsuccess=()=>res(true);t.onerror=()=>res(false);}catch(e){res(false);}});}
 function saveEntries(){idbSet('entries',entries);}
 function saveMaterials(){idbSet('materials',materials);}
+function saveQuizbank(){idbSet('quizbank',quizbank);}
 const LS_CARDS='sz_cards_v1',LS_REVIEW='sz_review_v1';
 // 理社専用のコレクション。メインアプリ（sensei-gacha-v1）とは別管理。
 // ガチャ機能がないので「10問答えるごとに1枚」で直接カードを獲得する。
@@ -703,7 +757,7 @@ function masteryNote(res,isOk){
 }
 
 /* ===== 状態 ===== */
-let entries=[],materials={},collection={},answeredCount=0,review=[];
+let entries=[],materials={},collection={},answeredCount=0,review=[],quizbank=[];
 let CARDS=[];
 let currentTab='shakai';
 
@@ -902,6 +956,9 @@ function flashPool(subj){
   let pool=[];
   entries.filter(e=>e.subj===subj).forEach(e=>{
     (e.quiz||[]).forEach((q,i)=>{pool.push({...q,_entryId:e.id,_qi:i});});
+  });
+  quizbank.filter(b=>b.subj===subj).forEach(b=>{
+    (b.quiz||[]).forEach((q,i)=>{pool.push({...q,subj:subj,_entryId:'qb_'+b.id,_qi:i});});
   });
   return pool.concat(getMonthlyOneQuestions(subj));
 }
@@ -1236,13 +1293,169 @@ async function generate(){
   saveEntries();setTab(addSubj);go('zukan');toast('「'+title+'」を図鑑に追加したよ🎉','#44cc88');
 }
 
+/* ===== 管理者：⑥ 問題だけをつくる ===== */
+let qbSubj='shakai',qbMode='ai',qbPhotos=[],qbDraft=null;
+function openQuizBank(){
+  qbPhotos=[];qbDraft=null;
+  document.getElementById('qb-round').value='';
+  document.getElementById('qb-text').value='';
+  document.getElementById('qb-preview').style.display='none';
+  setQbSubj(currentTab==='rika'?'rika':'shakai');
+  setQbMode('ai');
+  qbRenderThumbs();renderQbStock();renderQbList();
+  go('adminQuiz');
+}
+function setQbSubj(sj){
+  qbSubj=sj;
+  document.getElementById('qb-shakai').className='chip2'+(sj==='shakai'?' sel-shakai':'');
+  document.getElementById('qb-rika').className='chip2'+(sj==='rika'?' sel-rika':'');
+}
+function setQbMode(m){
+  qbMode=m;
+  document.getElementById('qb-tab-ai').className=(m==='ai'?'on':'');
+  document.getElementById('qb-tab-manual').className=(m==='manual'?'on':'');
+  document.getElementById('qb-ai').style.display=(m==='ai'?'block':'none');
+  document.getElementById('qb-manual').style.display=(m==='manual'?'block':'none');
+}
+function qbAddPhotos(){
+  const inp=document.createElement('input');
+  inp.type='file';inp.accept='image/*';inp.multiple=true;
+  inp.style.cssText='position:fixed;left:-9999px;top:0';
+  document.body.appendChild(inp);
+  inp.addEventListener('change',async()=>{
+    for(const f of [...inp.files]){try{qbPhotos.push(await compressFile(f,1600,0.8));qbRenderThumbs();}catch(e){}}
+    setTimeout(()=>inp.remove(),1500);
+  });
+  inp.click();
+}
+function qbRenderThumbs(){
+  const wrap=document.getElementById('qb-thumbs');wrap.innerHTML='';
+  qbPhotos.forEach((d,i)=>{
+    const el=document.createElement('div');el.className='upthumb';
+    el.innerHTML='<img src="'+d+'"><div class="pgn">'+(i+1)+'</div><button class="rm">×</button>';
+    el.querySelector('.rm').onclick=()=>{qbPhotos.splice(i,1);qbRenderThumbs();};
+    wrap.appendChild(el);
+  });
+  document.getElementById('qb-photo-t').textContent=qbPhotos.length?('写真 '+qbPhotos.length+'枚 ・タップで追加'):'タップして写真を追加';
+}
+/* 写真からAI生成（既存の /api/generate をそのまま利用し、クイズ部分だけ採用） */
+async function qbGenerate(){
+  const round=document.getElementById('qb-round').value.trim();
+  if(!round){toast('単元名を入れてね','#ffaa44');return;}
+  if(!qbPhotos.length){toast('写真を1枚以上えらんでね','#ffaa44');return;}
+  document.getElementById('load-t').textContent='教材を読んで問題をつくり中…';
+  document.getElementById('load').classList.add('show');
+  try{
+    const payloads=await prepBodies(qbPhotos,1280,0.78);
+    const r=await fetch(API_URL,{method:'POST',headers:{'Content-Type':'application/json'},
+      body:JSON.stringify({mode:'yomimono',subject:qbSubj,title:round,panels:payloads})});
+    const d=await r.json().catch(()=>({}));
+    if(!r.ok||d.error)throw new Error(d.error||('API '+r.status));
+    const quiz=(d.quiz||[]).map(q=>({q:q.q,a:q.a,choices:q.choices||[],explain:q.explain||'',juken:q.juken||'',subj:qbSubj}))
+      .filter(q=>q.q&&q.a);
+    if(!quiz.length)throw new Error('問題が作れませんでした');
+    qbShowPreview(round,quiz);
+  }catch(err){toast('⚠️ 生成に失敗（'+err.message+'）','#ff5555');}
+  document.getElementById('load-t').textContent='氷火羅門先生が考え中…';
+  document.getElementById('load').classList.remove('show');
+}
+/* 手入力・貼り付け */
+function qbParseManual(){
+  const round=document.getElementById('qb-round').value.trim();
+  if(!round){toast('単元名を入れてね','#ffaa44');return;}
+  const raw=document.getElementById('qb-text').value.trim();
+  if(!raw){toast('問題を入力してね','#ffaa44');return;}
+  let quiz=[];
+  if(raw[0]==='['){
+    try{
+      quiz=(JSON.parse(raw)||[]).map(q=>({q:q.q||q.question||'',a:q.a||q.answer||'',choices:q.choices||[],explain:q.explain||'',juken:q.juken||'',subj:qbSubj}));
+    }catch(e){toast('JSONの形が違うみたい','#ff5555');return;}
+  }else{
+    raw.split(/\r?\n/).forEach(line=>{
+      const t=line.trim();
+      if(!t)return;
+      const parts=t.split(/\s*[|｜／\t]\s*/);
+      if(parts.length<2)return;
+      quiz.push({q:parts[0].trim(),a:parts[1].trim(),choices:[],explain:(parts[2]||'').trim(),juken:'',subj:qbSubj});
+    });
+  }
+  quiz=quiz.filter(q=>q.q&&q.a);
+  if(!quiz.length){toast('「問題文 | こたえ」の形で入れてね','#ffaa44');return;}
+  qbShowPreview(round,quiz);
+}
+function qbShowPreview(round,quiz){
+  qbDraft={round,quiz,subj:qbSubj};
+  const box=document.getElementById('qb-preview');
+  let html='<div class="fcbox ok"><div class="fch">✅ '+quiz.length+'問できました（'+(qbSubj==='shakai'?'社会':'理科')+'／'+round+'）</div>';
+  quiz.slice(0,12).forEach((q,i)=>{
+    html+='<div class="fcissue"><b>'+(i+1)+'. '+q.q+'</b><br>こたえ：<span class="fx">'+q.a+'</span>'+(q.explain?'<br>'+q.explain:'')+'</div>';
+  });
+  if(quiz.length>12)html+='<div class="fcs" style="margin-top:8px">ほか '+(quiz.length-12)+'問…</div>';
+  html+='</div>';
+  box.innerHTML=html;
+  const btn=document.createElement('button');
+  btn.className='bigbtn';btn.style.marginTop='12px';btn.textContent='💾 この問題を保存する';
+  btn.onclick=qbSave;
+  box.appendChild(btn);
+  const cancel=document.createElement('button');
+  cancel.className='menu-item';cancel.style.cssText='margin-top:10px;justify-content:center';
+  cancel.innerHTML='<b>やめる</b>';
+  cancel.onclick=()=>{qbDraft=null;box.style.display='none';};
+  box.appendChild(cancel);
+  box.style.display='block';
+  box.scrollIntoView({behavior:'smooth',block:'nearest'});
+}
+function qbSave(){
+  if(!qbDraft)return;
+  quizbank.unshift({id:'qb'+Date.now(),subj:qbDraft.subj,round:qbDraft.round,quiz:qbDraft.quiz,createdAt:new Date().toISOString()});
+  saveQuizbank();
+  qbDraft=null;qbPhotos=[];
+  document.getElementById('qb-preview').style.display='none';
+  document.getElementById('qb-round').value='';
+  document.getElementById('qb-text').value='';
+  qbRenderThumbs();renderQbStock();renderQbList();
+  toast('問題を保存したよ⚡ 特訓に出ます','#44cc88');
+}
+function renderQbList(){
+  const wrap=document.getElementById('qb-list');wrap.innerHTML='';
+  if(!quizbank.length){wrap.innerHTML='<div class="admin-note">まだありません。</div>';return;}
+  quizbank.forEach(b=>{
+    const el=document.createElement('div');el.className='matrow';
+    el.innerHTML='<div class="info">'+b.round+'<span class="mini '+b.subj+'">'+(b.subj==='shakai'?'社会':'理科')+'</span><small>'+(b.quiz||[]).length+'問</small></div><button class="del">削除</button>';
+    el.querySelector('.del').onclick=()=>{
+      if(confirm('「'+b.round+'」の問題を削除しますか？')){
+        quizbank=quizbank.filter(x=>x!==b);saveQuizbank();renderQbStock();renderQbList();
+      }
+    };
+    wrap.appendChild(el);
+  });
+}
+/* 在庫（どこに何問あるか） */
+function stockOf(subj){
+  let yomi=0,bank=0,monthly=0;
+  entries.filter(e=>e.subj===subj).forEach(e=>{yomi+=(e.quiz||[]).length;});
+  quizbank.filter(b=>b.subj===subj).forEach(b=>{bank+=(b.quiz||[]).length;});
+  monthly=getMonthlyOneQuestions(subj).length;
+  return {yomi,bank,monthly,total:yomi+bank+monthly};
+}
+function renderQbStock(){
+  const wrap=document.getElementById('qb-stock');if(!wrap)return;
+  wrap.innerHTML='';
+  [['rika','理科'],['shakai','社会']].forEach(([sj,nm])=>{
+    const st=stockOf(sj);
+    const el=document.createElement('div');el.className='row';
+    el.innerHTML='<div class="nm">'+nm+'<small>読み物 '+st.yomi+'問 ／ ここで作った問題 '+st.bank+'問 ／ マンスリー由来 '+st.monthly+'問</small></div><div class="q'+(st.total?'':' zero')+'">'+st.total+'問</div>';
+    wrap.appendChild(el);
+  });
+}
+
 /* ===== 管理者：読み物管理 ===== */
 /* ===== ⑤ 書き出し／読み込み ===== */
 let importMode='merge';
 function setImportMode(m){importMode=m;document.getElementById('imp-merge').className='chip2'+(m==='merge'?' sel-shakai':'');document.getElementById('imp-replace').className='chip2'+(m==='replace'?' sel-rika':'');}
 function exportData(){
   try{
-    const data={app:'rikashakai',version:1,exportedAt:new Date().toISOString(),entries:entries};
+    const data={app:'rikashakai',version:2,exportedAt:new Date().toISOString(),entries:entries,quizbank:quizbank};
     const blob=new Blob([JSON.stringify(data)],{type:'application/json'});
     const url=URL.createObjectURL(blob);
     const a=document.createElement('a');
@@ -1250,7 +1463,8 @@ function exportData(){
     document.body.appendChild(a);a.click();a.remove();
     setTimeout(()=>URL.revokeObjectURL(url),2000);
     const mb=(blob.size/1048576).toFixed(1);
-    document.getElementById('sync-stat').innerHTML='✅ 読み物 '+entries.length+'件を書き出しました（約'+mb+'MB）。AirDrop等でiPadに送ってください。';
+    const qn=quizbank.reduce((s,b)=>s+((b.quiz||[]).length),0);
+    document.getElementById('sync-stat').innerHTML='✅ 読み物 '+entries.length+'件'+(qn?'＋問題 '+qn+'問':'')+'を書き出しました（約'+mb+'MB）。AirDrop等でiPadに送ってください。';
     toast('書き出しました⬇️','#44cc88');
   }catch(e){toast('書き出しに失敗（'+e.message+'）','#ff5555');}
 }
@@ -1261,16 +1475,26 @@ function importData(e){
     try{
       const data=JSON.parse(ev.target.result);
       const inc=Array.isArray(data)?data:(data.entries||[]);
-      if(!inc.length){toast('読み物が入っていないファイルです','#ffaa44');return;}
+      const incQb=Array.isArray(data)?[]:(data.quizbank||[]);
+      if(!inc.length&&!incQb.length){toast('中身が入っていないファイルです','#ffaa44');return;}
       if(importMode==='replace'){
         entries=inc;
       }else{
         const byId={};entries.forEach(x=>byId[x.id]=true);
         inc.forEach(x=>{if(byId[x.id]){entries=entries.map(o=>o.id===x.id?x:o);}else{entries.push(x);}});
       }
+      if(incQb.length){
+        if(importMode==='replace'){quizbank=incQb;}
+        else{
+          const qbId={};quizbank.forEach(x=>qbId[x.id]=true);
+          incQb.forEach(x=>{if(qbId[x.id]){quizbank=quizbank.map(o=>o.id===x.id?x:o);}else{quizbank.push(x);}});
+        }
+        saveQuizbank();
+      }
       saveEntries();
-      document.getElementById('sync-stat').innerHTML='✅ '+inc.length+'件を取り込みました（現在の合計 '+entries.length+'件）。図鑑で確認できます。';
-      toast('読み込み完了🎉（'+inc.length+'件）','#44cc88');
+      const iq=incQb.reduce((s,b)=>s+((b.quiz||[]).length),0);
+      document.getElementById('sync-stat').innerHTML='✅ 読み物 '+inc.length+'件'+(iq?'＋問題 '+iq+'問':'')+'を取り込みました（現在の合計 '+entries.length+'件）。';
+      toast('読み込み完了🎉','#44cc88');
     }catch(err){toast('読み込みに失敗（形式が違うかも）','#ff5555');}
   };
   r.readAsText(f);e.target.value='';
@@ -1364,7 +1588,8 @@ async function init(){
   try{await openDB();
     entries=(await idbGet('entries'))||null;
     materials=(await idbGet('materials'))||{};
-  }catch(e){entries=null;materials={};}
+    quizbank=(await idbGet('quizbank'))||[];
+  }catch(e){entries=null;materials={};quizbank=[];}
   if(!entries){entries=[sagaSeed()];saveEntries();}
   try{const c=JSON.parse(localStorage.getItem(LS_CARDS)||'{}');collection=c.collection||{};answeredCount=c.answeredCount||0;}catch(e){}
   try{review=JSON.parse(localStorage.getItem(LS_REVIEW)||'[]');}catch(e){review=[];}
