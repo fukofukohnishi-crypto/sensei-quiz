@@ -20,16 +20,23 @@ button{cursor:pointer;font-family:inherit;border:none}
 .hdr-title{font-size:1rem;font-weight:900;flex:1;text-align:center}
 .hdr-progress{font-size:.72rem;font-weight:900;color:var(--gold);background:rgba(255,215,0,.1);border:1px solid rgba(255,215,0,.3);border-radius:99px;padding:4px 10px;white-space:nowrap}
 .body{flex:1;overflow-y:auto;-webkit-overflow-scrolling:touch;padding:12px 14px 30px}
+@media(min-width:600px){.body{padding:10px 20px 24px}}
 
 /* ===== map screen ===== */
-.map-lead{text-align:center;font-size:.8rem;color:var(--muted);font-weight:700;margin-bottom:10px;line-height:1.6}
+.map-lead{text-align:center;font-size:.74rem;color:var(--muted);font-weight:700;margin-bottom:6px;line-height:1.5}
+@media(min-width:600px){.map-lead{font-size:.82rem;margin-bottom:8px}}
 .map-wrap{border-radius:18px;overflow:hidden;border:1px solid var(--border);background:var(--card);padding:8px}
+#japan-svg-map{max-height:calc(100dvh - 170px);max-height:calc(100vh - 170px)}
+@media(min-width:600px){#japan-svg-map{max-height:calc(100dvh - 140px);max-height:calc(100vh - 140px)}}
+@media(min-width:600px){.map-wrap{padding:10px}}
 #japan-svg-map .prefecture{fill:#2a2a3e;stroke:#7a7a99;stroke-width:1.3px;cursor:pointer;transition:fill .15s}
+@media(min-width:600px){#japan-svg-map .prefecture{stroke-width:1.8px}}
 #japan-svg-map .prefecture:active{opacity:.75}
 #japan-svg-map .prefecture.p-partial{fill:#8a6a1e}
 #japan-svg-map .prefecture.p-done{fill:#caa000}
 #japan-svg-map .prefecture.p-nodata{fill:#22222e;stroke:#44445a;cursor:default}
-.legend{display:flex;gap:14px;justify-content:center;margin-top:10px;font-size:.68rem;color:var(--muted);font-weight:700}
+.legend{display:flex;gap:14px;justify-content:center;margin-top:8px;font-size:.68rem;color:var(--muted);font-weight:700}
+@media(min-width:600px){.legend{margin-top:10px;gap:20px;font-size:.76rem}}
 .legend span{display:inline-flex;align-items:center;gap:5px}
 .dot{width:10px;height:10px;border-radius:3px;display:inline-block}
 
@@ -57,6 +64,7 @@ button{cursor:pointer;font-family:inherit;border:none}
 
 /* ===== result screen ===== */
 #result-screen .body{display:flex;flex-direction:column;align-items:center;justify-content:center;text-align:center}
+#result-screen #result-sub{white-space:pre-line}
 .medal{width:200px;height:200px;border-radius:50%;display:flex;align-items:center;justify-content:center;font-size:5rem;margin-bottom:16px;border:5px solid var(--gold);background:radial-gradient(circle at 35% 30%,#3a2e00,#1a1400);box-shadow:0 0 40px rgba(255,215,0,.35);animation:popin .5s cubic-bezier(.2,1.4,.4,1);overflow:hidden}
 @media(min-width:600px){.medal{width:240px;height:240px;font-size:6rem}}
 .medal img{width:100%;height:100%;object-fit:cover}
@@ -134,7 +142,7 @@ button{cursor:pointer;font-family:inherit;border:none}
     </div>
     <div class="body">
       <div class="map-lead">県をタップして、守護神とメダルをあつめよう！</div>
-      <div class="map-wrap" id="map-wrap"><svg id="japan-svg-map" viewBox="0 0 1000 1000" xmlns="http://www.w3.org/2000/svg" style="width:100%;height:auto;display:block;max-height:340px"><style>#japan-svg-map .prefecture{fill:#2a2a3e;stroke:#7a7a99;stroke-width:1.3px;cursor:pointer}#japan-svg-map .prefecture:active{opacity:.8}#japan-svg-map .prefecture.p-correct{fill:#228855!important;stroke:#44cc88!important}#japan-svg-map .prefecture.p-wrong{fill:#992222!important;stroke:#ff6666!important}#japan-svg-map .prefecture.p-disabled{cursor:default}</style>
+      <div class="map-wrap" id="map-wrap"><svg id="japan-svg-map" viewBox="0 0 1000 1000" xmlns="http://www.w3.org/2000/svg" style="width:100%;height:auto;display:block"><style>#japan-svg-map .prefecture{fill:#2a2a3e;stroke:#7a7a99;stroke-width:1.3px;cursor:pointer}#japan-svg-map .prefecture:active{opacity:.8}#japan-svg-map .prefecture.p-correct{fill:#228855!important;stroke:#44cc88!important}#japan-svg-map .prefecture.p-wrong{fill:#992222!important;stroke:#ff6666!important}#japan-svg-map .prefecture.p-disabled{cursor:default}</style>
   <title>Japanese Prefectures</title>
   <desc>Created by Geolonia (https://geolonia.com/).</desc>
   <g class="svg-map" transform="matrix(1.453488, 0, 0, 1.453488, -435.334259, -216.944946)">
@@ -1016,6 +1024,27 @@ const PREF_DATA = {
 };
 
 const STORAGE_KEY = 'sensei_collection_v2';
+
+/* 県コード → カードコレクション の カードID（cards.json の id と一致） */
+const PREF_CARD_MAP = {
+  "31":"r063","32":"r064","33":"r065","34":"r066","35":"r067",
+  "36":"r068","37":"r069","38":"r070","39":"r071",
+  "40":"r072","41":"r073","42":"r074","43":"r075","44":"r076",
+  "45":"r077","46":"r078","47":"r079"
+};
+/* カードコレクション（sensei-gacha-v1）に書き込む */
+function awardGuardianCard(prefCode){
+  const cardId = PREF_CARD_MAP[prefCode];
+  if(!cardId) return null;
+  try{
+    const raw = localStorage.getItem('sensei-gacha-v1');
+    const db = raw ? JSON.parse(raw) : {tickets:0,totalCorrect:0,collection:{},history:[]};
+    if(db.collection[cardId]) return null;
+    db.collection[cardId] = 1;
+    localStorage.setItem('sensei-gacha-v1', JSON.stringify(db));
+    return cardId;
+  }catch(e){ return null; }
+}
 let currentPref = null, currentMedalIdx = null;
 
 /* 全47都道府県名（データ未整備の県もアルバムに「？」として並べるため） */
@@ -1233,12 +1262,22 @@ function onQuizCorrect(){
 
   const medalEl = document.getElementById('result-medal');
   if(guardianNewlyGot){
+    const awarded = awardGuardianCard(currentPref);
     medalEl.classList.add('guardian');
     medalEl.innerHTML = '';
-    medalEl.textContent = data.emoji;
-    document.getElementById('result-ttl').textContent = `🎉 メダルクリア！（${data.guardianName}）`;
-    document.getElementById('result-sub').textContent = `${data.name}のメダルを${total}個とも集めた！守護神カード獲得！`;
+    if(data.guardianImage){
+      const img = new Image();
+      img.onload = ()=>{ medalEl.style.backgroundImage=`url(${data.guardianImage})`; medalEl.style.backgroundSize='cover'; medalEl.style.backgroundPosition='top center'; };
+      img.src = data.guardianImage;
+    }else{
+      medalEl.textContent = data.emoji;
+    }
+    document.getElementById('result-ttl').textContent = `🎉 メダルクリア！`;
+    document.getElementById('result-sub').textContent = `${data.name}のメダルを${total}個とも集めた！`;
     document.getElementById('result-keyword').textContent = '';
+    if(awarded){
+      document.getElementById('result-sub').textContent += `\n🎴 守護神カード「${data.guardianName}」をコレクションに追加！`;
+    }
   }else{
     medalEl.classList.remove('guardian');
     if(m.image){ medalEl.innerHTML = `<img src="${m.image}" alt="${m.keyword}" onerror="this.style.display='none';this.parentNode.textContent='🏅'">`; }
