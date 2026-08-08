@@ -95,7 +95,24 @@ button{cursor:pointer;font-family:inherit}
 .qz-charline{display:flex;align-items:center;gap:11px;padding:12px 14px;background:rgba(0,0,0,.18)}
 .qz-charline img{width:52px;height:52px;border-radius:50%;object-fit:cover;border:2px solid rgba(255,255,255,.25)}
 .qz-charline .nm{font-size:.64rem;color:var(--muted);font-weight:700}.qz-charline .bub{font-size:.82rem;font-weight:700;color:#fff}
-.qz-q{padding:16px 16px 6px;font-size:1.32rem;font-weight:900;line-height:1.55}
+.qz-q{padding:16px 16px 6px;font-size:1.32rem;font-weight:900;line-height:1.55;white-space:pre-wrap}
+/* スタート（科目えらび） */
+.st-hero{text-align:center;padding:18px 0 24px}
+.st-em{font-size:3.6rem;line-height:1}
+.st-ttl{font-size:2rem;font-weight:900;margin-top:8px;background:linear-gradient(135deg,#ffd700,#ff6b35);-webkit-background-clip:text;background-clip:text;color:transparent}
+.st-sub{font-size:.84rem;color:var(--muted);font-weight:700;margin-top:10px;line-height:1.7}
+.st-pick{display:flex;flex-direction:column;gap:13px;margin-bottom:16px}
+.st-btn{display:flex;align-items:center;gap:14px;width:100%;padding:22px 20px;border-radius:18px;border:2px solid var(--border);background:var(--card);color:#fff;text-align:left}
+.st-btn .e{font-size:2.2rem;line-height:1}
+.st-btn .lb{flex:1}
+.st-btn .lb b{display:block;font-size:1.5rem;font-weight:900;line-height:1.2}
+.st-btn .lb small{display:block;font-size:.72rem;color:var(--muted);font-weight:700;margin-top:3px}
+.st-btn .go{font-size:1.3rem;color:var(--muted)}
+.st-btn.rika{border-color:var(--rika);background:linear-gradient(135deg,rgba(68,204,136,.24),rgba(68,204,136,.05))}
+.st-btn.shakai{border-color:var(--shakai);background:linear-gradient(135deg,rgba(255,102,85,.24),rgba(255,102,85,.05))}
+.st-btn:active{transform:scale(.98)}
+.st-btn:disabled{opacity:.45}
+.st-link{width:100%;padding:13px;border-radius:13px;border:1px solid var(--border);background:rgba(255,255,255,.04);color:var(--muted);font-weight:900;font-size:.86rem;margin-top:4px}
 .qz-choices{padding:6px 14px 14px;display:flex;flex-direction:column;gap:9px}
 .choice{width:100%;text-align:left;padding:14px 16px;border-radius:13px;border:2px solid var(--border);background:var(--card2);color:#fff;font-weight:700;font-size:1.1rem}
 .choice.correct{border-color:var(--rika);background:rgba(68,204,136,.18);color:var(--rika)}.choice.wrong{border-color:#ff5555;background:rgba(255,85,85,.16);color:#ff8888}.choice:disabled{opacity:.55}
@@ -176,11 +193,33 @@ button{cursor:pointer;font-family:inherit}
 <body>
 <div class="app">
 
-  <!-- 図鑑（子供） -->
-  <div class="screen active" id="zukan">
+  <!-- スタート：科目えらび -->
+  <div class="screen active" id="start">
     <div class="hdr">
       <a href="/" class="hdr-back" style="text-decoration:none;font-size:.78rem;font-weight:900;color:var(--muted);white-space:nowrap">🏠 先生トップ</a>
       <div style="flex:1"></div>
+      <button class="hdr-tk hdr-cc" onclick="openCollection()">🎴 コレクション</button>
+      <button class="hdr-back" style="font-size:1.2rem" onclick="go('admin')" title="おとな用">⚙️</button>
+    </div>
+    <div class="body">
+      <div class="st-hero">
+        <div class="st-em">🌻</div>
+        <div class="st-ttl">夏休み特訓</div>
+        <div class="st-sub">科目をえらぶと、すぐに10問スタート！<br>声に出して答えてから、自分で〇×をつけよう。</div>
+      </div>
+      <div class="st-pick">
+        <button class="st-btn rika" id="st-btn-rika" onclick="quickStart('rika')"><span class="e">🔬</span><span class="lb"><b>理科</b><small id="st-n-rika">じゅんび中…</small></span><span class="go">›</span></button>
+        <button class="st-btn shakai" id="st-btn-shakai" onclick="quickStart('shakai')"><span class="e">🗾</span><span class="lb"><b>社会</b><small id="st-n-shakai">じゅんび中…</small></span><span class="go">›</span></button>
+      </div>
+      <button class="reviewbtn" id="reviewbtn2" onclick="startReview()"><span class="ic">🔁</span><span class="t">まちがい復習</span><span class="n" id="review-n2">0</span></button>
+    </div>
+  </div>
+
+  <!-- 図鑑（子供） -->
+  <div class="screen" id="zukan">
+    <div class="hdr">
+      <button class="hdr-back" onclick="go('start')">←</button>
+      <div class="hdr-title">📚 読み物図鑑</div>
       <button class="hdr-tk hdr-cc" onclick="openCollection()">🎴 コレクション</button>
       <button class="hdr-back" style="font-size:1.2rem" onclick="go('admin')" title="おとな用">⚙️</button>
     </div>
@@ -200,7 +239,7 @@ button{cursor:pointer;font-family:inherit}
 
   <!-- カードコレクション -->
   <div class="screen" id="collection">
-    <div class="hdr"><button class="hdr-back" onclick="go('zukan')">←</button><div class="hdr-title">🎴 カードコレクション</div></div>
+    <div class="hdr"><button class="hdr-back" onclick="closeCollection()">←</button><div class="hdr-title">🎴 カードコレクション</div></div>
     <div class="body" id="col-body"></div>
   </div>
 
@@ -461,13 +500,14 @@ button{cursor:pointer;font-family:inherit}
       <div class="res-score" id="res-score"></div><div class="res-lbl">正解</div>
       <div class="res-unlock" id="res-unlock" style="display:none"><div class="u1">🔓 図鑑に解放！</div><div class="u2" id="res-unlock-name"></div></div>
       <div class="res-msg" id="res-msg"></div>
-      <button class="bigbtn" style="max-width:330px" onclick="go('zukan')">📚 図鑑に戻る</button>
+      <button class="bigbtn" id="res-again" style="max-width:330px;display:none" onclick="againQuiz()">🔁 もう10問！</button>
+      <button class="bigbtn blue" id="res-home" style="max-width:330px;margin-top:10px" onclick="backHome()">🏠 ホームにもどる</button>
     </div>
   </div>
 
   <!-- 管理者ホーム -->
   <div class="screen" id="admin">
-    <div class="hdr"><button class="hdr-back" onclick="go('zukan')">←</button><div class="hdr-title">⚙️ おとな用メニュー</div></div>
+    <div class="hdr"><button class="hdr-back" onclick="go('start')">←</button><div class="hdr-title">⚙️ おとな用メニュー</div></div>
     <div class="body">
       <div class="admin-note">教材の準備・漫画づくり・取り込みはここで。子供の図鑑にはこの画面は出ません。</div>
       <div class="menu">
@@ -475,6 +515,7 @@ button{cursor:pointer;font-family:inherit}
         <button class="menu-item" onclick="go('adminCompose');initCompose();"><div class="mi">🧩</div><div class="mt"><b>② 漫画の構成をつくる</b><span>構成案＋ChatGPTプロンプトを生成</span></div><div class="ar">›</div></button>
         <button class="menu-item" onclick="resetAdd();go('add');"><div class="mi">✂️</div><div class="mt"><b>③ 漫画を取り込む</b><span>分割→解説＋クイズ生成→図鑑へ</span></div><div class="ar">›</div></button>
         <button class="menu-item" onclick="go('adminManage');renderManage();"><div class="mi">🗂️</div><div class="mt"><b>④ 読み物の管理</b><span>確認・削除</span></div><div class="ar">›</div></button>
+        <button class="menu-item" onclick="go('zukan')"><div class="mi">📚</div><div class="mt"><b>読み物図鑑を見る</b><span>取り込んだ漫画を読む・まとめテスト</span></div><div class="ar">›</div></button>
         <button class="menu-item" onclick="go('adminSync');setImportMode('merge');document.getElementById('sync-stat').innerHTML='';"><div class="mi">🔄</div><div class="mt"><b>⑤ データの書き出し／読み込み</b><span>別の端末（iPad等）に読み物を移す</span></div><div class="ar">›</div></button>
       </div>
     </div>
@@ -706,11 +747,37 @@ function showCardGet(card,isNew){
 }
 
 /* ===== 画面遷移 ===== */
-function go(id){document.querySelectorAll('.screen').forEach(s=>s.classList.remove('active'));document.getElementById(id).classList.add('active');if(id==='zukan')renderZukan();}
+let prevScreen='start',dataReady=false;
+function go(id){document.querySelectorAll('.screen').forEach(s=>s.classList.remove('active'));document.getElementById(id).classList.add('active');if(id==='zukan')renderZukan();if(id==='start')renderStart();}
+function backHome(){go(lastMode==='flashcard'?'start':(lastMode==='entry'?'zukan':'start'));}
+function againQuiz(){const sj=summarySubj||currentTab;if(lastMode==='flashcard'){quickStart(sj);}else{backHome();}}
+function closeCollection(){go('start');}
 function toast(m,c){const t=document.getElementById('toast');t.textContent=m;t.style.background=c||'#44cc88';t.classList.add('show');clearTimeout(window._t);window._t=setTimeout(()=>t.classList.remove('show'),2600);}
 function updHdr(){const ccEl=document.getElementById('cc');if(ccEl)ccEl.textContent=colCount();
-  const rb=document.getElementById('reviewbtn'),rn=document.getElementById('review-n');rn.textContent=review.length;
-  if(review.length===0){rb.classList.add('zero');rb.querySelector('.t').textContent='まちがいなし！';}else{rb.classList.remove('zero');rb.querySelector('.t').textContent='まちがい復習';}}
+  [['reviewbtn','review-n'],['reviewbtn2','review-n2']].forEach(([bid,nid])=>{
+    const rb=document.getElementById(bid),rn=document.getElementById(nid);
+    if(!rb||!rn)return;
+    rn.textContent=review.length;
+    if(review.length===0){rb.classList.add('zero');rb.querySelector('.t').textContent='まちがいなし！';}
+    else{rb.classList.remove('zero');rb.querySelector('.t').textContent='まちがい復習';}
+  });}
+/* ===== スタート画面 ===== */
+function renderStart(){
+  updHdr();
+  [['rika','st-n-rika','st-btn-rika'],['shakai','st-n-shakai','st-btn-shakai']].forEach(([sj,nid,bid])=>{
+    const el=document.getElementById(nid),bt=document.getElementById(bid);
+    if(!el)return;
+    if(!dataReady){el.textContent='じゅんび中…';if(bt)bt.disabled=true;return;}
+    const n=countFlash(sj);
+    if(bt)bt.disabled=(n===0);
+    el.textContent=n?('全'+n+'問から10問 出るよ'):'まだ問題がないよ';
+  });
+}
+function quickStart(subj){
+  if(!dataReady){toast('じゅんび中…もう一度タップしてね','#ffaa44');return;}
+  currentTab=subj;setTab(subj);
+  startFlashcardTraining(subj);
+}
 
 /* ===== 図鑑 ===== */
 function setTab(s){currentTab=s;document.getElementById('tab-shakai').className='tab'+(s==='shakai'?' on-shakai':'');document.getElementById('tab-rika').className='tab'+(s==='rika'?' on-rika':'');renderZukan();}
@@ -756,8 +823,8 @@ rv.addEventListener('touchstart',e=>{sx=e.touches[0].clientX;sy=e.touches[0].cli
 rv.addEventListener('touchend',e=>{if(!drag)return;drag=false;const dx=e.changedTouches[0].clientX-sx,dy=e.changedTouches[0].clientY-sy;if(Math.abs(dx)>45&&Math.abs(dx)>Math.abs(dy))rmove(dx<0?1:-1);},{passive:true});
 
 /* ===== クイズ（通常＋復習） ===== */
-let qList=[],qIdx=0,qScore=0,qOk=0,reviewMode=false,summaryMode=false,summarySubj=null,flashcardMode=false;
-function startQuiz(){reviewMode=false;summaryMode=false;flashcardMode=false;qList=curEntry.quiz.map((q,i)=>({...q,_entryId:curEntry.id,_qi:i}));qIdx=0;qScore=0;qOk=0;
+let qList=[],qIdx=0,qScore=0,qOk=0,reviewMode=false,summaryMode=false,summarySubj=null,flashcardMode=false,lastMode='entry';
+function startQuiz(){reviewMode=false;summaryMode=false;flashcardMode=false;lastMode='entry';qList=curEntry.quiz.map((q,i)=>({...q,_entryId:curEntry.id,_qi:i}));qIdx=0;qScore=0;qOk=0;
   document.getElementById('q-char').src=teacherImg(curEntry);document.getElementById('q-charname').textContent=TEACHER_NAME[teacherOf(curEntry)]||'先生';
   document.getElementById('q-quit').onclick=()=>go('reader');renderQ();go('quiz');}
 function startSummaryQuiz(subj){
@@ -768,7 +835,7 @@ function startSummaryQuiz(subj){
   if(!pool.length){toast('まだ問題がないよ','#ffaa44');return;}
   pool.sort(()=>Math.random()-.5);
   const n=Math.min(50,pool.length);
-  qList=pool.slice(0,n);qIdx=0;qScore=0;qOk=0;reviewMode=false;summaryMode=true;flashcardMode=false;summarySubj=subj;
+  qList=pool.slice(0,n);qIdx=0;qScore=0;qOk=0;reviewMode=false;summaryMode=true;flashcardMode=false;summarySubj=subj;lastMode='summary';
   document.getElementById('q-char').src=subj==='shakai'?TEACHER_IMG[defTeacher('shakai')]:TEACHER_IMG[defTeacher('rika')];
   document.getElementById('q-charname').textContent=(subj==='shakai'?'社会':'理科')+' まとめテスト';
   document.getElementById('q-quit').onclick=()=>go('zukan');
@@ -797,29 +864,74 @@ function getMonthlyOneQuestions(subj){
     return out;
   }catch(e){return[];}
 }
-function startFlashcardTraining(subj){
+/* ===== 出題文のクリーンアップ =====
+   4択用に作った問題をフラッシュカード（自分で答える形式）に流用しているため、
+   「次のうち〜」「1つ選びなさい」など選択肢ありきの言い回しをここで直す。       */
+const NEED_CHOICE_RE=/(正しいもの|正しい文|ただしいもの|まちがっているもの|間違っているもの|誤っているもの|誤りを|あてはまるもの|当てはまるもの|ふさわしいもの|適切なもの|適当なもの|関係の(深|ふか|な)いもの|仲間はずれ|なかまはずれ|組み合わせとして|正しい組み合わせ|正しい順|正しく並|記号で答え|ア[〜～ー–\-]エ|①[〜～ー–\-]④|[Aa][〜～ー–\-][Dd])/;
+function openQuestionText(t){
+  let s=String(t||'').trim();
+  s=s.replace(/^[（(【]?\s*(問|Q)\s*[0-9０-９]*\s*[）)】.．、]\s*/,'');
+  s=s.replace(/(次|つぎ)の(うち|中|なか)(から)?[、,]?\s*/g,'');
+  s=s.replace(/(次|つぎ)の(文|説明|選択肢|語群|ことば|言葉)(の中)?(から|のうち|より|で)[、,]?\s*/g,'');
+  s=s.replace(/(下|上)の(選択肢|語群|中|なか)(の中)?(から|より)[、,]?\s*/g,'');
+  s=s.replace(/選択肢(の中)?(から|より)[、,]?\s*/g,'');
+  s=s.replace(/[（(]?(ア[〜～ー–\-][エオ]|①[〜～ー–\-]④|[1１][〜～ー–\-][4４])[）)]?(の中)?(から|より)[、,]?\s*/g,'');
+  s=s.replace(/[、,]?\s*(の中から)?(1つ|一つ|ひとつ|2つ|二つ|すべて|全て)?(だけ)?(選び|えらび|選んで|えらんで|選択し)(なさい|ましょう|ください|ます)?。?[？?]?$/,'');
+  s=s.replace(/[、,]?\s*(選べ|えらべ|選ぼう|えらぼう)。?[？?]?$/,'');
+  s=s.replace(/[、,]?\s*記号で答え(なさい|ましょう|ください|よ)?。?[？?]?$/,'');
+  s=s.replace(/(は)?(どれ|どちら)(ですか|でしょうか|でしょう|かな|か)?[。？?]?$/,(m,p1)=>(p1?'は':'')+'何かな？');
+  s=s.replace(/[、,]?\s*(を)?\s*答え(なさい|ましょう|ください|よ)。?$/,'$1');
+  s=s.replace(/かを\s*$/,'か');
+  s=s.replace(/[をの]\s*$/,'は');
+  s=s.replace(/^[、,。\s]+/,'').replace(/\s{2,}/g,' ').trim();
+  if(s&&!/[？?。！!]$/.test(s))s+='？';
+  return s;
+}
+/* 選択肢がないと絶対に答えられない問題か？（地図問題は対象外） */
+function flashUsable(q){return q&&(q.type==='map'||!NEED_CHOICE_RE.test(String(q.q||'')));}
+/* フラッシュカード用に問題文を整える */
+function prepFlash(q){
+  if(q.type==='map')return {...q};
+  const o={...q,_origQ:q.q,q:openQuestionText(q.q)};
+  if(NEED_CHOICE_RE.test(String(q.q||''))&&(q.choices||[]).length){
+    o.q=o.q+'\n（'+q.choices.join(' ／ ')+'）';
+  }
+  return o;
+}
+function flashPool(subj){
   let pool=[];
   entries.filter(e=>e.subj===subj).forEach(e=>{
     (e.quiz||[]).forEach((q,i)=>{pool.push({...q,_entryId:e.id,_qi:i});});
   });
-  pool=pool.concat(getMonthlyOneQuestions(subj));
-  if(!pool.length){toast('まだ問題がないよ','#ffaa44');return;}
-  const weak=review.filter(r=>r.subj===subj);
-  const weakKeys=new Set(weak.map(r=>r._entryId+'|'+r._qi));
-  const rest=pool.filter(q=>!weakKeys.has(q._entryId+'|'+q._qi));
+  return pool.concat(getMonthlyOneQuestions(subj));
+}
+function countFlash(subj){
+  try{const p=flashPool(subj);const u=p.filter(flashUsable);return u.length?u.length:p.length;}catch(e){return 0;}
+}
+function startFlashcardTraining(subj){
+  const all=flashPool(subj);
+  if(!all.length){toast('まだ問題がないよ','#ffaa44');return;}
+  let pool=all.filter(flashUsable);
+  if(pool.length<3)pool=all;                       // 使える問題が少なすぎる時だけ全部使う
+  const keyOf=q=>q._entryId+'|'+q._qi;
+  const poolKeys=new Set(pool.map(keyOf));
+  const weak=review.filter(r=>r.subj===subj&&poolKeys.has(keyOf(r)));
+  const weakKeys=new Set(weak.map(keyOf));
+  const rest=pool.filter(q=>!weakKeys.has(keyOf(q)));
   rest.sort(()=>Math.random()-.5);
+  weak.sort(()=>Math.random()-.5);
   const n=Math.min(10,pool.length);
-  qList=weak.slice(0,n).concat(rest).slice(0,n);
+  qList=weak.slice(0,n).concat(rest).slice(0,n).map(prepFlash);
   qList.sort(()=>Math.random()-.5);
-  qIdx=0;qScore=0;qOk=0;reviewMode=false;summaryMode=false;flashcardMode=true;summarySubj=subj;
+  qIdx=0;qScore=0;qOk=0;reviewMode=false;summaryMode=false;flashcardMode=true;summarySubj=subj;lastMode='flashcard';
   document.getElementById('q-char').src=subj==='shakai'?TEACHER_IMG[defTeacher('shakai')]:TEACHER_IMG[defTeacher('rika')];
   document.getElementById('q-charname').textContent=(subj==='shakai'?'社会':'理科')+' 夏休み特訓';
-  document.getElementById('q-quit').onclick=()=>go('zukan');
+  document.getElementById('q-quit').onclick=()=>go('start');
   renderQ();go('quiz');
 }
 function startReview(){
   if(!review.length){toast('まちがいはないよ！全部マスター🎉','#44cc88');return;}
-  reviewMode=true;summaryMode=false;flashcardMode=false;qList=review.slice(0,10).map(r=>({...r}));qIdx=0;qScore=0;qOk=0;
+  reviewMode=true;summaryMode=false;flashcardMode=false;lastMode='review';qList=review.slice(0,10).map(r=>({...r}));qIdx=0;qScore=0;qOk=0;
   document.getElementById('q-char').src=SENSEI_IMG;document.getElementById('q-charname').textContent='まちがい復習';
   document.getElementById('q-quit').onclick=()=>go('zukan');renderQ();go('quiz');}
 function renderQ(){const q=qList[qIdx];
@@ -930,6 +1042,9 @@ function mapAnswer(name,g){const q=qList[qIdx];const ok=name===q.a;
 }
 function nextQ(){qIdx++;qIdx>=qList.length?showResult():renderQ();}
 function showResult(){const total=qList.length;
+  const again=document.getElementById('res-again'),home=document.getElementById('res-home');
+  if(again)again.style.display=(lastMode==='flashcard')?'block':'none';
+  if(home)home.textContent=(lastMode==='entry')?'📚 図鑑に戻る':'🏠 ホームにもどる';
   if(flashcardMode){
     const pass=qOk>=Math.ceil(total*0.6);
     document.getElementById('res-em').textContent=qOk===total?'🏆':(pass?'🎉':'💪');
@@ -1193,7 +1308,8 @@ function sagaSeed(){return {id:'saga',subj:'shakai',title:'佐賀県',sub:'九�
   ]};}
 
 /* ===== カードコレクション ===== */
-function openCollection(){renderCollection();go('collection');}
+/* コレクションは index.html（先生トップ）に集約。ここでは飛ばすだけ。 */
+function openCollection(){location.href='/#collection';}
 
 
 function getMainAppCollection(){
@@ -1254,13 +1370,15 @@ async function init(){
   try{review=JSON.parse(localStorage.getItem(LS_REVIEW)||'[]');}catch(e){review=[];}
   await loadCards();
   setTab('shakai');updHdr();
+  dataReady=true;
+  renderStart();
   try{
     var params=new URLSearchParams(location.search);
     var mode=params.get('mode');
     var subj=params.get('subj');
-    if(subj==='rika'||subj==='shakai'){setTab(subj);}
-    if(mode==='flashcard'){
-      setTimeout(function(){startFlashcardTraining(currentTab);},100);
+    if(subj==='rika'||subj==='shakai'){setTab(subj);renderStart();}
+    if(mode==='flashcard'||mode==='quiz'){
+      setTimeout(function(){quickStart(currentTab);},100);
     }
   }catch(e){}
 }
