@@ -1591,7 +1591,17 @@ async function init(){
     quizbank=(await idbGet('quizbank'))||[];
   }catch(e){entries=null;materials={};quizbank=[];}
   if(!entries){entries=[sagaSeed()];saveEntries();}
-  try{const c=JSON.parse(localStorage.getItem(LS_CARDS)||'{}');collection=c.collection||{};answeredCount=c.answeredCount||0;}catch(e){}
+  try{
+    /* v2リセット：カード追加に伴い1回だけコレクションをリセット */
+    const RESET_KEY='sz_cards_reset_v2';
+    if(!localStorage.getItem(RESET_KEY)){
+      localStorage.removeItem(LS_CARDS);
+      localStorage.setItem(RESET_KEY,'1');
+      collection={};answeredCount=0;
+    }else{
+      const c=JSON.parse(localStorage.getItem(LS_CARDS)||'{}');collection=c.collection||{};answeredCount=c.answeredCount||0;
+    }
+  }catch(e){}
   try{review=JSON.parse(localStorage.getItem(LS_REVIEW)||'[]');}catch(e){review=[];}
   await loadCards();
   setTab('shakai');updHdr();
