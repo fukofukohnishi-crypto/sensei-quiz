@@ -93,14 +93,6 @@ button{cursor:pointer;font-family:inherit;border:none}
 .gc-name{font-size:1.1rem;font-weight:900;color:#fff;margin-top:12px}
 .gc-power{margin-top:10px;font-size:.76rem;line-height:1.7;color:#ddd;background:rgba(255,255,255,.06);border:1px solid rgba(255,255,255,.12);border-radius:12px;padding:12px 14px;text-align:left}
 .gc-ok{margin-top:16px;width:100%;padding:14px;border:none;border-radius:13px;font-family:inherit;font-weight:900;font-size:1rem;color:#1a0a00}
-
-/* ===== おとな用 演出プレビュー ===== */
-.prev-box{max-width:420px;margin:18px auto 4px;padding:12px 14px;border:1px dashed rgba(255,255,255,.16);border-radius:14px;background:rgba(255,255,255,.03);text-align:center}
-.prev-ttl{font-size:.76rem;font-weight:900;color:var(--muted);margin-bottom:4px}
-.prev-note{font-size:.64rem;font-weight:700;color:#666;line-height:1.5;margin-bottom:9px}
-.prev-sel{width:100%;padding:9px;border-radius:9px;border:1px solid var(--border);background:var(--card2);color:var(--text);font-family:inherit;font-size:.8rem;font-weight:800;margin-bottom:8px}
-.prev-btn{width:100%;padding:10px;border:none;border-radius:10px;font-family:inherit;font-weight:900;font-size:.84rem;color:#1a0a00;background:linear-gradient(135deg,var(--gold),#ff8844)}
-.prev-btn:active{transform:scale(.98)}
 .result-ttl{font-size:1.3rem;font-weight:900;margin-bottom:6px}
 .result-sub{font-size:.82rem;color:var(--muted);font-weight:700;margin-bottom:6px}
 .result-keyword{font-size:1.1rem;font-weight:900;color:var(--gold);margin-bottom:14px}
@@ -387,12 +379,6 @@ button{cursor:pointer;font-family:inherit;border:none}
         <span><i class="dot" style="background:#2a2a3e"></i>未挑戦</span>
         <span><i class="dot" style="background:#8a6a1e"></i>メダル集め中</span>
         <span><i class="dot" style="background:#caa000"></i>メダルクリア！</span>
-      </div>
-      <div class="prev-box">
-        <div class="prev-ttl">🎬 おとな用：演出プレビュー</div>
-        <div class="prev-note">守護神カード獲得の演出だけを再生します。カードは増えません。</div>
-        <select class="prev-sel" id="prev-sel"></select>
-        <button class="prev-btn" onclick="previewGuardian(document.getElementById('prev-sel').value)">演出を再生する</button>
       </div>
     </div>
   </div>
@@ -1178,116 +1164,6 @@ function showToast(msg){
 }
 
 function goMap(){ showScreen('map-screen'); renderMapState(); renderProgressLabel(); }
-/* 演出プレビュー用（カードは増えません） */
-function previewGuardian(code){
-  code=code||'31';
-  const d=PREF_DATA[code];
-  if(!d){ showToast('その県はデータがないよ'); return; }
-  showGuardianCardGet(code, d);
-}
-window.previewGuardian=previewGuardian;
-function fillPreviewSelect(){
-  const sel=document.getElementById('prev-sel');
-  if(!sel)return;
-  const codes=Object.keys(PREF_CARD_MAP).filter(c=>PREF_DATA[c]).sort();
-  sel.innerHTML=codes.map(c=>
-    '<option value="'+c+'">'+(PREF_NAMES[c]||c)+'　'+PREF_DATA[c].guardianName+'</option>'
-  ).join('');
-}
-
-function renderProgressLabel(){
-  let medalsGot = 0, totalMedals = 0;
-  Object.keys(PREF_DATA).forEach(code=>{
-    totalMedals += PREF_DATA[code].medals.length;
-    medalsGot += getPrefProgress(code).medals.filter(Boolean).length;
-  });
-  document.getElementById('progress-label').textContent = `メダル ${medalsGot}/${totalMedals}`;
-}
-
-function renderMapState(){
-  document.querySelectorAll('#japan-svg-map .prefecture').forEach(g=>{
-    const code = g.getAttribute('data-code');
-    g.classList.remove('p-partial','p-done','p-nodata');
-    if(!PREF_DATA[code]){ g.classList.add('p-nodata'); return; }
-    const prog = getPrefProgress(code);
-    if(prog.guardianGot) g.classList.add('p-done');
-    else if(prog.medals.some(Boolean)) g.classList.add('p-partial');
-  });
-}
-
-function openPrefDetail(code){
-  const data = PREF_DATA[code];
-  if(!data){ showToast((PREF_NAMES[code]||'この県')+'はじゅんびちゅう！'); return; }
-  currentPref = code;
-  renderPrefDetail(code);
-  showScreen('pref-detail-screen');
-}
-
-function closePrefDetail(){
-  showScreen('map-screen');
-  renderMapState();
-  renderProgressLabel();
-}
-
-function renderPrefDetail(code){
-  const data = PREF_DATA[code];
-  const prog = getPrefProgress(code);
-  const total = data.medals.length;
-  const gotCount = prog.medals.filter(Boolean).length;
-
-  document.getElementById('pd-title').textContent = data.name;
-  document.getElementById('pd-avatar').style.background = `radial-gradient(circle at 35% 30%,${data.color},#0a0a10)`;
-  document.getElementById('pd-avatar').textContent = data.emoji;
-  document.getElementById('pd-avatar').style.backgroundImage = '';
-  document.getElementById('pd-name').textContent = data.guardianName;
-  document.getElementById('pd-pref').textContent = data.name + 'の守護神';
-  document.getElementById('pd-progress').innerHTML = `メダル <b>${gotCount}/${total}</b>`;
-  document.getElementById('pd-guardian-banner').style.display = prog.guardianGot ? '' : 'none';
-
-  tryLoadImageInto(document.getElementById('pd-avatar'), data.guardianImage);
-
-  const row = document.getElementById('pd-medal-row');
-  row.innerHTML = '';
-  data.medals.forEach((m,i)=>{
-    const got = prog.medals[i];
-    const col = document.createElement('div');
-    col.className = 'pd-medal-col';
-    const slot = document.createElement('div');
-    slot.className = 'pd-medal-slot ' + (got ? 'got' : 'locked');
-    if(got && m.image){
-      slot.innerHTML = `<img src="${m.image}" alt="${m.keyword}" onerror="this.style.display='none';this.parentNode.textContent='🏅'">`;
-    }else{
-      slot.textContent = got ? '🏅' : '🔒';
-    }
-    if(got) slot.onclick = ()=>openMedalEnlarge(code, i);
-    else slot.onclick = ()=>showToast('クイズに正解すると手に入るよ！');
-    const label = document.createElement('div');
-    label.className = 'pd-medal-label';
-    label.textContent = got ? m.keyword : '？？？';
-    col.appendChild(slot);
-    col.appendChild(label);
-    row.appendChild(col);
-  });
-
-  const cta = document.getElementById('pd-cta-btn');
-  if(gotCount >= total){ cta.textContent = 'もう一度あそぶ →'; }
-  else { cta.textContent = 'クイズに挑戦する →'; }
-}
-
-function openMedalEnlarge(code, idx){
-  const data = PREF_DATA[code];
-  const m = data.medals[idx];
-  const body = document.getElementById('medal-enlarge-body');
-  const iconHtml = m.image
-    ? `<img src="${m.image}" alt="${m.keyword}" style="width:100%;height:100%;object-fit:cover;border-radius:50%" onerror="this.parentNode.textContent='🏅'">`
-    : '🏅';
-  body.innerHTML = `
-    <div class="medal-enlarge-icon">${iconHtml}</div>
-    <div class="medal-enlarge-keyword">${m.keyword}</div>
-    <div class="medal-enlarge-sub">${data.name}・${data.guardianName}のメダル</div>
-    <button class="album-close" onclick="closeMedalEnlarge()">とじる</button>`;
-  document.getElementById('medal-enlarge-overlay').classList.add('show');
-}
 function closeMedalEnlarge(){ document.getElementById('medal-enlarge-overlay').classList.remove('show'); }
 
 function goRevealForQuiz(){
@@ -1406,7 +1282,6 @@ document.querySelectorAll('#japan-svg-map .prefecture').forEach(g=>{
 });
 renderMapState();
 renderProgressLabel();
-fillPreviewSelect();
 </script>
 </body>
 </html>
