@@ -69,6 +69,38 @@ button{cursor:pointer;font-family:inherit;border:none}
 @media(min-width:600px){.medal{width:240px;height:240px;font-size:6rem}}
 .medal img{width:100%;height:100%;object-fit:cover}
 .medal.guardian{border-color:#ff2288;box-shadow:0 0 46px rgba(255,34,136,.4)}
+
+/* ===== 守護神カード獲得演出 ===== */
+.gc-ov{position:fixed;inset:0;z-index:99999;background:#05040a;display:flex;align-items:center;justify-content:center;overflow:hidden;padding:20px}
+.gc-ov::before{content:"";position:absolute;inset:-50%;background:conic-gradient(from 0deg,#ffd700,#ff8844,#ff2288,#7722cc,#ffd700);opacity:.12;animation:gc-spin 8s linear infinite}
+@keyframes gc-spin{to{transform:rotate(360deg)}}
+.gc-stage{position:relative;text-align:center;width:100%}
+.gc-lead{font-size:.95rem;font-weight:900;color:#ffd700;margin-bottom:26px;text-shadow:0 0 14px rgba(255,215,0,.7)}
+.gc-medals{position:relative;display:flex;flex-wrap:wrap;gap:8px;justify-content:center;max-width:320px;margin:0 auto}
+.gc-m{width:52px;height:52px;border-radius:50%;object-fit:cover;border:3px solid var(--gold);background:#1a1400;box-shadow:0 0 12px rgba(255,215,0,.45);transition:transform 1.1s cubic-bezier(.6,-0.3,.3,1.3),opacity .6s;transition-delay:var(--d)}
+.gc-medals.go .gc-m{transform:translate(calc(50% - 50vw + 26px),0) scale(.2);opacity:0}
+.gc-medals.go::after{content:"";position:absolute;left:50%;top:50%;width:16px;height:16px;margin:-8px 0 0 -8px;border-radius:50%;background:#fff;box-shadow:0 0 44px 18px rgba(255,215,0,.95);animation:gc-core 1.6s ease-in .3s forwards;opacity:0}
+@keyframes gc-core{0%{opacity:0;transform:scale(.3)}60%{opacity:1;transform:scale(1.5)}100%{opacity:1;transform:scale(3.2)}}
+.gc-flash{position:absolute;inset:0;background:#fff;opacity:0;pointer-events:none}
+.gc-flash.on{animation:gc-white .45s ease-out forwards}
+@keyframes gc-white{0%{opacity:0}25%{opacity:1}100%{opacity:0}}
+.gc-reveal{position:relative;display:none;text-align:center;max-width:340px;width:100%;max-height:100%;overflow-y:auto}
+.gc-reveal.on{display:block;animation:gc-up .55s ease-out}
+@keyframes gc-up{from{opacity:0;transform:scale(.84)}to{opacity:1;transform:scale(1)}}
+.gc-rank{font-size:.78rem;font-weight:900;letter-spacing:.12em;margin-bottom:4px}
+.gc-ttl{font-size:1.15rem;font-weight:900;color:#fff;margin-bottom:14px;text-shadow:0 0 16px rgba(255,215,0,.75)}
+.gc-big{width:76%;border-radius:14px;border:3px solid #dd44ff}
+.gc-name{font-size:1.1rem;font-weight:900;color:#fff;margin-top:12px}
+.gc-power{margin-top:10px;font-size:.76rem;line-height:1.7;color:#ddd;background:rgba(255,255,255,.06);border:1px solid rgba(255,255,255,.12);border-radius:12px;padding:12px 14px;text-align:left}
+.gc-ok{margin-top:16px;width:100%;padding:14px;border:none;border-radius:13px;font-family:inherit;font-weight:900;font-size:1rem;color:#1a0a00}
+
+/* ===== おとな用 演出プレビュー ===== */
+.prev-box{max-width:420px;margin:18px auto 4px;padding:12px 14px;border:1px dashed rgba(255,255,255,.16);border-radius:14px;background:rgba(255,255,255,.03);text-align:center}
+.prev-ttl{font-size:.76rem;font-weight:900;color:var(--muted);margin-bottom:4px}
+.prev-note{font-size:.64rem;font-weight:700;color:#666;line-height:1.5;margin-bottom:9px}
+.prev-sel{width:100%;padding:9px;border-radius:9px;border:1px solid var(--border);background:var(--card2);color:var(--text);font-family:inherit;font-size:.8rem;font-weight:800;margin-bottom:8px}
+.prev-btn{width:100%;padding:10px;border:none;border-radius:10px;font-family:inherit;font-weight:900;font-size:.84rem;color:#1a0a00;background:linear-gradient(135deg,var(--gold),#ff8844)}
+.prev-btn:active{transform:scale(.98)}
 .result-ttl{font-size:1.3rem;font-weight:900;margin-bottom:6px}
 .result-sub{font-size:.82rem;color:var(--muted);font-weight:700;margin-bottom:6px}
 .result-keyword{font-size:1.1rem;font-weight:900;color:var(--gold);margin-bottom:14px}
@@ -355,6 +387,12 @@ button{cursor:pointer;font-family:inherit;border:none}
         <span><i class="dot" style="background:#2a2a3e"></i>未挑戦</span>
         <span><i class="dot" style="background:#8a6a1e"></i>メダル集め中</span>
         <span><i class="dot" style="background:#caa000"></i>メダルクリア！</span>
+      </div>
+      <div class="prev-box">
+        <div class="prev-ttl">🎬 おとな用：演出プレビュー</div>
+        <div class="prev-note">守護神カード獲得の演出だけを再生します。カードは増えません。</div>
+        <select class="prev-sel" id="prev-sel"></select>
+        <button class="prev-btn" onclick="previewGuardian(document.getElementById('prev-sel').value)">演出を再生する</button>
       </div>
     </div>
   </div>
@@ -1045,6 +1083,56 @@ function awardGuardianCard(prefCode){
     return cardId;
   }catch(e){ return null; }
 }
+/* ===== 守護神カード獲得演出 ===== */
+let CARDS_DB = null;
+(function loadCardsDB(){
+  const urls=['/cards.json','/Cards.json'];
+  let i=0;
+  (function next(){
+    if(i>=urls.length){CARDS_DB=[];return;}
+    fetch(urls[i++]).then(r=>{if(!r.ok)throw 0;return r.json();})
+      .then(d=>{ if(Array.isArray(d)&&d.length)CARDS_DB=d; else next(); })
+      .catch(()=>next());
+  })();
+})();
+const RNAME_MAP=['','N','SR','SSR','R','伝説','神覚者','四天王'];
+const RCOL_MAP=['','#aaa','#44ccff','#ff8800','#dd44ff','#ff2288','#ffd700','#66ffee'];
+
+function showGuardianCardGet(prefCode, data){
+  const cardId=PREF_CARD_MAP[prefCode];
+  const card=(CARDS_DB||[]).find(c=>c.id===cardId)||{};
+  const col=RCOL_MAP[card.rarity||4]||'#dd44ff';
+  const img=card.imgUrl||data.guardianImage||'';
+  const medals=(data.medals||[]).slice(0,10);
+  const dots=medals.map((m,i)=>
+    '<img class="gc-m" style="--d:'+(i*0.06)+'s" src="'+(m.image||'')+'" alt="" onerror="this.style.visibility=\'hidden\'">'
+  ).join('');
+  const ov=document.createElement('div');
+  ov.className='gc-ov';
+  ov.innerHTML=
+    '<div class="gc-stage" id="gc-stage">'
+      +'<div class="gc-lead">メダル '+medals.length+' 個、すべて集まった！</div>'
+      +'<div class="gc-medals" id="gc-medals">'+dots+'</div>'
+    +'</div>'
+    +'<div class="gc-flash" id="gc-flash"></div>'
+    +'<div class="gc-reveal" id="gc-reveal">'
+      +'<div class="gc-rank" style="color:'+col+'">'+'★'.repeat(card.rarity||4)+' '+(RNAME_MAP[card.rarity||4]||'R')+'</div>'
+      +'<div class="gc-ttl">守護神カードをゲット！</div>'
+      +(img?'<img class="gc-big" style="border-color:'+col+';box-shadow:0 0 44px '+col+'88" src="'+img+'" alt="">':'')
+      +'<div class="gc-name">'+(card.name||(data.name+'守護神　'+data.guardianName))+'</div>'
+      +(card.power?'<div class="gc-power"><b style="color:'+col+'">⚡ ひっさつわざ</b><br>'+card.power+'</div>':'')
+      +'<button class="gc-ok" id="gc-ok" style="background:linear-gradient(135deg,'+col+',#ffd700)">コレクションに入れる</button>'
+    +'</div>';
+  document.body.appendChild(ov);
+  setTimeout(()=>{ov.querySelector('#gc-medals').classList.add('go');},350);
+  setTimeout(()=>{ov.querySelector('#gc-flash').classList.add('on');},1750);
+  setTimeout(()=>{
+    ov.querySelector('#gc-stage').style.display='none';
+    ov.querySelector('#gc-reveal').classList.add('on');
+  },2150);
+  ov.querySelector('#gc-ok').onclick=()=>ov.remove();
+}
+
 let currentPref = null, currentMedalIdx = null;
 
 /* 全47都道府県名（データ未整備の県もアルバムに「？」として並べるため） */
@@ -1090,6 +1178,22 @@ function showToast(msg){
 }
 
 function goMap(){ showScreen('map-screen'); renderMapState(); renderProgressLabel(); }
+/* 演出プレビュー用（カードは増えません） */
+function previewGuardian(code){
+  code=code||'31';
+  const d=PREF_DATA[code];
+  if(!d){ showToast('その県はデータがないよ'); return; }
+  showGuardianCardGet(code, d);
+}
+window.previewGuardian=previewGuardian;
+function fillPreviewSelect(){
+  const sel=document.getElementById('prev-sel');
+  if(!sel)return;
+  const codes=Object.keys(PREF_CARD_MAP).filter(c=>PREF_DATA[c]).sort();
+  sel.innerHTML=codes.map(c=>
+    '<option value="'+c+'">'+(PREF_NAMES[c]||c)+'　'+PREF_DATA[c].guardianName+'</option>'
+  ).join('');
+}
 
 function renderProgressLabel(){
   let medalsGot = 0, totalMedals = 0;
@@ -1278,6 +1382,7 @@ function onQuizCorrect(){
     if(awarded){
       document.getElementById('result-sub').textContent += `\n🎴 守護神カード「${data.guardianName}」をコレクションに追加！`;
     }
+    setTimeout(()=>showGuardianCardGet(currentPref, data), 700);
   }else{
     medalEl.classList.remove('guardian');
     if(m.image){ medalEl.innerHTML = `<img src="${m.image}" alt="${m.keyword}" onerror="this.style.display='none';this.parentNode.textContent='🏅'">`; }
@@ -1301,6 +1406,7 @@ document.querySelectorAll('#japan-svg-map .prefecture').forEach(g=>{
 });
 renderMapState();
 renderProgressLabel();
+fillPreviewSelect();
 </script>
 </body>
 </html>
