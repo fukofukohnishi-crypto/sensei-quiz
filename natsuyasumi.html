@@ -878,11 +878,20 @@ function drawReward(featured,perfect){
   const isNew=!collection[card.id];
   collection[card.id]=(collection[card.id]||0)+1;saveCards();return {card,isNew};
 }
+function cardImgFB(el){
+  var s=el.getAttribute('src')||'';
+  if(!el.getAttribute('data-tried')){
+    el.setAttribute('data-tried','1');
+    if(s.indexOf('/card/')===0){el.src=s.replace('/card/','/card-images/');return true;}
+    if(s.indexOf('/card-images/')===0){el.src=s.replace('/card-images/','/card/');return true;}
+  }
+  el.style.display='none';return false;
+}
 function showCardGet(card,isNew){
   const col=RCOL[card.rarity]||'#aaa';const ov=document.createElement('div');
   ov.style.cssText='position:fixed;inset:0;z-index:99999;display:flex;align-items:center;justify-content:center;background:rgba(0,0,0,.86);backdrop-filter:blur(6px)';
   const fb='<div style=\"width:100%;height:100%;display:flex;align-items:center;justify-content:center;font-size:2.6rem;background:radial-gradient(circle at 50% 35%,'+col+'33,#0d0d20)\">🎴</div>';
-  const art=card.imgUrl?('<img src="'+card.imgUrl+'" style="width:100%;height:100%;object-fit:cover" onerror="this.parentNode.innerHTML=\''+fb.replace(/'/g,"\\'")+'\'">'):fb;
+  const art=card.imgUrl?('<img src="'+card.imgUrl+'" style="width:100%;height:100%;object-fit:cover" onerror="if(cardImgFB(this))return;this.parentNode.innerHTML=\''+fb.replace(/'/g,"\\'")+'\'">'):fb;
   ov.innerHTML='<div style="background:linear-gradient(135deg,#1a1a2e,#0d0d20);border:3px solid '+col+';border-radius:24px;padding:22px 20px;max-width:300px;width:88%;text-align:center;animation:fadeup .35s"><div style="font-size:.8rem;font-weight:900;letter-spacing:2px;color:'+col+';margin-bottom:8px">🎴 カードゲット！</div><div style="font-size:.74rem;font-weight:700;color:'+col+'">'+'★'.repeat(card.rarity)+' '+RNAME[card.rarity]+'</div><div style="font-size:1.25rem;font-weight:900;margin:2px 0 12px">'+card.name+'</div><div style="width:150px;height:200px;margin:0 auto 12px;border-radius:14px;overflow:hidden;border:3px solid '+col+'">'+art+'</div><div style="display:inline-block;background:'+(isNew?col:'rgba(255,255,255,.1)')+';color:'+(isNew?'#fff':'#999')+';border-radius:99px;padding:4px 16px;font-size:.76rem;font-weight:900;margin-bottom:14px">'+(isNew?'NEW！':'所持カード')+'</div><button id="cgc" style="width:100%;padding:13px;border:none;border-radius:13px;font-family:inherit;font-weight:900;font-size:1rem;color:#fff;background:linear-gradient(135deg,'+col+',#ffd700)">OK！</button></div>';
   document.body.appendChild(ov);ov.querySelector('#cgc').onclick=()=>{ov.remove();updHdr();if(typeof pendingFusion!=='undefined'&&pendingFusion){pendingFusion=false;setTimeout(tryFusion,250);}};
 }
@@ -1132,7 +1141,7 @@ function showFusion(card){
     +'<div class="fuse-flash" id="fuse-flash"></div>'
     +'<div class="fuse-reveal" id="fuse-reveal">'
       +'<div class="fuse-rank">∞ SUPREME RARE ∞</div>'
-      +'<div class="fuse-name">四天王　鍵の継承者たち</div>'
+      +'<div class="fuse-name">'+(card.name||'')+'</div>'
       +'<img class="fuse-big" src="'+(card.imgUrl||'')+'" alt="">'
       +'<div class="fuse-quote">四つの意志が一つになる時、<br>すべての扉が開かれる。</div>'
       +'<button class="fuse-ok" id="fuse-ok">受け取る</button>'
@@ -1754,7 +1763,7 @@ function renderCollection(){
     const o=list.filter(c=>merged[c.id]).length;
     html+='<div class="col-rar"><span style="color:'+RCOL[r]+'">'+'★'.repeat(r)+' '+RNAME[r]+'</span><span class="rc">'+o+' / '+list.length+'</span></div><div class="col-grid">';
     list.forEach(c=>{const own=merged[c.id];
-      if(own){html+='<div class="col-tile" style="border-color:'+RCOL[r]+'" data-id="'+c.id+'">'+(c.imgUrl?'<img src="'+c.imgUrl+'" onerror="this.style.display=\'none\'">':'')+(own>1?'<div class="cnt">×'+own+'</div>':'')+'</div>';}
+      if(own){html+='<div class="col-tile" style="border-color:'+RCOL[r]+'" data-id="'+c.id+'">'+(c.imgUrl?'<img src="'+c.imgUrl+'" onerror="cardImgFB(this)">':'')+(own>1?'<div class="cnt">×'+own+'</div>':'')+'</div>';}
       else{html+='<div class="col-tile locked">？</div>';}});
     html+='</div>';
   }
@@ -1766,7 +1775,7 @@ function showCardDetail(card){
   const ov=document.createElement('div');
   ov.style.cssText='position:fixed;inset:0;z-index:99999;display:flex;align-items:center;justify-content:center;background:rgba(0,0,0,.88);backdrop-filter:blur(6px);padding:24px';
   ov.innerHTML='<div style="max-width:320px;width:100%;text-align:center;animation:fadeup .3s">'
-    +(card.imgUrl?'<img src="'+card.imgUrl+'" style="width:78%;border-radius:14px;border:3px solid '+col+'" onerror="this.style.display=\'none\'">':'')
+    +(card.imgUrl?'<img src="'+card.imgUrl+'" style="width:78%;border-radius:14px;border:3px solid '+col+'" onerror="cardImgFB(this)">':'')
     +'<div style="color:'+col+';font-weight:900;font-size:.8rem;margin-top:12px">'+'★'.repeat(card.rarity)+' '+RNAME[card.rarity]+'</div>'
     +'<div style="font-size:1.3rem;font-weight:900;margin:2px 0 10px">'+card.name+'</div>'
     +(card.power?'<div style="font-size:.82rem;color:#ddd;line-height:1.7;background:var(--card);border-radius:12px;padding:12px 14px;text-align:left;border:1px solid var(--border)"><b style="color:'+col+'">⚡ ひっさつわざ</b><br>'+card.power+'</div>':'')
