@@ -175,6 +175,16 @@ body.viewing-collection .wrap{display:none}
   var RNAME=['','N','SR','SSR','R','伝説','神覚者','四天王'];
   var RCOL=['','#aaaaaa','#44ccff','#ff8800','#dd44ff','#ff2288','#ffd700','#66ffee'];
   var CARDS=null, loading=false;
+  function cardImgFB(el){
+    var s=el.getAttribute('src')||'';
+    if(!el.getAttribute('data-tried')){
+      el.setAttribute('data-tried','1');
+      if(s.indexOf('/card/')===0){el.src=s.replace('/card/','/card-images/');return;}
+      if(s.indexOf('/card-images/')===0){el.src=s.replace('/card-images/','/card/');return;}
+    }
+    el.style.display='none';
+  }
+  window.cardImgFB=cardImgFB;
 
   /* 各アプリの保存先からコレクションを読む */
   /* v2リセット：カード追加に伴い全コレクションを1回だけリセット */
@@ -273,7 +283,7 @@ body.viewing-collection .wrap{display:none}
         var own=mg[c.id];
         if(own){
           html+='<div class="col-tile" style="border-color:'+RCOL[r]+'" data-id="'+esc(c.id)+'">'
-            +(c.imgUrl?'<img src="'+esc(c.imgUrl)+'" alt="" onerror="this.style.display=\'none\'">':'')
+            +(c.imgUrl?'<img src="'+esc(c.imgUrl)+'" alt="" onerror="cardImgFB(this)">':'')
             +(own>1?'<div class="cnt">×'+own+'</div>':'')+'</div>';
         }else{
           html+='<div class="col-tile locked">？</div>';
@@ -297,7 +307,7 @@ body.viewing-collection .wrap{display:none}
     var ov=document.createElement('div');
     ov.style.cssText='position:fixed;inset:0;z-index:99999;display:flex;align-items:center;justify-content:center;background:rgba(0,0,0,.88);backdrop-filter:blur(6px);padding:24px';
     ov.innerHTML='<div style="max-width:320px;width:100%;text-align:center;animation:cdup .3s">'
-      +(card.imgUrl?'<img src="'+esc(card.imgUrl)+'" alt="" style="width:78%;border-radius:14px;border:3px solid '+col+'" onerror="this.style.display=\'none\'">':'')
+      +(card.imgUrl?'<img src="'+esc(card.imgUrl)+'" alt="" style="width:78%;border-radius:14px;border:3px solid '+col+'" onerror="cardImgFB(this)">':'')
       +'<div style="color:'+col+';font-weight:900;font-size:.8rem;margin-top:12px">'+new Array(card.rarity+1).join('★')+' '+RNAME[card.rarity]+'</div>'
       +'<div style="font-size:1.3rem;font-weight:900;margin:2px 0 10px">'+esc(card.name)+'</div>'
       +(card.power?'<div style="font-size:.82rem;color:#ddd;line-height:1.7;background:var(--card);border-radius:12px;padding:12px 14px;text-align:left;border:1px solid var(--border)"><b style="color:'+col+'">⚡ ひっさつわざ</b><br>'+esc(card.power)+'</div>':'')
