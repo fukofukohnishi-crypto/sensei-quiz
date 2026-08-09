@@ -23,6 +23,41 @@ button{cursor:pointer;font-family:inherit}
 .body{flex:1;overflow-y:auto;-webkit-overflow-scrolling:touch;padding:14px 14px 44px}
 .bigbtn{width:100%;padding:16px;border:none;border-radius:14px;font-weight:900;font-size:1.05rem;color:#1a0a00;background:linear-gradient(135deg,var(--gold),#ff6b35)}
 .bigbtn:active{transform:scale(.98)}.bigbtn.blue{color:#fff;background:linear-gradient(135deg,#6699ff,#2244cc)}.bigbtn:disabled{opacity:.45}
+.chal-btn{display:flex;flex-direction:column;align-items:center;gap:3px;color:#fff;background:linear-gradient(135deg,#ff2288,#7722cc);margin-bottom:10px}
+.chal-btn .chal-ttl{font-size:1.05rem;font-weight:900;line-height:1.2}
+.chal-btn .chal-sub{font-size:.72rem;font-weight:800;opacity:.85}
+.chal-btn.done{background:linear-gradient(135deg,#ffd700,#ff8ad4 60%,#9b7bff);color:#1a0a00}
+.chal-sec{margin-top:18px;padding:14px;border:1px solid rgba(255,34,136,.35);border-radius:16px;background:rgba(255,34,136,.06)}
+.chal-head{font-size:.95rem;font-weight:900;color:#ff8ad4;margin-bottom:6px}
+.chal-note{font-size:.7rem;font-weight:700;color:var(--muted);line-height:1.6;margin-bottom:12px}
+
+/* ===== 四天王 融合演出 ===== */
+.fuse-ov{position:fixed;inset:0;z-index:100000;background:#04040a;display:flex;align-items:center;justify-content:center;overflow:hidden}
+.fuse-ov::before{content:"";position:absolute;inset:-50%;background:conic-gradient(from 0deg,#ff2288,#ffd700,#44ffcc,#7722cc,#ff2288);opacity:.13;animation:fuse-spin 7s linear infinite}
+@keyframes fuse-spin{to{transform:rotate(360deg)}}
+.fuse-stage{position:relative;text-align:center;padding:20px;width:100%}
+.fuse-lead{font-size:.9rem;font-weight:900;color:#ffd700;letter-spacing:.08em;margin-bottom:26px;text-shadow:0 0 14px rgba(255,215,0,.7);animation:fuse-fade .8s}
+@keyframes fuse-fade{from{opacity:0;transform:translateY(8px)}to{opacity:1}}
+.fuse-pair{position:relative;display:flex;align-items:center;justify-content:center;gap:26px}
+.fuse-c{width:34%;max-width:150px;border-radius:10px;border:2px solid #ffd700;box-shadow:0 0 26px rgba(255,215,0,.55);transition:transform 1.5s cubic-bezier(.6,-0.3,.3,1.4),opacity .5s 1.2s}
+.fuse-pair .fuse-c:first-child{transform:translateX(0) rotate(-6deg)}
+.fuse-pair .fuse-c:last-child{transform:translateX(0) rotate(6deg)}
+.fuse-pair.merge .fuse-c:first-child{transform:translateX(58%) rotate(0);opacity:.25}
+.fuse-pair.merge .fuse-c:last-child{transform:translateX(-58%) rotate(0);opacity:.25}
+.fuse-core{position:absolute;left:50%;top:50%;width:14px;height:14px;margin:-7px 0 0 -7px;border-radius:50%;background:#fff;box-shadow:0 0 40px 16px rgba(255,215,0,.9);opacity:0}
+.fuse-pair.merge .fuse-core{animation:fuse-core 1.8s ease-in forwards}
+@keyframes fuse-core{0%{opacity:0;transform:scale(.3)}60%{opacity:1;transform:scale(1.6)}100%{opacity:1;transform:scale(3.4)}}
+.fuse-flash{position:absolute;inset:0;background:#fff;opacity:0;pointer-events:none}
+.fuse-flash.on{animation:fuse-white .5s ease-out forwards}
+@keyframes fuse-white{0%{opacity:0}25%{opacity:1}100%{opacity:0}}
+.fuse-reveal{position:relative;display:none;text-align:center;padding:24px 20px;max-width:360px;width:100%}
+.fuse-reveal.on{display:block;animation:fuse-up .6s ease-out}
+@keyframes fuse-up{from{opacity:0;transform:scale(.82)}to{opacity:1;transform:scale(1)}}
+.fuse-rank{font-size:.78rem;font-weight:900;letter-spacing:.16em;margin-bottom:6px;background:linear-gradient(90deg,#ff2288,#ffd700,#44ffcc,#7722cc);-webkit-background-clip:text;background-clip:text;color:transparent}
+.fuse-name{font-size:1.35rem;font-weight:900;color:#fff;margin-bottom:14px;text-shadow:0 0 18px rgba(255,215,0,.8)}
+.fuse-big{width:82%;border-radius:14px;border:3px solid #ffd700;box-shadow:0 0 46px rgba(255,215,0,.75)}
+.fuse-quote{margin-top:14px;font-size:.8rem;font-weight:800;color:#ffe9a8;line-height:1.8}
+.fuse-ok{margin-top:18px;width:100%;padding:14px;border:none;border-radius:13px;font-family:inherit;font-weight:900;font-size:1rem;color:#1a0a00;background:linear-gradient(135deg,#ffd700,#ff8ad4 55%,#9b7bff)}
 
 .kvwrap{position:relative;border-radius:18px;overflow:hidden;margin-bottom:14px;border:1px solid var(--border)}
 .kvwrap img{width:100%;display:block}
@@ -222,6 +257,19 @@ button{cursor:pointer;font-family:inherit}
         <button class="st-btn shakai" id="st-btn-shakai" onclick="quickStart('shakai')"><span class="e">🗾</span><span class="lb"><b>社会</b><small id="st-n-shakai">じゅんび中…</small></span><span class="go">›</span></button>
       </div>
       <button class="reviewbtn" id="reviewbtn2" onclick="startReview()"><span class="ic">🔁</span><span class="t">まちがい復習</span><span class="n" id="review-n2">0</span></button>
+
+      <div class="chal-sec">
+        <div class="chal-head">🔥 50問連続チャレンジ</div>
+        <div class="chal-note">1問でもまちがえたら0にもどるよ。<br>50問れんぞくでここだけの「神覚者」カードがもらえる！</div>
+        <button class="bigbtn chal-btn" id="chal-btn-rika" onclick="startChallenge('rika')">
+          <span class="chal-ttl">🔬 理科に挑戦</span>
+          <span class="chal-sub" id="chal-sub-rika">連続 0 / 50</span>
+        </button>
+        <button class="bigbtn chal-btn" id="chal-btn-shakai" onclick="startChallenge('shakai')">
+          <span class="chal-ttl">🗾 社会に挑戦</span>
+          <span class="chal-sub" id="chal-sub-shakai">連続 0 / 50</span>
+        </button>
+      </div>
     </div>
   </div>
 
@@ -242,7 +290,11 @@ button{cursor:pointer;font-family:inherit}
       </div>
       <div class="zsec-head"><b id="zsec-name"></b><span id="zsec-count"></span></div>
       <button class="bigbtn blue" id="summary-test-btn" style="margin:2px 0 8px" onclick="startSummaryQuiz(currentTab)"></button>
-      <button class="bigbtn" style="margin:0 0 14px;background:linear-gradient(135deg,#ffaa44,#ff6b35);color:#1a0a00" id="flashcard-btn" onclick="startFlashcardTraining(currentTab)">🌻 夏休み特訓</button>
+      <button class="bigbtn" style="margin:0 0 8px;background:linear-gradient(135deg,#ffaa44,#ff6b35);color:#1a0a00" id="flashcard-btn" onclick="startFlashcardTraining(currentTab)">🌻 夏休み特訓</button>
+      <button class="bigbtn chal-btn" style="margin:0 0 14px" id="challenge-btn" onclick="startChallenge(currentTab)">
+        <span class="chal-ttl">🔥 50問連続チャレンジ</span>
+        <span class="chal-sub" id="chal-sub">連続 0 / 50</span>
+      </button>
       <div class="grid" id="zgrid"></div>
     </div>
   </div>
@@ -724,6 +776,41 @@ function saveEntries(){idbSet('entries',entries);}
 function saveMaterials(){idbSet('materials',materials);}
 function saveQuizbank(){idbSet('quizbank',quizbank);}
 const LS_CARDS='sz_cards_v1',LS_REVIEW='sz_review_v1';
+
+/* ===== 50問連続チャレンジ ===== */
+const CHALLENGE_GOAL=50;
+const CHALLENGE_CARD={rika:'sp01',shakai:'sp02'};   /* ここでしか出ない専用カード（神覚者） */
+const FUSION_CARD='sp03';                            /* 2枚そろうと融合で出現する四天王 */
+let pendingFusion=false;
+const LS_CHALLENGE='sz_challenge_v1';
+let challenge={rika:{streak:0,best:0,cleared:false},shakai:{streak:0,best:0,cleared:false}};
+let challengeMode=false, challengeSubj='rika';
+function loadChallenge(){
+  try{
+    const d=JSON.parse(localStorage.getItem(LS_CHALLENGE)||'{}');
+    ['rika','shakai'].forEach(s=>{ if(d[s])challenge[s]=Object.assign(challenge[s],d[s]); });
+  }catch(e){}
+}
+function saveChallenge(){try{localStorage.setItem(LS_CHALLENGE,JSON.stringify(challenge));}catch(e){}}
+function isChallengeCard(id){return id===CHALLENGE_CARD.rika||id===CHALLENGE_CARD.shakai||id===FUSION_CARD;}
+function awardChallengeCard(subj){
+  const card=(CARDS||[]).find(c=>c.id===CHALLENGE_CARD[subj]);
+  if(!card)return null;
+  const isNew=!collection[card.id];
+  collection[card.id]=(collection[card.id]||0)+1;
+  saveCards();
+  return {card:card,isNew:isNew};
+}
+/* 学王＋教王 がそろったら四天王が誕生する */
+function tryFusion(){
+  if(!collection[CHALLENGE_CARD.rika]||!collection[CHALLENGE_CARD.shakai])return false;
+  if(collection[FUSION_CARD])return false;
+  const card=(CARDS||[]).find(c=>c.id===FUSION_CARD);
+  if(!card)return false;
+  collection[card.id]=1;saveCards();
+  showFusion(card);
+  return true;
+}
 // 理社専用のコレクション。メインアプリ（sensei-gacha-v1）とは別管理。
 // ガチャ機能がないので「10問答えるごとに1枚」で直接カードを獲得する。
 function saveCards(){localStorage.setItem(LS_CARDS,JSON.stringify({collection,answeredCount}));}
@@ -762,7 +849,7 @@ let CARDS=[];
 let currentTab='shakai';
 
 /* ===== カード ===== */
-const RNAME=['','N','SR','SSR','R','伝説'],RCOL=['','#aaa','#44ccff','#ff8800','#dd44ff','#ff2288'];
+const RNAME=['','N','SR','SSR','R','伝説','神覚者','四天王'],RCOL=['','#aaa','#44ccff','#ff8800','#dd44ff','#ff2288','#ffd700','#66ffee'];
 const FALLBACK_CARDS=[{id:'l015',char:'koorihiramon',rarity:5,name:'氷火羅門先生',imgUrl:''},{id:'sr004',char:'kaga',rarity:2,name:'カガ先生',imgUrl:''},{id:'sr001',char:'zanpanman',rarity:2,name:'ザンパンマン先生',imgUrl:''},{id:'n004',char:'kaga',rarity:1,name:'カガ先生',imgUrl:''},{id:'n001',char:'zanpanman',rarity:1,name:'ザンパンマン先生',imgUrl:''}];
 async function loadCards(){
   for(const u of ['/cards.json','/Cards.json']){
@@ -780,7 +867,7 @@ function pickCard(pool,featured){
 }
 function drawReward(featured,perfect){
   // レアリティによる当選確率は廃止。全カードから均等ランダムに選ぶ（画像があるものだけ）
-  let pool=CARDS.filter(c=>c.imgUrl);
+  let pool=CARDS.filter(c=>c.imgUrl&&!isChallengeCard(c.id));
   if(!pool.length)pool=CARDS.slice();
   let card=pickCard(pool,featured);
   if(perfect){
@@ -797,14 +884,14 @@ function showCardGet(card,isNew){
   const fb='<div style=\"width:100%;height:100%;display:flex;align-items:center;justify-content:center;font-size:2.6rem;background:radial-gradient(circle at 50% 35%,'+col+'33,#0d0d20)\">🎴</div>';
   const art=card.imgUrl?('<img src="'+card.imgUrl+'" style="width:100%;height:100%;object-fit:cover" onerror="this.parentNode.innerHTML=\''+fb.replace(/'/g,"\\'")+'\'">'):fb;
   ov.innerHTML='<div style="background:linear-gradient(135deg,#1a1a2e,#0d0d20);border:3px solid '+col+';border-radius:24px;padding:22px 20px;max-width:300px;width:88%;text-align:center;animation:fadeup .35s"><div style="font-size:.8rem;font-weight:900;letter-spacing:2px;color:'+col+';margin-bottom:8px">🎴 カードゲット！</div><div style="font-size:.74rem;font-weight:700;color:'+col+'">'+'★'.repeat(card.rarity)+' '+RNAME[card.rarity]+'</div><div style="font-size:1.25rem;font-weight:900;margin:2px 0 12px">'+card.name+'</div><div style="width:150px;height:200px;margin:0 auto 12px;border-radius:14px;overflow:hidden;border:3px solid '+col+'">'+art+'</div><div style="display:inline-block;background:'+(isNew?col:'rgba(255,255,255,.1)')+';color:'+(isNew?'#fff':'#999')+';border-radius:99px;padding:4px 16px;font-size:.76rem;font-weight:900;margin-bottom:14px">'+(isNew?'NEW！':'所持カード')+'</div><button id="cgc" style="width:100%;padding:13px;border:none;border-radius:13px;font-family:inherit;font-weight:900;font-size:1rem;color:#fff;background:linear-gradient(135deg,'+col+',#ffd700)">OK！</button></div>';
-  document.body.appendChild(ov);ov.querySelector('#cgc').onclick=()=>{ov.remove();updHdr();};
+  document.body.appendChild(ov);ov.querySelector('#cgc').onclick=()=>{ov.remove();updHdr();if(typeof pendingFusion!=='undefined'&&pendingFusion){pendingFusion=false;setTimeout(tryFusion,250);}};
 }
 
 /* ===== 画面遷移 ===== */
 let prevScreen='start',dataReady=false;
 function go(id){document.querySelectorAll('.screen').forEach(s=>s.classList.remove('active'));document.getElementById(id).classList.add('active');if(id==='zukan')renderZukan();if(id==='start')renderStart();}
 function backHome(){go(lastMode==='flashcard'?'start':(lastMode==='entry'?'zukan':'start'));}
-function againQuiz(){const sj=summarySubj||currentTab;if(lastMode==='flashcard'){quickStart(sj);}else{backHome();}}
+function againQuiz(){const sj=summarySubj||currentTab;if(lastMode==='challenge'){startChallenge(challengeSubj);}else if(lastMode==='flashcard'){quickStart(sj);}else{backHome();}}
 function closeCollection(){go('start');}
 function toast(m,c){const t=document.getElementById('toast');t.textContent=m;t.style.background=c||'#44cc88';t.classList.add('show');clearTimeout(window._t);window._t=setTimeout(()=>t.classList.remove('show'),2600);}
 function updHdr(){const ccEl=document.getElementById('cc');if(ccEl)ccEl.textContent=colCount();
@@ -826,6 +913,7 @@ function renderStart(){
     if(bt)bt.disabled=(n===0);
     el.textContent=n?('全'+n+'問から10問 出るよ'):'まだ問題がないよ';
   });
+  updChallengeBtn();
 }
 function quickStart(subj){
   if(!dataReady){toast('じゅんび中…もう一度タップしてね','#ffaa44');return;}
@@ -845,6 +933,7 @@ function renderZukan(){
   const n=Math.min(50,totalQ);
   btn.textContent='🏆 '+(currentTab==='shakai'?'社会':'理科')+n+'問まとめテスト';
   btn.disabled=totalQ===0;
+  updChallengeBtn();
   const grid=document.getElementById('zgrid');grid.innerHTML='';
   if(!list.length){grid.innerHTML='<div class="empty" style="grid-column:1/3">まだ読み物がないよ。<br>おとなの人に ⚙️ から作ってもらおう！</div>';return;}
   list.forEach(e=>{const d=document.createElement('div');d.className='zcard';d.onclick=()=>openReader(e);
@@ -986,13 +1075,107 @@ function startFlashcardTraining(subj){
   document.getElementById('q-quit').onclick=()=>go('start');
   renderQ();go('quiz');
 }
+function updChallengeBtn(){
+  ['rika','shakai'].forEach(sj=>{
+    const b=document.getElementById('chal-btn-'+sj),s=document.getElementById('chal-sub-'+sj);
+    if(!b||!s)return;
+    const st=challenge[sj]||{streak:0,best:0,cleared:false};
+    b.className='bigbtn chal-btn'+(st.cleared?' done':'');
+    s.textContent=st.cleared
+      ? ('クリア済み ★ 自己ベスト '+st.best+'問')
+      : ('連続 '+st.streak+' / '+CHALLENGE_GOAL+'　（自己ベスト '+st.best+'）');
+    b.disabled=!dataReady||countFlash(sj)<5;
+  });
+  const zb=document.getElementById('challenge-btn'),zs=document.getElementById('chal-sub');
+  if(zb&&zs){
+    const st=challenge[currentTab]||{streak:0,best:0,cleared:false};
+    zb.className='bigbtn chal-btn'+(st.cleared?' done':'');
+    zs.textContent=st.cleared
+      ? ('クリア済み ★ 自己ベスト '+st.best+'問')
+      : ('連続 '+st.streak+' / '+CHALLENGE_GOAL+'　（自己ベスト '+st.best+'）');
+    zb.disabled=countFlash(currentTab)<5;
+  }
+}
+function startChallenge(subj){
+  const all=flashPool(subj);
+  if(all.length<5){toast('まだ問題が足りないよ','#ffaa44');return;}
+  let pool=all.filter(flashUsable);
+  if(pool.length<5)pool=all;
+  const st=challenge[subj];
+  const need=CHALLENGE_GOAL-st.streak;
+  let list=[];
+  while(list.length<need){ list=list.concat(pool.slice().sort(()=>Math.random()-.5)); }
+  qList=list.slice(0,need).map(prepFlash);
+  qIdx=0;qScore=0;qOk=0;
+  reviewMode=false;summaryMode=false;flashcardMode=true;challengeMode=true;
+  challengeSubj=subj;summarySubj=subj;lastMode='challenge';
+  document.getElementById('q-char').src=TEACHER_IMG[defTeacher(subj)];
+  document.getElementById('q-charname').textContent=(subj==='shakai'?'社会':'理科')+' 50問連続チャレンジ';
+  document.getElementById('q-quit').onclick=()=>{challengeMode=false;flashcardMode=false;go('zukan');};
+  renderQ();go('quiz');
+}
+/* ===== 四天王 融合演出 ===== */
+function showFusion(card){
+  const a=(CARDS||[]).find(c=>c.id===CHALLENGE_CARD.rika)||{};
+  const b=(CARDS||[]).find(c=>c.id===CHALLENGE_CARD.shakai)||{};
+  const ov=document.createElement('div');
+  ov.className='fuse-ov';
+  ov.innerHTML=
+    '<div class="fuse-stage" id="fuse-stage">'
+    +'<div class="fuse-lead" id="fuse-lead">二つの神格が、共鳴をはじめた…</div>'
+    +'<div class="fuse-pair" id="fuse-pair">'
+      +'<img class="fuse-c" src="'+(a.imgUrl||'')+'" alt="">'
+      +'<div class="fuse-core"></div>'
+      +'<img class="fuse-c" src="'+(b.imgUrl||'')+'" alt="">'
+    +'</div>'
+    +'</div>'
+    +'<div class="fuse-flash" id="fuse-flash"></div>'
+    +'<div class="fuse-reveal" id="fuse-reveal">'
+      +'<div class="fuse-rank">∞ SUPREME RARE ∞</div>'
+      +'<div class="fuse-name">四天王　鍵の継承者たち</div>'
+      +'<img class="fuse-big" src="'+(card.imgUrl||'')+'" alt="">'
+      +'<div class="fuse-quote">四つの意志が一つになる時、<br>すべての扉が開かれる。</div>'
+      +'<button class="fuse-ok" id="fuse-ok">受け取る</button>'
+    +'</div>';
+  document.body.appendChild(ov);
+  const lead=ov.querySelector('#fuse-lead');
+  setTimeout(()=>{ov.querySelector('#fuse-pair').classList.add('merge');},900);
+  setTimeout(()=>{lead.textContent='絆が、ひとつの鍵になる——';},1700);
+  setTimeout(()=>{ov.querySelector('#fuse-flash').classList.add('on');},2600);
+  setTimeout(()=>{
+    ov.querySelector('#fuse-stage').style.display='none';
+    ov.querySelector('#fuse-reveal').classList.add('on');
+  },3050);
+  ov.querySelector('#fuse-ok').onclick=()=>{ov.remove();renderStart();};
+}
+function showChallengeResult(cleared){
+  const st=challenge[challengeSubj];
+  const subjName=challengeSubj==='shakai'?'社会':'理科';
+  challengeMode=false;flashcardMode=false;
+  document.getElementById('res-em').textContent=cleared?'🏆':'💥';
+  document.getElementById('res-ttl').textContent=cleared?(subjName+' 50問連続クリア！！'):'連続ストップ…';
+  document.getElementById('res-score').textContent=(cleared?CHALLENGE_GOAL:0)+' / '+CHALLENGE_GOAL;
+  document.getElementById('res-unlock').style.display='none';
+  const again=document.getElementById('res-again');if(again)again.style.display='block';
+  const home=document.getElementById('res-home');if(home)home.textContent='🏠 ホームにもどる';
+  if(cleared){
+    document.getElementById('res-msg').textContent='ここでしか手に入らない特別カードをゲット！';
+    const r=awardChallengeCard(challengeSubj);
+    pendingFusion=!!(collection[CHALLENGE_CARD.rika]&&collection[CHALLENGE_CARD.shakai]&&!collection[FUSION_CARD]);
+    if(r)setTimeout(()=>showCardGet(r.card,r.isNew),650);
+    else if(pendingFusion){pendingFusion=false;setTimeout(tryFusion,650);}
+  }else{
+    document.getElementById('res-msg').textContent='連続は0にもどったよ。自己ベストは '+st.best+' 問！もう一度いこう。';
+  }
+  saveCards();go('result');
+}
 function startReview(){
   if(!review.length){toast('まちがいはないよ！全部マスター🎉','#44cc88');return;}
   reviewMode=true;summaryMode=false;flashcardMode=false;lastMode='review';qList=review.slice(0,10).map(r=>({...r}));qIdx=0;qScore=0;qOk=0;
   document.getElementById('q-char').src=SENSEI_IMG;document.getElementById('q-charname').textContent='まちがい復習';
   document.getElementById('q-quit').onclick=()=>go('zukan');renderQ();go('quiz');}
 function renderQ(){const q=qList[qIdx];
-  document.getElementById('q-score').textContent=qScore;document.getElementById('q-num').textContent=(qIdx+1)+' / '+qList.length;
+  document.getElementById('q-score').textContent=qScore;document.getElementById('q-num').textContent=challengeMode?('🔥 連続 '+challenge[challengeSubj].streak+' / '+CHALLENGE_GOAL):((qIdx+1)+' / '+qList.length);
   document.getElementById('q-bub').textContent=reviewMode?['もう一回いくぞ！','今度こそ！','覚えたか？','集中だ！','ラストだ！'][qIdx%5]:(flashcardMode?['声に出して答えてみよう！','自分の言葉で言ってみて！','思い出せるかな？','ヒントなしでいくぞ！','あと少し！'][qIdx%5]:['さあ、どれだ！','よく考えろ！','落ち着け！','信じろ！','次で最後だ！'][qIdx%5]);
   document.getElementById('q-text').textContent=q.q;
   document.getElementById('q-segs').innerHTML='';
@@ -1047,6 +1230,17 @@ function flashcardScore(isOk){
     setTimeout(()=>showCardGet(card,isNew),700);
   }
   saveCards();
+  if(challengeMode){
+    const st=challenge[challengeSubj];
+    if(isOk){
+      st.streak++;
+      if(st.streak>st.best)st.best=st.streak;
+      saveChallenge();
+      if(st.streak>=CHALLENGE_GOAL){st.cleared=true;saveChallenge();showChallengeResult(true);return;}
+      nextQ();return;
+    }
+    st.streak=0;saveChallenge();showChallengeResult(false);return;
+  }
   if(flashcardMode) nextQ();
 }
 function answer(txt,btn){const q=qList[qIdx];const ok=txt===q.a;
@@ -1555,7 +1749,7 @@ function renderCollection(){
   const merged=getMergedCollection();
   const total=CARDS.length, owned=CARDS.filter(c=>merged[c.id]).length;
   let html='<div class="col-top"><div class="big">'+owned+' / '+total+'</div><div class="lbl2">あつめたカード（理科☆社会＋マンスリー全体）</div></div>';
-  for(let r=5;r>=1;r--){
+  for(let r=7;r>=1;r--){
     const list=CARDS.filter(c=>c.rarity===r);if(!list.length)continue;
     const o=list.filter(c=>merged[c.id]).length;
     html+='<div class="col-rar"><span style="color:'+RCOL[r]+'">'+'★'.repeat(r)+' '+RNAME[r]+'</span><span class="rc">'+o+' / '+list.length+'</span></div><div class="col-grid">';
@@ -1600,6 +1794,7 @@ async function init(){
       collection={};answeredCount=0;
     }else{
       const c=JSON.parse(localStorage.getItem(LS_CARDS)||'{}');collection=c.collection||{};answeredCount=c.answeredCount||0;
+      loadChallenge();
     }
   }catch(e){}
   try{review=JSON.parse(localStorage.getItem(LS_REVIEW)||'[]');}catch(e){review=[];}
