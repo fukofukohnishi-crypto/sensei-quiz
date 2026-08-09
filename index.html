@@ -172,8 +172,8 @@ body.viewing-collection .wrap{display:none}
 
 <script>
 (function(){
-  var RNAME=['','N','SR','SSR','R','伝説'];
-  var RCOL=['','#aaaaaa','#44ccff','#ff8800','#dd44ff','#ff2288'];
+  var RNAME=['','N','SR','SSR','R','伝説','神覚者','四天王'];
+  var RCOL=['','#aaaaaa','#44ccff','#ff8800','#dd44ff','#ff2288','#ffd700','#66ffee'];
   var CARDS=null, loading=false;
 
   /* 各アプリの保存先からコレクションを読む */
@@ -262,7 +262,7 @@ body.viewing-collection .wrap{display:none}
 
     html+=howtoHtml();
 
-    for(var r=5;r>=1;r--){
+    for(var r=7;r>=1;r--){
       var list=CARDS.filter(function(c){return c.rarity===r;});
       if(!list.length)continue;
       var o=list.filter(function(c){return mg[c.id];}).length;
