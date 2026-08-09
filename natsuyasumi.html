@@ -580,6 +580,8 @@ button{cursor:pointer;font-family:inherit}
         <button class="menu-item" onclick="go('zukan')"><div class="mi">📚</div><div class="mt"><b>読み物図鑑を見る</b><span>取り込んだ漫画を読む・まとめテスト</span></div><div class="ar">›</div></button>
         <button class="menu-item" onclick="go('adminSync');setImportMode('merge');document.getElementById('sync-stat').innerHTML='';"><div class="mi">🔄</div><div class="mt"><b>⑤ データの書き出し／読み込み</b><span>別の端末（iPad等）に読み物を移す</span></div><div class="ar">›</div></button>
         <button class="menu-item" onclick="openQuizBank()"><div class="mi">⚡</div><div class="mt"><b>⑥ 問題だけをつくる</b><span>漫画なしで特訓の問題を追加（写真からAI生成／手入力）</span></div><div class="ar">›</div></button>
+        <button class="menu-item" onclick="previewFusion()"><div class="mi">🎬</div><div class="mt"><b>融合演出をプレビュー</b><span>四天王カードの演出だけを再生（カードは増えません）</span></div><div class="ar">›</div></button>
+        <button class="menu-item" onclick="resetChallenge()"><div class="mi">🔄</div><div class="mt"><b>チャレンジ記録をリセット</b><span>連続数・自己ベスト・特別カードを消す（テスト用）</span></div><div class="ar">›</div></button>
       </div>
     </div>
   </div>
@@ -1156,6 +1158,20 @@ function showFusion(card){
     ov.querySelector('#fuse-reveal').classList.add('on');
   },3050);
   ov.querySelector('#fuse-ok').onclick=()=>{ov.remove();renderStart();};
+}
+/* ===== おとな用：演出プレビュー／記録リセット ===== */
+function previewFusion(){
+  const card=(CARDS||[]).find(c=>c.id===FUSION_CARD);
+  if(!card){toast('cards.json に sp03 がないよ','#ff6666');return;}
+  showFusion(card);   /* コレクションは変更しない */
+}
+function resetChallenge(){
+  if(!confirm('連続記録と特別カード（学王・教王・四天王）を消します。よろしいですか？'))return;
+  challenge={rika:{streak:0,best:0,cleared:false},shakai:{streak:0,best:0,cleared:false}};
+  saveChallenge();
+  [CHALLENGE_CARD.rika,CHALLENGE_CARD.shakai,FUSION_CARD].forEach(id=>{delete collection[id];});
+  saveCards();updHdr();updChallengeBtn();
+  toast('リセットしたよ','#44cc88');
 }
 function showChallengeResult(cleared){
   const st=challenge[challengeSubj];
