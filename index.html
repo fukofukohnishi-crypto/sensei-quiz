@@ -83,6 +83,8 @@ body.viewing-collection .wrap{display:none}
 .col-tile .cnt{position:absolute;bottom:3px;right:4px;background:rgba(0,0,0,.6);border-radius:6px;font-size:.6rem;font-weight:900;padding:1px 5px;color:#fff}
 .col-empty{text-align:center;color:var(--muted);font-size:.82rem;line-height:1.8;padding:40px 10px}
 @keyframes cdup{from{opacity:0;transform:translateY(8px)}to{opacity:1;transform:none}}
+.top-howto{padding:0 18px 14px}
+.top-howto .col-howto{margin:0}
 .col-howto{background:var(--card);border:1px solid var(--border);border-radius:16px;padding:16px 18px;margin:16px 0 6px}
 .col-howto .ht{font-size:.82rem;font-weight:900;color:#ffd700;margin-bottom:10px}
 .col-howto .hr{display:flex;align-items:flex-start;gap:10px;margin-bottom:10px}
@@ -99,18 +101,21 @@ body.viewing-collection .wrap{display:none}
     <div class="hero-badge">ワセアカ小3 対策クイズ</div>
   </div>
 
+  <div class="top-howto">
+    <div class="col-howto">
+      <div class="ht">🎴 カードの集め方</div>
+      <div class="hr"><div class="hi">🌻</div><div class="hb">夏休み理科特訓：10問クリアでカード1枚<small>フラッシュカードを10問やりきるともらえる</small></div></div>
+      <div class="hr"><div class="hi">🗾</div><div class="hb">ニッポン制覇：メダル全部集めでRカード<small>都道府県をタップして守護神とメダルを集めよう</small></div></div>
+      <div class="hr"><div class="hi">📝</div><div class="hb">マンスリーテスト：5問正解でガチャ1回<small>チケットでガチャを回してカードをゲット</small></div></div>
+    </div>
+  </div>
+
   <div class="pickrow">
     <h1 class="pickhint">テスト一覧</h1>
     <a class="colbtn" href="#collection">
       <span class="ic">⭐</span>
       <span class="tx"><b>コレクション</b><small id="colbtn-n">カードを見る</small></span>
     </a>
-  </div>
-
-  <div class="howto-hint">
-    <span>🌻 特訓10問で1枚</span>
-    <span>🗾 メダル全集めでRカード</span>
-    <span>📝 5問正解でガチャ1回</span>
   </div>
 
   <div class="cards">
