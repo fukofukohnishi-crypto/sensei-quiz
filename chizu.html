@@ -29,7 +29,9 @@ button{cursor:pointer;font-family:inherit;border:none}
 #japan-svg-map{max-height:calc(100dvh - 170px);max-height:calc(100vh - 170px)}
 @media(min-width:600px){#japan-svg-map{max-height:calc(100dvh - 140px);max-height:calc(100vh - 140px)}}
 @media(min-width:600px){.map-wrap{padding:10px}}
-#japan-svg-map .prefecture{fill:#2a2a3e;stroke:#7a7a99;stroke-width:1.3px;cursor:pointer;transition:fill .15s}
+#japan-svg-map{touch-action:manipulation;-webkit-user-select:none;user-select:none;-webkit-touch-callout:none}
+#japan-svg-map .prefecture{fill:#2a2a3e;stroke:#7a7a99;stroke-width:1.3px;cursor:pointer;transition:fill .15s;pointer-events:all;-webkit-tap-highlight-color:transparent}
+#japan-svg-map .prefecture path,#japan-svg-map .prefecture polygon{pointer-events:all}
 @media(min-width:600px){#japan-svg-map .prefecture{stroke-width:1.8px}}
 #japan-svg-map .prefecture:active{opacity:.75}
 #japan-svg-map .prefecture.p-partial{fill:#8a6a1e}
@@ -166,7 +168,7 @@ button{cursor:pointer;font-family:inherit;border:none}
     </div>
     <div class="body">
       <div class="map-lead">県をタップして、守護神とメダルをあつめよう！</div>
-      <div class="map-wrap" id="map-wrap"><svg id="japan-svg-map" viewBox="0 0 1000 1000" xmlns="http://www.w3.org/2000/svg" style="width:100%;height:auto;display:block"><style>#japan-svg-map .prefecture{fill:#2a2a3e;stroke:#7a7a99;stroke-width:1.3px;cursor:pointer}#japan-svg-map .prefecture:active{opacity:.8}#japan-svg-map .prefecture.p-correct{fill:#228855!important;stroke:#44cc88!important}#japan-svg-map .prefecture.p-wrong{fill:#992222!important;stroke:#ff6666!important}#japan-svg-map .prefecture.p-disabled{cursor:default}</style>
+      <div class="map-wrap" id="map-wrap"><svg id="japan-svg-map" viewBox="0 0 1000 1000" xmlns="http://www.w3.org/2000/svg" style="width:100%;height:auto;display:block"><style>#japan-svg-map .prefecture{fill:#2a2a3e;stroke:#7a7a99;stroke-width:1.3px;cursor:pointer;pointer-events:all;-webkit-tap-highlight-color:transparent}#japan-svg-map .prefecture path,#japan-svg-map .prefecture polygon{pointer-events:all}#japan-svg-map .prefecture:active{opacity:.8}#japan-svg-map .prefecture.p-correct{fill:#228855!important;stroke:#44cc88!important}#japan-svg-map .prefecture.p-wrong{fill:#992222!important;stroke:#ff6666!important}#japan-svg-map .prefecture.p-disabled{cursor:default}</style>
   <title>Japanese Prefectures</title>
   <desc>Created by Geolonia (https://geolonia.com/).</desc>
   <g class="svg-map" transform="matrix(1.453488, 0, 0, 1.453488, -435.334259, -216.944946)">
@@ -1276,10 +1278,51 @@ function backToPrefDetailAfterResult(){
 }
 
 /* ===== 起動 ===== */
-document.querySelectorAll('#japan-svg-map .prefecture').forEach(g=>{
-  const code = g.getAttribute('data-code');
-  g.addEventListener('click', ()=>openPrefDetail(code));
-});
+/* iPad/iPhone の Safari は SVG の <g> への click が取りこぼされやすいので、
+   svg 全体に pointer/touch で委譲する。指のブレはタップ扱いにする。 */
+(function bindMapTaps(){
+  const svg=document.getElementById('japan-svg-map');
+  if(!svg)return;
+  let sx=0, sy=0, moved=false, fired=0;
+
+  function codeFromEvent(e){
+    let t=e.target;
+    /* Safari は path を返すので親の .prefecture までたどる */
+    while(t && t!==svg){
+      if(t.classList && t.classList.contains('prefecture')) return t.getAttribute('data-code');
+      t=t.parentNode;
+    }
+    /* 隙間をタップした時は座標から最寄りを拾う */
+    const el=document.elementFromPoint(
+      (e.changedTouches?e.changedTouches[0].clientX:e.clientX),
+      (e.changedTouches?e.changedTouches[0].clientY:e.clientY));
+    let p=el;
+    while(p && p!==svg){
+      if(p.classList && p.classList.contains('prefecture')) return p.getAttribute('data-code');
+      p=p.parentNode;
+    }
+    return null;
+  }
+  function tap(e){
+    const now=Date.now();
+    if(now-fired<400) return;   /* touchend と click の二重発火をふせぐ */
+    const code=codeFromEvent(e);
+    if(!code) return;
+    fired=now;
+    e.preventDefault();
+    openPrefDetail(code);
+  }
+
+  svg.addEventListener('touchstart',e=>{
+    const t=e.touches[0]; sx=t.clientX; sy=t.clientY; moved=false;
+  },{passive:true});
+  svg.addEventListener('touchmove',e=>{
+    const t=e.touches[0];
+    if(Math.abs(t.clientX-sx)>12||Math.abs(t.clientY-sy)>12) moved=true;
+  },{passive:true});
+  svg.addEventListener('touchend',e=>{ if(!moved) tap(e); },{passive:false});
+  svg.addEventListener('click',tap);
+})();
 renderMapState();
 renderProgressLabel();
 </script>
