@@ -1106,7 +1106,7 @@ function showGuardianCardGet(prefCode, data){
     +'<div class="gc-reveal" id="gc-reveal">'
       +'<div class="gc-rank" style="color:'+col+'">'+'★'.repeat(card.rarity||4)+' '+(RNAME_MAP[card.rarity||4]||'R')+'</div>'
       +'<div class="gc-ttl">守護神カードをゲット！</div>'
-      +(img?'<img class="gc-big" style="border-color:'+col+';box-shadow:0 0 44px '+col+'88" src="'+img+'" alt="">':'')
+      +(img?'<img class="gc-big" style="border-color:'+col+'" src="'+img+'" alt="">':'')
       +'<div class="gc-name">'+(card.name||(data.name+'守護神　'+data.guardianName))+'</div>'
       +(card.power?'<div class="gc-power"><b style="color:'+col+'">⚡ ひっさつわざ</b><br>'+card.power+'</div>':'')
       +'<button class="gc-ok" id="gc-ok" style="background:linear-gradient(135deg,'+col+',#ffd700)">コレクションに入れる</button>'
@@ -1166,6 +1166,100 @@ function showToast(msg){
 }
 
 function goMap(){ showScreen('map-screen'); renderMapState(); renderProgressLabel(); }
+
+function renderProgressLabel(){
+  let medalsGot = 0, totalMedals = 0;
+  Object.keys(PREF_DATA).forEach(code=>{
+    totalMedals += PREF_DATA[code].medals.length;
+    medalsGot += getPrefProgress(code).medals.filter(Boolean).length;
+  });
+  document.getElementById('progress-label').textContent = `メダル ${medalsGot}/${totalMedals}`;
+}
+
+function renderMapState(){
+  document.querySelectorAll('#japan-svg-map .prefecture').forEach(g=>{
+    const code = g.getAttribute('data-code');
+    g.classList.remove('p-partial','p-done','p-nodata');
+    if(!PREF_DATA[code]){ g.classList.add('p-nodata'); return; }
+    const prog = getPrefProgress(code);
+    if(prog.guardianGot) g.classList.add('p-done');
+    else if(prog.medals.some(Boolean)) g.classList.add('p-partial');
+  });
+}
+
+function openPrefDetail(code){
+  const data = PREF_DATA[code];
+  if(!data){ showToast((PREF_NAMES[code]||'この県')+'はじゅんびちゅう！'); return; }
+  currentPref = code;
+  renderPrefDetail(code);
+  showScreen('pref-detail-screen');
+}
+
+function closePrefDetail(){
+  showScreen('map-screen');
+  renderMapState();
+  renderProgressLabel();
+}
+
+function renderPrefDetail(code){
+  const data = PREF_DATA[code];
+  const prog = getPrefProgress(code);
+  const total = data.medals.length;
+  const gotCount = prog.medals.filter(Boolean).length;
+
+  document.getElementById('pd-title').textContent = data.name;
+  document.getElementById('pd-avatar').style.background = `radial-gradient(circle at 35% 30%,${data.color},#0a0a10)`;
+  document.getElementById('pd-avatar').textContent = data.emoji;
+  document.getElementById('pd-avatar').style.backgroundImage = '';
+  document.getElementById('pd-name').textContent = data.guardianName;
+  document.getElementById('pd-pref').textContent = data.name + 'の守護神';
+  document.getElementById('pd-progress').innerHTML = `メダル <b>${gotCount}/${total}</b>`;
+  document.getElementById('pd-guardian-banner').style.display = prog.guardianGot ? '' : 'none';
+
+  tryLoadImageInto(document.getElementById('pd-avatar'), data.guardianImage);
+
+  const row = document.getElementById('pd-medal-row');
+  row.innerHTML = '';
+  data.medals.forEach((m,i)=>{
+    const got = prog.medals[i];
+    const col = document.createElement('div');
+    col.className = 'pd-medal-col';
+    const slot = document.createElement('div');
+    slot.className = 'pd-medal-slot ' + (got ? 'got' : 'locked');
+    if(got && m.image){
+      slot.innerHTML = `<img src="${m.image}" alt="${m.keyword}" onerror="this.style.display='none';this.parentNode.textContent='🏅'">`;
+    }else{
+      slot.textContent = got ? '🏅' : '🔒';
+    }
+    if(got) slot.onclick = ()=>openMedalEnlarge(code, i);
+    else slot.onclick = ()=>showToast('クイズに正解すると手に入るよ！');
+    const label = document.createElement('div');
+    label.className = 'pd-medal-label';
+    label.textContent = got ? m.keyword : '？？？';
+    col.appendChild(slot);
+    col.appendChild(label);
+    row.appendChild(col);
+  });
+
+  const cta = document.getElementById('pd-cta-btn');
+  if(gotCount >= total){ cta.textContent = 'もう一度あそぶ →'; }
+  else { cta.textContent = 'クイズに挑戦する →'; }
+}
+
+function openMedalEnlarge(code, idx){
+  const data = PREF_DATA[code];
+  const m = data.medals[idx];
+  const body = document.getElementById('medal-enlarge-body');
+  const iconHtml = m.image
+    ? `<img src="${m.image}" alt="${m.keyword}" style="width:100%;height:100%;object-fit:cover;border-radius:50%" onerror="this.parentNode.textContent='🏅'">`
+    : '🏅';
+  body.innerHTML = `
+    <div class="medal-enlarge-icon">${iconHtml}</div>
+    <div class="medal-enlarge-keyword">${m.keyword}</div>
+    <div class="medal-enlarge-sub">${data.name}・${data.guardianName}のメダル</div>
+    <button class="album-close" onclick="closeMedalEnlarge()">とじる</button>`;
+  document.getElementById('medal-enlarge-overlay').classList.add('show');
+}
 function closeMedalEnlarge(){ document.getElementById('medal-enlarge-overlay').classList.remove('show'); }
 
 function goRevealForQuiz(){
@@ -1278,25 +1372,19 @@ function backToPrefDetailAfterResult(){
 }
 
 /* ===== 起動 ===== */
-/* iPad/iPhone の Safari は SVG の <g> への click が取りこぼされやすいので、
-   svg 全体に pointer/touch で委譲する。指のブレはタップ扱いにする。 */
+/* iPad/iPhone の Safari は SVG の <g> への click を取りこぼすので、
+   svg 全体に touch で委譲する。指のブレはスクロール扱いにする。 */
 (function bindMapTaps(){
   const svg=document.getElementById('japan-svg-map');
   if(!svg)return;
   let sx=0, sy=0, moved=false, fired=0;
-
-  function codeFromEvent(e){
-    let t=e.target;
-    /* Safari は path を返すので親の .prefecture までたどる */
+  function codeFrom(target,x,y){
+    let t=target;
     while(t && t!==svg){
       if(t.classList && t.classList.contains('prefecture')) return t.getAttribute('data-code');
       t=t.parentNode;
     }
-    /* 隙間をタップした時は座標から最寄りを拾う */
-    const el=document.elementFromPoint(
-      (e.changedTouches?e.changedTouches[0].clientX:e.clientX),
-      (e.changedTouches?e.changedTouches[0].clientY:e.clientY));
-    let p=el;
+    let p=document.elementFromPoint(x,y);
     while(p && p!==svg){
       if(p.classList && p.classList.contains('prefecture')) return p.getAttribute('data-code');
       p=p.parentNode;
@@ -1305,14 +1393,14 @@ function backToPrefDetailAfterResult(){
   }
   function tap(e){
     const now=Date.now();
-    if(now-fired<400) return;   /* touchend と click の二重発火をふせぐ */
-    const code=codeFromEvent(e);
+    if(now-fired<400) return;
+    const t=e.changedTouches?e.changedTouches[0]:e;
+    const code=codeFrom(e.target, t.clientX, t.clientY);
     if(!code) return;
     fired=now;
-    e.preventDefault();
+    if(e.cancelable) e.preventDefault();
     openPrefDetail(code);
   }
-
   svg.addEventListener('touchstart',e=>{
     const t=e.touches[0]; sx=t.clientX; sy=t.clientY; moved=false;
   },{passive:true});
