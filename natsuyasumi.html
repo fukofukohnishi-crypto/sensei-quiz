@@ -1777,9 +1777,9 @@ function renderCollection(){
 function showCardDetail(card){
   if(!card)return;const col=RCOL[card.rarity]||'#aaa';
   const ov=document.createElement('div');
-  ov.style.cssText='position:fixed;inset:0;z-index:99999;display:flex;align-items:center;justify-content:center;background:rgba(0,0,0,.88);backdrop-filter:blur(6px);padding:24px';
-  ov.innerHTML='<div style="max-width:320px;width:100%;text-align:center;animation:fadeup .3s">'
-    +(card.imgUrl?'<img src="'+card.imgUrl+'" style="width:78%;border-radius:14px;border:3px solid '+col+'" onerror="cardImgFB(this)">':'')
+  ov.style.cssText='position:fixed;inset:0;z-index:99999;display:flex;align-items:center;justify-content:center;background:rgba(0,0,0,.9);backdrop-filter:blur(6px);padding:12px;overflow-y:auto';
+  ov.innerHTML='<div style="max-width:520px;width:100%;text-align:center;animation:fadeup .3s;max-height:100%">'
+    +(card.imgUrl?'<img src="'+card.imgUrl+'" style="width:100%;max-height:68vh;object-fit:contain;border-radius:14px;border:3px solid '+col+'" onerror="cardImgFB(this)">':'')
     +'<div style="color:'+col+';font-weight:900;font-size:.8rem;margin-top:12px">'+'★'.repeat(card.rarity)+' '+RNAME[card.rarity]+'</div>'
     +'<div style="font-size:1.3rem;font-weight:900;margin:2px 0 10px">'+card.name+'</div>'
     +(card.power?'<div style="font-size:.82rem;color:#ddd;line-height:1.7;background:var(--card);border-radius:12px;padding:12px 14px;text-align:left;border:1px solid var(--border)"><b style="color:'+col+'">⚡ ひっさつわざ</b><br>'+card.power+'</div>':'')
