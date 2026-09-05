@@ -130,6 +130,106 @@ export default async function handler(req, res) {
     const subject = body.subject || (Array.isArray(body.subjects) ? body.subjects[0] : 'shakai');
     const subjName = SUBJ_NAMES[subject] || '社会';
 
+    // ===== モード：フラッシュカード問題の生成（10月版・関門1） =====
+    // 4択を作ってから記述式に変換する、という従来のやり方をやめ、
+    // 最初から記述式（答えが一つに定まる）問題として作らせる。
+    // 各問に source（教材からの原文引用）を必須にし、後段の検証と人の確認の材料にする。
+    if (mode === 'flashcard') {
+      stage = 'flashcard';
+      const images = body.images || [];
+      if (!images.length) return res.status(400).json({ error: '教材の写真 (images) が必要です' });
+      const sName = SUBJ_NAMES[body.subj] || '理科';
+      const round = body.round || 1;
+
+      const content = images.map(imgBlock);
+      content.push({ type: 'text', text: `
+あなたは中学受験の${sName}教材から、フラッシュカード形式の問題を作る出題者です。
+この画像は、早稲田アカデミー 小3 後期 第${round}回の${sName}のテキストです。
+${JUKEN_POLICY}
+
+【フラッシュカード形式とは】
+子供が問題文を読み、答えを口に出して言い、そのあと画面をめくって正解を見て、
+合っていたかどうかを自分で判定します。選択肢は表示されません。
+
+【絶対に守ること】
+1. 画像に写っている内容だけから作る。知識で補わない。書いていないことは出題しない。
+2. 1問ごとに source を必ず付ける。source は画像の中の文を、言い換えずにそのまま写したもの。
+   写せる文が見つからない問題は、作らずに捨てる。
+3. 答えが一つに定まる問いにする。「正しいものは」「あてはまるものを」のような、
+   複数の答えがありうる聞き方は禁止。
+4. 図・写真・グラフ・表・傍線部・下線部を参照しない。問題文だけで意味が通ること。
+   「次のうち」「下の」「上の」「右の」「左の」「ア〜エ」も使わない。
+5. 答え(a)は20字以内の短い語句。文章で答えさせない。
+6. 答えが問題文の中に書かれている問題は作らない。
+7. ふりがなは付けない。読み手は小3だが読解力が高い。
+
+【出力】JSONのみ。説明文やマークダウンは付けない。
+{"questions":[{
+ "q":"問題文",
+ "a":"正解（20字以内）",
+ "accept":["表記ゆれがあれば"],
+ "source":"画像の中の文をそのまま写したもの",
+ "explain":"なぜそうなるかの解説。2〜3文",
+ "juken":"中学入試での出題ポイントを一言"
+}]}
+できるだけ多く、ただし上の条件を満たすものだけを出してください。` });
+
+      const { raw } = await callClaude(content, 8000);
+      const parsed = parseJSON(raw);
+      const questions = (parsed.questions || [])
+        .filter(q => q && q.q && q.a && q.source)
+        .map(q => ({
+          type: 'text',
+          q: String(q.q).trim(),
+          a: String(q.a).trim(),
+          accept: Array.isArray(q.accept) ? q.accept.filter(Boolean).map(String) : [],
+          source: String(q.source).trim(),
+          explain: String(q.explain || '').trim(),
+          juken: String(q.juken || '').trim()
+        }));
+      return res.status(200).json({ questions });
+    }
+
+    // ===== モード：問題の検証（10月版・関門3） =====
+    // 作ったモデルに自分で採点させると甘くなるので、問題と根拠だけを渡し、
+    // どう作られたかを知らない状態で判定させる。5問ずつ呼ばれる想定。
+    if (mode === 'verify') {
+      stage = 'verify';
+      const qs = body.questions || [];
+      if (!qs.length) return res.status(400).json({ error: 'questions が必要です' });
+
+      const listed = qs.map((q, i) =>
+        `【${i + 1}】\n問題: ${q.q}\n答え: ${q.a}\n根拠(教材からの引用): ${q.source || '(なし)'}`
+      ).join('\n\n');
+
+      const { raw } = await callClaude([{ type: 'text', text: `
+小学3年生が使う教材の問題を検品してください。あなたはこの問題を作った人ではありません。
+問題文と根拠だけを読んで、白紙の状態から判定してください。
+
+以下のすべてを満たすとき、そのときだけ ok を true にします。
+
+A. 問題文を読んだだけで、答えが一つに定まる。ほかの答えも正解になりうるならNG。
+B. 根拠に書かれている内容だけで答えられる。根拠に無いことを知っていないと
+   答えられないならNG。根拠が問題と対応していないならNG。
+C. 図・写真・グラフ・表・選択肢がなくても成立する。
+D. 小学3年生が読める日本語である（漢字の難しさは問わない。文の意味が取れるか）。
+E. 答えが問題文の中にそのまま書かれていない。
+
+${listed}
+
+【出力】JSONのみ。問題の数だけ、順番どおりに返す。
+{"results":[{"ok":true,"reason":""},{"ok":false,"reason":"AとBに違反。〜が理由"}]}
+ok が false のときは、reason にどの条件にどう違反したかを日本語で短く書く。` }], 2000);
+
+      const parsed = parseJSON(raw);
+      const results = (parsed.results || []).map(r => ({
+        ok: r && r.ok === true,
+        reason: (r && r.reason) ? String(r.reason) : ''
+      }));
+      while (results.length < qs.length) results.push({ ok: false, reason: '判定が返ってこなかった' });
+      return res.status(200).json({ results: results.slice(0, qs.length) });
+    }
+
     // ===== モード1：読み物（漫画コマ → 解説＋クイズ） =====
     if (mode === 'yomimono') {
       stage = 'yomimono';
