@@ -155,7 +155,6 @@ for c in json.load(open('Cards.json')):
 
 ## 既知の課題
 
-- `chars/medals/shikoku/olive.png` が存在しない（香川のメダル1個が🏅表示になる）。画像素材待ち。
 - `natsuyasumi.html` と `rikashakai.html` に同一の漫画画像891KBがbase64で埋まっている。
   外部ファイル化すればHTMLが1.8MB→約100KBになり、キャッシュも効く。
 - `rikashakai.html` は `natsuyasumi.html` の旧版。統合するか7月版として凍結するか未決。
