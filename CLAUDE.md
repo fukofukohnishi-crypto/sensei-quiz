@@ -8,11 +8,12 @@
 各HTMLは1ファイル完結（CSSもJSも内包）で、共有ライブラリはない。
 
 ```
-index.html        ホーム。4アプリへの導線 ＋ 全アプリ共通のカードコレクション画面
+index.html        ホーム。各アプリへの導線 ＋ 全アプリ共通のカードコレクション画面
 chizu.html        ニッポン制覇（都道府県マップ→クイズ→メダル→守護神カード）
-natsuyasumi.html  夏休み理科特訓。★最新・最大機能
-rikashakai.html   7月マンスリー。natsuyasumi.html の旧世代版（機能は部分集合）
-may.html          5月マンスリー（クイズ＋ガチャ＋成績）
+                  通年で使う。テストとは独立
+natsuyasumi.html  夏休み理科特訓（2026年夏）。いま一番機能が多い
+rikashakai.html   7月マンスリー。★終了・凍結
+may.html          5月マンスリー。★終了・凍結
 api/generate.js   Claude API 呼び出し。教材写真→クイズ生成／漫画構成案
 Cards.json        カード63枚のマスタデータ
 card-images/      カード絵（WebP。q85 で変換済み）
@@ -28,6 +29,37 @@ img/              HTMLから外出しした画像
 
 **画像をHTMLに base64 で埋め込まないこと。** 以前は4ファイルに計4.7MBが
 埋まっていてHTMLが1.8MBになっていた。`img/` に置いてパスで参照する。
+
+## テストごとに1ファイル、終わったら凍結
+
+`may.html`（5月）→ `rikashakai.html`（7月）→ `natsuyasumi.html`（夏休み）
+というように、**テストや講習ごとに独立したHTMLを1本作る**のがこのプロジェクトの
+やり方。そのテストが終わったらそのファイルは**凍結**し、以後さわらない。
+過去のテストの成績や記録がそのまま残るようにするため。
+
+だから「古いから統合する」「共通化してリファクタする」はしない。
+次は10月マンスリー用に新しいファイルを作る予定。
+
+### 新しいテストのアプリを作るとき
+
+そのときいちばん機能が多いファイル（今なら `natsuyasumi.html`）をコピーして
+土台にする。そのうえで **保存領域を必ず見直すこと。**
+
+`natsuyasumi.html` と `rikashakai.html` は、下記をすべて**共有**している:
+
+- IndexedDB `senseiZukan` の `entries`（読み物）、`materials`（教材写真）、
+  `quizbank`（問題ストック）
+- localStorage の `sz_review_v1`（復習リスト）
+
+つまり夏休みアプリに入れた読み物が7月アプリにもそのまま出る。単純にコピーすると
+10月アプリもこの2つと中身を共有してしまう。テストごとに内容を分けたいなら、
+新しいファイルでは IndexedDB のDB名かキー名、および `sz_review_v1` を
+別の名前にする（例: `senseiZukan_oct` / `oct_review_v1`）。
+
+一方 **カードの保存先 `sz_cards_v1` は共有のままでよい。** カードは
+テストをまたいで1つのコレクションにまとまる設計で、`index.html` が
+`sensei-gacha-v1` と合わせて合算表示している。新しいキーを作った場合は
+`index.html` の `sources()` に追加すること。
 
 デプロイは Vercel。`api/` 配下が自動的に関数になり、それ以外は静的配信される。
 `vercel.json` はない（デフォルト動作に任せている）。
@@ -46,7 +78,7 @@ img/              HTMLから外出しした画像
 | `sensei-quiz-v15` | 5月テストの成績 | may | natsuyasumi |
 | `sensei_collection_v2` | 都道府県メダルの進捗 | chizu | chizu |
 | `sz_challenge_v1` | 50問チャレンジの連続正解記録 | natsuyasumi | natsuyasumi |
-| `sz_review_v1` | まちがえた問題の復習リスト | natsuyasumi, rikashakai | 同左 |
+| `sz_review_v1` | まちがえた問題の復習リスト | natsuyasumi, rikashakai（**共有**） | 同左 |
 | `cards_reset_v2` / `sz_cards_reset_v2` | 1回だけリセットを走らせるフラグ | index, natsuyasumi | 同左 |
 
 `index.html` はこの**複数のキーを横断して合算**し、1つのコレクション画面として見せている。
@@ -55,7 +87,9 @@ img/              HTMLから外出しした画像
 
 ### IndexedDB
 
-DB名 `senseiZukan` / ストア `kv`。natsuyasumi と rikashakai が共用する。
+DB名 `senseiZukan` / ストア `kv`。natsuyasumi と rikashakai が**同じDB・同じキーを
+共用している**（片方に入れた読み物がもう片方にも出る）。新しいテストのアプリを
+作るときの注意は上の「テストごとに1ファイル」を参照。
 キーは `entries`（読み物）、`materials`（教材写真）、`quizbank`（問題ストック）。
 写真データが入るので重い。natsuyasumi にはJSONの書き出し／読み込み機能があり、
 端末を移すときはこれを使う。
@@ -165,7 +199,6 @@ for c in json.load(open('Cards.json')):
 
 ## 既知の課題
 
-- `rikashakai.html` は `natsuyasumi.html` の旧版。統合するか7月版として凍結するか未決。
 - 端末間のデータ移行手段が natsuyasumi のJSON書き出ししかない。
 - `img/manga/` と `img/teachers/` はJPEGのまま。WebP化すればさらに3割ほど減る。
 - `chars/`（守護神の立ち絵・メダル画像）が53MBのPNGのまま。カード画像と同じ手順で
