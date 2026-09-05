@@ -17,7 +17,17 @@ api/generate.js   Claude API 呼び出し。教材写真→クイズ生成／漫
 Cards.json        カード63枚のマスタデータ
 card-images/      カード絵（WebP。q85 で変換済み）
 chars/            守護神の立ち絵（portraits/）とメダル画像（medals/地方名/）
+img/              HTMLから外出しした画像
+                    kv.jpg      理科☆社会特訓のキービジュアル
+                    hero.jpg    ホームのヒーロー画像
+                    teachers/   先生の立ち絵（natsuyasumi / rikashakai）
+                    manga/      佐賀県の読み物 cover / p1〜p8 / summary
+                    reactions/  may.html のクイズ中の先生の表情
+                                <先生>_<start|ganbaro|correct|wrong>.webp
 ```
+
+**画像をHTMLに base64 で埋め込まないこと。** 以前は4ファイルに計4.7MBが
+埋まっていてHTMLが1.8MBになっていた。`img/` に置いてパスで参照する。
 
 デプロイは Vercel。`api/` 配下が自動的に関数になり、それ以外は静的配信される。
 `vercel.json` はない（デフォルト動作に任せている）。
@@ -155,9 +165,8 @@ for c in json.load(open('Cards.json')):
 
 ## 既知の課題
 
-- `natsuyasumi.html` と `rikashakai.html` に同一の漫画画像891KBがbase64で埋まっている。
-  外部ファイル化すればHTMLが1.8MB→約100KBになり、キャッシュも効く。
 - `rikashakai.html` は `natsuyasumi.html` の旧版。統合するか7月版として凍結するか未決。
 - 端末間のデータ移行手段が natsuyasumi のJSON書き出ししかない。
+- `img/manga/` と `img/teachers/` はJPEGのまま。WebP化すればさらに3割ほど減る。
 - `chars/`（守護神の立ち絵・メダル画像）が53MBのPNGのまま。カード画像と同じ手順で
   WebP化できる。ただし参照が `chizu.html` の `PREF_DATA` 内に187件散らばっている。
