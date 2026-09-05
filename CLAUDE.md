@@ -15,7 +15,7 @@ rikashakai.html   7月マンスリー。natsuyasumi.html の旧世代版（機�
 may.html          5月マンスリー（クイズ＋ガチャ＋成績）
 api/generate.js   Claude API 呼び出し。教材写真→クイズ生成／漫画構成案
 Cards.json        カード63枚のマスタデータ
-card-images/      カード絵（PNG）
+card-images/      カード絵（WebP。q85 で変換済み）
 chars/            守護神の立ち絵（portraits/）とメダル画像（medals/地方名/）
 ```
 
@@ -57,8 +57,11 @@ DB名 `senseiZukan` / ストア `kv`。natsuyasumi と rikashakai が共用す�
 ```json
 { "id": "sr001", "char": "zanpanman", "rarity": 2,
   "name": "ザンパンマン先生", "power": "必殺技の説明…",
-  "imgUrl": "/card-images/sr01_zanpanman.png" }
+  "imgUrl": "/card-images/sr01_zanpanman.webp" }
 ```
+
+画像は **WebP**（品質85）。元絵がPNGやJPEGで来たら必ず変換してから入れる。
+PNGのまま置くと1枚2.5〜3MBになり、子供の端末で表示が重くなる。
 
 レアリティは **1始まりの配列インデックス**で、0番は空文字のダミー:
 
@@ -153,8 +156,9 @@ for c in json.load(open('Cards.json')):
 ## 既知の課題
 
 - `chars/medals/shikoku/olive.png` が存在しない（香川のメダル1個が🏅表示になる）。画像素材待ち。
-- カード画像が1枚2.5〜3MBのPNGで、`card-images/` だけで162MB。WebP化すれば1/10以下になる。
 - `natsuyasumi.html` と `rikashakai.html` に同一の漫画画像891KBがbase64で埋まっている。
   外部ファイル化すればHTMLが1.8MB→約100KBになり、キャッシュも効く。
 - `rikashakai.html` は `natsuyasumi.html` の旧版。統合するか7月版として凍結するか未決。
 - 端末間のデータ移行手段が natsuyasumi のJSON書き出ししかない。
+- `chars/`（守護神の立ち絵・メダル画像）が53MBのPNGのまま。カード画像と同じ手順で
+  WebP化できる。ただし参照が `chizu.html` の `PREF_DATA` 内に187件散らばっている。

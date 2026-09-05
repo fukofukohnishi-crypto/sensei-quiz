@@ -5,7 +5,7 @@
   "rarity": 2,
   "name": "ザンパンマン先生",
   "power": "鍋歴史大噴火：巨大な鍋から歴史の力を解き放ち、敵全体に大ダメージを与える！",
-  "imgUrl": "/card-images/sr01_zanpanman.png"
+  "imgUrl": "/card-images/sr01_zanpanman.webp"
  },
  {
   "id": "sr002",
@@ -13,7 +13,7 @@
   "rarity": 2,
   "name": "ヤバイヤツ先生",
   "power": "超速九九ラッシュ：高速で九九を唱え続け、敵1体に超連続ダメージを与える！確率で「混乱」状態にする！",
-  "imgUrl": "/card-images/sr02_yabaiyatsu.png"
+  "imgUrl": "/card-images/sr02_yabaiyatsu.webp"
  },
  {
   "id": "sr003",
@@ -21,7 +21,7 @@
   "rarity": 2,
   "name": "バクソウ先生",
   "power": "漢字爆裂弾：膨大な語彙力で言葉の壁をぶち壊し、敵全体に大ダメージ＋混乱を与える！",
-  "imgUrl": "/card-images/sr03_bakuso.png"
+  "imgUrl": "/card-images/sr03_bakuso.webp"
  },
  {
   "id": "sr004",
@@ -29,7 +29,7 @@
   "rarity": 2,
   "name": "カガ先生",
   "power": "化学連鎖リアクション：化学反応を連鎖させ、敵全体に持続ダメージ＋確率で「毒」や「麻痺」状態にする！",
-  "imgUrl": "/card-images/sr04_kaga.png"
+  "imgUrl": "/card-images/sr04_kaga.webp"
  },
  {
   "id": "sr005",
@@ -37,7 +37,7 @@
   "rarity": 2,
   "name": "爆弾魔先生",
   "power": "ダイナマイトスパーク：爆発的パワーで敵の体力を粉砕し、確率で「やる気」UP＋スタン状態にする！",
-  "imgUrl": "/card-images/sr05_bakudanma.png"
+  "imgUrl": "/card-images/sr05_bakudanma.webp"
  },
  {
   "id": "sr006",
@@ -45,7 +45,7 @@
   "rarity": 2,
   "name": "乾パンマン先生",
   "power": "忍法・カンパンアート！：忍びの集中力で創造力を極限まで高め、作品の完成度とスピードを大幅にUPさせる！",
-  "imgUrl": "/card-images/sr06_kanpanman.png"
+  "imgUrl": "/card-images/sr06_kanpanman.webp"
  },
  {
   "id": "sr007",
@@ -53,7 +53,7 @@
   "rarity": 2,
   "name": "ツッコミマン先生",
   "power": "ツッコミ・リズムブレイク！：円状に広がる5本のツッコミでリズムを整え、味方全体のテンポを最大化！ミスを瞬時に正し、コンボをつなげる！",
-  "imgUrl": "/card-images/sr07_tsukkomiman.png"
+  "imgUrl": "/card-images/sr07_tsukkomiman.webp"
  },
  {
   "id": "sr008",
@@ -61,7 +61,7 @@
   "rarity": 2,
   "name": "ウザン先生",
   "power": "ウザ知識シャワー：膨大な知識で敵全体を圧倒し、理解不能に陥らせる！確率で「イラつき」状態にする！",
-  "imgUrl": "/card-images/sr08_uzan.png"
+  "imgUrl": "/card-images/sr08_uzan.webp"
  },
  {
   "id": "l001",
@@ -69,7 +69,7 @@
   "rarity": 5,
   "name": "NO味噌ラーメン先生",
   "power": "NO MISO, NO LIFE.：味噌を完全否定する禁断の技。敵全体の味噌依存をリセットし、NO味噌の真理を叩き込む！",
-  "imgUrl": "/card-images/legend09_nomisoramen.png"
+  "imgUrl": "/card-images/legend09_nomisoramen.webp"
  },
  {
   "id": "l002",
@@ -77,7 +77,7 @@
   "rarity": 5,
   "name": "飛躍　孝像（ひや こうぞう）先生",
   "power": "ハイパー・ジャンプドライブ：自身と味方全体の可能性を最大限に引き上げ、一瞬でステージを上の次元へと引き上げる！限界突破の総合サポートスキル！",
-  "imgUrl": "/card-images/legend10_hiyakozo.png"
+  "imgUrl": "/card-images/legend10_hiyakozo.webp"
  },
  {
   "id": "l003",
@@ -85,7 +85,7 @@
   "rarity": 5,
   "name": "校長ゼノン",
   "power": "学園統治神の絶対君臨：全教科・全教師・全生徒の頂点として君臨し、敵全体の能力をMAXまで封印！学園そのものの権威で逆らう者の存在を消し去る！",
-  "imgUrl": "/card-images/legend11_zenon.png"
+  "imgUrl": "/card-images/legend11_zenon.webp"
  },
  {
   "id": "l004",
@@ -93,7 +93,7 @@
   "rarity": 5,
   "name": "絶道クロム",
   "power": "裏支配者の絶対裁定：校則の外側から全てを監視・掌握し、生徒と教師の運命を一言で書き換える！抵抗した者には永久拘束の鎖が降り注ぐ！",
-  "imgUrl": "/card-images/legend12_kuromu.png"
+  "imgUrl": "/card-images/legend12_kuromu.webp"
  },
  {
   "id": "l005",
@@ -101,7 +101,7 @@
   "rarity": 5,
   "name": "モグリアーナ",
   "power": "母性の奇跡・大饗宴：無限の料理創造力で学園全体を栄養と愛で包み込み、味方全体のHP・状態を完全回復＋幸福バフ付与！お腹も心もいつも満たす！",
-  "imgUrl": "/card-images/legend13_moguriana.png"
+  "imgUrl": "/card-images/legend13_moguriana.webp"
  },
  {
   "id": "l006",
@@ -109,7 +109,7 @@
   "rarity": 5,
   "name": "癒月ルミナ",
   "power": "白衣の守護神・聖域展開：味方全体の全状態異常を即時解除し、生命回復力・防御力・再生力をMAXへ引き上げる！絶望を希望へと変える癒しの奇跡！",
-  "imgUrl": "/card-images/legend14_rumina.png"
+  "imgUrl": "/card-images/legend14_rumina.webp"
  },
  {
   "id": "n001",
@@ -117,7 +117,7 @@
   "rarity": 1,
   "name": "ザンパンマン先生",
   "power": "",
-  "imgUrl": "/card-images/n01_zanpanman.png"
+  "imgUrl": "/card-images/n01_zanpanman.webp"
  },
  {
   "id": "n002",
@@ -125,7 +125,7 @@
   "rarity": 1,
   "name": "ヤバイヤツ先生",
   "power": "",
-  "imgUrl": "/card-images/n02_yabaiyatsu.png"
+  "imgUrl": "/card-images/n02_yabaiyatsu.webp"
  },
  {
   "id": "n003",
@@ -133,7 +133,7 @@
   "rarity": 1,
   "name": "バクソウ先生",
   "power": "",
-  "imgUrl": "/card-images/n03_bakuso.png"
+  "imgUrl": "/card-images/n03_bakuso.webp"
  },
  {
   "id": "n004",
@@ -141,7 +141,7 @@
   "rarity": 1,
   "name": "カガ先生",
   "power": "",
-  "imgUrl": "/card-images/n04_kaga.png"
+  "imgUrl": "/card-images/n04_kaga.webp"
  },
  {
   "id": "n005",
@@ -149,7 +149,7 @@
   "rarity": 1,
   "name": "爆弾魔先生",
   "power": "",
-  "imgUrl": "/card-images/n05_bakudanma.png"
+  "imgUrl": "/card-images/n05_bakudanma.webp"
  },
  {
   "id": "n006",
@@ -157,7 +157,7 @@
   "rarity": 1,
   "name": "乾パンマン先生",
   "power": "",
-  "imgUrl": "/card-images/n06_kanpanman.png"
+  "imgUrl": "/card-images/n06_kanpanman.webp"
  },
  {
   "id": "n007",
@@ -165,7 +165,7 @@
   "rarity": 1,
   "name": "ツッコミマン先生",
   "power": "",
-  "imgUrl": "/card-images/n07_tsukkomiman.png"
+  "imgUrl": "/card-images/n07_tsukkomiman.webp"
  },
  {
   "id": "n008",
@@ -173,7 +173,7 @@
   "rarity": 1,
   "name": "ウザン先生",
   "power": "",
-  "imgUrl": "/card-images/n08_uzan.png"
+  "imgUrl": "/card-images/n08_uzan.webp"
  },
  {
   "id": "n009",
@@ -181,7 +181,7 @@
   "rarity": 1,
   "name": "スクールカウンセラー はぁとさん",
   "power": "",
-  "imgUrl": "/card-images/n09_heart.png"
+  "imgUrl": "/card-images/n09_heart.webp"
  },
  {
   "id": "n016",
@@ -189,7 +189,7 @@
   "rarity": 1,
   "name": "幸福満腹∞先生",
   "power": "",
-  "imgUrl": "/card-images/n16_kofukumanpuku.png"
+  "imgUrl": "/card-images/n16_kofukumanpuku.webp"
  },
  {
   "id": "n033",
@@ -197,7 +197,7 @@
   "rarity": 1,
   "name": "居眠 ネムル",
   "power": "",
-  "imgUrl": "/card-images/n33_inemurinemuru.png"
+  "imgUrl": "/card-images/n33_inemurinemuru.webp"
  },
  {
   "id": "n034",
@@ -205,7 +205,7 @@
   "rarity": 1,
   "name": "極秘院 隠真",
   "power": "",
-  "imgUrl": "/card-images/n34_gokuhiininma.png"
+  "imgUrl": "/card-images/n34_gokuhiininma.webp"
  },
  {
   "id": "ssr001",
@@ -213,7 +213,7 @@
   "rarity": 3,
   "name": "真・ザンパン魔皇",
   "power": "鍋歴史終焉砲：歴史そのものを煮沸し、敵全体の能力を文明崩壊状態にする超絶攻撃！／超陣効果【天下統一・煮込み陣】：味方全体の全能力を超絶強化し、一定ターン無敵状態にする！",
-  "imgUrl": "/card-images/ssr01_zanpanman.png"
+  "imgUrl": "/card-images/ssr01_zanpanman.webp"
  },
  {
   "id": "ssr002",
@@ -221,7 +221,7 @@
   "rarity": 3,
   "name": "ヤバイヤツ鬼神",
   "power": "超速九九崩拳：九九を超高速で詠唱し、敵全体に演算破壊ダメージを与える！／超陣効果【演算暴走領域】：味方全体の攻撃力・速度を超絶強化！一定ターン、演算ミスを完全無効化！",
-  "imgUrl": "/card-images/ssr02_yabaiyatu.png"
+  "imgUrl": "/card-images/ssr02_yabaiyatu.webp"
  },
  {
   "id": "ssr003",
@@ -229,7 +229,7 @@
   "rarity": 3,
   "name": "真言霊文豪 バクソウ",
   "power": "言霊万葉陣：万葉の言霊を解き放ち、敵全体に超絶ダメージを与え、一定確率で沈黙状態にする！／超陣効果【文章神域・心動陣】：味方全体の知識力を超絶強化し、一定ターン全ての状態異常を無効化！さらに、スキルのクールタイムを短縮！",
-  "imgUrl": "/card-images/ssr03_bakuso.png"
+  "imgUrl": "/card-images/ssr03_bakuso.webp"
  },
  {
   "id": "ssr004",
@@ -237,7 +237,7 @@
   "rarity": 3,
   "name": "科学創造神 カガ",
   "power": "真理解放・方程式崩壊：全ての謎を数式で解き明かし、敵全体に超絶ダメージを与える！一定確率で行動不能にする！／超陣効果【科学神域・叡智陣】：味方全体の知識力を超絶強化し、一定ターン全ての状態異常を無効化！さらに、スキルのクールタイムを短縮！",
-  "imgUrl": "/card-images/ssr04_kaga.png"
+  "imgUrl": "/card-images/ssr04_kaga.webp"
  },
  {
   "id": "ssr005",
@@ -245,7 +245,7 @@
   "rarity": 3,
   "name": "爆弾魔煉獄王",
   "power": "爆裂！限界ブレイク：全身の力を一気に解放し、敵全体に超絶ダメージを与える！一定確率で気絶状態にする！／超陣効果【爆燃根性陣・MAX】：味方全体の運動能力と精神力を超絶強化し、一定ターン全ての状態異常を無効化！さらに、スキルのクールタイムを短縮！",
-  "imgUrl": "/card-images/ssr05_bakudanma.png"
+  "imgUrl": "/card-images/ssr05_bakudanma.webp"
  },
  {
   "id": "ssr006",
@@ -253,7 +253,7 @@
   "rarity": 3,
   "name": "忍法創造神 乾パンマン",
   "power": "忍法・創造極意筆舞：全ての創造力を筆に込め、敵全体に超絶ダメージを与える！一定確率で創造封印にする！／超陣効果【忍術美術陣・極彩奥義】：味方全体の全ステータスを超強化し、一定ターン全ての状態異常を無効化！さらに、スキルのクールタイムを短縮！",
-  "imgUrl": "/card-images/ssr06_kanpanman.png"
+  "imgUrl": "/card-images/ssr06_kanpanman.webp"
  },
  {
   "id": "ssr007",
@@ -261,7 +261,7 @@
   "rarity": 3,
   "name": "音速指揮神 ツッコミマン",
   "power": "五指音速ツッコミ・カデンツァ：5本の指でリズムを完全掌握し、敵全体に超絶ダメージを与える！一定確率で即ツッコミ状態にする！／超陣効果【音速指揮陣・MAXノリ】：味方全体のリズム・テンポ・表現力を超絶強化し、一定ターン全ての状態異常を無効化！さらに、スキルのクールタイムを大幅短縮！",
-  "imgUrl": "/card-images/ssr07_tsukkomiman.png"
+  "imgUrl": "/card-images/ssr07_tsukkomiman.webp"
  },
  {
   "id": "ssr008",
@@ -269,7 +269,7 @@
   "rarity": 3,
   "name": "完全知識体 真・ウザン",
   "power": "全知識解放・完全体：その知識量は人智を超え、理解者は存在しない。完全体へと至ったことで、彼は『何も教えなくなった』。全ステータス9999の超越存在！",
-  "imgUrl": "/card-images/ssr08_uzan.png"
+  "imgUrl": "/card-images/ssr08_uzan.webp"
  },
  {
   "id": "ssr016",
@@ -277,7 +277,7 @@
   "rarity": 3,
   "name": "幸福満腹∞先生",
   "power": "幸福満腹∞の奇跡・大饗宴：無限の愛と魔法の料理で全てを満たし、全てを幸せにする！味方全体のHP・全ステータス・全状態異常を完全回復し、幸福バフを付与！失敗すら奇跡の美味しさに変える神の料理力で、世界全体を幸福で包み込む！",
-  "imgUrl": "/card-images/ssr16_kofukumanpuku.png"
+  "imgUrl": "/card-images/ssr16_kofukumanpuku.webp"
  },
  {
   "id": "ssr031",
@@ -285,7 +285,7 @@
   "rarity": 3,
   "name": "ニワニワニワニワトリ【進化・覚醒】不思議鶏神（とりしん）",
   "power": "幻惑鶏神の絶対支配：三羽にも二羽にも見える幻惑の力で敵全体を完全混乱状態にし、幸運の極大覚醒で味方全体のHP・全ステータスを超絶強化！産卵による極・アイテム生成で更なる奇跡をもたらす！",
-  "imgUrl": "/card-images/ssr31_niwatori.png"
+  "imgUrl": "/card-images/ssr31_niwatori.webp"
  },
  {
   "id": "r030",
@@ -293,7 +293,7 @@
   "rarity": 4,
   "name": "超優等生 者郎方無",
   "power": "準備中",
-  "imgUrl": "/card-images/r30_sharohomu.png"
+  "imgUrl": "/card-images/r30_sharohomu.webp"
  },
  {
   "id": "r031",
@@ -301,7 +301,7 @@
   "rarity": 4,
   "name": "ニワニワニワニワトリ",
   "power": "準備中",
-  "imgUrl": "/card-images/r31_niwatori.png"
+  "imgUrl": "/card-images/r31_niwatori.webp"
  },
  {
   "id": "r032",
@@ -309,7 +309,7 @@
   "rarity": 4,
   "name": "トイレのはにゃこさん",
   "power": "準備中",
-  "imgUrl": "/card-images/r32_toirenohanyako.png"
+  "imgUrl": "/card-images/r32_toirenohanyako.webp"
  },
  {
   "id": "l015",
@@ -317,7 +317,7 @@
   "rarity": 5,
   "name": "氷火羅門先生",
   "power": "氷火の羅門・真髄発動：氷と炎を同時に解き放ち、敵全体の能力を完全封印！味方全体のHP・全ステータスをMAXへ引き上げ、学級崩壊を絶対無効化する！どんな絶望も突破口に変える、伝説の担任教師の最終奥義！",
-  "imgUrl": "/card-images/legend15_koorihiramon.png"
+  "imgUrl": "/card-images/legend15_koorihiramon.webp"
  },
  {
   "id": "r063",
@@ -325,7 +325,7 @@
   "rarity": 4,
   "name": "鳥取守護神　サキュウサマ",
   "power": "サキュウウィンド・グレートビュー：砂丘に吹く風を味方に変え、砂を舞わせて絶景を作り出す！すべての人に自然のすばらしさを見せてくれるぞ！",
-  "imgUrl": "/card-images/r63_tottori.png"
+  "imgUrl": "/card-images/r63_tottori.webp"
  },
  {
   "id": "r064",
@@ -333,7 +333,7 @@
   "rarity": 4,
   "name": "島根守護神　エンムスビノカミ",
   "power": "縁結び・神話結界：縁結びの糸を結界にして、仲間の力をつなぎ、人の心をひとつにするのじゃ！神話の力で、ピンチをチャンスに変えるぞ！",
-  "imgUrl": "/card-images/r64_shimane.png"
+  "imgUrl": "/card-images/r64_shimane.webp"
  },
  {
   "id": "r065",
@@ -341,7 +341,7 @@
   "rarity": 4,
   "name": "岡山守護神　モモタロウ晴天丸",
   "power": "晴天スマイル・きびだんごパワー：晴れの力をためたきびだんごを使い、みんなの心をひとつにする！ピンチの時も太陽のように明るく、どんな困難も乗りこえるのじゃ！",
-  "imgUrl": "/card-images/r65_okayama.png"
+  "imgUrl": "/card-images/r65_okayama.webp"
  },
  {
   "id": "r066",
@@ -349,7 +349,7 @@
   "rarity": 4,
   "name": "広島の守り神　ひろしまんじゃけぇ",
   "power": "ひろがるハートビーム：ハートの光をうちだして、みんなの心をあたたかくするんじゃ。ピンチのときに使うと、力がわいてくるぞ！（お好み焼きを食べるとパワーアップ！）",
-  "imgUrl": "/card-images/r66_hiroshima.png"
+  "imgUrl": "/card-images/r66_hiroshima.webp"
  },
  {
   "id": "r067",
@@ -357,7 +357,7 @@
   "rarity": 4,
   "name": "山口の守護神　カンモンガー",
   "power": "つなぎのブレイブブリッジ：関門海峡にかかる橋のようにエネルギーを放ち、人・物・文化のつながりをパワーに変える！すべての壁をこえて、未来への道をひらくのじゃ！",
-  "imgUrl": "/card-images/r67_yamaguchi.png"
+  "imgUrl": "/card-images/r67_yamaguchi.webp"
  },
  {
   "id": "r068",
@@ -365,7 +365,7 @@
   "rarity": 4,
   "name": "徳島の守護神　うずおどり姫",
   "power": "鳴門うず潮ダンス：鳴門の渦潮の力をダンスにのせて大放出！渦のようにぐるぐる回って、みんなの心をつなぎ、元気にするのじゃ！",
-  "imgUrl": "/card-images/r68_tokushima.png"
+  "imgUrl": "/card-images/r68_tokushima.webp"
  },
  {
   "id": "r069",
@@ -373,7 +373,7 @@
   "rarity": 4,
   "name": "香川の守り神　うどんどん",
   "power": "コシのびのび橋げたキック：うどんのコシでみんなを元気に！細くても強い橋のように、人と地域をつなぐ力なんじゃ！",
-  "imgUrl": "/card-images/r69_kagawa.png"
+  "imgUrl": "/card-images/r69_kagawa.webp"
  },
  {
   "id": "r070",
@@ -381,7 +381,7 @@
   "rarity": 4,
   "name": "愛媛の守り神　タオルじい",
   "power": "やさしさラップ：ふわふわタオルの波動で、みんなのつかれやかなしい気持ちをつつみこむ！パワーはやさしさから生まれるのじゃ！",
-  "imgUrl": "/card-images/r70_ehime.png"
+  "imgUrl": "/card-images/r70_ehime.webp"
  },
  {
   "id": "r071",
@@ -389,7 +389,7 @@
   "rarity": 4,
   "name": "土佐の守護神　龍馬ぜよ太郎",
   "power": "土佐の志・時代を切りひらき斬り：龍馬の志と土佐の自然の力を刀にこめて放つ一閃！古い壁をぶった斬り、未来への道を切りひらくぜよ！",
-  "imgUrl": "/card-images/r71_kochi.png"
+  "imgUrl": "/card-images/r71_kochi.webp"
  },
  {
   "id": "r072",
@@ -397,7 +397,7 @@
   "rarity": 4,
   "name": "福岡守護神　フクオカン",
   "power": "太宰府の知恵・八幡の鉄拳：太宰府天満宮のご神力で知恵を授け、八幡製鉄所の鉄を巨大な拳に変え、一撃で未来を切り開く！",
-  "imgUrl": "/card-images/r72_fukuoka.png"
+  "imgUrl": "/card-images/r72_fukuoka.webp"
  },
  {
   "id": "r073",
@@ -405,7 +405,7 @@
   "rarity": 4,
   "name": "佐賀守護神　有田爆焼ゴーレム",
   "power": "窯神オーバーファイア：超高温の窯を解放し、白い土を一瞬で日本で最初の磁器に焼き上げる熱線を放つ！どんな敵も、この炎でカチカチに焼き固めるのだ！",
-  "imgUrl": "/card-images/r73_saga.png"
+  "imgUrl": "/card-images/r73_saga.webp"
  },
  {
   "id": "r074",
@@ -413,7 +413,7 @@
   "rarity": 4,
   "name": "長崎守護神　デジマスター",
   "power": "出島開門：出島の門を開き、江戸時代、日本で唯一外国と交流できた窓口をよみがえらせる！世界の知識と文化を呼び込み、みんなの未来をひらく！",
-  "imgUrl": "/card-images/r74_nagasaki.png"
+  "imgUrl": "/card-images/r74_nagasaki.webp"
  },
  {
   "id": "r075",
@@ -421,7 +421,7 @@
   "rarity": 4,
   "name": "熊本守護神　モッコスケンジ",
   "power": "カルデラの大地パワー：阿蘇カルデラの大地のエネルギーを爆発させ、すべての困難をふきとばす！熊本の未来を切りひらくぞ！",
-  "imgUrl": "/card-images/r75_kumamoto.png"
+  "imgUrl": "/card-images/r75_kumamoto.webp"
  },
  {
   "id": "r076",
@@ -429,7 +429,7 @@
   "rarity": 4,
   "name": "大分守護神　オンセンノミコト",
   "power": "地獄蒸気波：地球のエネルギー（地熱）を蒸気に変えて、すべてを包みこむあたたかさでみんなをいやす！大分の未来をぽかぽかに照らす！",
-  "imgUrl": "/card-images/r76_oita.png"
+  "imgUrl": "/card-images/r76_oita.webp"
  },
  {
   "id": "r077",
@@ -437,7 +437,7 @@
   "rarity": 4,
   "name": "宮崎守護神　ヒュウガノヒカル",
   "power": "フェニックスの舞：フェニックス（不死鳥）のように何度でもよみがえり、困難を乗りこえて未来を切り開く！みんなに元気と希望を届ける！",
-  "imgUrl": "/card-images/r77_miyazaki.png"
+  "imgUrl": "/card-images/r77_miyazaki.webp"
  },
  {
   "id": "r078",
@@ -445,7 +445,7 @@
   "rarity": 4,
   "name": "鹿児島守護神　サツマヒコ",
   "power": "大噴火・桜島：桜島の噴火の力で大地を揺るがし、大地の恵みを生み出す！火山のエネルギーで未来を切り拓く！",
-  "imgUrl": "/card-images/r78_kagoshima.png"
+  "imgUrl": "/card-images/r78_kagoshima.webp"
  },
  {
   "id": "r079",
@@ -453,7 +453,7 @@
   "rarity": 4,
   "name": "沖縄守護神　チュラウミ",
   "power": "美ら島結界：サンゴの力で美ら島に結界を張り、豊かな自然と文化を守る！琉球の心をひとつにし、未来へつなぐ！",
-  "imgUrl": "/card-images/r79_okinawa.png"
+  "imgUrl": "/card-images/r79_okinawa.webp"
  },
  {
   "id": "l017",
@@ -461,7 +461,7 @@
   "rarity": 5,
   "name": "PTA会長　宝人桜",
   "power": "PTA会長として、学校と家庭、地域をつなぐ架け橋。確かな判断力と強い行動力で、あらゆる課題を解決へと導くリーダー。子どもたちの笑顔と成長のために、今日も全力で未来を創り続ける。",
-  "imgUrl": "/card-images/legend17_sakura.png"
+  "imgUrl": "/card-images/legend17_sakura.webp"
  },
  {
   "id": "l016",
@@ -469,7 +469,7 @@
   "rarity": 5,
   "name": "生徒会会長　宝人花火",
   "power": "宝人桜の息子であり、生徒会を率いるカリスマ。冷静で頭脳明晰、誰よりも学校と仲間を想う。必要な場面では容赦なく決断を下すが、その本質は優しく誠実。",
-  "imgUrl": "/card-images/legend16_hanabi.png"
+  "imgUrl": "/card-images/legend16_hanabi.webp"
  },
  {
   "id": "n010",
@@ -477,7 +477,7 @@
   "rarity": 1,
   "name": "掃除委員会委員長　李祭久留",
   "power": "学校をいつもきれいに保つ、掃除のスペシャリスト。無駄を嫌い、効率を重視するが、仲間思いで優しい性格。リサイクルや環境問題にも関心が高く、持続可能な学校づくりを目指している。",
-  "imgUrl": "/card-images/n10_risaikuru.png"
+  "imgUrl": "/card-images/n10_risaikuru.webp"
  },
  {
   "id": "sp01",
@@ -485,7 +485,7 @@
   "rarity": 6,
   "name": "神覚者 学王",
   "power": "真理の鍵・全扉開放：万物の理を見通し、信じる者の心に未来への扉を開く。全教科・全分野の可能性を無限に解き放つ、学園総裁の最高奥義！",
-  "imgUrl": "/card-images/sp01_gakuou.png"
+  "imgUrl": "/card-images/sp01_gakuou.webp"
  },
  {
   "id": "sp02",
@@ -493,7 +493,7 @@
   "rarity": 6,
   "name": "神覚者 教王",
   "power": "絆の刻印・永久開扉：信じ合う者どうしの心を結び、迷える者を導く光を灯す。創造と改革で世界をより良く変える、初代校長の理想の極致！",
-  "imgUrl": "/card-images/sp02_kyouou.png"
+  "imgUrl": "/card-images/sp02_kyouou.webp"
  },
  {
   "id": "sp03",
@@ -501,6 +501,6 @@
   "rarity": 7,
   "name": "四天王 鍵の継承者たち",
   "power": "絆の共鳴・全扉開放：四つの意志が一つになる時、すべての扉が開かれる。学園の頂点に立つ四人の絆が奇跡を生み、不可能を可能にする究極の力！",
-  "imgUrl": "/card-images/sp_shitennou.png"
+  "imgUrl": "/card-images/sp_shitennou.webp"
  }
 ]
