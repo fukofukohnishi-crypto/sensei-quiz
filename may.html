@@ -1054,9 +1054,15 @@ window.onload=async function(){
 
 function buildChips(){
   const defs=[['rika','🔬 理科'],['shakai','⚔️ 社会'],['sansu','💪 算数'],['kokugo','📚 国語']];
-  document.getElementById('nt-chips').innerHTML=defs.map(([k,lbl])=>
+  /* nt-chips は「新しいテスト」画面から科目選択UIを外したときに無くなった。
+     ap-chips も画面によっては存在しない。要素が無ければ黙って飛ばす。
+     ここで例外を出すと window.onload がここで止まり、この下で登録している
+     iPad PWA用のボタンハンドラが付かなくなる。 */
+  const nt=document.getElementById('nt-chips');
+  if(nt)nt.innerHTML=defs.map(([k,lbl])=>
     `<button class="chip ${ntSelectedSubj===k?'active-'+k:''}" onclick="selectNtSubj('${k}',this)">${lbl}</button>`).join('');
-  document.getElementById('ap-chips').innerHTML=defs.map(([k,lbl])=>
+  const ap=document.getElementById('ap-chips');
+  if(ap)ap.innerHTML=defs.map(([k,lbl])=>
     `<button class="chip ${apCurrentSubj===k?'active-'+k:''}" onclick="selectApSubj('${k}',this)">${lbl}</button>`).join('');
 }
 function selectNtSubj(k,btn){
