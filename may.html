@@ -1030,22 +1030,16 @@ let answered=false,ntPhotos=[],apTbPhotos=[],apWbPhotos=[],apCurrentSubj='rika',
 let toastTimer=null,segResults=[],wrongQuestions=[],isRevengeMode=false;
 
 window.onload=async function(){
-  try{
-    var resp=await fetch('/Cards.json');
-    if(resp.ok){
-      var data=await resp.json();
-      if(Array.isArray(data)&&data.length>0)CARDS=data;
-    } else {
-      try{
-        var resp2=await fetch('https://raw.githubusercontent.com/fukofukohnishi-crypto/sensei-quiz/main/Cards.json');
-        if(resp2.ok){var data2=await resp2.json();if(Array.isArray(data2)&&data2.length>0)CARDS=data2;}
-      }catch(e2){console.log('GitHub Raw取得失敗、デフォルト使用');}
-    }
-  }catch(e){
+  /* 他のアプリ（index / chizu / natsuyasumi）と同じ読み込み方式に統一。
+     サーバの大文字小文字差を吸収するため 2 通り試す。
+     取得できなければ上の FALLBACK 定義をそのまま使う。 */
+  for(var i=0,urls=['/cards.json','/Cards.json'];i<urls.length;i++){
     try{
-      var resp3=await fetch('https://raw.githubusercontent.com/fukofukohnishi-crypto/sensei-quiz/main/Cards.json');
-      if(resp3.ok){var data3=await resp3.json();if(Array.isArray(data3)&&data3.length>0)CARDS=data3;}
-    }catch(e3){console.log('cards.json読み込み失敗、デフォルト使用');}
+      var resp=await fetch(urls[i]);
+      if(!resp.ok)continue;
+      var data=await resp.json();
+      if(Array.isArray(data)&&data.length>0){CARDS=data;break;}
+    }catch(e){/* 次のURLへ */}
   }
   renderHome();buildChips();
 

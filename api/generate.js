@@ -44,9 +44,16 @@ async function callClaude(content, maxTokens) {
       'anthropic-version': '2023-06-01'
     },
     body: JSON.stringify({
-      // 現行モデル（旧 claude-sonnet-4-20250514 は2026/6/15に引退→404のため変更）
-      model: 'claude-sonnet-4-6',
+      // 現行モデル。旧 claude-sonnet-4-20250514 は2026/6/15に引退（404）、
+      // その後継 claude-sonnet-4-6 から claude-sonnet-5 へ更新。
+      // sonnet-5 は 4-6 より安く（入力 $3→$2 / 出力 $15→$10 per 1M）性能も上。
+      model: 'claude-sonnet-5',
       max_tokens: maxTokens || 4000,
+      // sonnet-5 は thinking を省略すると自動的にONになる。思考トークンが
+      // max_tokens を食ってJSONが途中で切れるため、ここでは明示的にOFFにして
+      // 従来と同じ挙動を保つ。品質を上げたくなったら
+      // thinking:{type:'adaptive'} + max_tokens を増やす、に切り替える。
+      thinking: { type: 'disabled' },
       messages: [{ role: 'user', content }]
     })
   });
