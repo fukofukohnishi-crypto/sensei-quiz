@@ -18,8 +18,8 @@ may.html          5月マンスリー。★終了・凍結
 api/generate.js   Claude API 呼び出し。教材写真→クイズ生成／漫画構成案
 Cards.json        カード63枚のマスタデータ
 stories.json      学園の読み物。10月版のご褒美（連続正解のベスト更新で1話解放）
-quizbank-seed.json  理科 後期第1〜5回の作りおき問題212問。october.html の
-                    管理画面から読みこむ（承認まちに入る）
+quizbank-seed.json  作りおき問題353問。理科 後期第1〜5回／社会 後期第1〜3回。
+                    october.html の管理画面から読みこむ（承認まちに入る）
 card-images/      カード絵（WebP。q85 で変換済み）
 img/figures/      問題に出す図（自作のSVG）。教材の写真は使わない
 chars/            守護神の立ち絵（portraits/）とメダル画像（medals/地方名/）
@@ -256,6 +256,23 @@ SVGなら著作権の問題がなく、ラベルも日本語で自由に置け�
 いまある図: `flame.svg`（ろうそくの炎3層）、`waterscape.svg`（地面に見える水の断面）、
 `cloudheight.svg`（雲の高さ3層）。
 
+### 白地図の問題（`type:"map_reverse"`）
+
+日本地図の1県が光り、問題文はいつも「光っているのは、どこ？」に固定される
+（`renderQ()` が `q.q` を無視して上書きする）。`a` は都道府県名そのもの。
+`october.html` の `CODE_TO_PREF` にある47都道府県すべてが使える
+（`chizu.html` の17県しばりとは無関係）。
+
+- `q` は画面に出ないが、**承認画面と重複チェックで使うので1問ごとに別の文字列**にする。
+  `光っている都道府県はどこですか。〔近畿・府庁所在地は大阪市〕` のように書いておくと
+  承認するときにどの県かがわかる。県名そのものを入れると `gate2()` の
+  「答えが問題文の中に書いてある」に引っかかるので入れない。
+- 地図は縦に大きいので、`renderQ()` が `.qmain` に `map-mode` を付けて
+  **左に地図・右に問題文と答え**の2カラムにしている。1カラムのままだと
+  iPad横長で「⭕できた／❌まだ」が画面の下に隠れる（実際に踏んだ）。
+
+いまある白地図問題: 京都府・奈良県・大阪府・和歌山県・兵庫県の5問。
+
 ### 「AとBのどちらですか」型は作らない
 
 「食塩と砂糖のどちらが多くとけますか」のような二者択一は、答えが問題文の
@@ -279,19 +296,33 @@ for(const f of ['index.html','chizu.html','may.html','natsuyasumi.html','rikasha
 
 node --check api/generate.js
 
-# quizbank-seed.json の型チェック（引数の位置ずれを見つける）
+# quizbank-seed.json のチェック。型（引数の位置ずれ）と gate2 相当を両方見る。
+# juken にリストが入っていたら位置ずれ。accept へ移すこと。
 python3 -c "
-import json,os
+import json,os,re
 Q=json.load(open('quizbank-seed.json'))
 SPEC={'id':str,'type':str,'subj':str,'round':int,'q':str,'a':str,
       'accept':list,'source':str,'explain':str,'juken':str,'basis':str}
-bad=0
+BAN=['図','写真','グラフ','表を','傍線','下線','次のうち','次の中','選びなさい','記号で答え']
+POINT=re.compile('[上下右左]の\\s*(図|表|写真|グラフ|文|文章|選択肢|語群|ア|①|1|A)')
+bad=0; seen={}
 for q in Q:
+    n=q.get('q','?')[:26]
     for k,t in SPEC.items():
-        if k not in q or not isinstance(q[k],t): print('NG',q.get('q','?')[:30],k); bad+=1
+        if k not in q or not isinstance(q[k],t): print('NG 型',n,k); bad+=1
+    t_,a,fig=q.get('q',''),q.get('a',''),(q['type']=='figure' and q.get('fig'))
     if q['type']=='figure' and not os.path.exists('img/figures/'+q.get('fig','')):
-        print('NG 図がない',q['q'][:30]); bad+=1
-print('型エラー',bad,'件')
+        print('NG 図がない',n); bad+=1
+    for w in BAN:
+        if w in t_ and not (fig and w in ('図','写真','グラフ','表を')): print('NG 禁止語',n,w); bad+=1
+    if not fig and POINT.search(t_): print('NG 画面にない図表',n); bad+=1
+    if not a or len(a)>20: print('NG 答えの長さ',n); bad+=1
+    elif q['type']!='map_reverse' and a in t_: print('NG 答えが問題文中',n,a); bad+=1
+    if len(q.get('source',''))<10: print('NG 引用なし',n); bad+=1
+    if not q.get('explain'): print('NG 解説なし',n); bad+=1
+    if t_ in seen: print('NG 重複',n); bad+=1
+    seen[t_]=1
+print('エラー',bad,'件 /',len(Q),'問')
 "
 
 # Cards.json の画像参照が全部実在するか

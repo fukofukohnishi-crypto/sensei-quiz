@@ -149,6 +149,17 @@ button:focus-visible{outline:2px solid var(--gold);outline-offset:2px}
 
 /* ---- 白地図 ---- */
 .mapwrap{background:var(--card);border:1px solid var(--line);border-radius:18px;padding:14px;margin-bottom:8px}
+/* 白地図の問題は地図が高いので、iPad横長では左に地図・右に問題文と答えを置く。
+   1カラムのままだと「⭕できた／❌まだ」が画面の下に隠れてしまう。 */
+.qmain.map-mode{display:grid;grid-template-columns:minmax(0,44%) minmax(0,1fr);
+  gap:clamp(18px,2.4vw,34px);align-items:start}
+.qmain.map-mode .segs{grid-column:1/-1;margin-bottom:6px}
+.qmain.map-mode{padding-top:24px;padding-bottom:24px}
+.qmain.map-mode .mapwrap{margin-bottom:0}
+@media(max-width:900px){
+  .qmain.map-mode{display:block}
+  .qmain.map-mode .mapwrap{margin-bottom:12px}
+}
 .figwrap{background:var(--card);border:1px solid var(--line);border-radius:18px;padding:16px;margin-bottom:14px;text-align:center}
 .figwrap img{max-width:100%;height:auto;max-height:min(46vh,360px);display:inline-block}
 #japan-svg-map .prefecture{fill:#2a2a3e;stroke:#7a7a99;stroke-width:1.3px}
@@ -301,7 +312,7 @@ button:focus-visible{outline:2px solid var(--gold);outline-offset:2px}
       <div class="who" id="q-who"></div>
       <div class="prog"><b id="q-prog">0</b><span id="q-proglbl">もんめ</span></div>
     </div>
-    <div class="qmain">
+    <div class="qmain" id="q-main">
       <div class="segs" id="q-segs"></div>
       <div id="q-fig-wrap" class="figwrap" style="display:none"><img id="q-fig" src="" alt="" onerror="this.style.display='none'"></div>
       <div id="q-map-wrap" class="mapwrap" style="display:none"><svg id="japan-svg-map" viewBox="0 0 1000 1000" xmlns="http://www.w3.org/2000/svg">
@@ -513,21 +524,23 @@ button:focus-visible{outline:2px solid var(--gold);outline-offset:2px}
     </g>
   </g>
 </svg></div>
-      <div class="qtext" id="q-text"></div>
-      <div class="qmeta" id="q-meta"></div>
-      <div id="q-before">
-        <button class="btn gold" style="width:100%" onclick="reveal()">答えを見る</button>
-      </div>
-      <div id="q-after" style="display:none">
-        <div class="ans-box">
-          <div class="ans-lbl">こたえ</div>
-          <div class="ans" id="q-ans"></div>
-          <div class="ans-accept" id="q-accept"></div>
+      <div class="qcol">
+        <div class="qtext" id="q-text"></div>
+        <div class="qmeta" id="q-meta"></div>
+        <div id="q-before">
+          <button class="btn gold" style="width:100%" onclick="reveal()">答えを見る</button>
         </div>
-        <div class="explain" id="q-explain"></div>
-        <div class="scorebtns">
-          <button class="big-ok" onclick="score(true)">⭕ できた</button>
-          <button class="big-ng" onclick="score(false)">❌ まだ</button>
+        <div id="q-after" style="display:none">
+          <div class="ans-box">
+            <div class="ans-lbl">こたえ</div>
+            <div class="ans" id="q-ans"></div>
+            <div class="ans-accept" id="q-accept"></div>
+          </div>
+          <div class="explain" id="q-explain"></div>
+          <div class="scorebtns">
+            <button class="big-ok" onclick="score(true)">⭕ できた</button>
+            <button class="big-ng" onclick="score(false)">❌ まだ</button>
+          </div>
         </div>
       </div>
     </div>
@@ -608,7 +621,7 @@ button:focus-visible{outline:2px solid var(--gold);outline-offset:2px}
       </div>
       <button class="btn gold" style="width:100%" id="ad-gen" onclick="generate()">問題をつくる</button>
       <button class="btn ghost" style="width:100%;margin-top:9px" onclick="loadSeed()">
-        📚 用意ずみの問題を読みこむ（理科 後期第1〜5回）
+        📚 用意ずみの問題を読みこむ（理科 第1〜5回／社会 第1〜3回）
       </button>
       <div class="log" id="ad-log" style="display:none"></div>
 
@@ -868,6 +881,7 @@ function renderQ(){
   const mapWrap=document.getElementById('q-map-wrap');
   const figWrap=document.getElementById('q-fig-wrap');
   figWrap.style.display='none';
+  document.getElementById('q-main').classList.toggle('map-mode',q.type==='map_reverse');
   if(q.type==='map_reverse'){
     mapWrap.style.display='';
     highlightPref(q.a);
