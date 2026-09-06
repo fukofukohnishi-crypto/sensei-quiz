@@ -603,6 +603,9 @@ button:focus-visible{outline:2px solid var(--gold);outline-offset:2px}
         <div class="thumbs" id="ad-thumbs"></div>
       </div>
       <button class="btn gold" style="width:100%" id="ad-gen" onclick="generate()">問題をつくる</button>
+      <button class="btn ghost" style="width:100%;margin-top:9px" onclick="loadSeed()">
+        📚 用意ずみの問題を読みこむ（理科 後期第1〜5回）
+      </button>
       <div class="log" id="ad-log" style="display:none"></div>
 
       <div id="ad-drafts" style="margin-top:26px"></div>
@@ -689,16 +692,18 @@ const BAN=[
   ['図','図を参照している'],['写真','写真を参照している'],['グラフ','グラフを参照している'],
   ['表を','表を参照している'],['傍線','傍線部を参照している'],['下線','下線部を参照している'],
   ['次のうち','選択肢がある前提になっている'],['次の中','選択肢がある前提になっている'],
-  ['下の','画面にないものを指している'],['上の','画面にないものを指している'],
-  ['右の','画面にないものを指している'],['左の','画面にないものを指している'],
   ['選びなさい','選択肢がある前提になっている'],['記号で答え','選択肢がある前提になっている']
 ];
+/* 「上の」「下の」などは、そのあとに図や表が続くときだけ弾く。
+   「地球上の水」のような正しい問題文を巻きこまないため。 */
+const POINT_RE=/[上下右左]の\s*(図|表|写真|グラフ|文|文章|選択肢|語群|ア|①|1|A)/;
 const BAN_RE=/(ア[〜～ー–-]エ|①[〜～ー–-]④|[Aa][〜～ー–-][Dd])/;
 
 function gate2(q){
   const bad=[];
   const text=String(q.q||'');
   BAN.forEach(([w,why])=>{ if(text.indexOf(w)>=0) bad.push(w+'：'+why); });
+  if(POINT_RE.test(text)) bad.push('画面にない図や表を指している');
   if(BAN_RE.test(text)) bad.push('記号の選択肢を指している');
   if(!q.a) bad.push('答えが空');
   else if(String(q.a).length>20) bad.push('答えが長すぎる（20字まで）');
@@ -1129,12 +1134,50 @@ async function generate(){
   btn.disabled=false; btn.textContent='問題をつくる';
 }
 
+/* テキストから作りおきした問題を読みこむ。承認まちに入るので、
+   関門2を通したうえで1問ずつ確認してから採用する。 */
+async function loadSeed(){
+  try{
+    const r=await fetch('/quizbank-seed.json');
+    if(!r.ok)throw new Error('HTTP '+r.status);
+    const list=await r.json();
+    const have={};
+    quizbank.forEach(q=>{have[q.q]=1});
+    drafts.forEach(q=>{have[q.q]=1});
+    const add=list.filter(q=>!have[q.q]).map(q=>{
+      const o=Object.assign({},q);
+      const bad=gate2(o);
+      o.checks={auto:bad.length?'fail':'pass', autoWhy:bad, ai:'pass',
+                aiWhy:'教材から作りおきしたもの', human:'pending'};
+      return o;
+    });
+    if(!add.length){toast('新しく足せる問題はありませんでした');return;}
+    drafts=add.concat(drafts);
+    saveDrafts(); renderAdmin();
+    toast(add.length+'問を読みこみました。下から確認してね','var(--gold)');
+  }catch(e){
+    toast('読みこみに失敗：'+e.message,'var(--ng)');
+  }
+}
+
+function approveAll(){
+  const ok=drafts.filter(q=>(q.checks||{}).auto!=='fail');
+  if(!ok.length){toast('採用できる問題がありません','var(--warn)');return;}
+  if(!confirm('関門2を通った '+ok.length+'問を、まとめて採用しますか？'))return;
+  ok.forEach(q=>{q.checks.human='approved';quizbank.unshift(q);});
+  drafts=drafts.filter(q=>(q.checks||{}).auto==='fail');
+  saveBank(); saveDrafts(); renderAdmin();
+  toast(ok.length+'問を採用しました（ぜんぶで'+quizbank.length+'問）');
+}
+
 function renderAdmin(){
   setAdSubj(adSubj);
   const w=document.getElementById('ad-drafts');
   if(!drafts.length){ w.innerHTML=''; }
   else{
     w.innerHTML='<div class="series-h"><b>確認まちの問題</b><span>'+drafts.length+'問</span></div>'
+      +'<button class="btn ghost" style="width:100%;margin-bottom:14px" onclick="approveAll()">'
+      +'⭕ 関門2を通ったものをまとめて採用</button>'
       +drafts.map((q,i)=>{
         const c=q.checks||{};
         const g=(lbl,st,why)=>'<span class="g '+(st==='pass'?'pass':st==='fail'?'fail':'skip')+'">'
