@@ -18,9 +18,10 @@ may.html          5月マンスリー。★終了・凍結
 api/generate.js   Claude API 呼び出し。教材写真→クイズ生成／漫画構成案
 Cards.json        カード63枚のマスタデータ
 stories.json      学園の読み物。10月版のご褒美（連続正解のベスト更新で1話解放）
-quizbank-seed.json  理科 後期第1〜5回の作りおき問題202問。october.html の
+quizbank-seed.json  理科 後期第1〜5回の作りおき問題212問。october.html の
                     管理画面から読みこむ（承認まちに入る）
 card-images/      カード絵（WebP。q85 で変換済み）
+img/figures/      問題に出す図（自作のSVG）。教材の写真は使わない
 chars/            守護神の立ち絵（portraits/）とメダル画像（medals/地方名/）
 img/              HTMLから外出しした画像
                     kv.jpg      理科☆社会特訓のキービジュアル
@@ -242,6 +243,27 @@ JSONが途中で切れるため）。品質を上げたくなったら `{type:'a
 
 `choice` の問題は、承認するときに人が中身を確かめること。
 
+### 図つきの問題
+
+`type:"figure"` ＋ `fig:"flame.svg"` で、`img/figures/` の図を問題文の上に出す。
+`gate2()` は figure のとき「図」「写真」などの禁止語を適用しない（図が実際に
+画面に出るため）。ただし `fig` が無い figure は弾く。
+
+**教材の写真は使わないこと。** リポジトリもサイトも公開されているので、
+教材の写真を切り出して置くと複製と公衆送信にあたる。図は自分で描く。
+SVGなら著作権の問題がなく、ラベルも日本語で自由に置ける。
+
+いまある図: `flame.svg`（ろうそくの炎3層）、`waterscape.svg`（地面に見える水の断面）、
+`cloudheight.svg`（雲の高さ3層）。
+
+### 「AとBのどちらですか」型は作らない
+
+「食塩と砂糖のどちらが多くとけますか」のような二者択一は、答えが問題文の
+中に入ってしまうため `gate2()` が弾く。これは正しい判定で、2択は
+当てずっぽうでも半分当たり、フラッシュカードとして弱い。
+**「より多くとかすことができるのは何ですか」**のように開いた問い方に直すこと。
+図つきでも同じ。「A・B・Cのうちどれ」は作らず、「Aの部分の名前は」にする。
+
 ## 検証
 
 テストランナーはない。変更したら最低限これを通す:
@@ -256,6 +278,21 @@ for(const f of ['index.html','chizu.html','may.html','natsuyasumi.html','rikasha
   console.log('ok',f,i);}"
 
 node --check api/generate.js
+
+# quizbank-seed.json の型チェック（引数の位置ずれを見つける）
+python3 -c "
+import json,os
+Q=json.load(open('quizbank-seed.json'))
+SPEC={'id':str,'type':str,'subj':str,'round':int,'q':str,'a':str,
+      'accept':list,'source':str,'explain':str,'juken':str,'basis':str}
+bad=0
+for q in Q:
+    for k,t in SPEC.items():
+        if k not in q or not isinstance(q[k],t): print('NG',q.get('q','?')[:30],k); bad+=1
+    if q['type']=='figure' and not os.path.exists('img/figures/'+q.get('fig','')):
+        print('NG 図がない',q['q'][:30]); bad+=1
+print('型エラー',bad,'件')
+"
 
 # Cards.json の画像参照が全部実在するか
 python3 -c "
