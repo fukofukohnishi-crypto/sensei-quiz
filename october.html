@@ -149,6 +149,8 @@ button:focus-visible{outline:2px solid var(--gold);outline-offset:2px}
 
 /* ---- 白地図 ---- */
 .mapwrap{background:var(--card);border:1px solid var(--line);border-radius:18px;padding:14px;margin-bottom:8px}
+.figwrap{background:var(--card);border:1px solid var(--line);border-radius:18px;padding:16px;margin-bottom:14px;text-align:center}
+.figwrap img{max-width:100%;height:auto;max-height:min(46vh,360px);display:inline-block}
 #japan-svg-map .prefecture{fill:#2a2a3e;stroke:#7a7a99;stroke-width:1.3px}
 #japan-svg-map .prefecture.hl{fill:var(--gold);stroke:#fff;stroke-width:2.2px}
 #japan-svg-map{width:100%;height:auto;display:block;max-height:min(52vh,430px)}
@@ -301,6 +303,7 @@ button:focus-visible{outline:2px solid var(--gold);outline-offset:2px}
     </div>
     <div class="qmain">
       <div class="segs" id="q-segs"></div>
+      <div id="q-fig-wrap" class="figwrap" style="display:none"><img id="q-fig" src="" alt="" onerror="this.style.display='none'"></div>
       <div id="q-map-wrap" class="mapwrap" style="display:none"><svg id="japan-svg-map" viewBox="0 0 1000 1000" xmlns="http://www.w3.org/2000/svg">
   <title>Japanese Prefectures</title>
   <desc>Created by Geolonia (https://geolonia.com/).</desc>
@@ -703,9 +706,20 @@ const BAN_RE=/(ア[〜～ー–-]エ|①[〜～ー–-]④|[Aa][〜～ー–-][D
 function gate2(q){
   const bad=[];
   const text=String(q.q||'');
-  BAN.forEach(([w,why])=>{ if(text.indexOf(w)>=0) bad.push(w+'：'+why); });
-  if(POINT_RE.test(text)) bad.push('画面にない図や表を指している');
-  if(BAN_RE.test(text)) bad.push('記号の選択肢を指している');
+  /* 図つきの問題は、図が実際に画面に出るので「図」まわりの禁止語を適用しない。
+     ただし figure なのに fig が無いものは、図なしで図を指すことになるので弾く。 */
+  const hasFig = q.type==='figure' && q.fig;
+  if(q.type==='figure' && !q.fig) bad.push('図つきの問題なのに図が指定されていない');
+  if(!hasFig){
+    BAN.forEach(([w,why])=>{ if(text.indexOf(w)>=0) bad.push(w+'：'+why); });
+    if(POINT_RE.test(text)) bad.push('画面にない図や表を指している');
+    if(BAN_RE.test(text)) bad.push('記号の選択肢を指している');
+  }else{
+    BAN.forEach(([w,why])=>{
+      if(w==='図'||w==='写真'||w==='グラフ'||w==='表を')return;
+      if(text.indexOf(w)>=0) bad.push(w+'：'+why);
+    });
+  }
   if(!q.a) bad.push('答えが空');
   else if(String(q.a).length>20) bad.push('答えが長すぎる（20字まで）');
   else if(text.indexOf(String(q.a))>=0) bad.push('答えが問題文の中に書いてある');
@@ -852,12 +866,19 @@ function renderQ(){
   }
 
   const mapWrap=document.getElementById('q-map-wrap');
+  const figWrap=document.getElementById('q-fig-wrap');
+  figWrap.style.display='none';
   if(q.type==='map_reverse'){
     mapWrap.style.display='';
     highlightPref(q.a);
     document.getElementById('q-text').textContent='光っているのは、どこ？';
   }else{
     mapWrap.style.display='none';
+    if(q.type==='figure'&&q.fig){
+      const im=document.getElementById('q-fig');
+      im.style.display=''; im.src='/img/figures/'+q.fig; im.alt=q.figAlt||'';
+      figWrap.style.display='';
+    }
     document.getElementById('q-text').textContent=q.q;
   }
   document.getElementById('q-meta').textContent=
