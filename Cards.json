@@ -531,6 +531,15 @@
   "imgUrl": "/card-images/legend16_hanabi.webp"
  },
  {
+  "id": "l018",
+  "char": "hagurumazenki",
+  "rarity": 5,
+  "series": "gakuen",
+  "name": "生徒会副会長　歯車善記",
+  "power": "因果反転・最善未来：すべての因果を歯車のように読みきり、どんな悪い出来事も良い未来へ組みかえる。学園の頭脳であり、極品隠真の力を唯一おさえられる者。教王の息子として、生まれながらの覚悟と責任を背負う。",
+  "imgUrl": "/card-images/legend18_hagurumazenki.webp"
+ },
+ {
   "id": "n010",
   "char": "risaikuru",
   "rarity": 1,
@@ -538,6 +547,15 @@
   "name": "掃除委員会委員長　李祭久留",
   "power": "学校をいつもきれいに保つ、掃除のスペシャリスト。無駄を嫌い、効率を重視するが、仲間思いで優しい性格。リサイクルや環境問題にも関心が高く、持続可能な学校づくりを目指している。",
   "imgUrl": "/card-images/n10_risaikuru.webp"
+ },
+ {
+  "id": "n011",
+  "char": "kendomichiko",
+  "rarity": 1,
+  "series": "gakuen",
+  "name": "剣道満子",
+  "power": "一心剣魂・全力の一本：礼に始まり礼に終わる。心眼で相手の動きを読みきり、一族の誇りを乗せた一撃に己のすべてを込める！",
+  "imgUrl": "/card-images/n11_kendomichiko.webp"
  },
  {
   "id": "sp01",
