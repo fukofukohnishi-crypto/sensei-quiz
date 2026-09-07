@@ -199,8 +199,9 @@ button:focus-visible{outline:2px solid var(--gold);outline-offset:2px}
 .sitem:hover{background:var(--card)}
 .sitem[aria-current="true"]{background:var(--card-hi);border-color:var(--line-hi)}
 .sitem .n{font-size:.7rem;font-weight:800;color:var(--gold);width:20px;flex:0 0 auto;padding-top:3px}
-.sitem .t{font-size:.92rem;font-weight:700;line-height:1.5}
-.sitem .k{font-size:.68rem;color:var(--muted);margin-top:2px}
+/* span のままだとタイトルと種別が続けて折り返されるので block にする */
+.sitem .t{display:block;font-size:.92rem;font-weight:700;line-height:1.5}
+.sitem .k{display:block;font-size:.68rem;color:var(--muted);margin-top:2px}
 .sitem.locked{opacity:.45;cursor:default}
 .sitem.locked:hover{background:transparent}
 .sitem.locked .t{letter-spacing:.16em;color:var(--muted)}
