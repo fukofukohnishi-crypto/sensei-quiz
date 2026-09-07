@@ -105,10 +105,21 @@ DB名 `senseiZukan` / ストア `kv`。natsuyasumi と rikashakai が**同じDB�
 `Cards.json` が唯一のマスタ。63枚。1件はこの形:
 
 ```json
-{ "id": "sr001", "char": "zanpanman", "rarity": 2,
+{ "id": "sr001", "char": "zanpanman", "rarity": 2, "series": "gakuen",
   "name": "ザンパンマン先生", "power": "必殺技の説明…",
   "imgUrl": "/card-images/sr01_zanpanman.webp" }
 ```
+
+`series` は**入手経路のグループ**。`index.html` のコレクション画面がこれで区切って、
+それぞれに「◯枚／◯枚」と進捗バーを出す。全部まとめた分母だと、カードを足すたびに
+数がふえて「集まらない感」が出るため。カードを足すときは必ず付けること
+（無いものは `gakuen` 扱いになる）。
+
+| 値 | 枚数 | 中身 | 入手 |
+|---|---|---|---|
+| `gakuen` | 43 | オリジナル学園の先生たち | ガチャ／10問クリア |
+| `pref` | 17 | 都道府県の守護神（`r063`〜`r079`） | ニッポン制覇でメダル10個 |
+| `challenge` | 3 | `sp01`〜`sp03`（`sp04`〜`sp06` もここ） | 50問連続正解 |
 
 画像は **WebP**（品質85）。元絵がPNGやJPEGで来たら必ず変換してから入れる。
 PNGのまま置くと1枚2.5〜3MBになり、子供の端末で表示が重くなる。
