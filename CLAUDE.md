@@ -18,7 +18,8 @@ may.html          5月マンスリー。★終了・凍結
 api/generate.js   Claude API 呼び出し。教材写真→クイズ生成／漫画構成案
 Cards.json        カード63枚のマスタデータ
 stories.json      学園の読み物。10月版のご褒美（連続正解のベスト更新で1話解放）
-quizbank-seed.json  作りおき問題483問。理科・社会とも後期第1〜5回ぶん。
+quizbank-seed.json  作りおき問題514問。理科・社会とも後期第1〜5回ぶん。
+                    テキストと練成問題集の両方から作った。
                     october.html の管理画面から読みこむ（承認まちに入る）
 card-images/      カード絵（WebP。q85 で変換済み）
 img/figures/      問題に出す図（自作のSVG）。教材の写真は使わない
