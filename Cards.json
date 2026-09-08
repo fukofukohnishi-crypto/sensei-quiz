@@ -72,6 +72,24 @@
   "imgUrl": "/card-images/sr08_uzan.webp"
  },
  {
+  "id": "sr010",
+  "char": "risaikuru",
+  "rarity": 2,
+  "series": "gakuen",
+  "name": "掃除委員会委員長　李祭久留",
+  "power": "クリーン・スイープ：ほうき一本で校舎じゅうのよごれを一掃し、味方全体の状態異常を消す。小さな汚れも見のがさない気づき力！",
+  "imgUrl": "/card-images/sr10_risaikuru.webp"
+ },
+ {
+  "id": "sr034",
+  "char": "gokuhiininma",
+  "rarity": 2,
+  "series": "gakuen",
+  "name": "影潜り 極秘院 隠真",
+  "power": "影潜行・機密収集：影のように学園を移動し、まだ誰も知らない出来事を集める。敵の手のうちを先に読み、味方の行動を有利にする！",
+  "imgUrl": "/card-images/sr34_gokuhiininma.webp"
+ },
+ {
   "id": "l001",
   "char": "nomisoramen",
   "rarity": 5,
@@ -322,6 +340,33 @@
   "name": "ニワニワニワニワトリ【進化・覚醒】不思議鶏神（とりしん）",
   "power": "幻惑鶏神の絶対支配：三羽にも二羽にも見える幻惑の力で敵全体を完全混乱状態にし、幸運の極大覚醒で味方全体のHP・全ステータスを超絶強化！産卵による極・アイテム生成で更なる奇跡をもたらす！",
   "imgUrl": "/card-images/ssr31_niwatori.webp"
+ },
+ {
+  "id": "ssr010",
+  "char": "risaikuru",
+  "rarity": 3,
+  "series": "gakuen",
+  "name": "再生創造神 李祭久留",
+  "power": "リサイクル・リバース：捨てられたものすべてに新しい命をあたえ、ゴミの怪物を資源へと生まれ変わらせる。失われた自然と笑顔を取りもどす、統率の極み！",
+  "imgUrl": "/card-images/ssr10_risaikuru.webp"
+ },
+ {
+  "id": "ssr033",
+  "char": "inemurinemuru",
+  "rarity": 3,
+  "series": "gakuen",
+  "name": "夢幻の観測者 居眠 ネムル",
+  "power": "無数の未来図・並行観測：眠りながら無数の世界を同時に観測し、いちばんよい未来を選びとる。居眠り中はいっさいのダメージを受けつけない！",
+  "imgUrl": "/card-images/ssr33_inemurinemuru.webp"
+ },
+ {
+  "id": "ssr034",
+  "char": "gokuhiininma",
+  "rarity": 3,
+  "series": "gakuen",
+  "name": "学園の禁秘 極秘院 隠真",
+  "power": "禁秘開帳・真実改変：過去・現在・未来、語られなかった出来事のすべてを手中におさめる。集めた秘密は、やがて学園だけでなく世界を動かす力になる！",
+  "imgUrl": "/card-images/ssr34_gokuhiininma.webp"
  },
  {
   "id": "r030",

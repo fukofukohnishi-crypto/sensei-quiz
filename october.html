@@ -1093,7 +1093,9 @@ function renderStories(){
   let b='<div class="kd">'+kindName(s.kind)+'</div><h2>'+esc(s.title)+'</h2><div class="rule"></div>';
   s.body.forEach(p=>{b+='<p>'+esc(p)+'</p>';});
   b+='<div class="cast">'+(s.chars||[]).map(c=>{
-    const card=CARDS.find(x=>x.char===c);
+    /* 同じキャラでN/SR/SSRと複数あるので、いちばん基本の（レアリティが低い）名前を出す。
+       find だと配列の並び順しだいで「影潜り 極秘院 隠真」のような別名になってしまう */
+    const card=CARDS.filter(x=>x.char===c).sort((a,b)=>a.rarity-b.rarity)[0];
     const own=CARDS.some(x=>x.char===c&&collection[x.id]);
     return '<span class="c'+(own?' own':'')+'">'+esc(card?card.name:c)+'</span>';
   }).join('')+'</div>';
