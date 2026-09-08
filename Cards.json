@@ -513,6 +513,96 @@
   "imgUrl": "/card-images/r79_okinawa.webp"
  },
  {
+  "id": "r080",
+  "char": "nagano",
+  "rarity": 4,
+  "series": "pref",
+  "name": "長野守護神　アルプスノヌシ",
+  "power": "日本アルプスの三つの山脈がそびえ立ち、夏でもすずしい高原の風で敵の動きを止める！内陸県の王の一撃！",
+  "imgUrl": "/card-images/r80_nagano.webp"
+ },
+ {
+  "id": "r081",
+  "char": "gifu",
+  "rarity": 4,
+  "series": "pref",
+  "name": "岐阜守護神　ウカイマル",
+  "power": "木曽三川の激流を呼び、輪中の堤防で味方を守りぬく！鵜が空から敵を見つけ出す、水の守護神！",
+  "imgUrl": "/card-images/r81_gifu.webp"
+ },
+ {
+  "id": "r082",
+  "char": "aichi",
+  "rarity": 4,
+  "series": "pref",
+  "name": "愛知守護神　シャチホコン",
+  "power": "金のしゃちほこが天へはね上がり、日本一のものづくりの力で味方全体を強化！クルマのまちの総力戦！",
+  "imgUrl": "/card-images/r82_aichi.webp"
+ },
+ {
+  "id": "r083",
+  "char": "mie",
+  "rarity": 4,
+  "series": "pref",
+  "name": "三重守護神　シンジュヒメ",
+  "power": "英虞湾の波をおだやかにし、真珠の光で味方の傷をいやす。日本一の雨を降らせて敵をしずめる！",
+  "imgUrl": "/card-images/r83_mie.webp"
+ },
+ {
+  "id": "r084",
+  "char": "shiga",
+  "rarity": 4,
+  "series": "pref",
+  "name": "滋賀守護神　ビワノヌシ",
+  "power": "日本最大の琵琶湖の水をあやつり、淀川となって敵を押し流す！近畿の水がめの主！",
+  "imgUrl": "/card-images/r84_shiga.webp"
+ },
+ {
+  "id": "r085",
+  "char": "kyoto",
+  "rarity": 4,
+  "series": "pref",
+  "name": "京都守護神　みやこ姫",
+  "power": "千年の都の力を解き放つ。金閣の光と銀閣の静けさで、敵の心をしずめて動けなくする！",
+  "imgUrl": "/card-images/r85_kyoto.webp"
+ },
+ {
+  "id": "r086",
+  "char": "osaka",
+  "rarity": 4,
+  "series": "pref",
+  "name": "大阪守護神　テンカノダイドコロン",
+  "power": "天下の台所の名にかけて、全国の特産物を呼びよせ味方を全回復！世界一の古墳が敵を封じこめる！",
+  "imgUrl": "/card-images/r86_osaka.webp"
+ },
+ {
+  "id": "r087",
+  "char": "hyogo",
+  "rarity": 4,
+  "series": "pref",
+  "name": "兵庫守護神　シラサギノカミ",
+  "power": "白鷺の翼で舞い上がり、明石海峡大橋の長さで敵を一直線に貫く！東経135度、時間そのものを味方につける！",
+  "imgUrl": "/card-images/r87_hyogo.webp"
+ },
+ {
+  "id": "r088",
+  "char": "nara",
+  "rarity": 4,
+  "series": "pref",
+  "name": "奈良守護神　ダイブツドン",
+  "power": "大仏の巨大な手が敵をつつみこみ、世界最古の木造建築の力で味方を守る。古代の都のねむりを呼びさます！",
+  "imgUrl": "/card-images/r88_nara.webp"
+ },
+ {
+  "id": "r089",
+  "char": "wakayama",
+  "rarity": 4,
+  "series": "pref",
+  "name": "和歌山守護神　ミカンマル",
+  "power": "黒潮のあたたかい流れを呼び、みかんの実りで味方を回復。備長炭の炎は消えることなく燃えつづける！",
+  "imgUrl": "/card-images/r89_wakayama.webp"
+ },
+ {
   "id": "l017",
   "char": "hounobito_sakura",
   "rarity": 5,
