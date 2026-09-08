@@ -90,6 +90,24 @@
   "imgUrl": "/card-images/sr34_gokuhiininma.webp"
  },
  {
+  "id": "sr033",
+  "char": "inemurinemuru",
+  "rarity": 2,
+  "series": "gakuen",
+  "name": "夢渡り 居眠 ネムル",
+  "power": "夢渡り・明日のかけら：夢の中を自由に渡り歩き、いくつもの未来を見てくる。持ち帰った夢の断片が、味方の窮地を救うヒントになる！",
+  "imgUrl": "/card-images/sr33_inemurinemuru.webp"
+ },
+ {
+  "id": "sr035",
+  "char": "eiaimirai",
+  "rarity": 2,
+  "series": "gakuen",
+  "name": "英愛 未来零",
+  "power": "ゼロ・ジェネレート：何もないところからコードを書きおこし、最高のゲームを創りあげる。0からでもつくれる、だから面白い！",
+  "imgUrl": "/card-images/sr35_eiaimirai.webp"
+ },
+ {
   "id": "l001",
   "char": "nomisoramen",
   "rarity": 5,
@@ -252,6 +270,15 @@
   "imgUrl": "/card-images/n34_gokuhiininma.webp"
  },
  {
+  "id": "n035",
+  "char": "eiaimirai",
+  "rarity": 1,
+  "series": "gakuen",
+  "name": "英愛 未来",
+  "power": "好きなことで未来をつくる：AIとゲームが大好きな小学生。自分で考えて、新しいことにいつも挑戦している。「好き」が世界を変えると信じている。",
+  "imgUrl": "/card-images/n35_eiaimirai.webp"
+ },
+ {
   "id": "ssr001",
   "char": "zanpanman",
   "rarity": 3,
@@ -367,6 +394,15 @@
   "name": "学園の禁秘 極秘院 隠真",
   "power": "禁秘開帳・真実改変：過去・現在・未来、語られなかった出来事のすべてを手中におさめる。集めた秘密は、やがて学園だけでなく世界を動かす力になる！",
   "imgUrl": "/card-images/ssr34_gokuhiininma.webp"
+ },
+ {
+  "id": "ssr035",
+  "char": "eiaimirai",
+  "rarity": 3,
+  "series": "gakuen",
+  "name": "英愛 未来神",
+  "power": "ネクストワールド創世：無い世界はない。AIとゲームでまだ誰も見たことのない世界を創りだし、人をつなぎ、学びを生み、世界そのものを変える！",
+  "imgUrl": "/card-images/ssr35_eiaimirai.webp"
  },
  {
   "id": "r030",
