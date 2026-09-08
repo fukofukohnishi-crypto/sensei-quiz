@@ -650,6 +650,10 @@ const LS_CHALLENGE='oct_challenge_v1';
 const LS_STORIES='oct_stories_v1';
 
 const CHALLENGE_GOAL=50;
+/* 読み物がひらく節目。ベストがこの数をこえたときに1話。
+   さらに50問クリアするたびに1話ひらく（何度でも）。
+   1問ごとに1話ひらく作りだと、初回の挑戦だけで在庫を使いきってしまう。 */
+const STORY_MILESTONES=[5,10,15,20,25,30,35,40,45];
 /* 10月版の専用カード。絵ができるまで Cards.json に無くても落ちないようにしてある */
 const CHALLENGE_CARD={rika:'sp04', shakai:'sp05'};
 const FUSION_CARD='sp06';
@@ -676,7 +680,7 @@ function idbSet(k,v){return new Promise(res=>{try{
 }catch(e){res(false);}});}
 
 let quizbank=[], drafts=[], collection={}, answeredCount=0, review=[], CARDS=[], STORIES=[];
-let challenge={rika:{streak:0,best:0,cleared:false}, shakai:{streak:0,best:0,cleared:false}};
+let challenge={rika:{streak:0,best:0,cleared:false,clears:0}, shakai:{streak:0,best:0,cleared:false,clears:0}};
 let unlocked=[];
 
 function saveBank(){idbSet('quizbank',quizbank);}
@@ -833,10 +837,12 @@ function startFlash(subj){
 function startChallenge(subj){
   const pool=poolOf(subj);
   if(pool.length<5){toast('チャレンジには5問以上ひつよう','var(--warn)');return;}
-  const need=CHALLENGE_GOAL-challenge[subj].streak;
+  /* 挑戦のたびに0からやりなおす。クリア後は streak が50のまま残るので、
+     ここでもどさないと出題が0問になって落ちる（実際に踏んだ） */
+  challenge[subj].streak=0; saveChallenge();
   let list=[];
-  while(list.length<need) list=list.concat(pool.slice().sort(()=>Math.random()-.5));
-  qList=list.slice(0,need);
+  while(list.length<CHALLENGE_GOAL) list=list.concat(pool.slice().sort(()=>Math.random()-.5));
+  qList=list.slice(0,CHALLENGE_GOAL);
   beginQuiz(subj,'challenge',SUBJ[subj].n+' 50問連続チャレンジ');
 }
 function startReview(){
@@ -944,17 +950,29 @@ function score(ok){
     const st=challenge[curSubj];
     if(ok){
       st.streak++;
+      /* 節目をこえたら1話。1問ごとではなく5問おき */
       if(st.streak>st.best){
+        const passed=STORY_MILESTONES.filter(m=>m>st.best&&m<=st.streak);
         st.best=st.streak;
-        const story=unlockNext();
-        if(story)setTimeout(()=>toast('📖 新しい話がひらいた「'+story.title+'」','var(--gold)'),900);
+        passed.forEach((m,i)=>{
+          const story=unlockNext();
+          if(story)setTimeout(()=>toast('📖 '+m+'問連続！ 新しい話「'+story.title+'」','var(--gold)'),900+i*400);
+        });
       }
-      if(st.streak>=CHALLENGE_GOAL && !st.cleared){
-        st.cleared=true; saveChallenge();
-        const c=CARDS.find(x=>x.id===CHALLENGE_CARD[curSubj]);
-        if(c){ const {isNew}=award(c); setTimeout(()=>showCardGet(c,isNew,'50問連続 達成！'),380); }
-        else toast('50問連続 達成！ 専用カードは準備中','var(--gold)');
-        tryFusion();
+      if(st.streak>=CHALLENGE_GOAL){
+        const first=!st.cleared;
+        st.cleared=true; st.clears=(st.clears||0)+1;
+        saveChallenge();
+        /* レアカードは初クリアのときだけ。以後はクリアごとに読み物が1話 */
+        if(first){
+          const c=CARDS.find(x=>x.id===CHALLENGE_CARD[curSubj]);
+          if(c){ const {isNew}=award(c); setTimeout(()=>showCardGet(c,isNew,'50問連続 達成！'),380); }
+          else toast('50問連続 達成！ 専用カードは準備中','var(--gold)');
+          tryFusion();
+        }
+        const story=unlockNext();
+        if(story)setTimeout(()=>toast('📖 クリアのごほうび「'+story.title+'」','var(--gold)'),first?1600:600);
+        else if(!first)toast('50問クリア！ 読み物はぜんぶ開いたよ','var(--gold)');
         saveChallenge(); showResult(); return;
       }
     }else{
@@ -982,7 +1000,7 @@ function showResult(){
   const done=qIdx+ (mode==='challenge'?0:1);
   let emo,ttl,sub;
   if(mode==='challenge'){
-    if(st.cleared){emo='👑';ttl='50問 制覇！';sub='最後までやりきった';}
+    if(st.streak>=CHALLENGE_GOAL){emo='👑';ttl='50問 制覇！';sub='これで '+(st.clears||1)+' 回めのクリア';}
     else{emo='💥';ttl='ここまで '+st.best+' 連続';sub='自己ベストは '+st.best+' 問。もう一回いこう';}
   }else{
     const pct=qList.length?qOk/qList.length:0;
@@ -1012,7 +1030,7 @@ function renderHome(){
     const n=poolOf(s).length, st=challenge[s];
     return '<div class="subj">'
       +'<div class="name"><span class="dot" style="background:'+SUBJ[s].c+'"></span>'+SUBJ[s].n+'</div>'
-      +'<div class="cnt">問題 '+n+'問'+(st.cleared?'　👑 50問クリアずみ':'')+'</div>'
+      +'<div class="cnt">問題 '+n+'問'+(st.cleared?'　👑 クリア '+(st.clears||1)+'回':'　🎴 50問クリアでレアカード')+'</div>'
       +'<div class="streak"><b>'+st.best+'</b><span>連続の自己ベスト</span></div>'
       +'<button class="btn" onclick="startFlash(\''+s+'\')"'+(n?'':' disabled')+'>れんしゅう（20問）</button>'
       +'<button class="btn gold" onclick="startChallenge(\''+s+'\')"'+(n>=5?'':' disabled')+'>🔥 50問連続チャレンジ</button>'
