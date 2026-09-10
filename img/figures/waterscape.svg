@@ -1,0 +1,53 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 560 300" width="560" height="300" role="img" aria-label="地面に見える水の断面図">
+  <defs>
+    <linearGradient id="sea" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0%" stop-color="#3f7fd0"/><stop offset="100%" stop-color="#1d4a86"/>
+    </linearGradient>
+    <linearGradient id="gnd" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0%" stop-color="#4c6b3e"/><stop offset="100%" stop-color="#33482b"/>
+    </linearGradient>
+  </defs>
+  <!-- 空 -->
+  <rect x="0" y="0" width="560" height="300" fill="#141428"/>
+  <!-- 海 -->
+  <path d="M380 150 L560 150 L560 300 L380 300 Z" fill="url(#sea)"/>
+  <!-- 陸 -->
+  <path d="M0 300 L0 130 L70 60 L140 118 L215 96 L300 140 L380 150 L380 300 Z" fill="url(#gnd)"/>
+  <!-- 氷河（山頂の雪） -->
+  <path d="M70 60 L44 86 L58 90 L70 82 L84 92 L98 84 Z" fill="#e8f2ff" stroke="#b9d2ee" stroke-width="1.5"/>
+  <!-- 川 -->
+  <path d="M70 84 C96 130 130 158 200 178 C270 198 330 176 380 168" stroke="#5fb0f0" stroke-width="7" fill="none" stroke-linecap="round"/>
+  <!-- 湖沼 -->
+  <ellipse cx="243" cy="120" rx="34" ry="12" fill="#4f9ee0" stroke="#7dc0f5" stroke-width="1.5"/>
+  <!-- 地下水 -->
+  <path d="M40 236 C120 222 210 244 300 232 C340 226 362 232 380 230" stroke="#7fd4ff" stroke-width="5" fill="none" stroke-dasharray="9 6" stroke-linecap="round"/>
+  <!-- 雲と水蒸気 -->
+  <g fill="#cfd6e6" opacity=".9">
+    <ellipse cx="452" cy="52" rx="30" ry="17"/><ellipse cx="482" cy="46" rx="24" ry="19"/><ellipse cx="424" cy="58" rx="20" ry="13"/>
+  </g>
+  <g stroke="#9fb4d8" stroke-width="2.4" fill="none" stroke-linecap="round" opacity=".85">
+    <path d="M432 118 C426 104 440 98 434 84"/><path d="M470 126 C464 112 478 106 472 92"/>
+  </g>
+  <text x="452" y="150" text-anchor="middle" fill="#9fb4d8" font-size="15"
+        font-family="-apple-system,BlinkMacSystemFont,'Hiragino Sans',sans-serif">水蒸気</text>
+  <text x="500" y="248" text-anchor="middle" fill="#cfe3ff" font-size="17" font-weight="700"
+        font-family="-apple-system,BlinkMacSystemFont,'Hiragino Sans',sans-serif">海</text>
+  <!-- ラベル -->
+  <g font-family="-apple-system,BlinkMacSystemFont,'Hiragino Sans',sans-serif" font-weight="700" font-size="19">
+    <circle cx="70" cy="34" r="17" fill="#23233d" stroke="#ffd700" stroke-width="2"/>
+    <text x="70" y="41" text-anchor="middle" fill="#ffd700">ア</text>
+    <path d="M70 51 L70 62" stroke="#ffd700" stroke-width="1.6"/>
+
+    <circle cx="243" cy="76" r="17" fill="#23233d" stroke="#ffd700" stroke-width="2"/>
+    <text x="243" y="83" text-anchor="middle" fill="#ffd700">イ</text>
+    <path d="M243 93 L243 108" stroke="#ffd700" stroke-width="1.6"/>
+
+    <circle cx="152" cy="196" r="17" fill="#23233d" stroke="#ffd700" stroke-width="2"/>
+    <text x="152" y="203" text-anchor="middle" fill="#ffd700">ウ</text>
+    <path d="M152 179 L146 166" stroke="#ffd700" stroke-width="1.6"/>
+
+    <circle cx="150" cy="268" r="17" fill="#23233d" stroke="#ffd700" stroke-width="2"/>
+    <text x="150" y="275" text-anchor="middle" fill="#ffd700">エ</text>
+    <path d="M150 251 L150 238" stroke="#ffd700" stroke-width="1.6"/>
+  </g>
+</svg>
