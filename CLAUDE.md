@@ -204,6 +204,17 @@ for k in range(1,len(parts),3):
 タップすると「じゅんびちゅう！」と出る。テキストの写真が来たら、その回のぶんだけ足す。
 一度は入れたが、一般知識で書いてしまったため取りのぞいた（`247aaea` に骨組みが残っている）。
 
+**守護神カードの取りこぼしは、起動時に直る。**
+`chizu.html` の `reconcileGuardianCards()` が、**メダルが10個そろっているのに
+カードが `sensei-gacha-v1` に入っていない県**を見つけて入れなおす。
+もともと `awardGuardianCard()` が失敗しても `guardianGot` を立てていたため、
+一度取りそこねると二度と取りにいけなかった（実際に踏んだ）。いまは
+
+- `awardGuardianCard()` は `'new'` / `'have'` / `null`（失敗）を返す
+- `guardianGot` は**カードが入ったときだけ**立てる。失敗したら次の正解でやりなおせる
+- `sensei-gacha-v1` が無い・`collection` キーが無い・中身が壊れている場合も
+  作りなおして入れる（古い保存だと `db.collection[id]` で落ちていた）
+
 **県を外したら、`sensei_collection_v2` の進捗も自動で掃除される。**
 `chizu.html` の `pruneProgress()` が、`PREF_DATA` に無い県コードの進捗を
 起動時に消す。もどってくるときはクイズごと入れかわるので、古い進捗を残すと

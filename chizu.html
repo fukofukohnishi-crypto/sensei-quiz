@@ -1421,17 +1421,41 @@ const PREF_CARD_MAP = {
   "45":"r077","46":"r078","47":"r079"
 };
 /* カードコレクション（sensei-gacha-v1）に書き込む */
+/* 返り値: 'new'=いま入れた / 'have'=もう持っている / null=入れられなかった。
+   null のときは guardianGot を立ててはいけない。立てると二度と再挑戦できなくなる */
 function awardGuardianCard(prefCode){
   const cardId = PREF_CARD_MAP[prefCode];
   if(!cardId) return null;
   try{
     const raw = localStorage.getItem('sensei-gacha-v1');
-    const db = raw ? JSON.parse(raw) : {tickets:0,totalCorrect:0,collection:{},history:[]};
-    if(db.collection[cardId]) return null;
+    let db = null;
+    try{ db = raw ? JSON.parse(raw) : null; }catch(e){ db = null; }
+    if(!db || typeof db !== 'object') db = {tickets:0,totalCorrect:0,collection:{},history:[]};
+    /* 古い保存に collection が無いことがある。ここで落ちると
+       カードが入らないまま「クリアずみ」になってしまう */
+    if(!db.collection || typeof db.collection !== 'object') db.collection = {};
+    if(!Array.isArray(db.history)) db.history = [];
+    if(db.collection[cardId]) return 'have';
     db.collection[cardId] = 1;
     localStorage.setItem('sensei-gacha-v1', JSON.stringify(db));
-    return cardId;
+    return 'new';
   }catch(e){ return null; }
+}
+/* 10個そろっているのにカードが入っていない県を、起動時に直す。
+   以前は awardGuardianCard が失敗しても guardianGot を立てていたため、
+   「メダルは全部あるのにカードが無い」状態から二度ともどれなかった */
+function reconcileGuardianCards(){
+  try{
+    const all = loadProgress();
+    Object.keys(PREF_DATA).forEach(code=>{
+      const pr = all[code];
+      if(!pr || !Array.isArray(pr.medals)) return;
+      if(pr.medals.length !== PREF_DATA[code].medals.length) return;
+      if(!pr.medals.every(Boolean)) return;
+      const r = awardGuardianCard(code);
+      if(r && !pr.guardianGot){ pr.guardianGot = true; all[code] = pr; saveProgress(all); }
+    });
+  }catch(e){}
 }
 /* ===== 守護神カード獲得演出 ===== */
 let CARDS_DB = null;
@@ -1511,6 +1535,8 @@ function saveProgress(p){ localStorage.setItem(STORAGE_KEY, JSON.stringify(p)); 
     if(changed) saveProgress(all);
   }catch(e){}
 })();
+/* 掃除のあとに、取りそこねた守護神カードを入れなおす */
+reconcileGuardianCards();
 function getPrefProgress(code){
   const all = loadProgress();
   const data = PREF_DATA[code];
@@ -1705,13 +1731,18 @@ function onQuizCorrect(){
   prog.medals[currentMedalIdx] = true;
 
   const allGot = prog.medals.every(Boolean);
+  /* カードを入れられたときだけ guardianGot を立てる。
+     先に立てると、入れそこねたときに二度と取りにいけなくなる */
+  let awarded = null;
   const guardianNewlyGot = allGot && !prog.guardianGot;
-  if(guardianNewlyGot) prog.guardianGot = true;
+  if(guardianNewlyGot){
+    awarded = awardGuardianCard(currentPref);
+    if(awarded) prog.guardianGot = true;
+  }
   setPrefProgress(currentPref, prog);
 
   const medalEl = document.getElementById('result-medal');
   if(guardianNewlyGot){
-    const awarded = awardGuardianCard(currentPref);
     medalEl.classList.add('guardian');
     medalEl.innerHTML = '';
     if(data.guardianImage){
@@ -1724,8 +1755,12 @@ function onQuizCorrect(){
     document.getElementById('result-ttl').textContent = `🎉 メダルクリア！`;
     document.getElementById('result-sub').textContent = `${data.name}のメダルを${total}個とも集めた！`;
     document.getElementById('result-keyword').textContent = '';
-    if(awarded){
+    if(awarded==='new'){
       document.getElementById('result-sub').textContent += `\n🎴 守護神カード「${data.guardianName}」をコレクションに追加！`;
+    }else if(awarded==='have'){
+      document.getElementById('result-sub').textContent += `\n🎴 守護神カード「${data.guardianName}」はコレクションにあるよ`;
+    }else{
+      document.getElementById('result-sub').textContent += `\n⚠️ カードを入れられなかった。もう一度こたえるとやりなおせるよ`;
     }
     setTimeout(()=>showGuardianCardGet(currentPref, data), 700);
   }else{
