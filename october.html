@@ -205,7 +205,14 @@ button:focus-visible{outline:2px solid var(--gold);outline-offset:2px}
 .sitem.locked{opacity:.45;cursor:default}
 .sitem.locked:hover{background:transparent}
 .sitem.locked .t{letter-spacing:.16em;color:var(--muted)}
-.spane{background:var(--panel);border:1px solid var(--line);border-radius:18px;padding:38px clamp(22px,4vw,52px) 42px;min-height:400px}
+.spane{background:var(--panel);border:1px solid var(--line);border-radius:18px;padding:38px clamp(22px,4vw,52px) 42px;min-height:400px;
+  scroll-margin-top:64px}
+/* 縦画面では目次の下に本文が来る。タップしても本文が画面の外にいて
+   「押しても何もおきない」ように見えるので、もどる導線を本文の頭に出す */
+.stoback{display:none;font-size:.8rem;font-weight:800;color:var(--gold);
+  padding:6px 12px;border:1px solid var(--line-hi);border-radius:99px;margin-bottom:18px}
+@media(max-width:840px){.stoback{display:inline-block}}
+#st-toc{scroll-margin-top:64px}
 .spane h2{font-size:clamp(1.5rem,3.2vw,2.05rem);font-weight:900;line-height:1.45;margin:8px 0 6px}
 .spane .kd{display:inline-block;font-size:.64rem;font-weight:800;letter-spacing:.14em;
   padding:4px 11px;border-radius:99px;background:var(--card-hi);color:var(--text-2);border:1px solid var(--line-hi)}
@@ -700,11 +707,13 @@ function toast(m,c){
 function go(id){
   document.querySelectorAll('.screen').forEach(s=>s.classList.remove('on'));
   document.getElementById(id).classList.add('on');
-  window.scrollTo(0,0);
   if(id==='s-home')renderHome();
   if(id==='s-cards')renderCards();
-  if(id==='s-stories')renderStories();
+  if(id==='s-stories')renderStories(true);
   if(id==='s-admin')renderAdmin();
+  /* 中身を入れてから先頭にもどす。先にスクロールすると、
+     このあと背が高くなった画面で位置がずれて残ることがある */
+  window.scrollTo(0,0);
 }
 
 /* =========================================================================
@@ -1067,8 +1076,24 @@ function renderCards(){
 }
 
 let stIdx=0;
-function renderStories(){
+/* 本文へ視線を移す。縦画面では本文が目次の下にあるので、
+   スクロールしないとタップが効いていないように見える（実際に踏んだ） */
+function focusStory(){
+  const narrow=window.matchMedia('(max-width:840px)').matches;
+  if(narrow)document.getElementById('st-pane').scrollIntoView({behavior:'smooth',block:'start'});
+  else window.scrollTo({top:0,behavior:'smooth'});
+}
+function backToToc(){
+  document.getElementById('st-toc').scrollIntoView({behavior:'smooth',block:'start'});
+}
+/* fresh=true は画面に入ってきたとき。いちばん新しくひらいた話を開いておく */
+function renderStories(fresh){
   const toc=document.getElementById('st-toc');
+  if(fresh){
+    let last=-1;
+    STORIES.forEach((s,i)=>{ if(unlocked.indexOf(s.id)>=0)last=i; });
+    if(last>=0)stIdx=last;
+  }
   let h='';
   STORIES.forEach((s,i)=>{
     const open=unlocked.indexOf(s.id)>=0;
@@ -1081,7 +1106,7 @@ function renderStories(){
   });
   toc.innerHTML=h||'<div class="empty">読み物がありません</div>';
   toc.querySelectorAll('.sitem[data-i]').forEach(b=>{
-    b.onclick=()=>{stIdx=+b.getAttribute('data-i');renderStories();};
+    b.onclick=()=>{stIdx=+b.getAttribute('data-i');renderStories();focusStory();};
   });
   const openList=STORIES.filter(s=>unlocked.indexOf(s.id)>=0);
   const pane=document.getElementById('st-pane');
@@ -1090,7 +1115,8 @@ function renderStories(){
     return;
   }
   const s=STORIES[stIdx]&&unlocked.indexOf(STORIES[stIdx].id)>=0?STORIES[stIdx]:openList[openList.length-1];
-  let b='<div class="kd">'+kindName(s.kind)+'</div><h2>'+esc(s.title)+'</h2><div class="rule"></div>';
+  let b='<button class="stoback" onclick="backToToc()">← 一覧にもどる</button>'
+       +'<div class="kd">'+kindName(s.kind)+'</div><h2>'+esc(s.title)+'</h2><div class="rule"></div>';
   s.body.forEach(p=>{b+='<p>'+esc(p)+'</p>';});
   b+='<div class="cast">'+(s.chars||[]).map(c=>{
     /* 同じキャラでN/SR/SSRと複数あるので、いちばん基本の（レアリティが低い）名前を出す。
