@@ -664,6 +664,9 @@ const STORY_MILESTONES=[5,10,15,20,25,30,35,40,45];
 /* 10月版の専用カード。絵ができるまで Cards.json に無くても落ちないようにしてある */
 const CHALLENGE_CARD={rika:'sp04', shakai:'sp05'};
 const FUSION_CARD='sp06';
+/* 最終話は順番では開かない。融合カード（sp06）を取ったときだけ開く。
+   stories.json の末尾の話を最終話としてあつかう */
+function finalStoryId(){ return STORIES.length?STORIES[STORIES.length-1].id:''; }
 
 /* 8 の「無限」は sp06（両科目クリアの融合カード）専用。
    7 の「四天王」は四人組のカード（sp03）の名前なので、そこには置けない */
@@ -811,10 +814,20 @@ async function loadStories(){
   try{ const r=await fetch('/stories.json'); if(r.ok){const d=await r.json(); if(Array.isArray(d))STORIES=d;} }catch(e){}
 }
 function unlockNext(){
-  const next=STORIES.find(s=>unlocked.indexOf(s.id)<0);
+  /* 最終話はここでは開かない（sp06 専用のごほうびにしてある） */
+  const fin=finalStoryId();
+  const next=STORIES.find(s=>s.id!==fin&&unlocked.indexOf(s.id)<0);
   if(!next)return null;
   unlocked.push(next.id); saveUnlocked();
   return next;
+}
+/* 融合カードを持っていたら最終話を開ける。すでに開いていたら null */
+function unlockFinalStory(){
+  const fin=finalStoryId();
+  if(!fin||!collection[FUSION_CARD])return null;
+  if(unlocked.indexOf(fin)>=0)return null;
+  unlocked.push(fin); saveUnlocked();
+  return STORIES[STORIES.length-1];
 }
 
 /* =========================================================================
@@ -983,7 +996,9 @@ function score(ok){
         }
         const story=unlockNext();
         if(story)setTimeout(()=>toast('📖 クリアのごほうび「'+story.title+'」','var(--gold)'),first?1600:600);
-        else if(!first)toast('50問クリア！ 読み物はぜんぶ開いたよ','var(--gold)');
+        else if(!first)toast(unlocked.indexOf(finalStoryId())<0
+          ? '50問クリア！ のこるは最終話だけ。もう一科目も制覇しよう'
+          : '50問クリア！ 読み物はぜんぶ開いたよ','var(--gold)');
         saveChallenge(); showResult(); return;
       }
     }else{
@@ -1001,6 +1016,9 @@ function tryFusion(){
   if(collection[f.id])return;
   const {isNew}=award(f);
   setTimeout(()=>showCardGet(f,isNew,'二科目 制覇 — 融合！'),1400);
+  /* 最後のカードと最終話は対になっている */
+  const last=unlockFinalStory();
+  if(last)setTimeout(()=>toast('📖 最終話「'+last.title+'」がひらいた','var(--gold)'),2600);
 }
 function nextQ(){
   qIdx++;
@@ -1096,6 +1114,7 @@ function renderStories(fresh){
     STORIES.forEach((s,i)=>{ if(unlocked.indexOf(s.id)>=0)last=i; });
     if(last>=0)stIdx=last;
   }
+  const fin=finalStoryId();
   let h='';
   STORIES.forEach((s,i)=>{
     const open=unlocked.indexOf(s.id)>=0;
@@ -1104,7 +1123,8 @@ function renderStories(fresh){
         +'<span class="n">'+('0'+s.no).slice(-2)+'</span>'
         +'<span><span class="t">'+esc(s.title)+'</span><span class="k">'+kindName(s.kind)+'</span></span></button>'
       : '<div class="sitem locked"><span class="n">'+('0'+s.no).slice(-2)+'</span>'
-        +'<span><span class="t">？？？</span><span class="k">ベスト更新でひらく</span></span></div>';
+        +'<span><span class="t">？？？</span><span class="k">'
+        +(s.id===fin?'さいごのカードでひらく':'ベスト更新でひらく')+'</span></span></div>';
   });
   toc.innerHTML=h||'<div class="empty">読み物がありません</div>';
   toc.querySelectorAll('.sitem[data-i]').forEach(b=>{
@@ -1342,6 +1362,9 @@ const PREF_TO_CODE={}; CODE_TO_PREF.forEach((n,i)=>{PREF_TO_CODE[n]=i+1;});
        ['rika','shakai'].forEach(s=>{ if(d[s])challenge[s]=Object.assign(challenge[s],d[s]); }); }catch(e){}
   try{ unlocked=JSON.parse(localStorage.getItem(LS_STORIES)||'[]'); }catch(e){ unlocked=[]; }
   await Promise.all([loadCards(),loadStories()]);
+  /* すでに sp06 を持っているのに最終話が閉じたままなら、ここで開けておく
+     （この仕組みより先にカードを取っていた場合） */
+  unlockFinalStory();
   renderHome();
 })();
 </script>
