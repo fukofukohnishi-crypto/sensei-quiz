@@ -242,8 +242,8 @@ WebP q85・252px・1枚17KBほど・合計1.7MB）。17県のぶんは以前か�
 1県 = メダル10個、メダル1個 = 4択クイズ1問。県を足すときは:
 
 1. `PREF_DATA` に県を追加（守護神＋メダル10個＋クイズ10問）
-2. `chars/portraits/<県名ローマ字>.png` に守護神の立ち絵
-3. `chars/medals/<地方名>/<キーワード>.png` にメダル画像10枚
+2. `chars/portraits/<県名ローマ字>.webp` に守護神の立ち絵（カードから切り出す。上記参照）
+3. `chars/medals/<地方名>/<キーワード>.webp` にメダル画像10枚
 4. `Cards.json` に守護神Rカードを追加し、`PREF_CARD_MAP` で県コードと紐づけ
 5. SVGマップ側の `.prefecture` に対応する `data-code` があるか確認
 
