@@ -271,7 +271,9 @@ button:focus-visible{outline:2px solid var(--gold);outline-offset:2px}
 .getbox .nm{font-size:1.3rem;font-weight:900;margin-bottom:16px}
 .toast{position:fixed;left:50%;transform:translateX(-50%);bottom:-90px;z-index:9500;
   background:var(--ok);color:#04220f;padding:12px 22px;border-radius:99px;font-weight:800;
-  font-size:.9rem;transition:bottom .28s;box-shadow:0 8px 28px rgba(0,0,0,.5)}
+  font-size:.9rem;transition:bottom .28s;box-shadow:0 8px 28px rgba(0,0,0,.5);
+  /* 読み物の題が入ると長くなる。画面からはみ出さないように折り返す */
+  max-width:min(90vw,620px);text-align:center;border-radius:20px}
 .toast.on{bottom:28px}
 @media (prefers-reduced-motion:reduce){*{transition:none!important;animation:none!important}}
 </style>
@@ -661,6 +663,10 @@ const CHALLENGE_GOAL=50;
    さらに50問クリアするたびに1話ひらく（何度でも）。
    1問ごとに1話ひらく作りだと、初回の挑戦だけで在庫を使いきってしまう。 */
 const STORY_MILESTONES=[5,10,15,20,25,30,35,40,45];
+/* 50問クリア1回でひらく読み物の数。ベストが50に達したあとは節目が残っていないので、
+   読み物が進む手段はクリアだけになる。1話だと在庫を読みきるのに26回クリアが必要で
+   重すぎたため2話にした */
+const CLEAR_STORIES=2;
 /* 10月版の専用カード。絵ができるまで Cards.json に無くても落ちないようにしてある */
 const CHALLENGE_CARD={rika:'sp04', shakai:'sp05'};
 const FUSION_CARD='sp06';
@@ -996,9 +1002,13 @@ function score(ok){
           else toast('50問連続 達成！ 専用カードは準備中','var(--gold)');
           tryFusion();
         }
-        const story=unlockNext();
-        if(story)setTimeout(()=>toast('📖 クリアのごほうび「'+story.title+'」','var(--gold)'),first?1600:600);
-        else if(!first)toast(unlocked.indexOf(finalStoryId())<0
+        const got=[];
+        for(let k=0;k<CLEAR_STORIES;k++){ const st2=unlockNext(); if(st2)got.push(st2); }
+        if(got.length){
+          const msg='📖 クリアのごほうび「'+got[0].title+'」'
+            +(got.length>1?'ほか'+(got.length-1)+'話':'');
+          setTimeout(()=>toast(msg,'var(--gold)'),first?1600:600);
+        }else if(!first)toast(unlocked.indexOf(finalStoryId())<0
           ? '50問クリア！ のこるは最終話だけ。もう一科目も制覇しよう'
           : '50問クリア！ 読み物はぜんぶ開いたよ','var(--gold)');
         saveChallenge(); showResult(); return;
