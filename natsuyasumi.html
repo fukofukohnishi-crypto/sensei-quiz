@@ -869,7 +869,9 @@ function pickCard(pool,featured){
 }
 function drawReward(featured,perfect){
   // レアリティによる当選確率は廃止。全カードから均等ランダムに選ぶ（画像があるものだけ）
-  let pool=CARDS.filter(c=>c.imgUrl&&!isChallengeCard(c.id));
+  /* challenge シリーズ（sp01〜）はガチャに出さない。10月版の sp04〜sp06 も
+     Cards.json に入ったので、id ではなく series でまとめて外す */
+  let pool=CARDS.filter(c=>c.imgUrl&&c.series!=='challenge'&&!isChallengeCard(c.id));
   if(!pool.length)pool=CARDS.slice();
   let card=pickCard(pool,featured);
   if(perfect){

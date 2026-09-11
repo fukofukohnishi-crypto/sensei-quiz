@@ -665,8 +665,10 @@ const STORY_MILESTONES=[5,10,15,20,25,30,35,40,45];
 const CHALLENGE_CARD={rika:'sp04', shakai:'sp05'};
 const FUSION_CARD='sp06';
 
-const RNAME=['','N','SR','SSR','R','伝説','神覚者','四天王'];
-const RCOL=['','#aaa','#44ccff','#ff8800','#dd44ff','#ff2288','#ffd700','#66ffee'];
+/* 8 の「無限」は sp06（両科目クリアの融合カード）専用。
+   7 の「四天王」は四人組のカード（sp03）の名前なので、そこには置けない */
+const RNAME=['','N','SR','SSR','R','伝説','神覚者','四天王','無限'];
+const RCOL=['','#aaa','#44ccff','#ff8800','#dd44ff','#ff2288','#ffd700','#66ffee','#ffffff'];
 const SUBJ={rika:{n:'理科',c:'var(--rika)',face:'/img/teachers/kaga.jpg',who:'カガ先生'},
             shakai:{n:'社会',c:'var(--shakai)',face:'/img/teachers/zanpanman.jpg',who:'ザンパンマン先生'}};
 
@@ -1055,7 +1057,7 @@ function renderCards(){
   const b=document.getElementById('cards-body');
   if(!CARDS.length){b.innerHTML='<div class="empty">カードのデータが読みこめませんでした</div>';return;}
   let h='';
-  for(let r=7;r>=1;r--){
+  for(let r=8;r>=1;r--){
     const list=CARDS.filter(c=>c.rarity===r);
     if(!list.length)continue;
     const o=list.filter(c=>collection[c.id]).length;

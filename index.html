@@ -197,8 +197,10 @@ body.viewing-collection .wrap{display:none}
 
 <script>
 (function(){
-  var RNAME=['','N','SR','SSR','R','伝説','神覚者','四天王'];
-  var RCOL=['','#aaaaaa','#44ccff','#ff8800','#dd44ff','#ff2288','#ffd700','#66ffee'];
+  /* 8 の「無限」は、理科と社会の50問連続を両方クリアしたときの1枚だけ。
+     7 の「四天王」は四人組のカード（sp03）なので、そこに混ぜられない */
+  var RNAME=['','N','SR','SSR','R','伝説','神覚者','四天王','無限'];
+  var RCOL=['','#aaaaaa','#44ccff','#ff8800','#dd44ff','#ff2288','#ffd700','#66ffee','#ffffff'];
   var CARDS=null, loading=false;
   function cardImgFB(el){
     var s=el.getAttribute('src')||'';
@@ -304,7 +306,7 @@ body.viewing-collection .wrap{display:none}
         +'<span class="cs-n">'+so+' / '+cards.length+'</span></div>'
         +'<div class="cs-bar"><i style="width:'+pct+'%"></i></div>'
         +'<div class="cs-d">'+esc(sr.d)+'</div></div>';
-      for(var r=7;r>=1;r--){
+      for(var r=8;r>=1;r--){
         var list=cards.filter(function(c){return c.rarity===r;});
         if(!list.length)continue;
         var o=list.filter(function(c){return mg[c.id];}).length;

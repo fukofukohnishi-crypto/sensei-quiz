@@ -754,5 +754,32 @@
     "name": "四天王 鍵の継承者たち",
     "power": "絆の共鳴・全扉開放：四つの意志が一つになる時、すべての扉が開かれる。学園の頂点に立つ四人の絆が奇跡を生み、不可能を可能にする究極の力！",
     "imgUrl": "/card-images/sp_shitennou.webp"
+  },
+  {
+    "id": "sp04",
+    "char": "sankaichou",
+    "rarity": 6,
+    "series": "challenge",
+    "name": "三つの知、無限の未来",
+    "power": "三知共鳴・無限展開：信念の宝人花火、知恵の歯車善記、論理の者郎方無。ひとりではたどり着けない答えも、三つの知が重なれば必ず見つかる。理科50問連続の証！",
+    "imgUrl": "/card-images/sp04_sankaichou.webp"
+  },
+  {
+    "id": "sp05",
+    "char": "yonsensei",
+    "rarity": 6,
+    "series": "challenge",
+    "name": "四先生 知は、世界をつなぐ",
+    "power": "四教科同時展開：国語のパクソウ、理科のカガ、社会のザンパンマン、算数のヤバイヤツ。教科の枠をこえた学びが世界をひろげる。社会50問連続の証！",
+    "imgUrl": "/card-images/sp05_yonsensei.webp"
+  },
+  {
+    "id": "sp06",
+    "char": "yakusoku",
+    "rarity": 8,
+    "series": "challenge",
+    "name": "神覚者の約束",
+    "power": "約束の扉・永久開放：まだ何者でもなかった二人の少年が、公園で出会い、約束を交わした。教王が未来への扉を刻み、学王がその扉を開く鍵を背負う。すべては、あの日ここから始まった。",
+    "imgUrl": "/card-images/sp06_yakusoku.webp"
   }
 ]
