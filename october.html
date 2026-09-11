@@ -661,11 +661,12 @@ const LS_PRACTICE='oct_practice_v1';  /* 練習で解いた累計。読み物の
 
 const CHALLENGE_GOAL=50;
 /* 読み物は「れんしゅう」で解いた累計がこの数にとどくたびに1話ひらく。
+   れんしゅう1回が20問なので、**1回＝1話**になるようにそろえてある。
    50問連続チャレンジでは開かない（あちらのごほうびはレアカード）。
-   れんしゅうは1回20問なので、1回につき2話。
-   以前はチャレンジの節目とクリアで開く作りだったが、
-   50問連続は1問ミスでその場終了のため、在庫を読みきるのが重すぎた。 */
-const STORY_EVERY=10;
+   10問ごと（1回2話）だと46話を460問で読みきってしまい、1日20問なら3週間で
+   在庫切れ。いちばん追いこみたい時期にごほうびが薄くなるため20問にした。
+   話を書きたしたら、この数を減らしてもよい。 */
+const STORY_EVERY=20;
 /* 10月版の専用カード。絵ができるまで Cards.json に無くても落ちないようにしてある */
 const CHALLENGE_CARD={rika:'sp04', shakai:'sp05'};
 const FUSION_CARD='sp06';
@@ -979,7 +980,7 @@ function score(ok){
   saveCards();
 
   /* 読み物は「れんしゅう」と「まちがい直し」でだけ進む。
-     10問こたえるごとに1話（れんしゅう1回20問＝2話） */
+     STORY_EVERY 問こたえるごとに1話（れんしゅう1回＝1話） */
   if(mode!=='challenge'){
     practiceCount++; savePractice();
     if(practiceCount%STORY_EVERY===0){
@@ -1140,7 +1141,7 @@ function renderStories(fresh){
   const openList=STORIES.filter(s=>unlocked.indexOf(s.id)>=0);
   const pane=document.getElementById('st-pane');
   if(!openList.length){
-    pane.innerHTML='<div class="empty">まだ1話も開いていません。<br><b>れんしゅうを'+STORY_EVERY+'問こたえるごとに1話</b>ひらきます。<br>れんしゅうは1回20問なので、1回で2話。</div>';
+    pane.innerHTML='<div class="empty">まだ1話も開いていません。<br><b>れんしゅうを'+STORY_EVERY+'問こたえるごとに1話</b>ひらきます。<br>れんしゅう1回で、ちょうど1話。</div>';
     return;
   }
   const s=STORIES[stIdx]&&unlocked.indexOf(STORIES[stIdx].id)>=0?STORIES[stIdx]:openList[openList.length-1];
