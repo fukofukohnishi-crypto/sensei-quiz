@@ -748,8 +748,9 @@ function drawGacha(){
   updateGachaUI();
 
   // レアリティによる当選確率は廃止。全カードから均等ランダムに選ぶ（画像があるものだけ）
-  // challenge シリーズ（50問連続クリアの専用カード）はガチャに出さない
-  var pool=CARDS.filter(function(c){return c.imgUrl&&c.series!=='challenge';});
+  // 出るのは学園シリーズだけ。challenge（50問連続）と pref（ニッポン制覇）は
+  // それぞれ別のごほうびなので、ガチャから出してはいけない
+  var pool=CARDS.filter(function(c){return c.imgUrl&&c.series==='gakuen';});
   if(!pool.length)pool=CARDS.slice();
 
   // ダブりなし優先：まだ持っていないカードがあれば、そこから選ぶ

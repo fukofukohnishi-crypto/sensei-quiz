@@ -773,8 +773,10 @@ async function loadCards(){
 }
 function isSpecial(id){return id===CHALLENGE_CARD.rika||id===CHALLENGE_CARD.shakai||id===FUSION_CARD;}
 function pickCard(){
-  /* チャレンジ専用カードは通常の抽選から外す */
-  const pool=CARDS.filter(c=>!isSpecial(c.id));
+  /* 出るのは学園シリーズだけ。
+     challenge は50問連続クリアのごほうび、pref はニッポン制覇で
+     メダルを10個そろえたときのごほうびで、どちらもここから出してはいけない */
+  const pool=CARDS.filter(c=>c.series==='gakuen'&&!isSpecial(c.id));
   if(!pool.length)return null;
   const r=Math.random()*100;
   let want; if(r<52)want=1; else if(r<75)want=2; else if(r<90)want=3; else if(r<98)want=4; else want=5;
