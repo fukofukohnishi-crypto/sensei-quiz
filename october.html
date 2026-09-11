@@ -779,7 +779,7 @@ async function loadCards(){
   }
 }
 function isSpecial(id){return id===CHALLENGE_CARD.rika||id===CHALLENGE_CARD.shakai||id===FUSION_CARD;}
-function pickCard(){
+function drawOne(){
   /* 出るのは学園シリーズだけ。
      challenge は50問連続クリアのごほうび、pref はニッポン制覇で
      メダルを10個そろえたときのごほうびで、どちらもここから出してはいけない */
@@ -791,6 +791,18 @@ function pickCard(){
   if(!list.length)list=pool.filter(c=>c.rarity===1);
   if(!list.length)list=pool;
   return list[Math.floor(Math.random()*list.length)];
+}
+/* 2回引いて、片方だけ未取得ならそちらを採用する。
+   完全ランダムのままだと、集まってきた子ほど「所持カード」ばかり出る。
+   夏休み版（natsuyasumi）と may は未取得だけを先に配る作りだが、それだと
+   未取得が先に出きって、そのあと新しいカードが二度と出なくなる。
+   軽い下駄にとどめて、新しいカードがテスト期間じゅう散らばるようにした。
+   レアリティの配分（N52/SR23/SSR15/R8/伝説2）は drawOne のまま。 */
+function pickCard(){
+  const a=drawOne();
+  if(!a||!collection[a.id])return a;
+  const b=drawOne();
+  return (b&&!collection[b.id])?b:a;
 }
 function award(card){
   if(!card)return {card:null,isNew:false};
