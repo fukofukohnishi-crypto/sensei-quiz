@@ -657,16 +657,15 @@ const LS_CARDS='sz_cards_v1';            /* 夏休み版と共有 */
 const LS_REVIEW='oct_review_v1';
 const LS_CHALLENGE='oct_challenge_v1';
 const LS_STORIES='oct_stories_v1';
+const LS_PRACTICE='oct_practice_v1';  /* 練習で解いた累計。読み物の解放に使う */
 
 const CHALLENGE_GOAL=50;
-/* 読み物がひらく節目。ベストがこの数をこえたときに1話。
-   さらに50問クリアするたびに1話ひらく（何度でも）。
-   1問ごとに1話ひらく作りだと、初回の挑戦だけで在庫を使いきってしまう。 */
-const STORY_MILESTONES=[5,10,15,20,25,30,35,40,45];
-/* 50問クリア1回でひらく読み物の数。ベストが50に達したあとは節目が残っていないので、
-   読み物が進む手段はクリアだけになる。1話だと在庫を読みきるのに26回クリアが必要で
-   重すぎたため2話にした */
-const CLEAR_STORIES=2;
+/* 読み物は「れんしゅう」で解いた累計がこの数にとどくたびに1話ひらく。
+   50問連続チャレンジでは開かない（あちらのごほうびはレアカード）。
+   れんしゅうは1回20問なので、1回につき2話。
+   以前はチャレンジの節目とクリアで開く作りだったが、
+   50問連続は1問ミスでその場終了のため、在庫を読みきるのが重すぎた。 */
+const STORY_EVERY=10;
 /* 10月版の専用カード。絵ができるまで Cards.json に無くても落ちないようにしてある */
 const CHALLENGE_CARD={rika:'sp04', shakai:'sp05'};
 const FUSION_CARD='sp06';
@@ -699,7 +698,7 @@ function idbSet(k,v){return new Promise(res=>{try{
 
 let quizbank=[], drafts=[], collection={}, answeredCount=0, review=[], CARDS=[], STORIES=[];
 let challenge={rika:{streak:0,best:0,cleared:false,clears:0}, shakai:{streak:0,best:0,cleared:false,clears:0}};
-let unlocked=[];
+let unlocked=[], practiceCount=0;
 
 function saveBank(){idbSet('quizbank',quizbank);}
 function saveDrafts(){idbSet('drafts',drafts);}
@@ -707,6 +706,7 @@ function saveCards(){try{localStorage.setItem(LS_CARDS,JSON.stringify({collectio
 function saveReview(){try{localStorage.setItem(LS_REVIEW,JSON.stringify(review));}catch(e){}}
 function saveChallenge(){try{localStorage.setItem(LS_CHALLENGE,JSON.stringify(challenge));}catch(e){}}
 function saveUnlocked(){try{localStorage.setItem(LS_STORIES,JSON.stringify(unlocked));}catch(e){}}
+function savePractice(){try{localStorage.setItem(LS_PRACTICE,String(practiceCount));}catch(e){}}
 
 function esc(t){return String(t==null?'':t).replace(/[&<>"']/g,c=>(
   {'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]));}
@@ -978,39 +978,34 @@ function score(ok){
   }
   saveCards();
 
+  /* 読み物は「れんしゅう」と「まちがい直し」でだけ進む。
+     10問こたえるごとに1話（れんしゅう1回20問＝2話） */
+  if(mode!=='challenge'){
+    practiceCount++; savePractice();
+    if(practiceCount%STORY_EVERY===0){
+      const story=unlockNext();
+      if(story)setTimeout(()=>toast('📖 新しい話「'+story.title+'」がひらいた','var(--gold)'),900);
+    }
+  }
+
   if(mode==='challenge'){
     const st=challenge[curSubj];
     if(ok){
       st.streak++;
-      /* 節目をこえたら1話。1問ごとではなく5問おき */
-      if(st.streak>st.best){
-        const passed=STORY_MILESTONES.filter(m=>m>st.best&&m<=st.streak);
-        st.best=st.streak;
-        passed.forEach((m,i)=>{
-          const story=unlockNext();
-          if(story)setTimeout(()=>toast('📖 '+m+'問連続！ 新しい話「'+story.title+'」','var(--gold)'),900+i*400);
-        });
-      }
+      if(st.streak>st.best)st.best=st.streak;
       if(st.streak>=CHALLENGE_GOAL){
         const first=!st.cleared;
         st.cleared=true; st.clears=(st.clears||0)+1;
         saveChallenge();
-        /* レアカードは初クリアのときだけ。以後はクリアごとに読み物が1話 */
+        /* レアカードは初クリアのときだけ。2回目からはクリア回数が増えるだけ。
+           読み物はこちらでは開かない（れんしゅうのごほうび） */
         if(first){
           const c=CARDS.find(x=>x.id===CHALLENGE_CARD[curSubj]);
           if(c){ const {isNew}=award(c); setTimeout(()=>showCardGet(c,isNew,'50問連続 達成！'),380); }
           else toast('50問連続 達成！ 専用カードは準備中','var(--gold)');
           tryFusion();
         }
-        const got=[];
-        for(let k=0;k<CLEAR_STORIES;k++){ const st2=unlockNext(); if(st2)got.push(st2); }
-        if(got.length){
-          const msg='📖 クリアのごほうび「'+got[0].title+'」'
-            +(got.length>1?'ほか'+(got.length-1)+'話':'');
-          setTimeout(()=>toast(msg,'var(--gold)'),first?1600:600);
-        }else if(!first)toast(unlocked.indexOf(finalStoryId())<0
-          ? '50問クリア！ のこるは最終話だけ。もう一科目も制覇しよう'
-          : '50問クリア！ 読み物はぜんぶ開いたよ','var(--gold)');
+        if(!first)toast('50問クリア！ これで '+st.clears+' 回め','var(--gold)');
         saveChallenge(); showResult(); return;
       }
     }else{
@@ -1145,7 +1140,7 @@ function renderStories(fresh){
   const openList=STORIES.filter(s=>unlocked.indexOf(s.id)>=0);
   const pane=document.getElementById('st-pane');
   if(!openList.length){
-    pane.innerHTML='<div class="empty">まだ1話も開いていません。<br>50問連続チャレンジで<b>連続正解の記録を更新</b>すると、1話ずつ読めるようになります。</div>';
+    pane.innerHTML='<div class="empty">まだ1話も開いていません。<br><b>れんしゅうを'+STORY_EVERY+'問こたえるごとに1話</b>ひらきます。<br>れんしゅうは1回20問なので、1回で2話。</div>';
     return;
   }
   const s=STORIES[stIdx]&&unlocked.indexOf(STORIES[stIdx].id)>=0?STORIES[stIdx]:openList[openList.length-1];
@@ -1373,6 +1368,7 @@ const PREF_TO_CODE={}; CODE_TO_PREF.forEach((n,i)=>{PREF_TO_CODE[n]=i+1;});
   try{ const d=JSON.parse(localStorage.getItem(LS_CHALLENGE)||'{}');
        ['rika','shakai'].forEach(s=>{ if(d[s])challenge[s]=Object.assign(challenge[s],d[s]); }); }catch(e){}
   try{ unlocked=JSON.parse(localStorage.getItem(LS_STORIES)||'[]'); }catch(e){ unlocked=[]; }
+  practiceCount=parseInt(localStorage.getItem(LS_PRACTICE)||'0',10)||0;
   await Promise.all([loadCards(),loadStories()]);
   /* すでに sp06 を持っているのに最終話が閉じたままなら、ここで開けておく
      （この仕組みより先にカードを取っていた場合） */
