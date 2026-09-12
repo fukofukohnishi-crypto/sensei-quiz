@@ -835,5 +835,32 @@
     "name": "栞 挟太郎・万読",
     "power": "万読：あらゆるジャンルの本を読みつくし、知識と知識をつないで新しい発想を生み出す。ページをめくるたび、見えなかった世界がひらく！",
     "imgUrl": "/card-images/ssr12_shiorihasamitaro.webp"
+  },
+  {
+    "id": "r036",
+    "char": "usagidakamekichi",
+    "rarity": 4,
+    "series": "gakuen",
+    "name": "兎田 亀吉",
+    "power": "いきもの みんな ともだち：ウサギもカメもニワトリもヤギも、小さな変化をひとつも見のがさない。やさしい観察力で、みんなのいのちを守る飼育委員！",
+    "imgUrl": "/card-images/r36_usagidakamekichi.webp"
+  },
+  {
+    "id": "r037",
+    "char": "aishii_ikemen",
+    "rarity": 4,
+    "series": "gakuen",
+    "name": "藍志位 池免",
+    "power": "一手の先に未来がある：盤の上でも教室でも、冷静に先を読んで動く。たまに難しい言葉を使いすぎて、まわりがよくわからなくなる！",
+    "imgUrl": "/card-images/r37_aishii_ikemen.webp"
+  },
+  {
+    "id": "r038",
+    "char": "procoachrobot",
+    "rarity": 4,
+    "series": "gakuen",
+    "name": "プロコーチロボット",
+    "power": "継続は最強の力：膨大な棋譜データを分析して、一人ひとりに合わせた練習メニューを組む。口ぐせは「考えるって楽しい！」",
+    "imgUrl": "/card-images/r38_procoachrobot.webp"
   }
 ]
