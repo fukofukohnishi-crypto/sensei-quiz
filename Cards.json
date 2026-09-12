@@ -808,5 +808,32 @@
     "name": "遅刻 間二合・時駆",
     "power": "時駆：計画は立てない。時計も信じない。それでも、なぜか間に合ってしまう。時間そのものを置き去りにして、どんなピンチも笑って切りぬける！",
     "imgUrl": "/card-images/ssr13_maniau.webp"
+  },
+  {
+    "id": "n012",
+    "char": "shiorihasamitaro",
+    "rarity": 1,
+    "series": "gakuen",
+    "name": "栞 挟太郎",
+    "power": "静かなる読書：本を読んでいるあいだ、まわりの声がほとんど聞こえない。どんなジャンルでも読みこなし、ときどきすごい知識でみんなを助ける！",
+    "imgUrl": "/card-images/n12_shiorihasamitaro.webp"
+  },
+  {
+    "id": "sr012",
+    "char": "shiorihasamitaro",
+    "rarity": 2,
+    "series": "gakuen",
+    "name": "栞 挟太郎",
+    "power": "本の案内人：知りたいことを言えば、ぴったりの一冊を書棚から抜き出してくる。膨大な知識で、まだ見ぬ世界のおもしろさを教えてくれる！",
+    "imgUrl": "/card-images/sr12_shiorihasamitaro.webp"
+  },
+  {
+    "id": "ssr012",
+    "char": "shiorihasamitaro",
+    "rarity": 3,
+    "series": "gakuen",
+    "name": "栞 挟太郎・万読",
+    "power": "万読：あらゆるジャンルの本を読みつくし、知識と知識をつないで新しい発想を生み出す。ページをめくるたび、見えなかった世界がひらく！",
+    "imgUrl": "/card-images/ssr12_shiorihasamitaro.webp"
   }
 ]
