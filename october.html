@@ -829,7 +829,9 @@ function showCardGet(card,isNew,extra){
 }
 
 /* =========================================================================
-   小説：連続正解の自己ベストを更新するたびに1話ずつ解放
+   読み物：れんしゅう（と、まちがい直し）を STORY_EVERY 問こたえるごとに1話。
+   最終話だけは融合カード sp06 を取ったときに開く。
+   50問連続チャレンジでは開かない（あちらのごほうびはレアカード）。
    ========================================================================= */
 async function loadStories(){
   try{ const r=await fetch('/stories.json'); if(r.ok){const d=await r.json(); if(Array.isArray(d))STORIES=d;} }catch(e){}
