@@ -862,5 +862,14 @@
     "name": "プロコーチロボット",
     "power": "継続は最強の力：膨大な棋譜データを分析して、一人ひとりに合わせた練習メニューを組む。口ぐせは「考えるって楽しい！」",
     "imgUrl": "/card-images/r38_procoachrobot.webp"
+  },
+  {
+    "id": "l019",
+    "char": "kirokuinhikki",
+    "rarity": 5,
+    "series": "gakuen",
+    "name": "生徒会書記　記録院筆記",
+    "power": "議事録召喚：会議も意見もトラブルも、みんなの小さな声まで見のがさず正確に書き残す。書かれたことは、時間がたっても消えない。記録で、みんなの未来をつなぐ！",
+    "imgUrl": "/card-images/legend19_kirokuinhikki.webp"
   }
 ]

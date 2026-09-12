@@ -16,7 +16,7 @@ natsuyasumi.html  夏休み理科特訓（2026年夏）。★終了
 rikashakai.html   7月マンスリー。★終了・凍結
 may.html          5月マンスリー。★終了・凍結
 api/generate.js   Claude API 呼び出し。教材写真→クイズ生成／漫画構成案
-Cards.json        カード96枚のマスタデータ
+Cards.json        カード97枚のマスタデータ
 stories.json      学園の読み物47話。10月版のご褒美（節目とクリアで1話ずつ解放）
 quizbank-seed.json  作りおき問題514問。理科・社会とも後期第1〜5回ぶん。
                     テキストと練成問題集の両方から作った。
@@ -102,7 +102,7 @@ DB名 `senseiZukan` / ストア `kv`。natsuyasumi と rikashakai が**同じDB�
 
 ## カードの仕組み
 
-`Cards.json` が唯一のマスタ。96枚。1件はこの形:
+`Cards.json` が唯一のマスタ。97枚。1件はこの形:
 
 ```json
 { "id": "sr001", "char": "zanpanman", "rarity": 2, "series": "gakuen",
@@ -117,7 +117,7 @@ DB名 `senseiZukan` / ストア `kv`。natsuyasumi と rikashakai が**同じDB�
 
 | 値 | 枚数 | 中身 | 入手 |
 |---|---|---|---|
-| `gakuen` | 63 | オリジナル学園の先生たち | **ランダムに出るのはこれだけ**（10問ごと／ガチャ） |
+| `gakuen` | 64 | オリジナル学園の先生たち | **ランダムに出るのはこれだけ**（10問ごと／ガチャ） |
 | `pref` | 27 | 都道府県の守護神（`r063`〜`r089`） | ニッポン制覇でメダル10個 |
 | `challenge` | 6 | `sp01`〜`sp03`（夏休み）、`sp04`〜`sp06`（10月） | 50問連続正解 |
 
