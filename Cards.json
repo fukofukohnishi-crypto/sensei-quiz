@@ -781,5 +781,32 @@
     "name": "神覚者の約束",
     "power": "約束の扉・永久開放：まだ何者でもなかった二人の少年が、公園で出会い、約束を交わした。教王が未来への扉を刻み、学王がその扉を開く鍵を背負う。すべては、あの日ここから始まった。",
     "imgUrl": "/card-images/sp06_yakusoku.webp"
+  },
+  {
+    "id": "n013",
+    "char": "maniau",
+    "rarity": 1,
+    "series": "gakuen",
+    "name": "遅刻 間二合",
+    "power": "ギリギリ登校：「今日は間に合う！」と本気で信じて全力で家を出る。なぜか毎回まにあわないが、飛びこんできたときの顔でクラスじゅうを笑わせる！",
+    "imgUrl": "/card-images/n13_maniau.webp"
+  },
+  {
+    "id": "sr013",
+    "char": "maniau",
+    "rarity": 2,
+    "series": "gakuen",
+    "name": "遅刻 間二合・爆走",
+    "power": "奇跡のラストスパート：どんなに遅れても、あきらめない心と謎の自信で爆走する。パンをくわえたまま、異次元の走力で校門を突破！",
+    "imgUrl": "/card-images/sr13_maniau.webp"
+  },
+  {
+    "id": "ssr013",
+    "char": "maniau",
+    "rarity": 3,
+    "series": "gakuen",
+    "name": "遅刻 間二合・時駆",
+    "power": "時駆：計画は立てない。時計も信じない。それでも、なぜか間に合ってしまう。時間そのものを置き去りにして、どんなピンチも笑って切りぬける！",
+    "imgUrl": "/card-images/ssr13_maniau.webp"
   }
 ]
