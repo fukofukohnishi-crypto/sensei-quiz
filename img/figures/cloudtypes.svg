@@ -1,0 +1,97 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 760 480" width="760" height="480" role="img" aria-label="十種雲形。上層雲・中層雲・下層雲にわけた十種類の雲と、あらわれる高さ">
+  <style>
+    .ja{font-family:-apple-system,BlinkMacSystemFont,"Hiragino Sans","Yu Gothic",sans-serif}
+    .nm{font-size:17px;font-weight:800;fill:#f2f5ff}
+    .al{font-size:12.5px;fill:#aab4cc}
+    .bd{font-size:15px;font-weight:800}
+    .bs{font-size:12px;fill:#9aa3bb}
+    .ax{font-size:13px;fill:#b9b9d0}
+    .lg{font-size:13.5px;fill:#cfd6e6}
+    .lgb{font-size:13.5px;font-weight:800;fill:#ffd700}
+  </style>
+  <rect width="760" height="480" fill="#141428"/>
+
+  <!-- 帯 -->
+  <rect x="86" y="22"  width="560" height="122" fill="#2b3a5c" opacity=".55"/>
+  <rect x="86" y="152" width="560" height="110" fill="#2f4a52" opacity=".55"/>
+  <rect x="86" y="270" width="560" height="104" fill="#3d3a52" opacity=".55"/>
+  <rect x="0" y="374" width="760" height="24" fill="#3b4a33"/>
+
+  <!-- 高さの目もり -->
+  <g stroke="#8d8daa" stroke-width="1.3" stroke-dasharray="6 5">
+    <path d="M86 144 L646 144"/><path d="M86 262 L646 262"/>
+  </g>
+  <g class="ja ax" text-anchor="end">
+    <text x="78" y="30">13km</text><text x="78" y="148">5km</text>
+    <text x="78" y="266">2km</text><text x="78" y="392">地上</text>
+  </g>
+
+  <!-- 帯の見出し -->
+  <g class="ja">
+    <text x="96" y="42"  class="bd" fill="#9ec2ff">上層雲　5〜13km</text>
+    <text x="96" y="59"  class="bs">氷のつぶ　／　エベレストより高いところにも</text>
+    <text x="96" y="172" class="bd" fill="#7fd8c4">中層雲　2〜7km</text>
+    <text x="96" y="189" class="bs">水と氷のつぶ　／　富士山より高いところにも</text>
+    <text x="96" y="290" class="bd" fill="#c9a6ff">下層雲　地上〜2km</text>
+    <text x="96" y="307" class="bs">水のつぶ</text>
+  </g>
+
+  <!-- 雲のかたち -->
+  <g fill="#e6ecf7" opacity=".95">
+    <path d="M118 82 q28 -10 56 -2 q-26 10 -56 2z"/><path d="M132 93 q24 -8 48 -2 q-22 8 -48 2z"/>
+    <g><circle cx="272" cy="82" r="6"/><circle cx="286" cy="79" r="5"/><circle cx="300" cy="83" r="6"/>
+       <circle cx="279" cy="93" r="5"/><circle cx="294" cy="92" r="5"/><circle cx="308" cy="90" r="4.5"/></g>
+    <rect x="410" y="82" width="96" height="13" rx="6" opacity=".62"/>
+
+    <g><ellipse cx="140" cy="212" rx="13" ry="9"/><ellipse cx="162" cy="209" rx="11" ry="8"/><ellipse cx="182" cy="213" rx="12" ry="8"/></g>
+    <rect x="280" y="204" width="100" height="17" rx="8" opacity=".6"/>
+    <rect x="452" y="192" width="106" height="20" rx="9" opacity=".85"/>
+    <g stroke="#9ec2ff" stroke-width="2.2" stroke-linecap="round">
+      <path d="M470 216 L466 227"/><path d="M492 216 L488 227"/><path d="M514 216 L510 227"/><path d="M536 216 L532 227"/>
+    </g>
+
+    <g><ellipse cx="140" cy="322" rx="19" ry="13"/><ellipse cx="160" cy="316" rx="15" ry="15"/><ellipse cx="176" cy="324" rx="14" ry="11"/></g>
+    <g><rect x="256" y="312" width="104" height="9" rx="4.5"/><rect x="264" y="326" width="90" height="9" rx="4.5"/></g>
+    <rect x="424" y="318" width="104" height="16" rx="8" opacity=".55"/>
+  </g>
+
+  <!-- 積乱雲。下層から10km以上までのびる -->
+  <g>
+    <path d="M598 372 L598 120 q0 -18 18 -18 h14 q18 0 18 18 v252z" fill="#dfe6f4" opacity=".93"/>
+    <path d="M566 104 q0 -22 26 -24 h44 q26 2 26 24 q-14 8 -48 8 q-34 0 -48 -8z" fill="#f2f5ff" opacity=".95"/>
+    <text x="622" y="95" class="ja al" text-anchor="middle" fill="#2a2a45" font-weight="800">かなとこ雲</text>
+    <g stroke="#9ec2ff" stroke-width="2.4" stroke-linecap="round">
+      <path d="M608 378 L604 392"/><path d="M628 378 L624 392"/>
+    </g>
+    <g class="ja" text-anchor="middle">
+      <text x="700" y="152" class="nm">積乱雲</text>
+      <text x="700" y="171" class="al">入道雲</text>
+      <text x="700" y="194" class="al" fill="#ff9a9a">10km以上</text>
+      <text x="700" y="212" class="al" fill="#ff9a9a">はげしい雨・雷</text>
+    </g>
+  </g>
+
+  <!-- 雲の名前 -->
+  <g class="ja" text-anchor="middle">
+    <text x="146" y="122" class="nm">巻雲</text>   <text x="146" y="139" class="al">すじ雲</text>
+    <text x="290" y="122" class="nm">巻積雲</text> <text x="290" y="139" class="al">うろこ雲・いわし雲</text>
+    <text x="458" y="122" class="nm">巻層雲</text> <text x="458" y="139" class="al">うす雲</text>
+
+    <text x="161" y="240" class="nm">高積雲</text> <text x="161" y="257" class="al">ひつじ雲</text>
+    <text x="330" y="240" class="nm">高層雲</text> <text x="330" y="257" class="al">おぼろ雲</text>
+    <text x="505" y="245" class="nm" fill="#ffd700">乱層雲</text>
+    <text x="478" y="176" class="al" fill="#ffd700">「高」がつかないのに中層雲</text>
+    <text x="505" y="259" class="al" fill="#ffd700">雨雲・弱い雨</text>
+
+    <text x="158" y="352" class="nm">積雲</text>   <text x="158" y="369" class="al" fill="#e6ecf7">わた雲</text>
+    <text x="308" y="352" class="nm">層積雲</text> <text x="308" y="369" class="al" fill="#e6ecf7">うね雲</text>
+    <text x="476" y="352" class="nm">層雲</text>   <text x="476" y="369" class="al" fill="#e6ecf7">きり雲</text>
+  </g>
+
+  <!-- 名前の読みかた -->
+  <rect x="16" y="408" width="728" height="58" rx="12" fill="#1d1d33" stroke="#33334f"/>
+  <g class="ja">
+    <text x="32" y="430" class="lgb">名前の読みかた</text>
+    <text x="32" y="454" class="lg"><tspan class="lgb">巻</tspan>＝5〜13km　<tspan class="lgb">高</tspan>＝2〜7km　<tspan class="lgb">積</tspan>＝もこもこ したかたまり　<tspan class="lgb">層</tspan>＝横に広がる　<tspan class="lgb">乱</tspan>＝雨をふらす</text>
+  </g>
+</svg>

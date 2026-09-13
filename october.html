@@ -152,6 +152,11 @@ button:focus-visible{outline:2px solid var(--gold);outline-offset:2px}
   font-size:.86rem;line-height:1.8;color:var(--muted);
 }
 .explain .src b{color:var(--text-2);font-size:.72rem;letter-spacing:.1em;display:block;margin-bottom:4px}
+/* 答えあわせのあとに出すまとめの図 */
+.explain .fig{margin-top:16px;padding-top:14px;border-top:1px solid var(--line);text-align:center}
+.explain .fig b{display:block;font-size:.72rem;letter-spacing:.14em;color:var(--gold);
+  font-weight:800;margin-bottom:10px;text-align:left}
+.explain .fig img{max-width:100%;height:auto;max-height:min(46vh,360px);border-radius:12px}
 
 .scorebtns{display:grid;grid-template-columns:1fr 1fr;gap:12px;margin-top:16px}
 @media(max-width:520px){.scorebtns{grid-template-columns:1fr}}
@@ -1017,6 +1022,10 @@ function reveal(){
   let h='<div class="h">かいせつ</div><div class="t">'+esc(q.explain||'')+'</div>';
   if(q.juken) h+='<div class="juken"><b>🎯 中学受験</b>　'+esc(q.juken)+'</div>';
   if(q.source) h+='<div class="src"><b>テキストの ここ</b>'+esc(q.source)+'</div>';
+  /* 答えあわせのあとに出すまとめの図。問題文の上に出す fig とは別もので、
+     こちらは答えが書いてあってよい（もう答えを見たあとなので） */
+  if(q.figAfter) h+='<div class="fig"><b>おぼえかた</b>'
+    +'<img src="/img/figures/'+esc(q.figAfter)+'" alt="" onerror="this.parentNode.style.display=\'none\'"></div>';
   document.getElementById('q-explain').innerHTML=h;
 }
 
@@ -1323,11 +1332,28 @@ async function generate(){
 
 /* テキストから作りおきした問題を読みこむ。承認まちに入るので、
    関門2を通したうえで1問ずつ確認してから採用する。 */
+/* すでに採用ずみの問題に、あとから足した図（figAfter）だけをつけ足す。
+   一度読みこんだ問題は q の文で重複とみなして足せないので、
+   図を追加したいときはこれが要る。解説や引用など人が直したところは
+   さわらず、図が入っていないものにだけ入れる。 */
+function patchFigures(list){
+  const byId={}, byQ={};
+  quizbank.forEach(q=>{ if(q.id)byId[q.id]=q; byQ[q.q]=q; });
+  let n=0;
+  list.forEach(sd=>{
+    if(!sd.figAfter)return;
+    const cur=byId[sd.id]||byQ[sd.q];
+    if(cur&&!cur.figAfter){ cur.figAfter=sd.figAfter; n++; }
+  });
+  return n;
+}
 async function loadSeed(){
   try{
     const r=await fetch('/quizbank-seed.json');
     if(!r.ok)throw new Error('HTTP '+r.status);
     const list=await r.json();
+    const patched=patchFigures(list);
+    if(patched){ saveBank(); }
     const have={};
     quizbank.forEach(q=>{have[q.q]=1});
     drafts.forEach(q=>{have[q.q]=1});
@@ -1338,10 +1364,16 @@ async function loadSeed(){
                 aiWhy:'教材から作りおきしたもの', human:'pending'};
       return o;
     });
-    if(!add.length){toast('新しく足せる問題はありませんでした');return;}
+    if(!add.length){
+      toast(patched
+        ? '新しい問題はなし。'+patched+'問に図をつけました'
+        : '新しく足せる問題はありませんでした', patched?'var(--gold)':'');
+      renderAdmin(); return;
+    }
     drafts=add.concat(drafts);
     saveDrafts(); renderAdmin();
-    toast(add.length+'問を読みこみました。下から確認してね','var(--gold)');
+    toast(add.length+'問を読みこみました。下から確認してね'
+      +(patched?'（'+patched+'問に図もつけました）':''),'var(--gold)');
   }catch(e){
     toast('読みこみに失敗：'+e.message,'var(--ng)');
   }

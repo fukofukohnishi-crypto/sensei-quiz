@@ -280,7 +280,8 @@
   "explain": "雲は高さで上層雲・中層雲・下層雲の3つに分けられます。上層雲が一番高いところです。",
   "juken": "高さの数字までセットで問われる。",
   "note": "",
-  "basis": "text"
+  "basis": "text",
+  "figAfter": "cloudtypes.svg"
  },
  {
   "id": "seed_r2_02",
@@ -297,7 +298,8 @@
   "explain": "中層雲は2〜7kmの高さにあらわれます。",
   "juken": "",
   "note": "",
-  "basis": "text"
+  "basis": "text",
+  "figAfter": "cloudtypes.svg"
  },
  {
   "id": "seed_r2_03",
@@ -313,7 +315,8 @@
   "explain": "一番低いところにできる雲が下層雲です。",
   "juken": "",
   "note": "",
-  "basis": "text"
+  "basis": "text",
+  "figAfter": "cloudtypes.svg"
  },
  {
   "id": "seed_r2_04",
@@ -329,7 +332,8 @@
   "explain": "「巻」がつく雲は、一番高いところにできる雲です。",
   "juken": "「巻＝一番高い」を覚えると雲の名前で高さが分かる。",
   "note": "",
-  "basis": "text"
+  "basis": "text",
+  "figAfter": "cloudtypes.svg"
  },
  {
   "id": "seed_r2_05",
@@ -345,7 +349,8 @@
   "explain": "「高」がつく雲は、「巻」の次に高いところにできます。",
   "juken": "",
   "note": "",
-  "basis": "text"
+  "basis": "text",
+  "figAfter": "cloudtypes.svg"
  },
  {
   "id": "seed_r2_06",
@@ -359,7 +364,8 @@
   "explain": "「乱」がついている雲は、雨を降らせる雲です。",
   "juken": "乱層雲と積乱雲が雨を降らせる雲。",
   "note": "",
-  "basis": "text"
+  "basis": "text",
+  "figAfter": "cloudtypes.svg"
  },
  {
   "id": "seed_r2_07",
@@ -375,7 +381,8 @@
   "explain": "「積」はもこもこと積み上がった形の雲を表します。",
   "juken": "",
   "note": "",
-  "basis": "text"
+  "basis": "text",
+  "figAfter": "cloudtypes.svg"
  },
  {
   "id": "seed_r2_08",
@@ -389,7 +396,8 @@
   "explain": "「層」は空に横へ平たく広がった雲を表します。",
   "juken": "",
   "note": "",
-  "basis": "text"
+  "basis": "text",
+  "figAfter": "cloudtypes.svg"
  },
  {
   "id": "seed_r2_09",
@@ -405,7 +413,8 @@
   "explain": "乱層雲だけは名前に「高」がないのに、中くらいの高さにあらわれます。",
   "juken": "例外として問われやすい。",
   "note": "",
-  "basis": "text"
+  "basis": "text",
+  "figAfter": "cloudtypes.svg"
  },
  {
   "id": "seed_r2_10",
@@ -419,7 +428,8 @@
   "explain": "高層雲は空にうすく広がり、月や太陽がぼんやり見えることからおぼろ雲と呼ばれます。",
   "juken": "",
   "note": "",
-  "basis": "text"
+  "basis": "text",
+  "figAfter": "cloudtypes.svg"
  },
  {
   "id": "seed_r2_11",
@@ -433,7 +443,8 @@
   "explain": "層雲は地面近くに広がる雲で、きりのように見えます。",
   "juken": "",
   "note": "",
-  "basis": "text"
+  "basis": "text",
+  "figAfter": "cloudtypes.svg"
  },
  {
   "id": "seed_r2_12",
@@ -447,7 +458,8 @@
   "explain": "巻層雲は空高くにうすく広がる雲です。",
   "juken": "",
   "note": "",
-  "basis": "text"
+  "basis": "text",
+  "figAfter": "cloudtypes.svg"
  },
  {
   "id": "seed_r2_13",
@@ -461,7 +473,8 @@
   "explain": "層積雲はうねのように並んで見える雲です。",
   "juken": "",
   "note": "",
-  "basis": "text"
+  "basis": "text",
+  "figAfter": "cloudtypes.svg"
  },
  {
   "id": "seed_r2_14",
@@ -475,7 +488,8 @@
   "explain": "雲は水蒸気そのものではなく、冷やされて水や氷のつぶになったものです。",
   "juken": "「雲＝水や氷のつぶ」。水蒸気は目に見えない、が頻出。",
   "note": "",
-  "basis": "text"
+  "basis": "text",
+  "figAfter": "cloudtypes.svg"
  },
  {
   "id": "seed_r2_15",
@@ -1365,7 +1379,8 @@
   "explain": "目に見えない水蒸気が、冷えて目に見えるつぶになったものが雲です。",
   "juken": "水蒸気は気体で目に見えない、が最重要。",
   "basis": "text",
-  "id": "seed_t2_29"
+  "id": "seed_t2_29",
+  "figAfter": "cloudtypes.svg"
  },
  {
   "type": "text",
@@ -1380,7 +1395,8 @@
   "explain": "10種類に分けた分け方の名前です。",
   "juken": "10種類すべてを答えさせる問題もある。",
   "basis": "text",
-  "id": "seed_t2_30"
+  "id": "seed_t2_30",
+  "figAfter": "cloudtypes.svg"
  },
  {
   "type": "text",
@@ -1395,7 +1411,8 @@
   "explain": "高いところは冷たいので、氷のつぶになります。",
   "juken": "上層＝氷、中層＝水や氷、下層＝水（積乱雲は例外）。",
   "basis": "text",
-  "id": "seed_t2_31"
+  "id": "seed_t2_31",
+  "figAfter": "cloudtypes.svg"
  },
  {
   "type": "text",
@@ -1410,7 +1427,8 @@
   "explain": "どれも「巻」の字がついています。",
   "juken": "",
   "basis": "text",
-  "id": "seed_t2_32"
+  "id": "seed_t2_32",
+  "figAfter": "cloudtypes.svg"
  },
  {
   "type": "text",
@@ -1423,7 +1441,8 @@
   "explain": "エベレストは標高8848mです。",
   "juken": "",
   "basis": "text",
-  "id": "seed_t2_33"
+  "id": "seed_t2_33",
+  "figAfter": "cloudtypes.svg"
  },
  {
   "type": "text",
@@ -1453,7 +1472,8 @@
   "explain": "上層雲と下層雲の中間で、水と氷がまざっています。",
   "juken": "",
   "basis": "text",
-  "id": "seed_t2_35"
+  "id": "seed_t2_35",
+  "figAfter": "cloudtypes.svg"
  },
  {
   "type": "text",
@@ -1468,7 +1488,8 @@
   "explain": "乱層雲だけ「高」の字がありませんが中層雲です。",
   "juken": "乱層雲が例外である点が問われる。",
   "basis": "text",
-  "id": "seed_t2_36"
+  "id": "seed_t2_36",
+  "figAfter": "cloudtypes.svg"
  },
  {
   "type": "text",
@@ -1481,7 +1502,8 @@
   "explain": "広い範囲に弱い雨を長く降らせます。",
   "juken": "乱層雲＝弱い雨、積乱雲＝激しい雨。対で覚える。",
   "basis": "text",
-  "id": "seed_t2_37"
+  "id": "seed_t2_37",
+  "figAfter": "cloudtypes.svg"
  },
  {
   "type": "text",
@@ -1496,7 +1518,8 @@
   "explain": "積乱雲の激しい雨とは対照的です。",
   "juken": "",
   "basis": "text",
-  "id": "seed_t2_38"
+  "id": "seed_t2_38",
+  "figAfter": "cloudtypes.svg"
  },
  {
   "type": "text",
@@ -1509,7 +1532,8 @@
   "explain": "富士山は標高3776mです。",
   "juken": "",
   "basis": "text",
-  "id": "seed_t2_39"
+  "id": "seed_t2_39",
+  "figAfter": "cloudtypes.svg"
  },
  {
   "type": "text",
@@ -1539,7 +1563,8 @@
   "explain": "下層雲だけ4つあります。",
   "juken": "",
   "basis": "text",
-  "id": "seed_t2_41"
+  "id": "seed_t2_41",
+  "figAfter": "cloudtypes.svg"
  },
  {
   "type": "text",
@@ -1554,7 +1579,8 @@
   "explain": "下層雲なのに、上層雲の高さまで届くことがあります。",
   "juken": "積乱雲は下層から上層までのびる特別な雲。",
   "basis": "text",
-  "id": "seed_t2_42"
+  "id": "seed_t2_42",
+  "figAfter": "cloudtypes.svg"
  },
  {
   "type": "text",
@@ -1567,7 +1593,8 @@
   "explain": "夏の夕立やゲリラ豪雨をもたらします。",
   "juken": "乱層雲との対比で問われる。",
   "basis": "text",
-  "id": "seed_t2_43"
+  "id": "seed_t2_43",
+  "figAfter": "cloudtypes.svg"
  },
  {
   "type": "text",
@@ -1580,7 +1607,8 @@
   "explain": "上へのびきった積乱雲が横に広がった形です。",
   "juken": "",
   "basis": "text",
-  "id": "seed_t2_44"
+  "id": "seed_t2_44",
+  "figAfter": "cloudtypes.svg"
  },
  {
   "type": "text",
@@ -1593,7 +1621,8 @@
   "explain": "空高くに細いすじのように見える雲です。",
   "juken": "",
   "basis": "text",
-  "id": "seed_t2_45"
+  "id": "seed_t2_45",
+  "figAfter": "cloudtypes.svg"
  },
  {
   "type": "text",
@@ -1608,7 +1637,8 @@
   "explain": "小さなかたまりが並んで、魚のうろこのように見えます。",
   "juken": "別名が3つある珍しい雲。",
   "basis": "text",
-  "id": "seed_t2_46"
+  "id": "seed_t2_46",
+  "figAfter": "cloudtypes.svg"
  },
  {
   "type": "text",
@@ -1621,7 +1651,8 @@
   "explain": "ひつじの群れのように見える雲です。",
   "juken": "",
   "basis": "text",
-  "id": "seed_t2_47"
+  "id": "seed_t2_47",
+  "figAfter": "cloudtypes.svg"
  },
  {
   "type": "text",
@@ -1634,7 +1665,8 @@
   "explain": "わたのようにもこもこした雲です。",
   "juken": "",
   "basis": "text",
-  "id": "seed_t2_48"
+  "id": "seed_t2_48",
+  "figAfter": "cloudtypes.svg"
  },
  {
   "type": "text",
@@ -1662,7 +1694,8 @@
   "explain": "巻層雲は太陽や月をおおううすい雲です。",
   "juken": "",
   "basis": "text",
-  "id": "seed_t2_50"
+  "id": "seed_t2_50",
+  "figAfter": "cloudtypes.svg"
  },
  {
   "type": "text",
@@ -1675,7 +1708,8 @@
   "explain": "レンズのような平たい形の雲です。",
   "juken": "",
   "basis": "text",
-  "id": "seed_t2_51"
+  "id": "seed_t2_51",
+  "figAfter": "cloudtypes.svg"
  },
  {
   "type": "text",
@@ -1688,7 +1722,8 @@
   "explain": "「山にかさがかかると雨」という観天望気があります。",
   "juken": "富士山のかさ雲が有名。",
   "basis": "text",
-  "id": "seed_t2_52"
+  "id": "seed_t2_52",
+  "figAfter": "cloudtypes.svg"
  },
  {
   "type": "text",
@@ -3104,7 +3139,8 @@
   "explain": "いちばん高いところの雲です。氷のつぶでできています。",
   "juken": "5〜13kmという数字までセットで問われる。",
   "basis": "text",
-  "id": "seed_f2_09"
+  "id": "seed_f2_09",
+  "figAfter": "cloudtypes.svg"
  },
  {
   "type": "figure",
@@ -3121,7 +3157,8 @@
   "explain": "まん中の高さの雲です。水や氷のつぶでできています。",
   "juken": "",
   "basis": "text",
-  "id": "seed_f2_10"
+  "id": "seed_f2_10",
+  "figAfter": "cloudtypes.svg"
  },
  {
   "type": "figure",
@@ -3138,7 +3175,8 @@
   "explain": "いちばん低いところの雲です。",
   "juken": "",
   "basis": "text",
-  "id": "seed_f2_11"
+  "id": "seed_f2_11",
+  "figAfter": "cloudtypes.svg"
  },
  {
   "type": "text",
