@@ -458,6 +458,27 @@ SVGなら著作権の問題がなく、ラベルも日本語で自由に置け�
 十種雲形は名前だけで覚えるのが苦しいので、理科・第2回の雲の問題**38問**に
 `cloudtypes.svg` を付けてある。1問こたえるたびに全体の表が出る作り。
 
+**図の中身は、必ず `source`（教材からの引用）と1つずつ照合すること。**
+自作するぶん、一般知識が混ざって教材とずれやすい。実際 `cloudtypes.svg` は
+初稿で5か所まちがえた:
+
+- 「下層雲＝水のつぶ」と書いたが**教材に根拠がなく**、しかも積乱雲は
+  「水や氷のつぶ」と明記されている（下層雲なのに）。つぶの記述は上層と中層だけ
+- 別名のもれ: 巻積雲の**さば雲**、乱層雲の**雪雲**、積乱雲の**雷雲**、層積雲の**くもり雲**
+
+照合はこれで通す（28項目・教材に無い語が混ざっていないかも見る）:
+
+```bash
+python3 -c "
+import io,json,re
+Q=json.load(io.open('quizbank-seed.json',encoding='utf-8'))
+src=' '.join(q['source'] for q in Q if q['subj']=='rika' and q['round']==2)
+svg=io.open('img/figures/cloudtypes.svg',encoding='utf-8').read()
+names=set(re.findall(r'[巻高層積乱]{1,2}雲|かなとこ雲|入道雲|雷雲|すじ雲|うろこ雲|いわし雲|さば雲|うす雲|ひつじ雲|おぼろ雲|雨雲|雪雲|わた雲|うね雲|くもり雲|きり雲', svg))
+print('教材に出てこない語:', [n for n in sorted(names) if n not in src] or 'なし')
+"
+```
+
 **`figAfter` はあとから足せる。** `loadSeed()` の `patchFigures()` が、
 すでに `quizbank` に入っている問題に `figAfter` だけを入れる。
 一度読みこんだ問題は `q` の文で重複とみなされて足しなおせないので、これが要る。

@@ -29,11 +29,11 @@
   <!-- 帯の見出し -->
   <g class="ja">
     <text x="96" y="42"  class="bd" fill="#9ec2ff">上層雲　5〜13km</text>
-    <text x="96" y="59"  class="bs">氷のつぶ　／　エベレストより高いところにも</text>
+    <text x="96" y="59"  class="bs">氷のつぶ　／　エベレスト（8848m）より高いところにも</text>
     <text x="96" y="172" class="bd" fill="#7fd8c4">中層雲　2〜7km</text>
-    <text x="96" y="189" class="bs">水と氷のつぶ　／　富士山より高いところにも</text>
-    <text x="96" y="290" class="bd" fill="#c9a6ff">下層雲　地上〜2km</text>
-    <text x="96" y="307" class="bs">水のつぶ</text>
+    <text x="96" y="189" class="bs">水や氷のつぶ　／　富士山（3776m）より高いところにも</text>
+    <text x="96" y="290" class="bd" fill="#c9a6ff">下層雲　地面付近〜2km</text>
+    <text x="96" y="307" class="bs">積乱雲だけは 水や氷のつぶ</text>
   </g>
 
   <!-- 雲のかたち -->
@@ -45,9 +45,9 @@
 
     <g><ellipse cx="140" cy="212" rx="13" ry="9"/><ellipse cx="162" cy="209" rx="11" ry="8"/><ellipse cx="182" cy="213" rx="12" ry="8"/></g>
     <rect x="280" y="204" width="100" height="17" rx="8" opacity=".6"/>
-    <rect x="452" y="192" width="106" height="20" rx="9" opacity=".85"/>
+    <rect x="452" y="186" width="106" height="20" rx="9" opacity=".85"/>
     <g stroke="#9ec2ff" stroke-width="2.2" stroke-linecap="round">
-      <path d="M470 216 L466 227"/><path d="M492 216 L488 227"/><path d="M514 216 L510 227"/><path d="M536 216 L532 227"/>
+      <path d="M470 210 L466 221"/><path d="M492 210 L488 221"/><path d="M514 210 L510 221"/><path d="M536 210 L532 221"/>
     </g>
 
     <g><ellipse cx="140" cy="322" rx="19" ry="13"/><ellipse cx="160" cy="316" rx="15" ry="15"/><ellipse cx="176" cy="324" rx="14" ry="11"/></g>
@@ -65,7 +65,7 @@
     </g>
     <g class="ja" text-anchor="middle">
       <text x="700" y="152" class="nm">積乱雲</text>
-      <text x="700" y="171" class="al">入道雲</text>
+      <text x="700" y="171" class="al">入道雲・雷雲</text>
       <text x="700" y="194" class="al" fill="#ff9a9a">10km以上</text>
       <text x="700" y="212" class="al" fill="#ff9a9a">はげしい雨・雷</text>
     </g>
@@ -74,17 +74,17 @@
   <!-- 雲の名前 -->
   <g class="ja" text-anchor="middle">
     <text x="146" y="122" class="nm">巻雲</text>   <text x="146" y="139" class="al">すじ雲</text>
-    <text x="290" y="122" class="nm">巻積雲</text> <text x="290" y="139" class="al">うろこ雲・いわし雲</text>
+    <text x="290" y="122" class="nm">巻積雲</text> <text x="290" y="139" class="al">うろこ雲・いわし雲・さば雲</text>
     <text x="458" y="122" class="nm">巻層雲</text> <text x="458" y="139" class="al">うす雲</text>
 
     <text x="161" y="240" class="nm">高積雲</text> <text x="161" y="257" class="al">ひつじ雲</text>
     <text x="330" y="240" class="nm">高層雲</text> <text x="330" y="257" class="al">おぼろ雲</text>
-    <text x="505" y="245" class="nm" fill="#ffd700">乱層雲</text>
-    <text x="478" y="176" class="al" fill="#ffd700">「高」がつかないのに中層雲</text>
-    <text x="505" y="259" class="al" fill="#ffd700">雨雲・弱い雨</text>
+    <text x="505" y="240" class="nm" fill="#ffd700">乱層雲</text>
+    <text x="478" y="172" class="al" fill="#ffd700">「高」がつかないのに中層雲</text>
+    <text x="500" y="255" class="al" fill="#ffd700">雨雲・雪雲／弱い雨</text>
 
     <text x="158" y="352" class="nm">積雲</text>   <text x="158" y="369" class="al" fill="#e6ecf7">わた雲</text>
-    <text x="308" y="352" class="nm">層積雲</text> <text x="308" y="369" class="al" fill="#e6ecf7">うね雲</text>
+    <text x="308" y="352" class="nm">層積雲</text> <text x="308" y="369" class="al" fill="#e6ecf7">うね雲・くもり雲</text>
     <text x="476" y="352" class="nm">層雲</text>   <text x="476" y="369" class="al" fill="#e6ecf7">きり雲</text>
   </g>
 
