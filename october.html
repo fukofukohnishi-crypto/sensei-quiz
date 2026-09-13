@@ -85,6 +85,8 @@ button:focus-visible{outline:2px solid var(--gold);outline-offset:2px}
 .btn:active{transform:scale(.98)}
 .btn.gold{background:linear-gradient(135deg,var(--gold),#ff9a3c);color:#241500;border:none}
 .btn.ghost{background:transparent;border:1px solid var(--line-hi);color:var(--text-2);font-size:.9rem;padding:12px}
+/* 結果画面の「まちがえたのだけ」。ホームへ（金）とならぶので、色で見分ける */
+.btn.warn{background:var(--ng-dim);border:1px solid var(--ng);color:var(--ng)}
 .btn[disabled]{opacity:.4;cursor:default}
 .btn[disabled]:active{transform:none}
 
@@ -577,6 +579,7 @@ button:focus-visible{outline:2px solid var(--gold);outline-offset:2px}
         <div class="cellv"><b id="r-ok">0</b><span>できた</span></div>
         <div class="cellv"><b id="r-best">0</b><span>連続の記録</span></div>
       </div>
+      <button class="btn warn" style="width:100%;margin-bottom:10px;display:none" id="r-wrong"></button>
       <button class="btn gold" style="width:100%;margin-bottom:10px" onclick="go('s-home')">ホームへ</button>
       <button class="btn ghost" style="width:100%" id="r-again"></button>
     </div>
@@ -885,6 +888,8 @@ function recordReview(q,ok){
    出題
    ========================================================================= */
 let qList=[], qIdx=0, qOk=0, mode='free', curSubj='rika', revealed=false;
+/* その回でまちがえた問題。結果画面の「まちがえたのだけ」で使う */
+let qWrong=[];
 
 /* round を渡すとその単元だけ。0 や未指定なら全部 */
 function poolOf(subj,round){
@@ -921,13 +926,21 @@ function startChallenge(subj){
   qList=list.slice(0,CHALLENGE_GOAL);
   beginQuiz(subj,'challenge',SUBJ[subj].n+' 50問連続チャレンジ');
 }
+/* いま終わった回でまちがえた問題だけ、その場でもう一度。
+   beginQuiz が qWrong を空にするので、先に控えをとる */
+function startWrongOnly(){
+  const list=qWrong.slice();
+  if(!list.length){toast('まちがえた問題はないよ');return;}
+  qList=list.sort(()=>Math.random()-.5);
+  beginQuiz(curSubj,'free','まちがえたのだけ　'+list.length+'問');
+}
 function startReview(){
   if(!review.length){toast('まちがえた問題はないよ');return;}
   qList=review.slice(0,20).map(r=>r.q);
   beginQuiz(qList[0].subj||'rika','review','まちがい直し');
 }
 function beginQuiz(subj,m,title){
-  curSubj=subj; mode=m; qIdx=0; qOk=0;
+  curSubj=subj; mode=m; qIdx=0; qOk=0; qWrong=[];
   document.getElementById('q-title').textContent=title;
   const f=document.getElementById('q-face');
   f.src=SUBJ[subj].face; f.style.display='';
@@ -1011,7 +1024,7 @@ function score(ok){
   if(!revealed)return;
   const q=qList[qIdx];
   document.querySelectorAll('#q-segs .seg')[Math.min(qIdx,29)].className='seg '+(ok?'ok':'ng');
-  if(ok)qOk++;
+  if(ok)qOk++; else if(qWrong.indexOf(q)<0)qWrong.push(q);
   answeredCount++;
   recordReview(q,ok);
 
@@ -1098,6 +1111,13 @@ function showResult(){
   const again=document.getElementById('r-again');
   again.textContent=mode==='challenge'?'もう一度チャレンジ':'もう一回';
   again.onclick=()=>{ mode==='challenge'?startChallenge(curSubj):startFlash(curSubj); };
+  /* まちがえた問題があるときだけ出す。チャレンジは1問ミスで終わるので出さない */
+  const wb=document.getElementById('r-wrong');
+  const n=qWrong.length;
+  if(mode!=='challenge'&&n){
+    wb.style.display=''; wb.textContent='❌ まちがえた '+n+'問だけ';
+    wb.onclick=startWrongOnly;
+  }else{ wb.style.display='none'; }
   go('s-result');
 }
 
