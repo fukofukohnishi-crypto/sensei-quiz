@@ -67,6 +67,15 @@ button:focus-visible{outline:2px solid var(--gold);outline-offset:2px}
   background:var(--card);border-radius:12px;padding:11px 14px;display:flex;
   align-items:baseline;gap:9px;border:1px solid var(--line);
 }
+/* 単元（第◯回）のえらびかた。れんしゅうにだけ効く */
+.rounds{display:flex;flex-wrap:wrap;gap:6px}
+.rchip{font-size:.76rem;font-weight:800;padding:7px 11px;border-radius:99px;
+  border:1px solid var(--line);background:var(--card);color:var(--text-2);
+  display:flex;align-items:baseline;gap:5px}
+.rchip i{font-style:normal;font-size:.66rem;color:var(--muted)}
+.rchip.on{background:var(--card-hi);border-color:var(--gold);color:var(--text)}
+.rchip.on i{color:var(--gold)}
+.rchip:disabled{opacity:.35}
 .subj .streak b{font-size:1.5rem;font-weight:900;color:var(--gold)}
 .subj .streak span{font-size:.75rem;color:var(--muted)}
 .btn{
@@ -658,6 +667,7 @@ const LS_REVIEW='oct_review_v1';
 const LS_CHALLENGE='oct_challenge_v1';
 const LS_STORIES='oct_stories_v1';
 const LS_PRACTICE='oct_practice_v1';  /* 練習で解いた累計。読み物の解放に使う */
+const LS_ROUND='oct_round_v1';        /* れんしゅうでえらんだ単元（0＝ぜんぶ） */
 
 const CHALLENGE_GOAL=50;
 /* 読み物は「れんしゅう」で解いた累計がこの数にとどくたびに1話ひらく。
@@ -700,6 +710,8 @@ function idbSet(k,v){return new Promise(res=>{try{
 let quizbank=[], drafts=[], collection={}, answeredCount=0, review=[], CARDS=[], STORIES=[];
 let challenge={rika:{streak:0,best:0,cleared:false,clears:0}, shakai:{streak:0,best:0,cleared:false,clears:0}};
 let unlocked=[], practiceCount=0;
+/* れんしゅうで出す単元。0 は「ぜんぶ」。50問連続チャレンジはいつも全部から出す */
+let practiceRound={rika:0, shakai:0};
 
 function saveBank(){idbSet('quizbank',quizbank);}
 function saveDrafts(){idbSet('drafts',drafts);}
@@ -708,6 +720,7 @@ function saveReview(){try{localStorage.setItem(LS_REVIEW,JSON.stringify(review))
 function saveChallenge(){try{localStorage.setItem(LS_CHALLENGE,JSON.stringify(challenge));}catch(e){}}
 function saveUnlocked(){try{localStorage.setItem(LS_STORIES,JSON.stringify(unlocked));}catch(e){}}
 function savePractice(){try{localStorage.setItem(LS_PRACTICE,String(practiceCount));}catch(e){}}
+function saveRound(){try{localStorage.setItem(LS_ROUND,JSON.stringify(practiceRound));}catch(e){}}
 
 function esc(t){return String(t==null?'':t).replace(/[&<>"']/g,c=>(
   {'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]));}
@@ -873,13 +886,29 @@ function recordReview(q,ok){
    ========================================================================= */
 let qList=[], qIdx=0, qOk=0, mode='free', curSubj='rika', revealed=false;
 
-function poolOf(subj){ return quizbank.filter(q=>q.subj===subj); }
+/* round を渡すとその単元だけ。0 や未指定なら全部 */
+function poolOf(subj,round){
+  const list=quizbank.filter(q=>q.subj===subj);
+  return round?list.filter(q=>q.round===round):list;
+}
+/* その科目に実際にある単元の番号。データにある回だけを出す */
+function roundsOf(subj){
+  const set={}; quizbank.forEach(q=>{ if(q.subj===subj&&q.round)set[q.round]=1; });
+  return Object.keys(set).map(Number).sort((a,b)=>a-b);
+}
+function roundOf(subj){
+  const r=practiceRound[subj]||0;
+  /* えらんだ回の問題が無くなっていたら「ぜんぶ」にもどす */
+  return (r&&poolOf(subj,r).length)?r:0;
+}
+function setRound(subj,r){ practiceRound[subj]=r; saveRound(); renderHome(); }
 
 function startFlash(subj){
-  const pool=poolOf(subj);
+  const r=roundOf(subj);
+  const pool=poolOf(subj,r);
   if(pool.length<1){toast('まだ問題がないよ。「問題をつくる」から入れてね','var(--warn)');return;}
   qList=pool.slice().sort(()=>Math.random()-.5).slice(0,20);
-  beginQuiz(subj,'free',SUBJ[subj].n+' れんしゅう');
+  beginQuiz(subj,'free',SUBJ[subj].n+' れんしゅう'+(r?'　第'+r+'回':''));
 }
 function startChallenge(subj){
   const pool=poolOf(subj);
@@ -1079,11 +1108,22 @@ function renderHome(){
   const w=document.getElementById('subjrow');
   w.innerHTML=['rika','shakai'].map(s=>{
     const n=poolOf(s).length, st=challenge[s];
+    const cur=roundOf(s), rs=roundsOf(s);
+    const chip=(r,label)=>{
+      const c=poolOf(s,r).length;
+      return '<button class="rchip'+(cur===r?' on':'')+'"'+(c?'':' disabled')
+        +' onclick="setRound(\''+s+'\','+r+')">'+label+'<i>'+c+'</i></button>';
+    };
+    const chips=rs.length>1
+      ? '<div class="rounds">'+chip(0,'ぜんぶ')+rs.map(r=>chip(r,'第'+r+'回')).join('')+'</div>'
+      : '';
     return '<div class="subj">'
       +'<div class="name"><span class="dot" style="background:'+SUBJ[s].c+'"></span>'+SUBJ[s].n+'</div>'
       +'<div class="cnt">問題 '+n+'問'+(st.cleared?'　👑 クリア '+(st.clears||1)+'回':'　🎴 50問クリアでレアカード')+'</div>'
       +'<div class="streak"><b>'+st.best+'</b><span>連続の自己ベスト</span></div>'
-      +'<button class="btn" onclick="startFlash(\''+s+'\')"'+(n?'':' disabled')+'>れんしゅう（20問）</button>'
+      +chips
+      +'<button class="btn" onclick="startFlash(\''+s+'\')"'+(n?'':' disabled')+'>れんしゅう（20問）'
+        +(cur?'　第'+cur+'回':'')+'</button>'
       +'<button class="btn gold" onclick="startChallenge(\''+s+'\')"'+(n>=5?'':' disabled')+'>🔥 50問連続チャレンジ</button>'
       +'</div>';
   }).join('');
@@ -1384,6 +1424,8 @@ const PREF_TO_CODE={}; CODE_TO_PREF.forEach((n,i)=>{PREF_TO_CODE[n]=i+1;});
        ['rika','shakai'].forEach(s=>{ if(d[s])challenge[s]=Object.assign(challenge[s],d[s]); }); }catch(e){}
   try{ unlocked=JSON.parse(localStorage.getItem(LS_STORIES)||'[]'); }catch(e){ unlocked=[]; }
   practiceCount=parseInt(localStorage.getItem(LS_PRACTICE)||'0',10)||0;
+  try{ const r=JSON.parse(localStorage.getItem(LS_ROUND)||'{}');
+       ['rika','shakai'].forEach(s=>{ if(r[s])practiceRound[s]=r[s]|0; }); }catch(e){}
   await Promise.all([loadCards(),loadStories()]);
   /* すでに sp06 を持っているのに最終話が閉じたままなら、ここで開けておく
      （この仕組みより先にカードを取っていた場合） */
