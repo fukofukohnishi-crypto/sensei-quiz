@@ -690,7 +690,15 @@ const CHALLENGE_CARD={rika:'sp04', shakai:'sp05'};
 const FUSION_CARD='sp06';
 /* 最終話は順番では開かない。融合カード（sp06）を取ったときだけ開く。
    stories.json の末尾の話を最終話としてあつかう */
-function finalStoryId(){ return STORIES.length?STORIES[STORIES.length-1].id:''; }
+/* 最終話は stories.json の "final":true で決める。
+   以前は「配列のいちばん最後」だったが、それだと話を足すたびに最終話が
+   入れかわってしまい、新しい話を末尾に足せなかった。
+   フラグが無いときだけ、これまでどおり末尾をつかう */
+function finalStoryId(){
+  const f=STORIES.find(s=>s.final);
+  if(f)return f.id;
+  return STORIES.length?STORIES[STORIES.length-1].id:'';
+}
 
 /* 8 の「無限」は sp06（両科目クリアの融合カード）専用。
    7 の「四天王」は四人組のカード（sp03）の名前なので、そこには置けない */
@@ -871,7 +879,8 @@ function unlockFinalStory(){
   if(!fin||!collection[FUSION_CARD])return null;
   if(unlocked.indexOf(fin)>=0)return null;
   unlocked.push(fin); saveUnlocked();
-  return STORIES[STORIES.length-1];
+  /* 末尾決めうちにしない。final フラグで最終話が末尾でなくなったため */
+  return STORIES.find(s=>s.id===fin)||null;
 }
 
 /* =========================================================================
