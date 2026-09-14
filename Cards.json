@@ -864,6 +864,15 @@
     "imgUrl": "/card-images/r38_procoachrobot.webp"
   },
   {
+    "id": "r039",
+    "char": "wanbox",
+    "rarity": 4,
+    "series": "gakuen",
+    "name": "ワンボックス",
+    "power": "なんでもおまかせワン！：調べもの・ものづくり・修理・そうじ・資料作成・スケジュール管理まで、どんなことでも引き受けてくれる学園のAIロボット。いつもみんなのそばにいて、やりたいことを一緒にかなえる！",
+    "imgUrl": "/card-images/r39_wanbox.webp"
+  },
+  {
     "id": "l019",
     "char": "kirokuinhikki",
     "rarity": 5,
