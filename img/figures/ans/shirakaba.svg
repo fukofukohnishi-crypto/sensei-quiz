@@ -1,0 +1,33 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 200 200" width="200" height="200" role="img" aria-label="シラカバ">
+<defs>
+<linearGradient id="bg" x1="0" y1="0" x2="0" y2="1">
+<stop offset="0" stop-color="#eaf4e2"/><stop offset="1" stop-color="#f6f2e2"/></linearGradient>
+<clipPath id="cp"><circle cx="100" cy="100" r="96"/></clipPath>
+</defs>
+<circle cx="100" cy="100" r="96" fill="url(#bg)"/>
+<g clip-path="url(#cp)">
+<path d="M0 172 Q100 162 200 172 L200 200 L0 200Z" fill="#c6d7a8"/>
+<g fill="#7fb04a" opacity=".9">
+<circle cx="66" cy="40" r="22"/><circle cx="100" cy="26" r="20"/><circle cx="136" cy="42" r="21"/>
+<circle cx="84" cy="58" r="18"/><circle cx="120" cy="60" r="17"/>
+</g>
+<g fill="#98c85e" opacity=".8">
+<circle cx="76" cy="34" r="14"/><circle cx="112" cy="32" r="13"/><circle cx="100" cy="52" r="13"/>
+</g>
+<g>
+<rect x="60" y="56" width="17" height="118" rx="3" fill="#f5f4ef"/>
+<rect x="94" y="46" width="20" height="128" rx="3" fill="#fbfaf6"/>
+<rect x="132" y="60" width="15" height="114" rx="3" fill="#f2f1ec"/>
+</g>
+<g fill="#2e2b28">
+<rect x="60" y="80" width="11" height="5" rx="2"/><rect x="66" y="104" width="10" height="4" rx="2"/>
+<rect x="60" y="130" width="12" height="5" rx="2"/><rect x="64" y="154" width="9" height="4" rx="2"/>
+<rect x="96" y="70" width="13" height="5" rx="2"/><rect x="101" y="96" width="12" height="5" rx="2"/>
+<rect x="94" y="122" width="14" height="5" rx="2"/><rect x="100" y="148" width="11" height="4" rx="2"/>
+<rect x="133" y="86" width="10" height="4" rx="2"/><rect x="136" y="112" width="9" height="4" rx="2"/>
+<rect x="132" y="140" width="11" height="4" rx="2"/>
+</g>
+<path d="M0 178 Q60 172 130 180" stroke="#b1c58e" stroke-width="4" fill="none"/>
+</g>
+<circle cx="100" cy="100" r="95" fill="none" stroke="#00000018" stroke-width="2"/>
+</svg>

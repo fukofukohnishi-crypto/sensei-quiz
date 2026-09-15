@@ -1,0 +1,25 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 200 200" width="200" height="200" role="img" aria-label="クスノキ">
+<defs>
+<linearGradient id="bg" x1="0" y1="0" x2="0" y2="1">
+<stop offset="0" stop-color="#eaf4e2"/><stop offset="1" stop-color="#f6f2e2"/></linearGradient>
+<clipPath id="cp"><circle cx="100" cy="100" r="96"/></clipPath>
+</defs>
+<circle cx="100" cy="100" r="96" fill="url(#bg)"/>
+<g clip-path="url(#cp)">
+<path d="M0 178 Q100 168 200 178 L200 200 L0 200Z" fill="#c1d3a0"/>
+<g fill="#2f7a3c">
+<circle cx="62" cy="76" r="34"/><circle cx="138" cy="76" r="34"/><circle cx="100" cy="56" r="40"/>
+<circle cx="80" cy="102" r="30"/><circle cx="122" cy="102" r="30"/><circle cx="100" cy="88" r="34"/>
+</g>
+<g fill="#3f9149" opacity=".75">
+<circle cx="84" cy="52" r="22"/><circle cx="120" cy="60" r="19"/><circle cx="66" cy="80" r="18"/>
+<circle cx="140" cy="86" r="16"/><circle cx="100" cy="78" r="18"/>
+</g>
+<path d="M86 108 q-8 34 -22 62 h72 q-14 -28 -22 -62Z" fill="#6f5334"/>
+<path d="M92 114 q-6 30 -14 54 M110 114 q5 30 12 54 M100 118 v50" stroke="#54402a" stroke-width="3" fill="none"/>
+<path d="M64 170 q-16 2 -24 8 h40Z" fill="#6f5334"/>
+<path d="M136 170 q16 2 24 8 h-40Z" fill="#6f5334"/>
+<path d="M0 184 Q60 178 130 186" stroke="#aec28c" stroke-width="4" fill="none"/>
+</g>
+<circle cx="100" cy="100" r="95" fill="none" stroke="#00000018" stroke-width="2"/>
+</svg>

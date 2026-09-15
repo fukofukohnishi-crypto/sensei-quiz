@@ -1,0 +1,35 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 200 200" width="200" height="200" role="img" aria-label="ハナノキ">
+<defs>
+<linearGradient id="bg" x1="0" y1="0" x2="0" y2="1">
+<stop offset="0" stop-color="#eaf4e2"/><stop offset="1" stop-color="#f6f2e2"/></linearGradient>
+<clipPath id="cp"><circle cx="100" cy="100" r="96"/></clipPath>
+</defs>
+<circle cx="100" cy="100" r="96" fill="url(#bg)"/>
+<g clip-path="url(#cp)">
+<path d="M0 176 Q100 166 200 176 L200 200 L0 200Z" fill="#c6d7a8"/>
+<path d="M96 178 L100 96" stroke="#6f5334" stroke-width="12" stroke-linecap="round"/>
+<g stroke="#7a5c3a" stroke-width="6" fill="none" stroke-linecap="round">
+<path d="M100 110 Q74 90 58 56"/><path d="M100 110 Q126 88 144 56"/>
+<path d="M100 130 Q70 116 46 96"/><path d="M100 130 Q132 116 154 94"/>
+<path d="M100 96 Q96 62 100 34"/>
+</g>
+<g stroke="#8a6a45" stroke-width="3" fill="none" stroke-linecap="round">
+<path d="M64 66 q-12 -10 -18 -22"/><path d="M138 66 q12 -10 18 -22"/><path d="M52 100 q-12 -4 -20 -12"/>
+<path d="M148 98 q12 -4 20 -12"/><path d="M100 50 q-14 -8 -22 -18"/><path d="M100 50 q14 -8 22 -18"/>
+</g>
+<g fill="#e0402e">
+<circle cx="46" cy="42" r="7"/><circle cx="58" cy="54" r="8"/><circle cx="74" cy="76" r="7.5"/>
+<circle cx="32" cy="86" r="7"/><circle cx="48" cy="96" r="7.5"/><circle cx="70" cy="112" r="7"/>
+<circle cx="100" cy="30" r="8"/><circle cx="86" cy="42" r="7"/><circle cx="114" cy="42" r="7"/>
+<circle cx="156" cy="42" r="7"/><circle cx="142" cy="56" r="8"/><circle cx="126" cy="78" r="7.5"/>
+<circle cx="170" cy="84" r="7"/><circle cx="152" cy="94" r="7.5"/><circle cx="130" cy="112" r="7"/>
+<circle cx="100" cy="64" r="7"/><circle cx="88" cy="118" r="6.5"/><circle cx="114" cy="120" r="6.5"/>
+</g>
+<g fill="#f26a4c" opacity=".85">
+<circle cx="44" cy="40" r="3"/><circle cx="56" cy="52" r="3"/><circle cx="98" cy="28" r="3.2"/>
+<circle cx="140" cy="54" r="3"/><circle cx="154" cy="40" r="3"/><circle cx="124" cy="76" r="3"/>
+<circle cx="72" cy="74" r="3"/><circle cx="46" cy="94" r="3"/><circle cx="150" cy="92" r="3"/>
+</g>
+</g>
+<circle cx="100" cy="100" r="95" fill="none" stroke="#00000018" stroke-width="2"/>
+</svg>

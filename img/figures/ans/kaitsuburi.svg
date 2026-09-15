@@ -1,0 +1,23 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 200 200" width="200" height="200" role="img" aria-label="カイツブリ">
+<defs>
+<linearGradient id="bg" x1="0" y1="0" x2="0" y2="1">
+<stop offset="0" stop-color="#dcecfa"/><stop offset="1" stop-color="#f2efe3"/></linearGradient>
+<clipPath id="cp"><circle cx="100" cy="100" r="96"/></clipPath>
+</defs>
+<circle cx="100" cy="100" r="96" fill="url(#bg)"/>
+<g clip-path="url(#cp)">
+<rect x="0" y="126" width="200" height="74" fill="#8fc3dd"/>
+<path d="M0 126 Q50 120 100 126 Q150 132 200 126 L200 140 Q150 146 100 140 Q50 134 0 140Z" fill="#a8d3e8"/>
+<path d="M14 156 Q60 150 106 156" stroke="#ffffff66" stroke-width="4" fill="none"/>
+<path d="M28 172 Q80 166 140 172" stroke="#ffffff55" stroke-width="3" fill="none"/>
+<ellipse cx="104" cy="118" rx="42" ry="26" fill="#6d5236"/>
+<path d="M120 100 Q148 104 146 122 Q134 132 116 126Z" fill="#7d6142"/>
+<ellipse cx="72" cy="90" rx="22" ry="20" fill="#4a3826"/>
+<path d="M58 92 Q70 76 88 82 Q88 100 74 106Z" fill="#a24a28"/>
+<circle cx="64" cy="86" r="4" fill="#100d0a"/>
+<circle cx="62.8" cy="84.8" r="1.4" fill="#fff"/>
+<path d="M52 92 L36 96 Q46 101 54 98Z" fill="#2c2620"/>
+<circle cx="53" cy="95" r="3.4" fill="#e8c23c"/>
+</g>
+<circle cx="100" cy="100" r="95" fill="none" stroke="#00000018" stroke-width="2"/>
+</svg>

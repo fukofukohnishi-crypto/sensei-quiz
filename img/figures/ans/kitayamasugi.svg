@@ -1,0 +1,25 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 200 200" width="200" height="200" role="img" aria-label="キタヤマスギ">
+<defs>
+<linearGradient id="bg" x1="0" y1="0" x2="0" y2="1">
+<stop offset="0" stop-color="#eaf4e2"/><stop offset="1" stop-color="#f6f2e2"/></linearGradient>
+<clipPath id="cp"><circle cx="100" cy="100" r="96"/></clipPath>
+</defs>
+<circle cx="100" cy="100" r="96" fill="url(#bg)"/>
+<g clip-path="url(#cp)">
+<path d="M0 168 Q100 158 200 168 L200 200 L0 200Z" fill="#c3d3a4"/>
+<g fill="#2f6b3c">
+<path d="M52 8 L74 66 L30 66Z"/><path d="M52 40 L80 102 L24 102Z"/><path d="M52 76 L84 140 L20 140Z"/>
+</g>
+<rect x="47" y="130" width="10" height="42" fill="#8a6a45"/>
+<g fill="#3c7c46">
+<path d="M104 24 L124 76 L84 76Z"/><path d="M104 54 L130 110 L78 110Z"/><path d="M104 86 L134 146 L74 146Z"/>
+</g>
+<rect x="99" y="138" width="10" height="34" fill="#9a7a52"/>
+<g fill="#2a6036">
+<path d="M154 2 L176 62 L132 62Z"/><path d="M154 36 L182 100 L126 100Z"/><path d="M154 74 L186 140 L122 140Z"/>
+</g>
+<rect x="149" y="130" width="10" height="42" fill="#82643f"/>
+<path d="M0 170 Q60 164 130 172" stroke="#adbf8c" stroke-width="4" fill="none"/>
+</g>
+<circle cx="100" cy="100" r="95" fill="none" stroke="#00000018" stroke-width="2"/>
+</svg>

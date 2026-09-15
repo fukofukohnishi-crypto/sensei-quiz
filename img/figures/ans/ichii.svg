@@ -1,0 +1,31 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 200 200" width="200" height="200" role="img" aria-label="イチイ">
+<defs>
+<linearGradient id="bg" x1="0" y1="0" x2="0" y2="1">
+<stop offset="0" stop-color="#eaf4e2"/><stop offset="1" stop-color="#f6f2e2"/></linearGradient>
+<clipPath id="cp"><circle cx="100" cy="100" r="96"/></clipPath>
+</defs>
+<circle cx="100" cy="100" r="96" fill="url(#bg)"/>
+<g clip-path="url(#cp)">
+<path d="M20 152 Q80 124 176 76" stroke="#6b4f33" stroke-width="8" fill="none" stroke-linecap="round"/>
+<g stroke="#7a5c3a" stroke-width="4" fill="none" stroke-linecap="round">
+<path d="M60 138 Q84 116 96 92"/><path d="M104 114 Q126 96 138 72"/><path d="M132 96 Q152 82 164 60"/>
+</g>
+<g stroke="#2c6b33" stroke-width="4" stroke-linecap="round">
+<path d="M42 146 l-12 12 M52 140 l-12 12 M62 134 l-12 12 M72 128 l-12 12 M82 122 l-12 12 M92 116 l-12 12
+M102 110 l-12 12 M112 104 l-12 12 M122 98 l-12 12 M132 92 l-12 12 M142 86 l-12 12 M152 80 l-12 12 M162 74 l-12 12"/>
+<path d="M46 132 l-8 -12 M56 126 l-8 -12 M66 120 l-8 -12 M76 114 l-8 -12 M86 108 l-8 -12 M96 102 l-8 -12
+M106 96 l-8 -12 M116 90 l-8 -12 M126 84 l-8 -12 M136 78 l-8 -12 M146 72 l-8 -12 M156 66 l-8 -12"/>
+</g>
+<g stroke="#3d8a42" stroke-width="2" stroke-linecap="round" opacity=".6">
+<path d="M52 140 l-9 9 M82 122 l-9 9 M112 104 l-9 9 M142 86 l-9 9"/>
+</g>
+<g>
+<circle cx="72" cy="150" r="11" fill="#d8332a"/><circle cx="68" cy="147" r="4" fill="#f06a52" opacity=".8"/>
+<circle cx="70" cy="152" r="3.4" fill="#7a1a12"/>
+<circle cx="112" cy="126" r="10" fill="#d8332a"/><circle cx="109" cy="123" r="3.6" fill="#f06a52" opacity=".8"/>
+<circle cx="110" cy="128" r="3" fill="#7a1a12"/>
+<circle cx="150" cy="102" r="9" fill="#cc2f26"/><circle cx="148" cy="104" r="2.8" fill="#7a1a12"/>
+</g>
+</g>
+<circle cx="100" cy="100" r="95" fill="none" stroke="#00000018" stroke-width="2"/>
+</svg>

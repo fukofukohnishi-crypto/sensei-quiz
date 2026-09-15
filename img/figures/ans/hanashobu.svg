@@ -1,0 +1,28 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 200 200" width="200" height="200" role="img" aria-label="ハナショウブ">
+<defs>
+<linearGradient id="bg" x1="0" y1="0" x2="0" y2="1">
+<stop offset="0" stop-color="#eaf4e2"/><stop offset="1" stop-color="#f6f2e2"/></linearGradient>
+<clipPath id="cp"><circle cx="100" cy="100" r="96"/></clipPath>
+</defs>
+<circle cx="100" cy="100" r="96" fill="url(#bg)"/>
+<g clip-path="url(#cp)">
+<g stroke="#3f7c2e" stroke-width="8" fill="none" stroke-linecap="round">
+<path d="M40 194 Q42 112 52 46"/><path d="M160 194 Q158 112 150 50"/><path d="M70 196 Q74 126 82 76"/>
+<path d="M130 196 Q126 130 120 84"/>
+</g>
+<path d="M100 196 V96" stroke="#46853a" stroke-width="8" stroke-linecap="round"/>
+<g transform="translate(100,82)">
+<path d="M0 0 Q-46 4 -54 42 Q-26 58 -6 26Z" fill="#7a3f9e"/>
+<path d="M0 0 Q46 4 54 42 Q26 58 6 26Z" fill="#7a3f9e"/>
+<path d="M0 4 Q-13 46 0 66 Q13 46 0 4Z" fill="#8d4fb4"/>
+<path d="M-6 6 Q-28 14 -32 34 Q-16 40 -8 20Z" fill="#f2c62c"/>
+<path d="M6 6 Q28 14 32 34 Q16 40 8 20Z" fill="#f2c62c"/>
+<path d="M0 8 Q-5 32 0 46 Q5 32 0 8Z" fill="#f2c62c"/>
+<path d="M0 -4 Q-28 -22 -22 -52 Q-2 -42 -2 -8Z" fill="#9a5cc0"/>
+<path d="M0 -4 Q28 -22 22 -52 Q2 -42 2 -8Z" fill="#9a5cc0"/>
+<path d="M0 -6 Q-9 -42 0 -58 Q9 -42 0 -6Z" fill="#ab72cf"/>
+<circle cx="0" cy="0" r="6" fill="#f2c62c"/>
+</g>
+</g>
+<circle cx="100" cy="100" r="95" fill="none" stroke="#00000018" stroke-width="2"/>
+</svg>

@@ -1,0 +1,39 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 200 200" width="200" height="200" role="img" aria-label="ウバメガシ">
+<defs>
+<linearGradient id="bg" x1="0" y1="0" x2="0" y2="1">
+<stop offset="0" stop-color="#eaf4e2"/><stop offset="1" stop-color="#f6f2e2"/></linearGradient>
+<clipPath id="cp"><circle cx="100" cy="100" r="96"/></clipPath>
+</defs>
+<circle cx="100" cy="100" r="96" fill="url(#bg)"/>
+<g clip-path="url(#cp)">
+<path d="M24 172 Q70 120 104 62" stroke="#6f5334" stroke-width="9" fill="none" stroke-linecap="round"/>
+<g stroke="#7d5f3c" stroke-width="5" fill="none" stroke-linecap="round">
+<path d="M76 106 Q108 98 140 104"/><path d="M58 138 Q94 134 122 144"/><path d="M96 74 Q126 68 150 74"/>
+</g>
+<g fill="#2f7038">
+<ellipse cx="86" cy="92" rx="16" ry="10" transform="rotate(-24 86 92)"/>
+<ellipse cx="118" cy="92" rx="16" ry="10" transform="rotate(18 118 92)"/>
+<ellipse cx="148" cy="96" rx="15" ry="9.5" transform="rotate(26 148 96)"/>
+<ellipse cx="70" cy="126" rx="16" ry="10" transform="rotate(-20 70 126)"/>
+<ellipse cx="104" cy="126" rx="16" ry="10" transform="rotate(14 104 126)"/>
+<ellipse cx="132" cy="136" rx="15" ry="9.5" transform="rotate(24 132 136)"/>
+<ellipse cx="108" cy="60" rx="15" ry="9.5" transform="rotate(-16 108 60)"/>
+<ellipse cx="140" cy="62" rx="15" ry="9.5" transform="rotate(20 140 62)"/>
+<ellipse cx="52" cy="158" rx="14" ry="9" transform="rotate(-16 52 158)"/>
+</g>
+<g fill="#48924f" opacity=".6">
+<ellipse cx="84" cy="89" rx="9" ry="4.4" transform="rotate(-24 84 89)"/>
+<ellipse cx="116" cy="89" rx="9" ry="4.4" transform="rotate(18 116 89)"/>
+<ellipse cx="68" cy="123" rx="9" ry="4.4" transform="rotate(-20 68 123)"/>
+<ellipse cx="102" cy="123" rx="9" ry="4.4" transform="rotate(14 102 123)"/>
+</g>
+<g transform="translate(150,140)">
+<ellipse cx="0" cy="8" rx="13" ry="19" fill="#9a6a34"/>
+<ellipse cx="-4" cy="4" rx="5" ry="10" fill="#b58348" opacity=".7"/>
+<path d="M-14 -6 q14 -12 28 0 q-3 8 -14 8 q-11 0 -14 -8Z" fill="#6d4a24"/>
+<path d="M-12 -7 q12 -9 24 0" stroke="#5a3d1d" stroke-width="2" fill="none"/>
+<path d="M0 -14 v-8" stroke="#6d4a24" stroke-width="3" stroke-linecap="round"/>
+</g>
+</g>
+<circle cx="100" cy="100" r="95" fill="none" stroke="#00000018" stroke-width="2"/>
+</svg>

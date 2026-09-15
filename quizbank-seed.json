@@ -2238,7 +2238,8 @@
   "explain": "寒くなると山から人里へ移動します。",
   "juken": "",
   "basis": "text",
-  "id": "seed_u3_11"
+  "id": "seed_u3_11",
+  "ansFig": "mejiro.svg"
  },
  {
   "type": "text",
@@ -3234,7 +3235,8 @@
   "explain": "北山でそだてられる、まっすぐなスギです。",
   "juken": "",
   "basis": "text",
-  "id": "seed_s1_003"
+  "id": "seed_s1_003",
+  "ansFig": "kitayamasugi.svg"
  },
  {
   "type": "text",
@@ -3964,7 +3966,8 @@
   "explain": "大阪府の鳥はモズです。",
   "juken": "",
   "basis": "text",
-  "id": "seed_s2_005"
+  "id": "seed_s2_005",
+  "ansFig": "mozu.svg"
  },
  {
   "type": "text",
@@ -3977,7 +3980,8 @@
   "explain": "大阪府の木はイチョウです。",
   "juken": "",
   "basis": "text",
-  "id": "seed_s2_006"
+  "id": "seed_s2_006",
+  "ansFig": "icho.svg"
  },
  {
   "type": "text",
@@ -3995,7 +3999,8 @@
   "explain": "2つあります。サクラソウは漢字で「桜草」と書きます。",
   "juken": "",
   "basis": "text",
-  "id": "seed_s2_007"
+  "id": "seed_s2_007",
+  "ansFig": "sakuraso_ume.svg"
  },
  {
   "type": "text",
@@ -4462,7 +4467,8 @@
   "explain": "和歌山県の鳥はメジロです。",
   "juken": "",
   "basis": "text",
-  "id": "seed_s2_038"
+  "id": "seed_s2_038",
+  "ansFig": "mejiro.svg"
  },
  {
   "type": "text",
@@ -4475,7 +4481,8 @@
   "explain": "備長炭の原料にもなる木です。",
   "juken": "",
   "basis": "text",
-  "id": "seed_s2_039"
+  "id": "seed_s2_039",
+  "ansFig": "ubamegashi.svg"
  },
  {
   "type": "text",
@@ -4490,7 +4497,8 @@
   "explain": "和歌山県はうめの産地でもあります。",
   "juken": "うめの生産量は和歌山県が全国1位。",
   "basis": "text",
-  "id": "seed_s2_040"
+  "id": "seed_s2_040",
+  "ansFig": "ume.svg"
  },
  {
   "type": "text",
@@ -4880,7 +4888,8 @@
   "explain": "豊岡市で野生に返す取り組みが行われています。",
   "juken": "",
   "basis": "text",
-  "id": "seed_s3_003"
+  "id": "seed_s3_003",
+  "ansFig": "konotori.svg"
  },
  {
   "type": "text",
@@ -4893,7 +4902,8 @@
   "explain": "兵庫県の木はクスノキです。",
   "juken": "",
   "basis": "text",
-  "id": "seed_s3_004"
+  "id": "seed_s3_004",
+  "ansFig": "kusunoki.svg"
  },
  {
   "type": "text",
@@ -4906,7 +4916,8 @@
   "explain": "西日本の海ぞいに多い花です。",
   "juken": "",
   "basis": "text",
-  "id": "seed_s3_005"
+  "id": "seed_s3_005",
+  "ansFig": "nojigiku.svg"
  },
  {
   "type": "text",
@@ -5344,7 +5355,8 @@
   "explain": "琵琶湖にすむ水鳥です。",
   "juken": "",
   "basis": "text",
-  "id": "seed_s3_032"
+  "id": "seed_s3_032",
+  "ansFig": "kaitsuburi.svg"
  },
  {
   "type": "text",
@@ -5357,7 +5369,8 @@
   "explain": "滋賀県の木はモミジです。",
   "juken": "",
   "basis": "text",
-  "id": "seed_s3_033"
+  "id": "seed_s3_033",
+  "ansFig": "momiji.svg"
  },
  {
   "type": "text",
@@ -5370,7 +5383,8 @@
   "explain": "ツツジの仲間の花です。",
   "juken": "",
   "basis": "text",
-  "id": "seed_s3_034"
+  "id": "seed_s3_034",
+  "ansFig": "shakunage.svg"
  },
  {
   "type": "text",
@@ -5668,7 +5682,8 @@
   "explain": "フクロウの仲間です。",
   "juken": "",
   "basis": "text",
-  "id": "seed_s4_003"
+  "id": "seed_s4_003",
+  "ansFig": "konohazuku.svg"
  },
  {
   "type": "text",
@@ -5681,7 +5696,8 @@
   "explain": "愛知県の木はハナノキです。",
   "juken": "",
   "basis": "text",
-  "id": "seed_s4_004"
+  "id": "seed_s4_004",
+  "ansFig": "hananoki.svg"
  },
  {
   "type": "text",
@@ -5694,7 +5710,8 @@
   "explain": "平安時代の歌にも登場する花です。",
   "juken": "",
   "basis": "text",
-  "id": "seed_s4_005"
+  "id": "seed_s4_005",
+  "ansFig": "kakitsubata.svg"
  },
  {
   "type": "text",
@@ -6081,7 +6098,8 @@
   "explain": "海岸にすむ鳥です。",
   "juken": "",
   "basis": "text",
-  "id": "seed_s4_031"
+  "id": "seed_s4_031",
+  "ansFig": "shirochidori.svg"
  },
  {
   "type": "text",
@@ -6096,7 +6114,8 @@
   "explain": "伊勢神宮にちなんだ名前です。",
   "juken": "",
   "basis": "text",
-  "id": "seed_s4_032"
+  "id": "seed_s4_032",
+  "ansFig": "jingusugi.svg"
  },
  {
   "type": "text",
@@ -6109,7 +6128,8 @@
   "explain": "梅雨のころにさく花です。",
   "juken": "",
   "basis": "text",
-  "id": "seed_s4_033"
+  "id": "seed_s4_033",
+  "ansFig": "hanashobu.svg"
  },
  {
   "type": "text",
@@ -6449,7 +6469,8 @@
   "explain": "高い山にすむ鳥です。",
   "juken": "特別天然記念物。岐阜県の県鳥でもある。",
   "basis": "text",
-  "id": "seed_s5_003"
+  "id": "seed_s5_003",
+  "ansFig": "raicho.svg"
  },
  {
   "type": "text",
@@ -6462,7 +6483,8 @@
   "explain": "幹が白い木です。",
   "juken": "",
   "basis": "text",
-  "id": "seed_s5_004"
+  "id": "seed_s5_004",
+  "ansFig": "shirakaba.svg"
  },
  {
   "type": "text",
@@ -6475,7 +6497,8 @@
   "explain": "熊本県の花と同じです。",
   "juken": "",
   "basis": "text",
-  "id": "seed_s5_005"
+  "id": "seed_s5_005",
+  "ansFig": "rindo.svg"
  },
  {
   "type": "text",
@@ -6875,7 +6898,8 @@
   "explain": "長野県の県鳥と同じです。",
   "juken": "",
   "basis": "text",
-  "id": "seed_s5_032"
+  "id": "seed_s5_032",
+  "ansFig": "raicho.svg"
  },
  {
   "type": "text",
@@ -6888,7 +6912,8 @@
   "explain": "岐阜県の木はイチイです。",
   "juken": "",
   "basis": "text",
-  "id": "seed_s5_033"
+  "id": "seed_s5_033",
+  "ansFig": "ichii.svg"
  },
  {
   "type": "text",
@@ -6901,7 +6926,8 @@
   "explain": "二年草とよばれる花です。",
   "juken": "",
   "basis": "text",
-  "id": "seed_s5_034"
+  "id": "seed_s5_034",
+  "ansFig": "rengeso.svg"
  },
  {
   "type": "text",

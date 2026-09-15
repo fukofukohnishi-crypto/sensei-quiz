@@ -1,0 +1,29 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 200 200" width="200" height="200" role="img" aria-label="カキツバタ">
+<defs>
+<linearGradient id="bg" x1="0" y1="0" x2="0" y2="1">
+<stop offset="0" stop-color="#dcecfa"/><stop offset="1" stop-color="#e9f1e0"/></linearGradient>
+<clipPath id="cp"><circle cx="100" cy="100" r="96"/></clipPath>
+</defs>
+<circle cx="100" cy="100" r="96" fill="url(#bg)"/>
+<g clip-path="url(#cp)">
+<rect x="0" y="150" width="200" height="50" fill="#a9d2e6"/>
+<path d="M0 150 Q50 145 100 150 Q150 155 200 150 L200 164 Q150 169 100 164 Q50 159 0 164Z" fill="#bfdff0"/>
+<g stroke="#3f7c2e" stroke-width="8" fill="none" stroke-linecap="round">
+<path d="M40 186 Q42 110 52 48"/><path d="M160 186 Q158 110 150 52"/><path d="M70 190 Q74 126 82 78"/>
+</g>
+<path d="M100 190 V96" stroke="#46853a" stroke-width="8" stroke-linecap="round"/>
+<g transform="translate(100,82)">
+<path d="M0 0 Q-42 4 -50 40 Q-24 54 -6 24Z" fill="#6a3fa8"/>
+<path d="M0 0 Q42 4 50 40 Q24 54 6 24Z" fill="#6a3fa8"/>
+<path d="M0 4 Q-12 44 0 62 Q12 44 0 4Z" fill="#7c4cc0"/>
+<path d="M-6 6 Q-30 14 -34 36 Q-18 42 -8 20Z" fill="#ffffff" opacity=".92"/>
+<path d="M6 6 Q30 14 34 36 Q18 42 8 20Z" fill="#ffffff" opacity=".92"/>
+<path d="M0 8 Q-5 36 0 50 Q5 36 0 8Z" fill="#ffffff" opacity=".9"/>
+<path d="M0 -4 Q-26 -22 -20 -50 Q-2 -40 -2 -8Z" fill="#8a5ccc"/>
+<path d="M0 -4 Q26 -22 20 -50 Q2 -40 2 -8Z" fill="#8a5ccc"/>
+<path d="M0 -6 Q-8 -40 0 -54 Q8 -40 0 -6Z" fill="#9c72d8"/>
+<circle cx="0" cy="0" r="6" fill="#efe06a"/>
+</g>
+</g>
+<circle cx="100" cy="100" r="95" fill="none" stroke="#00000018" stroke-width="2"/>
+</svg>

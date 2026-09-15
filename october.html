@@ -129,11 +129,21 @@ button:focus-visible{outline:2px solid var(--gold);outline-offset:2px}
 .reveal-wrap{display:flex;flex-direction:column;gap:12px;margin-top:24px}
 .ans-box{
   background:var(--card);border:2px solid var(--gold);border-radius:18px;
-  padding:26px 24px;text-align:center;
+  padding:30px 22px;text-align:center;
 }
-.ans-lbl{font-size:.7rem;letter-spacing:.16em;color:var(--gold);font-weight:800;margin-bottom:9px}
-.ans{font-size:clamp(1.6rem,3.4vw,2.3rem);font-weight:900;line-height:1.4;color:var(--gold)}
-.ans-accept{font-size:.82rem;color:var(--muted);margin-top:9px}
+/* こたえは画面でいちばん目立つものにする。「こたえ」のラベルは置かない
+   （金のわくと金の文字で、それが答えだとひと目でわかるため） */
+.ans{
+  font-size:clamp(2.8rem,7.4vw,4.6rem);font-weight:900;line-height:1.24;
+  color:var(--gold);letter-spacing:.02em;text-wrap:balance;
+}
+/* 答えが長いときだけ落とす。7字以上は全体の12%ほど */
+.ans.len-m{font-size:clamp(2.1rem,5.2vw,3.2rem);line-height:1.3}
+.ans.len-l{font-size:clamp(1.6rem,3.6vw,2.3rem);line-height:1.45}
+.ans-accept{font-size:.82rem;color:var(--muted);margin-top:14px}
+/* 答えの「実物」の絵。答えのわくの中、大きな文字の上に出す（自作SVG） */
+.ans-fig{margin:0 auto 14px;width:170px;height:170px;display:block}
+@media(max-width:840px){ .ans-fig{width:140px;height:140px} }
 
 /* 解説：ここは読みやすさ優先で大きめに組む */
 .explain{
@@ -558,7 +568,7 @@ button:focus-visible{outline:2px solid var(--gold);outline-offset:2px}
         </div>
         <div id="q-after" style="display:none">
           <div class="ans-box">
-            <div class="ans-lbl">こたえ</div>
+            <img class="ans-fig" id="q-ansfig" alt="" style="display:none">
             <div class="ans" id="q-ans"></div>
             <div class="ans-accept" id="q-accept"></div>
           </div>
@@ -1025,7 +1035,20 @@ function reveal(){
   const q=qList[qIdx];
   document.getElementById('q-before').style.display='none';
   document.getElementById('q-after').style.display='';
-  document.getElementById('q-ans').textContent=q.a;
+  const ansEl=document.getElementById('q-ans');
+  ansEl.textContent=q.a;
+  /* 答えが「実物」のときは、その絵を答えの上に出す。無ければ出さない。
+     読みこみに失敗しても画面は壊さない（onerror で隠す） */
+  const figEl=document.getElementById('q-ansfig');
+  if(q.ansFig){
+    figEl.onerror=function(){ this.style.display='none'; };
+    figEl.src='/img/figures/ans/'+q.ansFig;
+    figEl.style.display='';
+  }else{
+    figEl.removeAttribute('src'); figEl.style.display='none';
+  }
+  /* 長い答えだけ小さくする。文字数でクラスを分ける */
+  ansEl.className='ans'+(q.a.length>10?' len-l':(q.a.length>6?' len-m':''));
   document.getElementById('q-accept').textContent=
     (q.accept&&q.accept.length)?('（'+q.accept.join('　／　')+'　でも正解）'):'';
   let h='<div class="h">かいせつ</div><div class="t">'+esc(q.explain||'')+'</div>';
@@ -1350,9 +1373,11 @@ function patchFigures(list){
   quizbank.forEach(q=>{ if(q.id)byId[q.id]=q; byQ[q.q]=q; });
   let n=0;
   list.forEach(sd=>{
-    if(!sd.figAfter)return;
+    if(!sd.figAfter&&!sd.ansFig)return;
     const cur=byId[sd.id]||byQ[sd.q];
-    if(cur&&!cur.figAfter){ cur.figAfter=sd.figAfter; n++; }
+    if(!cur)return;
+    if(sd.figAfter&&!cur.figAfter){ cur.figAfter=sd.figAfter; n++; }
+    if(sd.ansFig &&!cur.ansFig ){ cur.ansFig =sd.ansFig;  n++; }
   });
   return n;
 }
