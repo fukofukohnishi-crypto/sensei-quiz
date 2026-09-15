@@ -78,7 +78,9 @@
   "explain": "氷のかたまりが自分の重さで少しずつ動いていくものを氷河といいます。",
   "juken": "日本でも氷河が確認されている、というのが近年の入試ポイント。",
   "note": "",
-  "basis": "text"
+  "basis": "text",
+  "ansFig": "hyoga.webp",
+  "ansFigBy": "写真: Diego Delso（CC BY-SA 4.0）"
  },
  {
   "id": "seed_r1_06",
@@ -3101,7 +3103,9 @@
   "explain": "山の高いところにある、動く氷のかたまりです。",
   "juken": "日本では飛騨山脈などで確認されている。",
   "basis": "text",
-  "id": "seed_f1_05"
+  "id": "seed_f1_05",
+  "ansFig": "hyoga.webp",
+  "ansFigBy": "写真: Diego Delso（CC BY-SA 4.0）"
  },
  {
   "type": "figure",
