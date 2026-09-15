@@ -6272,7 +6272,9 @@
   "explain": "山がしずんでできた、入り組んだ海岸です。",
   "juken": "リアス海岸＝三陸・志摩・若狭。養殖に向く。",
   "basis": "text",
-  "id": "seed_s4_041"
+  "id": "seed_s4_041",
+  "ansFig": "riasukaigan.webp",
+  "ansFigBy": "写真: 国土交通省（CC BY）"
  },
  {
   "type": "text",
