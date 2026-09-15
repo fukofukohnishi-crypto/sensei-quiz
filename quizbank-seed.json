@@ -2630,7 +2630,8 @@
   "explain": "この2つは卵で生まれます。",
   "juken": "単孔類として問われる。",
   "basis": "text",
-  "id": "seed_u5_37"
+  "id": "seed_u5_37",
+  "ansFig": "harimogura.webp"
  },
  {
   "type": "text",

@@ -14,3 +14,4 @@ PD / CC0 の写真は、画面表示は不要。
 | `ratel.webp` | ラーテル | Wikimedia Commons | **PD**（パブリックドメイン） | 表示不要 |
 | `ikkaku.webp` | イッカク | Wikimedia Commons<br>`Нарвал в российской Арктике.jpg` | **CC BY-SA 4.0**<br>→ **画面に表示ずみ** | пресс-служба ПАО «Газпром нефть»<br>（ガスプロム・ネフチ広報部） |
 | `kamonohashi.webp` | カモノハシ | Wikimedia Commons<br>`Duck-billed platypus (Ornithorhynchus anatinus) Scottsdale.jpg` | **CC BY-SA 4.0**<br>→ **画面に表示ずみ** | Charles J. Sharp |
+| `harimogura.webp` | ハリモグラ | Wikimedia Commons | **確認中**<br>CC BY / CC BY-SA なら `ansFigBy` を足すこと | **確認中** |
