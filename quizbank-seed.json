@@ -2690,7 +2690,8 @@
   "explain": "毛のないネコの品種です。",
   "juken": "",
   "basis": "text",
-  "id": "seed_u5_41"
+  "id": "seed_u5_41",
+  "ansFig": "sphynx.webp"
  },
  {
   "type": "text",
