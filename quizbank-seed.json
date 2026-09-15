@@ -94,7 +94,9 @@
   "explain": "標高の高い飛騨山脈などで、日本の氷河が確認されています。",
   "juken": "飛騨山脈は「北アルプス」とも呼ばれる。",
   "note": "",
-  "basis": "text"
+  "basis": "text",
+  "ansFig": "nihonalps.webp",
+  "ansFigBy": "写真: Raita Futo（北アルプス・CC BY 2.0）"
  },
  {
   "id": "seed_r1_07",
@@ -6597,7 +6599,9 @@
   "explain": "北アルプスともよばれます。",
   "juken": "飛騨＝北、木曽＝中央、赤石＝南。",
   "basis": "text",
-  "id": "seed_s5_009"
+  "id": "seed_s5_009",
+  "ansFig": "nihonalps.webp",
+  "ansFigBy": "写真: Raita Futo（北アルプス・CC BY 2.0）"
  },
  {
   "type": "text",
@@ -6642,7 +6646,9 @@
   "explain": "3つの大きな山脈が南北に連なっています。",
   "juken": "3山脈の名前と位置はセットで問われる。",
   "basis": "text",
-  "id": "seed_s5_012"
+  "id": "seed_s5_012",
+  "ansFig": "nihonalps.webp",
+  "ansFigBy": "写真: Raita Futo（北アルプス・CC BY 2.0）"
  },
  {
   "type": "text",
