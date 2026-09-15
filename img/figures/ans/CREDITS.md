@@ -10,3 +10,4 @@ PD / CC0 の写真は、画面表示は不要。
 | ファイル | 被写体 | 出どころ | ライセンス | 撮影者 |
 |---|---|---|---|---|
 | `hadakadebanezumi.webp` | ハダカデバネズミ | Wikimedia Commons | **PD**（パブリックドメイン） | 表示不要 |
+| `senzanko.webp` | センザンコウ | Wikimedia Commons<br>`Manis crassicaudata (29600051791).jpg` | **CC BY 2.0**<br>→ **画面に表示ずみ** | Ajit Huilgol<br>／U.S. Fish and Wildlife Service |

@@ -149,6 +149,8 @@ button:focus-visible{outline:2px solid var(--gold);outline-offset:2px}
   max-width:100%;border-radius:14px;
 }
 @media(max-width:840px){ .ans-fig{height:140px} }
+/* 写真のクレジット。CC BY / CC BY-SA は撮影者名の表示が要る */
+.ans-by{font-size:.62rem;color:var(--muted);opacity:.75;margin:-8px 0 12px;line-height:1.5}
 
 /* 解説：ここは読みやすさ優先で大きめに組む */
 .explain{
@@ -574,6 +576,7 @@ button:focus-visible{outline:2px solid var(--gold);outline-offset:2px}
         <div id="q-after" style="display:none">
           <div class="ans-box">
             <img class="ans-fig" id="q-ansfig" alt="" style="display:none">
+            <div class="ans-by" id="q-ansby" style="display:none"></div>
             <div class="ans" id="q-ans"></div>
             <div class="ans-accept" id="q-accept"></div>
           </div>
@@ -1044,13 +1047,17 @@ function reveal(){
   ansEl.textContent=q.a;
   /* 答えが「実物」のときは、その絵を答えの上に出す。無ければ出さない。
      読みこみに失敗しても画面は壊さない（onerror で隠す） */
-  const figEl=document.getElementById('q-ansfig');
+  const figEl=document.getElementById('q-ansfig'), byEl=document.getElementById('q-ansby');
   if(q.ansFig){
-    figEl.onerror=function(){ this.style.display='none'; };
+    /* クレジットは絵と一緒に消す。絵が出ていないのに撮影者名だけ残さない */
+    figEl.onerror=function(){ this.style.display='none'; byEl.style.display='none'; };
     figEl.src='/img/figures/ans/'+q.ansFig;
     figEl.style.display='';
+    byEl.textContent=q.ansFigBy||'';
+    byEl.style.display=q.ansFigBy?'':'none';
   }else{
     figEl.removeAttribute('src'); figEl.style.display='none';
+    byEl.style.display='none';
   }
   /* 長い答えだけ小さくする。文字数でクラスを分ける */
   ansEl.className='ans'+(q.a.length>10?' len-l':(q.a.length>6?' len-m':''));
@@ -1378,11 +1385,13 @@ function patchFigures(list){
   quizbank.forEach(q=>{ if(q.id)byId[q.id]=q; byQ[q.q]=q; });
   let n=0;
   list.forEach(sd=>{
-    if(!sd.figAfter&&!sd.ansFig)return;
+    if(!sd.figAfter&&!sd.ansFig&&!sd.ansFigBy)return;
     const cur=byId[sd.id]||byQ[sd.q];
     if(!cur)return;
     if(sd.figAfter&&!cur.figAfter){ cur.figAfter=sd.figAfter; n++; }
     if(sd.ansFig &&!cur.ansFig ){ cur.ansFig =sd.ansFig;  n++; }
+    /* クレジットは、絵が入っていても後から足せるようにする（表示が要るため） */
+    if(sd.ansFigBy&&cur.ansFigBy!==sd.ansFigBy){ cur.ansFigBy=sd.ansFigBy; n++; }
   });
   return n;
 }

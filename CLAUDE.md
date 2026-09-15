@@ -532,8 +532,30 @@ python3 tools/photo2ans.py <写真> <名前>
 `tools/photo2circle.py` は残してあるが、**被写体が小さくて余白ばかりの写真を
 詰めたいときだけ**使う。
 
-**出どころは `img/figures/ans/CREDITS.md` に必ず記録する。** CC BY / CC BY-SA の
-写真を使ったときは、画面にも撮影者名とライセンスを出す必要がある。
+**出どころは `img/figures/ans/CREDITS.md` に必ず記録する。**
+
+**CC BY / CC BY-SA の写真は、`ansFigBy` にクレジットを書く。** 絵のすぐ下に
+小さく出る（`.ans-by`）。PD / CC0 なら書かなくてよい。
+
+```json
+"ansFig":"senzanko.webp",
+"ansFigBy":"写真: Ajit Huilgol / U.S. Fish and Wildlife Service（CC BY 2.0）"
+```
+
+- **絵が読みこめなかったら、クレジットも一緒に消す。** 絵が出ていないのに
+  撮影者名だけ残ると意味がわからなくなるため、`onerror` で両方消している。
+- `ansFigBy` は `patchFigures()` が**あとから足せる**（`ansFig` とちがい、
+  すでに入っていても中身がちがえば上書きする）。表示が要るものなので、
+  取りこぼすとライセンス違反になるため。
+
+Commons のライセンスの見わけかた（画像ページの `cc` の行を見る）:
+
+| 表示 | やること |
+|---|---|
+| `Public domain` / `PD` / `CC0` | 何も要らない |
+| `Creative Commons Attribution`（CC BY） | `ansFigBy` を書く |
+| `Attribution-ShareAlike`（CC BY-SA） | `ansFigBy` を書く |
+| `NonCommercial`（NC）や `NoDerivatives`（ND） | 使わない |
 
 **写真がほしいものの一覧は `img/figures/ans/ほしい画像リスト.md`。** どの答えに写真が
 効くかを優先度つきで並べてある（生き物33・地形19・建物26・工芸30・肖像14で、129問ぶん）。

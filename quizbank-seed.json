@@ -2803,7 +2803,9 @@
   "explain": "体を丸めて、鋭いうろこで身を守ります。",
   "juken": "",
   "basis": "text",
-  "id": "seed_u5_49"
+  "id": "seed_u5_49",
+  "ansFig": "senzanko.webp",
+  "ansFigBy": "写真: Ajit Huilgol / U.S. Fish and Wildlife Service（CC BY 2.0）"
  },
  {
   "type": "text",
