@@ -2999,7 +2999,8 @@
   "explain": "恐竜よりも大きいといわれています。",
   "juken": "",
   "basis": "text",
-  "id": "seed_u5_62"
+  "id": "seed_u5_62",
+  "ansFig": "shironagasukujira.webp"
  },
  {
   "type": "text",
@@ -6642,7 +6643,9 @@
   "explain": "大昔、日本にいたゾウです。",
   "juken": "",
   "basis": "text",
-  "id": "seed_s5_014"
+  "id": "seed_s5_014",
+  "ansFig": "naumanzo.webp",
+  "ansFigBy": "絵: Kohei Futaka（CC BY 4.0）"
  },
  {
   "type": "text",

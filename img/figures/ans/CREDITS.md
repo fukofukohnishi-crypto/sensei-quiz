@@ -16,6 +16,8 @@ PD / CC0 の写真は、画面表示は不要。
 | `kamonohashi.webp` | カモノハシ | Wikimedia Commons<br>`Duck-billed platypus (Ornithorhynchus anatinus) Scottsdale.jpg` | **CC BY-SA 4.0**<br>→ **画面に表示ずみ** | Charles J. Sharp |
 | `harimogura.webp` | ハリモグラ | Wikimedia Commons | **PD**（パブリックドメイン） | 表示不要 |
 | `smilodon.webp` | スミロドン | Wikimedia Commons<br>`Smilodon fatalis.jpg`（復元図） | **CC BY 3.0**<br>→ **画面に表示ずみ** | Dantheman9758<br>（英語版Wikipedia） |
+| `naumanzo.webp` | ナウマンゾウ | Wikimedia Commons<br>`Palaeoloxodon naumanni life restoration.jpg`（復元図） | **CC BY 4.0**<br>→ **画面に表示ずみ** | Kohei Futaka（絵）<br>Takahiro Segawa, Takahiro Yonezawa,<br>Hiroshi Mori, Ayumi Akiyoshi,<br>Asier Larramendi, Naoki Kohno（論文著者） |
+| `shironagasukujira.webp` | シロナガスクジラ | Wikimedia Commons | **PD**（パブリックドメイン） | 表示不要 |
 
 ## 白地の絵は背景を抜く
 
