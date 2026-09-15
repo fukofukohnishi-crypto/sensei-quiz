@@ -1,0 +1,88 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 760 420" width="760" height="420" role="img" aria-label="輪中のしくみ。まわりを堤防でかこまれた集落と、石垣で高くした水屋、避難用の小舟">
+  <style>
+    .ja{font-family:-apple-system,BlinkMacSystemFont,"Hiragino Sans","Yu Gothic",sans-serif}
+    .ttl{font-size:14px;font-weight:800;fill:#ffd700;letter-spacing:.08em}
+    .nm{font-size:16px;font-weight:800;fill:#f2f5ff}
+    .sb{font-size:12.5px;fill:#aab4cc}
+    .sm{font-size:11.5px;fill:#9aa3bb}
+  </style>
+  <rect width="760" height="420" fill="#141428"/>
+  <line x1="300" y1="44" x2="300" y2="396" stroke="#2c2c48" stroke-width="2"/>
+
+  <!-- ============ 左：上から見たところ ============ -->
+  <text class="ja ttl" x="28" y="34">上から見ると</text>
+  <!-- 川（両がわ） -->
+  <path d="M40 54 Q66 180 44 396 L4 396 L4 54Z" fill="#26456e"/>
+  <path d="M244 54 Q222 180 250 396 L286 396 L286 54Z" fill="#26456e"/>
+  <text class="ja sm" x="10" y="200" fill="#8fb6e0">川</text>
+  <text class="ja sm" x="262" y="200" fill="#8fb6e0">川</text>
+  <!-- 堤防のリング -->
+  <path d="M70 80 Q150 62 226 92 Q248 190 214 330 Q140 366 74 336 Q52 200 70 80Z"
+        fill="none" stroke="#8a6a3e" stroke-width="13" stroke-linejoin="round"/>
+  <path d="M70 80 Q150 62 226 92 Q248 190 214 330 Q140 366 74 336 Q52 200 70 80Z"
+        fill="#2a3b2c" stroke="#a5824f" stroke-width="4" stroke-linejoin="round"/>
+  <!-- 中の集落 -->
+  <g fill="#4a7a4e">
+    <rect x="96" y="150" width="28" height="18" rx="2"/><rect x="140" y="140" width="26" height="18" rx="2"/>
+    <rect x="182" y="156" width="26" height="18" rx="2"/><rect x="104" y="212" width="26" height="18" rx="2"/>
+    <rect x="152" y="220" width="30" height="18" rx="2"/><rect x="112" y="276" width="28" height="18" rx="2"/>
+    <rect x="164" y="282" width="26" height="18" rx="2"/>
+  </g>
+  <g fill="#c8b06a">
+    <rect x="96" y="112" width="120" height="14" rx="2" opacity=".55"/>
+    <rect x="98" y="182" width="112" height="14" rx="2" opacity=".55"/>
+    <rect x="100" y="246" width="106" height="14" rx="2" opacity=".55"/>
+  </g>
+  <text class="ja sb" x="86" y="392">まわりを堤防がぐるり</text>
+
+  <!-- ============ 右：横から見たところ ============ -->
+  <text class="ja ttl" x="330" y="34">横から見ると</text>
+
+  <!-- 集落の地面（川の水面より低い） -->
+  <path d="M314 300 L744 300 L744 396 L314 396Z" fill="#3a3326"/>
+  <!-- 川（両がわ。水面が集落より高い） -->
+  <path d="M314 226 L352 226 L352 396 L314 396Z" fill="#26456e"/>
+  <path d="M712 226 L744 226 L744 396 L712 396Z" fill="#26456e"/>
+  <path d="M318 242 q10 -6 20 0 M318 268 q10 -6 20 0 M716 242 q10 -6 20 0 M716 268 q10 -6 20 0"
+        stroke="#4f7cb0" stroke-width="2.5" fill="none"/>
+  <text class="ja sm" x="322" y="216" fill="#8fb6e0">川</text>
+  <text class="ja sm" x="720" y="216" fill="#8fb6e0">川</text>
+
+  <!-- 堤防（両がわ） -->
+  <path d="M352 300 L376 208 L400 208 L424 300Z" fill="#8a6a3e"/>
+  <path d="M712 300 L688 208 L664 208 L640 300Z" fill="#8a6a3e"/>
+  <path d="M352 300 L376 208 L386 208 L372 300Z" fill="#9c7a48"/>
+  <path d="M712 300 L688 208 L678 208 L692 300Z" fill="#9c7a48"/>
+  <text class="ja nm" x="388" y="196" text-anchor="middle">堤防</text>
+  <text class="ja nm" x="676" y="196" text-anchor="middle">堤防</text>
+
+  <!-- 集落（ふつうの家） -->
+  <g>
+    <rect x="440" y="272" width="38" height="28" fill="#5d5a52"/>
+    <path d="M434 272 L459 250 L484 272Z" fill="#7c6a56"/>
+  </g>
+  <text class="ja sb" x="459" y="324" text-anchor="middle">集落</text>
+
+  <!-- 水屋（石垣で高くした建物） -->
+  <g>
+    <path d="M552 300 L556 254 L612 254 L616 300Z" fill="#6e6a62"/>
+    <path d="M557 266 h54 M556 280 h56 M558 292 h52"
+          stroke="#514e48" stroke-width="2" fill="none"/>
+    <rect x="560" y="228" width="48" height="26" fill="#6b6459"/>
+    <path d="M552 228 L584 206 L616 228Z" fill="#8a7460"/>
+  </g>
+  <text class="ja nm" x="584" y="196" text-anchor="middle">水屋</text>
+  <text class="ja sb" x="584" y="324" text-anchor="middle">石垣で高くした建物</text>
+
+  <!-- 小舟（地面に置いてある） -->
+  <g transform="translate(502,280)">
+    <path d="M0 6 L38 6 L32 20 L6 20Z" fill="#8d6b45"/>
+    <path d="M1 6 h36" stroke="#a5824f" stroke-width="3"/>
+    <path d="M19 6 v-10" stroke="#6e5436" stroke-width="2.5"/>
+  </g>
+  <text class="ja sb" x="521" y="258" text-anchor="middle">小舟</text>
+  <text class="ja sm" x="521" y="273" text-anchor="middle">（避難用）</text>
+
+  <!-- まとめ -->
+  <text class="ja sb" x="330" y="392">まわりを堤防でかこまれた集落を「輪中」という</text>
+</svg>

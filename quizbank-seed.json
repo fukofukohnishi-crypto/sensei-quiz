@@ -7090,7 +7090,8 @@
   "explain": "まるで輪の中にあるような集落です。",
   "juken": "輪中＝洪水への備え。水屋とセットで問われる。",
   "basis": "text",
-  "id": "seed_s5_042"
+  "id": "seed_s5_042",
+  "figAfter": "wajyu.svg"
  },
  {
   "type": "text",
@@ -7135,7 +7136,8 @@
   "explain": "水がきても大丈夫なように高くした建物です。",
   "juken": "",
   "basis": "text",
-  "id": "seed_s5_045"
+  "id": "seed_s5_045",
+  "figAfter": "wajyu.svg"
  },
  {
   "type": "text",
@@ -7151,7 +7153,8 @@
   "explain": "田舟ともよばれます。",
   "juken": "",
   "basis": "text",
-  "id": "seed_s5_046"
+  "id": "seed_s5_046",
+  "figAfter": "wajyu.svg"
  },
  {
   "type": "text",
