@@ -2907,7 +2907,9 @@
   "explain": "今はいない動物です。",
   "juken": "",
   "basis": "text",
-  "id": "seed_u5_56"
+  "id": "seed_u5_56",
+  "ansFig": "smilodon.webp",
+  "ansFigBy": "復元図: Dantheman9758（英語版Wikipedia・CC BY 3.0）"
  },
  {
   "type": "text",
