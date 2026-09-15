@@ -2891,7 +2891,9 @@
   "explain": "角のように見えますが、実は前歯が長くのびたものです。",
   "juken": "",
   "basis": "text",
-  "id": "seed_u5_55"
+  "id": "seed_u5_55",
+  "ansFig": "ikkaku.webp",
+  "ansFigBy": "写真: ガスプロム・ネフチ広報部（CC BY-SA 4.0）"
  },
  {
   "type": "text",
