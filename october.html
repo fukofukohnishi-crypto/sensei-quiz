@@ -1390,8 +1390,16 @@ function patchFigures(list){
     if(!cur)return;
     if(sd.figAfter&&!cur.figAfter){ cur.figAfter=sd.figAfter; n++; }
     if(sd.ansFig &&!cur.ansFig ){ cur.ansFig =sd.ansFig;  n++; }
-    /* クレジットは、絵が入っていても後から足せるようにする（表示が要るため） */
-    if(sd.ansFigBy&&cur.ansFigBy!==sd.ansFigBy){ cur.ansFigBy=sd.ansFigBy; n++; }
+    /* クレジットは、絵が入っていても後から直せるようにする（表示が要るため）。
+       絵を別の写真に差しかえたとき、古い撮影者名が残るとまちがった表示に
+       なってしまうので、消す方向にも反映する */
+    if(sd.ansFig){
+      const by=sd.ansFigBy||'';
+      if((cur.ansFigBy||'')!==by){
+        if(by) cur.ansFigBy=by; else delete cur.ansFigBy;
+        n++;
+      }
+    }
   });
   return n;
 }
