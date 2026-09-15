@@ -3455,7 +3455,8 @@
   "explain": "京都市は京都盆地の中にあります。",
   "juken": "盆地は夏暑く冬寒い。気候と結びつけて問われる。",
   "basis": "text",
-  "id": "seed_s1_018"
+  "id": "seed_s1_018",
+  "ansFig": "bonchi.webp"
  },
  {
   "type": "text",
