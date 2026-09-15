@@ -128,7 +128,8 @@
   "juken": "日本最大の湖＝琵琶湖。面積の順位も問われる。",
   "note": "",
   "basis": "text",
-  "ansFig": "biwako.webp"
+  "ansFig": "biwako.webp",
+  "ansFigBy": "写真: Global Land Cover Facility（CC BY-SA 3.0）"
  },
  {
   "id": "seed_r1_09",
@@ -4166,7 +4167,8 @@
   "juken": "琵琶湖＝滋賀県、日本最大の湖。",
   "basis": "text",
   "id": "seed_s2_016",
-  "ansFig": "biwako.webp"
+  "ansFig": "biwako.webp",
+  "ansFigBy": "写真: Global Land Cover Facility（CC BY-SA 3.0）"
  },
  {
   "type": "text",
@@ -5442,7 +5444,8 @@
   "juken": "琵琶湖＝日本最大の湖。",
   "basis": "text",
   "id": "seed_s3_036",
-  "ansFig": "biwako.webp"
+  "ansFig": "biwako.webp",
+  "ansFigBy": "写真: Global Land Cover Facility（CC BY-SA 3.0）"
  },
  {
   "type": "text",
