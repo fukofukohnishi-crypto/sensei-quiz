@@ -1165,7 +1165,8 @@
   "explain": "海水が流れこむ汽水の池なので、海の動物が入ってくることがあります。",
   "juken": "",
   "basis": "text",
-  "id": "seed_t1_14"
+  "id": "seed_t1_14",
+  "ansFig": "azarashi.webp"
  },
  {
   "type": "text",
@@ -2760,7 +2761,9 @@
   "explain": "歩かない動物には必要ありません。",
   "juken": "",
   "basis": "text",
-  "id": "seed_u5_46"
+  "id": "seed_u5_46",
+  "ansFig": "ashika.webp",
+  "ansFigBy": "写真: José Lodos Benavente"
  },
  {
   "type": "text",

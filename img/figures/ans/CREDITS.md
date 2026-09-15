@@ -18,6 +18,8 @@ PD / CC0 の写真は、画面表示は不要。
 | `smilodon.webp` | スミロドン | Wikimedia Commons<br>`Smilodon fatalis.jpg`（復元図） | **CC BY 3.0**<br>→ **画面に表示ずみ** | Dantheman9758<br>（英語版Wikipedia） |
 | `naumanzo.webp` | ナウマンゾウ | Wikimedia Commons<br>`Palaeoloxodon naumanni life restoration.jpg`（復元図） | **CC BY 4.0**<br>→ **画面に表示ずみ** | Kohei Futaka（絵）<br>Takahiro Segawa, Takahiro Yonezawa,<br>Hiroshi Mori, Ayumi Akiyoshi,<br>Asier Larramendi, Naoki Kohno（論文著者） |
 | `shironagasukujira.webp` | シロナガスクジラ | Wikimedia Commons | **PD**（パブリックドメイン） | 表示不要 |
+| `azarashi.webp` | アザラシ | Wikimedia Commons | **利用可**（版は未確認） | **確認中** |
+| `ashika.webp` | アシカ | Wikimedia Commons | **利用可**（版は未確認）<br>→ 撮影者名は画面に表示ずみ | José Lodos Benavente<br>（写真に署名あり） |
 
 ## 白地の絵は背景を抜く
 
