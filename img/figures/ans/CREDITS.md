@@ -9,4 +9,4 @@ PD / CC0 の写真は、画面表示は不要。
 
 | ファイル | 被写体 | 出どころ | ライセンス | 撮影者 |
 |---|---|---|---|---|
-| `hadakadebanezumi.webp` | ハダカデバネズミ | Wikimedia Commons | **確認中** | **確認中** |
+| `hadakadebanezumi.webp` | ハダカデバネズミ | Wikimedia Commons | **PD**（パブリックドメイン） | 表示不要 |
