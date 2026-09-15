@@ -5813,7 +5813,9 @@
   "explain": "名古屋港の近くにある干潟です。",
   "juken": "ラムサール条約の登録地。",
   "basis": "text",
-  "id": "seed_s4_009"
+  "id": "seed_s4_009",
+  "ansFig": "fujimaehigata.webp",
+  "ansFigBy": "写真: Alpsdake（CC BY-SA 3.0）"
  },
  {
   "type": "text",
