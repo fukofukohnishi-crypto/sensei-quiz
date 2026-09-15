@@ -837,7 +837,8 @@
   "explain": "チーターは短いきょりを走る速さが世界一の動物です。",
   "juken": "",
   "note": "",
-  "basis": "choice"
+  "basis": "choice",
+  "ansFig": "cheetah.webp"
  },
  {
   "id": "seed_r5_03",

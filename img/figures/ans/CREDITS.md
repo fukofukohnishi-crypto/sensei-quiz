@@ -19,6 +19,7 @@ PD / CC0 の写真は、画面表示は不要。
 | `naumanzo.webp` | ナウマンゾウ | Wikimedia Commons<br>`Palaeoloxodon naumanni life restoration.jpg`（復元図） | **CC BY 4.0**<br>→ **画面に表示ずみ** | Kohei Futaka（絵）<br>Takahiro Segawa, Takahiro Yonezawa,<br>Hiroshi Mori, Ayumi Akiyoshi,<br>Asier Larramendi, Naoki Kohno（論文著者） |
 | `shironagasukujira.webp` | シロナガスクジラ | Wikimedia Commons | **PD**（パブリックドメイン） | 表示不要 |
 | `azarashi.webp` | アザラシ | Wikimedia Commons | **PD**（パブリックドメイン） | 表示不要 |
+| `cheetah.webp` | チーター | Wikimedia Commons | **PD**（パブリックドメイン） | 表示不要 |
 | `ashika.webp` | アシカ | Wikimedia Commons | **PD**（パブリックドメイン） | José Lodos Benavente<br>（写真に署名が写りこんでいる。PDなので画面の表示は不要） |
 
 ## 白地の絵は背景を抜く
