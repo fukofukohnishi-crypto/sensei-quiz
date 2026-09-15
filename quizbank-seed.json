@@ -141,7 +141,9 @@
   "explain": "火山がふん火したあとにできたくぼみに水がたまると、カルデラ湖になります。",
   "juken": "屈斜路湖・十和田湖がカルデラ湖の代表例。",
   "note": "",
-  "basis": "text"
+  "basis": "text",
+  "ansFig": "karuderako.webp",
+  "ansFigBy": "写真: Tdk（日本語版Wikipedia・CC BY-SA 3.0）"
  },
  {
   "id": "seed_r1_10",
@@ -155,7 +157,9 @@
   "explain": "十和田湖は火山活動でできたくぼみに水がたまったカルデラ湖です。",
   "juken": "",
   "note": "",
-  "basis": "text"
+  "basis": "text",
+  "ansFig": "karuderako.webp",
+  "ansFigBy": "写真: Tdk（日本語版Wikipedia・CC BY-SA 3.0）"
  },
  {
   "id": "seed_r1_11",
