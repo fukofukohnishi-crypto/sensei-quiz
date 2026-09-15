@@ -13,3 +13,4 @@ PD / CC0 の写真は、画面表示は不要。
 | `senzanko.webp` | センザンコウ | Wikimedia Commons<br>`Manis crassicaudata (29600051791).jpg` | **CC BY 2.0**<br>→ **画面に表示ずみ** | Ajit Huilgol<br>／U.S. Fish and Wildlife Service |
 | `ratel.webp` | ラーテル | Wikimedia Commons | **PD**（パブリックドメイン） | 表示不要 |
 | `ikkaku.webp` | イッカク | Wikimedia Commons<br>`Нарвал в российской Арктике.jpg` | **CC BY-SA 4.0**<br>→ **画面に表示ずみ** | пресс-служба ПАО «Газпром нефть»<br>（ガスプロム・ネフチ広報部） |
+| `kamonohashi.webp` | カモノハシ | Wikimedia Commons<br>`Duck-billed platypus (Ornithorhynchus anatinus) Scottsdale.jpg` | **CC BY-SA 4.0**<br>→ **画面に表示ずみ** | Charles J. Sharp |
