@@ -27,6 +27,7 @@ PD / CC0 の写真は、画面表示は不要。
 | `riasukaigan.webp` | リアス海岸（対馬・浅茅湾の空撮） | Wikimedia Commons<br>`Asou-Bay ria coast aerial photograph.JPG` | **CC BY**<br>→ **画面に表示ずみ** | 国土交通省 |
 | `karudera.webp` | カルデラ（阿蘇山） | Wikimedia Commons<br>`Mount Aso lifeless panorama (49648240197).jpg` | **CC BY 2.0**<br>→ **画面に表示ずみ** | Raita Futo |
 | `karuderako.webp` | カルデラ湖（摩周湖・ランドサット） | Wikimedia Commons<br>`Lake masyu landsat.jpg` | **CC BY-SA 3.0**<br>→ **画面に表示ずみ** | Tdk（日本語版Wikipedia） |
+| `biwako.webp` | 琵琶湖（機上からの空撮） | Wikimedia Commons<br>`20091015琵琶湖.jpg` | **CC BY-SA 3.0**<br>→ **画面に表示ずみ** | BehBeh |
 | `nikukyu.webp` | 肉球 | Wikimedia Commons<br>`Kittens paw.JPG` | **CC BY-SA 4.0**<br>→ **画面に表示ずみ** | Rooow Ly |
 | `ashika.webp` | アシカ | Wikimedia Commons | **PD**（パブリックドメイン） | José Lodos Benavente<br>（写真に署名が写りこんでいる。PDなので画面の表示は不要） |
 

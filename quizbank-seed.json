@@ -127,7 +127,9 @@
   "explain": "琵琶湖は滋賀県にあり、日本で最も大きい湖です。",
   "juken": "日本最大の湖＝琵琶湖。面積の順位も問われる。",
   "note": "",
-  "basis": "text"
+  "basis": "text",
+  "ansFig": "biwako.webp",
+  "ansFigBy": "写真: BehBeh（CC BY-SA 3.0）"
  },
  {
   "id": "seed_r1_09",
@@ -4164,7 +4166,9 @@
   "explain": "日本でいちばん大きい湖で、滋賀県にあります。",
   "juken": "琵琶湖＝滋賀県、日本最大の湖。",
   "basis": "text",
-  "id": "seed_s2_016"
+  "id": "seed_s2_016",
+  "ansFig": "biwako.webp",
+  "ansFigBy": "写真: BehBeh（CC BY-SA 3.0）"
  },
  {
   "type": "text",
@@ -5439,7 +5443,9 @@
   "explain": "県のまん中にある大きな湖です。",
   "juken": "琵琶湖＝日本最大の湖。",
   "basis": "text",
-  "id": "seed_s3_036"
+  "id": "seed_s3_036",
+  "ansFig": "biwako.webp",
+  "ansFigBy": "写真: BehBeh（CC BY-SA 3.0）"
  },
  {
   "type": "text",
