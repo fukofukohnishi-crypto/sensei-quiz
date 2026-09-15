@@ -5446,7 +5446,8 @@
   "explain": "琵琶湖にしかいない生き物です。",
   "juken": "固有種＝そこにしかいない生き物。",
   "basis": "text",
-  "id": "seed_s3_037"
+  "id": "seed_s3_037",
+  "ansFig": "biwakoonamazu.webp"
  },
  {
   "type": "text",

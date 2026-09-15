@@ -22,6 +22,7 @@ PD / CC0 の写真は、画面表示は不要。
 | `cheetah.webp` | チーター | Wikimedia Commons | **PD**（パブリックドメイン） | 表示不要 |
 | `tsukutsukuboshi.webp` | ツクツクボウシ | Wikimedia Commons | **PD**（パブリックドメイン） | 表示不要 |
 | `sphynx.webp` | スフィンクス（ネコの品種） | Wikimedia Commons | **PD**（パブリックドメイン） | 表示不要 |
+| `biwakoonamazu.webp` | ビワコオオナマズ | Wikimedia Commons | **PD**（パブリックドメイン） | 表示不要 |
 | `nikukyu.webp` | 肉球 | Wikimedia Commons<br>`Kittens paw.JPG` | **CC BY-SA 4.0**<br>→ **画面に表示ずみ** | Rooow Ly |
 | `ashika.webp` | アシカ | Wikimedia Commons | **PD**（パブリックドメイン） | José Lodos Benavente<br>（写真に署名が写りこんでいる。PDなので画面の表示は不要） |
 
