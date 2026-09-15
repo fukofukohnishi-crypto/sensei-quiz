@@ -2058,7 +2058,8 @@
   "explain": "川が運んだ泥や砂が河口に積もってできます。",
   "juken": "三角州＝河口、扇状地＝山から平地へ出るところ。対で覚える。",
   "basis": "text",
-  "id": "seed_t3_75"
+  "id": "seed_t3_75",
+  "ansFig": "sankakusu.webp"
  },
  {
   "type": "text",
@@ -4051,7 +4052,8 @@
   "explain": "川が海に出るところに土砂がたまってできた平らな土地です。",
   "juken": "三角州＝河口、扇状地＝山あい。区別して問われる。",
   "basis": "text",
-  "id": "seed_s2_009"
+  "id": "seed_s2_009",
+  "ansFig": "sankakusu.webp"
  },
  {
   "type": "text",
