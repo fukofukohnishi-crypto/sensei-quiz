@@ -1368,7 +1368,8 @@
   "explain": "どちらもセミのなかまです。",
   "juken": "季節と生き物の対応は頻出。",
   "basis": "text",
-  "id": "seed_t1_28"
+  "id": "seed_t1_28",
+  "ansFig": "tsukutsukuboshi.webp"
  },
  {
   "type": "text",

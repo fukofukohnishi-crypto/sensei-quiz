@@ -20,6 +20,7 @@ PD / CC0 の写真は、画面表示は不要。
 | `shironagasukujira.webp` | シロナガスクジラ | Wikimedia Commons | **PD**（パブリックドメイン） | 表示不要 |
 | `azarashi.webp` | アザラシ | Wikimedia Commons | **PD**（パブリックドメイン） | 表示不要 |
 | `cheetah.webp` | チーター | Wikimedia Commons | **PD**（パブリックドメイン） | 表示不要 |
+| `tsukutsukuboshi.webp` | ツクツクボウシ | Wikimedia Commons | **PD**（パブリックドメイン） | 表示不要 |
 | `ashika.webp` | アシカ | Wikimedia Commons | **PD**（パブリックドメイン） | José Lodos Benavente<br>（写真に署名が写りこんでいる。PDなので画面の表示は不要） |
 
 ## 白地の絵は背景を抜く
