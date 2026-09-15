@@ -1109,7 +1109,9 @@
   "explain": "火山がふん火したあとにできる大きなくぼみです。",
   "juken": "カルデラ湖の代表＝屈斜路湖・十和田湖。",
   "basis": "text",
-  "id": "seed_t1_10"
+  "id": "seed_t1_10",
+  "ansFig": "karudera.webp",
+  "ansFigBy": "写真: Hugo van den Bos（CC BY 2.0）"
  },
  {
   "type": "text",
