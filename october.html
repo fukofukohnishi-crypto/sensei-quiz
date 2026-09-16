@@ -1403,6 +1403,20 @@ function patchFigures(list){
   });
   return n;
 }
+/* 起動のたびに、作りおきのファイルから「図とクレジットだけ」を取りこむ。
+   問題そのものは足さない（承認の流れを飛ばさないため）。
+   これが無いと、あとから絵を足しても、管理画面の「作りおきの問題を読みこむ」を
+   押すまで子供の画面に出てこない（実際に出てこなくて気づいた） */
+async function syncFigures(){
+  if(!quizbank.length)return;
+  try{
+    const r=await fetch('/quizbank-seed.json',{cache:'no-cache'});
+    if(!r.ok)return;
+    const n=patchFigures(await r.json());
+    if(n)saveBank();
+  }catch(e){}   /* つながらなくても、これまでどおり動く */
+}
+
 async function loadSeed(){
   try{
     const r=await fetch('/quizbank-seed.json');
@@ -1539,6 +1553,8 @@ const PREF_TO_CODE={}; CODE_TO_PREF.forEach((n,i)=>{PREF_TO_CODE[n]=i+1;});
      （この仕組みより先にカードを取っていた場合） */
   unlockFinalStory();
   renderHome();
+  /* 待たない。ホームを出してから、うしろで図を取りこむ */
+  syncFigures();
 })();
 </script>
 </body>
