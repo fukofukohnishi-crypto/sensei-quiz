@@ -5290,7 +5290,8 @@
   "explain": "山をけずった土で海をうめ立ててつくられました。",
   "juken": "人工島＝土地不足への対策。",
   "basis": "text",
-  "id": "seed_s3_026"
+  "id": "seed_s3_026",
+  "ansFig": "portisland.webp"
  },
  {
   "type": "text",
