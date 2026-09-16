@@ -1325,7 +1325,8 @@
   "explain": "富士山のふもとに並ぶ5つの湖です。",
   "juken": "5つの名前を答えさせる問題も出る。",
   "basis": "text",
-  "id": "seed_t1_24"
+  "id": "seed_t1_24",
+  "ansFig": "fujigoko.webp"
  },
  {
   "type": "text",
@@ -1548,7 +1549,8 @@
   "juken": "",
   "basis": "text",
   "id": "seed_t2_39",
-  "figAfter": "cloudtypes.svg"
+  "figAfter": "cloudtypes.svg",
+  "ansFig": "fujigoko.webp"
  },
  {
   "type": "text",
