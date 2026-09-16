@@ -2191,7 +2191,8 @@
   "explain": "高いところと低いところの差が50cmほどしかありません。",
   "juken": "",
   "basis": "text",
-  "id": "seed_u3_06"
+  "id": "seed_u3_06",
+  "ansFig": "uyuni.webp"
  },
  {
   "type": "text",
@@ -2217,7 +2218,9 @@
   "explain": "うすく水がはると、空がそのまま映ります。",
   "juken": "",
   "basis": "text",
-  "id": "seed_u3_08"
+  "id": "seed_u3_08",
+  "ansFig": "uyuni_kagami.webp",
+  "ansFigBy": "写真: Christopher Crouzet（CC BY-SA 4.0）"
  },
  {
   "type": "text",
