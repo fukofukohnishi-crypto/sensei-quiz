@@ -35,6 +35,7 @@ PD / CC0 の写真は、画面表示は不要。
 | `nobeyamahara.webp` | 野辺山原（八ヶ岳・硫黄岳から） | Wikimedia Commons<br>`Nobeyama Plateau 02.jpg` | **CC BY 3.0**<br>→ **画面に表示ずみ** | Σ64 |
 | `nankishirahama.webp` | 南紀白浜（白良浜） | 日本語版Wikipedia 経由<br>「白浜町モンタージュ」の**右上のコマだけ**を切り出した | **CC BY 3.0**<br>→ **画面に表示ずみ** | mti |
 | `shionomisaki.webp` | 潮岬 | Wikimedia Commons<br>`Cape Shionomisaki, Wakayama.jpg` | **CC BY 2.0**<br>→ **画面に表示ずみ** | Kzaral |
+| `tenjinzaki.webp` | 天神崎（和歌山県田辺市） | Wikimedia Commons<br>`Tenjinzaki-tanabe-wakayama.jpg` | **CC BY 2.0**<br>→ **画面に表示ずみ** | Jennifer Murawski |
 | `riasukaigan.webp` | リアス海岸（対馬・浅茅湾の空撮） | Wikimedia Commons<br>`Asou-Bay ria coast aerial photograph.JPG` | **CC BY**<br>→ **画面に表示ずみ** | 国土交通省 |
 | `karudera.webp` | カルデラ（阿蘇山） | Wikimedia Commons<br>`Mount Aso lifeless panorama (49648240197).jpg` | **CC BY 2.0**<br>→ **画面に表示ずみ** | Raita Futo |
 | `karuderako.webp` | カルデラ湖（摩周湖・ランドサット） | Wikimedia Commons<br>`Lake masyu landsat.jpg` | **CC BY-SA 3.0**<br>→ **画面に表示ずみ** | Tdk（日本語版Wikipedia） |

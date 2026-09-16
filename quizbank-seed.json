@@ -4801,7 +4801,9 @@
   "explain": "田辺市にある海岸です。",
   "juken": "",
   "basis": "text",
-  "id": "seed_s2_057"
+  "id": "seed_s2_057",
+  "ansFig": "tenjinzaki.webp",
+  "ansFigBy": "写真: Jennifer Murawski（CC BY 2.0）"
  },
  {
   "type": "text",
