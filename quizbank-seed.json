@@ -4861,7 +4861,9 @@
   "explain": "和歌山県の南のはしにあります。",
   "juken": "本州四端は必ず地図で確認する。",
   "basis": "text",
-  "id": "seed_s2_061"
+  "id": "seed_s2_061",
+  "ansFig": "shionomisaki.webp",
+  "ansFigBy": "写真: Kzaral（CC BY 2.0）"
  },
  {
   "type": "map_reverse",
