@@ -4829,7 +4829,9 @@
   "explain": "温泉と海水浴で知られています。",
   "juken": "",
   "basis": "text",
-  "id": "seed_s2_059"
+  "id": "seed_s2_059",
+  "ansFig": "nankishirahama.webp",
+  "ansFigBy": "写真: mti（CC BY 3.0）"
  },
  {
   "type": "text",
