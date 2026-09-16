@@ -5013,7 +5013,8 @@
   "explain": "白い壁が美しいお城です。",
   "juken": "姫路城＝日本初の世界文化遺産の一つ。",
   "basis": "text",
-  "id": "seed_s3_008"
+  "id": "seed_s3_008",
+  "ansFig": "himejijo.webp"
  },
  {
   "type": "text",
