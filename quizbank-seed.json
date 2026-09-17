@@ -3303,7 +3303,9 @@
   "explain": "厳島神社があることで知られます。",
   "juken": "日本三景（松島・天橋立・宮島）は3つセットで覚える。",
   "basis": "text",
-  "id": "seed_s1_007"
+  "id": "seed_s1_007",
+  "ansFig": "miyajima.webp",
+  "ansFigBy": "写真: Jakub Hałun（CC BY 4.0）"
  },
  {
   "type": "text",
