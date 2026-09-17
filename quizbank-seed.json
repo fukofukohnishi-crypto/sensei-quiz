@@ -3318,7 +3318,9 @@
   "explain": "股のぞきで見ると、天にかかる橋のように見えます。",
   "juken": "砂州（さす）という地形。",
   "basis": "text",
-  "id": "seed_s1_008"
+  "id": "seed_s1_008",
+  "ansFig": "amanohashidate.webp",
+  "ansFigBy": "写真: 663highland（CC BY 2.5）"
  },
  {
   "type": "text",
