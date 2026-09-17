@@ -7030,7 +7030,9 @@
   "explain": "雪を落としやすい急な屋根です。",
   "juken": "白川郷＝豪雪地帯の住まいの工夫。",
   "basis": "text",
-  "id": "seed_s5_036"
+  "id": "seed_s5_036",
+  "ansFig": "gasshozukuri.webp",
+  "ansFigBy": "写真: Bernard Gagnon（白川郷・CC BY-SA 3.0）"
  },
  {
   "type": "text",
