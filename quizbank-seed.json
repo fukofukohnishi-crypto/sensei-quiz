@@ -3423,7 +3423,9 @@
   "explain": "十円玉の表にえがかれています。",
   "juken": "平安時代の代表的な建物。",
   "basis": "text",
-  "id": "seed_s1_015"
+  "id": "seed_s1_015",
+  "ansFig": "byodoin.webp",
+  "ansFigBy": "写真: ganden（CC BY 4.0）"
  },
  {
   "type": "text",
