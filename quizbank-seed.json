@@ -4318,7 +4318,9 @@
   "explain": "大山古墳ともよばれます。",
   "juken": "世界最大の墓＝大仙古墳。ピラミッドと比べて問われる。",
   "basis": "text",
-  "id": "seed_s2_025"
+  "id": "seed_s2_025",
+  "ansFig": "daisenkofun.webp",
+  "ansFigBy": "写真: 国土地理院（CC BY）"
  },
  {
   "type": "text",
@@ -4348,7 +4350,9 @@
   "explain": "力の大きさを人々に見せるためにつくられました。",
   "juken": "古墳の大きさ＝権力の大きさ。",
   "basis": "text",
-  "id": "seed_s2_027"
+  "id": "seed_s2_027",
+  "ansFig": "daisenkofun.webp",
+  "ansFigBy": "写真: 国土地理院（CC BY）"
  },
  {
   "type": "text",
