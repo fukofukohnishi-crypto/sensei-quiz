@@ -820,7 +820,7 @@ function gate2(q){
    カード
    ========================================================================= */
 async function loadCards(){
-  for(const u of ['/cards.json','/Cards.json']){
+  for(const u of ['/Cards.json','/cards.json']){
     try{ const r=await fetch(u); if(!r.ok)continue;
       const d=await r.json(); if(Array.isArray(d)&&d.length){CARDS=d;return;} }catch(e){}
   }

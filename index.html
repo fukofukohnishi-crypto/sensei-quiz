@@ -264,7 +264,7 @@ body.viewing-collection .wrap{display:none}
     if(CARDS){cb();return;}
     if(loading)return;
     loading=true;
-    var urls=['/cards.json','/Cards.json'];
+    var urls=['/Cards.json','/cards.json'];
     var i=0;
     (function next(){
       if(i>=urls.length){CARDS=[];loading=false;cb();return;}

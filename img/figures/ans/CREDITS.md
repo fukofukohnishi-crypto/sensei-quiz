@@ -29,6 +29,7 @@ PD / CC0 の写真は、画面表示は不要。
 | `uyuni.webp` | ウユニ塩湖（水のない塩の大地） | Wikimedia Commons | **PD**（パブリックドメイン） | 表示不要 |
 | `portisland.webp` | ポートアイランド（神戸・空中写真） | Wikimedia Commons | **PD**（パブリックドメイン） | 表示不要 |
 | `himejijo.webp` | 姫路城 | Wikimedia Commons | **PD**（パブリックドメイン） | 表示不要 |
+| `matsumotojo.webp` | 松本城 | Wikimedia Commons | **PD**（パブリックドメイン） | 表示不要 |
 | `uyuni_kagami.webp` | 天空の鏡（水がたまったウユニ塩湖） | Wikimedia Commons<br>`Reflection on the Salar de Uyuni, bolivia.jpg` | **CC BY-SA 4.0**<br>→ **画面に表示ずみ** | Christopher Crouzet |
 | `nihonalps.webp` | 日本アルプス・飛騨山脈（北アルプス） | Wikimedia Commons<br>`Japanese Alps (51831654271).jpg` | **CC BY 2.0**<br>→ **画面に表示ずみ** | Raita Futo |
 | `hyoga.webp` | 氷河（アラスカ・コロニー氷河） | Wikimedia Commons<br>`Parque estatal Chugach, Alaska…DD 94.jpg` | **CC BY-SA 4.0**<br>→ **画面に表示ずみ** | Diego Delso |

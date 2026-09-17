@@ -1460,7 +1460,7 @@ function reconcileGuardianCards(){
 /* ===== 守護神カード獲得演出 ===== */
 let CARDS_DB = null;
 (function loadCardsDB(){
-  const urls=['/cards.json','/Cards.json'];
+  const urls=['/Cards.json','/cards.json'];
   let i=0;
   (function next(){
     if(i>=urls.length){CARDS_DB=[];return;}
