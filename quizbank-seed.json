@@ -3728,7 +3728,9 @@
   "explain": "聖徳太子が建てたといわれます。",
   "juken": "",
   "basis": "text",
-  "id": "seed_s1_035"
+  "id": "seed_s1_035",
+  "ansFig": "horyuji.webp",
+  "ansFigBy": "写真: z tanuki（CC BY 3.0）"
  },
  {
   "type": "text",

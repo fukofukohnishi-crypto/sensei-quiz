@@ -36,6 +36,7 @@ PD / CC0 の写真は、画面表示は不要。
 | `taiyonoto.webp` | 太陽の塔（大阪府吹田市） | 日本語版Wikipedia 経由 | **CC BY-SA 3.0**<br>→ **画面に表示ずみ** | 663highland |
 | `amanohashidate.webp` | 天橋立（笠松公園から） | Wikimedia Commons<br>`Amanohashidate view from Kasamatsu Park01s3s4410.jpg` | **CC BY 2.5**<br>→ **画面に表示ずみ** | 663highland |
 | `byodoin.webp` | 平等院鳳凰堂 | Wikimedia Commons<br>`Kyoto-Byodoin Phoenix Hall-xl.jpg` | **CC BY 4.0**<br>→ **画面に表示ずみ** | ganden |
+| `horyuji.webp` | 法隆寺（金堂と五重塔） | Wikimedia Commons<br>`Horyu-ji temple , 法隆寺 - panoramio.jpg` | **CC BY 3.0**<br>→ **画面に表示ずみ** | z tanuki |
 | `uyuni_kagami.webp` | 天空の鏡（水がたまったウユニ塩湖） | Wikimedia Commons<br>`Reflection on the Salar de Uyuni, bolivia.jpg` | **CC BY-SA 4.0**<br>→ **画面に表示ずみ** | Christopher Crouzet |
 | `nihonalps.webp` | 日本アルプス・飛騨山脈（北アルプス） | Wikimedia Commons<br>`Japanese Alps (51831654271).jpg` | **CC BY 2.0**<br>→ **画面に表示ずみ** | Raita Futo |
 | `hyoga.webp` | 氷河（アラスカ・コロニー氷河） | Wikimedia Commons<br>`Parque estatal Chugach, Alaska…DD 94.jpg` | **CC BY-SA 4.0**<br>→ **画面に表示ずみ** | Diego Delso |
