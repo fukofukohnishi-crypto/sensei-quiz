@@ -5815,7 +5815,9 @@
   "explain": "想像上の魚のかざりです。",
   "juken": "",
   "basis": "text",
-  "id": "seed_s4_008"
+  "id": "seed_s4_008",
+  "ansFig": "shachihoko.webp",
+  "ansFigBy": "写真: zensan（岡山城の金鯱・CC BY 3.0）"
  },
  {
   "type": "text",
