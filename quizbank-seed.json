@@ -4116,7 +4116,9 @@
   "explain": "大阪万博のシンボルとしてつくられました。",
   "juken": "1970年＝大阪万博。2025年にも大阪で開かれた。",
   "basis": "text",
-  "id": "seed_s2_012"
+  "id": "seed_s2_012",
+  "ansFig": "taiyonoto.webp",
+  "ansFigBy": "写真: 663highland（CC BY-SA 3.0）"
  },
  {
   "type": "text",
