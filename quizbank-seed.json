@@ -1682,7 +1682,9 @@
   "juken": "",
   "basis": "text",
   "id": "seed_t2_47",
-  "figAfter": "cloudtypes.svg"
+  "figAfter": "cloudtypes.svg",
+  "ansFig": "kosekiun.webp",
+  "ansFigBy": "写真: Rollcloud（CC BY 3.0）"
  },
  {
   "type": "text",

@@ -60,6 +60,7 @@ PD / CC0 の写真は、画面表示は不要。
 | `sosekiun.webp` | 層積雲（うね雲。地上から見上げた扁平なかたまり） | 日本語版Wikipedia 経由 | **CC BY-SA 3.0**<br>→ **画面に表示ずみ** | Ludwig Schneider |
 | `kosoun.webp` | 高層雲（おぼろ雲。すりガラスごしのような太陽） | Wikimedia Commons<br>`Unsharp Sun behind Altostratus…` | **CC BY-SA 3.0**（GFDL 併記）<br>→ **画面に表示ずみ** | Simon Eugster |
 | `kensoun.webp` | 巻層雲（うす雲。太陽のまわりに22度のかさ） | Wikimedia Commons<br>`2024-03-01 - Cirrostratus - halo (22 deg)…` | **CC BY 4.0**<br>→ **画面に表示ずみ** | Franz van Duns |
+| `kosekiun.webp` | 高積雲（ひつじ雲。電線を外した部分を切り出した） | Wikimedia Commons<br>`Altocumulusclouds.jpg` | **CC BY 3.0**<br>→ **画面に表示ずみ** | Rollcloud |
 | `sekiranun.webp` | 積乱雲（入道雲。フランス・ロレーヌ地方） | Wikimedia Commons<br>`Cumulonimbus capillatus in Lorraine, France.jpg` | **CC BY-SA 4.0**<br>→ **画面に表示ずみ** | Grain de sel |
 | `rengeso.webp` | レンゲソウ（Astragalus sinicus・岐阜県の花） | 実写写真<br>`Flowers of Astragalus sinicus 20170423` | **CC BY-SA 4.0**<br>→ **画面に表示ずみ** | Σ64 |
 | `momiji.webp` | モミジ（滋賀県の木） | 実写写真をまとめた1枚の画像から切り出し | **CC0**（パブリックドメイン相当） | 表示不要 |
