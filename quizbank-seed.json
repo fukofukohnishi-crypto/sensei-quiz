@@ -6323,7 +6323,9 @@
   "explain": "古くから多くの人が参拝に訪れました。",
   "juken": "",
   "basis": "text",
-  "id": "seed_s4_040"
+  "id": "seed_s4_040",
+  "ansFig": "isejingu.webp",
+  "ansFigBy": "写真: foooomio（CC BY 2.0）"
  },
  {
   "type": "text",

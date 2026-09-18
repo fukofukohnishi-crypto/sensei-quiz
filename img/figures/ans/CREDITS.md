@@ -46,6 +46,7 @@ PD / CC0 の写真は、画面表示は不要。
 | `hikonejo.webp` | 彦根城（昔の天守が残る） | Wikimedia Commons<br>`Hikone castle5537.JPG` | **CC BY 2.1 JP**<br>→ **画面に表示ずみ** | Jnn |
 | `takedajo.webp` | 竹田城跡（山の上の石垣と谷） | Wikimedia Commons<br>`20130507 takeda castle 10.jpg` | **CC BY-SA 3.0**<br>→ **画面に表示ずみ** | Baku13 |
 | `azuchijo.webp` | 安土城跡（天守閣址の石垣と石段） | 日本語版Wikipedia 経由<br>「安土城 天守閣址」 | **CC0**（パブリックドメイン相当） | 表示不要（Mont Blank rich） |
+| `isejingu.webp` | 伊勢神宮（宇治橋前の大鳥居） | Wikimedia Commons<br>`Ise Grand Shrine, Mie Prefecture, Japan.` | **CC BY 2.0**<br>→ **画面に表示ずみ** | foooomio |
 | `ishibutai.webp` | 石舞台古墳（奈良県明日香村） | Wikimedia Commons | **PD**（パブリックドメイン） | 表示不要 |
 | `akashikaikyo.webp` | 明石海峡大橋（神戸市と淡路島をむすぶ） | Wikimedia Commons | **PD**（パブリックドメイン） | 表示不要 |
 | `uyuni_kagami.webp` | 天空の鏡（水がたまったウユニ塩湖） | Wikimedia Commons<br>`Reflection on the Salar de Uyuni, bolivia.jpg` | **CC BY-SA 4.0**<br>→ **画面に表示ずみ** | Christopher Crouzet |
