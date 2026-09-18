@@ -243,7 +243,8 @@
   "explain": "ブラックバスは外国から持ち込まれた魚で、もとからいた魚を食べてしまう問題があります。",
   "juken": "外来種の代表例として社会でも出る。",
   "note": "",
-  "basis": "text"
+  "basis": "text",
+  "ansFig": "blackbass.webp"
  },
  {
   "id": "seed_r1_16",
@@ -1212,7 +1213,9 @@
   "explain": "どちらも海でくらす魚です。",
   "juken": "",
   "basis": "text",
-  "id": "seed_t1_15"
+  "id": "seed_t1_15",
+  "ansFig": "magochi.webp",
+  "ansFigBy": "写真: Izuzuki（CC BY 2.5）"
  },
  {
   "type": "text",
