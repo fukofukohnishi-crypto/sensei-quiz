@@ -1,0 +1,27 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 200 200" width="200" height="200" role="img" aria-label="プリズムで7色に分かれる光">
+<defs>
+<linearGradient id="bg" x1="0" y1="0" x2="0" y2="1">
+<stop offset="0" stop-color="#1b1f3a"/><stop offset="1" stop-color="#0f1226"/></linearGradient>
+<linearGradient id="gl" x1="0" y1="0" x2="1" y2="1">
+<stop offset="0" stop-color="#ffffff" stop-opacity=".55"/><stop offset="1" stop-color="#9fd6ff" stop-opacity=".3"/></linearGradient>
+<clipPath id="cp"><circle cx="100" cy="100" r="96"/></clipPath>
+</defs>
+<circle cx="100" cy="100" r="96" fill="url(#bg)"/>
+<g clip-path="url(#cp)">
+  <!-- 白い光が左から入る -->
+  <path d="M0 84 L74 84" stroke="#ffffff" stroke-width="7" stroke-linecap="round"/>
+  <!-- 7色に分かれて右へ出る。赤・橙・黄・緑・青・藍・紫 -->
+  <g stroke-width="7" stroke-linecap="round" fill="none">
+    <path d="M104 96 L200 108" stroke="#ff3b30"/>
+    <path d="M104 98 L200 124" stroke="#ff8c1a"/>
+    <path d="M104 100 L200 140" stroke="#ffd60a"/>
+    <path d="M104 102 L200 156" stroke="#34c759"/>
+    <path d="M104 104 L200 172" stroke="#0a84ff"/>
+    <path d="M104 106 L200 188" stroke="#3b3bd6"/>
+    <path d="M104 108 L200 204" stroke="#a24bd6"/>
+  </g>
+  <!-- プリズム（三角形のガラス） -->
+  <path d="M100 34 L152 120 L48 120 Z" fill="url(#gl)" stroke="#dff1ff" stroke-width="3" stroke-linejoin="round"/>
+</g>
+<circle cx="100" cy="100" r="96" fill="none" stroke="#3b4066" stroke-width="3"/>
+</svg>

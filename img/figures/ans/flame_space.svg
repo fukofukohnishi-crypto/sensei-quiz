@@ -1,0 +1,26 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 200 200" width="200" height="200" role="img" aria-label="宇宙船の中の丸い炎">
+<defs>
+<radialGradient id="sky" cx="50%" cy="45%" r="70%">
+<stop offset="0" stop-color="#24284a"/><stop offset="1" stop-color="#101228"/></radialGradient>
+<radialGradient id="fl" cx="50%" cy="50%" r="50%">
+<stop offset="0" stop-color="#fff6d2"/><stop offset=".45" stop-color="#ffd24a"/>
+<stop offset=".8" stop-color="#4fa8ff" stop-opacity=".85"/>
+<stop offset="1" stop-color="#4fa8ff" stop-opacity="0"/></radialGradient>
+<clipPath id="cp"><circle cx="100" cy="100" r="96"/></clipPath>
+</defs>
+<circle cx="100" cy="100" r="96" fill="url(#sky)"/>
+<g clip-path="url(#cp)">
+  <g fill="#ffffff" opacity=".75">
+    <circle cx="36" cy="40" r="2.4"/><circle cx="160" cy="34" r="2"/><circle cx="168" cy="96" r="1.8"/>
+    <circle cx="28" cy="120" r="1.8"/><circle cx="150" cy="150" r="2.2"/><circle cx="62" cy="24" r="1.6"/>
+  </g>
+  <!-- 重力がないので、炎は上にのびず、まん丸になる -->
+  <circle cx="100" cy="92" r="52" fill="url(#fl)"/>
+  <circle cx="100" cy="92" r="26" fill="#ffe9a8" opacity=".95"/>
+  <!-- ろうそく -->
+  <rect x="86" y="128" width="28" height="56" rx="6" fill="#f3efe4"/>
+  <rect x="86" y="128" width="10" height="56" rx="5" fill="#ffffff" opacity=".6"/>
+  <path d="M100 128 L100 116" stroke="#4a4a4a" stroke-width="4" stroke-linecap="round"/>
+</g>
+<circle cx="100" cy="100" r="96" fill="none" stroke="#3b4066" stroke-width="3"/>
+</svg>

@@ -553,7 +553,8 @@
   "explain": "雨つぶはまん丸ではなく、下側がつぶれたまんじゅうのような形です。",
   "juken": "「雨つぶは球形ではない」が意外性のあるポイント。",
   "note": "",
-  "basis": "text"
+  "basis": "text",
+  "ansFig": "raindrop.svg"
  },
  {
   "id": "seed_r2_18",
@@ -570,7 +571,8 @@
   "explain": "光にはいろいろな色がまざっていて、プリズムで分けることができます。",
   "juken": "虹が7色に見えるのも同じしくみ。",
   "note": "",
-  "basis": "text"
+  "basis": "text",
+  "ansFig": "prism.svg"
  },
  {
   "id": "seed_r3_01",
@@ -752,7 +754,8 @@
   "explain": "内側から順に、炎心・内炎・外炎の3つに分かれます。",
   "juken": "3つの名前と、温度・明るさの順は必ず問われる。",
   "note": "",
-  "basis": "text"
+  "basis": "text",
+  "figAfter": "flame.svg"
  },
  {
   "id": "seed_r4_06",
@@ -816,7 +819,8 @@
   "explain": "重力がはたらかないため、炎が上にのびず丸くなります。",
   "juken": "無重力では空気の流れ（対流）が起きない、が理由。",
   "note": "",
-  "basis": "text"
+  "basis": "text",
+  "ansFig": "flame_space.svg"
  },
  {
   "id": "seed_r4_10",
@@ -1792,7 +1796,8 @@
   "explain": "空気中にうかんだ水のつぶが、光を7色に分けています。",
   "juken": "",
   "basis": "text",
-  "id": "seed_t2_54"
+  "id": "seed_t2_54",
+  "figAfter": "prism.svg"
  },
  {
   "type": "text",

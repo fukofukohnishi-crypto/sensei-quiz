@@ -1,0 +1,28 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 200 200" width="200" height="200" role="img" aria-label="落ちてくる雨つぶの形">
+<defs>
+<linearGradient id="bg" x1="0" y1="0" x2="0" y2="1">
+<stop offset="0" stop-color="#e3eefb"/><stop offset="1" stop-color="#f6fafe"/></linearGradient>
+<linearGradient id="wt" x1="0" y1="0" x2="0" y2="1">
+<stop offset="0" stop-color="#7fc4f2"/><stop offset="1" stop-color="#3d8fd0"/></linearGradient>
+<clipPath id="cp"><circle cx="100" cy="100" r="96"/></clipPath>
+</defs>
+<circle cx="100" cy="100" r="96" fill="url(#bg)"/>
+<g clip-path="url(#cp)">
+  <!-- 落ちるときのすじ。上から下へ落ちていることを示す -->
+  <g stroke="#b9d5ee" stroke-width="4" stroke-linecap="round">
+    <path d="M62 18 L62 44"/><path d="M100 10 L100 40"/><path d="M138 18 L138 44"/>
+  </g>
+  <!-- つぶ本体。上はまるく、下は空気におされてつぶれ、まん中がへこむ -->
+  <path d="M56 104 C56 66 78 48 100 48 C122 48 144 66 144 104
+           C144 126 130 140 112 143 C107 133 93 133 88 143
+           C70 140 56 126 56 104 Z" fill="url(#wt)"/>
+  <path d="M78 70 C84 60 94 56 100 56" fill="none" stroke="#ffffff" stroke-width="7"
+        stroke-linecap="round" opacity=".65"/>
+  <!-- 下から空気がおし上げている -->
+  <g stroke="#8aa8c4" stroke-width="5" stroke-linecap="round" fill="none">
+    <path d="M74 182 L74 158"/><path d="M68 164 L74 156 L80 164"/>
+    <path d="M126 182 L126 158"/><path d="M120 164 L126 156 L132 164"/>
+  </g>
+</g>
+<circle cx="100" cy="100" r="96" fill="none" stroke="#cfe0f0" stroke-width="3"/>
+</svg>
