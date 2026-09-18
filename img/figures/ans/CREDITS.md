@@ -57,6 +57,8 @@ PD / CC0 の写真は、画面表示は不要。
 | `kanatokogumo.webp` | かなとこ雲（積乱雲の上が横に広がったもの） | Wikimedia Commons<br>`Cumulonimbus incus.jpg` | **CC BY-SA 3.0**<br>→ **画面に表示ずみ** | Simon Eugster |
 | `sekiun.webp` | 積雲（わた雲） | Wikimedia Commons<br>`Cumulus humilis clouds.jpg` | **CC BY-SA 3.0**<br>→ **画面に表示ずみ** | Toby Hudson |
 | `soun.webp` | 層雲（きり雲。山の尾根にかかっている） | Wikimedia Commons<br>`Stratus cloud Mountain 01.jpg` | **CC BY 4.0**<br>→ **画面に表示ずみ** | Rollcloud |
+| `sosekiun.webp` | 層積雲（うね雲。地上から見上げた扁平なかたまり） | 日本語版Wikipedia 経由 | **CC BY-SA 3.0**<br>→ **画面に表示ずみ** | Ludwig Schneider |
+| `kosoun.webp` | 高層雲（おぼろ雲。すりガラスごしのような太陽） | Wikimedia Commons<br>`Unsharp Sun behind Altostratus…` | **CC BY-SA 3.0**（GFDL 併記）<br>→ **画面に表示ずみ** | Simon Eugster |
 | `rengeso.webp` | レンゲソウ（Astragalus sinicus・岐阜県の花） | 実写写真<br>`Flowers of Astragalus sinicus 20170423` | **CC BY-SA 4.0**<br>→ **画面に表示ずみ** | Σ64 |
 | `momiji.webp` | モミジ（滋賀県の木） | 実写写真をまとめた1枚の画像から切り出し | **CC0**（パブリックドメイン相当） | 表示不要 |
 | `shirakaba.webp` | シラカバの林（長野県の木） | 実写写真をまとめた1枚の画像から切り出し | **CC0**（パブリックドメイン相当） | 表示不要 |

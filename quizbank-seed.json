@@ -439,7 +439,9 @@
   "juken": "",
   "note": "",
   "basis": "text",
-  "figAfter": "cloudtypes.svg"
+  "figAfter": "cloudtypes.svg",
+  "ansFig": "kosoun.webp",
+  "ansFigBy": "写真: Simon Eugster（CC BY-SA 3.0）"
  },
  {
   "id": "seed_r2_11",
@@ -486,7 +488,9 @@
   "juken": "",
   "note": "",
   "basis": "text",
-  "figAfter": "cloudtypes.svg"
+  "figAfter": "cloudtypes.svg",
+  "ansFig": "sosekiun.webp",
+  "ansFigBy": "写真: Ludwig Schneider（CC BY-SA 3.0）"
  },
  {
   "id": "seed_r2_14",
