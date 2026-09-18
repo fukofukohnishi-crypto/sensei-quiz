@@ -5718,7 +5718,9 @@
   "explain": "天台宗の総本山です。",
   "juken": "最澄＝延暦寺（比叡山）、空海＝金剛峯寺（高野山）。",
   "basis": "text",
-  "id": "seed_s3_048"
+  "id": "seed_s3_048",
+  "ansFig": "enryakuji.webp",
+  "ansFigBy": "写真: baggio4ever（CC BY 3.0）"
  },
  {
   "type": "text",
