@@ -4627,7 +4627,9 @@
   "explain": "高野山にある、真言宗のお寺です。",
   "juken": "空海＝金剛峯寺（高野山）、最澄＝延暦寺（比叡山）。",
   "basis": "text",
-  "id": "seed_s2_042"
+  "id": "seed_s2_042",
+  "ansFig": "kongobuji.webp",
+  "ansFigBy": "写真: 663highland（CC BY 2.5）"
  },
  {
   "type": "text",

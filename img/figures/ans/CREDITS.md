@@ -64,6 +64,7 @@ PD / CC0 の写真は、画面表示は不要。
 | `ransoun.webp` | 乱層雲（雨雲。暗い灰色が空一面をおおう） | Wikimedia Commons<br>`Nimbostratus clouds hanging over Virginia Tech…` | **CC BY-SA 3.0**<br>→ **画面に表示ずみ** | Eric T Gunther |
 | `zenkoji.webp` | 善光寺（長野市・山門） | Wikimedia Commons<br>`信州善光寺 20220330-P1340541.jpg` | **CC BY 4.0**<br>→ **画面に表示ずみ** | くろふね |
 | `shitennoji.webp` | 四天王寺（大阪市。池ごしの朱色の門。右の露店は切り落とした） | Wikimedia Commons<br>`Shitenno-ji Temple @ Osaka (13382740383).jpg` | **CC BY 2.0**<br>→ **画面に表示ずみ** | Guilhem Vellut |
+| `kongobuji.webp` | 金剛峯寺（和歌山県・高野山） | Wikimedia Commons<br>`Kongobuji Koyasan01n4272.jpg` | **CC BY 2.5**<br>→ **画面に表示ずみ** | 663highland |
 | `sekiranun.webp` | 積乱雲（入道雲。フランス・ロレーヌ地方） | Wikimedia Commons<br>`Cumulonimbus capillatus in Lorraine, France.jpg` | **CC BY-SA 4.0**<br>→ **画面に表示ずみ** | Grain de sel |
 | `rengeso.webp` | レンゲソウ（Astragalus sinicus・岐阜県の花） | 実写写真<br>`Flowers of Astragalus sinicus 20170423` | **CC BY-SA 4.0**<br>→ **画面に表示ずみ** | Σ64 |
 | `momiji.webp` | モミジ（滋賀県の木） | 実写写真をまとめた1枚の画像から切り出し | **CC0**（パブリックドメイン相当） | 表示不要 |
