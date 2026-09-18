@@ -229,7 +229,9 @@
   "explain": "サケは海で育って川にもどり、ウナギは川で育って海へ産卵に行きます。",
   "juken": "サケとウナギは行き来の向きが逆。ここが問われる。",
   "note": "",
-  "basis": "text"
+  "basis": "text",
+  "ansFig": "unagi.webp",
+  "ansFigBy": "写真: Ffish.asia（CC BY 4.0）"
  },
  {
   "id": "seed_r1_15",
