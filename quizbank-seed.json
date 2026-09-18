@@ -3381,7 +3381,9 @@
   "explain": "金閣は建物の名前、鹿苑寺はお寺の名前です。",
   "juken": "",
   "basis": "text",
-  "id": "seed_s1_012"
+  "id": "seed_s1_012",
+  "ansFig": "kinkaku.webp",
+  "ansFigBy": "写真: Basile Morin（CC BY-SA 4.0）"
  },
  {
   "type": "text",
@@ -3856,7 +3858,9 @@
   "explain": "良質な木材として知られていました。",
   "juken": "",
   "basis": "text",
-  "id": "seed_s1_043"
+  "id": "seed_s1_043",
+  "ansFig": "osakajo.webp",
+  "ansFigBy": "写真: DXR（CC BY-SA 4.0）"
  },
  {
   "type": "text",
