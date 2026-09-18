@@ -1278,7 +1278,9 @@
   "explain": "この3種類は海水でも淡水でも生活できます。",
   "juken": "",
   "basis": "text",
-  "id": "seed_t1_19"
+  "id": "seed_t1_19",
+  "ansFig": "ayu.webp",
+  "ansFigBy": "写真: OAS（CC BY-SA 3.0）"
  },
  {
   "type": "text",
