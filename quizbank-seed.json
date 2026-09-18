@@ -6783,7 +6783,9 @@
   "explain": "長野市にある有名なお寺です。",
   "juken": "",
   "basis": "text",
-  "id": "seed_s5_015"
+  "id": "seed_s5_015",
+  "ansFig": "zenkoji.webp",
+  "ansFigBy": "写真: くろふね（CC BY 4.0）"
  },
  {
   "type": "text",
