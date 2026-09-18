@@ -392,7 +392,8 @@
   "juken": "",
   "note": "",
   "basis": "text",
-  "figAfter": "cloudtypes.svg"
+  "figAfter": "cloudtypes.svg",
+  "ansFig": "seki.svg"
  },
  {
   "id": "seed_r2_08",
@@ -407,7 +408,8 @@
   "juken": "",
   "note": "",
   "basis": "text",
-  "figAfter": "cloudtypes.svg"
+  "figAfter": "cloudtypes.svg",
+  "ansFig": "sou.svg"
  },
  {
   "id": "seed_r2_09",
@@ -967,7 +969,8 @@
   "explain": "大きな耳から熱をにがして、体温を下げています。",
   "juken": "暑い地方の動物は耳や体の出っぱりが大きい。",
   "note": "",
-  "basis": "text"
+  "basis": "text",
+  "figAfter": "zounomimi.svg"
  },
  {
   "id": "seed_r5_10",
@@ -1825,7 +1828,8 @@
   "explain": "雨かんむりの漢字です。",
   "juken": "",
   "basis": "text",
-  "id": "seed_t2_56"
+  "id": "seed_t2_56",
+  "figAfter": "hyo_arare_mizore.svg"
  },
  {
   "type": "text",
@@ -1838,7 +1842,8 @@
   "explain": "あられより大きい氷のかたまりです。",
   "juken": "",
   "basis": "text",
-  "id": "seed_t2_57"
+  "id": "seed_t2_57",
+  "figAfter": "hyo_arare_mizore.svg"
  },
  {
   "type": "text",
@@ -1851,7 +1856,8 @@
   "explain": "雨がまじった雪のことです。",
   "juken": "",
   "basis": "text",
-  "id": "seed_t2_58"
+  "id": "seed_t2_58",
+  "figAfter": "hyo_arare_mizore.svg"
  },
  {
   "type": "text",
@@ -1866,7 +1872,8 @@
   "explain": "5mmが、あられとひょうの分かれ目です。",
   "juken": "あられとひょうの区別は5mm。数字で問われる。",
   "basis": "text",
-  "id": "seed_t2_59"
+  "id": "seed_t2_59",
+  "figAfter": "hyo_arare_mizore.svg"
  },
  {
   "type": "text",
@@ -1881,7 +1888,8 @@
   "explain": "5mm以上のものをひょうといいます。",
   "juken": "",
   "basis": "text",
-  "id": "seed_t2_60"
+  "id": "seed_t2_60",
+  "figAfter": "hyo_arare_mizore.svg"
  },
  {
   "type": "text",
@@ -1894,7 +1902,8 @@
   "explain": "雨と雪が同時に降っている状態です。",
   "juken": "",
   "basis": "text",
-  "id": "seed_t2_61"
+  "id": "seed_t2_61",
+  "figAfter": "hyo_arare_mizore.svg"
  },
  {
   "type": "text",

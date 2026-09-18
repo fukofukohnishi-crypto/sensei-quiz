@@ -1,0 +1,22 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 200 200" width="200" height="200" role="img" aria-label="「層」＝横に広がった雲">
+<defs>
+<linearGradient id="bg" x1="0" y1="0" x2="0" y2="1">
+<stop offset="0" stop-color="#bfe0fb"/><stop offset="1" stop-color="#e8f4ff"/></linearGradient>
+<clipPath id="cp"><circle cx="100" cy="100" r="96"/></clipPath>
+</defs>
+<circle cx="100" cy="100" r="96" fill="url(#bg)"/>
+<g clip-path="url(#cp)">
+  <!-- もこもこせず、横に長く広がっている -->
+  <g fill="#ffffff">
+    <rect x="-10" y="58" width="220" height="22" rx="11"/>
+    <rect x="-10" y="92" width="220" height="26" rx="13"/>
+    <rect x="-10" y="130" width="220" height="20" rx="10"/>
+  </g>
+  <g fill="#d7e6f4">
+    <rect x="-10" y="72" width="220" height="8" rx="4"/>
+    <rect x="-10" y="110" width="220" height="8" rx="4"/>
+    <rect x="-10" y="144" width="220" height="6" rx="3"/>
+  </g>
+</g>
+<circle cx="100" cy="100" r="96" fill="none" stroke="#cfe0f0" stroke-width="3"/>
+</svg>

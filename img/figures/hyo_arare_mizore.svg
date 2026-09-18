@@ -1,0 +1,68 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 760 340" width="760" height="340" role="img" aria-label="あられ・ひょう・みぞれのちがい">
+  <style>
+    .ja{font-family:-apple-system,BlinkMacSystemFont,"Hiragino Sans","Yu Gothic",sans-serif}
+    .ttl{font-size:14px;font-weight:800;fill:#ffd700;letter-spacing:.08em}
+    .nm{font-size:19px;font-weight:800;fill:#f2f5ff}
+    .kj{font-size:17px;font-weight:800;fill:#ffd700}
+    .sb{font-size:13px;fill:#aab4cc}
+  </style>
+  <rect width="760" height="340" fill="#141428"/>
+  <text class="ja ttl" x="28" y="34">空から降ってくる、雨と雪のなかま</text>
+  <line x1="256" y1="52" x2="256" y2="312" stroke="#2c2c48" stroke-width="2"/>
+  <line x1="504" y1="52" x2="504" y2="312" stroke="#2c2c48" stroke-width="2"/>
+
+  <!-- あられ：5mm未満の氷のかたまり -->
+  <text class="ja nm" x="28" y="84">あられ</text>
+  <text class="ja kj" x="120" y="84">霰</text>
+  <text class="ja sb" x="28" y="110">直径 5mm 未満の氷のかたまり</text>
+  <g>
+    <circle cx="76" cy="192" r="11" fill="#cfe6fb" stroke="#8fb8de" stroke-width="2"/>
+    <circle cx="112" cy="214" r="10" fill="#cfe6fb" stroke="#8fb8de" stroke-width="2"/>
+    <circle cx="150" cy="186" r="12" fill="#cfe6fb" stroke="#8fb8de" stroke-width="2"/>
+    <circle cx="112" cy="166" r="9"  fill="#cfe6fb" stroke="#8fb8de" stroke-width="2"/>
+  </g>
+  <g stroke="#6f7fa0" stroke-width="2">
+    <line x1="60" y1="256" x2="166" y2="256"/>
+    <line x1="60" y1="250" x2="60" y2="262"/><line x1="166" y1="250" x2="166" y2="262"/>
+  </g>
+  <text class="ja sb" x="76" y="282">5mm より小さい</text>
+
+  <!-- ひょう：5mm以上の氷のかたまり -->
+  <text class="ja nm" x="284" y="84">ひょう</text>
+  <text class="ja kj" x="376" y="84">雹</text>
+  <text class="ja sb" x="284" y="110">直径 5mm 以上の氷のかたまり</text>
+  <g>
+    <circle cx="352" cy="196" r="34" fill="#cfe6fb" stroke="#8fb8de" stroke-width="3"/>
+    <circle cx="342" cy="186" r="13" fill="#ffffff" opacity=".7" stroke="none"/>
+    <circle cx="412" cy="216" r="20" fill="#cfe6fb" stroke="#8fb8de" stroke-width="2"/>
+  </g>
+  <g stroke="#6f7fa0" stroke-width="2">
+    <line x1="318" y1="256" x2="386" y2="256"/>
+    <line x1="318" y1="250" x2="318" y2="262"/><line x1="386" y1="250" x2="386" y2="262"/>
+  </g>
+  <text class="ja sb" x="300" y="282">5mm より大きい</text>
+
+  <!-- みぞれ：雨がまじった雪 -->
+  <text class="ja nm" x="532" y="84">みぞれ</text>
+  <text class="ja kj" x="624" y="84">霙</text>
+  <text class="ja sb" x="532" y="110">雨がまじった雪</text>
+  <g>
+    <g fill="#7fc4f2">
+      <path d="M560 160 C560 160 552 174 552 180 a8 8 0 0 0 16 0 c0-6-8-20-8-20Z"/>
+      <path d="M624 186 C624 186 616 200 616 206 a8 8 0 0 0 16 0 c0-6-8-20-8-20Z"/>
+      <path d="M592 222 C592 222 584 236 584 242 a8 8 0 0 0 16 0 c0-6-8-20-8-20Z"/>
+    </g>
+    <g stroke="#ffffff" stroke-width="3" stroke-linecap="round">
+      <g transform="translate(606,158)">
+        <line x1="-12" y1="0" x2="12" y2="0"/><line x1="-6" y1="-10" x2="6" y2="10"/><line x1="6" y1="-10" x2="-6" y2="10"/>
+      </g>
+      <g transform="translate(556,224)">
+        <line x1="-12" y1="0" x2="12" y2="0"/><line x1="-6" y1="-10" x2="6" y2="10"/><line x1="6" y1="-10" x2="-6" y2="10"/>
+      </g>
+      <g transform="translate(646,236)">
+        <line x1="-10" y1="0" x2="10" y2="0"/><line x1="-5" y1="-9" x2="5" y2="9"/><line x1="5" y1="-9" x2="-5" y2="9"/>
+      </g>
+    </g>
+  </g>
+  <text class="ja sb" x="532" y="282">雨（しずく）と雪がいっしょに降る</text>
+</svg>

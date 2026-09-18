@@ -1,0 +1,40 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 760 340" width="760" height="340" role="img" aria-label="ゾウの大きな耳は体温を下げる役目がある">
+  <style>
+    .ja{font-family:-apple-system,BlinkMacSystemFont,"Hiragino Sans","Yu Gothic",sans-serif}
+    .ttl{font-size:14px;font-weight:800;fill:#ffd700;letter-spacing:.08em}
+    .nm{font-size:18px;font-weight:800;fill:#f2f5ff}
+    .sb{font-size:13px;fill:#aab4cc}
+  </style>
+  <rect width="760" height="340" fill="#141428"/>
+  <text class="ja ttl" x="28" y="34">ゾウの大きな耳</text>
+  <g transform="translate(300,40)">
+    <!-- 耳。体に対してとても大きいことがわかるように描く -->
+    <path d="M60 40 C-10 30 -30 120 0 190 C20 236 70 250 96 230 L96 60Z" fill="#9b9a97"/>
+    <path d="M78 58 C24 54 6 124 30 180 C46 216 78 226 96 214 L96 70Z" fill="#b2b0ad"/>
+    <path d="M220 40 C290 30 310 120 280 190 C260 236 210 250 184 230 L184 60Z" fill="#9b9a97"/>
+    <path d="M202 58 C256 54 274 124 250 180 C234 216 202 226 184 214 L184 70Z" fill="#b2b0ad"/>
+    <!-- 顔と鼻 -->
+    <path d="M96 48 C96 26 184 26 184 48 L184 176 C184 206 160 222 140 222 C120 222 96 206 96 176Z" fill="#a8a6a3" stroke="#82817e" stroke-width="2"/>
+    <path d="M120 198 C118 242 102 268 112 288 C124 312 152 308 158 288 C166 262 148 240 152 198Z" fill="#a8a6a3"/>
+    <g stroke="#8e8c89" stroke-width="2" fill="none" opacity=".8">
+      <path d="M116 228 C132 224 146 226 152 228"/><path d="M114 252 C130 248 144 250 152 252"/>
+      <path d="M114 276 C130 272 144 274 152 276"/>
+    </g>
+    <circle cx="122" cy="92" r="7" fill="#3c3b39"/><circle cx="158" cy="92" r="7" fill="#3c3b39"/>
+    <path d="M104 136 C112 128 124 124 132 128" fill="none" stroke="#8e8c89" stroke-width="3"/>
+    <path d="M176 136 C168 128 156 124 148 128" fill="none" stroke="#8e8c89" stroke-width="3"/>
+  </g>
+  <!-- 耳から熱が出ていくようす -->
+  <g stroke="#ff8c5a" stroke-width="4" stroke-linecap="round" fill="none" opacity=".9">
+    <path d="M250 110 C236 100 236 88 250 78"/>
+    <path d="M224 150 C210 140 210 128 224 118"/>
+    <path d="M250 190 C236 180 236 168 250 158"/>
+    <path d="M570 110 C584 100 584 88 570 78"/>
+    <path d="M596 150 C610 140 610 128 596 118"/>
+    <path d="M570 190 C584 180 584 168 570 158"/>
+  </g>
+  <text class="ja nm" x="28" y="200">大きな耳には</text>
+  <text class="ja nm" x="28" y="228" fill="#ffd700">体温を下げる</text>
+  <text class="ja nm" x="28" y="256">役目がある</text>
+  <text class="ja sb" x="28" y="288">ゾウの耳はとても大きい</text>
+</svg>
