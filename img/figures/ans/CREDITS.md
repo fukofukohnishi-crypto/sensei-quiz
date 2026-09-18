@@ -38,6 +38,7 @@ PD / CC0 の写真は、画面表示は不要。
 | `byodoin.webp` | 平等院鳳凰堂 | Wikimedia Commons<br>`Kyoto-Byodoin Phoenix Hall-xl.jpg` | **CC BY 4.0**<br>→ **画面に表示ずみ** | ganden |
 | `horyuji.webp` | 法隆寺（金堂と五重塔） | Wikimedia Commons<br>`Horyu-ji temple , 法隆寺 - panoramio.jpg` | **CC BY 3.0**<br>→ **画面に表示ずみ** | z tanuki |
 | `miyajima.webp` | 宮島（厳島神社の大鳥居・夕景） | Wikimedia Commons<br>`Itsukushima-jinja torii at sunset, Miyajima, Japan, 20240816 1812 4144.jpg` | **CC BY 4.0**<br>→ **画面に表示ずみ** | Jakub Hałun |
+| `gozanokuribi.webp` | 五山送り火（大文字・船岡山公園から） | Wikimedia Commons<br>`Gozanokuribi Daimonji2.jpg` | **CC BY-SA 3.0**<br>→ **画面に表示ずみ** | J_o |
 | `uyuni_kagami.webp` | 天空の鏡（水がたまったウユニ塩湖） | Wikimedia Commons<br>`Reflection on the Salar de Uyuni, bolivia.jpg` | **CC BY-SA 4.0**<br>→ **画面に表示ずみ** | Christopher Crouzet |
 | `nihonalps.webp` | 日本アルプス・飛騨山脈（北アルプス） | Wikimedia Commons<br>`Japanese Alps (51831654271).jpg` | **CC BY 2.0**<br>→ **画面に表示ずみ** | Raita Futo |
 | `hyoga.webp` | 氷河（アラスカ・コロニー氷河） | Wikimedia Commons<br>`Parque estatal Chugach, Alaska…DD 94.jpg` | **CC BY-SA 4.0**<br>→ **画面に表示ずみ** | Diego Delso |

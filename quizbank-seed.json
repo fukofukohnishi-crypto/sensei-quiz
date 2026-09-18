@@ -3488,7 +3488,9 @@
   "explain": "お盆に先祖を送る行事です。",
   "juken": "",
   "basis": "text",
-  "id": "seed_s1_019"
+  "id": "seed_s1_019",
+  "ansFig": "gozanokuribi.webp",
+  "ansFigBy": "写真: J_o（CC BY-SA 3.0）"
  },
  {
   "type": "text",
