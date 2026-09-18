@@ -3799,7 +3799,8 @@
   "explain": "土がなくなり、石室がむき出しになっています。",
   "juken": "",
   "basis": "text",
-  "id": "seed_s1_039"
+  "id": "seed_s1_039",
+  "ansFig": "ishibutai.webp"
  },
  {
   "type": "text",
@@ -5177,7 +5178,8 @@
   "explain": "本州と淡路島をつなぐ橋です。",
   "juken": "本州四国連絡橋の神戸〜鳴門ルート。",
   "basis": "text",
-  "id": "seed_s3_017"
+  "id": "seed_s3_017",
+  "ansFig": "akashikaikyo.webp"
  },
  {
   "type": "text",
@@ -5817,7 +5819,8 @@
   "explain": "尾張徳川家のシンボルとなった城です。",
   "juken": "",
   "basis": "text",
-  "id": "seed_s4_007"
+  "id": "seed_s4_007",
+  "ansFig": "nagoyajo.webp"
  },
  {
   "type": "text",

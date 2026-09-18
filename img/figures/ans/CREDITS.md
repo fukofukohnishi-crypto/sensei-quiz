@@ -42,6 +42,9 @@ PD / CC0 の写真は、画面表示は不要。
 | `osakajo.webp` | 大阪城（天守閣・南から） | Wikimedia Commons<br>`Osaka Castle, Keep tower, South view 20190415 1.jpg` | **CC BY-SA 4.0**<br>→ **画面に表示ずみ** | DXR |
 | `kinkaku.webp` | 金閣（鹿苑寺・鏡湖池の映りこみ） | Wikimedia Commons<br>`Water reflection of Kinkaku-ji Temple a sunny day, Kyoto, Japan.jpg` | **CC BY-SA 4.0**<br>→ **画面に表示ずみ** | Basile Morin |
 | `kiyomizudera.webp` | 清水の舞台（清水寺） | Wikimedia Commons<br>`清水の舞台・2024 5 30.jpg` | **CC BY-SA 4.0**<br>→ **画面に表示ずみ** | 来島海峡大橋 |
+| `nagoyajo.webp` | 名古屋城（天守閣。屋根の上にしゃちほこ） | Wikimedia Commons | **PD**（パブリックドメイン） | 表示不要 |
+| `ishibutai.webp` | 石舞台古墳（奈良県明日香村） | Wikimedia Commons | **PD**（パブリックドメイン） | 表示不要 |
+| `akashikaikyo.webp` | 明石海峡大橋（神戸市と淡路島をむすぶ） | Wikimedia Commons | **PD**（パブリックドメイン） | 表示不要 |
 | `uyuni_kagami.webp` | 天空の鏡（水がたまったウユニ塩湖） | Wikimedia Commons<br>`Reflection on the Salar de Uyuni, bolivia.jpg` | **CC BY-SA 4.0**<br>→ **画面に表示ずみ** | Christopher Crouzet |
 | `nihonalps.webp` | 日本アルプス・飛騨山脈（北アルプス） | Wikimedia Commons<br>`Japanese Alps (51831654271).jpg` | **CC BY 2.0**<br>→ **画面に表示ずみ** | Raita Futo |
 | `hyoga.webp` | 氷河（アラスカ・コロニー氷河） | Wikimedia Commons<br>`Parque estatal Chugach, Alaska…DD 94.jpg` | **CC BY-SA 4.0**<br>→ **画面に表示ずみ** | Diego Delso |
