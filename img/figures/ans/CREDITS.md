@@ -69,6 +69,7 @@ PD / CC0 の写真は、画面表示は不要。
 | `himemasu.webp` | ヒメマス（*Oncorhynchus nerka*。産卵期の赤い個体） | Wikimedia Commons<br>`Sammamish kokanee (51666400632).jpg` | **CC BY 2.0**<br>→ **画面に表示ずみ** | Roger Tabor / USFWS |
 | `blackbass.webp` | ブラックバス（オオクチバス *Micropterus salmoides*） | Wikimedia Commons | **PD**（パブリックドメイン） | 表示不要 |
 | `magochi.webp` | マゴチ（*Platycephalus* sp.。砂底にはりついた姿） | Wikimedia Commons<br>`MaKC.jpg` | **CC BY 2.5**<br>→ **画面に表示ずみ** | Izuzuki |
+| `funa.webp` | フナ（沖縄島の個体。ひげがないのがコイとのちがい。右下のカラーチャートは黒でぬりつぶした） | 日本語版Wikipedia 経由 | **CC BY 4.0**<br>→ **画面に表示ずみ** | Ffish.asia |
 | `sekiranun.webp` | 積乱雲（入道雲。フランス・ロレーヌ地方） | Wikimedia Commons<br>`Cumulonimbus capillatus in Lorraine, France.jpg` | **CC BY-SA 4.0**<br>→ **画面に表示ずみ** | Grain de sel |
 | `rengeso.webp` | レンゲソウ（Astragalus sinicus・岐阜県の花） | 実写写真<br>`Flowers of Astragalus sinicus 20170423` | **CC BY-SA 4.0**<br>→ **画面に表示ずみ** | Σ64 |
 | `momiji.webp` | モミジ（滋賀県の木） | 実写写真をまとめた1枚の画像から切り出し | **CC0**（パブリックドメイン相当） | 表示不要 |

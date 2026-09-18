@@ -1228,7 +1228,9 @@
   "explain": "どちらも川や湖でくらす魚です。",
   "juken": "",
   "basis": "text",
-  "id": "seed_t1_16"
+  "id": "seed_t1_16",
+  "ansFig": "funa.webp",
+  "ansFigBy": "写真: Ffish.asia（CC BY 4.0）"
  },
  {
   "type": "text",
