@@ -1,0 +1,35 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 200 200" width="200" height="200" role="img" aria-label="食塩の結晶（立方体）">
+<defs>
+<linearGradient id="bg" x1="0" y1="0" x2="0" y2="1">
+<stop offset="0" stop-color="#e7f1fb"/><stop offset="1" stop-color="#f7fbff"/></linearGradient>
+<linearGradient id="fr" x1="0" y1="0" x2="0" y2="1">
+<stop offset="0" stop-color="#ffffff"/><stop offset="1" stop-color="#dce9f6"/></linearGradient>
+<linearGradient id="sd" x1="0" y1="0" x2="1" y2="1">
+<stop offset="0" stop-color="#c3d8ec"/><stop offset="1" stop-color="#a9c5de"/></linearGradient>
+<clipPath id="cp"><circle cx="100" cy="100" r="96"/></clipPath>
+</defs>
+<circle cx="100" cy="100" r="96" fill="url(#bg)"/>
+<g clip-path="url(#cp)">
+  <!-- うしろの小さな結晶。ひとつぶではなく、いくつも重なって見えることを示す -->
+  <g opacity=".75" stroke="#8fb0cc" stroke-width="2" stroke-linejoin="round">
+    <path d="M36 92 L54 76 L88 76 L88 106 L70 122 L36 122Z" fill="url(#fr)"/>
+    <path d="M36 92 L70 92 L88 76" fill="none"/>
+    <path d="M70 92 L70 122" fill="none"/>
+  </g>
+  <g opacity=".75" stroke="#8fb0cc" stroke-width="2" stroke-linejoin="round">
+    <path d="M128 54 L142 42 L170 42 L170 66 L156 78 L128 78Z" fill="url(#fr)"/>
+    <path d="M128 54 L156 54 L170 42" fill="none"/>
+    <path d="M156 54 L156 78" fill="none"/>
+  </g>
+  <!-- まん中の大きな結晶。立方体（サイコロの形）がひと目でわかるようにする -->
+  <g stroke="#5d82a4" stroke-width="3" stroke-linejoin="round">
+    <path d="M62 92 L96 62 L164 62 L164 130 L130 160 L62 160Z" fill="url(#fr)"/>
+    <path d="M62 92 L130 92 L164 62" fill="none"/>
+    <path d="M130 92 L130 160" fill="none"/>
+    <path d="M62 92 L96 62" fill="none"/>
+  </g>
+  <path d="M130 92 L164 62 L164 130 L130 160Z" fill="url(#sd)" opacity=".55" stroke="none"/>
+  <path d="M62 92 L96 62 L164 62 L130 92Z" fill="#ffffff" opacity=".5" stroke="none"/>
+</g>
+<circle cx="100" cy="100" r="96" fill="none" stroke="#cfe0f0" stroke-width="3"/>
+</svg>

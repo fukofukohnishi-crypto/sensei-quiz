@@ -618,7 +618,8 @@
   "explain": "とけていたものが、その物質だけの決まった形をつくって出てきます。これが結晶です。",
   "juken": "結晶の形で物質を見分ける問題が出る。",
   "note": "",
-  "basis": "text"
+  "basis": "text",
+  "ansFig": "kessho.svg"
  },
  {
   "id": "seed_r3_04",
@@ -1931,7 +1932,8 @@
   "explain": "その物質だけの決まった形をしたかたまりです。",
   "juken": "結晶の形で物質を見分ける問題が出る。",
   "basis": "text",
-  "id": "seed_t3_64"
+  "id": "seed_t3_64",
+  "ansFig": "kessho.svg"
  },
  {
   "type": "text",
@@ -1947,7 +1949,8 @@
   "explain": "サイコロのような四角い形です。",
   "juken": "食塩＝立方体。図で問われる。",
   "basis": "text",
-  "id": "seed_t3_65"
+  "id": "seed_t3_65",
+  "ansFig": "kessho.svg"
  },
  {
   "type": "text",
