@@ -4183,7 +4183,9 @@
   "explain": "大阪市にある、日本でも古いお寺の一つです。",
   "juken": "聖徳太子＝法隆寺・四天王寺。両方おさえる。",
   "basis": "text",
-  "id": "seed_s2_013"
+  "id": "seed_s2_013",
+  "ansFig": "shitennoji.webp",
+  "ansFigBy": "写真: Guilhem Vellut（CC BY 2.0）"
  },
  {
   "type": "text",
