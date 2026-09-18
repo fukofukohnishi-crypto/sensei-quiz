@@ -1639,7 +1639,8 @@
   "juken": "",
   "basis": "text",
   "id": "seed_t2_45",
-  "figAfter": "cloudtypes.svg"
+  "figAfter": "cloudtypes.svg",
+  "ansFig": "kenun.webp"
  },
  {
   "type": "text",
