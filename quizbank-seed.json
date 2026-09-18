@@ -454,7 +454,9 @@
   "juken": "",
   "note": "",
   "basis": "text",
-  "figAfter": "cloudtypes.svg"
+  "figAfter": "cloudtypes.svg",
+  "ansFig": "soun.webp",
+  "ansFigBy": "写真: Rollcloud（CC BY 4.0）"
  },
  {
   "id": "seed_r2_12",
@@ -1686,7 +1688,9 @@
   "juken": "",
   "basis": "text",
   "id": "seed_t2_48",
-  "figAfter": "cloudtypes.svg"
+  "figAfter": "cloudtypes.svg",
+  "ansFig": "sekiun.webp",
+  "ansFigBy": "写真: Toby Hudson（CC BY-SA 3.0）"
  },
  {
   "type": "text",
