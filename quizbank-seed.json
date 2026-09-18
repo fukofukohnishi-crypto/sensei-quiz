@@ -3523,7 +3523,9 @@
   "explain": "「清水の舞台から飛び降りる」ということわざです。",
   "juken": "",
   "basis": "text",
-  "id": "seed_s1_021"
+  "id": "seed_s1_021",
+  "ansFig": "kiyomizudera.webp",
+  "ansFigBy": "写真: 来島海峡大橋（CC BY-SA 4.0）"
  },
  {
   "type": "text",
