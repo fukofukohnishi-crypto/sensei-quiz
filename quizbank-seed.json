@@ -5596,7 +5596,9 @@
   "explain": "建てられたときの天守がそのまま残っています。",
   "juken": "",
   "basis": "text",
-  "id": "seed_s3_043"
+  "id": "seed_s3_043",
+  "ansFig": "hikonejo.webp",
+  "ansFigBy": "写真: Jnn（CC BY 2.1 JP）"
  },
  {
   "type": "text",
