@@ -5662,7 +5662,8 @@
   "explain": "琵琶湖のそばに建てられたお城です。",
   "juken": "安土城＝織田信長。大阪城＝豊臣秀吉。",
   "basis": "text",
-  "id": "seed_s3_047"
+  "id": "seed_s3_047",
+  "ansFig": "azuchijo.webp"
  },
  {
   "type": "text",
