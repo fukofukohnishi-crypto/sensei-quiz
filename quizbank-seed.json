@@ -424,7 +424,9 @@
   "juken": "例外として問われやすい。",
   "note": "",
   "basis": "text",
-  "figAfter": "cloudtypes.svg"
+  "figAfter": "cloudtypes.svg",
+  "ansFig": "ransoun.webp",
+  "ansFigBy": "写真: Eric T Gunther（CC BY-SA 3.0）"
  },
  {
   "id": "seed_r2_10",
@@ -1527,7 +1529,9 @@
   "juken": "乱層雲＝弱い雨、積乱雲＝激しい雨。対で覚える。",
   "basis": "text",
   "id": "seed_t2_37",
-  "figAfter": "cloudtypes.svg"
+  "figAfter": "cloudtypes.svg",
+  "ansFig": "ransoun.webp",
+  "ansFigBy": "写真: Eric T Gunther（CC BY-SA 3.0）"
  },
  {
   "type": "text",
