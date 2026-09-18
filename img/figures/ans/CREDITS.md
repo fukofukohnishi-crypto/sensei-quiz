@@ -48,6 +48,8 @@ PD / CC0 の写真は、画面表示は不要。
 | `azuchijo.webp` | 安土城跡（天守閣址の石垣と石段） | 日本語版Wikipedia 経由<br>「安土城 天守閣址」 | **CC0**（パブリックドメイン相当） | 表示不要（Mont Blank rich） |
 | `isejingu.webp` | 伊勢神宮（宇治橋前の大鳥居） | Wikimedia Commons<br>`Ise Grand Shrine, Mie Prefecture, Japan.` | **CC BY 2.0**<br>→ **画面に表示ずみ** | foooomio |
 | `ume.webp` | ウメの花（和歌山県の花） | 実写写真をまとめた1枚の画像から切り出し | **CC0**（パブリックドメイン相当） | 表示不要 |
+| `sakuraso_ume.webp` | サクラソウ（Primula sieboldii）とウメ（大阪府の花）。2枚を横に並べた | 実写写真 | サクラソウ **CC BY 2.0**<br>→ **画面に表示ずみ**／ウメ **CC0** | Juni（Flickr: jam343） |
+| `kusunoki.webp` | クスノキ（Cinnamomum camphora・兵庫県の木） | 実写写真 | **CC BY 3.0 US**<br>→ **画面に表示ずみ** | Forest & Kim Starr |
 | `momiji.webp` | モミジ（滋賀県の木） | 実写写真をまとめた1枚の画像から切り出し | **CC0**（パブリックドメイン相当） | 表示不要 |
 | `shirakaba.webp` | シラカバの林（長野県の木） | 実写写真をまとめた1枚の画像から切り出し | **CC0**（パブリックドメイン相当） | 表示不要 |
 | `shotokutaishi.webp` | 聖徳太子 の肖像（「唐本御影」＝伝聖徳太子二王子像の中央の人物） | 8世紀の絵 | **PD**（パブリックドメイン） | 表示不要 |
