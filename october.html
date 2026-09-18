@@ -1389,7 +1389,11 @@ function patchFigures(list){
     const cur=byId[sd.id]||byQ[sd.q];
     if(!cur)return;
     if(sd.figAfter&&!cur.figAfter){ cur.figAfter=sd.figAfter; n++; }
-    if(sd.ansFig &&!cur.ansFig ){ cur.ansFig =sd.ansFig;  n++; }
+    /* 絵は、入っていなければ入れる。すでに入っていても、種のほうが別の名前に
+       なっていれば差しかえる（自作SVGを実写にするときは拡張子が変わるので、
+       同じ名前での差しかえだけでは届かない）。承認画面で人が直せるのは
+       問題文とこたえだけなので、ここで上書きしても人の直しは消えない */
+    if(sd.ansFig&&cur.ansFig!==sd.ansFig){ cur.ansFig=sd.ansFig; n++; }
     /* クレジットは、絵が入っていても後から直せるようにする（表示が要るため）。
        絵を別の写真に差しかえたとき、古い撮影者名が残るとまちがった表示に
        なってしまうので、消す方向にも反映する */
