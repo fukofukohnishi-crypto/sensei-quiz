@@ -1625,7 +1625,9 @@
   "juken": "",
   "basis": "text",
   "id": "seed_t2_44",
-  "figAfter": "cloudtypes.svg"
+  "figAfter": "cloudtypes.svg",
+  "ansFig": "kanatokogumo.webp",
+  "ansFigBy": "写真: Simon Eugster（CC BY-SA 3.0）"
  },
  {
   "type": "text",
