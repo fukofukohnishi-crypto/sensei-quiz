@@ -473,7 +473,9 @@
   "juken": "",
   "note": "",
   "basis": "text",
-  "figAfter": "cloudtypes.svg"
+  "figAfter": "cloudtypes.svg",
+  "ansFig": "kensoun.webp",
+  "ansFigBy": "写真: Franz van Duns（CC BY 4.0）"
  },
  {
   "id": "seed_r2_13",
@@ -1617,7 +1619,9 @@
   "juken": "乱層雲との対比で問われる。",
   "basis": "text",
   "id": "seed_t2_43",
-  "figAfter": "cloudtypes.svg"
+  "figAfter": "cloudtypes.svg",
+  "ansFig": "sekiranun.webp",
+  "ansFigBy": "写真: Grain de sel（CC BY-SA 4.0）"
  },
  {
   "type": "text",
@@ -1723,7 +1727,9 @@
   "juken": "",
   "basis": "text",
   "id": "seed_t2_50",
-  "figAfter": "cloudtypes.svg"
+  "figAfter": "cloudtypes.svg",
+  "ansFig": "kensoun.webp",
+  "ansFigBy": "写真: Franz van Duns（CC BY 4.0）"
  },
  {
   "type": "text",
