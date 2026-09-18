@@ -22,7 +22,7 @@ PD / CC0 の写真は、画面表示は不要。
 | `cheetah.webp` | チーター | Wikimedia Commons | **PD**（パブリックドメイン） | 表示不要 |
 | `tsukutsukuboshi.webp` | ツクツクボウシ | Wikimedia Commons | **PD**（パブリックドメイン） | 表示不要 |
 | `sphynx.webp` | スフィンクス（ネコの品種） | Wikimedia Commons | **PD**（パブリックドメイン） | 表示不要 |
-| `biwakoonamazu.webp` | ビワコオオナマズ | Wikimedia Commons | **PD**（パブリックドメイン） | 表示不要 |
+| `biwakoonamazu.webp` | ビワコオオナマズ（水そうの生きた個体。標本の写真から差しかえ） | Wikimedia Commons<br>`Silurus biwaensis2.jpg` | **CC BY-SA 3.0**<br>→ **画面に表示ずみ** | KENPEI |
 | `sankakusu.webp` | 三角州（レナ川の三角州・衛星写真） | Wikimedia Commons | **PD**（パブリックドメイン） | 表示不要。**疑似カラー**の衛星写真 |
 | `bonchi.webp` | 盆地（奈良盆地） | 日本語版Wikipedia 経由 | **PD**（パブリックドメイン） | 表示不要 |
 | `fujigoko.webp` | 富士五湖・富士山 | Wikimedia Commons | **PD**（パブリックドメイン） | 表示不要 |
@@ -66,6 +66,7 @@ PD / CC0 の写真は、画面表示は不要。
 | `shitennoji.webp` | 四天王寺（大阪市。池ごしの朱色の門。右の露店は切り落とした） | Wikimedia Commons<br>`Shitenno-ji Temple @ Osaka (13382740383).jpg` | **CC BY 2.0**<br>→ **画面に表示ずみ** | Guilhem Vellut |
 | `kongobuji.webp` | 金剛峯寺（和歌山県・高野山） | Wikimedia Commons<br>`Kongobuji Koyasan01n4272.jpg` | **CC BY 2.5**<br>→ **画面に表示ずみ** | 663highland |
 | `enryakuji.webp` | 延暦寺（滋賀県・比叡山） | Wikimedia Commons<br>`比叡山延暦寺 - panoramio (1).jpg` | **CC BY 3.0**<br>→ **画面に表示ずみ** | baggio4ever |
+| `himemasu.webp` | ヒメマス（*Oncorhynchus nerka*。産卵期の赤い個体） | Wikimedia Commons<br>`Sammamish kokanee (51666400632).jpg` | **CC BY 2.0**<br>→ **画面に表示ずみ** | Roger Tabor / USFWS |
 | `sekiranun.webp` | 積乱雲（入道雲。フランス・ロレーヌ地方） | Wikimedia Commons<br>`Cumulonimbus capillatus in Lorraine, France.jpg` | **CC BY-SA 4.0**<br>→ **画面に表示ずみ** | Grain de sel |
 | `rengeso.webp` | レンゲソウ（Astragalus sinicus・岐阜県の花） | 実写写真<br>`Flowers of Astragalus sinicus 20170423` | **CC BY-SA 4.0**<br>→ **画面に表示ずみ** | Σ64 |
 | `momiji.webp` | モミジ（滋賀県の木） | 実写写真をまとめた1枚の画像から切り出し | **CC0**（パブリックドメイン相当） | 表示不要 |

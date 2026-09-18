@@ -257,7 +257,9 @@
   "explain": "ヒメマスは人の手で十和田湖に放流された魚です。",
   "juken": "",
   "note": "",
-  "basis": "text"
+  "basis": "text",
+  "ansFig": "himemasu.webp",
+  "ansFigBy": "写真: Roger Tabor / USFWS（CC BY 2.0）"
  },
  {
   "id": "seed_r1_17",
@@ -5563,7 +5565,8 @@
   "juken": "固有種＝そこにしかいない生き物。",
   "basis": "text",
   "id": "seed_s3_037",
-  "ansFig": "biwakoonamazu.webp"
+  "ansFig": "biwakoonamazu.webp",
+  "ansFigBy": "写真: KENPEI（CC BY-SA 3.0）"
  },
  {
   "type": "text",
