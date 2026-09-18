@@ -50,6 +50,8 @@ PD / CC0 の写真は、画面表示は不要。
 | `ume.webp` | ウメの花（和歌山県の花） | 実写写真をまとめた1枚の画像から切り出し | **CC0**（パブリックドメイン相当） | 表示不要 |
 | `sakuraso_ume.webp` | サクラソウ（Primula sieboldii）とウメ（大阪府の花）。2枚を横に並べた | 実写写真 | サクラソウ **CC BY 2.0**<br>→ **画面に表示ずみ**／ウメ **CC0** | Juni（Flickr: jam343） |
 | `kusunoki.webp` | クスノキ（Cinnamomum camphora・兵庫県の木） | 実写写真 | **CC BY 3.0 US**<br>→ **画面に表示ずみ** | Forest & Kim Starr |
+| `icho.webp` | イチョウ（Ginkgo biloba・大阪府の木） | 実写写真 | **CC BY-SA 3.0**<br>→ **画面に表示ずみ** | James Field |
+| `rengeso.webp` | レンゲソウ（Astragalus sinicus・岐阜県の花） | 実写写真<br>`Flowers of Astragalus sinicus 20170423` | **CC BY-SA 4.0**<br>→ **画面に表示ずみ** | Σ64 |
 | `momiji.webp` | モミジ（滋賀県の木） | 実写写真をまとめた1枚の画像から切り出し | **CC0**（パブリックドメイン相当） | 表示不要 |
 | `shirakaba.webp` | シラカバの林（長野県の木） | 実写写真をまとめた1枚の画像から切り出し | **CC0**（パブリックドメイン相当） | 表示不要 |
 | `shotokutaishi.webp` | 聖徳太子 の肖像（「唐本御影」＝伝聖徳太子二王子像の中央の人物） | 8世紀の絵 | **PD**（パブリックドメイン） | 表示不要 |
