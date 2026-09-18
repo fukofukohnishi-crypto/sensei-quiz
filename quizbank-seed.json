@@ -3366,7 +3366,8 @@
   "explain": "表面に金ぱくがはられています。",
   "juken": "義満＝金閣、義政＝銀閣。",
   "basis": "text",
-  "id": "seed_s1_011"
+  "id": "seed_s1_011",
+  "ansFig": "yoshimitsu.webp"
  },
  {
   "type": "text",
@@ -3396,7 +3397,8 @@
   "explain": "金閣の足利義満の孫にあたります。",
   "juken": "義政の時代に応仁の乱が起きた。",
   "basis": "text",
-  "id": "seed_s1_013"
+  "id": "seed_s1_013",
+  "ansFig": "yoshimasa.webp"
  },
  {
   "type": "text",
@@ -3444,7 +3446,8 @@
   "explain": "藤原道長の子で、摂関政治の全盛期の人物です。",
   "juken": "藤原道長・頼通の親子は必出。",
   "basis": "text",
-  "id": "seed_s1_016"
+  "id": "seed_s1_016",
+  "ansFig": "yorimichi.webp"
  },
  {
   "type": "text",
@@ -3675,7 +3678,8 @@
   "explain": "伝染病や戦いで苦しむ人々を救おうとしました。",
   "juken": "聖武天皇＝大仏・国分寺。奈良時代の最重要人物。",
   "basis": "text",
-  "id": "seed_s1_031"
+  "id": "seed_s1_031",
+  "ansFig": "shomutenno.webp"
  },
  {
   "type": "text",
@@ -3754,7 +3758,8 @@
   "explain": "十七条の憲法や冠位十二階でも知られる人物です。",
   "juken": "聖徳太子＝法隆寺・四天王寺。",
   "basis": "text",
-  "id": "seed_s1_036"
+  "id": "seed_s1_036",
+  "ansFig": "shotokutaishi.webp"
  },
  {
   "type": "text",
@@ -3815,7 +3820,8 @@
   "explain": "当時の有力な豪族です。",
   "juken": "",
   "basis": "text",
-  "id": "seed_s1_040"
+  "id": "seed_s1_040",
+  "ansFig": "umako.webp"
  },
  {
   "type": "text",
@@ -3909,7 +3915,8 @@
   "explain": "5回目の航海で嵐にあい、両目が見えなくなってもあきらめませんでした。",
   "juken": "唐招提寺を開いた人物。",
   "basis": "text",
-  "id": "seed_s1_046"
+  "id": "seed_s1_046",
+  "ansFig": "ganjin.webp"
  },
  {
   "type": "text",
@@ -4105,7 +4112,8 @@
   "explain": "今建っている大阪城は、あとから建てなおされたものです。",
   "juken": "大阪城＝豊臣秀吉。",
   "basis": "text",
-  "id": "seed_s2_010"
+  "id": "seed_s2_010",
+  "ansFig": "hideyoshi.webp"
  },
  {
   "type": "text",
@@ -4608,7 +4616,8 @@
   "explain": "平安時代のはじめのお坊さんです。",
   "juken": "空海＝弘法大師。",
   "basis": "text",
-  "id": "seed_s2_043"
+  "id": "seed_s2_043",
+  "ansFig": "kukai.webp"
  },
  {
   "type": "text",
@@ -5694,7 +5703,8 @@
   "explain": "平安時代のはじめのお坊さんです。",
   "juken": "延暦寺は親鸞・栄西・日蓮も学んだ「日本仏教の母山」。",
   "basis": "text",
-  "id": "seed_s3_049"
+  "id": "seed_s3_049",
+  "ansFig": "saicho.webp"
  },
  {
   "type": "map_reverse",
@@ -6308,7 +6318,8 @@
   "explain": "「おくのほそ道」で知られる俳人です。",
   "juken": "",
   "basis": "text",
-  "id": "seed_s4_039"
+  "id": "seed_s4_039",
+  "ansFig": "basho.webp"
  },
  {
   "type": "text",
@@ -6372,7 +6383,8 @@
   "explain": "今から100年以上前のことです。",
   "juken": "",
   "basis": "text",
-  "id": "seed_s4_043"
+  "id": "seed_s4_043",
+  "ansFig": "mikimoto.webp"
  },
  {
   "type": "text",
@@ -7773,7 +7785,8 @@
   "explain": "東軍を率いて西軍の石田三成に勝ちました。",
   "juken": "関ヶ原に勝った家康が江戸幕府を開く。",
   "basis": "text",
-  "id": "seed_s5_057"
+  "id": "seed_s5_057",
+  "ansFig": "ieyasu.webp"
  },
  {
   "type": "text",
