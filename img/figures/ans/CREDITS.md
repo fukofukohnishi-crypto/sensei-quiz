@@ -79,6 +79,8 @@ PD / CC0 の写真は、画面表示は不要。
 | `hanashobu.webp` | ハナショウブ（*Iris ensata* var. *spontanea*・三重県の花）。**花びらのまん中のすじが黄色**なのを確かめた | Wikimedia Commons<br>`Iris ensata var. spontanea (flower).jpg` | **CC BY-SA 4.0**<br>→ **画面に表示ずみ** | Alpsdake |
 | `kakitsubata.webp` | カキツバタ（*Iris laevigata*・愛知県の花）。**花びらのまん中のすじが白**なのを確かめた | Wikimedia Commons<br>`Kakitsubata1.jpg` | **CC BY-SA 3.0**<br>→ **画面に表示ずみ** | Dennis L. Lindwall |
 | `ichii.webp` | イチイ（*Taxus cuspidata*・岐阜県の木）。赤い実つき | Wikimedia Commons<br>`Taxus cuspidata with fruits.JPG` | **CC BY-SA 3.0**<br>→ **画面に表示ずみ** | Alpsdake |
+| `ubamegashi.webp` | ウバメガシ（*Quercus phillyraeoides*・和歌山県の木）。小さく厚い葉 | Wikimedia Commons<br>`Quercus phillyraeoides1.jpg` | **CC BY-SA 3.0**<br>→ **画面に表示ずみ** | KENPEI |
+| `kitayamasugi.webp` | キタヤマスギ（京都・北山杉の林。まっすぐな幹がならぶ） | Wikimedia Commons<br>`Kitayama cedar trees in kyoto Tamba Highland.jpg` | **CC BY-SA 4.0**<br>→ **画面に表示ずみ** | Indiana jo |
 | `momiji.webp` | モミジ（滋賀県の木） | 実写写真をまとめた1枚の画像から切り出し | **CC0**（パブリックドメイン相当） | 表示不要 |
 | `shirakaba.webp` | シラカバの林（長野県の木） | 実写写真をまとめた1枚の画像から切り出し | **CC0**（パブリックドメイン相当） | 表示不要 |
 | `shotokutaishi.webp` | 聖徳太子 の肖像（「唐本御影」＝伝聖徳太子二王子像の中央の人物） | 8世紀の絵 | **PD**（パブリックドメイン） | 表示不要 |
