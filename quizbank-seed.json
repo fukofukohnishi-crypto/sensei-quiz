@@ -4805,7 +4805,9 @@
   "explain": "たたくと金属のような音がします。",
   "juken": "伝統的な特産品として問われる。",
   "basis": "text",
-  "id": "seed_s2_051"
+  "id": "seed_s2_051",
+  "ansFig": "binchotan.webp",
+  "ansFigBy": "写真: Kkkdc（CC BY-SA 3.0）"
  },
  {
   "type": "text",
@@ -6008,7 +6010,9 @@
   "explain": "生糸のもとになるまゆをつくる町でした。",
   "juken": "",
   "basis": "text",
-  "id": "seed_s4_013"
+  "id": "seed_s4_013",
+  "ansFig": "mayu.webp",
+  "ansFigBy": "写真: katpatuka（Free Art License）"
  },
  {
   "type": "text",
@@ -6023,7 +6027,9 @@
   "explain": "生糸のもとになるものです。",
   "juken": "",
   "basis": "text",
-  "id": "seed_s4_014"
+  "id": "seed_s4_014",
+  "ansFig": "mayu.webp",
+  "ansFigBy": "写真: katpatuka（Free Art License）"
  },
  {
   "type": "text",
@@ -7844,7 +7850,9 @@
   "explain": "まゆから生糸をつくるために育てられました。",
   "juken": "養蚕→製糸業→精密機械工業の流れで問われる。",
   "basis": "text",
-  "id": "seed_s5_055"
+  "id": "seed_s5_055",
+  "ansFig": "kaiko.webp",
+  "ansFigBy": "写真: Lilly M（CC BY-SA 3.0）"
  },
  {
   "type": "text",

@@ -90,6 +90,9 @@ PD / CC0 の写真は、画面表示は不要。
 | `konohazuku.webp` | コノハズク（*Otus sunia*＝Oriental Scops-Owl）。**オオコノハズク（*O. semitorques*）ではない**ことを確かめた | Wikimedia Commons<br>`Oriental Scops-Owl.jpg` | **CC BY-SA 4.0**<br>→ **画面に表示ずみ** | Mildeep |
 | `kaitsuburi.webp` | カイツブリ（*Tachybaptus ruficollis*＝Little Grebe）。**カンムリカイツブリ（*Podiceps cristatus*）ではない**ことを確かめた | Wikimedia Commons<br>`Tachybaptus ruficollis ruficollis.jpg` | **CC BY 2.0**<br>→ **画面に表示ずみ** | Martien Brand |
 | `shigarakiyaki.webp` | 信楽焼（たぬきの置物。滋賀県甲賀市信楽） | Wikimedia Commons<br>`Big Shigaraki ware Tanuki Statue at Sawazen in Shigaraki.jpg` | **CC BY-SA 4.0**<br>→ **画面に表示ずみ** | Motokoka |
+| `binchotan.webp` | 備長炭（和歌山県みなべ町）。白っぽくかたい炭 | Wikimedia Commons<br>`Binchotan (charcoal).jpg` | **CC BY-SA 3.0**<br>→ **画面に表示ずみ** | Kkkdc |
+| `mayu.webp` | かいこのまゆ（手に持った白い繭）。「まゆ」と「まゆのまち」の2問で使う | Wikimedia Commons<br>`Ipek-kozasi.jpg` | **Free Art License**（自由利用許諾。表示＋同じ条件での配布が要る）<br>→ **画面に表示ずみ** | katpatuka |
+| `kaiko.webp` | かいこ（*Bombyx mori* の幼虫。桑の葉の上） | Wikimedia Commons<br>`Bombyx mori 001.JPG` | **CC BY-SA 3.0**<br>→ **画面に表示ずみ** | Lilly M（Małgorzata Miłaszewska） |
 | `shirochidori.webp` | シロチドリ（*Charadrius alexandrinus*）。砂浜を歩く姿 | Wikimedia Commons<br>`Charadrius alexandrinus P2098902.jpg` | **CC BY-SA 3.0**<br>→ **画面に表示ずみ** | Alnus |
 | `raicho.webp` | ライチョウ（*Lagopus muta*）。オスの目の上の赤いにくかんと、白い冬羽が残っている。ノルウェーの個体（日本のライチョウは亜種 *japonica*） | Wikimedia Commons<br>`Rock Ptarmigan (Lagopus Muta).jpg` | **CC BY-SA 3.0**<br>→ **画面に表示ずみ** | Jan Frode Haugseth |
 | `seitakaawadachiso.webp` | セイタカアワダチソウ（黄色い花の群落）。ファイルの学名は *Solidago canadensis*。日本のセイタカアワダチソウは *S. altissima* とされることが多いが、同じ仲間で見た目は同じ | Wikimedia Commons<br>`Solidago canadensis stand.jpg` | **CC BY-SA 4.0**<br>→ **画面に表示ずみ** | Willow Coville |
@@ -150,3 +153,7 @@ python3 tools/photo2ans.py <絵> <名前> --nobg
 > **拡張子が `.svg` から `.webp` に変わる**ので、`patchFigures()` は
 > 「名前がちがえば差しかえる」作りにしてある。もとのSVGは、まだ取りこんでいない
 > 端末のために残してある。
+
+> **Free Art License（ライセンス・アート・リブル）について。** `mayu.webp` だけが
+> この免許。CC BY-SA と同じく「撮影者の表示」と「同じ条件での配布」を求める自由免許で、
+> 商用利用も再配布もできる。画面にクレジットを出しているので条件は満たしている。
