@@ -91,6 +91,7 @@ PD / CC0 の写真は、画面表示は不要。
 | `kaitsuburi.webp` | カイツブリ（*Tachybaptus ruficollis*＝Little Grebe）。**カンムリカイツブリ（*Podiceps cristatus*）ではない**ことを確かめた | Wikimedia Commons<br>`Tachybaptus ruficollis ruficollis.jpg` | **CC BY 2.0**<br>→ **画面に表示ずみ** | Martien Brand |
 | `shigarakiyaki.webp` | 信楽焼（たぬきの置物。滋賀県甲賀市信楽） | Wikimedia Commons<br>`Big Shigaraki ware Tanuki Statue at Sawazen in Shigaraki.jpg` | **CC BY-SA 4.0**<br>→ **画面に表示ずみ** | Motokoka |
 | `binchotan.webp` | 備長炭（和歌山県みなべ町）。白っぽくかたい炭 | Wikimedia Commons<br>`Binchotan (charcoal).jpg` | **CC BY-SA 3.0**<br>→ **画面に表示ずみ** | Kkkdc |
+| `gifuchochin.webp` | 岐阜提灯（岐阜市歴史博物館。明かりがついた状態） | Wikimedia Commons<br>`Gifu Paper Lanterns ac (3).jpg` | **CC BY-SA 4.0**<br>→ **画面に表示ずみ** | Asturio Cantabrio |
 | `mayu.webp` | かいこのまゆ（手に持った白い繭）。「まゆ」と「まゆのまち」の2問で使う | Wikimedia Commons<br>`Ipek-kozasi.jpg` | **Free Art License**（自由利用許諾。表示＋同じ条件での配布が要る）<br>→ **画面に表示ずみ** | katpatuka |
 | `kaiko.webp` | かいこ（*Bombyx mori* の幼虫。桑の葉の上） | Wikimedia Commons<br>`Bombyx mori 001.JPG` | **CC BY-SA 3.0**<br>→ **画面に表示ずみ** | Lilly M（Małgorzata Miłaszewska） |
 | `shirochidori.webp` | シロチドリ（*Charadrius alexandrinus*）。砂浜を歩く姿 | Wikimedia Commons<br>`Charadrius alexandrinus P2098902.jpg` | **CC BY-SA 3.0**<br>→ **画面に表示ずみ** | Alnus |
