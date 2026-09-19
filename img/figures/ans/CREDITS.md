@@ -88,6 +88,7 @@ PD / CC0 の写真は、画面表示は不要。
 | `mozu.webp` | モズ（*Lanius bucephalus*・オス。愛知県で撮影）。目の黒い線とかぎ形のくちばし | Wikimedia Commons<br>`Lanius bucephalus (male).JPG` | **CC BY-SA 4.0**<br>→ **画面に表示ずみ** | Alpsdake |
 | `konotori.webp` | コウノトリ（*Ciconia boyciana*）。刈ったあとの田んぼに立つ姿 | Wikimedia Commons<br>`Ciconia boyciana 2739147.jpg` | **CC BY 4.0**<br>→ **画面に表示ずみ** | Kim, Hyun-tae |
 | `konohazuku.webp` | コノハズク（*Otus sunia*＝Oriental Scops-Owl）。**オオコノハズク（*O. semitorques*）ではない**ことを確かめた | Wikimedia Commons<br>`Oriental Scops-Owl.jpg` | **CC BY-SA 4.0**<br>→ **画面に表示ずみ** | Mildeep |
+| `kaitsuburi.webp` | カイツブリ（*Tachybaptus ruficollis*＝Little Grebe）。**カンムリカイツブリ（*Podiceps cristatus*）ではない**ことを確かめた | Wikimedia Commons<br>`Tachybaptus ruficollis ruficollis.jpg` | **CC BY 2.0**<br>→ **画面に表示ずみ** | Martien Brand |
 | `shirochidori.webp` | シロチドリ（*Charadrius alexandrinus*）。砂浜を歩く姿 | Wikimedia Commons<br>`Charadrius alexandrinus P2098902.jpg` | **CC BY-SA 3.0**<br>→ **画面に表示ずみ** | Alnus |
 | `raicho.webp` | ライチョウ（*Lagopus muta*）。オスの目の上の赤いにくかんと、白い冬羽が残っている。ノルウェーの個体（日本のライチョウは亜種 *japonica*） | Wikimedia Commons<br>`Rock Ptarmigan (Lagopus Muta).jpg` | **CC BY-SA 3.0**<br>→ **画面に表示ずみ** | Jan Frode Haugseth |
 | `seitakaawadachiso.webp` | セイタカアワダチソウ（黄色い花の群落）。ファイルの学名は *Solidago canadensis*。日本のセイタカアワダチソウは *S. altissima* とされることが多いが、同じ仲間で見た目は同じ | Wikimedia Commons<br>`Solidago canadensis stand.jpg` | **CC BY-SA 4.0**<br>→ **画面に表示ずみ** | Willow Coville |
