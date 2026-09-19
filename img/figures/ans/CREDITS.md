@@ -74,6 +74,11 @@ PD / CC0 の写真は、画面表示は不要。
 | `ayu.webp` | アユ（*Plecoglossus altivelis*。びわ湖産・産卵期。白い背景は `--nobg` で抜いた） | Wikimedia Commons<br>`Sweetfish, Plecoglossus altivelis.jpg` | **CC BY-SA 3.0**<br>→ **画面に表示ずみ** | OAS（日本語版ウィキペディア） |
 | `sekiranun.webp` | 積乱雲（入道雲。フランス・ロレーヌ地方） | Wikimedia Commons<br>`Cumulonimbus capillatus in Lorraine, France.jpg` | **CC BY-SA 4.0**<br>→ **画面に表示ずみ** | Grain de sel |
 | `rengeso.webp` | レンゲソウ（Astragalus sinicus・岐阜県の花） | 実写写真<br>`Flowers of Astragalus sinicus 20170423` | **CC BY-SA 4.0**<br>→ **画面に表示ずみ** | Σ64 |
+| `rindo.webp` | リンドウ（*Gentiana scabra*・長野県の花） | Wikimedia Commons<br>`Gentiana scabra.jpg` | **CC BY 3.0**<br>→ **画面に表示ずみ** | Dezidor |
+| `nojigiku.webp` | ノジギク（*Chrysanthemum japonense*・兵庫県の花） | Wikimedia Commons<br>`Chrysanthemum japonense1.jpg` | **CC BY-SA 3.0**<br>→ **画面に表示ずみ** | KENPEI |
+| `hanashobu.webp` | ハナショウブ（*Iris ensata* var. *spontanea*・三重県の花）。**花びらのまん中のすじが黄色**なのを確かめた | Wikimedia Commons<br>`Iris ensata var. spontanea (flower).jpg` | **CC BY-SA 4.0**<br>→ **画面に表示ずみ** | Alpsdake |
+| `kakitsubata.webp` | カキツバタ（*Iris laevigata*・愛知県の花）。**花びらのまん中のすじが白**なのを確かめた | Wikimedia Commons<br>`Kakitsubata1.jpg` | **CC BY-SA 3.0**<br>→ **画面に表示ずみ** | Dennis L. Lindwall |
+| `ichii.webp` | イチイ（*Taxus cuspidata*・岐阜県の木）。赤い実つき | Wikimedia Commons<br>`Taxus cuspidata with fruits.JPG` | **CC BY-SA 3.0**<br>→ **画面に表示ずみ** | Alpsdake |
 | `momiji.webp` | モミジ（滋賀県の木） | 実写写真をまとめた1枚の画像から切り出し | **CC0**（パブリックドメイン相当） | 表示不要 |
 | `shirakaba.webp` | シラカバの林（長野県の木） | 実写写真をまとめた1枚の画像から切り出し | **CC0**（パブリックドメイン相当） | 表示不要 |
 | `shotokutaishi.webp` | 聖徳太子 の肖像（「唐本御影」＝伝聖徳太子二王子像の中央の人物） | 8世紀の絵 | **PD**（パブリックドメイン） | 表示不要 |
