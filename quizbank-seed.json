@@ -5725,7 +5725,9 @@
   "explain": "たぬきの置物で知られる、滋賀県の伝統的な焼き物です。",
   "juken": "",
   "basis": "text",
-  "id": "seed_s3_046"
+  "id": "seed_s3_046",
+  "ansFig": "shigarakiyaki.webp",
+  "ansFigBy": "写真: Motokoka（CC BY-SA 4.0）"
  },
  {
   "type": "text",
