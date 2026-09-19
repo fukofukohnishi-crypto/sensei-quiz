@@ -86,6 +86,7 @@ PD / CC0 の写真は、画面表示は不要。
 | `hananoki.webp` | ハナノキ（*Acer pycnanthum*・愛知県の木）。春、葉より先に咲く赤い花 | Wikimedia Commons<br>`Acer pycnanthum.JPG` | **CC BY-SA 3.0**<br>→ **画面に表示ずみ** | kazunari abe |
 | `mejiro.webp` | メジロ（*Zosterops japonicus*）。目のまわりの白い輪が見える | Wikimedia Commons<br>`Zosterops japonicus 01.jpg` | **CC BY-SA 2.5**<br>→ **画面に表示ずみ** | Maga-chan |
 | `mozu.webp` | モズ（*Lanius bucephalus*・オス。愛知県で撮影）。目の黒い線とかぎ形のくちばし | Wikimedia Commons<br>`Lanius bucephalus (male).JPG` | **CC BY-SA 4.0**<br>→ **画面に表示ずみ** | Alpsdake |
+| `konotori.webp` | コウノトリ（*Ciconia boyciana*）。刈ったあとの田んぼに立つ姿 | Wikimedia Commons<br>`Ciconia boyciana 2739147.jpg` | **CC BY 4.0**<br>→ **画面に表示ずみ** | Kim, Hyun-tae |
 | `shirochidori.webp` | シロチドリ（*Charadrius alexandrinus*）。砂浜を歩く姿 | Wikimedia Commons<br>`Charadrius alexandrinus P2098902.jpg` | **CC BY-SA 3.0**<br>→ **画面に表示ずみ** | Alnus |
 | `raicho.webp` | ライチョウ（*Lagopus muta*）。オスの目の上の赤いにくかんと、白い冬羽が残っている。ノルウェーの個体（日本のライチョウは亜種 *japonica*） | Wikimedia Commons<br>`Rock Ptarmigan (Lagopus Muta).jpg` | **CC BY-SA 3.0**<br>→ **画面に表示ずみ** | Jan Frode Haugseth |
 | `seitakaawadachiso.webp` | セイタカアワダチソウ（黄色い花の群落）。ファイルの学名は *Solidago canadensis*。日本のセイタカアワダチソウは *S. altissima* とされることが多いが、同じ仲間で見た目は同じ | Wikimedia Commons<br>`Solidago canadensis stand.jpg` | **CC BY-SA 4.0**<br>→ **画面に表示ずみ** | Willow Coville |
