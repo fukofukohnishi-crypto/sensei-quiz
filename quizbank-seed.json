@@ -3647,7 +3647,9 @@
   "explain": "京都府の府の花です。",
   "juken": "",
   "basis": "text",
-  "id": "seed_s1_025"
+  "id": "seed_s1_025",
+  "ansFig": "shidarezakura.webp",
+  "ansFigBy": "写真: Duff Figgy（CC BY-SA 3.0）"
  },
  {
   "type": "text",
@@ -5201,7 +5203,9 @@
   "explain": "兵庫県南西部でつくられるそろばんです。",
   "juken": "伝統的工芸品は「産地＋品目」で覚える。",
   "basis": "text",
-  "id": "seed_s3_013"
+  "id": "seed_s3_013",
+  "ansFig": "banshusoroban.webp",
+  "ansFigBy": "写真: 663highland（CC BY 2.5）"
  },
  {
   "type": "text",
