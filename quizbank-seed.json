@@ -4503,7 +4503,9 @@
   "explain": "日本海を通って大阪まで来た船です。",
   "juken": "北前船＝日本海まわりの西廻り航路。",
   "basis": "text",
-  "id": "seed_s2_031"
+  "id": "seed_s2_031",
+  "ansFig": "kitamaebune.webp",
+  "ansFigBy": "写真: 江差町役場ほか（CC BY）"
  },
  {
   "type": "text",
@@ -6109,7 +6111,9 @@
   "explain": "電気の光で花のさく時期をずらします。",
   "juken": "電照菊＝渥美半島。抑制栽培の代表例。",
   "basis": "text",
-  "id": "seed_s4_019"
+  "id": "seed_s4_019",
+  "ansFig": "denshogiku.webp",
+  "ansFigBy": "写真: 2zno1（CC BY-SA 4.0）"
  },
  {
   "type": "text",

@@ -94,6 +94,8 @@ PD / CC0 の写真は、画面表示は不要。
 | `gifuchochin.webp` | 岐阜提灯（岐阜市歴史博物館。明かりがついた状態） | Wikimedia Commons<br>`Gifu Paper Lanterns ac (3).jpg` | **CC BY-SA 4.0**<br>→ **画面に表示ずみ** | Asturio Cantabrio |
 | `ukai.webp` | 鵜飼（長良川。かがり火と、なわにつながれた鵜） | Wikimedia Commons<br>`Cormorant fishing on the Nagara River - Jul 7, 2025.jpg` | **CC BY-SA 4.0**<br>→ **画面に表示ずみ** | Ludger Heide |
 | `fuhonsen.webp` | 富本銭（造幣局がつくった複製）。まん中の四角い穴と「富本」の字、七曜の点 | Wikimedia Commons<br>`Fuhon-sen.jpg` | **PD**（パブリックドメイン） | 表示不要（Carpkazu） |
+| `denshogiku.webp` | 電照菊（田原市＝渥美半島の、出荷前の花）。**照明をあてている夜の畑ではない**ので、夜の写真が出たら同じ名前で差しかえる | Wikimedia Commons<br>`Densyogiku flower.jpg` | **CC BY-SA 4.0**<br>→ **画面に表示ずみ** | 2zno1 |
+| `kitamaebune.webp` | 北前船の模型（北海道江差町。帆を張った姿） | Wikimedia Commons<br>`25-北前船の模型.jpg` | **CC BY**（Attribution）<br>→ **画面に表示ずみ** | 江差町役場、江差追分会館・江差山車会館、江差追分会の各長 |
 | `yamaboko.webp` | 山ぼこ（京都・祇園祭の鶏鉾。長い真木と大きな車輪） | Wikimedia Commons<br>`2018京都祇園祭雞鉾眾人拉著鉾車向前行.jpg` | **CC BY-SA 4.0**<br>→ **画面に表示ずみ** | 博物館員 |
 | `mayu.webp` | かいこのまゆ（手に持った白い繭）。「まゆ」と「まゆのまち」の2問で使う | Wikimedia Commons<br>`Ipek-kozasi.jpg` | **Free Art License**（自由利用許諾。表示＋同じ条件での配布が要る）<br>→ **画面に表示ずみ** | katpatuka |
 | `kaiko.webp` | かいこ（*Bombyx mori* の幼虫。桑の葉の上） | Wikimedia Commons<br>`Bombyx mori 001.JPG` | **CC BY-SA 3.0**<br>→ **画面に表示ずみ** | Lilly M（Małgorzata Miłaszewska） |
