@@ -7196,7 +7196,9 @@
   "explain": "どちらも雪の多い山あいの集落です。",
   "juken": "",
   "basis": "text",
-  "id": "seed_s5_037"
+  "id": "seed_s5_037",
+  "ansFig": "gokayama.webp",
+  "ansFigBy": "写真: Lucnhan3（CC BY-SA 4.0）"
  },
  {
   "type": "text",

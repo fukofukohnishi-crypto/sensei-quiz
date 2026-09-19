@@ -101,6 +101,7 @@ PD / CC0 の写真は、画面表示は不要。
 | `shidarezakura.webp` | 枝垂桜（大谷ツの紅枝垂桜）。枝が柳のようにたれ下がっている | Wikimedia Commons<br>`大谷ツの紅枝垂桜 - panoramio.jpg` | **CC BY-SA 3.0**<br>→ **画面に表示ずみ** | Duff Figgy |
 | `banshusoroban.webp` | 播州そろばん（兵庫県小野市の「そろばんのまち」の大きな記念モニュメント） | Wikimedia Commons<br>`Ono Hyogo01n4272.jpg` | **CC BY 2.5**<br>→ **画面に表示ずみ** | 663highland |
 | `sakaihamono.webp` | 堺の刃物（青木刃物製作所・大阪府堺市の包丁。打ちあとの模様が見える） | Wikimedia Commons<br>`Sakai Takayuki knives, Aoki-hamono - Sep 29, 2023.jpg` | **CC BY 2.0**<br>→ **画面に表示ずみ** | Beth Kanter |
+| `gokayama.webp` | 五箇山（富山県の合掌造り集落）。白川郷とは別の写真 | Wikimedia Commons<br>`Làng cổ Gokayama.jpg` | **CC BY-SA 4.0**<br>→ **画面に表示ずみ** | Lucnhan3 |
 | `yamaboko.webp` | 山ぼこ（京都・祇園祭の鶏鉾。長い真木と大きな車輪） | Wikimedia Commons<br>`2018京都祇園祭雞鉾眾人拉著鉾車向前行.jpg` | **CC BY-SA 4.0**<br>→ **画面に表示ずみ** | 博物館員 |
 | `mayu.webp` | かいこのまゆ（手に持った白い繭）。「まゆ」と「まゆのまち」の2問で使う | Wikimedia Commons<br>`Ipek-kozasi.jpg` | **Free Art License**（自由利用許諾。表示＋同じ条件での配布が要る）<br>→ **画面に表示ずみ** | katpatuka |
 | `kaiko.webp` | かいこ（*Bombyx mori* の幼虫。桑の葉の上） | Wikimedia Commons<br>`Bombyx mori 001.JPG` | **CC BY-SA 3.0**<br>→ **画面に表示ずみ** | Lilly M（Małgorzata Miłaszewska） |
