@@ -3566,7 +3566,9 @@
   "explain": "京都の夏の風物詩です。",
   "juken": "",
   "basis": "text",
-  "id": "seed_s1_020"
+  "id": "seed_s1_020",
+  "ansFig": "yamaboko.webp",
+  "ansFigBy": "写真: 博物館員（CC BY-SA 4.0）"
  },
  {
   "type": "text",
@@ -7216,7 +7218,9 @@
   "explain": "鳥に魚をとらせる漁です。",
   "juken": "",
   "basis": "text",
-  "id": "seed_s5_039"
+  "id": "seed_s5_039",
+  "ansFig": "ukai.webp",
+  "ansFigBy": "写真: Ludger Heide（CC BY-SA 4.0）"
  },
  {
   "type": "text",
