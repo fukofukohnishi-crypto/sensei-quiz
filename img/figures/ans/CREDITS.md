@@ -93,6 +93,7 @@ PD / CC0 の写真は、画面表示は不要。
 | `binchotan.webp` | 備長炭（和歌山県みなべ町）。白っぽくかたい炭 | Wikimedia Commons<br>`Binchotan (charcoal).jpg` | **CC BY-SA 3.0**<br>→ **画面に表示ずみ** | Kkkdc |
 | `gifuchochin.webp` | 岐阜提灯（岐阜市歴史博物館。明かりがついた状態） | Wikimedia Commons<br>`Gifu Paper Lanterns ac (3).jpg` | **CC BY-SA 4.0**<br>→ **画面に表示ずみ** | Asturio Cantabrio |
 | `ukai.webp` | 鵜飼（長良川。かがり火と、なわにつながれた鵜） | Wikimedia Commons<br>`Cormorant fishing on the Nagara River - Jul 7, 2025.jpg` | **CC BY-SA 4.0**<br>→ **画面に表示ずみ** | Ludger Heide |
+| `fuhonsen.webp` | 富本銭（造幣局がつくった複製）。まん中の四角い穴と「富本」の字、七曜の点 | Wikimedia Commons<br>`Fuhon-sen.jpg` | **PD**（パブリックドメイン） | 表示不要（Carpkazu） |
 | `yamaboko.webp` | 山ぼこ（京都・祇園祭の鶏鉾。長い真木と大きな車輪） | Wikimedia Commons<br>`2018京都祇園祭雞鉾眾人拉著鉾車向前行.jpg` | **CC BY-SA 4.0**<br>→ **画面に表示ずみ** | 博物館員 |
 | `mayu.webp` | かいこのまゆ（手に持った白い繭）。「まゆ」と「まゆのまち」の2問で使う | Wikimedia Commons<br>`Ipek-kozasi.jpg` | **Free Art License**（自由利用許諾。表示＋同じ条件での配布が要る）<br>→ **画面に表示ずみ** | katpatuka |
 | `kaiko.webp` | かいこ（*Bombyx mori* の幼虫。桑の葉の上） | Wikimedia Commons<br>`Bombyx mori 001.JPG` | **CC BY-SA 3.0**<br>→ **画面に表示ずみ** | Lilly M（Małgorzata Miłaszewska） |
