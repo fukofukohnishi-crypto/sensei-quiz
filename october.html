@@ -1539,6 +1539,52 @@ function exportBank(){
 const CODE_TO_PREF=['北海道','青森県','岩手県','宮城県','秋田県','山形県','福島県','茨城県','栃木県','群馬県','埼玉県','千葉県','東京都','神奈川県','新潟県','富山県','石川県','福井県','山梨県','長野県','岐阜県','静岡県','愛知県','三重県','滋賀県','京都府','大阪府','兵庫県','奈良県','和歌山県','鳥取県','島根県','岡山県','広島県','山口県','徳島県','香川県','愛媛県','高知県','福岡県','佐賀県','長崎県','熊本県','大分県','宮崎県','鹿児島県','沖縄県'];
 const PREF_TO_CODE={}; CODE_TO_PREF.forEach((n,i)=>{PREF_TO_CODE[n]=i+1;});
 
+/* =========================================================================
+   作りかえた問題の引退（1回だけ走る）
+   ========================================================================= */
+/* 面積・人口を「約4612km²」のようにピンポイントで答えさせる問題は、
+   数字が毎年古くなるうえ、入試では「どちらが広い／多い」の形で問われる。
+   比べる問題に作りかえたので、古いほうをここで消す。
+   種ファイルから消しても、すでに端末の quizbank に入ったものは残るため、
+   *_reset_* と同じ考えかたで1回だけ掃除する。
+   大阪府の面積（約1905km²）と人口（約878万人）の2問は、
+   ほかをくらべるときの「ものさし」として残してある。 */
+const LS_RETIRE='oct_retire_v1';
+const RETIRED=[
+  ['seed_s1_001','京都府の面積はおよそ何km²ですか。'],
+  ['seed_s1_002','京都府の人口はおよそ何万人ですか。'],
+  ['seed_s1_027','奈良県の面積はおよそ何km²ですか。'],
+  ['seed_s1_028','奈良県の人口はおよそ何万人ですか。'],
+  ['seed_s2_036','和歌山県の面積はおよそ何km²ですか。'],
+  ['seed_s2_037','和歌山県の人口はおよそ何万人ですか。'],
+  ['seed_s3_001','兵庫県の面積はおよそ何km²ですか。'],
+  ['seed_s3_002','兵庫県の人口はおよそ何万人ですか。'],
+  ['seed_s3_030','滋賀県の面積はおよそ何km²ですか。'],
+  ['seed_s3_031','滋賀県の人口はおよそ何万人ですか。'],
+  ['seed_s4_001','愛知県の面積はおよそ何km²ですか。'],
+  ['seed_s4_002','愛知県の人口はおよそ何万人ですか。'],
+  ['seed_s4_029','三重県の面積はおよそ何km²ですか。'],
+  ['seed_s4_030','三重県の人口はおよそ何万人ですか。'],
+  ['seed_s5_001','長野県の面積はおよそ何km²ですか。'],
+  ['seed_s5_002','長野県の人口はおよそ何万人ですか。'],
+  ['seed_s5_030','岐阜県の面積はおよそ何km²ですか。'],
+  ['seed_s5_031','岐阜県の人口はおよそ何万人ですか。'],
+  ['seed_s5_052','高山市の面積はおよそ何km²ですか。']
+];
+function retireOld(){
+  if(localStorage.getItem(LS_RETIRE)==='1')return 0;
+  const byId={},byQ={};
+  RETIRED.forEach(r=>{byId[r[0]]=1;byQ[r[1]]=1;});
+  const hit=q=>!!(q&&(byId[q.id]||byQ[q.q]));
+  const nb=quizbank.filter(q=>!hit(q)), nd=drafts.filter(q=>!hit(q));
+  const nr=review.filter(r=>!(byId[r.key]||byQ[r.key]||hit(r.q)));
+  const n=quizbank.length-nb.length;
+  if(n||nd.length!==drafts.length){ quizbank=nb; drafts=nd; saveBank(); saveDrafts(); }
+  if(nr.length!==review.length){ review=nr; saveReview(); }
+  localStorage.setItem(LS_RETIRE,'1');
+  return n;
+}
+
 (async function boot(){
   await openDB();
   quizbank=(await idbGet('quizbank'))||[];
@@ -1546,6 +1592,8 @@ const PREF_TO_CODE={}; CODE_TO_PREF.forEach((n,i)=>{PREF_TO_CODE[n]=i+1;});
   try{ const c=JSON.parse(localStorage.getItem(LS_CARDS)||'{}');
        collection=c.collection||{}; answeredCount=c.answeredCount||0; }catch(e){}
   try{ review=JSON.parse(localStorage.getItem(LS_REVIEW)||'[]'); }catch(e){ review=[]; }
+  /* 作りかえた古い問題を1回だけ消す（面積・人口のピンポイント） */
+  retireOld();
   try{ const d=JSON.parse(localStorage.getItem(LS_CHALLENGE)||'{}');
        ['rika','shakai'].forEach(s=>{ if(d[s])challenge[s]=Object.assign(challenge[s],d[s]); }); }catch(e){}
   try{ unlocked=JSON.parse(localStorage.getItem(LS_STORIES)||'[]'); }catch(e){ unlocked=[]; }
