@@ -29,6 +29,11 @@ PD / CC0 の写真は、画面表示は不要。
 | `sankakusu.svg` | 三角州（真上から見た河口の図） | 自作SVG | — | 表示不要。以前はレナ川の**疑似カラー**衛星写真を使っていたが、色が実物とちがい何の絵かわからないため描きなおした |
 | `bonchi.webp` | 盆地（奈良盆地） | 日本語版Wikipedia 経由 | **PD**（パブリックドメイン） | 表示不要 |
 | `fujigoko.webp` | 富士五湖・富士山 | Wikimedia Commons | **PD**（パブリックドメイン） | 表示不要 |
+| `yamanakako.webp` | 山中湖と富士山 | Wikimedia Commons | **PD**（パブリックドメイン） | 表示不要 |
+| `nobiheiya.webp` | 濃尾平野（空からの写真） | Wikimedia Commons | **PD**（パブリックドメイン） | 表示不要 |
+| `misokatsu.webp` | みそかつ（名古屋の定食） | Wikimedia Commons | **PD**（パブリックドメイン） | 表示不要 |
+| `osakafusho.webp` | 大阪府の旗（府章。千成びょうたんの「O」） | Wikimedia Commons | **PD**（パブリックドメイン） | 表示不要 |
+| `shigakensho.webp` | 滋賀県の旗（県章。「シガ」と琵琶湖の円） | Wikimedia Commons | **PD**（パブリックドメイン） | 表示不要 |
 | `uyuni.webp` | ウユニ塩湖（水のない塩の大地） | Wikimedia Commons | **PD**（パブリックドメイン） | 表示不要 |
 | `portisland.webp` | ポートアイランド（神戸・空中写真） | Wikimedia Commons | **PD**（パブリックドメイン） | 表示不要 |
 | `himejijo.webp` | 姫路城 | Wikimedia Commons | **PD**（パブリックドメイン） | 表示不要 |

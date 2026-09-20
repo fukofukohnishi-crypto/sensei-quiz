@@ -1387,7 +1387,8 @@
   "explain": "5つの湖は高さがそれぞれちがいます。",
   "juken": "",
   "basis": "text",
-  "id": "seed_t1_26"
+  "id": "seed_t1_26",
+  "ansFig": "yamanakako.webp"
  },
  {
   "type": "text",
@@ -4147,7 +4148,8 @@
   "explain": "千成びょうたんは豊臣秀吉の旗じるしです。",
   "juken": "府県章の由来は理由とセットで覚える。",
   "basis": "text",
-  "id": "seed_s2_008"
+  "id": "seed_s2_008",
+  "ansFig": "osakafusho.webp"
  },
  {
   "type": "text",
@@ -5569,7 +5571,8 @@
   "explain": "県名の読みをカタカナにしたものです。",
   "juken": "",
   "basis": "text",
-  "id": "seed_s3_035"
+  "id": "seed_s3_035",
+  "ansFig": "shigakensho.webp"
  },
  {
   "type": "text",
@@ -6193,7 +6196,8 @@
   "explain": "名古屋めしの代表です。",
   "juken": "",
   "basis": "text",
-  "id": "seed_s4_024"
+  "id": "seed_s4_024",
+  "ansFig": "misokatsu.webp"
  },
  {
   "type": "text",
@@ -7317,7 +7321,8 @@
   "explain": "愛知県から岐阜県にまたがる大きな平野です。",
   "juken": "",
   "basis": "text",
-  "id": "seed_s5_044"
+  "id": "seed_s5_044",
+  "ansFig": "nobiheiya.webp"
  },
  {
   "type": "text",
