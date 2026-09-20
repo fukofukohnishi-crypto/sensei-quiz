@@ -1,0 +1,64 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 200 200" width="200" height="200" role="img" aria-label="三角州。川が海に出るところで何本にも枝分かれし、運ばれてきた砂や泥がたまってできた三角形の土地">
+<defs>
+<linearGradient id="sea" x1="0" y1="0" x2="0" y2="1">
+<stop offset="0" stop-color="#4189c6"/><stop offset="1" stop-color="#20589a"/></linearGradient>
+<linearGradient id="land" x1="0" y1="0" x2="0" y2="1">
+<stop offset="0" stop-color="#88c06d"/><stop offset="1" stop-color="#6ba756"/></linearGradient>
+<linearGradient id="sand" x1="0" y1="0" x2="0" y2="1">
+<stop offset="0" stop-color="#ead9a5"/><stop offset=".7" stop-color="#dbc88f"/><stop offset="1" stop-color="#c8b279"/></linearGradient>
+<clipPath id="cp"><circle cx="100" cy="100" r="96"/></clipPath>
+<clipPath id="delta"><path d="M82,62 C 66,96 46,128 32,156
+  C 30,161 33,165 38,163 C 50,158 58,165 68,167 C 78,170 86,165 94,170
+  C 98,173 102,173 106,170 C 114,165 122,170 132,167 C 142,165 150,158 162,163
+  C 167,165 170,161 168,156 C 154,128 134,96 118,62 Z"/></clipPath>
+</defs>
+
+<circle cx="100" cy="100" r="96" fill="url(#sea)"/>
+<g clip-path="url(#cp)">
+
+  <!-- 海に出た土砂で、河口のまわりの海がにごっている -->
+  <ellipse cx="100" cy="180" rx="104" ry="52" fill="#7badd4" opacity=".5"/>
+  <ellipse cx="100" cy="176" rx="80" ry="38" fill="#9cc2dd" opacity=".42"/>
+
+  <!-- 陸地。下のふちが海岸線 -->
+  <path d="M-8,-8 H208 V56
+           C 190,68 170,73 150,69
+           C 136,66 128,62 118,62
+           L 82,62
+           C 72,62 64,66 50,69
+           C 30,73 10,68 -8,56 Z" fill="url(#land)"/>
+
+  <!-- 三角州。川が分かれるあたりを頂点に、海にむかって広がる -->
+  <path d="M82,62 C 66,96 46,128 32,156
+           C 30,161 33,165 38,163 C 50,158 58,165 68,167 C 78,170 86,165 94,170
+           C 98,173 102,173 106,170 C 114,165 122,170 132,167 C 142,165 150,158 162,163
+           C 167,165 170,161 168,156 C 154,128 134,96 118,62 Z" fill="url(#sand)"/>
+
+  <!-- 上流からの本流 -->
+  <path d="M96,-8 C 96,12 104,24 102,38 C 101,50 100,56 100,64"
+        fill="none" stroke="#2a68a6" stroke-width="9" stroke-linecap="round"/>
+
+  <!-- 三角州の上で枝分かれした川。分かれた先がまた分かれる -->
+  <g clip-path="url(#delta)" fill="none" stroke="#2f70ad" stroke-linecap="round">
+    <path d="M100,62 C 95,78 88,94 76,112 C 64,130 54,148 46,166" stroke-width="5"/>
+    <path d="M76,112 C 74,126 70,138 66,152 C 63,160 62,166 61,172" stroke-width="3.4"/>
+    <path d="M100,62 C 105,78 113,96 125,114 C 136,131 145,148 152,166" stroke-width="5"/>
+    <path d="M125,114 C 127,128 130,140 133,154 C 135,162 136,166 136,172" stroke-width="3.4"/>
+    <path d="M100,66 C 98,88 105,108 100,128 C 96,146 99,158 99,174" stroke-width="3.6"/>
+    <path d="M100,128 C 108,142 112,154 114,170" stroke-width="2.4"/>
+    <path d="M100,128 C 92,142 88,154 86,170" stroke-width="2.4"/>
+    <path d="M88,94 C 80,102 72,110 62,120" stroke-width="2"/>
+    <path d="M113,96 C 121,104 129,112 139,122" stroke-width="2"/>
+  </g>
+
+
+  <!-- 海の波 -->
+  <g fill="none" stroke="#ffffff" stroke-opacity=".34" stroke-width="2.4" stroke-linecap="round">
+    <path d="M12,112 C 19,107 26,117 33,112"/>
+    <path d="M170,108 C 177,103 184,113 191,108"/>
+    <path d="M8,158 C 15,153 22,163 29,158"/>
+    <path d="M174,154 C 181,149 188,159 195,154"/>
+  </g>
+</g>
+<circle cx="100" cy="100" r="96" fill="none" stroke="#cfe0f0" stroke-width="3"/>
+</svg>

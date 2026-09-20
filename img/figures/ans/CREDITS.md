@@ -23,7 +23,7 @@ PD / CC0 の写真は、画面表示は不要。
 | `tsukutsukuboshi.webp` | ツクツクボウシ | Wikimedia Commons | **PD**（パブリックドメイン） | 表示不要 |
 | `sphynx.webp` | スフィンクス（ネコの品種） | Wikimedia Commons | **PD**（パブリックドメイン） | 表示不要 |
 | `biwakoonamazu.webp` | ビワコオオナマズ（水そうの生きた個体。標本の写真から差しかえ） | Wikimedia Commons<br>`Silurus biwaensis2.jpg` | **CC BY-SA 3.0**<br>→ **画面に表示ずみ** | KENPEI |
-| `sankakusu.webp` | 三角州（レナ川の三角州・衛星写真） | Wikimedia Commons | **PD**（パブリックドメイン） | 表示不要。**疑似カラー**の衛星写真 |
+| `sankakusu.svg` | 三角州（真上から見た河口の図） | 自作SVG | — | 表示不要。以前はレナ川の**疑似カラー**衛星写真を使っていたが、色が実物とちがい何の絵かわからないため描きなおした |
 | `bonchi.webp` | 盆地（奈良盆地） | 日本語版Wikipedia 経由 | **PD**（パブリックドメイン） | 表示不要 |
 | `fujigoko.webp` | 富士五湖・富士山 | Wikimedia Commons | **PD**（パブリックドメイン） | 表示不要 |
 | `uyuni.webp` | ウユニ塩湖（水のない塩の大地） | Wikimedia Commons | **PD**（パブリックドメイン） | 表示不要 |
