@@ -1358,7 +1358,8 @@
   "juken": "5つの名前を答えさせる問題も出る。",
   "basis": "text",
   "id": "seed_t1_24",
-  "ansFig": "fujigoko.webp"
+  "ansFig": "fujigoko.webp",
+  "figAfter": "fujigoko_map.svg"
  },
  {
   "type": "text",
@@ -1374,7 +1375,8 @@
   "explain": "溶岩などが川をせき止めてできた湖です。",
   "juken": "カルデラ湖とのちがいを問われる。",
   "basis": "text",
-  "id": "seed_t1_25"
+  "id": "seed_t1_25",
+  "figAfter": "fujigoko_map.svg"
  },
  {
   "type": "text",
@@ -1388,7 +1390,8 @@
   "juken": "",
   "basis": "text",
   "id": "seed_t1_26",
-  "ansFig": "yamanakako.webp"
+  "ansFig": "yamanakako.webp",
+  "figAfter": "fujigoko_map.svg"
  },
  {
   "type": "text",
@@ -1401,7 +1404,8 @@
   "explain": "河口湖がいちばん低いところにあります。山中湖とは反対です。",
   "juken": "",
   "basis": "text",
-  "id": "seed_t1_27"
+  "id": "seed_t1_27",
+  "figAfter": "fujigoko_map.svg"
  },
  {
   "type": "text",
