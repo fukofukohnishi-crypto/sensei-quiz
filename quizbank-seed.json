@@ -662,7 +662,8 @@
   "explain": "サトウキビは暖かい地方、テンサイは寒い地方で作られます。",
   "juken": "サトウキビ＝沖縄・鹿児島、テンサイ＝北海道。社会でも出る。",
   "note": "",
-  "basis": "text"
+  "basis": "text",
+  "ansFig": "tensai.webp"
  },
  {
   "id": "seed_r3_06",
@@ -900,7 +901,8 @@
   "explain": "ネコ目（食肉目）なのに、ほとんどタケを食べます。",
   "juken": "「肉食のなかまなのに草食」という点が問われる。",
   "note": "",
-  "basis": "choice"
+  "basis": "choice",
+  "ansFig": "panda.webp"
  },
  {
   "id": "seed_r5_05",
@@ -914,7 +916,8 @@
   "explain": "ヒグマは北海道にすむ大型のクマです。本州にいるのはツキノワグマです。",
   "juken": "ヒグマ＝北海道、ツキノワグマ＝本州。セットで覚える。",
   "note": "",
-  "basis": "choice"
+  "basis": "choice",
+  "ansFig": "higuma.webp"
  },
  {
   "id": "seed_r5_06",
@@ -2793,7 +2796,8 @@
   "explain": "ネコ目でも肉食とはかぎりません。",
   "juken": "",
   "basis": "text",
-  "id": "seed_u5_43"
+  "id": "seed_u5_43",
+  "ansFig": "panda.webp"
  },
  {
   "type": "text",

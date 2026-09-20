@@ -22,6 +22,9 @@ PD / CC0 の写真は、画面表示は不要。
 | `cheetah.webp` | チーター | Wikimedia Commons | **PD**（パブリックドメイン） | 表示不要 |
 | `tsukutsukuboshi.webp` | ツクツクボウシ | Wikimedia Commons | **PD**（パブリックドメイン） | 表示不要 |
 | `sphynx.webp` | スフィンクス（ネコの品種） | Wikimedia Commons | **PD**（パブリックドメイン） | 表示不要 |
+| `higuma.webp` | ヒグマ | Wikimedia Commons | **PD**（パブリックドメイン） | 表示不要 |
+| `panda.webp` | ジャイアントパンダ | Wikimedia Commons | **PD**（パブリックドメイン） | 表示不要。2問で使う |
+| `tensai.webp` | テンサイ（砂糖をとる根。2本ならんだもの） | Wikimedia Commons | **PD**（パブリックドメイン） | 表示不要 |
 | `biwakoonamazu.webp` | ビワコオオナマズ（水そうの生きた個体。標本の写真から差しかえ） | Wikimedia Commons<br>`Silurus biwaensis2.jpg` | **CC BY-SA 3.0**<br>→ **画面に表示ずみ** | KENPEI |
 | `sankakusu.svg` | 三角州（真上から見た河口の図） | 自作SVG | — | 表示不要。以前はレナ川の**疑似カラー**衛星写真を使っていたが、色が実物とちがい何の絵かわからないため描きなおした |
 | `bonchi.webp` | 盆地（奈良盆地） | 日本語版Wikipedia 経由 | **PD**（パブリックドメイン） | 表示不要 |
