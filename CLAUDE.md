@@ -18,6 +18,7 @@ may.html          5月マンスリー。★終了・凍結
 api/generate.js   Claude API 呼び出し。教材写真→クイズ生成／漫画構成案
 Cards.json        カード98枚のマスタデータ
 stories.json      学園の読み物63話。10月版のご褒美（れんしゅう20問ごとに1話）
+pref-stories.json 守護神ミッション10話。ニッポン制覇のご褒美（県のメダル10個で1話）
 quizbank-seed.json  作りおき問題604問。理科・社会とも後期第1〜5回ぶん。
                     テキストと練成問題集の両方から作った。
                     october.html の管理画面から読みこむ（承認まちに入る）
@@ -224,6 +225,59 @@ for k in range(1,len(parts),3):
 WebP q85・252px・1枚17KBほど・合計1.7MB）。17県のぶんは以前からのPNG。
 **守護神カードの絵10枚（`r080`〜`r089`）と立ち絵10枚もそろった。**
 27県ぶん全部の絵がある状態。
+
+### 守護神ミッション（pref-stories.json）
+
+**県のメダル10個がそろうと、守護神カードといっしょに読み物が1話開く。**
+守護神と学園の先生が組んで、その県の知識で問題を解決する話。1話600〜750字。
+
+```json
+"25": { "code":"25", "no":6, "pref":"滋賀県", "guardian":"びわ湖ヌル左衛門",
+        "teacher":"gokuhiininma", "teacherName":"極秘院 隠真",
+        "title":"ミッション：水のゆくえを追え", "body":["段落1","段落2"] }
+```
+
+**これは `chizu.html` に置くこと。`october.html` の `stories.json` に入れてはいけない。**
+october はテストが終われば凍結するが、守護神は `chizu.html`（通年）で手に入る。
+凍結ファイルに入れると1か月で読めなくなる。
+
+- **保存キーは作っていない。** 開いたかどうかは `sensei_collection_v2` の
+  メダル数から分かる（10個そろっていれば読める）。増やすものが無いので壊れない
+- `pref-stories.json` は起動時に `fetch` で読む。**読めなくても画面は壊れない**
+  （ボタンが出ないだけ）。届くのが県の画面より遅かった場合は、届いた時点で
+  `renderPrefDetail()` をもう一度呼んでボタンを出す
+- **先生は1県ごとに変える。** 10話とも別の先生で、その県の内容に合う人を当てている
+  （滋賀＝隠真で「気づかれずに水を追う」、三重＝亀吉で「三日見る」＝真珠の養殖、
+  兵庫＝英愛で「時計が合わない」＝日本標準時子午線、など）
+
+**話に書いてよいのは、その県のメダル10個に出てくることだけ。**
+メダルは教材テキストから作ってあるので、これを守れば話も教材の中にとどまる。
+実際、初稿では3か所ずれていた:
+
+- 安土城を「七階建て」と書いたが**教材にない**（教材は「織田信長が築き、今は石垣のみ」）
+- 姫路城を「四百年ずれずに立っている」と書いたが**教材にない**（教材は「世界文化遺産」）
+- 金閣と銀閣を「はなやかな時代／静かな時代」と対比したが**教材にない**
+  （教材にあるのは「3代義満の別荘」「8代義政の別荘」だけ）。**時代の空気は書かない**
+
+照合はこれで通す（メダルのキーワードと `quizbank-seed.json` の両方を見る）:
+
+```bash
+python3 -c "
+import json,io,re
+d=json.load(io.open('pref-stories.json',encoding='utf-8'))
+Q=json.load(io.open('quizbank-seed.json',encoding='utf-8'))
+s=io.open('chizu.html',encoding='utf-8').read()
+mb=s[s.index('const PREF_DATA'):s.index('const PREF_CARD_MAP')]
+for code,v in d.items():
+    i=mb.index('\"%s\":{ name:'%code); j=mb.find('\n  \"',i+5)
+    words=re.findall(r'keyword:\"([^\"]+)\"',mb[i:j if j>0 else len(mb)])
+    t=''.join(v['body']); hit=[w for w in words if w in t]
+    print('%-9s %d/%d %4d字  %s'%(v['pref'],len(hit),len(words),len(t),' / '.join(hit)))
+"
+```
+
+いまは近畿・中部の10府県ぶんだけ。**17県（中国・四国・九州沖縄）はメダル自体が
+教材外**なので、テキストが来てメダルを作りなおしてから書く。
 
 ### 守護神の立ち絵はカードから切り出す
 

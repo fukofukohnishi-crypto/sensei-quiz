@@ -148,6 +148,16 @@ button{cursor:pointer;font-family:inherit;border:none}
 .pd-medal-col{display:flex;flex-direction:column;align-items:center;width:70px}
 .pd-guardian-banner{background:rgba(255,34,136,.1);border:1px solid rgba(255,34,136,.35);border-radius:12px;padding:10px 14px;font-size:.8rem;font-weight:900;color:#ff88bb;margin-bottom:16px}
 
+/* ===== 守護神ミッション（読み物）===== */
+.pd-story-btn{width:100%;max-width:440px;padding:13px;border-radius:14px;font-weight:900;font-size:.95rem;
+  color:var(--gold);background:rgba(255,215,0,.08);border:1.5px solid rgba(255,215,0,.45);margin-top:14px}
+#story-screen .body{max-width:720px;margin:0 auto;padding:18px 18px 60px}
+.st-kicker{font-size:.72rem;font-weight:900;color:var(--muted);letter-spacing:.1em;margin-bottom:6px}
+.st-title{font-size:1.35rem;font-weight:900;color:var(--gold);line-height:1.45;margin-bottom:10px}
+.st-cast{font-size:.8rem;font-weight:900;color:#9fb6c9;margin-bottom:20px;line-height:1.7}
+.st-body p{font-size:1.02rem;line-height:2.0;margin:0 0 1.1em}
+@media(min-width:600px){.st-body p{font-size:1.06rem;line-height:2.05}}
+
 /* ===== medal enlarge overlay ===== */
 .medal-enlarge-body{max-width:300px;width:100%;background:var(--card);border:1.5px solid var(--gold);border-radius:20px;padding:26px 20px;text-align:center}
 .medal-enlarge-icon{width:200px;height:200px;border-radius:50%;margin:0 auto 16px;display:flex;align-items:center;justify-content:center;font-size:5rem;border:5px solid var(--gold);background:radial-gradient(circle at 35% 30%,#3a2e00,#1a1400);box-shadow:0 0 40px rgba(255,215,0,.35);overflow:hidden}
@@ -395,7 +405,19 @@ button{cursor:pointer;font-family:inherit;border:none}
       <div class="pd-progress" id="pd-progress"></div>
       <div class="pd-guardian-banner" id="pd-guardian-banner" style="display:none">👑 メダルクリア！</div>
       <div class="pd-medal-row" id="pd-medal-row"></div>
+      <button class="pd-story-btn" id="pd-story-btn" style="display:none" onclick="openPrefStory()">📖 守護神ミッションを読む</button>
       <button class="bigbtn" id="pd-cta-btn" onclick="goRevealForQuiz()"></button>
+    </div>
+  </div>
+
+  <!-- ②の2 守護神ミッション（メダル10個そろうと開く） -->
+  <div class="screen" id="story-screen">
+    <div class="hdr"><button class="hdr-back" onclick="closePrefStory()">← もどる</button><div class="hdr-title">守護神ミッション</div><div style="width:60px"></div></div>
+    <div class="body">
+      <div class="st-kicker" id="st-kicker"></div>
+      <div class="st-title" id="st-title"></div>
+      <div class="st-cast" id="st-cast"></div>
+      <div class="st-body" id="st-body"></div>
     </div>
   </div>
 
@@ -1458,6 +1480,35 @@ function reconcileGuardianCards(){
   }catch(e){}
 }
 /* ===== 守護神カード獲得演出 ===== */
+/* ===== 守護神ミッション（読み物）=====
+   メダル10個そろった県だけ開く。october.html の読み物とは別で、
+   こちらは chizu.html が通年で使うため、テストごとの凍結の影響を受けない。
+   開いたかどうかはメダルの数から分かるので、保存キーは新しく作っていない。 */
+let PREF_STORIES = null;
+fetch('/pref-stories.json').then(r=>r.ok?r.json():null)
+  .then(d=>{ if(d && typeof d==='object'){ PREF_STORIES=d;
+    /* 県の画面を開いたままでも、届いたらボタンを出す */
+    const cur=document.getElementById('pref-detail-screen');
+    if(cur && cur.classList.contains('active') && currentPref) renderPrefDetail(currentPref); } })
+  .catch(()=>{});
+
+function prefStory(code){ return (PREF_STORIES||{})[code] || null; }
+function stEsc(t){ return String(t).replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;'); }
+
+function openPrefStory(){
+  const st=prefStory(currentPref); if(!st)return;
+  const data=PREF_DATA[currentPref]||{};
+  document.getElementById('st-kicker').textContent=st.pref+'　守護神ミッション';
+  document.getElementById('st-title').textContent=st.title;
+  document.getElementById('st-cast').textContent=
+    (data.guardianName||st.guardian)+'　×　'+st.teacherName;
+  document.getElementById('st-body').innerHTML=
+    (st.body||[]).map(t=>'<p>'+stEsc(t).replace(/\n/g,'<br>')+'</p>').join('');
+  showScreen('story-screen');
+  const b=document.querySelector('#story-screen .body'); if(b)b.scrollTop=0;
+}
+function closePrefStory(){ showScreen('pref-detail-screen'); }
+
 let CARDS_DB = null;
 (function loadCardsDB(){
   const urls=['/Cards.json','/cards.json'];
@@ -1639,6 +1690,10 @@ function renderPrefDetail(code){
     col.appendChild(label);
     row.appendChild(col);
   });
+
+  /* メダルがそろっていて、その県の読み物があるときだけ出す */
+  const sbtn = document.getElementById('pd-story-btn');
+  sbtn.style.display = (gotCount >= total && prefStory(code)) ? '' : 'none';
 
   const cta = document.getElementById('pd-cta-btn');
   if(gotCount >= total){ cta.textContent = 'もう一度あそぶ →'; }
