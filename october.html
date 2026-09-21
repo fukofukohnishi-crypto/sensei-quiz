@@ -195,6 +195,7 @@ button:focus-visible{outline:2px solid var(--gold);outline-offset:2px}
 }
 .figwrap{background:var(--card);border:1px solid var(--line);border-radius:18px;padding:16px;margin-bottom:14px;text-align:center}
 .figwrap img{max-width:100%;height:auto;max-height:min(46vh,360px);display:inline-block}
+.figwrap .fig-by{font-size:.72rem;color:var(--muted);margin-top:9px;line-height:1.5}
 #japan-svg-map .prefecture{fill:#2a2a3e;stroke:#7a7a99;stroke-width:1.3px}
 #japan-svg-map .prefecture.hl{fill:var(--gold);stroke:#fff;stroke-width:2.2px}
 #japan-svg-map{width:100%;height:auto;display:block;max-height:min(52vh,430px)}
@@ -357,7 +358,7 @@ button:focus-visible{outline:2px solid var(--gold);outline-offset:2px}
     </div>
     <div class="qmain" id="q-main">
       <div class="segs" id="q-segs"></div>
-      <div id="q-fig-wrap" class="figwrap" style="display:none"><img id="q-fig" src="" alt="" onerror="this.style.display='none'"></div>
+      <div id="q-fig-wrap" class="figwrap" style="display:none"><img id="q-fig" src="" alt="" onerror="this.parentNode.style.display='none'"><div class="fig-by" id="q-figby"></div></div>
       <div id="q-map-wrap" class="mapwrap" style="display:none"><svg id="japan-svg-map" viewBox="0 0 1000 1000" xmlns="http://www.w3.org/2000/svg">
   <title>Japanese Prefectures</title>
   <desc>Created by Geolonia (https://geolonia.com/).</desc>
@@ -1019,6 +1020,8 @@ function renderQ(){
     if(q.type==='figure'&&q.fig){
       const im=document.getElementById('q-fig');
       im.style.display=''; im.src='/img/figures/'+q.fig; im.alt=q.figAlt||'';
+      /* CC BY / CC BY-SA の写真は、問題側に出すときも撮影者名の表示が要る */
+      document.getElementById('q-figby').textContent=q.figBy||'';
       figWrap.style.display='';
     }
     document.getElementById('q-text').textContent=q.q;
@@ -1385,7 +1388,7 @@ function patchFigures(list){
   quizbank.forEach(q=>{ if(q.id)byId[q.id]=q; byQ[q.q]=q; });
   let n=0;
   list.forEach(sd=>{
-    if(!sd.figAfter&&!sd.ansFig&&!sd.ansFigBy)return;
+    if(!sd.figAfter&&!sd.ansFig&&!sd.ansFigBy&&!sd.figBy)return;
     const cur=byId[sd.id]||byQ[sd.q];
     if(!cur)return;
     if(sd.figAfter&&!cur.figAfter){ cur.figAfter=sd.figAfter; n++; }
@@ -1401,6 +1404,14 @@ function patchFigures(list){
       const by=sd.ansFigBy||'';
       if((cur.ansFigBy||'')!==by){
         if(by) cur.ansFigBy=by; else delete cur.ansFigBy;
+        n++;
+      }
+    }
+    /* 問題側の図のクレジットも同じように追随させる（type:"figure" の写真用） */
+    if(cur.fig){
+      const fby=sd.figBy||'';
+      if((cur.figBy||'')!==fby){
+        if(fby) cur.figBy=fby; else delete cur.figBy;
         n++;
       }
     }
