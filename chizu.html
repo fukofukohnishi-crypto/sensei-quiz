@@ -149,6 +149,10 @@ button{cursor:pointer;font-family:inherit;border:none}
 .pd-guardian-banner{background:rgba(255,34,136,.1);border:1px solid rgba(255,34,136,.35);border-radius:12px;padding:10px 14px;font-size:.8rem;font-weight:900;color:#ff88bb;margin-bottom:16px}
 
 /* ===== 守護神ミッション（読み物）===== */
+.map-story-note{display:none;margin:0 auto 10px;max-width:520px;text-align:center;
+  background:rgba(255,215,0,.08);border:1px solid rgba(255,215,0,.4);border-radius:12px;
+  padding:9px 12px;font-size:.8rem;font-weight:900;color:var(--gold);line-height:1.6}
+.map-story-note b{font-size:1.02rem}
 .pd-story-btn{width:100%;max-width:440px;padding:13px;border-radius:14px;font-weight:900;font-size:.95rem;
   color:var(--gold);background:rgba(255,215,0,.08);border:1.5px solid rgba(255,215,0,.45);margin-top:14px}
 #story-screen .body{max-width:720px;margin:0 auto;padding:18px 18px 60px}
@@ -177,6 +181,7 @@ button{cursor:pointer;font-family:inherit;border:none}
       <div class="hdr-progress" id="progress-label">0/0</div>
     </div>
     <div class="body">
+      <div class="map-story-note" id="map-story-note"></div>
       <div class="map-lead">県をタップして、守護神とメダルをあつめよう！</div>
       <div class="map-wrap" id="map-wrap"><svg id="japan-svg-map" viewBox="0 0 1000 1000" xmlns="http://www.w3.org/2000/svg" style="width:100%;height:auto;display:block"><style>#japan-svg-map .prefecture{fill:#2a2a3e;stroke:#7a7a99;stroke-width:1.3px;cursor:pointer;pointer-events:all;-webkit-tap-highlight-color:transparent}#japan-svg-map .prefecture path,#japan-svg-map .prefecture polygon{pointer-events:all}#japan-svg-map .prefecture:active{opacity:.8}#japan-svg-map .prefecture.p-correct{fill:#228855!important;stroke:#44cc88!important}#japan-svg-map .prefecture.p-wrong{fill:#992222!important;stroke:#ff6666!important}#japan-svg-map .prefecture.p-disabled{cursor:default}</style>
   <title>Japanese Prefectures</title>
@@ -1488,6 +1493,7 @@ let PREF_STORIES = null;
 fetch('/pref-stories.json').then(r=>r.ok?r.json():null)
   .then(d=>{ if(d && typeof d==='object'){ PREF_STORIES=d;
     /* 県の画面を開いたままでも、届いたらボタンを出す */
+    renderStoryNote();
     const cur=document.getElementById('pref-detail-screen');
     if(cur && cur.classList.contains('active') && currentPref) renderPrefDetail(currentPref); } })
   .catch(()=>{});
@@ -1615,7 +1621,7 @@ function showToast(msg){
   setTimeout(()=>t.classList.remove('show'), 1800);
 }
 
-function goMap(){ showScreen('map-screen'); renderMapState(); renderProgressLabel(); }
+function goMap(){ showScreen('map-screen'); renderMapState(); renderProgressLabel(); renderStoryNote(); }
 
 function renderProgressLabel(){
   let medalsGot = 0, totalMedals = 0;
@@ -1624,6 +1630,26 @@ function renderProgressLabel(){
     medalsGot += getPrefProgress(code).medals.filter(Boolean).length;
   });
   document.getElementById('progress-label').textContent = `メダル ${medalsGot}/${totalMedals}`;
+}
+
+/* 読める守護神ミッションの本数を地図の画面に出す。
+   すでにメダルをそろえてある県の話にも気づけるようにするため。
+   読んだかどうかは追わない（追うと保存キーが1つ増える）。 */
+function renderStoryNote(){
+  const el=document.getElementById('map-story-note'); if(!el)return;
+  if(!PREF_STORIES){ el.style.display='none'; return; }
+  let n=0;
+  Object.keys(PREF_DATA).forEach(code=>{
+    if(!prefStory(code))return;
+    const d=PREF_DATA[code], pr=getPrefProgress(code);
+    if(pr.medals.filter(Boolean).length>=d.medals.length) n++;
+  });
+  if(!n){ el.style.display='none'; return; }
+  /* CSS で display:none にしてあるので、'' ではなく block を入れること */
+  el.style.display='block';
+  el.innerHTML='📖 守護神ミッションが <b>'+n+'話</b> 読めるよ<br>'
+    +'<span style="font-weight:700;color:var(--muted);font-size:.72rem">'
+    +'メダルがそろった県をタップしてね</span>';
 }
 
 function renderMapState(){
@@ -1649,6 +1675,7 @@ function closePrefDetail(){
   showScreen('map-screen');
   renderMapState();
   renderProgressLabel();
+  renderStoryNote();
 }
 
 function renderPrefDetail(code){
