@@ -1024,7 +1024,10 @@ function renderQ(){
       document.getElementById('q-figby').textContent=q.figBy||'';
       figWrap.style.display='';
     }
-    document.getElementById('q-text').textContent=q.q;
+    /* 末尾の〔…〕は画面に出さない。承認画面と重複チェックのための覚え書きで、
+       写真の問題は問題文が「写真の動物の名前は何ですか。」と全部同じになるため、
+       どの写真かをここに書いておく（白地図の問題と同じやり方） */
+    document.getElementById('q-text').textContent=q.q.replace(/〔[^〕]*〕\s*$/,'');
   }
   document.getElementById('q-meta').textContent=
     (SUBJ[q.subj]?SUBJ[q.subj].n:'')+(q.round?'　後期 第'+q.round+'回':'');
