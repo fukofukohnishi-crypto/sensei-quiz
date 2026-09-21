@@ -8494,5 +8494,1006 @@
   "juken": "写真を見て場所の名前を答える問題が出る。塩類平原という言い方もおさえる。",
   "basis": "text",
   "id": "seed_mie_20"
+ },
+ {
+  "type": "figure",
+  "fig": "ans/kinkaku.webp",
+  "subj": "shakai",
+  "round": 1,
+  "q": "写真の建物の名前は何ですか。〔京都・金色・足利義満〕",
+  "a": "鹿苑寺",
+  "accept": [
+   "金閣寺",
+   "金閣",
+   "ろくおんじ"
+  ],
+  "source": "金閣。鹿苑寺というお寺の中にあります。",
+  "explain": "金閣は建物の名前、鹿苑寺はお寺の名前です。",
+  "juken": "写真を見て名前を答える問題が出る。",
+  "basis": "text",
+  "id": "seed_sm_01",
+  "figBy": "写真: Basile Morin（CC BY-SA 4.0）"
+ },
+ {
+  "type": "figure",
+  "fig": "ans/byodoin.webp",
+  "subj": "shakai",
+  "round": 1,
+  "q": "写真の建物の名前は何ですか。〔京都・宇治・藤原頼通・十円玉〕",
+  "a": "平等院鳳凰堂",
+  "accept": [
+   "びょうどういんほうおうどう",
+   "鳳凰堂"
+  ],
+  "source": "十円玉でなじみの深い平等院鳳凰堂は、今から千年ほど前の平安時代につくられました。",
+  "explain": "十円玉の表にえがかれています。",
+  "juken": "写真を見て名前を答える問題が出る。",
+  "basis": "text",
+  "id": "seed_sm_02",
+  "figBy": "写真: ganden（CC BY 4.0）"
+ },
+ {
+  "type": "figure",
+  "fig": "ans/kiyomizudera.webp",
+  "subj": "shakai",
+  "round": 1,
+  "q": "写真の建物の名前は何ですか。〔京都・がけの上にせり出した舞台〕",
+  "a": "清水寺",
+  "accept": [
+   "きよみずでら"
+  ],
+  "source": "高いがけにつくられたこのお寺の舞台は思い切って大きな決断をするという意味のことわざにも使われています。",
+  "explain": "「清水の舞台から飛び降りる」ということわざです。",
+  "juken": "写真を見て名前を答える問題が出る。",
+  "basis": "text",
+  "id": "seed_sm_03",
+  "figBy": "写真: 来島海峡大橋（CC BY-SA 4.0）"
+ },
+ {
+  "type": "figure",
+  "fig": "ans/horyuji.webp",
+  "subj": "shakai",
+  "round": 1,
+  "q": "写真の建物の名前は何ですか。〔奈良・聖徳太子・世界最古の木造建築〕",
+  "a": "法隆寺",
+  "accept": [
+   "ほうりゅうじ"
+  ],
+  "source": "法隆寺。高さ30m以上もある五重塔が有名です。",
+  "explain": "聖徳太子が建てたといわれます。",
+  "juken": "写真を見て名前を答える問題が出る。",
+  "basis": "text",
+  "id": "seed_sm_04",
+  "figBy": "写真: z tanuki（CC BY 3.0）"
+ },
+ {
+  "type": "figure",
+  "fig": "ans/shitennoji.webp",
+  "subj": "shakai",
+  "round": 2,
+  "q": "写真の建物の名前は何ですか。〔大阪・聖徳太子が建てた〕",
+  "a": "四天王寺",
+  "accept": [
+   "してんのうじ"
+  ],
+  "source": "四天王寺　聖徳太子が建てたお寺の1つです。",
+  "explain": "大阪市にある、日本でも古いお寺の一つです。",
+  "juken": "写真を見て名前を答える問題が出る。",
+  "basis": "text",
+  "id": "seed_sm_05",
+  "figBy": "写真: Guilhem Vellut（CC BY 2.0）"
+ },
+ {
+  "type": "figure",
+  "fig": "ans/osakajo.webp",
+  "subj": "shakai",
+  "round": 1,
+  "q": "写真の建物の名前は何ですか。〔大阪・豊臣秀吉が築いた〕",
+  "a": "大阪城",
+  "accept": [
+   "おおさかじょう"
+  ],
+  "source": "大阪城は豊臣秀吉がつくった城で、現在のお城は再建されたものです。",
+  "explain": "豊臣秀吉がつくった城です。今建っているのは再建されたものです。",
+  "juken": "写真を見て名前を答える問題が出る。",
+  "basis": "text",
+  "id": "seed_sm_06",
+  "figBy": "写真: DXR（CC BY-SA 4.0）"
+ },
+ {
+  "type": "figure",
+  "fig": "ans/himejijo.webp",
+  "subj": "shakai",
+  "round": 3,
+  "q": "写真の建物の名前は何ですか。〔兵庫・白鷺城とよばれる白い城〕",
+  "a": "姫路城",
+  "accept": [
+   "ひめじじょう"
+  ],
+  "source": "姫路城　シラサギが羽をひろげたようにみえることから「白鷺城」ともよばれます。",
+  "explain": "白い壁が美しいお城です。",
+  "juken": "写真を見て名前を答える問題が出る。",
+  "basis": "text",
+  "id": "seed_sm_07"
+ },
+ {
+  "type": "figure",
+  "fig": "ans/nagoyajo.webp",
+  "subj": "shakai",
+  "round": 4,
+  "q": "写真の建物の名前は何ですか。〔愛知・金のしゃちほこ〕",
+  "a": "名古屋城",
+  "accept": [
+   "なごやじょう"
+  ],
+  "source": "「尾張名古屋は城でもつ」といわれるほどこの地を治めるのに重要な役割をもった城です。",
+  "explain": "尾張徳川家のシンボルとなった城です。",
+  "juken": "写真を見て名前を答える問題が出る。",
+  "basis": "text",
+  "id": "seed_sm_08"
+ },
+ {
+  "type": "figure",
+  "fig": "ans/matsumotojo.webp",
+  "subj": "shakai",
+  "round": 5,
+  "q": "写真の建物の名前は何ですか。〔長野・黒い天守〕",
+  "a": "松本城",
+  "accept": [
+   "まつもとじょう"
+  ],
+  "source": "松本城　国宝に指定されているお城で、かべが黒く塗られています。",
+  "explain": "白い姫路城に対して「烏城」ともよばれます。",
+  "juken": "写真を見て名前を答える問題が出る。",
+  "basis": "text",
+  "id": "seed_sm_09"
+ },
+ {
+  "type": "figure",
+  "fig": "ans/taiyonoto.webp",
+  "subj": "shakai",
+  "round": 2,
+  "q": "写真の建物の名前は何ですか。〔大阪・万国博覧会のシンボル〕",
+  "a": "太陽の塔",
+  "accept": [
+   "たいようのとう"
+  ],
+  "source": "1970年に開かれた日本万国博覧会のときにつくられた高さおよそ70mの塔です。",
+  "explain": "大阪万博のシンボルとしてつくられました。",
+  "juken": "写真を見て名前を答える問題が出る。",
+  "basis": "text",
+  "id": "seed_sm_10",
+  "figBy": "写真: 663highland（CC BY-SA 3.0）"
+ },
+ {
+  "type": "figure",
+  "fig": "ans/isejingu.webp",
+  "subj": "shakai",
+  "round": 4,
+  "q": "写真の建物の名前は何ですか。〔三重・天照大神をまつる〕",
+  "a": "伊勢神宮",
+  "accept": [
+   "いせじんぐう"
+  ],
+  "source": "古くからたくさんの人が訪れる有名な神社です。天照大神をはじめとした神様がまつられている場所です。",
+  "explain": "古くから多くの人が参拝に訪れました。",
+  "juken": "写真を見て名前を答える問題が出る。",
+  "basis": "text",
+  "id": "seed_sm_11",
+  "figBy": "写真: foooomio（CC BY 2.0）"
+ },
+ {
+  "type": "figure",
+  "fig": "ans/ishibutai.webp",
+  "subj": "shakai",
+  "round": 1,
+  "q": "写真の古墳の名前は何ですか。〔奈良・大きな石がむき出し・蘇我馬子〕",
+  "a": "石舞台古墳",
+  "accept": [
+   "いしぶたいこふん",
+   "石舞台"
+  ],
+  "source": "石舞台古墳。巨大な石でつくられたお墓です。聖徳太子と協力して政治を行った蘇我馬子のお墓とされています。",
+  "explain": "土がなくなり、石室がむき出しになっています。",
+  "juken": "写真を見て名前を答える問題が出る。",
+  "basis": "text",
+  "id": "seed_sm_12"
+ },
+ {
+  "type": "figure",
+  "fig": "ans/daisenkofun.webp",
+  "subj": "shakai",
+  "round": 2,
+  "q": "写真の古墳の名前は何ですか。〔大阪・堺市・世界一の面積〕",
+  "a": "大仙古墳",
+  "accept": [
+   "だいせんこふん",
+   "大山古墳",
+   "仁徳天皇陵"
+  ],
+  "source": "大阪府堺市にある大仙古墳（大山古墳）は、世界一の面積を持つお墓として有名です。",
+  "explain": "大山古墳ともよばれます。",
+  "juken": "写真を見て名前を答える問題が出る。",
+  "basis": "text",
+  "id": "seed_sm_13",
+  "figBy": "写真: 国土地理院（CC BY）"
+ },
+ {
+  "type": "figure",
+  "fig": "ans/miyajima.webp",
+  "subj": "shakai",
+  "round": 1,
+  "q": "写真の場所の名前は何ですか。〔広島・海に立つ朱色の大鳥居〕",
+  "a": "宮島",
+  "accept": [
+   "みやじま",
+   "厳島"
+  ],
+  "source": "天橋立は、宮城県の松島・広島県の宮島とならぶ日本三景の1つです。",
+  "explain": "厳島神社があることで知られます。",
+  "juken": "写真を見て名前を答える問題が出る。",
+  "basis": "text",
+  "id": "seed_sm_14",
+  "figBy": "写真: Jakub Hałun（CC BY 4.0）"
+ },
+ {
+  "type": "figure",
+  "fig": "ans/amanohashidate.webp",
+  "subj": "shakai",
+  "round": 1,
+  "q": "写真の場所の名前は何ですか。〔京都・細長い砂の地形・日本三景〕",
+  "a": "天橋立",
+  "accept": [
+   "あまのはしだて"
+  ],
+  "source": "天橋立は、およそ4kmにわたって砂の道が続いています。",
+  "explain": "股のぞきで見ると、天にかかる橋のように見えます。",
+  "juken": "写真を見て名前を答える問題が出る。",
+  "basis": "text",
+  "id": "seed_sm_15",
+  "figBy": "写真: 663highland（CC BY 2.5）"
+ },
+ {
+  "type": "figure",
+  "fig": "ans/biwako.webp",
+  "subj": "shakai",
+  "round": 2,
+  "q": "写真の場所の名前は何ですか。〔滋賀・日本でいちばん大きい湖・衛星写真〕",
+  "a": "琵琶湖",
+  "accept": [
+   "びわこ"
+  ],
+  "source": "琵琶湖を水源とする淀川は滋賀県・京都府・大阪府を通って大阪湾に注ぎます。",
+  "explain": "日本でいちばん大きい湖で、滋賀県にあります。",
+  "juken": "写真を見て名前を答える問題が出る。",
+  "basis": "text",
+  "id": "seed_sm_16",
+  "figBy": "写真: Global Land Cover Facility（CC BY-SA 3.0）"
+ },
+ {
+  "type": "figure",
+  "fig": "ans/bonchi.webp",
+  "subj": "shakai",
+  "round": 1,
+  "q": "写真の地形の名前は何ですか。〔まわりを山にかこまれた平地〕",
+  "a": "盆地",
+  "accept": [
+   "ぼんち"
+  ],
+  "source": "盆地…まわりを山にかこまれた平地のことです。",
+  "explain": "京都市は京都盆地の中にあります。",
+  "juken": "写真を見て名前を答える問題が出る。",
+  "basis": "text",
+  "id": "seed_sm_17"
+ },
+ {
+  "type": "figure",
+  "fig": "ans/riasukaigan.webp",
+  "subj": "shakai",
+  "round": 4,
+  "q": "写真の地形の名前は何ですか。〔海岸線がふくざつに入り組んでいる〕",
+  "a": "リアス海岸",
+  "accept": [
+   "リアス式海岸",
+   "りあすかいがん"
+  ],
+  "source": "三重県の志摩半島の英虞湾のあたりは、海岸線がふくざつに入り組んだリアス海岸です。",
+  "explain": "山がしずんでできた、入り組んだ海岸です。",
+  "juken": "写真を見て名前を答える問題が出る。",
+  "basis": "text",
+  "id": "seed_sm_18",
+  "figBy": "写真: 国土交通省（CC BY）"
+ },
+ {
+  "type": "figure",
+  "fig": "ans/akashikaikyo.webp",
+  "subj": "shakai",
+  "round": 3,
+  "q": "写真の橋の名前は何ですか。〔兵庫・本州と淡路島をつなぐ〕",
+  "a": "明石海峡大橋",
+  "accept": [
+   "あかしかいきょうおおはし"
+  ],
+  "source": "明石海峡大橋は、神戸市と淡路島を結ぶ日本でもっとも長いつり橋です（3911m）。",
+  "explain": "本州と淡路島をつなぐ橋です。",
+  "juken": "写真を見て名前を答える問題が出る。",
+  "basis": "text",
+  "id": "seed_sm_19"
+ },
+ {
+  "type": "figure",
+  "fig": "ans/gasshozukuri.webp",
+  "subj": "shakai",
+  "round": 5,
+  "q": "写真の家のつくりを何といいますか。〔岐阜・急な三角の屋根・雪〕",
+  "a": "合掌造り",
+  "accept": [
+   "がっしょうづくり"
+  ],
+  "source": "屋根の形が手のひらを合わせて合掌したようにみえることからこのような名前がついたとされています。",
+  "explain": "雪を落としやすい急な屋根です。",
+  "juken": "写真を見て名前を答える問題が出る。",
+  "basis": "text",
+  "id": "seed_sm_20",
+  "figBy": "写真: Bernard Gagnon（白川郷・CC BY-SA 3.0）"
+ },
+ {
+  "type": "figure",
+  "fig": "ans/gozanokuribi.webp",
+  "subj": "shakai",
+  "round": 1,
+  "q": "写真の行事の名前は何ですか。〔京都・山に火の文字〕",
+  "a": "五山送り火",
+  "accept": [
+   "ござんのおくりび",
+   "大文字焼き"
+  ],
+  "source": "五山送り火は毎年8月16日の夜に京都市のまわりの5つの山に大の字や船などの形の火が次々とたかれます。",
+  "explain": "お盆に先祖を送る行事です。",
+  "juken": "写真を見て名前を答える問題が出る。",
+  "basis": "text",
+  "id": "seed_sm_21",
+  "figBy": "写真: J_o（CC BY-SA 3.0）"
+ },
+ {
+  "type": "figure",
+  "fig": "ans/yamaboko.webp",
+  "subj": "shakai",
+  "round": 1,
+  "q": "写真の行事に出る、かざられた車を何といいますか。〔京都・祇園祭〕",
+  "a": "山ぼこ",
+  "accept": [
+   "やまぼこ",
+   "山鉾"
+  ],
+  "source": "祭りの中で、山ぼこ（山鉾）とよばれる車輪のついた大きな山車が町の中をめぐります。",
+  "explain": "京都の夏の風物詩です。",
+  "juken": "写真を見て名前を答える問題が出る。",
+  "basis": "text",
+  "id": "seed_sm_22",
+  "figBy": "写真: 博物館員（CC BY-SA 4.0）"
+ },
+ {
+  "type": "figure",
+  "fig": "ans/ukai.webp",
+  "subj": "shakai",
+  "round": 5,
+  "q": "写真の漁の名前は何ですか。〔岐阜・長良川・かがり火と鳥〕",
+  "a": "鵜飼",
+  "accept": [
+   "うかい"
+  ],
+  "source": "鵜とよばれる鳥を使って水中で泳ぐ魚をとります。長良川の鵜飼は1300年以上の歴史があります。",
+  "explain": "鳥に魚をとらせる漁です。",
+  "juken": "写真を見て名前を答える問題が出る。",
+  "basis": "text",
+  "id": "seed_sm_23",
+  "figBy": "写真: Ludger Heide（CC BY-SA 4.0）"
+ },
+ {
+  "type": "figure",
+  "fig": "ans/ama.webp",
+  "subj": "shakai",
+  "round": 4,
+  "q": "写真の、海にもぐって貝などをとる人を何といいますか。〔三重・おけ・素もぐり〕",
+  "a": "海女",
+  "accept": [
+   "あま"
+  ],
+  "source": "海女　女性が素もぐりであわびやさざえをとります。",
+  "explain": "機械を使わずにもぐります。",
+  "juken": "写真を見て名前を答える問題が出る。",
+  "basis": "text",
+  "id": "seed_sm_24"
+ },
+ {
+  "type": "figure",
+  "fig": "ans/fuhonsen.webp",
+  "subj": "shakai",
+  "round": 1,
+  "q": "写真のお金の名前は何ですか。〔奈良・日本で古いお金〕",
+  "a": "富本銭",
+  "accept": [
+   "ふほんせん"
+  ],
+  "source": "ここで発見された「富本銭」は、今から1300年以上も前につくられた、日本でいちばん古いお金とされています。",
+  "explain": "和同開珎よりも古いとされています。",
+  "juken": "写真を見て名前を答える問題が出る。",
+  "basis": "text",
+  "id": "seed_sm_25"
+ },
+ {
+  "type": "figure",
+  "fig": "ans/kitamaebune.webp",
+  "subj": "shakai",
+  "round": 2,
+  "q": "写真の船の名前は何ですか。〔江戸時代・日本海まわりで荷を運んだ〕",
+  "a": "北前船",
+  "accept": [
+   "きたまえぶね"
+  ],
+  "source": "北前船　日本海側の各地でとれたたくさんのお米や特産物が、海を通って大阪へとどけられました。",
+  "explain": "日本海を通って大阪まで来た船です。",
+  "juken": "写真を見て名前を答える問題が出る。",
+  "basis": "text",
+  "id": "seed_sm_26",
+  "figBy": "写真: 江差町役場ほか（CC BY）"
+ },
+ {
+  "type": "figure",
+  "fig": "ans/binchotan.webp",
+  "subj": "shakai",
+  "round": 2,
+  "q": "写真の炭の名前は何ですか。〔和歌山・ウバメガシから作る〕",
+  "a": "備長炭",
+  "accept": [
+   "びんちょうたん"
+  ],
+  "source": "和歌山県で昔からつくられている高級な木炭です。炭火焼き料理でも使われて、けむりがあまり出ない、かたい、金属音がするなどの特徴があります。",
+  "explain": "たたくと金属のような音がします。",
+  "juken": "写真を見て名前を答える問題が出る。",
+  "basis": "text",
+  "id": "seed_sm_27",
+  "figBy": "写真: Kkkdc（CC BY-SA 3.0）"
+ },
+ {
+  "type": "figure",
+  "fig": "ans/banshusoroban.webp",
+  "subj": "shakai",
+  "round": 3,
+  "q": "写真の工芸品の名前は何ですか。〔兵庫・小野市〕",
+  "a": "播州そろばん",
+  "accept": [
+   "ばんしゅうそろばん"
+  ],
+  "source": "播州そろばん　伝統的工芸品にも指定されています。",
+  "explain": "兵庫県南西部でつくられるそろばんです。",
+  "juken": "写真を見て名前を答える問題が出る。",
+  "basis": "text",
+  "id": "seed_sm_28",
+  "figBy": "写真: 663highland（CC BY 2.5）"
+ },
+ {
+  "type": "figure",
+  "fig": "ans/shigarakiyaki.webp",
+  "subj": "shakai",
+  "round": 3,
+  "q": "写真の焼き物の名前は何ですか。〔滋賀・たぬきの置き物〕",
+  "a": "信楽焼",
+  "accept": [
+   "しがらきやき"
+  ],
+  "source": "信楽焼　いろいろな形をしたたぬきの置物などが有名です。",
+  "explain": "たぬきの置物で知られる、滋賀県の伝統的な焼き物です。",
+  "juken": "写真を見て名前を答える問題が出る。",
+  "basis": "text",
+  "id": "seed_sm_29",
+  "figBy": "写真: Motokoka（CC BY-SA 4.0）"
+ },
+ {
+  "type": "figure",
+  "fig": "ans/shachihoko.webp",
+  "subj": "shakai",
+  "round": 4,
+  "q": "写真のかざりの名前は何ですか。〔愛知・名古屋城の屋根・金色〕",
+  "a": "しゃちほこ",
+  "accept": [
+   "しゃちほこ",
+   "金のしゃちほこ"
+  ],
+  "source": "尾張徳川家のシンボルとなったこの城では、金のしゃちほこが有名です。",
+  "explain": "想像上の魚のかざりです。",
+  "juken": "写真を見て名前を答える問題が出る。",
+  "basis": "text",
+  "id": "seed_sm_30",
+  "figBy": "写真: Motokoka（名古屋城のしゃちほこ・CC BY-SA 4.0）"
+ },
+ {
+  "type": "figure",
+  "fig": "ans/misokatsu.webp",
+  "subj": "shakai",
+  "round": 4,
+  "q": "写真の料理の名前は何ですか。〔愛知・とんかつにみそだれ〕",
+  "a": "みそかつ",
+  "accept": [
+   "みそカツ",
+   "味噌かつ"
+  ],
+  "source": "みそかつ　とんかつにみそだれをかけた名古屋の名物料理です。",
+  "explain": "名古屋めしの代表です。",
+  "juken": "写真を見て名前を答える問題が出る。",
+  "basis": "text",
+  "id": "seed_sm_31"
+ },
+ {
+  "type": "figure",
+  "fig": "ans/akoyagai.webp",
+  "subj": "shakai",
+  "round": 4,
+  "q": "写真の貝の名前は何ですか。〔三重・真珠を育てる〕",
+  "a": "アコヤ貝",
+  "accept": [
+   "あこやがい"
+  ],
+  "source": "ここでは、アコヤ貝を使った真珠の養殖がさかんです。アコヤ貝からは真珠がつくられるんだ。",
+  "explain": "いかだをうかべて育てます。",
+  "juken": "写真を見て名前を答える問題が出る。",
+  "basis": "text",
+  "id": "seed_sm_32"
+ },
+ {
+  "type": "figure",
+  "fig": "ans/kaiko.webp",
+  "subj": "shakai",
+  "round": 5,
+  "q": "写真の虫の名前は何ですか。〔長野・まゆから生糸をとる〕",
+  "a": "かいこ",
+  "accept": [
+   "カイコ",
+   "蚕"
+  ],
+  "source": "諏訪湖のまわりではかつてかいこが多くかわれていたため、かいこのまゆから生糸をつくる製糸業がさかんでした。",
+  "explain": "まゆから生糸をつくるために育てられました。",
+  "juken": "写真を見て名前を答える問題が出る。",
+  "basis": "text",
+  "id": "seed_sm_33",
+  "figBy": "写真: Lilly M（CC BY-SA 3.0）"
+ },
+ {
+  "type": "figure",
+  "fig": "ans/mozu.webp",
+  "subj": "shakai",
+  "round": 2,
+  "q": "写真の鳥の名前は何ですか。〔大阪府の鳥・はやにえ〕",
+  "a": "モズ",
+  "accept": [
+   "もず"
+  ],
+  "source": "府の鳥　モズ　府の木　イチョウ",
+  "explain": "大阪府の鳥はモズです。",
+  "juken": "写真を見て名前を答える問題が出る。",
+  "basis": "text",
+  "id": "seed_sm_34",
+  "figBy": "写真: Alpsdake（CC BY-SA 4.0）"
+ },
+ {
+  "type": "figure",
+  "fig": "ans/konotori.webp",
+  "subj": "shakai",
+  "round": 3,
+  "q": "写真の鳥の名前は何ですか。〔兵庫県の鳥・豊岡市〕",
+  "a": "コウノトリ",
+  "accept": [
+   "こうのとり"
+  ],
+  "source": "県の鳥　コウノトリ　県の木　クスノキ",
+  "explain": "豊岡市で野生に返す取り組みが行われています。",
+  "juken": "写真を見て名前を答える問題が出る。",
+  "basis": "text",
+  "id": "seed_sm_35",
+  "figBy": "写真: Kim, Hyun-tae（CC BY 4.0）"
+ },
+ {
+  "type": "figure",
+  "fig": "ans/kaitsuburi.webp",
+  "subj": "shakai",
+  "round": 3,
+  "q": "写真の鳥の名前は何ですか。〔滋賀県の鳥・琵琶湖〕",
+  "a": "カイツブリ",
+  "accept": [
+   "かいつぶり"
+  ],
+  "source": "県の鳥　カイツブリ　県の木　モミジ",
+  "explain": "琵琶湖にすむ水鳥です。",
+  "juken": "写真を見て名前を答える問題が出る。",
+  "basis": "text",
+  "id": "seed_sm_36",
+  "figBy": "写真: Martien Brand（CC BY 2.0）"
+ },
+ {
+  "type": "figure",
+  "fig": "ans/konohazuku.webp",
+  "subj": "shakai",
+  "round": 4,
+  "q": "写真の鳥の名前は何ですか。〔愛知県の鳥・小さなフクロウ〕",
+  "a": "コノハズク",
+  "accept": [
+   "このはずく"
+  ],
+  "source": "県の鳥　コノハズク　県の木　ハナノキ",
+  "explain": "フクロウの仲間です。",
+  "juken": "写真を見て名前を答える問題が出る。",
+  "basis": "text",
+  "id": "seed_sm_37",
+  "figBy": "写真: Mildeep（CC BY-SA 4.0）"
+ },
+ {
+  "type": "figure",
+  "fig": "ans/shirochidori.webp",
+  "subj": "shakai",
+  "round": 4,
+  "q": "写真の鳥の名前は何ですか。〔三重県の鳥・砂浜〕",
+  "a": "シロチドリ",
+  "accept": [
+   "しろちどり"
+  ],
+  "source": "県の鳥　シロチドリ　県の木　神宮スギ",
+  "explain": "海岸にすむ鳥です。",
+  "juken": "写真を見て名前を答える問題が出る。",
+  "basis": "text",
+  "id": "seed_sm_38",
+  "figBy": "写真: Alnus（CC BY-SA 3.0）"
+ },
+ {
+  "type": "figure",
+  "fig": "ans/raicho.webp",
+  "subj": "shakai",
+  "round": 5,
+  "q": "写真の鳥の名前は何ですか。〔長野県の鳥・高い山・冬は白い〕",
+  "a": "ライチョウ",
+  "accept": [
+   "らいちょう"
+  ],
+  "source": "県の鳥　ライチョウ　県の木　シラカバ",
+  "explain": "高い山にすむ鳥です。",
+  "juken": "写真を見て名前を答える問題が出る。",
+  "basis": "text",
+  "id": "seed_sm_39",
+  "figBy": "写真: Jan Frode Haugseth（CC BY-SA 3.0）"
+ },
+ {
+  "type": "figure",
+  "fig": "ans/icho.webp",
+  "subj": "shakai",
+  "round": 2,
+  "q": "写真の木の名前は何ですか。〔大阪府の木・秋は黄色〕",
+  "a": "イチョウ",
+  "accept": [
+   "いちょう",
+   "銀杏"
+  ],
+  "source": "府の鳥　モズ　府の木　イチョウ",
+  "explain": "大阪府の木はイチョウです。",
+  "juken": "写真を見て名前を答える問題が出る。",
+  "basis": "text",
+  "id": "seed_sm_40",
+  "figBy": "写真: James Field（CC BY-SA 3.0）"
+ },
+ {
+  "type": "figure",
+  "fig": "ans/momiji.webp",
+  "subj": "shakai",
+  "round": 3,
+  "q": "写真の木の名前は何ですか。〔滋賀県の木・秋は赤〕",
+  "a": "モミジ",
+  "accept": [
+   "もみじ"
+  ],
+  "source": "県の鳥　カイツブリ　県の木　モミジ",
+  "explain": "滋賀県の木はモミジです。",
+  "juken": "写真を見て名前を答える問題が出る。",
+  "basis": "text",
+  "id": "seed_sm_41"
+ },
+ {
+  "type": "figure",
+  "fig": "ans/shirakaba.webp",
+  "subj": "shakai",
+  "round": 5,
+  "q": "写真の木の名前は何ですか。〔長野県の木・白い幹に黒いしま〕",
+  "a": "シラカバ",
+  "accept": [
+   "しらかば",
+   "シラカンバ"
+  ],
+  "source": "県の鳥　ライチョウ　県の木　シラカバ",
+  "explain": "幹が白い木です。",
+  "juken": "写真を見て名前を答える問題が出る。",
+  "basis": "text",
+  "id": "seed_sm_42"
+ },
+ {
+  "type": "figure",
+  "fig": "ans/hananoki.webp",
+  "subj": "shakai",
+  "round": 4,
+  "q": "写真の木の名前は何ですか。〔愛知県の木・春に枝いっぱいの赤い花〕",
+  "a": "ハナノキ",
+  "accept": [
+   "はなのき"
+  ],
+  "source": "県の鳥　コノハズク　県の木　ハナノキ",
+  "explain": "愛知県の木はハナノキです。",
+  "juken": "写真を見て名前を答える問題が出る。",
+  "basis": "text",
+  "id": "seed_sm_43",
+  "figBy": "写真: kazunari abe（CC BY-SA 3.0）"
+ },
+ {
+  "type": "figure",
+  "fig": "ans/ichii.webp",
+  "subj": "shakai",
+  "round": 5,
+  "q": "写真の木の名前は何ですか。〔岐阜県の木・赤い実〕",
+  "a": "イチイ",
+  "accept": [
+   "いちい"
+  ],
+  "source": "県の鳥　ライチョウ　県の木　イチイ",
+  "explain": "岐阜県の木はイチイです。",
+  "juken": "写真を見て名前を答える問題が出る。",
+  "basis": "text",
+  "id": "seed_sm_44",
+  "figBy": "写真: Alpsdake（CC BY-SA 3.0）"
+ },
+ {
+  "type": "figure",
+  "fig": "ans/shidarezakura.webp",
+  "subj": "shakai",
+  "round": 1,
+  "q": "写真の木の名前は何ですか。〔京都・枝が下にたれる〕",
+  "a": "枝垂桜",
+  "accept": [
+   "しだれざくら",
+   "シダレザクラ"
+  ],
+  "source": "桜が柳のようにたれ下がっている桜を枝垂桜といいます。",
+  "explain": "京都府の花です。枝が柳のようにたれ下がります。",
+  "juken": "写真を見て名前を答える問題が出る。",
+  "basis": "text",
+  "id": "seed_sm_45",
+  "figBy": "写真: Duff Figgy（CC BY-SA 3.0）"
+ },
+ {
+  "type": "figure",
+  "fig": "ans/ume.webp",
+  "subj": "shakai",
+  "round": 2,
+  "q": "写真の花の名前は何ですか。〔和歌山の名産・春に先がけてさく〕",
+  "a": "ウメ",
+  "accept": [
+   "うめ",
+   "梅"
+  ],
+  "source": "県の花　ウメ　昔の歌の中にも登場するお花です。",
+  "explain": "和歌山県はうめの産地でもあります。",
+  "juken": "写真を見て名前を答える問題が出る。",
+  "basis": "text",
+  "id": "seed_sm_46"
+ },
+ {
+  "type": "figure",
+  "fig": "ans/nojigiku.webp",
+  "subj": "shakai",
+  "round": 3,
+  "q": "写真の花の名前は何ですか。〔兵庫県の花・白い野生の菊〕",
+  "a": "ノジギク",
+  "accept": [
+   "のじぎく"
+  ],
+  "source": "県の花　ノジギク　西日本の海ぞいで多くみられる花なんだ！",
+  "explain": "西日本の海ぞいに多い花です。",
+  "juken": "写真を見て名前を答える問題が出る。",
+  "basis": "text",
+  "id": "seed_sm_47",
+  "figBy": "写真: KENPEI（CC BY-SA 3.0）"
+ },
+ {
+  "type": "figure",
+  "fig": "ans/shakunage.webp",
+  "subj": "shakai",
+  "round": 3,
+  "q": "写真の花の名前は何ですか。〔滋賀県の花・大きな白い花のかたまり〕",
+  "a": "シャクナゲ",
+  "accept": [
+   "しゃくなげ"
+  ],
+  "source": "県の花　シャクナゲ　ツツジの仲間なんだよ！",
+  "explain": "ツツジの仲間の花です。",
+  "juken": "写真を見て名前を答える問題が出る。",
+  "basis": "text",
+  "id": "seed_sm_48",
+  "figBy": "写真: Σ64（CC BY-SA 3.0）"
+ },
+ {
+  "type": "figure",
+  "fig": "ans/rindo.webp",
+  "subj": "shakai",
+  "round": 5,
+  "q": "写真の花の名前は何ですか。〔長野県の花・青むらさき〕",
+  "a": "リンドウ",
+  "accept": [
+   "りんどう"
+  ],
+  "source": "県の花　リンドウ　熊本県の花と同じだね！",
+  "explain": "長野県の花です。熊本県の花と同じです。",
+  "juken": "写真を見て名前を答える問題が出る。",
+  "basis": "text",
+  "id": "seed_sm_49",
+  "figBy": "写真: Dezidor（CC BY 3.0）"
+ },
+ {
+  "type": "figure",
+  "fig": "ans/rengeso.webp",
+  "subj": "shakai",
+  "round": 5,
+  "q": "写真の花の名前は何ですか。〔岐阜県の花・田んぼ一面にさく〕",
+  "a": "レンゲソウ",
+  "accept": [
+   "れんげそう",
+   "レンゲ"
+  ],
+  "source": "県の花　レンゲソウ　秋に種をまいて翌年の春に花をさかせる「二年草」です。",
+  "explain": "岐阜県の花です。秋に種をまいて翌年の春にさく「二年草」です。",
+  "juken": "写真を見て名前を答える問題が出る。",
+  "basis": "text",
+  "id": "seed_sm_50",
+  "figBy": "写真: Σ64（CC BY-SA 4.0）"
+ },
+ {
+  "type": "figure",
+  "fig": "ans/biwakoonamazu.webp",
+  "subj": "shakai",
+  "round": 3,
+  "q": "写真の魚の名前は何ですか。〔琵琶湖にしかいない大きなナマズ〕",
+  "a": "ビワコオオナマズ",
+  "accept": [
+   "びわこおおなまず"
+  ],
+  "source": "ビワコオオナマズは、最大で体長100cmをこえる、この湖固有の生き物です。",
+  "explain": "琵琶湖にしかいない生き物です。",
+  "juken": "写真を見て名前を答える問題が出る。",
+  "basis": "text",
+  "id": "seed_sm_51",
+  "figBy": "写真: KENPEI（CC BY-SA 3.0）"
+ },
+ {
+  "type": "figure",
+  "fig": "ans/naumanzo.webp",
+  "subj": "shakai",
+  "round": 5,
+  "q": "写真の動物の名前は何ですか。〔長野・野尻湖・大昔のゾウ〕",
+  "a": "ナウマンゾウ",
+  "accept": [
+   "なうまんぞう"
+  ],
+  "source": "野尻湖から数万年前のナウマンゾウの化石がみつかりました。",
+  "explain": "大昔、日本にいたゾウです。",
+  "juken": "写真を見て名前を答える問題が出る。",
+  "basis": "text",
+  "id": "seed_sm_52",
+  "figBy": "絵: Kohei Futaka（CC BY 4.0）"
+ },
+ {
+  "type": "figure",
+  "fig": "ans/shomutenno.webp",
+  "subj": "shakai",
+  "round": 1,
+  "q": "この人物はだれですか。〔奈良・大仏をつくらせた〕",
+  "a": "聖武天皇",
+  "accept": [
+   "しょうむてんのう"
+  ],
+  "source": "奈良時代に聖武天皇が人々につくらせました。",
+  "explain": "伝染病や戦いで苦しむ人々を救おうとしました。",
+  "juken": "写真を見て名前を答える問題が出る。",
+  "basis": "text",
+  "id": "seed_sm_53"
+ },
+ {
+  "type": "figure",
+  "fig": "ans/shotokutaishi.webp",
+  "subj": "shakai",
+  "round": 1,
+  "q": "この人物はだれですか。〔奈良・法隆寺・十七条の憲法〕",
+  "a": "聖徳太子",
+  "accept": [
+   "しょうとくたいし"
+  ],
+  "source": "法隆寺は、今からおよそ1400年ほど前に聖徳太子によって建てられたといわれています。",
+  "explain": "十七条の憲法や冠位十二階でも知られる人物です。",
+  "juken": "写真を見て名前を答える問題が出る。",
+  "basis": "text",
+  "id": "seed_sm_54"
+ },
+ {
+  "type": "figure",
+  "fig": "ans/ganjin.webp",
+  "subj": "shakai",
+  "round": 1,
+  "q": "この人物はだれですか。〔唐から来た僧・唐招提寺〕",
+  "a": "鑑真",
+  "accept": [
+   "がんじん"
+  ],
+  "source": "鑑真は6回目の航海でようやく来日をはたし、日本に正しい仏教のすがたを伝えたのです。",
+  "explain": "5回目の航海で嵐にあい、両目が見えなくなってもあきらめませんでした。",
+  "juken": "写真を見て名前を答える問題が出る。",
+  "basis": "text",
+  "id": "seed_sm_55"
+ },
+ {
+  "type": "figure",
+  "fig": "ans/hideyoshi.webp",
+  "subj": "shakai",
+  "round": 2,
+  "q": "この人物はだれですか。〔大阪城を築いた・千成びょうたん〕",
+  "a": "豊臣秀吉",
+  "accept": [
+   "とよとみひでよし"
+  ],
+  "source": "大阪城は豊臣秀吉がつくった城で、現在のお城は再建されたものです。",
+  "explain": "大阪城をつくった戦国時代の武将です。",
+  "juken": "写真を見て名前を答える問題が出る。",
+  "basis": "text",
+  "id": "seed_sm_56"
+ },
+ {
+  "type": "figure",
+  "fig": "ans/basho.webp",
+  "subj": "shakai",
+  "round": 4,
+  "q": "この人物はだれですか。〔三重・おくのほそ道の俳人〕",
+  "a": "松尾芭蕉",
+  "accept": [
+   "まつおばしょう"
+  ],
+  "source": "江戸時代の俳人である松尾芭蕉が生まれた伊賀市では俳句文化が根付いています。",
+  "explain": "「おくのほそ道」で知られる俳人です。",
+  "juken": "写真を見て名前を答える問題が出る。",
+  "basis": "text",
+  "id": "seed_sm_57"
+ },
+ {
+  "type": "figure",
+  "fig": "ans/mikimoto.webp",
+  "subj": "shakai",
+  "round": 4,
+  "q": "この人物はだれですか。〔三重・真珠の養殖に成功した〕",
+  "a": "御木本幸吉",
+  "accept": [
+   "みきもとこうきち"
+  ],
+  "source": "御木本幸吉という人物が今から100年以上前に、世界で初めて真珠の養殖に成功しました。",
+  "explain": "今から100年以上前に、世界で初めて真珠の養殖に成功した人です。",
+  "juken": "写真を見て名前を答える問題が出る。",
+  "basis": "text",
+  "id": "seed_sm_58"
+ },
+ {
+  "type": "figure",
+  "fig": "ans/ieyasu.webp",
+  "subj": "shakai",
+  "round": 5,
+  "q": "この人物はだれですか。〔三河国生まれ・江戸幕府を開いた〕",
+  "a": "徳川家康",
+  "accept": [
+   "とくがわいえやす"
+  ],
+  "source": "勝利した徳川家康はこの後、江戸に幕府を開きました。",
+  "explain": "東軍を率いて西軍の石田三成に勝ちました。",
+  "juken": "写真を見て名前を答える問題が出る。",
+  "basis": "text",
+  "id": "seed_sm_59"
  }
 ]
