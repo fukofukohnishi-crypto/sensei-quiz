@@ -147,6 +147,7 @@ PD / CC0 の写真は、画面表示は不要。
 | `kishimen.webp` | きしめん（名古屋市北区。うすくてたいらな麺） | Wikimedia Commons<br>`Kishimen 20201113-01.jpg` | **CC BY-SA 4.0**<br>→ **画面に表示ずみ** | 円周率３パーセント |
 | `akaishi.webp` | 赤石山脈（南アルプス）。恵那山から伊那盆地ごしに見た雪の稜線 | Wikimedia Commons<br>`Akaishi Mountains from Mount Ena.JPG` | **CC BY-SA 4.0**<br>→ **画面に表示ずみ** | Alpsdake |
 | `agowan.webp` | 英虞湾（三重県志摩市・桐垣展望台から。真珠いかだが浮かぶ入り組んだ湾） | Wikimedia Commons（ファイル名は未記録） | **CC BY-SA 4.0**<br>→ **画面に表示ずみ** | Alpsdake |
+| `egawakaigan.webp` | 江川海岸（千葉県。潮が引いたあとの鏡のような水面と、うつった富士山） | Wikimedia Commons<br>`Chiba-Egawa coast-xl (2).jpg`（FIND/47プロジェクト） | **CC BY 4.0**<br>→ **画面に表示ずみ** | Akiko_Toshinai |
 | `hyoga.webp` | 氷河（アラスカ・コロニー氷河） | Wikimedia Commons<br>`Parque estatal Chugach, Alaska…DD 94.jpg` | **CC BY-SA 4.0**<br>→ **画面に表示ずみ** | Diego Delso |
 | `fujimaehigata.webp` | 干潟（藤前干潟） | Wikimedia Commons<br>`Fujimae-higata.jpg` | **CC BY-SA 3.0**<br>→ **画面に表示ずみ** | Alpsdake |
 | `nobeyamahara.webp` | 野辺山原（八ヶ岳・硫黄岳から） | Wikimedia Commons<br>`Nobeyama Plateau 02.jpg` | **CC BY 3.0**<br>→ **画面に表示ずみ** | Σ64 |

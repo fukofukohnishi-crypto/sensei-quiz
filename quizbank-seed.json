@@ -2298,7 +2298,9 @@
   "explain": "潮が引いたあとの浅い水面に空が映り、ウユニ塩湖のように見えます。",
   "juken": "",
   "basis": "text",
-  "id": "seed_u3_09"
+  "id": "seed_u3_09",
+  "ansFig": "egawakaigan.webp",
+  "ansFigBy": "写真: Akiko_Toshinai（CC BY 4.0）"
  },
  {
   "type": "text",
