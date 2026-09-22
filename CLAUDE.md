@@ -730,6 +730,13 @@ Commons のライセンスの見わけかた（画像ページの `cc` の行を
 | `Creative Commons Attribution`（CC BY） | `ansFigBy` を書く |
 | `Attribution-ShareAlike`（CC BY-SA） | `ansFigBy` を書く |
 | `NonCommercial`（NC）や `NoDerivatives`（ND） | 使わない |
+| `GFDL` **だけ** | 使わない（ライセンス全文を一緒に配る義務がある） |
+| `GFDL` ＋ `CC BY-SA` の併記 | **CC BY-SA のほうで使える。** `ansFigBy` を書く |
+
+**GFDL は古いファイルでよく出てくる。** 2005年ごろに英語版Wikipediaへ自分で
+上げた写真は `{{GFDL-self}}` が付いていることがあり、2009年の移行で
+CC BY-SA 3.0 が併記されたものと、GFDLのままのものがある。
+**ライセンス欄を下までスクロールして、CC BY-SA の箱があるかを見ること。**
 
 **写真がほしいものの一覧は `img/figures/ans/ほしい画像リスト.md`。** どの答えに写真が
 効くかを優先度つきで並べてある（生き物33・地形19・建物26・工芸30・肖像14で、129問ぶん）。
