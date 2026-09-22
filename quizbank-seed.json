@@ -6274,7 +6274,9 @@
   "explain": "志摩半島にある入り組んだ湾です。",
   "juken": "",
   "basis": "text",
-  "id": "seed_s4_042"
+  "id": "seed_s4_042",
+  "ansFig": "agowan.webp",
+  "ansFigBy": "写真: Alpsdake（CC BY-SA 4.0）"
  },
  {
   "type": "text",
@@ -6579,7 +6581,9 @@
   "explain": "南アルプスともよばれます。",
   "juken": "",
   "basis": "text",
-  "id": "seed_s5_011"
+  "id": "seed_s5_011",
+  "ansFig": "akaishi.webp",
+  "ansFigBy": "写真: Alpsdake（CC BY-SA 4.0）"
  },
  {
   "type": "text",

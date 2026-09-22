@@ -145,6 +145,8 @@ PD / CC0 の写真は、画面表示は不要。
 | `kasagumo.webp` | かさ雲（モンブラン。とがった山頂の真上にかぶさった1枚） | Wikimedia Commons<br>`Mont Blanc from Les Arcs 1950.jpg` | **CC BY-SA 4.0**<br>→ **画面に表示ずみ** | Dmitry A. Mottl |
 | `sekigahara.webp` | 関ヶ原古戦場・決戦地の石碑と幟（岐阜県関ケ原町） | Wikimedia Commons<br>`Battlefield of Sekigahara (decisive battle site), Gifu, Japan.jpg` | **CC BY-SA 4.0**<br>→ **画面に表示ずみ** | Q RURU YUKI historian |
 | `kishimen.webp` | きしめん（名古屋市北区。うすくてたいらな麺） | Wikimedia Commons<br>`Kishimen 20201113-01.jpg` | **CC BY-SA 4.0**<br>→ **画面に表示ずみ** | 円周率３パーセント |
+| `akaishi.webp` | 赤石山脈（南アルプス）。恵那山から伊那盆地ごしに見た雪の稜線 | Wikimedia Commons<br>`Akaishi Mountains from Mount Ena.JPG` | **CC BY-SA 4.0**<br>→ **画面に表示ずみ** | Alpsdake |
+| `agowan.webp` | 英虞湾（三重県志摩市・桐垣展望台から。真珠いかだが浮かぶ入り組んだ湾） | Wikimedia Commons（ファイル名は未記録） | **CC BY-SA 4.0**<br>→ **画面に表示ずみ** | Alpsdake |
 | `hyoga.webp` | 氷河（アラスカ・コロニー氷河） | Wikimedia Commons<br>`Parque estatal Chugach, Alaska…DD 94.jpg` | **CC BY-SA 4.0**<br>→ **画面に表示ずみ** | Diego Delso |
 | `fujimaehigata.webp` | 干潟（藤前干潟） | Wikimedia Commons<br>`Fujimae-higata.jpg` | **CC BY-SA 3.0**<br>→ **画面に表示ずみ** | Alpsdake |
 | `nobeyamahara.webp` | 野辺山原（八ヶ岳・硫黄岳から） | Wikimedia Commons<br>`Nobeyama Plateau 02.jpg` | **CC BY 3.0**<br>→ **画面に表示ずみ** | Σ64 |
