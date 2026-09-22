@@ -143,6 +143,8 @@ PD / CC0 の写真は、画面表示は不要。
 | `nihonalps.webp` | 日本アルプス・飛騨山脈（北アルプス） | Wikimedia Commons<br>`Japanese Alps (51831654271).jpg` | **CC BY 2.0**<br>→ **画面に表示ずみ** | Raita Futo |
 | `renzugumo.webp` | レンズ雲（ペニャララ山。積み重なったレンズ形。**山頂にはのっていない**） | Wikimedia Commons<br>`Nube lenticular sobre la cumbre de Peñalara. España. Foto Carlos Teixidor Cadenas.jpg` | **CC BY 4.0**<br>→ **画面に表示ずみ** | Carlos Teixidor Cadenas |
 | `kasagumo.webp` | かさ雲（モンブラン。とがった山頂の真上にかぶさった1枚） | Wikimedia Commons<br>`Mont Blanc from Les Arcs 1950.jpg` | **CC BY-SA 4.0**<br>→ **画面に表示ずみ** | Dmitry A. Mottl |
+| `sekigahara.webp` | 関ヶ原古戦場・決戦地の石碑と幟（岐阜県関ケ原町） | Wikimedia Commons<br>`Battlefield of Sekigahara (decisive battle site), Gifu, Japan.jpg` | **CC BY-SA 4.0**<br>→ **画面に表示ずみ** | Q RURU YUKI historian |
+| `kishimen.webp` | きしめん（名古屋市北区。うすくてたいらな麺） | Wikimedia Commons<br>`Kishimen 20201113-01.jpg` | **CC BY-SA 4.0**<br>→ **画面に表示ずみ** | 円周率３パーセント |
 | `hyoga.webp` | 氷河（アラスカ・コロニー氷河） | Wikimedia Commons<br>`Parque estatal Chugach, Alaska…DD 94.jpg` | **CC BY-SA 4.0**<br>→ **画面に表示ずみ** | Diego Delso |
 | `fujimaehigata.webp` | 干潟（藤前干潟） | Wikimedia Commons<br>`Fujimae-higata.jpg` | **CC BY-SA 3.0**<br>→ **画面に表示ずみ** | Alpsdake |
 | `nobeyamahara.webp` | 野辺山原（八ヶ岳・硫黄岳から） | Wikimedia Commons<br>`Nobeyama Plateau 02.jpg` | **CC BY 3.0**<br>→ **画面に表示ずみ** | Σ64 |

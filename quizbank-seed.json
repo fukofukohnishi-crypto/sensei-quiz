@@ -6008,7 +6008,9 @@
   "explain": "名古屋の代表的なめん料理です。",
   "juken": "",
   "basis": "text",
-  "id": "seed_s4_023"
+  "id": "seed_s4_023",
+  "ansFig": "kishimen.webp",
+  "ansFigBy": "写真: 円周率３パーセント（CC BY-SA 4.0）"
  },
  {
   "type": "text",
@@ -7013,7 +7015,9 @@
   "explain": "「天下分け目の戦い」といわれます。",
   "juken": "関ヶ原の戦い＝1600年。勝った家康が江戸幕府を開く。",
   "basis": "text",
-  "id": "seed_s5_041"
+  "id": "seed_s5_041",
+  "ansFig": "sekigahara.webp",
+  "ansFigBy": "写真: Q RURU YUKI historian（CC BY-SA 4.0）"
  },
  {
   "type": "text",
