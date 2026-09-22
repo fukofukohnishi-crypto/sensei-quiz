@@ -45,7 +45,7 @@ PD / CC0 の写真は、画面表示は不要。
 | `himejijo.webp` | 姫路城 | Wikimedia Commons | **PD**（パブリックドメイン） | 表示不要 |
 | `matsumotojo.webp` | 松本城 | Wikimedia Commons | **PD**（パブリックドメイン） | 表示不要 |
 | `daisenkofun.webp` | 大仙古墳（空中写真） | Wikimedia Commons<br>`NintokuTomb Aerial photograph 2007.jpg` | **CC BY**<br>→ **画面に表示ずみ** | 国土地理院 |
-| `shachihoko.webp` | しゃちほこ（名古屋城） | Wikimedia Commons<br>`Shachi-hoko of Nagoya Castle.jpg` | **CC BY-SA 4.0**<br>→ **画面に表示ずみ** | Motokoka |
+| `shachihoko.webp` | しゃちほこ（**岡山城**の金鯱。屋根の上・青空を背に、全身が見える） | Wikimedia Commons | **CC BY 3.0**<br>→ **画面に表示ずみ** | zensan<br>**問題文は名古屋城。どこの金鯱かをクレジットに明記してある。**<br>一度 `Shachi-hoko of Nagoya Castle.jpg`（CC BY-SA 4.0 / Motokoka）に差しかえたが、**寄りすぎた切りぬきで頭が枠の外に出ており、`seed_sm_30`（写真→名前）が成立しなかった**ためこちらにもどした。名古屋城の、全身が見える写真が手に入ったら差しかえる |
 | `gasshozukuri.webp` | 合掌造り（白川郷・荻町） | Wikimedia Commons<br>`Gassho-zukuri farmhouse-01.jpg` | **CC BY-SA 3.0**<br>→ **画面に表示ずみ** | Bernard Gagnon |
 | `taiyonoto.webp` | 太陽の塔（大阪府吹田市） | 日本語版Wikipedia 経由 | **CC BY-SA 3.0**<br>→ **画面に表示ずみ** | 663highland |
 | `amanohashidate.webp` | 天橋立（笠松公園から） | Wikimedia Commons<br>`Amanohashidate view from Kasamatsu Park01s3s4410.jpg` | **CC BY 2.5**<br>→ **画面に表示ずみ** | 663highland |
