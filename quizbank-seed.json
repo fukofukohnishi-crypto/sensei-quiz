@@ -5285,7 +5285,9 @@
   "explain": "山がすぐそばまでせまっています。",
   "juken": "山と海にはさまれた地形＝神戸の特徴。",
   "basis": "text",
-  "id": "seed_s3_025"
+  "id": "seed_s3_025",
+  "ansFig": "rokkosanchi.webp",
+  "ansFigBy": "写真: Mass Ave 975（CC BY-SA 3.0）"
  },
  {
   "type": "text",
