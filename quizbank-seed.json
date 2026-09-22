@@ -3652,7 +3652,8 @@
   "explain": "カタカナの一文字です。",
   "juken": "",
   "basis": "text",
-  "id": "seed_s1_029"
+  "id": "seed_s1_029",
+  "ansFig": "narakensho.webp"
  },
  {
   "type": "text",
@@ -4571,7 +4572,8 @@
   "explain": "県名の最初の音をかたどっています。",
   "juken": "",
   "basis": "text",
-  "id": "seed_s2_041"
+  "id": "seed_s2_041",
+  "ansFig": "wakayamakensho.webp"
  },
  {
   "type": "text",
@@ -5734,7 +5736,8 @@
   "explain": "希望に満ちた朝日をあらわしています。",
   "juken": "",
   "basis": "text",
-  "id": "seed_s4_006"
+  "id": "seed_s4_006",
+  "ansFig": "aichikensho.webp"
  },
  {
   "type": "text",
@@ -6137,7 +6140,8 @@
   "explain": "三重県は真珠の養殖がさかんです。",
   "juken": "",
   "basis": "text",
-  "id": "seed_s4_034"
+  "id": "seed_s4_034",
+  "ansFig": "miekensho.webp"
  },
  {
   "type": "text",
@@ -6487,7 +6491,8 @@
   "explain": "鳥が湖の上を飛んでいる姿に見立ててあります。",
   "juken": "",
   "basis": "text",
-  "id": "seed_s5_006"
+  "id": "seed_s5_006",
+  "ansFig": "naganokensho.webp"
  },
  {
   "type": "text",
@@ -6900,7 +6905,8 @@
   "explain": "県の平和や円満をあらわしています。",
   "juken": "",
   "basis": "text",
-  "id": "seed_s5_035"
+  "id": "seed_s5_035",
+  "ansFig": "gifukensho.webp"
  },
  {
   "type": "text",
