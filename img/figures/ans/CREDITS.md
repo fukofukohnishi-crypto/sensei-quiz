@@ -148,7 +148,7 @@ PD / CC0 の写真は、画面表示は不要。
 | `akaishi.webp` | 赤石山脈（南アルプス）。恵那山から伊那盆地ごしに見た雪の稜線 | Wikimedia Commons<br>`Akaishi Mountains from Mount Ena.JPG` | **CC BY-SA 4.0**<br>→ **画面に表示ずみ** | Alpsdake |
 | `agowan.webp` | 英虞湾（三重県志摩市・桐垣展望台から。真珠いかだが浮かぶ入り組んだ湾） | Wikimedia Commons（ファイル名は未記録） | **CC BY-SA 4.0**<br>→ **画面に表示ずみ** | Alpsdake |
 | `egawakaigan.webp` | 江川海岸（千葉県。潮が引いたあとの鏡のような水面と、うつった富士山） | Wikimedia Commons<br>`Chiba-Egawa coast-xl (2).jpg`（FIND/47プロジェクト） | **CC BY 4.0**<br>→ **画面に表示ずみ** | Akiko_Toshinai |
-| `rokkosanchi.webp` | 六甲山地（最高峰を南東から。神戸市のすぐ北にせまる山） | Wikimedia Commons<br>`Rokkosaikoho01.JPG` | **CC BY-SA 3.0**<br>→ **画面に表示ずみ** | Mass Ave 975 |
+| `rokkosanchi.webp` | 六甲山地（神戸ポートターミナルから。海・港と街・山の三段が一枚に入っている。以前は山だけの `Rokkosaikoho01.JPG` を使っていたが、街との関係が見えるこちらに差しかえた） | Wikimedia Commons（ファイル名は未記録。解説は「アムステルダム, 神戸ポートターミナル」2007-10-06）<br>GFDL / CC BY-SA 3.0 / **CC BY 2.5** の三本立てで出ていたので、いちばんゆるい CC BY 2.5 を選んだ | **CC BY 2.5**<br>→ **画面に表示ずみ** | 663highland |
 | `hyoga.webp` | 氷河（アラスカ・コロニー氷河） | Wikimedia Commons<br>`Parque estatal Chugach, Alaska…DD 94.jpg` | **CC BY-SA 4.0**<br>→ **画面に表示ずみ** | Diego Delso |
 | `fujimaehigata.webp` | 干潟（藤前干潟） | Wikimedia Commons<br>`Fujimae-higata.jpg` | **CC BY-SA 3.0**<br>→ **画面に表示ずみ** | Alpsdake |
 | `nobeyamahara.webp` | 野辺山原（八ヶ岳・硫黄岳から） | Wikimedia Commons<br>`Nobeyama Plateau 02.jpg` | **CC BY 3.0**<br>→ **画面に表示ずみ** | Σ64 |
