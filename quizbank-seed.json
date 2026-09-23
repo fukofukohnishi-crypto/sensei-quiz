@@ -9532,7 +9532,9 @@
   "juken": "十種雲形の別名は頻出。",
   "basis": "text",
   "id": "seed_nm_28",
-  "figAfter": "cloudtypes.svg"
+  "figAfter": "cloudtypes.svg",
+  "ansFig": "ransoun.webp",
+  "ansFigBy": "写真: Eric T Gunther（CC BY-SA 3.0）"
  },
  {
   "type": "text",
@@ -9545,7 +9547,9 @@
   "explain": "いまはいない、過去の動物です。",
   "juken": "絶滅した動物。",
   "basis": "text",
-  "id": "seed_nm_45"
+  "id": "seed_nm_45",
+  "ansFig": "smilodon.webp",
+  "ansFigBy": "復元図: Dantheman9758（英語版Wikipedia・CC BY 3.0）"
  },
  {
   "type": "text",
@@ -9649,7 +9653,8 @@
   "explain": "他の動物を捕らえてえさにします。",
   "juken": "肉食・草食・雑食の仕分けは頻出。",
   "basis": "text",
-  "id": "seed_nm_56"
+  "id": "seed_nm_56",
+  "ansFig": "cheetah.webp"
  },
  {
   "type": "text",
@@ -9844,7 +9849,8 @@
   "explain": "ネコ目ですが、ヒグマと同じく雑食です。ネコ目のすべてが肉食動物というわけではありません。",
   "juken": "ネコ目でも雑食のものがいる。",
   "basis": "text",
-  "id": "seed_nm_71"
+  "id": "seed_nm_71",
+  "ansFig": "panda.webp"
  },
  {
   "type": "text",
