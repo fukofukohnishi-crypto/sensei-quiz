@@ -334,10 +334,6 @@ button:focus-visible{outline:2px solid var(--gold);outline-offset:2px}
         <span class="ic">📖</span>
         <span class="tx"><b>学園 夜話</b><small id="nav-stories">よみこみ中…</small></span>
       </button>
-      <button class="nav" onclick="startReview()">
-        <span class="ic">🔁</span>
-        <span class="tx"><b>まちがい直し</b><small id="nav-review">0問</small></span>
-      </button>
       <button class="nav" onclick="go('s-admin')">
         <span class="ic">🛠️</span>
         <span class="tx"><b>問題をつくる</b><small>教材の写真から</small></span>
@@ -916,7 +912,9 @@ const MASTER=3;
 function recordReview(q,ok){
   const key=q.id||q.q;
   let r=review.find(x=>x.key===key);
-  if(!r){ r={key:key,q:q,streak:0,miss:0}; review.push(r); }
+  /* リストに入るのは、まちがえたときだけ。前は正解した問題も入っていて、
+     「まちがい直し」に正解ずみの問題がまざっていた */
+  if(!r){ if(ok) return null; r={key:key,q:q,streak:0,miss:0}; review.push(r); }
   r.q=q;
   if(ok){ r.streak++; if(r.streak>=MASTER) review=review.filter(x=>x!==r); }
   else { r.streak=0; r.miss++; }
@@ -948,27 +946,15 @@ function roundOf(subj){
 }
 function setRound(subj,r){ practiceRound[subj]=r; saveRound(); renderHome(); }
 
-/* ---- れんしゅう20問 ＝ 新しい問題15 ＋ 復習5 ----
+/* ---- れんしゅう：まだ出ていない問題から先に出す ----
    完全ランダムだと、全問ぶん（理科なら327問）やっても3分の1は一度も出ず、
    同じ問題が2回3回と出る。そこで、一度も答えていない問題から先に選ぶ。
    その範囲（えらんだ回、または全部）を出しきったら、その範囲だけ最初にもどす。
 
-   ただ、新しい問題だけだと、1回正解した問題は2周目（3週間ほど先）まで
-   二度と出ず、くり返して覚えられない。そこで毎回5問は復習にあてる:
-     1. まちがえたことがあって、まだ3回連続で正解していない問題（まちがいが多い順）
-     2. 足りなければ、前に出た問題のうち、出てからいちばん時間がたったもの
-   2 のおかげで、正解した問題も、あいだを少しずつ空けながらもどってくる。 */
-const REVIEW_PER_SET=5;
+   くり返しは、ほかの2つのボタンの役目:
+     まちがい直し … まちがえた問題だけ。3回続けて正解したら外れる
+     50問連続     … 全部からランダム。正解した問題の総復習になる */
 function qKey(q){ return q.id||q.q; }
-function pickReview(pool,n){
-  const inPool={}; pool.forEach(q=>{ inPool[qKey(q)]=q; });
-  const wrong=review.filter(r=>r.miss>0&&inPool[r.key])
-    .sort((a,b)=>(b.miss-a.miss)||((seen[a.key]||0)-(seen[b.key]||0)))
-    .map(r=>inPool[r.key]);
-  const old=pool.filter(q=>seen[qKey(q)]&&wrong.indexOf(q)<0)
-    .sort((a,b)=>seen[qKey(a)]-seen[qKey(b)]);
-  return wrong.concat(old).slice(0,n);
-}
 function freshOf(pool){ return pool.filter(q=>!seen[qKey(q)]); }
 function pickFresh(pool,n){
   const shuf=a=>a.slice().sort(()=>Math.random()-.5);
@@ -987,9 +973,7 @@ function startFlash(subj){
   const r=roundOf(subj);
   const pool=poolOf(subj,r);
   if(pool.length<1){toast('まだ問題がないよ。「問題をつくる」から入れてね','var(--warn)');return;}
-  const rev=pickReview(pool,REVIEW_PER_SET);
-  const rest=pool.filter(q=>rev.indexOf(q)<0);
-  qList=rev.concat(pickFresh(rest,20-rev.length)).sort(()=>Math.random()-.5);
+  qList=pickFresh(pool,20);
   beginQuiz(subj,'free',SUBJ[subj].n+' れんしゅう'+(r?'　第'+r+'回':''));
 }
 function startChallenge(subj){
@@ -1011,10 +995,17 @@ function startWrongOnly(){
   qList=list.sort(()=>Math.random()-.5);
   beginQuiz(curSubj,'free','まちがえたのだけ　'+list.length+'問');
 }
-function startReview(){
-  if(!review.length){toast('まちがえた問題はないよ');return;}
-  qList=review.slice(0,20).map(r=>r.q);
-  beginQuiz(qList[0].subj||'rika','review','まちがい直し');
+/* 科目ごとのまちがい直し。まちがえた問題だけが入っている。
+   3回続けて正解すると外れる（recordReview）。
+   前は古いほうから20問だったので、リストが20問をこえると、さっきまちがえた
+   問題が出てこなかった。いまは「まだ正解が続いていない・まちがいが多い」順に選ぶ */
+function reviewOf(subj){ return review.filter(r=>((r.q&&r.q.subj)||'rika')===subj); }
+function startReview(subj){
+  const list=reviewOf(subj);
+  if(!list.length){toast('まちがえた問題はないよ');return;}
+  qList=list.slice().sort((a,b)=>(a.streak-b.streak)||(b.miss-a.miss))
+    .slice(0,20).map(r=>r.q).sort(()=>Math.random()-.5);
+  beginQuiz(subj,'review',SUBJ[subj].n+' まちがい直し');
 }
 function beginQuiz(subj,m,title){
   curSubj=subj; mode=m; qIdx=0; qOk=0; qWrong=[];
@@ -1257,13 +1248,15 @@ function renderHome(){
       +freshLine(s,cur)
       +'<button class="btn" onclick="startFlash(\''+s+'\')"'+(n?'':' disabled')+'>れんしゅう（20問）'
         +(cur?'　第'+cur+'回':'')+'</button>'
+      +(()=>{ const m=reviewOf(s).length;
+          return '<button class="btn warn" onclick="startReview(\''+s+'\')"'+(m?'':' disabled')+'>🔁 まちがい直し'
+            +(m?'（'+m+'問）':'（いまはなし）')+'</button>'; })()
       +'<button class="btn gold" onclick="startChallenge(\''+s+'\')"'+(n>=5?'':' disabled')+'>🔥 50問連続チャレンジ</button>'
       +'</div>';
   }).join('');
   const owned=Object.keys(collection).length;
   document.getElementById('nav-cards').textContent=owned+' 枚あつめた';
   document.getElementById('nav-stories').textContent=unlocked.length+' ／ '+STORIES.length+' 話';
-  document.getElementById('nav-review').textContent=review.length+' 問';
 }
 
 function renderCards(){
@@ -1784,6 +1777,8 @@ function retireOld(){
   try{ const c=JSON.parse(localStorage.getItem(LS_CARDS)||'{}');
        collection=c.collection||{}; answeredCount=c.answeredCount||0; }catch(e){}
   try{ review=JSON.parse(localStorage.getItem(LS_REVIEW)||'[]'); }catch(e){ review=[]; }
+  /* 前の作りでは正解した問題もリストに入っていた。まちがえたことのないものは外す */
+  { const n0=review.length; review=review.filter(r=>r&&r.miss>0); if(review.length!==n0)saveReview(); }
   /* 作りかえた古い問題を消す（RETIRE_VER が上がったときだけ走る） */
   retireOld();
   try{ const d=JSON.parse(localStorage.getItem(LS_CHALLENGE)||'{}');
