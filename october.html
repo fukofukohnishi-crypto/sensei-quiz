@@ -750,7 +750,8 @@ let challenge={rika:{streak:0,best:0,cleared:false,clears:0}, shakai:{streak:0,b
 let unlocked=[], practiceCount=0;
 /* れんしゅうで出す単元。0 は「ぜんぶ」。50問連続チャレンジはいつも全部から出す */
 let practiceRound={rika:0, shakai:0};
-/* 一度でも答えた問題（キーは qKey）。れんしゅうは、ここに無い問題から先に出す */
+/* 一度でも答えた問題（キーは qKey、値は最後に答えた時刻）。
+   れんしゅうは、ここに無い問題から先に出し、古いものから復習にまわす */
 let seen={};
 
 function saveBank(){idbSet('quizbank',quizbank);}
@@ -947,12 +948,27 @@ function roundOf(subj){
 }
 function setRound(subj,r){ practiceRound[subj]=r; saveRound(); renderHome(); }
 
-/* ---- まだ出ていない問題から先に出す ----
+/* ---- れんしゅう20問 ＝ 新しい問題15 ＋ 復習5 ----
    完全ランダムだと、全問ぶん（理科なら327問）やっても3分の1は一度も出ず、
    同じ問題が2回3回と出る。そこで、一度も答えていない問題から先に選ぶ。
    その範囲（えらんだ回、または全部）を出しきったら、その範囲だけ最初にもどす。
-   まちがえた問題のくり返しは「まちがい直し」の役目なので、ここでは追わない。 */
+
+   ただ、新しい問題だけだと、1回正解した問題は2周目（3週間ほど先）まで
+   二度と出ず、くり返して覚えられない。そこで毎回5問は復習にあてる:
+     1. まちがえたことがあって、まだ3回連続で正解していない問題（まちがいが多い順）
+     2. 足りなければ、前に出た問題のうち、出てからいちばん時間がたったもの
+   2 のおかげで、正解した問題も、あいだを少しずつ空けながらもどってくる。 */
+const REVIEW_PER_SET=5;
 function qKey(q){ return q.id||q.q; }
+function pickReview(pool,n){
+  const inPool={}; pool.forEach(q=>{ inPool[qKey(q)]=q; });
+  const wrong=review.filter(r=>r.miss>0&&inPool[r.key])
+    .sort((a,b)=>(b.miss-a.miss)||((seen[a.key]||0)-(seen[b.key]||0)))
+    .map(r=>inPool[r.key]);
+  const old=pool.filter(q=>seen[qKey(q)]&&wrong.indexOf(q)<0)
+    .sort((a,b)=>seen[qKey(a)]-seen[qKey(b)]);
+  return wrong.concat(old).slice(0,n);
+}
 function freshOf(pool){ return pool.filter(q=>!seen[qKey(q)]); }
 function pickFresh(pool,n){
   const shuf=a=>a.slice().sort(()=>Math.random()-.5);
@@ -971,7 +987,9 @@ function startFlash(subj){
   const r=roundOf(subj);
   const pool=poolOf(subj,r);
   if(pool.length<1){toast('まだ問題がないよ。「問題をつくる」から入れてね','var(--warn)');return;}
-  qList=pickFresh(pool,20);
+  const rev=pickReview(pool,REVIEW_PER_SET);
+  const rest=pool.filter(q=>rev.indexOf(q)<0);
+  qList=rev.concat(pickFresh(rest,20-rev.length)).sort(()=>Math.random()-.5);
   beginQuiz(subj,'free',SUBJ[subj].n+' れんしゅう'+(r?'　第'+r+'回':''));
 }
 function startChallenge(subj){
@@ -1112,7 +1130,7 @@ function score(ok){
   if(ok)qOk++; else if(qWrong.indexOf(q)<0)qWrong.push(q);
   answeredCount++;
   recordReview(q,ok);
-  seen[qKey(q)]=1; saveSeen();
+  seen[qKey(q)]=Date.now(); saveSeen();
 
   /* 10問ごとにカード1枚 */
   if(answeredCount%10===0){
