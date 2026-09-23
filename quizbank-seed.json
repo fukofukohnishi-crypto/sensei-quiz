@@ -9398,7 +9398,9 @@
   "explain": "信濃川・石狩川とならぶ、日本を代表する河川です。",
   "juken": "川と流れる都道府県の組み合わせ。",
   "basis": "text",
-  "id": "seed_nm_12"
+  "id": "seed_nm_12",
+  "ansFig": "tonegawa.webp",
+  "ansFigBy": "写真: P199（CC BY-SA 3.0）"
  },
  {
   "type": "text",
@@ -10050,7 +10052,9 @@
   "explain": "利根川は淡水。コイやフナは淡水魚です。",
   "juken": "場所と海水・淡水、魚の組み合わせ。",
   "basis": "text",
-  "id": "seed_cl_21"
+  "id": "seed_cl_21",
+  "ansFig": "tonegawa.webp",
+  "ansFigBy": "写真: P199（CC BY-SA 3.0）"
  },
  {
   "type": "text",
