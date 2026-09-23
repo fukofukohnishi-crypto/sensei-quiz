@@ -3231,7 +3231,8 @@
   "explain": "日本海側にある港町です。",
   "juken": "リアス海岸は入り組んだ海岸線。三陸海岸などと合わせて問われる。",
   "basis": "text",
-  "id": "seed_s1_009"
+  "id": "seed_s1_009",
+  "ansFig": "maizuru.webp"
  },
  {
   "type": "text",

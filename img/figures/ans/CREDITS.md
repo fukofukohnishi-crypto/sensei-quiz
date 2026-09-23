@@ -150,6 +150,7 @@ PD / CC0 の写真は、画面表示は不要。
 | `egawakaigan.webp` | 江川海岸（千葉県。潮が引いたあとの鏡のような水面と、うつった富士山） | Wikimedia Commons<br>`Chiba-Egawa coast-xl (2).jpg`（FIND/47プロジェクト） | **CC BY 4.0**<br>→ **画面に表示ずみ** | Akiko_Toshinai |
 | `rokkosanchi.webp` | 六甲山地（神戸ポートターミナルから。海・港と街・山の三段が一枚に入っている。以前は山だけの `Rokkosaikoho01.JPG` を使っていたが、街との関係が見えるこちらに差しかえた） | Wikimedia Commons（ファイル名は未記録。解説は「アムステルダム, 神戸ポートターミナル」2007-10-06）<br>GFDL / CC BY-SA 3.0 / **CC BY 2.5** の三本立てで出ていたので、いちばんゆるい CC BY 2.5 を選んだ | **CC BY 2.5**<br>→ **画面に表示ずみ** | 663highland |
 | `tonegawa.webp` | 利根川（成田市と河内町のあたりを空から。大きく曲がって流れる川と、まわりの田んぼ） | Wikimedia Commons<br>`Tone River.JPG` | **CC BY-SA 3.0**<br>→ **画面に表示ずみ** | P199 |
+| `maizuru.webp` | 舞鶴市（舞鶴港にとまる大きな船と、港をかこむ山） | Wikimedia Commons（ファイル名は未記録） | **PD**（パブリックドメイン。送り主が確認） | 表示不要。写っているのは海上自衛隊の護衛艦（175番）。問題文の「造船」や「リアス海岸」そのものではないので、造船所や入り組んだ海岸の写真が見つかったら同じ名前で差しかえる |
 | `hyoga.webp` | 氷河（アラスカ・コロニー氷河） | Wikimedia Commons<br>`Parque estatal Chugach, Alaska…DD 94.jpg` | **CC BY-SA 4.0**<br>→ **画面に表示ずみ** | Diego Delso |
 | `fujimaehigata.webp` | 干潟（藤前干潟） | Wikimedia Commons<br>`Fujimae-higata.jpg` | **CC BY-SA 3.0**<br>→ **画面に表示ずみ** | Alpsdake |
 | `nobeyamahara.webp` | 野辺山原（八ヶ岳・硫黄岳から） | Wikimedia Commons<br>`Nobeyama Plateau 02.jpg` | **CC BY 3.0**<br>→ **画面に表示ずみ** | Σ64 |
