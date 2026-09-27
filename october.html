@@ -1005,12 +1005,17 @@ function startWrongOnly(){
    3回続けて正解すると外れる（recordReview）。
    前は古いほうから20問だったので、リストが20問をこえると、さっきまちがえた
    問題が出てこなかった。いまは「まだ正解が続いていない・まちがいが多い」順に選ぶ */
+/* リストには答えたときの問題がそのまま残っているので、出すときは
+   quizbank の今の問題にさしかえる（問題文や図をあとから直したときのため） */
+function latestQ(r){
+  return quizbank.find(x=>(x.id||x.q)===r.key)||r.q;
+}
 function reviewOf(subj){ return review.filter(r=>((r.q&&r.q.subj)||'rika')===subj); }
 function startReview(subj){
   const list=reviewOf(subj);
   if(!list.length){toast('まちがえた問題はないよ');return;}
   qList=list.slice().sort((a,b)=>(a.streak-b.streak)||(b.miss-a.miss))
-    .slice(0,20).map(r=>r.q).sort(()=>Math.random()-.5);
+    .slice(0,20).map(r=>latestQ(r)).sort(()=>Math.random()-.5);
   beginQuiz(subj,'review',SUBJ[subj].n+' まちがい直し');
 }
 function beginQuiz(subj,m,title){
@@ -1485,10 +1490,24 @@ async function generate(){
    一度読みこんだ問題は q の文で重複とみなして足せないので、
    図を追加したいときはこれが要る。解説や引用など人が直したところは
    さわらず、図が入っていないものにだけ入れる。 */
+/* 問題文の書きかえを端末にとどける。種の qPrev（前の問題文）と端末の文が
+   同じときだけ、新しい文にする。承認画面で人が直した文は qPrev と合わないので
+   上書きしない。社会の写真の問題を「写真の建物の名前は？」だけから、
+   場所や建てた人を入れた問い方に直したときに足した */
+function patchQText(arr,list){
+  const m={};
+  list.forEach(sd=>(sd.qPrev||[]).forEach(p=>{ m[p]=sd; }));
+  let n=0;
+  arr.forEach(q=>{
+    const sd=m[q.q];
+    if(sd&&(!q.id||q.id===sd.id)){ q.q=sd.q; n++; }
+  });
+  return n;
+}
 function patchFigures(list){
+  let n=patchQText(quizbank,list);
   const byId={}, byQ={};
   quizbank.forEach(q=>{ if(q.id)byId[q.id]=q; byQ[q.q]=q; });
-  let n=0;
   list.forEach(sd=>{
     if(!sd.figAfter&&!sd.ansFig&&!sd.ansFigBy&&!sd.figBy&&!sd.yomi)return;
     const cur=byId[sd.id]||byQ[sd.q];
@@ -1544,10 +1563,12 @@ async function loadSeed(){
     const list=await r.json();
     const patched=patchFigures(list);
     if(patched){ saveBank(); }
+    if(patchQText(drafts,list)) saveDrafts();
+    /* 問題文を書きかえた問題が二重に入らないよう、id でも見る */
     const have={};
-    quizbank.forEach(q=>{have[q.q]=1});
-    drafts.forEach(q=>{have[q.q]=1});
-    const add=list.filter(q=>!have[q.q]).map(q=>{
+    quizbank.forEach(q=>{have[q.q]=1; if(q.id)have[q.id]=1;});
+    drafts.forEach(q=>{have[q.q]=1; if(q.id)have[q.id]=1;});
+    const add=list.filter(q=>!have[q.q]&&!(q.id&&have[q.id])).map(q=>{
       const o=Object.assign({},q);
       const bad=gate2(o);
       o.checks={auto:bad.length?'fail':'pass', autoWhy:bad, ai:'pass',
