@@ -48,7 +48,8 @@
   "explain": "淡水の大部分は氷や氷河として固体で存在しているため、すぐには使えません。",
   "juken": "「淡水の多く＝氷や氷河」は頻出。",
   "note": "",
-  "basis": "text"
+  "basis": "text",
+  "yomi": "こおりやひょうが"
  },
  {
   "id": "seed_r1_04",
@@ -64,7 +65,8 @@
   "explain": "氷河以外の淡水は、地下水、河川、湖沼にあります。さらに空気中にも水は存在しています。",
   "juken": "",
   "note": "",
-  "basis": "text"
+  "basis": "text",
+  "yomi": "ちかすい・かせん・こしょう"
  },
  {
   "id": "seed_r1_05",
@@ -80,7 +82,8 @@
   "note": "",
   "basis": "text",
   "ansFig": "hyoga.webp",
-  "ansFigBy": "写真: Diego Delso（CC BY-SA 4.0）"
+  "ansFigBy": "写真: Diego Delso（CC BY-SA 4.0）",
+  "yomi": "ひょうが"
  },
  {
   "id": "seed_r1_06",
@@ -98,7 +101,8 @@
   "note": "",
   "basis": "text",
   "ansFig": "nihonalps.webp",
-  "ansFigBy": "写真: Raita Futo（北アルプス・CC BY 2.0）"
+  "ansFigBy": "写真: Raita Futo（北アルプス・CC BY 2.0）",
+  "yomi": "ひださんみゃく"
  },
  {
   "id": "seed_r1_07",
@@ -114,7 +118,8 @@
   "explain": "川のように流れず、たまっている水を湖沼といいます。",
   "juken": "",
   "note": "",
-  "basis": "text"
+  "basis": "text",
+  "yomi": "こしょう"
  },
  {
   "id": "seed_r1_08",
@@ -133,7 +138,8 @@
   "note": "",
   "basis": "text",
   "ansFig": "biwako.webp",
-  "ansFigBy": "写真: Global Land Cover Facility（CC BY-SA 3.0）"
+  "ansFigBy": "写真: Global Land Cover Facility（CC BY-SA 3.0）",
+  "yomi": "びわこ"
  },
  {
   "id": "seed_r1_09",
@@ -181,7 +187,8 @@
   "explain": "利根川、石狩川、信濃川は日本を代表する大きな川です。",
   "juken": "信濃川は日本一長い川。長さと流域面積の1位はちがうので注意。",
   "note": "",
-  "basis": "text"
+  "basis": "text",
+  "yomi": "しなのがわ"
  },
  {
   "id": "seed_r1_12",
@@ -213,7 +220,8 @@
   "explain": "コイやフナのように、川や湖でくらす魚を淡水魚といいます。",
   "juken": "",
   "note": "",
-  "basis": "text"
+  "basis": "text",
+  "yomi": "たんすいぎょ"
  },
  {
   "id": "seed_r1_14",
@@ -279,7 +287,8 @@
   "explain": "地下にしみこんだ水が地表に出てきたものを湧水といいます。",
   "juken": "",
   "note": "",
-  "basis": "text"
+  "basis": "text",
+  "yomi": "ゆうすい"
  },
  {
   "id": "seed_r2_01",
@@ -296,7 +305,8 @@
   "juken": "高さの数字までセットで問われる。",
   "note": "",
   "basis": "text",
-  "figAfter": "cloudtypes.svg"
+  "figAfter": "cloudtypes.svg",
+  "yomi": "じょうそううん"
  },
  {
   "id": "seed_r2_02",
@@ -331,7 +341,8 @@
   "juken": "",
   "note": "",
   "basis": "text",
-  "figAfter": "cloudtypes.svg"
+  "figAfter": "cloudtypes.svg",
+  "yomi": "かそううん"
  },
  {
   "id": "seed_r2_04",
@@ -380,7 +391,8 @@
   "juken": "乱層雲と積乱雲が雨を降らせる雲。",
   "note": "",
   "basis": "text",
-  "figAfter": "cloudtypes.svg"
+  "figAfter": "cloudtypes.svg",
+  "yomi": "あめをふらすくも"
  },
  {
   "id": "seed_r2_07",
@@ -433,7 +445,8 @@
   "basis": "text",
   "figAfter": "cloudtypes.svg",
   "ansFig": "ransoun.webp",
-  "ansFigBy": "写真: Eric T Gunther（CC BY-SA 3.0）"
+  "ansFigBy": "写真: Eric T Gunther（CC BY-SA 3.0）",
+  "yomi": "らんそううん"
  },
  {
   "id": "seed_r2_10",
@@ -532,7 +545,8 @@
   "explain": "飛行機の後ろの水蒸気が冷やされて、雲になったものです。",
   "juken": "",
   "note": "",
-  "basis": "text"
+  "basis": "text",
+  "yomi": "ひこうきぐも"
  },
  {
   "id": "seed_r2_16",
@@ -595,7 +609,8 @@
   "explain": "作り方がちがうため、粒の大きさが変わります。",
   "juken": "",
   "note": "",
-  "basis": "text"
+  "basis": "text",
+  "yomi": "つぶのおおきさ"
  },
  {
   "id": "seed_r3_02",
@@ -628,7 +643,8 @@
   "juken": "結晶の形で物質を見分ける問題が出る。",
   "note": "",
   "basis": "text",
-  "ansFig": "kessho.svg"
+  "ansFig": "kessho.svg",
+  "yomi": "けっしょう"
  },
  {
   "id": "seed_r3_04",
@@ -645,7 +661,8 @@
   "explain": "ムラサキキャベツの液は、酸性・中性・アルカリ性で色が変わります。",
   "juken": "色の変化（酸性＝赤、中性＝紫、アルカリ性＝緑）まで覚える。",
   "note": "",
-  "basis": "text"
+  "basis": "text",
+  "yomi": "ムラサキキャベツえき"
  },
  {
   "id": "seed_r3_05",
@@ -680,7 +697,8 @@
   "explain": "塩づけや砂糖づけにすると、菌が増えにくくなって食べ物が長もちします。",
   "juken": "保存方法（塩づけ・砂糖づけ・かんそう・冷凍）はまとめて問われる。",
   "note": "",
-  "basis": "text"
+  "basis": "text",
+  "yomi": "ざっきんのはんしょく"
  },
  {
   "id": "seed_r4_01",
@@ -697,7 +715,8 @@
   "explain": "ねじり合わせた糸が、ろうそくの芯になります。",
   "juken": "",
   "note": "",
-  "basis": "text"
+  "basis": "text",
+  "yomi": "しん"
  },
  {
   "id": "seed_r4_02",
@@ -728,7 +747,8 @@
   "explain": "固体のロウが熱でとけて液体になり、芯をのぼります。",
   "juken": "固体→液体→気体と変わる順番が問われる。",
   "note": "",
-  "basis": "text"
+  "basis": "text",
+  "yomi": "えきたい"
  },
  {
   "id": "seed_r4_04",
@@ -763,7 +783,8 @@
   "juken": "3つの名前と、温度・明るさの順は必ず問われる。",
   "note": "",
   "basis": "text",
-  "figAfter": "flame.svg"
+  "figAfter": "flame.svg",
+  "yomi": "えんしん・ないえん・がいえん"
  },
  {
   "id": "seed_r4_06",
@@ -793,7 +814,8 @@
   "explain": "金属は熱をよく伝えるので、炎の熱をうばって温度を下げてしまいます。",
   "juken": "「温度が下がると燃え続けられない」＝燃焼の3条件の一つが欠ける。",
   "note": "",
-  "basis": "text"
+  "basis": "text",
+  "yomi": "ねつ"
  },
  {
   "id": "seed_r4_08",
@@ -856,7 +878,8 @@
   "explain": "イルカやカバのように、毛がほとんどないほ乳類もいます。",
   "juken": "イルカ・クジラがほ乳類であることは頻出。",
   "note": "",
-  "basis": "choice"
+  "basis": "choice",
+  "yomi": "けがほとんどないほにゅうるい"
  },
  {
   "id": "seed_r5_02",
@@ -1005,7 +1028,8 @@
   "explain": "海水は塩からく、淡水は塩からくない水です。",
   "juken": "「すべての川が淡水というわけではない」と但し書きがある点に注意。",
   "basis": "text",
-  "id": "seed_t1_00"
+  "id": "seed_t1_00",
+  "yomi": "しおからいみず"
  },
  {
   "type": "text",
@@ -1020,7 +1044,8 @@
   "explain": "1辺1cmの立方体で1万4千垓個分という、想像しにくいほどの量です。",
   "juken": "",
   "basis": "text",
-  "id": "seed_t1_01"
+  "id": "seed_t1_01",
+  "yomi": "14おくりっぽうキロメートル"
  },
  {
   "type": "text",
@@ -1050,7 +1075,8 @@
   "explain": "垓は日常ではほとんど使わないとても大きな数です。",
   "juken": "",
   "basis": "text",
-  "id": "seed_t1_03"
+  "id": "seed_t1_03",
+  "yomi": "がい"
  },
  {
   "type": "text",
@@ -1076,7 +1102,8 @@
   "explain": "きれいな水がわき出る場所として選ばれています。",
   "juken": "",
   "basis": "text",
-  "id": "seed_t1_05"
+  "id": "seed_t1_05",
+  "yomi": "めいすいひゃくせん"
  },
  {
   "type": "text",
@@ -1119,7 +1146,8 @@
   "explain": "琵琶湖は滋賀県のまんなかにある日本最大の湖です。",
   "juken": "滋賀県の面積の6分の1をしめる。",
   "basis": "text",
-  "id": "seed_t1_08"
+  "id": "seed_t1_08",
+  "yomi": "しがけん"
  },
  {
   "type": "text",
@@ -1163,7 +1191,8 @@
   "explain": "ただし、湖と池や沼の区別はあいまいなものです。",
   "juken": "「湖山池は池なのに日本最大級」という例が挙げられている。",
   "basis": "text",
-  "id": "seed_t1_11"
+  "id": "seed_t1_11",
+  "yomi": "いけやぬま"
  },
  {
   "type": "text",
@@ -1236,7 +1265,8 @@
   "explain": "その場所にもとからいた生き物が減ってしまいます。",
   "juken": "",
   "basis": "text",
-  "id": "seed_t1_18"
+  "id": "seed_t1_18",
+  "yomi": "もとからいたさかなをくいあらす"
  },
  {
   "type": "text",
@@ -1329,7 +1359,8 @@
   "basis": "text",
   "id": "seed_t1_24",
   "ansFig": "fujigoko.webp",
-  "figAfter": "fujigoko_map.svg"
+  "figAfter": "fujigoko_map.svg",
+  "yomi": "ふじごこ"
  },
  {
   "type": "text",
@@ -1346,7 +1377,8 @@
   "juken": "カルデラ湖とのちがいを問われる。",
   "basis": "text",
   "id": "seed_t1_25",
-  "figAfter": "fujigoko_map.svg"
+  "figAfter": "fujigoko_map.svg",
+  "yomi": "せきとめこ"
  },
  {
   "type": "text",
@@ -1375,7 +1407,8 @@
   "juken": "",
   "basis": "text",
   "id": "seed_t1_27",
-  "figAfter": "fujigoko_map.svg"
+  "figAfter": "fujigoko_map.svg",
+  "yomi": "かわぐちこ"
  },
  {
   "type": "text",
@@ -1389,7 +1422,8 @@
   "juken": "水蒸気は気体で目に見えない、が最重要。",
   "basis": "text",
   "id": "seed_t2_29",
-  "figAfter": "cloudtypes.svg"
+  "figAfter": "cloudtypes.svg",
+  "yomi": "すいじょうき"
  },
  {
   "type": "text",
@@ -1405,7 +1439,8 @@
   "juken": "10種類すべてを答えさせる問題もある。",
   "basis": "text",
   "id": "seed_t2_30",
-  "figAfter": "cloudtypes.svg"
+  "figAfter": "cloudtypes.svg",
+  "yomi": "じっしゅうんけい"
  },
  {
   "type": "text",
@@ -1437,7 +1472,8 @@
   "juken": "",
   "basis": "text",
   "id": "seed_t2_32",
-  "figAfter": "cloudtypes.svg"
+  "figAfter": "cloudtypes.svg",
+  "yomi": "けんうん・けんせきうん・けんそううん"
  },
  {
   "type": "text",
@@ -1498,7 +1534,8 @@
   "juken": "乱層雲が例外である点が問われる。",
   "basis": "text",
   "id": "seed_t2_36",
-  "figAfter": "cloudtypes.svg"
+  "figAfter": "cloudtypes.svg",
+  "yomi": "こうせきうん・こうそううん・らんそううん"
  },
  {
   "type": "text",
@@ -1514,7 +1551,8 @@
   "id": "seed_t2_37",
   "figAfter": "cloudtypes.svg",
   "ansFig": "ransoun.webp",
-  "ansFigBy": "写真: Eric T Gunther（CC BY-SA 3.0）"
+  "ansFigBy": "写真: Eric T Gunther（CC BY-SA 3.0）",
+  "yomi": "らんそううん"
  },
  {
   "type": "text",
@@ -1530,7 +1568,8 @@
   "juken": "",
   "basis": "text",
   "id": "seed_t2_38",
-  "figAfter": "cloudtypes.svg"
+  "figAfter": "cloudtypes.svg",
+  "yomi": "ひかくてきよわいあめ"
  },
  {
   "type": "text",
@@ -1545,7 +1584,8 @@
   "basis": "text",
   "id": "seed_t2_39",
   "figAfter": "cloudtypes.svg",
-  "ansFig": "fujigoko.webp"
+  "ansFig": "fujigoko.webp",
+  "yomi": "ふじさん"
  },
  {
   "type": "text",
@@ -1576,7 +1616,8 @@
   "juken": "",
   "basis": "text",
   "id": "seed_t2_41",
-  "figAfter": "cloudtypes.svg"
+  "figAfter": "cloudtypes.svg",
+  "yomi": "せきうん・せきらんうん・そうせきうん・そううん"
  },
  {
   "type": "text",
@@ -1608,7 +1649,8 @@
   "id": "seed_t2_43",
   "figAfter": "cloudtypes.svg",
   "ansFig": "sekiranun.webp",
-  "ansFigBy": "写真: Grain de sel（CC BY-SA 4.0）"
+  "ansFigBy": "写真: Grain de sel（CC BY-SA 4.0）",
+  "yomi": "せきらんうん"
  },
  {
   "type": "text",
@@ -1702,7 +1744,8 @@
   "explain": "天気予報がなかった昔の人の知恵です。",
   "juken": "",
   "basis": "text",
-  "id": "seed_t2_49"
+  "id": "seed_t2_49",
+  "yomi": "かんてんぼうき"
  },
  {
   "type": "text",
@@ -1718,7 +1761,8 @@
   "id": "seed_t2_50",
   "figAfter": "cloudtypes.svg",
   "ansFig": "kensoun.webp",
-  "ansFigBy": "写真: Franz van Duns（CC BY 4.0）"
+  "ansFigBy": "写真: Franz van Duns（CC BY 4.0）",
+  "yomi": "けんそううん"
  },
  {
   "type": "text",
@@ -1794,7 +1838,8 @@
   "explain": "滝のしぶきが水のつぶになります。",
   "juken": "",
   "basis": "text",
-  "id": "seed_t2_55"
+  "id": "seed_t2_55",
+  "yomi": "たきのちかく"
  },
  {
   "type": "text",
@@ -1852,7 +1897,8 @@
   "juken": "あられとひょうの区別は5mm。数字で問われる。",
   "basis": "text",
   "id": "seed_t2_59",
-  "figAfter": "hyo_arare_mizore.svg"
+  "figAfter": "hyo_arare_mizore.svg",
+  "yomi": "5ミリメートルみまん"
  },
  {
   "type": "text",
@@ -1868,7 +1914,8 @@
   "juken": "",
   "basis": "text",
   "id": "seed_t2_60",
-  "figAfter": "hyo_arare_mizore.svg"
+  "figAfter": "hyo_arare_mizore.svg",
+  "yomi": "5ミリメートルいじょう"
  },
  {
   "type": "text",
@@ -1897,7 +1944,8 @@
   "explain": "さわってわかる感覚が触覚です。",
   "juken": "",
   "basis": "text",
-  "id": "seed_t3_63"
+  "id": "seed_t3_63",
+  "yomi": "しょっかく"
  },
  {
   "type": "text",
@@ -1913,7 +1961,8 @@
   "juken": "結晶の形で物質を見分ける問題が出る。",
   "basis": "text",
   "id": "seed_t3_64",
-  "ansFig": "kessho.svg"
+  "ansFig": "kessho.svg",
+  "yomi": "けっしょう"
  },
  {
   "type": "text",
@@ -1959,7 +2008,8 @@
   "explain": "だからにおいを感じることがあります。",
   "juken": "",
   "basis": "text",
-  "id": "seed_t3_67"
+  "id": "seed_t3_67",
+  "yomi": "しょくえんやさとういがいのもの"
  },
  {
   "type": "text",
@@ -2002,7 +2052,8 @@
   "explain": "紫は中性を示す色です。",
   "juken": "酸性＝赤、中性＝紫、アルカリ性＝緑。",
   "basis": "text",
-  "id": "seed_t3_70"
+  "id": "seed_t3_70",
+  "yomi": "むらさき"
  },
  {
   "type": "text",
@@ -2017,7 +2068,8 @@
   "explain": "どちらも酸性でもアルカリ性でもありません。",
   "juken": "",
   "basis": "text",
-  "id": "seed_t3_71"
+  "id": "seed_t3_71",
+  "yomi": "ちゅうせい"
  },
  {
   "type": "text",
@@ -2032,7 +2084,8 @@
   "explain": "同じ条件なら、砂糖のほうがたくさんとけます。",
   "juken": "とける量のちがいは実験問題で頻出。",
   "basis": "text",
-  "id": "seed_t3_72"
+  "id": "seed_t3_72",
+  "yomi": "さとう"
  },
  {
   "type": "text",
@@ -2047,7 +2100,8 @@
   "explain": "とける量が少ないほうが、先にとけ残ります。",
   "juken": "",
   "basis": "text",
-  "id": "seed_t3_73"
+  "id": "seed_t3_73",
+  "yomi": "しょくえん"
  },
  {
   "type": "text",
@@ -2062,7 +2116,8 @@
   "explain": "食塩は温度を上げてもとける量はあまり増えません。砂糖は大きく増えます。",
   "juken": "溶解度曲線の考え方につながる最重要事項。",
   "basis": "text",
-  "id": "seed_t3_74"
+  "id": "seed_t3_74",
+  "yomi": "さとう"
  },
  {
   "type": "text",
@@ -2109,7 +2164,8 @@
   "explain": "食塩は加熱してもこげません。",
   "juken": "食塩水と砂糖水を見分ける決め手。",
   "basis": "text",
-  "id": "seed_u3_00"
+  "id": "seed_u3_00",
+  "yomi": "しろいこたい"
  },
  {
   "type": "text",
@@ -2125,7 +2181,8 @@
   "explain": "砂糖はこげて黒くなります。",
   "juken": "",
   "basis": "text",
-  "id": "seed_u3_01"
+  "id": "seed_u3_01",
+  "yomi": "くろくなったこたい"
  },
  {
   "type": "text",
@@ -2198,7 +2255,8 @@
   "juken": "",
   "basis": "text",
   "id": "seed_u3_06",
-  "ansFig": "uyuni.webp"
+  "ansFig": "uyuni.webp",
+  "yomi": "ウユニえんこ"
  },
  {
   "type": "text",
@@ -2211,7 +2269,8 @@
   "explain": "とても広い塩の平原です。",
   "juken": "",
   "basis": "text",
-  "id": "seed_u3_07"
+  "id": "seed_u3_07",
+  "yomi": "ぎふけん"
  },
  {
   "type": "text",
@@ -2226,7 +2285,8 @@
   "basis": "text",
   "id": "seed_u3_08",
   "ansFig": "uyuni_kagami.webp",
-  "ansFigBy": "写真: Christopher Crouzet（CC BY-SA 4.0）"
+  "ansFigBy": "写真: Christopher Crouzet（CC BY-SA 4.0）",
+  "yomi": "てんくうのかがみ"
  },
  {
   "type": "text",
@@ -2241,7 +2301,8 @@
   "basis": "text",
   "id": "seed_u3_09",
   "ansFig": "egawakaigan.webp",
-  "ansFigBy": "写真: Akiko_Toshinai（CC BY 4.0）"
+  "ansFigBy": "写真: Akiko_Toshinai（CC BY 4.0）",
+  "yomi": "えがわかいがん"
  },
  {
   "type": "text",
@@ -2254,7 +2315,8 @@
   "explain": "川に灯籠を流す行事です。",
   "juken": "",
   "basis": "text",
-  "id": "seed_u4_12"
+  "id": "seed_u4_12",
+  "yomi": "とうろうながし"
  },
  {
   "type": "text",
@@ -2270,7 +2332,8 @@
   "explain": "燃えていた気体そのものが吹き飛ばされるので、燃える物がなくなって消えます。",
   "juken": "「温度が下がるから」ではない。燃える物がなくなるから。",
   "basis": "text",
-  "id": "seed_u4_13"
+  "id": "seed_u4_13",
+  "yomi": "もえていたロウのきたい"
  },
  {
   "type": "text",
@@ -2332,7 +2395,8 @@
   "explain": "この3つがそろわないと燃えません。",
   "juken": "消火の3原則（取り除く・酸素を断つ・冷やす）と対で問われる。",
   "basis": "text",
-  "id": "seed_u4_17"
+  "id": "seed_u4_17",
+  "yomi": "あるおんどいじょうになること"
  },
  {
   "type": "text",
@@ -2362,7 +2426,8 @@
   "explain": "いちばん外側の部分です。",
   "juken": "外炎＝最高温、内炎＝最も明るい、炎心＝最低温。3つセットで覚える。",
   "basis": "text",
-  "id": "seed_u4_19"
+  "id": "seed_u4_19",
+  "yomi": "がいえん"
  },
  {
   "type": "text",
@@ -2377,7 +2442,8 @@
   "explain": "まん中の部分です。",
   "juken": "",
   "basis": "text",
-  "id": "seed_u4_20"
+  "id": "seed_u4_20",
+  "yomi": "ないえん"
  },
  {
   "type": "text",
@@ -2392,7 +2458,8 @@
   "explain": "燃え残った炭素のつぶが光っています。",
   "juken": "「明るい＝よく燃えている」ではない点が問われる。",
   "basis": "text",
-  "id": "seed_u4_21"
+  "id": "seed_u4_21",
+  "yomi": "たんそ"
  },
  {
   "type": "text",
@@ -2407,7 +2474,8 @@
   "explain": "いちばん内側、芯のすぐ上の部分です。",
   "juken": "",
   "basis": "text",
-  "id": "seed_u4_22"
+  "id": "seed_u4_22",
+  "yomi": "えんしん"
  },
  {
   "type": "text",
@@ -2422,7 +2490,8 @@
   "explain": "まだ燃えていないので暗く、温度も低いのです。",
   "juken": "",
   "basis": "text",
-  "id": "seed_u4_23"
+  "id": "seed_u4_23",
+  "yomi": "えんしん"
  },
  {
   "type": "text",
@@ -2437,7 +2506,8 @@
   "explain": "炭素のつぶが輝いています。",
   "juken": "",
   "basis": "text",
-  "id": "seed_u4_24"
+  "id": "seed_u4_24",
+  "yomi": "ないえん"
  },
  {
   "type": "text",
@@ -2468,7 +2538,8 @@
   "explain": "あたたまった空気が上へ流れるので、炎が上にのびます。",
   "juken": "",
   "basis": "text",
-  "id": "seed_u4_26"
+  "id": "seed_u4_26",
+  "yomi": "じょうしょうするくうきのながれ"
  },
  {
   "type": "text",
@@ -2483,7 +2554,8 @@
   "explain": "空気が上へ流れないので、炎が丸く広がります。",
   "juken": "",
   "basis": "text",
-  "id": "seed_u4_27"
+  "id": "seed_u4_27",
+  "yomi": "じょうしょうするくうきのながれ"
  },
  {
   "type": "text",
@@ -2515,7 +2587,8 @@
   "explain": "ろうそく1本の明るさを、ホタルの数でたとえたものです。",
   "juken": "",
   "basis": "text",
-  "id": "seed_u4_29"
+  "id": "seed_u4_29",
+  "yomi": "20ぴきぶん"
  },
  {
   "type": "text",
@@ -2530,7 +2603,8 @@
   "explain": "たまごや幼虫の時期にも光ります。",
   "juken": "",
   "basis": "text",
-  "id": "seed_u4_30"
+  "id": "seed_u4_30",
+  "yomi": "ようちゅう"
  },
  {
   "type": "text",
@@ -2545,7 +2619,8 @@
   "explain": "電球とちがって熱くなりません。",
   "juken": "",
   "basis": "text",
-  "id": "seed_u4_31"
+  "id": "seed_u4_31",
+  "yomi": "れいこう"
  },
  {
   "type": "text",
@@ -2575,7 +2650,8 @@
   "explain": "北海道の日本海側につき出た半島です。",
   "juken": "",
   "basis": "text",
-  "id": "seed_u4_33"
+  "id": "seed_u4_33",
+  "yomi": "しゃこたんはんとう"
  },
  {
   "type": "text",
@@ -2603,7 +2679,8 @@
   "explain": "毛があり、母乳で子を育てる動物です。",
   "juken": "",
   "basis": "text",
-  "id": "seed_u5_35"
+  "id": "seed_u5_35",
+  "yomi": "ほにゅうるい"
  },
  {
   "type": "text",
@@ -2619,7 +2696,8 @@
   "explain": "ほ乳類の「ほ乳」は母乳を飲ませることです。",
   "juken": "ほ乳類の定義として必ず問われる。",
   "basis": "text",
-  "id": "seed_u5_36"
+  "id": "seed_u5_36",
+  "yomi": "ぼにゅう"
  },
  {
   "type": "text",
@@ -2710,7 +2788,8 @@
   "explain": "クッションの役目です。",
   "juken": "",
   "basis": "text",
-  "id": "seed_u5_45"
+  "id": "seed_u5_45",
+  "yomi": "しょうげき"
  },
  {
   "type": "text",
@@ -2726,7 +2805,8 @@
   "explain": "広い範囲を見わたせます。",
   "juken": "草食＝横向き、肉食＝前向き。理由まで問われる。",
   "basis": "text",
-  "id": "seed_u5_47"
+  "id": "seed_u5_47",
+  "yomi": "そくめん"
  },
  {
   "type": "text",
@@ -2798,7 +2878,8 @@
   "explain": "肉も植物も食べるのが雑食動物です。",
   "juken": "",
   "basis": "text",
-  "id": "seed_u5_52"
+  "id": "seed_u5_52",
+  "yomi": "きのみやしんめ"
  },
  {
   "type": "text",
@@ -2874,7 +2955,8 @@
   "explain": "カンガルーやコアラのなかまです。",
   "juken": "",
   "basis": "text",
-  "id": "seed_u5_57"
+  "id": "seed_u5_57",
+  "yomi": "ゆうたいるい"
  },
  {
   "type": "text",
@@ -2904,7 +2986,8 @@
   "explain": "ほ乳類なのに卵で生まれる、めずらしいなかまです。",
   "juken": "ほ乳類の例外として頻出。",
   "basis": "text",
-  "id": "seed_u5_59"
+  "id": "seed_u5_59",
+  "yomi": "たんこうるい"
  },
  {
   "type": "text",
@@ -2920,7 +3003,8 @@
   "explain": "とてもめずらしい動物です。",
   "juken": "",
   "basis": "text",
-  "id": "seed_u5_60"
+  "id": "seed_u5_60",
+  "yomi": "5しゅ"
  },
  {
   "type": "text",
@@ -2936,7 +3020,8 @@
   "explain": "その土地にあるものによって食べるものが変わります。",
   "juken": "",
   "basis": "text",
-  "id": "seed_u5_61"
+  "id": "seed_u5_61",
+  "yomi": "かじつ"
  },
  {
   "type": "text",
@@ -2982,7 +3067,8 @@
   "explain": "いちばん外側で、空気にふれているのでよく燃えます。",
   "juken": "外炎＝最も高温。ここで加熱実験をする。",
   "basis": "text",
-  "id": "seed_f4_00"
+  "id": "seed_f4_00",
+  "yomi": "がいえん"
  },
  {
   "type": "figure",
@@ -2999,7 +3085,8 @@
   "explain": "まん中の部分。炭素のつぶが光るので、いちばん明るく見えます。",
   "juken": "明るい＝よく燃えている、ではない。",
   "basis": "text",
-  "id": "seed_f4_01"
+  "id": "seed_f4_01",
+  "yomi": "ないえん"
  },
  {
   "type": "figure",
@@ -3016,7 +3103,8 @@
   "explain": "芯のすぐ上。まだ燃えていないので、暗くて温度も低いところです。",
   "juken": "ガラス管を入れて気体を取り出すのはこの部分。",
   "basis": "text",
-  "id": "seed_f4_02"
+  "id": "seed_f4_02",
+  "yomi": "えんしん"
  },
  {
   "type": "figure",
@@ -3035,7 +3123,8 @@
   "basis": "text",
   "id": "seed_f1_05",
   "ansFig": "hyoga.webp",
-  "ansFigBy": "写真: Diego Delso（CC BY-SA 4.0）"
+  "ansFigBy": "写真: Diego Delso（CC BY-SA 4.0）",
+  "yomi": "ひょうが"
  },
  {
   "type": "figure",
@@ -3052,7 +3141,8 @@
   "explain": "流れずにたまっている水です。",
   "juken": "",
   "basis": "text",
-  "id": "seed_f1_06"
+  "id": "seed_f1_06",
+  "yomi": "こしょう"
  },
  {
   "type": "figure",
@@ -3070,7 +3160,8 @@
   "explain": "山から海へ流れていく水です。",
   "juken": "",
   "basis": "text",
-  "id": "seed_f1_07"
+  "id": "seed_f1_07",
+  "yomi": "かせん"
  },
  {
   "type": "figure",
@@ -3105,7 +3196,8 @@
   "juken": "5〜13kmという数字までセットで問われる。",
   "basis": "text",
   "id": "seed_f2_09",
-  "figAfter": "cloudtypes.svg"
+  "figAfter": "cloudtypes.svg",
+  "yomi": "じょうそううん"
  },
  {
   "type": "figure",
@@ -3123,7 +3215,8 @@
   "juken": "",
   "basis": "text",
   "id": "seed_f2_10",
-  "figAfter": "cloudtypes.svg"
+  "figAfter": "cloudtypes.svg",
+  "yomi": "ちゅうそううん"
  },
  {
   "type": "figure",
@@ -3141,7 +3234,8 @@
   "juken": "",
   "basis": "text",
   "id": "seed_f2_11",
-  "figAfter": "cloudtypes.svg"
+  "figAfter": "cloudtypes.svg",
+  "yomi": "かそううん"
  },
  {
   "type": "text",
@@ -3182,7 +3276,8 @@
   "explain": "賀茂なす・聖護院大根などがあります。",
   "juken": "",
   "basis": "text",
-  "id": "seed_s1_006"
+  "id": "seed_s1_006",
+  "yomi": "きょうやさい"
  },
  {
   "type": "text",
@@ -3232,7 +3327,8 @@
   "juken": "リアス海岸は入り組んだ海岸線。三陸海岸などと合わせて問われる。",
   "basis": "text",
   "id": "seed_s1_009",
-  "ansFig": "maizuru.webp"
+  "ansFig": "maizuru.webp",
+  "yomi": "まいづるし"
  },
  {
   "type": "text",
@@ -3262,7 +3358,8 @@
   "juken": "義満＝金閣、義政＝銀閣。",
   "basis": "text",
   "id": "seed_s1_011",
-  "ansFig": "yoshimitsu.webp"
+  "ansFig": "yoshimitsu.webp",
+  "yomi": "あしかがよしみつ"
  },
  {
   "type": "text",
@@ -3279,7 +3376,8 @@
   "basis": "text",
   "id": "seed_s1_012",
   "ansFig": "kinkaku.webp",
-  "ansFigBy": "写真: Basile Morin（CC BY-SA 4.0）"
+  "ansFigBy": "写真: Basile Morin（CC BY-SA 4.0）",
+  "yomi": "ろくおんじ"
  },
  {
   "type": "text",
@@ -3293,7 +3391,8 @@
   "juken": "義政の時代に応仁の乱が起きた。",
   "basis": "text",
   "id": "seed_s1_013",
-  "ansFig": "yoshimasa.webp"
+  "ansFig": "yoshimasa.webp",
+  "yomi": "あしかがよしまさ"
  },
  {
   "type": "text",
@@ -3308,7 +3407,8 @@
   "explain": "銀閣は建物の名前、慈照寺はお寺の名前です。",
   "juken": "",
   "basis": "text",
-  "id": "seed_s1_014"
+  "id": "seed_s1_014",
+  "yomi": "じしょうじ"
  },
  {
   "type": "text",
@@ -3326,7 +3426,8 @@
   "basis": "text",
   "id": "seed_s1_015",
   "ansFig": "byodoin.webp",
-  "ansFigBy": "写真: ganden（CC BY 4.0）"
+  "ansFigBy": "写真: ganden（CC BY 4.0）",
+  "yomi": "びょうどういんほうおうどう"
  },
  {
   "type": "text",
@@ -3342,7 +3443,8 @@
   "juken": "藤原道長・頼通の親子は必出。",
   "basis": "text",
   "id": "seed_s1_016",
-  "ansFig": "yorimichi.webp"
+  "ansFig": "yorimichi.webp",
+  "yomi": "ふじわらのよりみち"
  },
  {
   "type": "text",
@@ -3357,7 +3459,8 @@
   "explain": "宇治茶で知られます。",
   "juken": "茶の産地（静岡・鹿児島・京都）。",
   "basis": "text",
-  "id": "seed_s1_017"
+  "id": "seed_s1_017",
+  "yomi": "うじし"
  },
  {
   "type": "text",
@@ -3373,7 +3476,8 @@
   "juken": "盆地は夏暑く冬寒い。気候と結びつけて問われる。",
   "basis": "text",
   "id": "seed_s1_018",
-  "ansFig": "bonchi.webp"
+  "ansFig": "bonchi.webp",
+  "yomi": "ぼんち"
  },
  {
   "type": "text",
@@ -3425,7 +3529,8 @@
   "basis": "text",
   "id": "seed_s1_021",
   "ansFig": "kiyomizudera.webp",
-  "ansFigBy": "写真: 来島海峡大橋（CC BY-SA 4.0）"
+  "ansFigBy": "写真: 来島海峡大橋（CC BY-SA 4.0）",
+  "yomi": "きよみずでら"
  },
  {
   "type": "text",
@@ -3456,7 +3561,8 @@
   "explain": "政治の中心地という意味でもあります。",
   "juken": "",
   "basis": "text",
-  "id": "seed_s1_023"
+  "id": "seed_s1_023",
+  "yomi": "てんのう"
  },
  {
   "type": "text",
@@ -3489,7 +3595,8 @@
   "basis": "text",
   "id": "seed_s1_025",
   "ansFig": "shidarezakura.webp",
-  "ansFigBy": "写真: Duff Figgy（CC BY-SA 3.0）"
+  "ansFigBy": "写真: Duff Figgy（CC BY-SA 3.0）",
+  "yomi": "しだれざくら"
  },
  {
   "type": "text",
@@ -3502,7 +3609,8 @@
   "explain": "県の名前と同じ市です。",
   "juken": "",
   "basis": "text",
-  "id": "seed_s1_026"
+  "id": "seed_s1_026",
+  "yomi": "ならし"
  },
  {
   "type": "text",
@@ -3531,7 +3639,8 @@
   "explain": "見上げるほど大きな仏像です。",
   "juken": "",
   "basis": "text",
-  "id": "seed_s1_030"
+  "id": "seed_s1_030",
+  "yomi": "やく15メートル"
  },
  {
   "type": "text",
@@ -3547,7 +3656,8 @@
   "juken": "聖武天皇＝大仏・国分寺。奈良時代の最重要人物。",
   "basis": "text",
   "id": "seed_s1_031",
-  "ansFig": "shomutenno.webp"
+  "ansFig": "shomutenno.webp",
+  "yomi": "しょうむてんのう"
  },
  {
   "type": "text",
@@ -3562,7 +3672,8 @@
   "explain": "当時は伝染病が広がり、人々が苦しんでいました。",
   "juken": "",
   "basis": "text",
-  "id": "seed_s1_032"
+  "id": "seed_s1_032",
+  "yomi": "ぶっきょう"
  },
  {
   "type": "text",
@@ -3593,7 +3704,8 @@
   "explain": "当時の人口を考えると、たいへんな数です。",
   "juken": "",
   "basis": "text",
-  "id": "seed_s1_034"
+  "id": "seed_s1_034",
+  "yomi": "やく260まんにん"
  },
  {
   "type": "text",
@@ -3610,7 +3722,8 @@
   "basis": "text",
   "id": "seed_s1_035",
   "ansFig": "horyuji.webp",
-  "ansFigBy": "写真: z tanuki（CC BY 3.0）"
+  "ansFigBy": "写真: z tanuki（CC BY 3.0）",
+  "yomi": "ほうりゅうじ"
  },
  {
   "type": "text",
@@ -3627,7 +3740,8 @@
   "juken": "聖徳太子＝法隆寺・四天王寺。",
   "basis": "text",
   "id": "seed_s1_036",
-  "ansFig": "shotokutaishi.webp"
+  "ansFig": "shotokutaishi.webp",
+  "yomi": "しょうとくたいし"
  },
  {
   "type": "text",
@@ -3642,7 +3756,8 @@
   "explain": "木でつくられた建物です。",
   "juken": "世界最古の木造建築＝法隆寺。",
   "basis": "text",
-  "id": "seed_s1_037"
+  "id": "seed_s1_037",
+  "yomi": "もくぞうけんちく"
  },
  {
   "type": "text",
@@ -3658,7 +3773,8 @@
   "juken": "",
   "basis": "text",
   "id": "seed_s1_038",
-  "ansFig": "fuhonsen.webp"
+  "ansFig": "fuhonsen.webp",
+  "yomi": "ふほんせん"
  },
  {
   "type": "text",
@@ -3674,7 +3790,8 @@
   "juken": "",
   "basis": "text",
   "id": "seed_s1_039",
-  "ansFig": "ishibutai.webp"
+  "ansFig": "ishibutai.webp",
+  "yomi": "いしぶたいこふん"
  },
  {
   "type": "text",
@@ -3690,7 +3807,8 @@
   "juken": "",
   "basis": "text",
   "id": "seed_s1_040",
-  "ansFig": "umako.webp"
+  "ansFig": "umako.webp",
+  "yomi": "そがのうまこ"
  },
  {
   "type": "text",
@@ -3706,7 +3824,8 @@
   "explain": "金魚すくいの全国大会も開かれます。",
   "juken": "",
   "basis": "text",
-  "id": "seed_s1_041"
+  "id": "seed_s1_041",
+  "yomi": "やまとこおりやまし"
  },
  {
   "type": "text",
@@ -3738,7 +3857,8 @@
   "basis": "text",
   "id": "seed_s1_043",
   "ansFig": "osakajo.webp",
-  "ansFigBy": "写真: DXR（CC BY-SA 4.0）"
+  "ansFigBy": "写真: DXR（CC BY-SA 4.0）",
+  "yomi": "おおさかじょう"
  },
  {
   "type": "text",
@@ -3753,7 +3873,8 @@
   "explain": "吉野山は日本を代表する桜の名所です。",
   "juken": "",
   "basis": "text",
-  "id": "seed_s1_044"
+  "id": "seed_s1_044",
+  "yomi": "よしのやま"
  },
  {
   "type": "text",
@@ -3785,7 +3906,8 @@
   "juken": "唐招提寺を開いた人物。",
   "basis": "text",
   "id": "seed_s1_046",
-  "ansFig": "ganjin.webp"
+  "ansFig": "ganjin.webp",
+  "yomi": "がんじん"
  },
  {
   "type": "text",
@@ -3826,7 +3948,8 @@
   "explain": "府の名前と同じ市が府庁所在地です。",
   "juken": "府県名と県庁所在地の関係はまとめて覚える。",
   "basis": "text",
-  "id": "seed_s2_000"
+  "id": "seed_s2_000",
+  "yomi": "おおさかし"
  },
  {
   "type": "text",
@@ -3842,7 +3965,8 @@
   "explain": "都道府県のなかでは2番目に小さい面積です。",
   "juken": "面積が小さい順に 香川→大阪→東京。",
   "basis": "text",
-  "id": "seed_s2_001"
+  "id": "seed_s2_001",
+  "yomi": "やく1905へいほうキロメートル"
  },
  {
   "type": "text",
@@ -3855,7 +3979,8 @@
   "explain": "いちばん小さいのは香川県、その次が大阪府です。",
   "juken": "面積最小＝香川県は頻出。",
   "basis": "text",
-  "id": "seed_s2_002"
+  "id": "seed_s2_002",
+  "yomi": "かがわけん"
  },
  {
   "type": "text",
@@ -3870,7 +3995,8 @@
   "explain": "せまい土地に多くの人が住んでいます。",
   "juken": "人口密度は東京都についで高い。",
   "basis": "text",
-  "id": "seed_s2_003"
+  "id": "seed_s2_003",
+  "yomi": "やく878まんにん"
  },
  {
   "type": "text",
@@ -3953,7 +4079,8 @@
   "juken": "府県章の由来は理由とセットで覚える。",
   "basis": "text",
   "id": "seed_s2_008",
-  "ansFig": "osakafusho.webp"
+  "ansFig": "osakafusho.webp",
+  "yomi": "せんなりびょうたん"
  },
  {
   "type": "text",
@@ -3986,7 +4113,8 @@
   "juken": "大阪城＝豊臣秀吉。",
   "basis": "text",
   "id": "seed_s2_010",
-  "ansFig": "hideyoshi.webp"
+  "ansFig": "hideyoshi.webp",
+  "yomi": "とよとみひでよし"
  },
  {
   "type": "text",
@@ -4016,7 +4144,8 @@
   "basis": "text",
   "id": "seed_s2_012",
   "ansFig": "taiyonoto.webp",
-  "ansFigBy": "写真: 663highland（CC BY-SA 3.0）"
+  "ansFigBy": "写真: 663highland（CC BY-SA 3.0）",
+  "yomi": "たいようのとう"
  },
  {
   "type": "text",
@@ -4064,7 +4193,8 @@
   "explain": "琵琶湖から流れ出て大阪湾に入る川です。",
   "juken": "川は「水源→通る府県→注ぐ海」で覚える。",
   "basis": "text",
-  "id": "seed_s2_015"
+  "id": "seed_s2_015",
+  "yomi": "よどがわ"
  },
  {
   "type": "text",
@@ -4082,7 +4212,8 @@
   "basis": "text",
   "id": "seed_s2_016",
   "ansFig": "biwako.webp",
-  "ansFigBy": "写真: Global Land Cover Facility（CC BY-SA 3.0）"
+  "ansFigBy": "写真: Global Land Cover Facility（CC BY-SA 3.0）",
+  "yomi": "びわこ"
  },
  {
   "type": "text",
@@ -4113,7 +4244,8 @@
   "explain": "テレビや冷ぞう庫などをつくる工業です。",
   "juken": "内陸部＝軽くて高い製品。臨海部＝重い原料。",
   "basis": "text",
-  "id": "seed_s2_018"
+  "id": "seed_s2_018",
+  "yomi": "でんききかいこうぎょう"
  },
  {
   "type": "text",
@@ -4128,7 +4260,8 @@
   "explain": "小さな町工場がたくさんある市です。",
   "juken": "日本の工場の大部分は中小工場。",
   "basis": "text",
-  "id": "seed_s2_019"
+  "id": "seed_s2_019",
+  "yomi": "ひがしおおさかし"
  },
  {
   "type": "text",
@@ -4144,7 +4277,8 @@
   "explain": "海の上にあるので夜も飛行機がとべます。",
   "juken": "24時間空港＝関西国際空港・中部国際空港など。",
   "basis": "text",
-  "id": "seed_s2_020"
+  "id": "seed_s2_020",
+  "yomi": "かんさいこくさいくうこう"
  },
  {
   "type": "text",
@@ -4188,7 +4322,8 @@
   "explain": "刃物づくりでも有名な市です。",
   "juken": "",
   "basis": "text",
-  "id": "seed_s2_023"
+  "id": "seed_s2_023",
+  "yomi": "さかいし"
  },
  {
   "type": "text",
@@ -4206,7 +4341,8 @@
   "basis": "text",
   "id": "seed_s2_024",
   "ansFig": "sakaihamono.webp",
-  "ansFigBy": "写真: Beth Kanter（CC BY 2.0）"
+  "ansFigBy": "写真: Beth Kanter（CC BY 2.0）",
+  "yomi": "はもの"
  },
  {
   "type": "text",
@@ -4224,7 +4360,8 @@
   "basis": "text",
   "id": "seed_s2_025",
   "ansFig": "daisenkofun.webp",
-  "ansFigBy": "写真: 国土地理院（CC BY）"
+  "ansFigBy": "写真: 国土地理院（CC BY）",
+  "yomi": "だいせんこふん"
  },
  {
   "type": "text",
@@ -4239,7 +4376,8 @@
   "explain": "今から1500年ほど前の時代です。",
   "juken": "古墳時代＝およそ1500年前。",
   "basis": "text",
-  "id": "seed_s2_026"
+  "id": "seed_s2_026",
+  "yomi": "やく1500ねんまえ"
  },
  {
   "type": "text",
@@ -4256,7 +4394,8 @@
   "basis": "text",
   "id": "seed_s2_027",
   "ansFig": "daisenkofun.webp",
-  "ansFigBy": "写真: 国土地理院（CC BY）"
+  "ansFigBy": "写真: 国土地理院（CC BY）",
+  "yomi": "こふん"
  },
  {
   "type": "text",
@@ -4272,7 +4411,8 @@
   "explain": "大阪府にある古墳のまとまりです。",
   "juken": "2019年登録。世界遺産は登録年もねらわれる。",
   "basis": "text",
-  "id": "seed_s2_028"
+  "id": "seed_s2_028",
+  "yomi": "もず・ふるいちこふんぐん"
  },
  {
   "type": "text",
@@ -4302,7 +4442,8 @@
   "explain": "保管したお米は商人に売ってお金にかえられました。",
   "juken": "蔵屋敷＝各藩が大阪に置いた倉庫。",
   "basis": "text",
-  "id": "seed_s2_030"
+  "id": "seed_s2_030",
+  "yomi": "くらやしき"
  },
  {
   "type": "text",
@@ -4335,7 +4476,8 @@
   "explain": "日本海がわを通って大阪へ向かう航路です。",
   "juken": "西廻り＝日本海経由で大阪へ。東廻り＝太平洋経由で江戸へ。",
   "basis": "text",
-  "id": "seed_s2_032"
+  "id": "seed_s2_032",
+  "yomi": "にしまわりこうろ"
  },
  {
   "type": "text",
@@ -4363,7 +4505,8 @@
   "explain": "大阪府です。近畿地方にあります。",
   "juken": "白地図で位置を答えられるようにしておく。",
   "basis": "text",
-  "id": "seed_s2_034"
+  "id": "seed_s2_034",
+  "yomi": "おおさかふ"
  },
  {
   "type": "text",
@@ -4453,7 +4596,8 @@
   "basis": "text",
   "id": "seed_s2_042",
   "ansFig": "kongobuji.webp",
-  "ansFigBy": "写真: 663highland（CC BY 2.5）"
+  "ansFigBy": "写真: 663highland（CC BY 2.5）",
+  "yomi": "こんごうぶじ"
  },
  {
   "type": "text",
@@ -4501,7 +4645,8 @@
   "explain": "江戸時代よりも前からです。",
   "juken": "",
   "basis": "text",
-  "id": "seed_s2_045"
+  "id": "seed_s2_045",
+  "yomi": "やく400ねんいじょうまえ"
  },
  {
   "type": "text",
@@ -4517,7 +4662,8 @@
   "explain": "寒いところではみかんは育ちにくいのです。",
   "juken": "みかん＝温暖な気候。りんご＝すずしい気候。",
   "basis": "text",
-  "id": "seed_s2_046"
+  "id": "seed_s2_046",
+  "yomi": "あたたかいきこう"
  },
  {
   "type": "text",
@@ -4548,7 +4694,8 @@
   "explain": "海の色が黒っぽく見えることからついた名前です。",
   "juken": "",
   "basis": "text",
-  "id": "seed_s2_048"
+  "id": "seed_s2_048",
+  "yomi": "くろしお"
  },
  {
   "type": "text",
@@ -4579,7 +4726,8 @@
   "explain": "しょう油はここから全国に広まったとされます。",
   "juken": "",
   "basis": "text",
-  "id": "seed_s2_050"
+  "id": "seed_s2_050",
+  "yomi": "ゆあさちょう"
  },
  {
   "type": "text",
@@ -4596,7 +4744,8 @@
   "basis": "text",
   "id": "seed_s2_051",
   "ansFig": "binchotan.webp",
-  "ansFigBy": "写真: Kkkdc（CC BY-SA 3.0）"
+  "ansFigBy": "写真: Kkkdc（CC BY-SA 3.0）",
+  "yomi": "びんちょうたん"
  },
  {
   "type": "text",
@@ -4611,7 +4760,8 @@
   "explain": "和歌山県から三重県・奈良県にまたがる山地です。",
   "juken": "紀伊山地の霊場と参詣道は世界文化遺産。",
   "basis": "text",
-  "id": "seed_s2_052"
+  "id": "seed_s2_052",
+  "yomi": "きいさんち"
  },
  {
   "type": "text",
@@ -4627,7 +4777,8 @@
   "explain": "だから「紀の川」「南紀」など「紀」のつく地名が多いのです。",
   "juken": "",
   "basis": "text",
-  "id": "seed_s2_053"
+  "id": "seed_s2_053",
+  "yomi": "きい"
  },
  {
   "type": "text",
@@ -4658,7 +4809,8 @@
   "explain": "本体とつながっていない土地のことです。",
   "juken": "",
   "basis": "text",
-  "id": "seed_s2_055"
+  "id": "seed_s2_055",
+  "yomi": "とびち"
  },
  {
   "type": "text",
@@ -4690,7 +4842,8 @@
   "basis": "text",
   "id": "seed_s2_057",
   "ansFig": "tenjinzaki.webp",
-  "ansFigBy": "写真: Jennifer Murawski（CC BY 2.0）"
+  "ansFigBy": "写真: Jennifer Murawski（CC BY 2.0）",
+  "yomi": "てんじんざき"
  },
  {
   "type": "text",
@@ -4720,7 +4873,8 @@
   "basis": "text",
   "id": "seed_s2_059",
   "ansFig": "nankishirahama.webp",
-  "ansFigBy": "写真: mti（CC BY 3.0）"
+  "ansFigBy": "写真: mti（CC BY 3.0）",
+  "yomi": "なんきしらはま"
  },
  {
   "type": "text",
@@ -4752,7 +4906,8 @@
   "basis": "text",
   "id": "seed_s2_061",
   "ansFig": "shionomisaki.webp",
-  "ansFigBy": "写真: Kzaral（CC BY 2.0）"
+  "ansFigBy": "写真: Kzaral（CC BY 2.0）",
+  "yomi": "しおのみさき"
  },
  {
   "type": "map_reverse",
@@ -4841,7 +4996,8 @@
   "explain": "神戸市を中心に大きな被害が出ました。",
   "juken": "1995年＝阪神・淡路大震災、2011年＝東日本大震災。",
   "basis": "text",
-  "id": "seed_s3_006"
+  "id": "seed_s3_006",
+  "yomi": "はんしんあわじだいしんさい"
  },
  {
   "type": "text",
@@ -4859,7 +5015,8 @@
   "basis": "text",
   "id": "seed_s3_007",
   "ansFig": "takedajo.webp",
-  "ansFigBy": "写真: Baku13（CC BY-SA 3.0）"
+  "ansFigBy": "写真: Baku13（CC BY-SA 3.0）",
+  "yomi": "たけだじょうあと"
  },
  {
   "type": "text",
@@ -4875,7 +5032,8 @@
   "juken": "姫路城＝日本初の世界文化遺産の一つ。",
   "basis": "text",
   "id": "seed_s3_008",
-  "ansFig": "himejijo.webp"
+  "ansFig": "himejijo.webp",
+  "yomi": "ひめじじょう"
  },
  {
   "type": "text",
@@ -4890,7 +5048,8 @@
   "explain": "姫路城は1993年に登録された、日本で最初の世界文化遺産の一つです。",
   "juken": "世界遺産は文化遺産・自然遺産の区別を問われる。",
   "basis": "text",
-  "id": "seed_s3_009"
+  "id": "seed_s3_009",
+  "yomi": "せかいぶんかいさん"
  },
  {
   "type": "text",
@@ -4906,7 +5065,8 @@
   "explain": "六甲山からのよい水がとれる地域です。",
   "juken": "",
   "basis": "text",
-  "id": "seed_s3_010"
+  "id": "seed_s3_010",
+  "yomi": "なだ"
  },
  {
   "type": "text",
@@ -4923,7 +5083,8 @@
   "explain": "日本酒のことです。",
   "juken": "",
   "basis": "text",
-  "id": "seed_s3_011"
+  "id": "seed_s3_011",
+  "yomi": "せいしゅ"
  },
  {
   "type": "text",
@@ -4939,7 +5100,8 @@
   "explain": "そろばんの名前にもなっています。",
   "juken": "",
   "basis": "text",
-  "id": "seed_s3_012"
+  "id": "seed_s3_012",
+  "yomi": "ばんしゅう"
  },
  {
   "type": "text",
@@ -4956,7 +5118,8 @@
   "basis": "text",
   "id": "seed_s3_013",
   "ansFig": "banshusoroban.webp",
-  "ansFigBy": "写真: 663highland（CC BY 2.5）"
+  "ansFigBy": "写真: 663highland（CC BY 2.5）",
+  "yomi": "ばんしゅうそろばん"
  },
  {
   "type": "text",
@@ -4972,7 +5135,8 @@
   "explain": "この線の時刻が日本の時刻です。",
   "juken": "日本標準時子午線＝東経135度、明石市。",
   "basis": "text",
-  "id": "seed_s3_014"
+  "id": "seed_s3_014",
+  "yomi": "にほんひょうじゅんじしごせん"
  },
  {
   "type": "text",
@@ -4988,7 +5152,8 @@
   "explain": "東経135度の線です。",
   "juken": "時差の計算はこの135度を基準にする。",
   "basis": "text",
-  "id": "seed_s3_015"
+  "id": "seed_s3_015",
+  "yomi": "とうけい135ど"
  },
  {
   "type": "text",
@@ -5003,7 +5168,8 @@
   "explain": "瀬戸内海でいちばん大きな島です。",
   "juken": "たまねぎ＝北海道・佐賀・兵庫（淡路島）。",
   "basis": "text",
-  "id": "seed_s3_016"
+  "id": "seed_s3_016",
+  "yomi": "あわじしま"
  },
  {
   "type": "text",
@@ -5019,7 +5185,8 @@
   "juken": "本州四国連絡橋の神戸〜鳴門ルート。",
   "basis": "text",
   "id": "seed_s3_017",
-  "ansFig": "akashikaikyo.webp"
+  "ansFig": "akashikaikyo.webp",
+  "yomi": "あかしかいきょうおおはし"
  },
  {
   "type": "text",
@@ -5050,7 +5217,8 @@
   "explain": "東京タワーとほぼ同じくらいの高さです。",
   "juken": "",
   "basis": "text",
-  "id": "seed_s3_019"
+  "id": "seed_s3_019",
+  "yomi": "やく300メートル"
  },
  {
   "type": "text",
@@ -5066,7 +5234,8 @@
   "explain": "西宮市にある野球場です。",
   "juken": "",
   "basis": "text",
-  "id": "seed_s3_020"
+  "id": "seed_s3_020",
+  "yomi": "こうしえんきゅうじょう"
  },
  {
   "type": "text",
@@ -5095,7 +5264,8 @@
   "explain": "開国のときに開かれた港の一つです。",
   "juken": "開港五港の一つ。",
   "basis": "text",
-  "id": "seed_s3_022"
+  "id": "seed_s3_022",
+  "yomi": "えどじだい"
  },
  {
   "type": "text",
@@ -5126,7 +5296,8 @@
   "explain": "外国と品物をやりとりする港です。",
   "juken": "",
   "basis": "text",
-  "id": "seed_s3_024"
+  "id": "seed_s3_024",
+  "yomi": "ぼうえきこう"
  },
  {
   "type": "text",
@@ -5144,7 +5315,8 @@
   "basis": "text",
   "id": "seed_s3_025",
   "ansFig": "rokkosanchi.webp",
-  "ansFigBy": "写真: 663highland（CC BY 2.5）"
+  "ansFigBy": "写真: 663highland（CC BY 2.5）",
+  "yomi": "ろっこうさんち"
  },
  {
   "type": "text",
@@ -5175,7 +5347,8 @@
   "explain": "2つめの人工島です。",
   "juken": "",
   "basis": "text",
-  "id": "seed_s3_027"
+  "id": "seed_s3_027",
+  "yomi": "ろっこうアイランド"
  },
  {
   "type": "map_reverse",
@@ -5188,7 +5361,8 @@
   "explain": "兵庫県です。近畿地方にあります。",
   "juken": "白地図で位置を答えられるようにしておく。",
   "basis": "text",
-  "id": "seed_s3_028"
+  "id": "seed_s3_028",
+  "yomi": "ひょうごけん"
  },
  {
   "type": "map_reverse",
@@ -5201,7 +5375,8 @@
   "explain": "京都府です。近畿地方にあります。",
   "juken": "白地図で位置を答えられるようにしておく。",
   "basis": "text",
-  "id": "seed_s1_049"
+  "id": "seed_s1_049",
+  "yomi": "きょうとふ"
  },
  {
   "type": "map_reverse",
@@ -5214,7 +5389,8 @@
   "explain": "奈良県です。近畿地方にあります。",
   "juken": "白地図で位置を答えられるようにしておく。",
   "basis": "text",
-  "id": "seed_s1_050"
+  "id": "seed_s1_050",
+  "yomi": "ならけん"
  },
  {
   "type": "text",
@@ -5229,7 +5405,8 @@
   "explain": "県名とちがう名前の県庁所在地です。",
   "juken": "県名と県庁所在地がちがう県は最頻出。",
   "basis": "text",
-  "id": "seed_s3_029"
+  "id": "seed_s3_029",
+  "yomi": "おおつし"
  },
  {
   "type": "text",
@@ -5304,7 +5481,8 @@
   "basis": "text",
   "id": "seed_s3_036",
   "ansFig": "biwako.webp",
-  "ansFigBy": "写真: Global Land Cover Facility（CC BY-SA 3.0）"
+  "ansFigBy": "写真: Global Land Cover Facility（CC BY-SA 3.0）",
+  "yomi": "びわこ"
  },
  {
   "type": "text",
@@ -5336,7 +5514,8 @@
   "explain": "琵琶湖の水は下流の府県でも使われています。",
   "juken": "琵琶湖＝近畿の水がめ。",
   "basis": "text",
-  "id": "seed_s3_038"
+  "id": "seed_s3_038",
+  "yomi": "よどがわ"
  },
  {
   "type": "text",
@@ -5351,7 +5530,8 @@
   "explain": "琵琶湖のまわりの平らな土地です。",
   "juken": "",
   "basis": "text",
-  "id": "seed_s3_039"
+  "id": "seed_s3_039",
+  "yomi": "おうみぼんち"
  },
  {
   "type": "text",
@@ -5366,7 +5546,8 @@
   "explain": "琵琶湖のほとりにある古い都市です。",
   "juken": "中大兄皇子＝のちの天智天皇。",
   "basis": "text",
-  "id": "seed_s3_040"
+  "id": "seed_s3_040",
+  "yomi": "おおつし"
  },
  {
   "type": "text",
@@ -5414,7 +5595,8 @@
   "basis": "text",
   "id": "seed_s3_043",
   "ansFig": "hikonejo.webp",
-  "ansFigBy": "写真: Jnn（CC BY 2.1 JP）"
+  "ansFigBy": "写真: Jnn（CC BY 2.1 JP）",
+  "yomi": "ひこねじょう"
  },
  {
   "type": "text",
@@ -5430,7 +5612,8 @@
   "explain": "ブランド牛は銘柄牛ともよばれます。",
   "juken": "",
   "basis": "text",
-  "id": "seed_s3_044"
+  "id": "seed_s3_044",
+  "yomi": "おうみぎゅう"
  },
  {
   "type": "text",
@@ -5445,7 +5628,8 @@
   "explain": "三重県の伊賀とならぶ忍者の里です。",
   "juken": "",
   "basis": "text",
-  "id": "seed_s3_045"
+  "id": "seed_s3_045",
+  "yomi": "こうかし"
  },
  {
   "type": "text",
@@ -5462,7 +5646,8 @@
   "basis": "text",
   "id": "seed_s3_046",
   "ansFig": "shigarakiyaki.webp",
-  "ansFigBy": "写真: Motokoka（CC BY-SA 4.0）"
+  "ansFigBy": "写真: Motokoka（CC BY-SA 4.0）",
+  "yomi": "しがらきやき"
  },
  {
   "type": "text",
@@ -5479,7 +5664,8 @@
   "juken": "安土城＝織田信長。大阪城＝豊臣秀吉。",
   "basis": "text",
   "id": "seed_s3_047",
-  "ansFig": "azuchijo.webp"
+  "ansFig": "azuchijo.webp",
+  "yomi": "あづちじょうあと"
  },
  {
   "type": "text",
@@ -5497,7 +5683,8 @@
   "basis": "text",
   "id": "seed_s3_048",
   "ansFig": "enryakuji.webp",
-  "ansFigBy": "写真: baggio4ever（CC BY 3.0）"
+  "ansFigBy": "写真: baggio4ever（CC BY 3.0）",
+  "yomi": "えんりゃくじ"
  },
  {
   "type": "text",
@@ -5513,7 +5700,8 @@
   "juken": "延暦寺は親鸞・栄西・日蓮も学んだ「日本仏教の母山」。",
   "basis": "text",
   "id": "seed_s3_049",
-  "ansFig": "saicho.webp"
+  "ansFig": "saicho.webp",
+  "yomi": "さいちょう"
  },
  {
   "type": "map_reverse",
@@ -5526,7 +5714,8 @@
   "explain": "滋賀県です。近畿にあります。",
   "juken": "白地図で位置を答えられるようにしておく。",
   "basis": "text",
-  "id": "seed_s3_050"
+  "id": "seed_s3_050",
+  "yomi": "しがけん"
  },
  {
   "type": "text",
@@ -5618,7 +5807,8 @@
   "juken": "",
   "basis": "text",
   "id": "seed_s4_007",
-  "ansFig": "nagoyajo.webp"
+  "ansFig": "nagoyajo.webp",
+  "yomi": "なごやじょう"
  },
  {
   "type": "text",
@@ -5653,7 +5843,8 @@
   "basis": "text",
   "id": "seed_s4_009",
   "ansFig": "fujimaehigata.webp",
-  "ansFigBy": "写真: Alpsdake（CC BY-SA 3.0）"
+  "ansFigBy": "写真: Alpsdake（CC BY-SA 3.0）",
+  "yomi": "ふじまえひがた"
  },
  {
   "type": "text",
@@ -5668,7 +5859,8 @@
   "explain": "陶磁器ぜんぱんをさすこともあることばです。",
   "juken": "",
   "basis": "text",
-  "id": "seed_s4_010"
+  "id": "seed_s4_010",
+  "yomi": "せともの"
  },
  {
   "type": "text",
@@ -5683,7 +5875,8 @@
   "explain": "自動車会社の名前がそのまま市の名前になりました。",
   "juken": "",
   "basis": "text",
-  "id": "seed_s4_011"
+  "id": "seed_s4_011",
+  "yomi": "とよたし"
  },
  {
   "type": "text",
@@ -5699,7 +5892,8 @@
   "explain": "自動車会社の名前をとって市の名前が変わりました。",
   "juken": "",
   "basis": "text",
-  "id": "seed_s4_012"
+  "id": "seed_s4_012",
+  "yomi": "ころもし"
  },
  {
   "type": "text",
@@ -5749,7 +5943,8 @@
   "explain": "10人のうち8人ほどが自動車の仕事です。",
   "juken": "企業城下町の典型例。",
   "basis": "text",
-  "id": "seed_s4_015"
+  "id": "seed_s4_015",
+  "yomi": "やく80パーセント"
  },
  {
   "type": "text",
@@ -5765,7 +5960,8 @@
   "explain": "2万から3万もの部品でできています。",
   "juken": "",
   "basis": "text",
-  "id": "seed_s4_016"
+  "id": "seed_s4_016",
+  "yomi": "2まん〜3まんこ"
  },
  {
   "type": "text",
@@ -5780,7 +5976,8 @@
   "explain": "たくさんの工場が協力しあって自動車をつくります。",
   "juken": "組み立て工場と関連工場の関係は頻出。",
   "basis": "text",
-  "id": "seed_s4_017"
+  "id": "seed_s4_017",
+  "yomi": "かんれんこうじょう"
  },
  {
   "type": "text",
@@ -5812,7 +6009,8 @@
   "basis": "text",
   "id": "seed_s4_019",
   "ansFig": "denshogiku.webp",
-  "ansFigBy": "写真: 2zno1（CC BY-SA 4.0）"
+  "ansFigBy": "写真: 2zno1（CC BY-SA 4.0）",
+  "yomi": "でんしょうぎく"
  },
  {
   "type": "text",
@@ -5914,7 +6112,8 @@
   "explain": "愛知県です。中部にあります。",
   "juken": "白地図で位置を答えられるようにしておく。",
   "basis": "text",
-  "id": "seed_s4_026"
+  "id": "seed_s4_026",
+  "yomi": "あいちけん"
  },
  {
   "type": "text",
@@ -5929,7 +6128,8 @@
   "explain": "日本でいちばん短い名前の市です。",
   "juken": "",
   "basis": "text",
-  "id": "seed_s4_027"
+  "id": "seed_s4_027",
+  "yomi": "つし"
  },
  {
   "type": "text",
@@ -6008,7 +6208,8 @@
   "juken": "",
   "basis": "text",
   "id": "seed_s4_034",
-  "ansFig": "miekensho.webp"
+  "ansFig": "miekensho.webp",
+  "yomi": "しんじゅ"
  },
  {
   "type": "text",
@@ -6040,7 +6241,8 @@
   "juken": "",
   "basis": "text",
   "id": "seed_s4_036",
-  "ansFig": "bankoyaki.webp"
+  "ansFig": "bankoyaki.webp",
+  "yomi": "ばんこやき"
  },
  {
   "type": "text",
@@ -6055,7 +6257,8 @@
   "explain": "鈴鹿サーキットがある市です。",
   "juken": "",
   "basis": "text",
-  "id": "seed_s4_037"
+  "id": "seed_s4_037",
+  "yomi": "すずかし"
  },
  {
   "type": "text",
@@ -6070,7 +6273,8 @@
   "explain": "滋賀県の甲賀流とならぶ忍者の流派です。",
   "juken": "",
   "basis": "text",
-  "id": "seed_s4_038"
+  "id": "seed_s4_038",
+  "yomi": "いがりゅう"
  },
  {
   "type": "text",
@@ -6086,7 +6290,8 @@
   "juken": "",
   "basis": "text",
   "id": "seed_s4_039",
-  "ansFig": "basho.webp"
+  "ansFig": "basho.webp",
+  "yomi": "まつおばしょう"
  },
  {
   "type": "text",
@@ -6103,7 +6308,8 @@
   "basis": "text",
   "id": "seed_s4_040",
   "ansFig": "isejingu.webp",
-  "ansFigBy": "写真: foooomio（CC BY 2.0）"
+  "ansFigBy": "写真: foooomio（CC BY 2.0）",
+  "yomi": "いせじんぐう"
  },
  {
   "type": "text",
@@ -6137,7 +6343,8 @@
   "basis": "text",
   "id": "seed_s4_042",
   "ansFig": "agowan.webp",
-  "ansFigBy": "写真: Alpsdake（CC BY-SA 4.0）"
+  "ansFigBy": "写真: Alpsdake（CC BY-SA 4.0）",
+  "yomi": "あごわん"
  },
  {
   "type": "text",
@@ -6153,7 +6360,8 @@
   "juken": "",
   "basis": "text",
   "id": "seed_s4_043",
-  "ansFig": "mikimoto.webp"
+  "ansFig": "mikimoto.webp",
+  "yomi": "みきもとこうきち"
  },
  {
   "type": "text",
@@ -6213,7 +6421,8 @@
   "explain": "紀伊山地に雨をふらせる風の通り道にあります。",
   "juken": "",
   "basis": "text",
-  "id": "seed_s4_047"
+  "id": "seed_s4_047",
+  "yomi": "おわせし"
  },
  {
   "type": "text",
@@ -6260,7 +6469,8 @@
   "explain": "3人とも現在の愛知県の出身です。",
   "juken": "",
   "basis": "text",
-  "id": "seed_s4_050"
+  "id": "seed_s4_050",
+  "yomi": "さんえいけつ"
  },
  {
   "type": "text",
@@ -6275,7 +6485,8 @@
   "explain": "信長・秀吉は尾張国、家康は三河国の出身です。",
   "juken": "尾張国・三河国＝現在の愛知県。",
   "basis": "text",
-  "id": "seed_s4_051"
+  "id": "seed_s4_051",
+  "yomi": "あいちけん"
  },
  {
   "type": "map_reverse",
@@ -6410,7 +6621,8 @@
   "basis": "text",
   "id": "seed_s5_009",
   "ansFig": "nihonalps.webp",
-  "ansFigBy": "写真: Raita Futo（北アルプス・CC BY 2.0）"
+  "ansFigBy": "写真: Raita Futo（北アルプス・CC BY 2.0）",
+  "yomi": "ひださんみゃく"
  },
  {
   "type": "text",
@@ -6426,7 +6638,8 @@
   "explain": "中央アルプスともよばれます。",
   "juken": "",
   "basis": "text",
-  "id": "seed_s5_010"
+  "id": "seed_s5_010",
+  "yomi": "きそさんみゃく"
  },
  {
   "type": "text",
@@ -6444,7 +6657,8 @@
   "basis": "text",
   "id": "seed_s5_011",
   "ansFig": "akaishi.webp",
-  "ansFigBy": "写真: Alpsdake（CC BY-SA 4.0）"
+  "ansFigBy": "写真: Alpsdake（CC BY-SA 4.0）",
+  "yomi": "あかいしさんみゃく"
  },
  {
   "type": "text",
@@ -6472,7 +6686,8 @@
   "explain": "ヨーロッパの高い山脈の名前をもらったものです。",
   "juken": "",
   "basis": "text",
-  "id": "seed_s5_013"
+  "id": "seed_s5_013",
+  "yomi": "アルプスさんみゃく"
  },
  {
   "type": "text",
@@ -6504,7 +6719,8 @@
   "basis": "text",
   "id": "seed_s5_015",
   "ansFig": "zenkoji.webp",
-  "ansFigBy": "写真: くろふね（CC BY 4.0）"
+  "ansFigBy": "写真: くろふね（CC BY 4.0）",
+  "yomi": "ぜんこうじ"
  },
  {
   "type": "text",
@@ -6534,7 +6750,8 @@
   "explain": "すずしいところへ出かけます。",
   "juken": "",
   "basis": "text",
-  "id": "seed_s5_017"
+  "id": "seed_s5_017",
+  "yomi": "ひしょち"
  },
  {
   "type": "text",
@@ -6550,7 +6767,8 @@
   "explain": "標高が高くすずしい町です。",
   "juken": "",
   "basis": "text",
-  "id": "seed_s5_018"
+  "id": "seed_s5_018",
+  "yomi": "かるいざわまち"
  },
  {
   "type": "text",
@@ -6566,7 +6784,8 @@
   "juken": "",
   "basis": "text",
   "id": "seed_s5_019",
-  "ansFig": "matsumotojo.webp"
+  "ansFig": "matsumotojo.webp",
+  "yomi": "まつもとじょう"
  },
  {
   "type": "text",
@@ -6581,7 +6800,8 @@
   "explain": "小さく精密な部品をつくる工業です。",
   "juken": "軽くて高価＝内陸に立地する。",
   "basis": "text",
-  "id": "seed_s5_020"
+  "id": "seed_s5_020",
+  "yomi": "せいみつきかいこうぎょう"
  },
  {
   "type": "text",
@@ -6596,7 +6816,8 @@
   "explain": "まゆから生糸をつくる工業です。",
   "juken": "製糸業→精密機械工業への転換は頻出。",
   "basis": "text",
-  "id": "seed_s5_021"
+  "id": "seed_s5_021",
+  "yomi": "せいしぎょう"
  },
  {
   "type": "text",
@@ -6611,7 +6832,8 @@
   "explain": "レタスやはくさいなどです。",
   "juken": "高原野菜＝抑制栽培。夏に高く売れる。",
   "basis": "text",
-  "id": "seed_s5_022"
+  "id": "seed_s5_022",
+  "yomi": "こうげんやさい"
  },
  {
   "type": "text",
@@ -6629,7 +6851,8 @@
   "basis": "text",
   "id": "seed_s5_023",
   "ansFig": "nobeyamahara.webp",
-  "ansFigBy": "写真: Σ64（CC BY 3.0）"
+  "ansFigBy": "写真: Σ64（CC BY 3.0）",
+  "yomi": "のべやまはら"
  },
  {
   "type": "text",
@@ -6660,7 +6883,8 @@
   "explain": "長野県の野辺山原にあります。",
   "juken": "",
   "basis": "text",
-  "id": "seed_s5_025"
+  "id": "seed_s5_025",
+  "yomi": "のべやまえき"
  },
  {
   "type": "text",
@@ -6690,7 +6914,8 @@
   "explain": "昼と夜の気温差が大きく、くだものが甘くなります。",
   "juken": "りんご＝青森・長野。ぶどう＝山梨・長野。",
   "basis": "text",
-  "id": "seed_s5_027"
+  "id": "seed_s5_027",
+  "yomi": "ながのぼんち"
  },
  {
   "type": "map_reverse",
@@ -6716,7 +6941,8 @@
   "explain": "県の名前と同じ市が県庁所在地です。",
   "juken": "",
   "basis": "text",
-  "id": "seed_s5_029"
+  "id": "seed_s5_029",
+  "yomi": "ぎふし"
  },
  {
   "type": "text",
@@ -6777,7 +7003,8 @@
   "juken": "",
   "basis": "text",
   "id": "seed_s5_035",
-  "ansFig": "gifukensho.webp"
+  "ansFig": "gifukensho.webp",
+  "yomi": "えんまん"
  },
  {
   "type": "text",
@@ -6794,7 +7021,8 @@
   "basis": "text",
   "id": "seed_s5_036",
   "ansFig": "gasshozukuri.webp",
-  "ansFigBy": "写真: Bernard Gagnon（白川郷・CC BY-SA 3.0）"
+  "ansFigBy": "写真: Bernard Gagnon（白川郷・CC BY-SA 3.0）",
+  "yomi": "がっしょうづくり"
  },
  {
   "type": "text",
@@ -6811,7 +7039,8 @@
   "basis": "text",
   "id": "seed_s5_037",
   "ansFig": "gokayama.webp",
-  "ansFigBy": "写真: Lucnhan3（CC BY-SA 4.0）"
+  "ansFigBy": "写真: Lucnhan3（CC BY-SA 4.0）",
+  "yomi": "ごかやま"
  },
  {
   "type": "text",
@@ -6830,7 +7059,8 @@
   "basis": "text",
   "id": "seed_s5_038",
   "ansFig": "gifuchochin.webp",
-  "ansFigBy": "写真: Asturio Cantabrio（CC BY-SA 4.0）"
+  "ansFigBy": "写真: Asturio Cantabrio（CC BY-SA 4.0）",
+  "yomi": "ちょうちんづくり"
  },
  {
   "type": "text",
@@ -6848,7 +7078,8 @@
   "basis": "text",
   "id": "seed_s5_039",
   "ansFig": "ukai.webp",
-  "ansFigBy": "写真: Ludger Heide（CC BY-SA 4.0）"
+  "ansFigBy": "写真: Ludger Heide（CC BY-SA 4.0）",
+  "yomi": "うかい"
  },
  {
   "type": "text",
@@ -6864,7 +7095,8 @@
   "explain": "今も夏に行われる長良川の伝統漁です。",
   "juken": "",
   "basis": "text",
-  "id": "seed_s5_040"
+  "id": "seed_s5_040",
+  "yomi": "1300ねんいじょう"
  },
  {
   "type": "text",
@@ -6882,7 +7114,8 @@
   "basis": "text",
   "id": "seed_s5_041",
   "ansFig": "sekigahara.webp",
-  "ansFigBy": "写真: Q RURU YUKI historian（CC BY-SA 4.0）"
+  "ansFigBy": "写真: Q RURU YUKI historian（CC BY-SA 4.0）",
+  "yomi": "せきがはら"
  },
  {
   "type": "text",
@@ -6898,7 +7131,8 @@
   "juken": "輪中＝洪水への備え。水屋とセットで問われる。",
   "basis": "text",
   "id": "seed_s5_042",
-  "figAfter": "wajyu.svg"
+  "figAfter": "wajyu.svg",
+  "yomi": "わじゅう"
  },
  {
   "type": "text",
@@ -6913,7 +7147,8 @@
   "explain": "東から木曽川・長良川・揖斐川の順にならびます。",
   "juken": "東から順にならべる問題が出る。",
   "basis": "text",
-  "id": "seed_s5_043"
+  "id": "seed_s5_043",
+  "yomi": "きそさんせん"
  },
  {
   "type": "text",
@@ -6929,7 +7164,8 @@
   "juken": "",
   "basis": "text",
   "id": "seed_s5_044",
-  "ansFig": "nobiheiya.webp"
+  "ansFig": "nobiheiya.webp",
+  "yomi": "のうびへいや"
  },
  {
   "type": "text",
@@ -6962,7 +7198,8 @@
   "juken": "",
   "basis": "text",
   "id": "seed_s5_046",
-  "figAfter": "wajyu.svg"
+  "figAfter": "wajyu.svg",
+  "yomi": "こぶね"
  },
  {
   "type": "text",
@@ -6977,7 +7214,8 @@
   "explain": "内陸の盆地なので夏に気温が上がります。",
   "juken": "",
   "basis": "text",
-  "id": "seed_s5_047"
+  "id": "seed_s5_047",
+  "yomi": "たじみし"
  },
  {
   "type": "text",
@@ -6993,7 +7231,8 @@
   "juken": "",
   "basis": "text",
   "id": "seed_s5_048",
-  "ansFig": "minoyaki.webp"
+  "ansFig": "minoyaki.webp",
+  "yomi": "みのやき"
  },
  {
   "type": "text",
@@ -7008,7 +7247,8 @@
   "explain": "こうぞやみつまたからつくる手すきの和紙です。",
   "juken": "",
   "basis": "text",
-  "id": "seed_s5_049"
+  "id": "seed_s5_049",
+  "yomi": "みのわし"
  },
  {
   "type": "text",
@@ -7023,7 +7263,8 @@
   "explain": "高山市でつくられる、うるしぬりの工芸品です。",
   "juken": "",
   "basis": "text",
-  "id": "seed_s5_050"
+  "id": "seed_s5_050",
+  "yomi": "ひだしゅんけい"
  },
  {
   "type": "text",
@@ -7054,7 +7295,8 @@
   "explain": "だから盆地は気温の差が大きくなります。",
   "juken": "内陸性気候＝気温差が大きい。",
   "basis": "text",
-  "id": "seed_s5_053"
+  "id": "seed_s5_053",
+  "yomi": "さめやすい"
  },
  {
   "type": "map_reverse",
@@ -7067,7 +7309,8 @@
   "explain": "岐阜県です。中部にあります。",
   "juken": "白地図で位置を答えられるようにしておく。",
   "basis": "text",
-  "id": "seed_s5_054"
+  "id": "seed_s5_054",
+  "yomi": "ぎふけん"
  },
  {
   "type": "text",
@@ -7098,7 +7341,8 @@
   "explain": "京都府の中央から北にかけて広がる高地です。",
   "juken": "高地＝山地よりなだらかで標高が低い。",
   "basis": "text",
-  "id": "seed_s1_052"
+  "id": "seed_s1_052",
+  "yomi": "たんばこうち"
  },
  {
   "type": "text",
@@ -7113,7 +7357,8 @@
   "explain": "1200年ほど前から明治時代まで、ずっと日本の中心でした。",
   "juken": "明治時代に都が東京へうつった。",
   "basis": "text",
-  "id": "seed_s1_053"
+  "id": "seed_s1_053",
+  "yomi": "めいじじだい"
  },
  {
   "type": "text",
@@ -7128,7 +7373,8 @@
   "explain": "まわりを山にかこまれた平地です。",
   "juken": "",
   "basis": "text",
-  "id": "seed_s1_054"
+  "id": "seed_s1_054",
+  "yomi": "きょうとぼんち"
  },
  {
   "type": "text",
@@ -7144,7 +7390,8 @@
   "explain": "奈良県の北西部にある町です。",
   "juken": "",
   "basis": "text",
-  "id": "seed_s1_055"
+  "id": "seed_s1_055",
+  "yomi": "いかるがちょう"
  },
  {
   "type": "text",
@@ -7159,7 +7406,8 @@
   "explain": "戦国時代に鉄砲づくりで栄えました。今の刃物づくりにつながっています。",
   "juken": "堺＝鉄砲・刃物・大仙古墳。3点セットで覚える。",
   "basis": "text",
-  "id": "seed_s2_063"
+  "id": "seed_s2_063",
+  "yomi": "さかいし"
  },
  {
   "type": "text",
@@ -7174,7 +7422,8 @@
   "explain": "和歌山県の南西部にある市です。",
   "juken": "",
   "basis": "text",
-  "id": "seed_s2_064"
+  "id": "seed_s2_064",
+  "yomi": "たなべし"
  },
  {
   "type": "text",
@@ -7189,7 +7438,8 @@
   "explain": "開発から自然を守るため、人々がお金を出しあって土地を買い取りました。",
   "juken": "開発と保護の対立は記述問題でよく問われる。",
   "basis": "text",
-  "id": "seed_s2_065"
+  "id": "seed_s2_065",
+  "yomi": "べっそうち"
  },
  {
   "type": "text",
@@ -7234,7 +7484,8 @@
   "explain": "地震の名前と、その被害をあらわす震災の名前はちがいます。",
   "juken": "地震名と震災名の区別は入試で問われる。",
   "basis": "text",
-  "id": "seed_s3_053"
+  "id": "seed_s3_053",
+  "yomi": "ひょうごけんなんぶじしん"
  },
  {
   "type": "text",
@@ -7249,7 +7500,8 @@
   "explain": "倒れた家から火が出て、大きな火事になりました。",
   "juken": "地震＝ゆれだけでなく火災・津波の二次被害まで問われる。",
   "basis": "text",
-  "id": "seed_s3_054"
+  "id": "seed_s3_054",
+  "yomi": "かさい"
  },
  {
   "type": "text",
@@ -7277,7 +7529,8 @@
   "explain": "東北地方を中心に大きな被害が出ました。",
   "juken": "2011年3月11日。津波の被害が大きかった。",
   "basis": "text",
-  "id": "seed_s3_056"
+  "id": "seed_s3_056",
+  "yomi": "ひがしにほんだいしんさい"
  },
  {
   "type": "text",
@@ -7292,7 +7545,8 @@
   "explain": "九州の熊本県を中心に大きな被害が出ました。",
   "juken": "",
   "basis": "text",
-  "id": "seed_s3_057"
+  "id": "seed_s3_057",
+  "yomi": "くまもとじしん"
  },
  {
   "type": "text",
@@ -7324,7 +7578,8 @@
   "explain": "焼かれたあと、今のすがたに再建されました。",
   "juken": "",
   "basis": "text",
-  "id": "seed_s3_059"
+  "id": "seed_s3_059",
+  "yomi": "やきはらわれた"
  },
  {
   "type": "text",
@@ -7339,7 +7594,8 @@
   "explain": "今の愛知県の東半分にあたります。",
   "juken": "三英傑の出身国は区別して問われる。",
   "basis": "text",
-  "id": "seed_s4_053"
+  "id": "seed_s4_053",
+  "yomi": "みかわのくに"
  },
  {
   "type": "text",
@@ -7354,7 +7610,8 @@
   "explain": "今の愛知県の西半分にあたります。",
   "juken": "",
   "basis": "text",
-  "id": "seed_s4_054"
+  "id": "seed_s4_054",
+  "yomi": "おわりのくに"
  },
  {
   "type": "text",
@@ -7369,7 +7626,8 @@
   "explain": "海の上につくられた空港です。",
   "juken": "関西国際空港と同じく海上空港。",
   "basis": "text",
-  "id": "seed_s4_055"
+  "id": "seed_s4_055",
+  "yomi": "ちゅうぶこくさいくうこう"
  },
  {
   "type": "text",
@@ -7397,7 +7655,8 @@
   "explain": "愛知県には明治用水・愛知用水・豊川用水があります。",
   "juken": "愛知の三大用水（明治・愛知・豊川）はセットで覚える。",
   "basis": "text",
-  "id": "seed_s4_057"
+  "id": "seed_s4_057",
+  "yomi": "めいじようすい"
  },
  {
   "type": "text",
@@ -7442,7 +7701,8 @@
   "explain": "花のさく時期をおくらせて、高く売れる時期に出します。",
   "juken": "抑制栽培＝出荷時期をずらして高く売る。",
   "basis": "text",
-  "id": "seed_s4_060"
+  "id": "seed_s4_060",
+  "yomi": "しょうがつからはるのおひがん"
  },
  {
   "type": "text",
@@ -7457,7 +7717,8 @@
   "explain": "伊勢湾の南にある、入り組んだ半島です。",
   "juken": "",
   "basis": "text",
-  "id": "seed_s4_061"
+  "id": "seed_s4_061",
+  "yomi": "しまはんとう"
  },
  {
   "type": "text",
@@ -7489,7 +7750,8 @@
   "explain": "長野県と山梨県のさかいにある山です。",
   "juken": "",
   "basis": "text",
-  "id": "seed_s5_056"
+  "id": "seed_s5_056",
+  "yomi": "やつがたけ"
  },
  {
   "type": "text",
@@ -7505,7 +7767,8 @@
   "juken": "関ヶ原に勝った家康が江戸幕府を開く。",
   "basis": "text",
   "id": "seed_s5_057",
-  "ansFig": "ieyasu.webp"
+  "ansFig": "ieyasu.webp",
+  "yomi": "とくがわいえやす"
  },
  {
   "type": "text",
@@ -7521,7 +7784,8 @@
   "explain": "今の東京です。",
   "juken": "1603年、江戸幕府がひらかれる。",
   "basis": "text",
-  "id": "seed_s5_058"
+  "id": "seed_s5_058",
+  "yomi": "えど"
  },
  {
   "type": "text",
@@ -7536,7 +7800,8 @@
   "explain": "その次に小さいのが大阪府です。",
   "juken": "面積最小＝香川、2番目＝大阪、3番目＝東京。",
   "basis": "text",
-  "id": "seed_s5_059"
+  "id": "seed_s5_059",
+  "yomi": "かがわけん"
  },
  {
   "type": "text",
@@ -7551,7 +7816,8 @@
   "explain": "京都約255万人に対して、奈良は約131万人。およそ2倍の差があります。",
   "juken": "人口は数字そのものより、となりの府県とくらべた大小で問われる。",
   "basis": "text",
-  "id": "seed_cmp_01"
+  "id": "seed_cmp_01",
+  "yomi": "きょうとふ"
  },
  {
   "type": "text",
@@ -7566,7 +7832,8 @@
   "explain": "大阪約1905km²、奈良約3691km²、そのつぎが滋賀の約4017km²です。",
   "juken": "近畿でせまい順に、大阪→奈良。",
   "basis": "text",
-  "id": "seed_cmp_02"
+  "id": "seed_cmp_02",
+  "yomi": "ならけん"
  },
  {
   "type": "text",
@@ -7581,7 +7848,8 @@
   "explain": "せまい土地に人が集まっています。兵庫の4分の1ほどの広さに、その1.6倍の人がいます。",
   "juken": "せまい・人が多い＝人口密度が高い。この組み合わせが問われる。",
   "basis": "text",
-  "id": "seed_cmp_03"
+  "id": "seed_cmp_03",
+  "yomi": "おおさかふ"
  },
  {
   "type": "text",
@@ -7611,7 +7879,8 @@
   "explain": "約8401km²で、2番目の三重の1.5倍ほどあります。日本海と瀬戸内海の両方に面しています。",
   "juken": "近畿で広い順に、兵庫→三重。",
   "basis": "text",
-  "id": "seed_cmp_05"
+  "id": "seed_cmp_05",
+  "yomi": "ひょうごけん"
  },
  {
   "type": "text",
@@ -7626,7 +7895,8 @@
   "explain": "大阪の約878万人につぐ約540万人。3番目の京都の2倍以上です。",
   "juken": "近畿で多い順に、大阪→兵庫→京都。",
   "basis": "text",
-  "id": "seed_cmp_06"
+  "id": "seed_cmp_06",
+  "yomi": "ひょうごけん"
  },
  {
   "type": "text",
@@ -7641,7 +7911,8 @@
   "explain": "大阪の約878万人につぐ約750万人。中部ではいちばん多い県です。",
   "juken": "大阪・愛知は全国でも人口の多い上位。",
   "basis": "text",
-  "id": "seed_cmp_07"
+  "id": "seed_cmp_07",
+  "yomi": "あいちけん"
  },
  {
   "type": "text",
@@ -7671,7 +7942,8 @@
   "explain": "約10621km²。長野についで広く、北のほうは山地が多くしめています。",
   "juken": "長野・岐阜は面積が広く、山地が多い。",
   "basis": "text",
-  "id": "seed_cmp_09"
+  "id": "seed_cmp_09",
+  "yomi": "ぎふけん"
  },
  {
   "type": "figure",
@@ -7688,7 +7960,8 @@
   "juken": "別名から正式な名前を答えさせる問題が出る。写真で見分ける問題も多い。",
   "basis": "text",
   "id": "seed_cld_01",
-  "figAfter": "cloudtypes.svg"
+  "figAfter": "cloudtypes.svg",
+  "yomi": "けんうん"
  },
  {
   "type": "figure",
@@ -7706,7 +7979,8 @@
   "basis": "text",
   "id": "seed_cld_02",
   "figAfter": "cloudtypes.svg",
-  "figBy": "写真: Franz van Duns（CC BY 4.0）"
+  "figBy": "写真: Franz van Duns（CC BY 4.0）",
+  "yomi": "けんそううん"
  },
  {
   "type": "figure",
@@ -7724,7 +7998,8 @@
   "basis": "text",
   "id": "seed_cld_03",
   "figAfter": "cloudtypes.svg",
-  "figBy": "写真: Rollcloud（CC BY 3.0）"
+  "figBy": "写真: Rollcloud（CC BY 3.0）",
+  "yomi": "こうせきうん"
  },
  {
   "type": "figure",
@@ -7742,7 +8017,8 @@
   "basis": "text",
   "id": "seed_cld_04",
   "figAfter": "cloudtypes.svg",
-  "figBy": "写真: Simon Eugster（CC BY-SA 3.0）"
+  "figBy": "写真: Simon Eugster（CC BY-SA 3.0）",
+  "yomi": "こうそううん"
  },
  {
   "type": "figure",
@@ -7760,7 +8036,8 @@
   "basis": "text",
   "id": "seed_cld_05",
   "figAfter": "cloudtypes.svg",
-  "figBy": "写真: Eric T Gunther（CC BY-SA 3.0）"
+  "figBy": "写真: Eric T Gunther（CC BY-SA 3.0）",
+  "yomi": "らんそううん"
  },
  {
   "type": "figure",
@@ -7778,7 +8055,8 @@
   "basis": "text",
   "id": "seed_cld_06",
   "figAfter": "cloudtypes.svg",
-  "figBy": "写真: Toby Hudson（CC BY-SA 3.0）"
+  "figBy": "写真: Toby Hudson（CC BY-SA 3.0）",
+  "yomi": "せきうん"
  },
  {
   "type": "figure",
@@ -7796,7 +8074,8 @@
   "basis": "text",
   "id": "seed_cld_07",
   "figAfter": "cloudtypes.svg",
-  "figBy": "写真: Grain de sel（CC BY-SA 4.0）"
+  "figBy": "写真: Grain de sel（CC BY-SA 4.0）",
+  "yomi": "せきらんうん"
  },
  {
   "type": "figure",
@@ -7814,7 +8093,8 @@
   "basis": "text",
   "id": "seed_cld_08",
   "figAfter": "cloudtypes.svg",
-  "figBy": "写真: Ludwig Schneider（CC BY-SA 3.0）"
+  "figBy": "写真: Ludwig Schneider（CC BY-SA 3.0）",
+  "yomi": "そうせきうん"
  },
  {
   "type": "figure",
@@ -7832,7 +8112,8 @@
   "basis": "text",
   "id": "seed_cld_09",
   "figAfter": "cloudtypes.svg",
-  "figBy": "写真: Rollcloud（CC BY 4.0）"
+  "figBy": "写真: Rollcloud（CC BY 4.0）",
+  "yomi": "そううん"
  },
  {
   "type": "figure",
@@ -8061,7 +8342,8 @@
   "juken": "写真を見て雲の名前を答える問題が出る。高さのなかまと別名もセットで覚える。",
   "basis": "text",
   "figAfter": "cloudtypes.svg",
-  "id": "seed_mie_01"
+  "id": "seed_mie_01",
+  "yomi": "けんうん"
  },
  {
   "type": "figure",
@@ -8079,7 +8361,8 @@
   "basis": "text",
   "figAfter": "cloudtypes.svg",
   "figBy": "写真: Franz van Duns（CC BY 4.0）",
-  "id": "seed_mie_02"
+  "id": "seed_mie_02",
+  "yomi": "けんそううん"
  },
  {
   "type": "figure",
@@ -8097,7 +8380,8 @@
   "basis": "text",
   "figAfter": "cloudtypes.svg",
   "figBy": "写真: Rollcloud（CC BY 3.0）",
-  "id": "seed_mie_03"
+  "id": "seed_mie_03",
+  "yomi": "こうせきうん"
  },
  {
   "type": "figure",
@@ -8115,7 +8399,8 @@
   "basis": "text",
   "figAfter": "cloudtypes.svg",
   "figBy": "写真: Simon Eugster（CC BY-SA 3.0）",
-  "id": "seed_mie_04"
+  "id": "seed_mie_04",
+  "yomi": "こうそううん"
  },
  {
   "type": "figure",
@@ -8133,7 +8418,8 @@
   "basis": "text",
   "figAfter": "cloudtypes.svg",
   "figBy": "写真: Eric T Gunther（CC BY-SA 3.0）",
-  "id": "seed_mie_05"
+  "id": "seed_mie_05",
+  "yomi": "らんそううん"
  },
  {
   "type": "figure",
@@ -8151,7 +8437,8 @@
   "basis": "text",
   "figAfter": "cloudtypes.svg",
   "figBy": "写真: Toby Hudson（CC BY-SA 3.0）",
-  "id": "seed_mie_06"
+  "id": "seed_mie_06",
+  "yomi": "せきうん"
  },
  {
   "type": "figure",
@@ -8169,7 +8456,8 @@
   "basis": "text",
   "figAfter": "cloudtypes.svg",
   "figBy": "写真: Grain de sel（CC BY-SA 4.0）",
-  "id": "seed_mie_07"
+  "id": "seed_mie_07",
+  "yomi": "せきらんうん"
  },
  {
   "type": "figure",
@@ -8187,7 +8475,8 @@
   "basis": "text",
   "figAfter": "cloudtypes.svg",
   "figBy": "写真: Ludwig Schneider（CC BY-SA 3.0）",
-  "id": "seed_mie_08"
+  "id": "seed_mie_08",
+  "yomi": "そうせきうん"
  },
  {
   "type": "figure",
@@ -8205,7 +8494,8 @@
   "basis": "text",
   "figAfter": "cloudtypes.svg",
   "figBy": "写真: Rollcloud（CC BY 4.0）",
-  "id": "seed_mie_09"
+  "id": "seed_mie_09",
+  "yomi": "そううん"
  },
  {
   "type": "figure",
@@ -8355,7 +8645,8 @@
   "juken": "写真を見て地形の名前を答える問題が出る。日本のどこで見られるかもセットで覚える。",
   "basis": "text",
   "id": "seed_mie_19",
-  "figBy": "写真: Diego Delso（CC BY-SA 4.0）"
+  "figBy": "写真: Diego Delso（CC BY-SA 4.0）",
+  "yomi": "ひょうが"
  },
  {
   "type": "figure",
@@ -8372,7 +8663,8 @@
   "explain": "南米のボリビアにある塩類平原で、世界でもっとも平らな場所ともいわれます。水がたまると天空の鏡とよばれる絶景になります。",
   "juken": "写真を見て場所の名前を答える問題が出る。塩類平原という言い方もおさえる。",
   "basis": "text",
-  "id": "seed_mie_20"
+  "id": "seed_mie_20",
+  "yomi": "ウユニえんこ"
  },
  {
   "type": "figure",
@@ -8391,7 +8683,8 @@
   "juken": "写真を見て名前を答える問題が出る。",
   "basis": "text",
   "id": "seed_sm_01",
-  "figBy": "写真: Basile Morin（CC BY-SA 4.0）"
+  "figBy": "写真: Basile Morin（CC BY-SA 4.0）",
+  "yomi": "ろくおんじ"
  },
  {
   "type": "figure",
@@ -8409,7 +8702,8 @@
   "juken": "写真を見て名前を答える問題が出る。",
   "basis": "text",
   "id": "seed_sm_02",
-  "figBy": "写真: ganden（CC BY 4.0）"
+  "figBy": "写真: ganden（CC BY 4.0）",
+  "yomi": "びょうどういんほうおうどう"
  },
  {
   "type": "figure",
@@ -8426,7 +8720,8 @@
   "juken": "写真を見て名前を答える問題が出る。",
   "basis": "text",
   "id": "seed_sm_03",
-  "figBy": "写真: 来島海峡大橋（CC BY-SA 4.0）"
+  "figBy": "写真: 来島海峡大橋（CC BY-SA 4.0）",
+  "yomi": "きよみずでら"
  },
  {
   "type": "figure",
@@ -8443,7 +8738,8 @@
   "juken": "写真を見て名前を答える問題が出る。",
   "basis": "text",
   "id": "seed_sm_04",
-  "figBy": "写真: z tanuki（CC BY 3.0）"
+  "figBy": "写真: z tanuki（CC BY 3.0）",
+  "yomi": "ほうりゅうじ"
  },
  {
   "type": "figure",
@@ -8477,7 +8773,8 @@
   "juken": "写真を見て名前を答える問題が出る。",
   "basis": "text",
   "id": "seed_sm_06",
-  "figBy": "写真: DXR（CC BY-SA 4.0）"
+  "figBy": "写真: DXR（CC BY-SA 4.0）",
+  "yomi": "おおさかじょう"
  },
  {
   "type": "figure",
@@ -8493,7 +8790,8 @@
   "explain": "白い壁が美しいお城です。",
   "juken": "写真を見て名前を答える問題が出る。",
   "basis": "text",
-  "id": "seed_sm_07"
+  "id": "seed_sm_07",
+  "yomi": "ひめじじょう"
  },
  {
   "type": "figure",
@@ -8509,7 +8807,8 @@
   "explain": "尾張徳川家のシンボルとなった城です。",
   "juken": "写真を見て名前を答える問題が出る。",
   "basis": "text",
-  "id": "seed_sm_08"
+  "id": "seed_sm_08",
+  "yomi": "なごやじょう"
  },
  {
   "type": "figure",
@@ -8525,7 +8824,8 @@
   "explain": "白い姫路城に対して「烏城」ともよばれます。",
   "juken": "写真を見て名前を答える問題が出る。",
   "basis": "text",
-  "id": "seed_sm_09"
+  "id": "seed_sm_09",
+  "yomi": "まつもとじょう"
  },
  {
   "type": "figure",
@@ -8542,7 +8842,8 @@
   "juken": "写真を見て名前を答える問題が出る。",
   "basis": "text",
   "id": "seed_sm_10",
-  "figBy": "写真: 663highland（CC BY-SA 3.0）"
+  "figBy": "写真: 663highland（CC BY-SA 3.0）",
+  "yomi": "たいようのとう"
  },
  {
   "type": "figure",
@@ -8559,7 +8860,8 @@
   "juken": "写真を見て名前を答える問題が出る。",
   "basis": "text",
   "id": "seed_sm_11",
-  "figBy": "写真: foooomio（CC BY 2.0）"
+  "figBy": "写真: foooomio（CC BY 2.0）",
+  "yomi": "いせじんぐう"
  },
  {
   "type": "figure",
@@ -8576,7 +8878,8 @@
   "explain": "土がなくなり、石室がむき出しになっています。",
   "juken": "写真を見て名前を答える問題が出る。",
   "basis": "text",
-  "id": "seed_sm_12"
+  "id": "seed_sm_12",
+  "yomi": "いしぶたいこふん"
  },
  {
   "type": "figure",
@@ -8595,7 +8898,8 @@
   "juken": "写真を見て名前を答える問題が出る。",
   "basis": "text",
   "id": "seed_sm_13",
-  "figBy": "写真: 国土地理院（CC BY）"
+  "figBy": "写真: 国土地理院（CC BY）",
+  "yomi": "だいせんこふん"
  },
  {
   "type": "figure",
@@ -8647,7 +8951,8 @@
   "juken": "写真を見て名前を答える問題が出る。",
   "basis": "text",
   "id": "seed_sm_16",
-  "figBy": "写真: Global Land Cover Facility（CC BY-SA 3.0）"
+  "figBy": "写真: Global Land Cover Facility（CC BY-SA 3.0）",
+  "yomi": "びわこ"
  },
  {
   "type": "figure",
@@ -8663,7 +8968,8 @@
   "explain": "京都市は京都盆地の中にあります。",
   "juken": "写真を見て名前を答える問題が出る。",
   "basis": "text",
-  "id": "seed_sm_17"
+  "id": "seed_sm_17",
+  "yomi": "ぼんち"
  },
  {
   "type": "figure",
@@ -8697,7 +9003,8 @@
   "explain": "本州と淡路島をつなぐ橋です。",
   "juken": "写真を見て名前を答える問題が出る。",
   "basis": "text",
-  "id": "seed_sm_19"
+  "id": "seed_sm_19",
+  "yomi": "あかしかいきょうおおはし"
  },
  {
   "type": "figure",
@@ -8714,7 +9021,8 @@
   "juken": "写真を見て名前を答える問題が出る。",
   "basis": "text",
   "id": "seed_sm_20",
-  "figBy": "写真: Bernard Gagnon（白川郷・CC BY-SA 3.0）"
+  "figBy": "写真: Bernard Gagnon（白川郷・CC BY-SA 3.0）",
+  "yomi": "がっしょうづくり"
  },
  {
   "type": "figure",
@@ -8767,7 +9075,8 @@
   "juken": "写真を見て名前を答える問題が出る。",
   "basis": "text",
   "id": "seed_sm_23",
-  "figBy": "写真: Ludger Heide（CC BY-SA 4.0）"
+  "figBy": "写真: Ludger Heide（CC BY-SA 4.0）",
+  "yomi": "うかい"
  },
  {
   "type": "figure",
@@ -8799,7 +9108,8 @@
   "explain": "和同開珎よりも古いとされています。",
   "juken": "写真を見て名前を答える問題が出る。",
   "basis": "text",
-  "id": "seed_sm_25"
+  "id": "seed_sm_25",
+  "yomi": "ふほんせん"
  },
  {
   "type": "figure",
@@ -8833,7 +9143,8 @@
   "juken": "写真を見て名前を答える問題が出る。",
   "basis": "text",
   "id": "seed_sm_27",
-  "figBy": "写真: Kkkdc（CC BY-SA 3.0）"
+  "figBy": "写真: Kkkdc（CC BY-SA 3.0）",
+  "yomi": "びんちょうたん"
  },
  {
   "type": "figure",
@@ -8850,7 +9161,8 @@
   "juken": "写真を見て名前を答える問題が出る。",
   "basis": "text",
   "id": "seed_sm_28",
-  "figBy": "写真: 663highland（CC BY 2.5）"
+  "figBy": "写真: 663highland（CC BY 2.5）",
+  "yomi": "ばんしゅうそろばん"
  },
  {
   "type": "figure",
@@ -8867,7 +9179,8 @@
   "juken": "写真を見て名前を答える問題が出る。",
   "basis": "text",
   "id": "seed_sm_29",
-  "figBy": "写真: Motokoka（CC BY-SA 4.0）"
+  "figBy": "写真: Motokoka（CC BY-SA 4.0）",
+  "yomi": "しがらきやき"
  },
  {
   "type": "figure",
@@ -9141,7 +9454,8 @@
   "juken": "写真を見て名前を答える問題が出る。",
   "basis": "text",
   "id": "seed_sm_45",
-  "figBy": "写真: Duff Figgy（CC BY-SA 3.0）"
+  "figBy": "写真: Duff Figgy（CC BY-SA 3.0）",
+  "yomi": "しだれざくら"
  },
  {
   "type": "figure",
@@ -9277,7 +9591,8 @@
   "explain": "伝染病や戦いで苦しむ人々を救おうとしました。",
   "juken": "写真を見て名前を答える問題が出る。",
   "basis": "text",
-  "id": "seed_sm_53"
+  "id": "seed_sm_53",
+  "yomi": "しょうむてんのう"
  },
  {
   "type": "figure",
@@ -9293,7 +9608,8 @@
   "explain": "十七条の憲法や冠位十二階でも知られる人物です。",
   "juken": "写真を見て名前を答える問題が出る。",
   "basis": "text",
-  "id": "seed_sm_54"
+  "id": "seed_sm_54",
+  "yomi": "しょうとくたいし"
  },
  {
   "type": "figure",
@@ -9309,7 +9625,8 @@
   "explain": "5回目の航海で嵐にあい、両目が見えなくなってもあきらめませんでした。",
   "juken": "写真を見て名前を答える問題が出る。",
   "basis": "text",
-  "id": "seed_sm_55"
+  "id": "seed_sm_55",
+  "yomi": "がんじん"
  },
  {
   "type": "figure",
@@ -9325,7 +9642,8 @@
   "explain": "大阪城をつくった戦国時代の武将です。",
   "juken": "写真を見て名前を答える問題が出る。",
   "basis": "text",
-  "id": "seed_sm_56"
+  "id": "seed_sm_56",
+  "yomi": "とよとみひでよし"
  },
  {
   "type": "figure",
@@ -9341,7 +9659,8 @@
   "explain": "「おくのほそ道」で知られる俳人です。",
   "juken": "写真を見て名前を答える問題が出る。",
   "basis": "text",
-  "id": "seed_sm_57"
+  "id": "seed_sm_57",
+  "yomi": "まつおばしょう"
  },
  {
   "type": "figure",
@@ -9357,7 +9676,8 @@
   "explain": "今から100年以上前に、世界で初めて真珠の養殖に成功した人です。",
   "juken": "写真を見て名前を答える問題が出る。",
   "basis": "text",
-  "id": "seed_sm_58"
+  "id": "seed_sm_58",
+  "yomi": "みきもとこうきち"
  },
  {
   "type": "figure",
@@ -9373,7 +9693,8 @@
   "explain": "東軍を率いて西軍の石田三成に勝ちました。",
   "juken": "写真を見て名前を答える問題が出る。",
   "basis": "text",
-  "id": "seed_sm_59"
+  "id": "seed_sm_59",
+  "yomi": "とくがわいえやす"
  },
  {
   "type": "text",
@@ -9401,7 +9722,8 @@
   "basis": "text",
   "id": "seed_nm_12",
   "ansFig": "tonegawa.webp",
-  "ansFigBy": "写真: P199（CC BY-SA 3.0）"
+  "ansFigBy": "写真: P199（CC BY-SA 3.0）",
+  "yomi": "とねがわ"
  },
  {
   "type": "text",
@@ -9414,7 +9736,8 @@
   "explain": "信濃川・利根川とならぶ、日本を代表する河川です。",
   "juken": "川と流れる都道府県の組み合わせ。",
   "basis": "text",
-  "id": "seed_nm_13"
+  "id": "seed_nm_13",
+  "yomi": "いしかりがわ"
  },
  {
   "type": "text",
@@ -9427,7 +9750,8 @@
   "explain": "火山の活動でできたくぼみ（カルデラ）に水がたまった湖です。",
   "juken": "カルデラ湖の例（屈斜路湖・十和田湖）。",
   "basis": "text",
-  "id": "seed_nm_14"
+  "id": "seed_nm_14",
+  "yomi": "くっしゃろこ"
  },
  {
   "type": "text",
@@ -9453,7 +9777,8 @@
   "explain": "湖と池や沼の区別は、じつはあいまいなものなのです。",
   "juken": "湖・池・沼の区別はあいまい。",
   "basis": "text",
-  "id": "seed_nm_16"
+  "id": "seed_nm_16",
+  "yomi": "なかつなこ"
  },
  {
   "type": "text",
@@ -9466,7 +9791,8 @@
   "explain": "地下水が地上にあらわれたもの（湧水）です。",
   "juken": "湧水の例。",
   "basis": "text",
-  "id": "seed_nm_17"
+  "id": "seed_nm_17",
+  "yomi": "おたかのみち・ますがたのいけゆうすいぐん"
  },
  {
   "type": "text",
@@ -9479,7 +9805,8 @@
   "explain": "日本にも氷河があります。",
   "juken": "日本にも氷河がある、という点が大事。",
   "basis": "text",
-  "id": "seed_nm_18"
+  "id": "seed_nm_18",
+  "yomi": "カクネざとせっけい"
  },
  {
   "type": "text",
@@ -9507,7 +9834,8 @@
   "juken": "富士五湖の名前と水面の高さ。",
   "basis": "text",
   "id": "seed_nm_20",
-  "figAfter": "fujigoko_map.svg"
+  "figAfter": "fujigoko_map.svg",
+  "yomi": "もとすこ"
  },
  {
   "type": "text",
@@ -9521,7 +9849,8 @@
   "juken": "富士五湖の名前と水面の高さ。",
   "basis": "text",
   "id": "seed_nm_21",
-  "figAfter": "fujigoko_map.svg"
+  "figAfter": "fujigoko_map.svg",
+  "yomi": "しょうじこ"
  },
  {
   "type": "text",
@@ -9774,7 +10103,8 @@
   "explain": "動物の肉以外に、木の実や新芽なども食べます。",
   "juken": "肉食・草食・雑食の仕分けは頻出。",
   "basis": "text",
-  "id": "seed_nm_65"
+  "id": "seed_nm_65",
+  "yomi": "ざっしょくどうぶつ"
  },
  {
   "type": "text",
@@ -9787,7 +10117,8 @@
   "explain": "動物の肉以外に、木の実や新芽なども食べます。",
   "juken": "肉食・草食・雑食の仕分けは頻出。",
   "basis": "text",
-  "id": "seed_nm_66"
+  "id": "seed_nm_66",
+  "yomi": "ざっしょくどうぶつ"
  },
  {
   "type": "text",
@@ -9800,7 +10131,8 @@
   "explain": "動物の肉以外に、木の実や新芽なども食べます。",
   "juken": "肉食・草食・雑食の仕分けは頻出。",
   "basis": "text",
-  "id": "seed_nm_67"
+  "id": "seed_nm_67",
+  "yomi": "ざっしょくどうぶつ"
  },
  {
   "type": "text",
@@ -9813,7 +10145,8 @@
   "explain": "動物の肉以外に、木の実や新芽なども食べます。",
   "juken": "肉食・草食・雑食の仕分けは頻出。",
   "basis": "text",
-  "id": "seed_nm_68"
+  "id": "seed_nm_68",
+  "yomi": "ざっしょくどうぶつ"
  },
  {
   "type": "text",
@@ -9826,7 +10159,8 @@
   "explain": "動物の肉以外に、木の実や新芽なども食べます。",
   "juken": "肉食・草食・雑食の仕分けは頻出。",
   "basis": "text",
-  "id": "seed_nm_69"
+  "id": "seed_nm_69",
+  "yomi": "ざっしょくどうぶつ"
  },
  {
   "type": "text",
@@ -9839,7 +10173,8 @@
   "explain": "動物の肉以外に、木の実や新芽なども食べます。",
   "juken": "肉食・草食・雑食の仕分けは頻出。",
   "basis": "text",
-  "id": "seed_nm_70"
+  "id": "seed_nm_70",
+  "yomi": "ざっしょくどうぶつ"
  },
  {
   "type": "text",
@@ -9853,7 +10188,8 @@
   "juken": "ネコ目でも雑食のものがいる。",
   "basis": "text",
   "id": "seed_nm_71",
-  "ansFig": "panda.webp"
+  "ansFig": "panda.webp",
+  "yomi": "ざっしょくどうぶつ"
  },
  {
   "type": "text",
@@ -9945,7 +10281,8 @@
   "explain": "ハクチョウ・ガン・カモ・ツグミは、秋に渡ってきます。ウグイスとメジロは、渡るのではなく山から下りてきます。",
   "juken": "渡り鳥と「山から下りる鳥」のちがい。",
   "basis": "text",
-  "id": "seed_cl_13"
+  "id": "seed_cl_13",
+  "yomi": "わたってくる"
  },
  {
   "type": "text",
@@ -9958,7 +10295,8 @@
   "explain": "ハクチョウ・ガン・カモ・ツグミは、秋に渡ってきます。ウグイスとメジロは、渡るのではなく山から下りてきます。",
   "juken": "渡り鳥と「山から下りる鳥」のちがい。",
   "basis": "text",
-  "id": "seed_cl_14"
+  "id": "seed_cl_14",
+  "yomi": "わたってくる"
  },
  {
   "type": "text",
@@ -9971,7 +10309,8 @@
   "explain": "ハクチョウ・ガン・カモ・ツグミは、秋に渡ってきます。ウグイスとメジロは、渡るのではなく山から下りてきます。",
   "juken": "渡り鳥と「山から下りる鳥」のちがい。",
   "basis": "text",
-  "id": "seed_cl_15"
+  "id": "seed_cl_15",
+  "yomi": "わたってくる"
  },
  {
   "type": "text",
@@ -9984,7 +10323,8 @@
   "explain": "ハクチョウ・ガン・カモ・ツグミは、秋に渡ってきます。ウグイスとメジロは、渡るのではなく山から下りてきます。",
   "juken": "渡り鳥と「山から下りる鳥」のちがい。",
   "basis": "text",
-  "id": "seed_cl_16"
+  "id": "seed_cl_16",
+  "yomi": "わたってくる"
  },
  {
   "type": "text",
@@ -10025,7 +10365,8 @@
   "explain": "東京湾は海水。クロダイやマゴチは海水魚です。",
   "juken": "場所と海水・淡水、魚の組み合わせ。",
   "basis": "text",
-  "id": "seed_cl_19"
+  "id": "seed_cl_19",
+  "yomi": "とうきょうわん"
  },
  {
   "type": "text",
@@ -10040,7 +10381,8 @@
   "basis": "text",
   "id": "seed_cl_20",
   "ansFig": "magochi.webp",
-  "ansFigBy": "写真: Izuzuki（CC BY 2.5）"
+  "ansFigBy": "写真: Izuzuki（CC BY 2.5）",
+  "yomi": "とうきょうわん"
  },
  {
   "type": "text",
@@ -10055,7 +10397,8 @@
   "basis": "text",
   "id": "seed_cl_21",
   "ansFig": "tonegawa.webp",
-  "ansFigBy": "写真: P199（CC BY-SA 3.0）"
+  "ansFigBy": "写真: P199（CC BY-SA 3.0）",
+  "yomi": "とねがわ"
  },
  {
   "type": "text",
@@ -10070,7 +10413,8 @@
   "basis": "text",
   "id": "seed_cl_22",
   "ansFig": "funa.webp",
-  "ansFigBy": "写真: Ffish.asia（CC BY 4.0）"
+  "ansFigBy": "写真: Ffish.asia（CC BY 4.0）",
+  "yomi": "とねがわ"
  },
  {
   "type": "text",
@@ -10179,7 +10523,8 @@
   "explain": "有袋類は子どもをおなかの袋で育て、単孔類は殻のある卵で生まれます。",
   "juken": "有袋類と単孔類。",
   "basis": "text",
-  "id": "seed_cl_43"
+  "id": "seed_cl_43",
+  "yomi": "ゆうたいるい"
  },
  {
   "type": "text",
@@ -10192,7 +10537,8 @@
   "explain": "有袋類は子どもをおなかの袋で育て、単孔類は殻のある卵で生まれます。",
   "juken": "有袋類と単孔類。",
   "basis": "text",
-  "id": "seed_cl_44"
+  "id": "seed_cl_44",
+  "yomi": "ゆうたいるい"
  },
  {
   "type": "text",
@@ -10207,7 +10553,8 @@
   "basis": "text",
   "id": "seed_cl_45",
   "ansFig": "kamonohashi.webp",
-  "ansFigBy": "写真: Charles J. Sharp（CC BY-SA 4.0）"
+  "ansFigBy": "写真: Charles J. Sharp（CC BY-SA 4.0）",
+  "yomi": "たんこうるい"
  },
  {
   "type": "text",
@@ -10221,7 +10568,8 @@
   "juken": "有袋類と単孔類。",
   "basis": "text",
   "id": "seed_cl_46",
-  "ansFig": "harimogura.webp"
+  "ansFig": "harimogura.webp",
+  "yomi": "たんこうるい"
  },
  {
   "type": "text",
@@ -10234,7 +10582,8 @@
   "explain": "水中を泳ぎますが、ほ乳類ではなく鳥類です。殻のある卵で生まれます。",
   "juken": "ほ乳類かどうかの見分け。",
   "basis": "text",
-  "id": "seed_cl_47"
+  "id": "seed_cl_47",
+  "yomi": "ちょうるい"
  },
  {
   "type": "text",
@@ -10247,7 +10596,8 @@
   "explain": "ヘビと同じは虫類です。殻のある卵で生まれます。",
   "juken": "ほ乳類かどうかの見分け。",
   "basis": "text",
-  "id": "seed_cl_48"
+  "id": "seed_cl_48",
+  "yomi": "はちゅうるい"
  },
  {
   "type": "text",
