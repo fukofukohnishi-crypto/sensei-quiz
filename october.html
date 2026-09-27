@@ -1092,7 +1092,7 @@ function reveal(){
   document.getElementById('q-after').style.display='';
   const ansEl=document.getElementById('q-ans');
   ansEl.textContent=q.a;
-  document.getElementById('q-yomi').textContent=q.yomi?('よみ　'+q.yomi):'';
+  document.getElementById('q-yomi').textContent=q.yomi||'';
   /* 答えが「実物」のときは、その絵を答えの上に出す。無ければ出さない。
      読みこみに失敗しても画面は壊さない（onerror で隠す） */
   const figEl=document.getElementById('q-ansfig'), byEl=document.getElementById('q-ansby');
