@@ -115,6 +115,8 @@ button:focus-visible{outline:2px solid var(--gold);outline-offset:2px}
 @media(max-width:900px){.qside .prog{margin-top:0;margin-left:auto;padding:8px 12px}}
 .qside .prog b{display:block;font-size:1.5rem;font-weight:900;color:var(--gold);line-height:1.2}
 .qside .prog span{font-size:.7rem;color:var(--muted)}
+.qside .prog .hearts{display:block;font-size:1.05rem;letter-spacing:2px;margin-top:2px}
+.qside .prog .hearts:empty{display:none}
 
 .qmain{background:var(--panel);border:1px solid var(--line);border-radius:22px;padding:34px clamp(20px,3.5vw,44px) 30px}
 .segs{display:flex;gap:4px;flex-wrap:wrap;margin-bottom:22px}
@@ -357,7 +359,7 @@ button:focus-visible{outline:2px solid var(--gold);outline-offset:2px}
     <div class="qside">
       <img id="q-face" src="/img/teachers/kaga.jpg" alt="" onerror="this.style.display='none'">
       <div class="who" id="q-who"></div>
-      <div class="prog"><b id="q-prog">0</b><span id="q-proglbl">もんめ</span></div>
+      <div class="prog"><b id="q-prog">0</b><span id="q-proglbl">もんめ</span><span id="q-hearts" class="hearts"></span></div>
     </div>
     <div class="qmain" id="q-main">
       <div class="segs" id="q-segs"></div>
@@ -605,7 +607,7 @@ button:focus-visible{outline:2px solid var(--gold);outline-offset:2px}
       <div class="sc" id="r-sub"></div>
       <div class="grid">
         <div class="cellv"><b id="r-ok">0</b><span>できた</span></div>
-        <div class="cellv"><b id="r-best">0</b><span>連続の記録</span></div>
+        <div class="cellv"><b id="r-best">0</b><span>チャレンジの自己ベスト</span></div>
       </div>
       <button class="btn warn" style="width:100%;margin-bottom:10px;display:none" id="r-wrong"></button>
       <button class="btn gold" style="width:100%;margin-bottom:10px" onclick="go('s-home')">ホームへ</button>
@@ -702,6 +704,11 @@ const LS_ROUND='oct_round_v1';        /* れんしゅうでえらんだ単元（
 const LS_SEEN='oct_seen_v1';          /* 一度でも出した問題のid。まだ出ていない問題から先に出すため */
 
 const CHALLENGE_GOAL=50;
+/* ハート3つ。まちがえても2回までは続けられ、3回目で終わる。
+   前は1問ミスでその場終了で、正答率9割の子でもクリアできるのは1%ほどだった
+   （95%でも8%）。ハート3つなら 95%で約5割・90%で約1割 */
+const CHALLENGE_LIVES=3;
+let chMiss=0;
 /* 読み物は「れんしゅう」で解いた累計がこの数にとどくたびに1話ひらく。
    れんしゅう1回が20問なので、**1回＝1話**になるようにそろえてある。
    50問連続チャレンジでは開かない（あちらのごほうびはレアカード）。
@@ -988,10 +995,13 @@ function startChallenge(subj){
   /* 挑戦のたびに0からやりなおす。クリア後は streak が50のまま残るので、
      ここでもどさないと出題が0問になって落ちる（実際に踏んだ） */
   challenge[subj].streak=0; saveChallenge();
+  chMiss=0;
+  /* 正解50問まで。まちがいは2回までゆるすので、最大で 50+2 問出る */
+  const need=CHALLENGE_GOAL+CHALLENGE_LIVES-1;
   let list=[];
-  while(list.length<CHALLENGE_GOAL) list=list.concat(pool.slice().sort(()=>Math.random()-.5));
-  qList=list.slice(0,CHALLENGE_GOAL);
-  beginQuiz(subj,'challenge',SUBJ[subj].n+' 50問連続チャレンジ');
+  while(list.length<need) list=list.concat(pool.slice().sort(()=>Math.random()-.5));
+  qList=list.slice(0,need);
+  beginQuiz(subj,'challenge',SUBJ[subj].n+' 50問チャレンジ');
 }
 /* いま終わった回でまちがえた問題だけ、その場でもう一度。
    beginQuiz が qWrong を空にするので、先に控えをとる */
@@ -1047,8 +1057,11 @@ function renderQ(){
   }
   if(mode==='challenge'){
     document.getElementById('q-prog').textContent=challenge[curSubj].streak;
-    document.getElementById('q-proglbl').textContent='／'+CHALLENGE_GOAL+' 連続';
+    document.getElementById('q-proglbl').textContent='／'+CHALLENGE_GOAL+' 問せいかい';
+    document.getElementById('q-hearts').textContent=
+      '❤️'.repeat(Math.max(0,CHALLENGE_LIVES-chMiss))+'🤍'.repeat(Math.min(chMiss,CHALLENGE_LIVES));
   }else{
+    document.getElementById('q-hearts').textContent='';
     document.getElementById('q-prog').textContent=(qIdx+1);
     document.getElementById('q-proglbl').textContent='／'+qList.length+' 問め';
   }
@@ -1165,18 +1178,20 @@ function score(ok){
            読み物はこちらでは開かない（れんしゅうのごほうび） */
         if(first){
           const c=CARDS.find(x=>x.id===CHALLENGE_CARD[curSubj]);
-          if(c){ const {isNew}=award(c); setTimeout(()=>showCardGet(c,isNew,'50問連続 達成！'),380); }
-          else toast('50問連続 達成！ 専用カードは準備中','var(--gold)');
+          if(c){ const {isNew}=award(c); setTimeout(()=>showCardGet(c,isNew,'50問 達成！'),380); }
+          else toast('50問 達成！ 専用カードは準備中','var(--gold)');
           tryFusion();
         }
         if(!first)toast('50問クリア！ これで '+st.clears+' 回め','var(--gold)');
         saveChallenge(); showResult(); return;
       }
     }else{
-      st.streak=0;
+      /* streak はこの回の正解数。まちがえても0にはもどさない（ハートが減るだけ） */
+      chMiss++;
+      if(chMiss>=CHALLENGE_LIVES){ saveChallenge(); showResult(); return; }
+      toast('💔 ハート のこり '+(CHALLENGE_LIVES-chMiss)+'つ','var(--warn)');
     }
     saveChallenge();
-    if(!ok){ showResult(); return; }
   }
   nextQ();
 }
@@ -1201,7 +1216,7 @@ function showResult(){
   let emo,ttl,sub;
   if(mode==='challenge'){
     if(st.streak>=CHALLENGE_GOAL){emo='👑';ttl='50問 制覇！';sub='これで '+(st.clears||1)+' 回めのクリア';}
-    else{emo='💥';ttl='ここまで '+st.best+' 連続';sub='自己ベストは '+st.best+' 問。もう一回いこう';}
+    else{emo='💔';ttl='ここまで '+st.streak+' 問せいかい';sub='自己ベストは '+st.best+' 問。もう一回いこう';}
   }else{
     const pct=qList.length?qOk/qList.length:0;
     if(pct>=1){emo='🌟';ttl='ぜんぶできた！';}
@@ -1218,10 +1233,11 @@ function showResult(){
   const again=document.getElementById('r-again');
   again.textContent=mode==='challenge'?'もう一度チャレンジ':'もう一回';
   again.onclick=()=>{ mode==='challenge'?startChallenge(curSubj):startFlash(curSubj); };
-  /* まちがえた問題があるときだけ出す。チャレンジは1問ミスで終わるので出さない */
+  /* まちがえた問題があるときだけ出す。チャレンジもハート制になって
+     最大3問まちがえるので、チャレンジのあとにも出す */
   const wb=document.getElementById('r-wrong');
   const n=qWrong.length;
-  if(mode!=='challenge'&&n){
+  if(n){
     wb.style.display=''; wb.textContent='❌ まちがえた '+n+'問だけ';
     wb.onclick=startWrongOnly;
   }else{ wb.style.display='none'; }
@@ -1255,7 +1271,7 @@ function renderHome(){
     return '<div class="subj">'
       +'<div class="name"><span class="dot" style="background:'+SUBJ[s].c+'"></span>'+SUBJ[s].n+'</div>'
       +'<div class="cnt">問題 '+n+'問'+(st.cleared?'　👑 クリア '+(st.clears||1)+'回':'　🎴 50問クリアでレアカード')+'</div>'
-      +'<div class="streak"><b>'+st.best+'</b><span>連続の自己ベスト</span></div>'
+      +'<div class="streak"><b>'+st.best+'</b><span>チャレンジの自己ベスト</span></div>'
       +chips
       +freshLine(s,cur)
       +'<button class="btn" onclick="startFlash(\''+s+'\')"'+(n?'':' disabled')+'>れんしゅう（20問）'
@@ -1263,7 +1279,7 @@ function renderHome(){
       +(()=>{ const m=reviewOf(s).length;
           return '<button class="btn warn" onclick="startReview(\''+s+'\')"'+(m?'':' disabled')+'>🔁 まちがい直し'
             +(m?'（'+m+'問）':'（いまはなし）')+'</button>'; })()
-      +'<button class="btn gold" onclick="startChallenge(\''+s+'\')"'+(n>=5?'':' disabled')+'>🔥 50問連続チャレンジ</button>'
+      +'<button class="btn gold" onclick="startChallenge(\''+s+'\')"'+(n>=5?'':' disabled')+'>🔥 50問チャレンジ ❤️×3</button>'
       +'</div>';
   }).join('');
   const owned=Object.keys(collection).length;
