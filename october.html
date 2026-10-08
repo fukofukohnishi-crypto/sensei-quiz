@@ -87,6 +87,9 @@ button:focus-visible{outline:2px solid var(--gold);outline-offset:2px}
 .btn.ghost{background:transparent;border:1px solid var(--line-hi);color:var(--text-2);font-size:.9rem;padding:12px}
 /* 結果画面の「まちがえたのだけ」。ホームへ（金）とならぶので、色で見分ける */
 .btn.warn{background:var(--ng-dim);border:1px solid var(--ng);color:var(--ng)}
+/* テスト前日の「きほんだけ」。れんしゅう（灰）・まちがい直し（赤）・チャレンジ（金）と色で分ける */
+.btn.core{background:var(--ok-dim);border:1px solid var(--ok);color:var(--ok)}
+.btn.core small{display:block;font-size:.72rem;font-weight:700;opacity:.85;margin-top:3px}
 .btn[disabled]{opacity:.4;cursor:default}
 .btn[disabled]:active{transform:none}
 
@@ -989,6 +992,31 @@ function startFlash(subj){
   qList=pickFresh(pool,20);
   beginQuiz(subj,'free',SUBJ[subj].n+' れんしゅう'+(r?'　第'+r+'回':''));
 }
+/* 「きほん」だけ。テスト前日に社会が間に合わなかったので、各府県の
+   白地図・県庁所在地と、いちばん大事なもの（城・寺・地形・産業）だけにしぼった。
+   県の鳥・木・花や、こまかい地名は入れていない。id で持つので、種を直しても追随する */
+const CORE_IDS=new Set([
+  'seed_s1_049','seed_s1_000','seed_s1_054','seed_sm_01','seed_sm_02','seed_sm_03',
+  'seed_sm_15','seed_sm_21','seed_s1_023','seed_s1_050','seed_s1_026','seed_kc_01',
+  'seed_sm_04','seed_sm_53','seed_sm_54','seed_sm_55','seed_sm_12','seed_s2_034',
+  'seed_s2_000','seed_s2_015','seed_s2_009','seed_sm_06','seed_sm_56','seed_sm_13',
+  'seed_s2_023','seed_s2_020','seed_s2_062','seed_s2_035','seed_s2_044','seed_s2_048',
+  'seed_s2_053','seed_s2_042','seed_s3_028','seed_s3_000','seed_sm_07','seed_sm_19',
+  'seed_s3_014','seed_s3_016','seed_s3_006','seed_s3_050','seed_s3_029','seed_sm_16',
+  'seed_s3_038','seed_sm_29','seed_s3_048','seed_s3_044','seed_s4_026','seed_s4_000',
+  'seed_sm_08','seed_s4_011','seed_s4_017','seed_s4_019','seed_s4_050','seed_s4_052',
+  'seed_s4_027','seed_sm_11','seed_s4_042','seed_sm_18','seed_sm_58','seed_s4_047',
+  'seed_s5_028','seed_s5_000','seed_s5_008','seed_s5_012','seed_s5_022','seed_s5_020',
+  'seed_sm_09','seed_s5_054','seed_s5_029','seed_sm_20','seed_s5_042','seed_s5_043',
+  'seed_s5_044','seed_sm_23','seed_s5_041'
+]);
+function corePool(subj){ return quizbank.filter(q=>q.subj===subj&&CORE_IDS.has(q.id)); }
+function startCore(subj){
+  const pool=corePool(subj);
+  if(!pool.length){toast('きほんの問題がまだ入っていないよ','var(--warn)');return;}
+  qList=pickFresh(pool,20);
+  beginQuiz(subj,'free',SUBJ[subj].n+' きほん');
+}
 function startChallenge(subj){
   const pool=poolOf(subj);
   if(pool.length<5){toast('チャレンジには5問以上ひつよう','var(--warn)');return;}
@@ -1276,6 +1304,10 @@ function renderHome(){
       +freshLine(s,cur)
       +'<button class="btn" onclick="startFlash(\''+s+'\')"'+(n?'':' disabled')+'>れんしゅう（20問）'
         +(cur?'　第'+cur+'回':'')+'</button>'
+      +(()=>{ const cp=corePool(s); if(!cp.length)return '';
+          const f=freshOf(cp).length;
+          return '<button class="btn core" onclick="startCore(\''+s+'\')">⭐ きほんだけ（20問）'
+            +'<small>'+(f?'まだ出ていない　あと '+f+' ／ '+cp.length+' 問':'🎉 ぜんぶ1回出した（つぎから2周目）')+'</small></button>'; })()
       +(()=>{ const m=reviewOf(s).length;
           return '<button class="btn warn" onclick="startReview(\''+s+'\')"'+(m?'':' disabled')+'>🔁 まちがい直し'
             +(m?'（'+m+'問）':'（いまはなし）')+'</button>'; })()
