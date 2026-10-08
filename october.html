@@ -89,6 +89,7 @@ button:focus-visible{outline:2px solid var(--gold);outline-offset:2px}
 .btn.warn{background:var(--ng-dim);border:1px solid var(--ng);color:var(--ng)}
 /* テスト前日の「きほんだけ」。れんしゅう（灰）・まちがい直し（赤）・チャレンジ（金）と色で分ける */
 .btn.core{background:var(--ok-dim);border:1px solid var(--ok);color:var(--ok)}
+.btn.gold small{display:block;font-size:.72rem;font-weight:700;opacity:.8;margin-top:3px}
 .btn.core small{display:block;font-size:.72rem;font-weight:700;opacity:.85;margin-top:3px}
 .btn[disabled]{opacity:.4;cursor:default}
 .btn[disabled]:active{transform:none}
@@ -1017,8 +1018,15 @@ function startCore(subj){
   qList=pickFresh(pool,20);
   beginQuiz(subj,'free',SUBJ[subj].n+' きほん');
 }
+/* 社会のチャレンジは「きほん」の75問から出す（テスト前日に、親の希望で。
+   その夜きほんを練習して、翌朝チャレンジをクリアしてからテストに行けるように）。
+   きほんが入っていない科目や、5問に足りないときは、ふだんどおり全部から */
+function challengePool(subj){
+  if(subj==='shakai'){ const c=corePool(subj); if(c.length>=5) return c; }
+  return poolOf(subj);
+}
 function startChallenge(subj){
-  const pool=poolOf(subj);
+  const pool=challengePool(subj);
   if(pool.length<5){toast('チャレンジには5問以上ひつよう','var(--warn)');return;}
   /* 挑戦のたびに0からやりなおす。クリア後は streak が50のまま残るので、
      ここでもどさないと出題が0問になって落ちる（実際に踏んだ） */
@@ -1311,7 +1319,8 @@ function renderHome(){
       +(()=>{ const m=reviewOf(s).length;
           return '<button class="btn warn" onclick="startReview(\''+s+'\')"'+(m?'':' disabled')+'>🔁 まちがい直し'
             +(m?'（'+m+'問）':'（いまはなし）')+'</button>'; })()
-      +'<button class="btn gold" onclick="startChallenge(\''+s+'\')"'+(n>=5?'':' disabled')+'>🔥 50問チャレンジ ❤️×3</button>'
+      +'<button class="btn gold" onclick="startChallenge(\''+s+'\')"'+(n>=5?'':' disabled')+'>🔥 50問チャレンジ ❤️×3'
+        +(challengePool(s)!==poolOf(s)&&corePool(s).length?'<small>きほんの'+corePool(s).length+'問から出る</small>':'')+'</button>'
       +'</div>';
   }).join('');
   const owned=Object.keys(collection).length;
