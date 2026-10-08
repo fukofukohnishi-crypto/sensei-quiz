@@ -1018,13 +1018,9 @@ function startCore(subj){
   qList=pickFresh(pool,20);
   beginQuiz(subj,'free',SUBJ[subj].n+' きほん');
 }
-/* 社会のチャレンジは「きほん」の75問から出す（テスト前日に、親の希望で。
-   その夜きほんを練習して、翌朝チャレンジをクリアしてからテストに行けるように）。
-   きほんが入っていない科目や、5問に足りないときは、ふだんどおり全部から */
-function challengePool(subj){
-  if(subj==='shakai'){ const c=corePool(subj); if(c.length>=5) return c; }
-  return poolOf(subj);
-}
+/* チャレンジはいつも全部の問題から出す。一度、社会だけ「きほん」の75問から
+   出したが、それではテストの範囲を網羅できない（親の指摘）のでもどした */
+function challengePool(subj){ return poolOf(subj); }
 function startChallenge(subj){
   const pool=challengePool(subj);
   if(pool.length<5){toast('チャレンジには5問以上ひつよう','var(--warn)');return;}
