@@ -91,17 +91,6 @@ button:focus-visible{outline:2px solid var(--gold);outline-offset:2px}
 .btn.core{background:var(--ok-dim);border:1px solid var(--ok);color:var(--ok)}
 .btn.gold small{display:block;font-size:.72rem;font-weight:700;opacity:.8;margin-top:3px}
 .btn.core small{display:block;font-size:.72rem;font-weight:700;opacity:.85;margin-top:3px}
-.mcgrid{display:grid;grid-template-columns:1fr 1fr;gap:10px;margin-bottom:4px}
-@media(max-width:600px){.mcgrid{grid-template-columns:1fr}}
-.mc{display:flex;align-items:center;gap:10px;text-align:left;padding:14px;border-radius:14px;
-  background:var(--card-hi);border:1px solid var(--line-hi);font-weight:800;font-size:1.05rem;color:var(--text)}
-.mc b{flex:none;width:28px;height:28px;border-radius:50%;display:grid;place-items:center;
-  background:var(--line-hi);font-size:.85rem}
-.mc:active{transform:scale(.98)}
-.mc[disabled]{cursor:default;opacity:.55}
-.mc.right{opacity:1;background:var(--ok-dim);border-color:var(--ok);color:var(--ok)}
-.mc.wrong{opacity:1;background:var(--ng-dim);border-color:var(--ng);color:var(--ng)}
-.mcmode{display:flex;gap:6px;margin:2px 0 10px;font-size:.78rem;color:var(--muted);align-items:center}
 .btn[disabled]{opacity:.4;cursor:default}
 .btn[disabled]:active{transform:none}
 
@@ -592,8 +581,7 @@ button:focus-visible{outline:2px solid var(--gold);outline-offset:2px}
         <div class="qtext" id="q-text"></div>
         <div class="qmeta" id="q-meta"></div>
         <div id="q-before">
-          <div class="mcgrid" id="q-choices" style="display:none"></div>
-          <button class="btn gold" style="width:100%" id="q-revealbtn" onclick="reveal()">答えを見る</button>
+          <button class="btn gold" style="width:100%" onclick="reveal()">答えを見る</button>
         </div>
         <div id="q-after" style="display:none">
           <div class="ans-box">
@@ -604,7 +592,6 @@ button:focus-visible{outline:2px solid var(--gold);outline-offset:2px}
             <div class="ans-accept" id="q-accept"></div>
           </div>
           <div class="explain" id="q-explain"></div>
-          <button class="btn gold" id="q-mcnext" style="width:100%;display:none" onclick="score(mcCur&&mcCur.ok)"></button>
           <div class="scorebtns">
             <button class="big-ok" onclick="score(true)">⭕ できた</button>
             <button class="big-ng" onclick="score(false)">❌ まだ</button>
@@ -718,7 +705,6 @@ const LS_CHALLENGE='oct_challenge_v1';
 const LS_STORIES='oct_stories_v1';
 const LS_PRACTICE='oct_practice_v1';  /* 練習で解いた累計。読み物の解放に使う */
 const LS_ROUND='oct_round_v1';        /* れんしゅうでえらんだ単元（0＝ぜんぶ） */
-const LS_MC='oct_mc_v1';            /* 答えかた（科目ごと）。true＝4択、false＝思い出してめくる */
 const LS_SEEN='oct_seen_v1';          /* 一度でも出した問題のid。まだ出ていない問題から先に出すため */
 
 const CHALLENGE_GOAL=50;
@@ -1035,130 +1021,6 @@ function startCore(subj){
 /* チャレンジはいつも全部の問題から出す。一度、社会だけ「きほん」の75問から
    出したが、それではテストの範囲を網羅できない（親の指摘）のでもどした */
 function challengePool(subj){ return poolOf(subj); }
-/* ===== 4択（社会） =====
-   マンスリーテストの社会はほとんどが記号問題なので、テストの前日に足した。
-   選択肢は「同じ種類の答え」から選ぶ（寺なら寺、県なら県）。問題を1問ずつ
-   書きかえずにすむよう、答えの文字でひく。種類の決まらない答えは MC_MANUAL に
-   まちがいの選択肢を手で書いた。どちらにも無い答え（あとから足した問題・
-   承認画面で答えを直した問題）は、ふだんの「思い出してめくる」形で出す */
-const MC_GROUPS={
-  "都道府県":["京都府", "奈良県", "大阪府", "和歌山県", "兵庫県", "滋賀県", "愛知県", "三重県", "長野県", "岐阜県", "香川県"],
-  "市":["京都市", "奈良市", "大阪市", "和歌山市", "神戸市", "大津市", "名古屋市", "津市", "長野市", "岐阜市", "堺市", "宇治市", "舞鶴市", "大和郡山市", "東大阪市", "四日市市", "尾鷲市", "多治見市", "甲賀市", "米原市", "豊田市", "東海市", "鈴鹿市", "高山市"],
-  "町村":["北山村", "太地町", "湯浅町", "白馬村", "軽井沢町"],
-  "寺社":["鹿苑寺", "慈照寺", "平等院鳳凰堂", "清水寺", "法隆寺", "四天王寺", "伊勢神宮", "善光寺", "延暦寺", "金剛峯寺", "大仙古墳", "石舞台古墳"],
-  "城":["大阪城", "姫路城", "名古屋城", "松本城", "彦根城", "安土城跡", "竹田城跡"],
-  "人物":["足利義満", "足利義政", "藤原頼通", "聖武天皇", "聖徳太子", "鑑真", "蘇我馬子", "豊臣秀吉", "空海", "最澄", "御木本幸吉", "徳川家康", "松尾芭蕉"],
-  "地形のことば":["盆地", "三角州", "リアス海岸", "輪中"],
-  "山":["六甲山地", "紀伊山地", "飛騨山脈", "木曽山脈", "赤石山脈", "吉野山"],
-  "平地":["京都盆地", "近江盆地", "長野盆地", "濃尾平野", "野辺山原"],
-  "場所":["志摩半島", "知多半島", "英虞湾", "潮岬", "淡路島", "天橋立", "宮島", "天神崎", "藤前干潟", "南紀白浜", "五箇山"],
-  "施設":["太陽の塔", "甲子園球場", "明石海峡大橋", "関西国際空港", "中部国際空港", "千里ニュータウン", "ポートアイランド"],
-  "食べもの":["ういろう", "きしめん", "みそかつ", "八丁みそ", "名古屋コーチン", "ふなずし", "近江牛", "インスタントラーメン"],
-  "工芸":["信楽焼", "美濃焼", "萬古焼", "瀬戸物", "美濃和紙", "飛騨春慶", "播州そろばん", "備長炭"],
-  "鳥":["カイツブリ", "コウノトリ", "コノハズク", "シロチドリ", "メジロ", "モズ", "ライチョウ"],
-  "木":["イチイ", "イチョウ", "ウバメガシ", "キタヤマスギ", "クスノキ", "シラカバ", "ハナノキ", "モミジ", "神宮スギ", "ひのき"],
-  "花":["ウメ", "カキツバタ", "サクラソウ・ウメ", "シャクナゲ", "ノジギク", "ハナショウブ", "リンドウ", "レンゲソウ", "枝垂桜", "電照菊"],
-  "工業":["精密機械工業", "製糸業", "電気機械工業", "石油化学工業", "自動車工業"]
-};
-const MC_MANUAL={
-  "あたたかい気候":["すずしい気候", "寒い気候", "雪の多い気候"],
-  "うめ・かき・みかん":["りんご・もも・ぶどう", "レタス・はくさい・キャベツ", "たまねぎ・カーネーション・米"],
-  "おくらせて":["早めて", "短くして", "へらして"],
-  "おだやか":["高い", "あらい", "強い"],
-  "かいこ":["ミツバチ", "テントウムシ", "スズムシ"],
-  "まゆ":["はちみつ", "たまご", "羽"],
-  "そう音":["大気のよごれ", "水のよごれ", "いやなにおい"],
-  "アコヤ貝":["ホタテ貝", "アサリ", "ハマグリ"],
-  "ナウマンゾウ":["マンモス", "アフリカゾウ", "インドゾウ"],
-  "ビワコオオナマズ":["コイ", "フナ", "ウナギ"],
-  "ナショナルトラスト":["リサイクル", "ボランティア", "ハザードマップ"],
-  "ミナミ":["キタ", "ニシ", "ヒガシ"],
-  "ライフライン":["バリアフリー", "リサイクル", "ハザードマップ"],
-  "三英傑":["三賢人", "三大名人", "三銃士"],
-  "世界文化遺産":["世界自然遺産", "日本遺産", "無形文化遺産"],
-  "中国":["朝鮮", "インド", "イギリス"],
-  "仏教":["キリスト教", "神道", "学問"],
-  "伊賀流":["風魔流", "戸隠流", "柳生流"],
-  "冷めやすい":["冷めにくい", "雨がふりやすい", "風が強くなりやすい"],
-  "北前船":["南蛮船", "黒船", "屋形船"],
-  "南":["北", "東", "西"],
-  "古墳":["城あと", "神社", "石垣"],
-  "外国人":["武士", "農民", "漁師"],
-  "天下の台所":["日本のへそ", "学問の都", "日本の玄関"],
-  "天皇":["将軍", "大名", "貴族"],
-  "富本銭":["和同開珎", "寛永通宝", "小判"],
-  "日本標準時子午線":["赤道", "日付変更線", "北回帰線"],
-  "木造建築":["石造建築", "レンガ建築", "鉄筋建築"],
-  "播州":["紀伊", "尾張", "三河"],
-  "紀伊":["播州", "尾張", "三河"],
-  "灘":["南紀", "播州", "ミナミ"],
-  "貿易港":["漁港", "軍港", "空港"],
-  "避暑地":["温泉地", "城下町", "門前町"],
-  "開花":["落葉", "実をつける", "芽を出す"],
-  "阪神・淡路大震災":["東日本大震災", "関東大震災", "熊本地震"],
-  "高原野菜":["京野菜", "近郊野菜", "有機野菜"],
-  "京野菜":["高原野菜", "近郊野菜", "有機野菜"],
-  "関ヶ原":["桶狭間", "長篠", "壇ノ浦"],
-  "清酒":["しょう油", "ビール", "ワイン"],
-  "刃物":["なべ", "鐘", "針"],
-  "提灯づくり":["うちわづくり", "花火づくり", "人形づくり"],
-  "日本アルプス":["奥羽山脈", "中国山地", "紀伊山地"],
-  "琵琶湖":["諏訪湖", "野尻湖", "浜名湖"],
-  "淀川":["木曽川", "長良川", "紀の川"],
-  "木曽三川":["濃尾平野", "輪中", "日本アルプス"],
-  "明治用水":["淀川", "長良川", "琵琶湖"],
-  "日本海流":["親潮", "対馬海流", "リマン海流"],
-  "黒潮":["親潮", "対馬海流", "リマン海流"],
-  "五山送り火":["祇園祭", "時代祭", "ねぶた祭"],
-  "山ぼこ":["みこし", "だんじり", "ねぶた"],
-  "鵜飼":["地引きあみ", "一本づり", "はえなわ"],
-  "海女":["漁師", "船頭", "鵜匠"],
-  "合掌造り":["書院造", "寝殿造", "武家屋敷"],
-  "水屋":["蔵屋敷", "母屋", "合掌造り"],
-  "小舟":["いかだ", "馬", "荷車"],
-  "しゃちほこ":["鬼瓦", "風見鶏", "大仏"],
-  "関連工場":["組み立て工場", "製鉄所", "発電所", "印刷工場"],
-  "組み立て工場":["関連工場", "製鉄所", "発電所"]
-};
-const MC_WHERE={};
-Object.keys(MC_GROUPS).forEach(g=>MC_GROUPS[g].forEach(a=>{ MC_WHERE[a]=g; }));
-let mcOn={rika:false,shakai:true};
-function saveMC(){ try{localStorage.setItem(LS_MC,JSON.stringify(mcOn));}catch(e){} }
-function setMC(subj,on){ mcOn[subj]=on; saveMC(); renderHome(); }
-function mcChoices(q){
-  const a=q.a;
-  let c=MC_MANUAL[a]||(MC_WHERE[a]?MC_GROUPS[MC_WHERE[a]]:null);
-  if(!c)return null;
-  /* 問題文に出てくる語は選択肢にしない（「甲賀流とならんで」の甲賀流 など。
-     すぐ消せてしまう）。白地図は問題文が画面に出ないので見ない */
-  const txt=q.type==='map_reverse'?'':String(q.q||'').replace(/〔[^〕]*〕\s*$/,'');
-  const acc=q.accept||[];
-  c=c.filter(x=>x!==a&&x.indexOf(a)<0&&a.indexOf(x)<0&&acc.indexOf(x)<0&&(!txt||txt.indexOf(x)<0));
-  if(c.length<3)return null;
-  const shuf=l=>l.slice().sort(()=>Math.random()-.5);
-  return shuf(shuf(c).slice(0,3).concat([a]));
-}
-let mcCur=null;   /* いまの問題が4択なら {ok:null|true|false} */
-function setupMC(q){
-  const box=document.getElementById('q-choices'), btn=document.getElementById('q-revealbtn');
-  const ch=mcOn[q.subj]?mcChoices(q):null;
-  mcCur=null;
-  if(!ch){ box.innerHTML=''; box.style.display='none'; btn.style.display=''; return; }
-  mcCur={ok:null};
-  btn.style.display='none'; box.style.display='';
-  box.innerHTML=ch.map((c,i)=>'<button class="mc'+(c===q.a?' is-a':'')+'"><b>'+'アイウエ'[i]+'</b>'+esc(c)+'</button>').join('');
-  box.querySelectorAll('.mc').forEach((b,i)=>{ b.onclick=()=>pickMC(b,ch[i]===q.a); });
-}
-function pickMC(b,ok){
-  if(revealed||!mcCur)return;
-  mcCur.ok=ok;
-  document.querySelectorAll('#q-choices .mc').forEach(x=>{
-    x.disabled=true;
-    if(x.classList.contains('is-a'))x.classList.add('right');
-  });
-  if(!ok)b.classList.add('wrong');
-  reveal();
-}
 function startChallenge(subj){
   const pool=challengePool(subj);
   if(pool.length<5){toast('チャレンジには5問以上ひつよう','var(--warn)');return;}
@@ -1260,7 +1122,6 @@ function renderQ(){
   }
   document.getElementById('q-meta').textContent=
     (SUBJ[q.subj]?SUBJ[q.subj].n:'')+(q.round?'　後期 第'+q.round+'回':'');
-  setupMC(q);
 }
 
 function highlightPref(name){
@@ -1277,15 +1138,8 @@ function reveal(){
   if(revealed)return;
   revealed=true;
   const q=qList[qIdx];
-  /* 4択のときは、えらんだ選択肢の色を見せたまま答えを出す。
-     自分で⭕❌をつけるかわりに、結果が決まっているので「つぎへ」だけ出す */
-  document.getElementById('q-before').style.display=mcCur?'':'none';
+  document.getElementById('q-before').style.display='none';
   document.getElementById('q-after').style.display='';
-  const nx=document.getElementById('q-mcnext');
-  document.querySelector('#q-after .scorebtns').style.display=mcCur?'none':'';
-  nx.style.display=mcCur?'':'none';
-  if(mcCur){ nx.textContent=mcCur.ok?'⭕ せいかい！　つぎへ ▶':'❌ ざんねん　つぎへ ▶';
-             nx.className='btn '+(mcCur.ok?'gold':'warn'); }
   const ansEl=document.getElementById('q-ans');
   ansEl.textContent=q.a;
   document.getElementById('q-yomi').textContent=q.yomi||'';
@@ -1451,9 +1305,6 @@ function renderHome(){
       +'<div class="cnt">問題 '+n+'問'+(st.cleared?'　👑 クリア '+(st.clears||1)+'回':'　🎴 50問クリアでレアカード')+'</div>'
       +'<div class="streak"><b>'+st.best+'</b><span>チャレンジの自己ベスト</span></div>'
       +chips
-      +(s==='shakai'?'<div class="mcmode">答えかた　'
-          +'<button class="rchip'+(mcOn[s]?' on':'')+'" onclick="setMC(\''+s+'\',true)">🔘 4択</button>'
-          +'<button class="rchip'+(mcOn[s]?'':' on')+'" onclick="setMC(\''+s+'\',false)">✍️ 思い出す</button></div>':'')
       +freshLine(s,cur)
       +'<button class="btn" onclick="startFlash(\''+s+'\')"'+(n?'':' disabled')+'>れんしゅう（20問）'
         +(cur?'　第'+cur+'回':'')+'</button>'
@@ -2158,7 +2009,6 @@ function retireOld(){
   try{ unlocked=JSON.parse(localStorage.getItem(LS_STORIES)||'[]'); }catch(e){ unlocked=[]; }
   practiceCount=parseInt(localStorage.getItem(LS_PRACTICE)||'0',10)||0;
   try{ seen=JSON.parse(localStorage.getItem(LS_SEEN)||'{}')||{}; }catch(e){ seen={}; }
-  try{ const m=JSON.parse(localStorage.getItem(LS_MC)||'null'); if(m)mcOn=Object.assign(mcOn,m); }catch(e){}
   try{ const r=JSON.parse(localStorage.getItem(LS_ROUND)||'{}');
        ['rika','shakai'].forEach(s=>{ if(r[s])practiceRound[s]=r[s]|0; }); }catch(e){}
   await Promise.all([loadCards(),loadStories()]);
