@@ -211,8 +211,9 @@ button:focus-visible{outline:2px solid var(--gold);outline-offset:2px}
 .figwrap .fig-by{font-size:.72rem;color:var(--muted);margin-top:9px;line-height:1.5}
 #japan-svg-map .prefecture{fill:#2a2a3e;stroke:#7a7a99;stroke-width:1.3px}
 #japan-svg-map .prefecture.hl{fill:var(--gold);stroke:#fff;stroke-width:2.2px}
-#japan-svg-map.pickable .prefecture{cursor:pointer}
-#japan-svg-map.pickable .prefecture:hover{fill:#3a3a58}
+#japan-svg-map .prefecture.outside{fill:transparent;stroke:#4a4a66;stroke-width:.6px;opacity:.35;pointer-events:none}
+#japan-svg-map.pickable .prefecture:not(.outside){cursor:pointer}
+#japan-svg-map.pickable .prefecture:not(.outside):hover{fill:#3a3a58}
 #japan-svg-map .prefecture.right{fill:var(--ok);stroke:#fff;stroke-width:2.2px}
 #japan-svg-map .prefecture.wrong{fill:var(--ng);stroke:#fff;stroke-width:2.2px}
 #japan-svg-map{width:100%;height:auto;display:block;max-height:min(52vh,430px)}
@@ -1122,9 +1123,13 @@ function mapView(svg){
 let mapPick=null;   /* map_pick の問題のとき {ok:null|true|false} */
 function setupMapPick(q){
   const svg=document.getElementById('japan-svg-map');
+  /* 今回のテスト範囲（10府県）だけを地図に出す。まわりの県はうすく下じきにして、
+     タップもできないようにする（親から「今回の範囲だけでいい」） */
   svg.querySelectorAll('.prefecture').forEach(g=>{
+    const inRange=MAP_PREFS.indexOf(+g.getAttribute('data-code'))>=0;
     g.classList.remove('right','wrong');
-    g.onclick=mapPick?()=>pickPref(g):null;
+    g.classList.toggle('outside',!inRange);
+    g.onclick=(mapPick&&inRange)?()=>pickPref(g):null;
   });
   svg.classList.toggle('pickable',!!mapPick);
   /* 琵琶湖は滋賀県の形にあいた「穴」なので、湖をタップしてもどの県にも当たらない。
