@@ -90,6 +90,8 @@ button:focus-visible{outline:2px solid var(--gold);outline-offset:2px}
 /* テスト前日の「きほんだけ」。れんしゅう（灰）・まちがい直し（赤）・チャレンジ（金）と色で分ける */
 .btn.core{background:var(--ok-dim);border:1px solid var(--ok);color:var(--ok)}
 .btn.gold small{display:block;font-size:.72rem;font-weight:700;opacity:.8;margin-top:3px}
+.btn.map{background:rgba(80,140,255,.13);border:1px solid #5b8cff;color:#8fb0ff}
+.btn.map small{display:block;font-size:.72rem;font-weight:700;opacity:.85;margin-top:3px}
 .btn.core small{display:block;font-size:.72rem;font-weight:700;opacity:.85;margin-top:3px}
 .btn[disabled]{opacity:.4;cursor:default}
 .btn[disabled]:active{transform:none}
@@ -209,6 +211,10 @@ button:focus-visible{outline:2px solid var(--gold);outline-offset:2px}
 .figwrap .fig-by{font-size:.72rem;color:var(--muted);margin-top:9px;line-height:1.5}
 #japan-svg-map .prefecture{fill:#2a2a3e;stroke:#7a7a99;stroke-width:1.3px}
 #japan-svg-map .prefecture.hl{fill:var(--gold);stroke:#fff;stroke-width:2.2px}
+#japan-svg-map.pickable .prefecture{cursor:pointer}
+#japan-svg-map.pickable .prefecture:hover{fill:#3a3a58}
+#japan-svg-map .prefecture.right{fill:var(--ok);stroke:#fff;stroke-width:2.2px}
+#japan-svg-map .prefecture.wrong{fill:var(--ng);stroke:#fff;stroke-width:2.2px}
 #japan-svg-map{width:100%;height:auto;display:block;max-height:min(52vh,430px)}
 
 /* ---- 結果 ---- */
@@ -581,7 +587,7 @@ button:focus-visible{outline:2px solid var(--gold);outline-offset:2px}
         <div class="qtext" id="q-text"></div>
         <div class="qmeta" id="q-meta"></div>
         <div id="q-before">
-          <button class="btn gold" style="width:100%" onclick="reveal()">答えを見る</button>
+          <button class="btn gold" style="width:100%" id="q-revealbtn" onclick="reveal()">答えを見る</button>
         </div>
         <div id="q-after" style="display:none">
           <div class="ans-box">
@@ -592,6 +598,7 @@ button:focus-visible{outline:2px solid var(--gold);outline-offset:2px}
             <div class="ans-accept" id="q-accept"></div>
           </div>
           <div class="explain" id="q-explain"></div>
+          <button class="btn gold" id="q-mapnext" style="width:100%;display:none" onclick="score(!!(mapPick&&mapPick.ok))"></button>
           <div class="scorebtns">
             <button class="big-ok" onclick="score(true)">⭕ できた</button>
             <button class="big-ng" onclick="score(false)">❌ まだ</button>
@@ -1021,6 +1028,128 @@ function startCore(subj){
 /* チャレンジはいつも全部の問題から出す。一度、社会だけ「きほん」の75問から
    出したが、それではテストの範囲を網羅できない（親の指摘）のでもどした */
 function challengePool(subj){ return poolOf(subj); }
+/* ===== 白地図とっくん（社会） =====
+   10月テストで白地図だけがとくに苦手だったので足した。2種類をまぜて出す。
+   - 光っている府県の名前を答える（quizbank の map_reverse。いつもの10問）
+   - 「〇〇があるのは、どの府県？」を地図をタップして答える（map_pick。下の49問）
+   手がかりはどれも教材にあること（quizbank-seed.json の社会の問題に出てくる語）。
+   map_pick は quizbank に入れず、ここから作る（承認の流れがいらない、
+   ふだんのれんしゅうや50問チャレンジにはまざらない） */
+const MAP_PICK=[
+  ["京都府",1,"府庁所在地が京都市"],
+  ["京都府",1,"金閣（鹿苑寺）や清水寺"],
+  ["京都府",1,"日本三景の1つ、天橋立"],
+  ["京都府",1,"五山送り火や祇園祭"],
+  ["京都府",1,"高級な茶の産地、宇治市"],
+  ["京都府",1,"リアス海岸ぞいの造船の都市、舞鶴市"],
+  ["奈良県",1,"世界最古の木造建築、法隆寺"],
+  ["奈良県",1,"東大寺の大仏"],
+  ["奈良県",1,"蘇我馬子のお墓とされる石舞台古墳"],
+  ["奈良県",1,"桜の名所、吉野山"],
+  ["大阪府",2,"世界一の面積の古墳、大仙古墳"],
+  ["大阪府",2,"豊臣秀吉がつくった大阪城"],
+  ["大阪府",2,"海の上につくられた関西国際空港"],
+  ["大阪府",2,"万国博覧会の太陽の塔"],
+  ["大阪府",2,"中小工場が多く集まる東大阪市"],
+  ["和歌山県",2,"うめ・かき・みかんづくりがさかん"],
+  ["和歌山県",2,"高野山の金剛峯寺"],
+  ["和歌山県",2,"本州でいちばん南の岬、潮岬"],
+  ["和歌山県",2,"高級な木炭、備長炭"],
+  ["兵庫県",3,"県庁所在地が神戸市"],
+  ["兵庫県",3,"「白鷺城」ともよばれる姫路城"],
+  ["兵庫県",3,"日本標準時子午線が通る明石市"],
+  ["兵庫県",3,"たまねぎづくりがさかんな淡路島"],
+  ["兵庫県",3,"高校野球の舞台、甲子園球場"],
+  ["滋賀県",3,"県庁所在地が大津市"],
+  ["滋賀県",3,"日本でいちばん大きい湖、琵琶湖"],
+  ["滋賀県",3,"たぬきの置物の信楽焼"],
+  ["滋賀県",3,"比叡山の延暦寺"],
+  ["滋賀県",3,"ブランド牛の近江牛"],
+  ["愛知県",4,"県庁所在地が名古屋市"],
+  ["愛知県",4,"「クルマのまち」豊田市"],
+  ["愛知県",4,"金のしゃちほこの名古屋城"],
+  ["愛知県",4,"渥美半島の電照菊"],
+  ["愛知県",4,"瀬戸市でつくられる瀬戸物"],
+  ["三重県",4,"県庁所在地が津市"],
+  ["三重県",4,"天照大神をまつる伊勢神宮"],
+  ["三重県",4,"英虞湾の真珠の養殖"],
+  ["三重県",4,"降水量が日本一多い尾鷲市"],
+  ["三重県",4,"石油化学工業の四日市市"],
+  ["長野県",5,"県庁所在地が長野市"],
+  ["長野県",5,"かべが黒い国宝の松本城"],
+  ["長野県",5,"野辺山原の高原野菜"],
+  ["長野県",5,"諏訪湖のまわりの精密機械工業"],
+  ["長野県",5,"避暑地の軽井沢町"],
+  ["岐阜県",5,"県庁所在地が岐阜市"],
+  ["岐阜県",5,"白川郷の合掌造り"],
+  ["岐阜県",5,"長良川の鵜飼"],
+  ["岐阜県",5,"1600年に東軍と西軍が戦った関ヶ原"],
+  ["岐阜県",5,"輪中が見られる濃尾平野"]
+];
+const MAP_PICK_Q=MAP_PICK.map((r,i)=>({id:'mappick_'+String(i+1).padStart(2,'0'),type:'map_pick',
+  subj:'shakai',round:r[1],q:r[2]+'があるのは、どの府県？',a:r[0],accept:[],
+  explain:r[0]+'です。'+r[2]+'があります。',juken:'',source:''}));
+function mapPool(){ return quizbank.filter(q=>q.type==='map_reverse').concat(MAP_PICK_Q); }
+function startMapDrill(){
+  qList=pickFresh(mapPool(),20);
+  beginQuiz('shakai','free','社会 白地図とっくん');
+}
+/* 地図は近畿・中部のまわりだけを大きく出す（10府県が全部入る範囲）。
+   日本全体だと大阪府や奈良県が小さすぎて、見分けるのもタップするのもむずかしい */
+const MAP_PREFS=[20,21,23,24,25,26,27,28,29,30];  /* 長野・岐阜・愛知・三重・近畿6府県 */
+let MAP_VIEW='';
+/* 10府県の外わくを、地図の座標で測って決める（画面の大きさや縦横比によらない）。
+   1回測ったらおぼえておく。地図が見えているときに呼ぶこと */
+function mapView(svg){
+  if(MAP_VIEW)return MAP_VIEW;
+  svg.setAttribute('viewBox','0 0 1000 1000');
+  const inv=svg.getScreenCTM()&&svg.getScreenCTM().inverse();
+  if(!inv)return '0 0 1000 1000';
+  let x0=1e9,y0=1e9,x1=-1e9,y1=-1e9;
+  MAP_PREFS.forEach(c=>{
+    const g=svg.querySelector('.prefecture[data-code="'+c+'"]'); if(!g)return;
+    const r=g.getBoundingClientRect();
+    [[r.left,r.top],[r.right,r.bottom]].forEach(([x,y])=>{
+      const pt=svg.createSVGPoint(); pt.x=x; pt.y=y; const u=pt.matrixTransform(inv);
+      x0=Math.min(x0,u.x); y0=Math.min(y0,u.y); x1=Math.max(x1,u.x); y1=Math.max(y1,u.y);
+    });
+  });
+  if(!(x1>x0))return '0 0 1000 1000';
+  const px=(x1-x0)*.08, py=(y1-y0)*.06;
+  MAP_VIEW=[x0-px,y0-py,x1-x0+2*px,y1-y0+2*py].map(v=>Math.round(v)).join(' ');
+  return MAP_VIEW;
+}
+let mapPick=null;   /* map_pick の問題のとき {ok:null|true|false} */
+function setupMapPick(q){
+  const svg=document.getElementById('japan-svg-map');
+  svg.querySelectorAll('.prefecture').forEach(g=>{
+    g.classList.remove('right','wrong');
+    g.onclick=mapPick?()=>pickPref(g):null;
+  });
+  svg.classList.toggle('pickable',!!mapPick);
+  /* 琵琶湖は滋賀県の形にあいた「穴」なので、湖をタップしてもどの県にも当たらない。
+     子供は「琵琶湖があるのは？」で湖そのものをタップするので、滋賀県のわくの中で
+     どの県にも当たらなかったタップは滋賀県としてあつかう */
+  svg.onclick=mapPick?function(ev){
+    if(ev.target.closest&&ev.target.closest('.prefecture'))return;
+    const sg=svg.querySelector('.prefecture[data-code="25"]'); if(!sg)return;
+    const r=sg.getBoundingClientRect();
+    if(ev.clientX>=r.left&&ev.clientX<=r.right&&ev.clientY>=r.top&&ev.clientY<=r.bottom)pickPref(sg);
+  }:null;
+}
+function pickPref(g){
+  if(revealed||!mapPick)return;
+  const name=CODE_TO_PREF[(+g.getAttribute('data-code'))-1];
+  mapPick.ok=(name===qList[qIdx].a);
+  markAnswerPref(qList[qIdx].a);
+  if(!mapPick.ok)g.classList.add('wrong');
+  reveal();
+}
+function markAnswerPref(name){
+  const code=PREF_TO_CODE[name];
+  const el=document.querySelector('#japan-svg-map .prefecture[data-code="'+code+'"]');
+  if(el)el.classList.add('right');
+}
 function startChallenge(subj){
   const pool=challengePool(subj);
   if(pool.length<5){toast('チャレンジには5問以上ひつよう','var(--warn)');return;}
@@ -1101,11 +1230,27 @@ function renderQ(){
   const mapWrap=document.getElementById('q-map-wrap');
   const figWrap=document.getElementById('q-fig-wrap');
   figWrap.style.display='none';
-  document.getElementById('q-main').classList.toggle('map-mode',q.type==='map_reverse');
+  const isMap=q.type==='map_reverse'||q.type==='map_pick';
+  document.getElementById('q-main').classList.toggle('map-mode',isMap);
+  mapPick=q.type==='map_pick'?{ok:null}:null;
+  setupMapPick(q);
+  const rb=document.getElementById('q-revealbtn');
+  rb.textContent=mapPick?'わからない（答えを見る）':'答えを見る';
+  if(isMap){
+    mapWrap.style.display='';
+    const sv=document.getElementById('japan-svg-map');
+    sv.setAttribute('viewBox',mapView(sv));
+    /* 画面がまだ出ていないと測れない（大きさが0）。出たあとでもう一度 */
+    if(!MAP_VIEW) requestAnimationFrame(()=>{ sv.setAttribute('viewBox',mapView(sv)); });
+  }
   if(q.type==='map_reverse'){
     mapWrap.style.display='';
     highlightPref(q.a);
     document.getElementById('q-text').textContent='光っているのは、どこ？';
+  }else if(mapPick){
+    mapWrap.style.display='';
+    highlightPref('');
+    document.getElementById('q-text').textContent=q.q+'　地図でタップしよう';
   }else{
     mapWrap.style.display='none';
     if(q.type==='figure'&&q.fig){
@@ -1140,6 +1285,16 @@ function reveal(){
   const q=qList[qIdx];
   document.getElementById('q-before').style.display='none';
   document.getElementById('q-after').style.display='';
+  /* 地図をタップする問題は、正解・不正解が決まっているので⭕❌のかわりに「つぎへ」。
+     「わからない」で答えを見たときは、まちがいとしてあつかう */
+  const nx=document.getElementById('q-mapnext');
+  document.querySelector('#q-after .scorebtns').style.display=mapPick?'none':'';
+  nx.style.display=mapPick?'':'none';
+  if(mapPick){
+    if(mapPick.ok===null){ mapPick.ok=false; markAnswerPref(q.a); }
+    nx.textContent=mapPick.ok?'⭕ せいかい！　つぎへ ▶':'❌ ざんねん　つぎへ ▶';
+    nx.className='btn '+(mapPick.ok?'gold':'warn');
+  }
   const ansEl=document.getElementById('q-ans');
   ansEl.textContent=q.a;
   document.getElementById('q-yomi').textContent=q.yomi||'';
@@ -1312,6 +1467,9 @@ function renderHome(){
           const f=freshOf(cp).length;
           return '<button class="btn core" onclick="startCore(\''+s+'\')">⭐ きほんだけ（20問）'
             +'<small>'+(f?'まだ出ていない　あと '+f+' ／ '+cp.length+' 問':'🎉 ぜんぶ1回出した（つぎから2周目）')+'</small></button>'; })()
+      +(s==='shakai'?(()=>{ const mp=mapPool(), f=freshOf(mp).length;
+          return '<button class="btn map" onclick="startMapDrill()">🗾 白地図とっくん（20問）'
+            +'<small>'+(f?'まだ出ていない　あと '+f+' ／ '+mp.length+' 問':'🎉 ぜんぶ1回出した（つぎから2周目）')+'</small></button>'; })():'')
       +(()=>{ const m=reviewOf(s).length;
           return '<button class="btn warn" onclick="startReview(\''+s+'\')"'+(m?'':' disabled')+'>🔁 まちがい直し'
             +(m?'（'+m+'問）':'（いまはなし）')+'</button>'; })()
