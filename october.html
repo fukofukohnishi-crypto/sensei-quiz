@@ -864,6 +864,11 @@ function drawOne(){
   const r=Math.random()*100;
   let want; if(r<52)want=1; else if(r<75)want=2; else if(r<90)want=3; else if(r<98)want=4; else want=5;
   let list=pool.filter(c=>c.rarity===want);
+  /* R と伝説は枚数のわりに出る枠が小さく（伝説は2%を11枚で分ける）、1枚あたり
+     0.2%しかない。最後の1枚だけがいつまでも出ない（記録院筆記で実際に起きた）。
+     この2つの段だけ、まだ持っていないカードがあればそこから出す。
+     出る段の確率（R8%・伝説2%）は変わらない */
+  if(want>=4){ const fresh=list.filter(c=>!collection[c.id]); if(fresh.length)list=fresh; }
   if(!list.length)list=pool.filter(c=>c.rarity===1);
   if(!list.length)list=pool;
   return list[Math.floor(Math.random()*list.length)];
