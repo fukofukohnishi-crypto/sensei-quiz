@@ -279,8 +279,9 @@ for k in range(1,len(parts),3):
 守護神の名前（`guardianName`）はかりで、
 立ち絵・メダル・カードの絵が届いたら絵にあわせて直す。絵が無いあいだは:
 
-- 立ち絵は絵文字、メダルは🏅に落ちる（パスは `chars/portraits/<ローマ字>.webp`、
-  `chars/medals/kanto|chubu/<ローマ字>.webp` で先に書いてある。そこに置けば出る）
+- **メダル110個の絵はそろった**（`chars/medals/kanto/` 70個・`chubu/` 40個、256px・WebP q85）。
+  ChatGPT で1枚に2都県×10個ならべてもらい、金色のリングを検出して切り出した
+- 立ち絵は絵文字に落ちる（パスは `chars/portraits/<ローマ字>.webp` で先に書いてある。そこに置けば出る）
 - `PREF_CARD_MAP` に入れていないので、10個そろえても「守護神カードはじゅんびちゅう！
   できたら自動でとどくよ」と出る。**カードを `Cards.json` に足して `PREF_CARD_MAP` に
   書けば、つぎに開いたとき `reconcileGuardianCards()` が自動で入れる**
