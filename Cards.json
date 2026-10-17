@@ -684,6 +684,42 @@
     "imgUrl": "/card-images/r79_okinawa.webp"
   },
   {
+    "id": "r040",
+    "char": "ibaraki",
+    "rarity": 4,
+    "series": "pref",
+    "name": "茨城守護神　水郷レンコン丸",
+    "power": "早場米ハーベスト！ 大雨や台風が来る前に、田んぼの実りを一気に収穫する！ れんこんの穴から、ものごとの先を見通す。",
+    "imgUrl": "/card-images/r40_ibaraki.webp"
+  },
+  {
+    "id": "r041",
+    "char": "tochigi",
+    "rarity": 4,
+    "series": "pref",
+    "name": "栃木守護神　モーいちご",
+    "power": "三猿ストロベリーミルク！ 背中の三猿（見ざる・聞かざる・言わざる）の力で悪い言葉をはねかえし、那須野原のしぼりたての牛乳といちごで、味方を元気にする！",
+    "imgUrl": "/card-images/r41_tochigi.webp"
+  },
+  {
+    "id": "r042",
+    "char": "gunma",
+    "rarity": 4,
+    "series": "pref",
+    "name": "群馬守護神　ぷるぷる・からっ風",
+    "power": "からっ風プルプルストーム！ 北西から越後山脈をこえてくる冷たい風をうけて、ぷるぷるゆれながら突進する！ 屋敷森のかげに入ると、少しだけまっすぐ立てる。",
+    "imgUrl": "/card-images/r42_gunma.webp"
+  },
+  {
+    "id": "r043",
+    "char": "saitama",
+    "rarity": 4,
+    "series": "pref",
+    "name": "埼玉守護神　マンホール小江戸",
+    "power": "鋳物マンホールガード！ 金属をとかして型に流しこんでつくった鋳物の体で、どんな攻撃もはねかえす！ ふちのひな人形が「つぎは右です」と指示を出す。",
+    "imgUrl": "/card-images/r43_saitama.webp"
+  },
+  {
     "id": "l017",
     "char": "hounobito_sakura",
     "rarity": 5,
