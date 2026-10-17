@@ -720,6 +720,15 @@
     "imgUrl": "/card-images/r43_saitama.webp"
   },
   {
+    "id": "r044",
+    "char": "chiba",
+    "rarity": 4,
+    "series": "pref",
+    "name": "千葉守護神　らっかせいツインズ",
+    "power": "坂東太郎リバーシフト！ 暴れ川の流れを東へ動かし、川の水運で大豆を運んでしょう油をつくる！ 双子の息が合ったときだけ、九十九里浜の大波がおきる。",
+    "imgUrl": "/card-images/r44_chiba.webp"
+  },
+  {
     "id": "r045",
     "char": "tokyo",
     "rarity": 4,
