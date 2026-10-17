@@ -93,6 +93,7 @@ button:focus-visible{outline:2px solid var(--gold);outline-offset:2px}
 .btn.map{background:rgba(80,140,255,.13);border:1px solid #5b8cff;color:#8fb0ff}
 .btn.map small{display:block;font-size:.72rem;font-weight:700;opacity:.85;margin-top:3px}
 .btn.core small{display:block;font-size:.72rem;font-weight:700;opacity:.85;margin-top:3px}
+.btn.warn small{display:block;font-size:.72rem;font-weight:700;opacity:.85;margin-top:3px}
 .btn[disabled]{opacity:.4;cursor:default}
 .btn[disabled]:active{transform:none}
 
@@ -720,7 +721,8 @@ const LS_CHALLENGE='nov_challenge_v1';
 const LS_STORIES='nov_stories_v1';
 const LS_PRACTICE='nov_practice_v1';  /* 練習で解いた累計。読み物の解放に使う */
 const LS_ROUND='nov_round_v1';        /* れんしゅうでえらんだ単元（0＝ぜんぶ） */
-const LS_SEEN='nov_seen_v1';          /* 一度でも出した問題のid。まだ出ていない問題から先に出すため */
+const LS_SEEN='nov_seen_v1';
+const LS_MASTERED='nov_mastered_v1';  /* まちがい直しで外れた（日をあけて3回正解した）問題の累計。禁呪カードに使う */          /* 一度でも出した問題のid。まだ出ていない問題から先に出すため */
 
 const CHALLENGE_GOAL=50;
 /* ハート3つ。まちがえても2回までは続けられ、3回目で終わる。
@@ -739,6 +741,11 @@ const STORY_EVERY=20;
    Cards.json に無いあいだは、クリアしてもトーストだけ出て落ちない（10月版と同じ作り） */
 const CHALLENGE_CARD={rika:'sp07', shakai:'sp08'};
 const FUSION_CARD='sp09';
+/* 禁呪カード（極秘院隠真の進化）。呪い＝まちがい、という設定で、
+   まちがい直しで外れた問題（日をあけて3回正解）が累計 CURSE_GOAL 問になると解ける。
+   ランダムには出ない（series が curse なので drawOne の学園しばりに入らない） */
+const CURSE_CARD='kj034';
+const CURSE_GOAL=30;
 /* 最終話は順番では開かない。融合カード（sp06）を取ったときだけ開く。
    stories.json の末尾の話を最終話としてあつかう */
 /* 最終話は stories.json の "final":true で決める。
@@ -753,9 +760,10 @@ function finalStoryId(){
 }
 
 /* 8 の「無限」は sp06（両科目クリアの融合カード）専用。
-   7 の「四天王」は四人組のカード（sp03）の名前なので、そこには置けない */
-const RNAME=['','N','SR','SSR','R','伝説','神覚者','四天王','無限'];
-const RCOL=['','#aaa','#44ccff','#ff8800','#dd44ff','#ff2288','#ffd700','#66ffee','#ffffff'];
+   7 の「四天王」は四人組のカード（sp03）の名前なので、そこには置けない。
+   9 の「禁呪」は kj034（極秘院隠真の進化）専用。段の上下ではなく、段の外の1枚 */
+const RNAME=['','N','SR','SSR','R','伝説','神覚者','四天王','無限','禁呪'];
+const RCOL=['','#aaa','#44ccff','#ff8800','#dd44ff','#ff2288','#ffd700','#66ffee','#ffffff','#7cff3a'];
 const SUBJ={rika:{n:'理科',c:'var(--rika)',face:'/img/teachers/kaga.jpg',who:'カガ先生'},
             shakai:{n:'社会',c:'var(--shakai)',face:'/img/teachers/zanpanman.jpg',who:'ザンパンマン先生'}};
 
@@ -783,6 +791,7 @@ let practiceRound={rika:0, shakai:0};
 /* 一度でも答えた問題（キーは qKey、値は最後に答えた時刻）。
    れんしゅうは、ここに無い問題から先に出し、古いものから復習にまわす */
 let seen={};
+let masteredCount=0;
 
 function saveBank(){idbSet('quizbank',quizbank);}
 function saveDrafts(){idbSet('drafts',drafts);}
@@ -793,6 +802,7 @@ function saveUnlocked(){try{localStorage.setItem(LS_STORIES,JSON.stringify(unloc
 function savePractice(){try{localStorage.setItem(LS_PRACTICE,String(practiceCount));}catch(e){}}
 function saveRound(){try{localStorage.setItem(LS_ROUND,JSON.stringify(practiceRound));}catch(e){}}
 function saveSeen(){try{localStorage.setItem(LS_SEEN,JSON.stringify(seen));}catch(e){}}
+function saveMastered(){try{localStorage.setItem(LS_MASTERED,String(masteredCount));}catch(e){}}
 
 function esc(t){return String(t==null?'':t).replace(/[&<>"']/g,c=>(
   {'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]));}
@@ -967,12 +977,21 @@ function recordReview(q,ok){
   if(ok){
     if(isDue(r)){
       r.streak++;
-      if(r.streak>=MASTER) review=review.filter(x=>x!==r);
+      if(r.streak>=MASTER){ review=review.filter(x=>x!==r); masteredCount++; saveMastered(); }
       else r.due=dayStart(Date.now())+REVIEW_GAPS[r.streak-1]*DAY;
     }
   }else{ r.streak=0; r.miss++; r.due=0; }
   saveReview();
   return r;
+}
+/* 禁呪カード。外れた問題が CURSE_GOAL にとどいたら1回だけ出す。
+   Cards.json に無ければ何もしない。起動時にも呼ぶ（とどいたあとで取りそこねた場合） */
+function tryCurse(){
+  if(masteredCount<CURSE_GOAL||collection[CURSE_CARD])return;
+  const c=CARDS.find(x=>x.id===CURSE_CARD);
+  if(!c)return;
+  const {isNew}=award(c);
+  setTimeout(()=>showCardGet(c,isNew,'まちがいを '+CURSE_GOAL+'問 のりこえた — 呪いがとけた'),900);
 }
 /* つぎに出せる日（まだ出せる問題が無いとき、ホームに出す） */
 function nextDueText(list){
@@ -1373,6 +1392,7 @@ function score(ok){
   if(ok)qOk++; else if(qWrong.indexOf(q)<0)qWrong.push(q);
   answeredCount++;
   recordReview(q,ok);
+  tryCurse();
   seen[qKey(q)]=Date.now(); saveSeen();
 
   /* 10問ごとにカード1枚 */
@@ -1512,7 +1532,8 @@ function renderHome(){
             +'<small>'+(f?'まだ出ていない　あと '+f+' ／ '+mp.length+' 問':'🎉 ぜんぶ1回出した（つぎから2周目）')+'</small></button>'; })():'')
       +(()=>{ const all=reviewOf(s), m=all.filter(isDue).length;
           return '<button class="btn warn" onclick="startReview(\''+s+'\')"'+(all.length?'':' disabled')+'>🔁 まちがい直し'
-            +(m?'（きょう '+m+'問）':(all.length?'（つぎは '+nextDueText(all)+'）':'（いまはなし）'))+'</button>'; })()
+            +(m?'（きょう '+m+'問）':(all.length?'（つぎは '+nextDueText(all)+'）':'（いまはなし）'))
+            +(collection[CURSE_CARD]?'':'<small>のりこえたまちがい '+Math.min(masteredCount,CURSE_GOAL)+' ／ '+CURSE_GOAL+'問で 禁呪カード</small>')+'</button>'; })()
       +'<button class="btn gold" onclick="startChallenge(\''+s+'\')"'+(n>=5?'':' disabled')+'>🔥 50問チャレンジ ❤️×3</button>'
       +'</div>';
   }).join('');
@@ -1525,7 +1546,7 @@ function renderCards(){
   const b=document.getElementById('cards-body');
   if(!CARDS.length){b.innerHTML='<div class="empty">カードのデータが読みこめませんでした</div>';return;}
   let h='';
-  for(let r=8;r>=1;r--){
+  for(let r=9;r>=1;r--){
     const list=CARDS.filter(c=>c.rarity===r);
     if(!list.length)continue;
     const o=list.filter(c=>collection[c.id]).length;
@@ -1994,12 +2015,14 @@ function retireOld(){
   try{ unlocked=JSON.parse(localStorage.getItem(LS_STORIES)||'[]'); }catch(e){ unlocked=[]; }
   practiceCount=parseInt(localStorage.getItem(LS_PRACTICE)||'0',10)||0;
   try{ seen=JSON.parse(localStorage.getItem(LS_SEEN)||'{}')||{}; }catch(e){ seen={}; }
+  masteredCount=parseInt(localStorage.getItem(LS_MASTERED)||'0',10)||0;
   try{ const r=JSON.parse(localStorage.getItem(LS_ROUND)||'{}');
        ['rika','shakai'].forEach(s=>{ if(r[s])practiceRound[s]=r[s]|0; }); }catch(e){}
   await Promise.all([loadCards(),loadStories()]);
   /* すでに sp06 を持っているのに最終話が閉じたままなら、ここで開けておく
      （この仕組みより先にカードを取っていた場合） */
   unlockFinalStory();
+  tryCurse();
   renderHome();
   /* 待たない。ホームを出してから、うしろで図を取りこむ */
   syncFigures();

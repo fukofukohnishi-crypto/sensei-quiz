@@ -979,5 +979,23 @@
     "name": "生徒会書記　記録院筆記",
     "power": "議事録召喚：会議も意見もトラブルも、みんなの小さな声まで見のがさず正確に書き残す。書かれたことは、時間がたっても消えない。記録で、みんなの未来をつなぐ！",
     "imgUrl": "/card-images/legend19_kirokuinhikki.webp"
+  },
+  {
+    "id": "l020",
+    "char": "penton",
+    "rarity": 5,
+    "series": "gakuen",
+    "name": "ペントン",
+    "power": "みんなをつなぐ海のリーダー：伊豆の海で生まれたゴマフアザラシ。飼育委員が飼っている動物たちのリーダーで、水をあやつり、みんなの気持ちを感じとる。困っている動物がいると、すぐに気づく！",
+    "imgUrl": "/card-images/legend20_penton.webp"
+  },
+  {
+    "id": "kj034",
+    "char": "gokuhiininma",
+    "rarity": 9,
+    "series": "curse",
+    "name": "極秘院 隠真 呪王",
+    "power": "禁呪・真実視：世界の裏側で、すべての真実を見ている。授業中は机に伏せて眠っているが、その瞳が開かれるとき、過去・現在・未来、語られなかった出来事までが映し出される。見えていないものほど、真実に近い——。",
+    "imgUrl": "/card-images/kj34_gokuhiininma.webp"
   }
 ]
