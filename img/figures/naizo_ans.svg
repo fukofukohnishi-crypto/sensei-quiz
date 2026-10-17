@@ -1,0 +1,25 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 360 466" width="360" height="466" role="img" aria-label="人の体の内臓の名前" font-family="Hiragino Sans,Noto Sans JP,Yu Gothic,sans-serif">
+<rect x="0" y="0" width="360" height="466" rx="16" fill="#fbf8f1"/>
+<path d="M110 40 Q180 10 250 40 L268 120 L262 420 L98 420 L92 120 Z" fill="#f6e3d3" stroke="#c9a88a" stroke-width="2"/>
+<rect x="174" y="40" width="12" height="380" fill="#e8d2bd" opacity=".6"/>
+<path d="M172 70 C130 60 110 110 112 170 C114 200 150 206 170 190 Z" fill="#f2a6ae" stroke="#c46a76" stroke-width="2"/>
+<path d="M188 70 C230 60 250 110 248 170 C246 200 210 206 190 190 Z" fill="#f2a6ae" stroke="#c46a76" stroke-width="2"/>
+<path d="M196 140 C186 128 166 134 170 156 C174 176 196 186 206 192 C212 176 222 160 214 146 C208 136 200 136 196 140 Z" fill="#d83a46" stroke="#8e1f28" stroke-width="2"/>
+<path d="M100 214 C120 200 200 202 204 222 C206 240 170 262 120 262 C100 262 96 236 100 214 Z" fill="#9b5a3c" stroke="#5e3420" stroke-width="2"/>
+<path d="M196 212 C236 200 258 220 250 248 C242 274 214 284 196 270 C206 258 214 244 196 232 Z" fill="#f0c98a" stroke="#a87a2c" stroke-width="2"/>
+<ellipse cx="128" cy="298" rx="14" ry="22" fill="none" stroke="#7a3fa0" stroke-width="3" stroke-dasharray="5 4"/><ellipse cx="232" cy="298" rx="14" ry="22" fill="none" stroke="#7a3fa0" stroke-width="3" stroke-dasharray="5 4"/>
+<path d="M150 318 Q135 325 210 332 Q225 339 150 346 Q135 353 210 360 Q225 367 150 374 Q135 381 210 388 Q225 395 150 402" fill="none" stroke="#e7a184" stroke-width="12" stroke-linecap="round"/>
+<line x1="81" y1="110" x2="118" y2="120" stroke="#2b2b2b" stroke-width="1.6"/><circle cx="118" cy="120" r="3" fill="#2b2b2b"/>
+<circle cx="40" cy="110" r="13" fill="#2b2b2b"/><text x="40" y="116" font-size="17" fill="#fff" text-anchor="middle" font-weight="700">①</text><text x="60" y="116" font-size="17" fill="#2b2b2b" font-weight="700" text-anchor="start" stroke="#fbf8f1" stroke-width="6" paint-order="stroke">肺</text>
+<line x1="262" y1="110" x2="204" y2="164" stroke="#2b2b2b" stroke-width="1.6"/><circle cx="204" cy="164" r="3" fill="#2b2b2b"/>
+<circle cx="320" cy="110" r="13" fill="#2b2b2b"/><text x="320" y="116" font-size="17" fill="#fff" text-anchor="middle" font-weight="700">②</text><text x="300" y="116" font-size="17" fill="#2b2b2b" font-weight="700" text-anchor="end" stroke="#fbf8f1" stroke-width="6" paint-order="stroke">心臓</text>
+<line x1="98" y1="236" x2="118" y2="236" stroke="#2b2b2b" stroke-width="1.6"/><circle cx="118" cy="236" r="3" fill="#2b2b2b"/>
+<circle cx="40" cy="236" r="13" fill="#2b2b2b"/><text x="40" y="242" font-size="17" fill="#fff" text-anchor="middle" font-weight="700">③</text><text x="60" y="242" font-size="17" fill="#2b2b2b" font-weight="700" text-anchor="start" stroke="#fbf8f1" stroke-width="6" paint-order="stroke">肝臓</text>
+<line x1="279" y1="236" x2="236" y2="240" stroke="#2b2b2b" stroke-width="1.6"/><circle cx="236" cy="240" r="3" fill="#2b2b2b"/>
+<circle cx="320" cy="236" r="13" fill="#2b2b2b"/><text x="320" y="242" font-size="17" fill="#fff" text-anchor="middle" font-weight="700">④</text><text x="300" y="242" font-size="17" fill="#2b2b2b" font-weight="700" text-anchor="end" stroke="#fbf8f1" stroke-width="6" paint-order="stroke">胃</text>
+<line x1="262" y1="300" x2="246" y2="300" stroke="#2b2b2b" stroke-width="1.6"/><circle cx="246" cy="300" r="3" fill="#2b2b2b"/>
+<circle cx="320" cy="300" r="13" fill="#2b2b2b"/><text x="320" y="306" font-size="17" fill="#fff" text-anchor="middle" font-weight="700">⑤</text><text x="300" y="306" font-size="17" fill="#2b2b2b" font-weight="700" text-anchor="end" stroke="#fbf8f1" stroke-width="6" paint-order="stroke">腎臓</text>
+<line x1="98" y1="370" x2="156" y2="370" stroke="#2b2b2b" stroke-width="1.6"/><circle cx="156" cy="370" r="3" fill="#2b2b2b"/>
+<circle cx="40" cy="370" r="13" fill="#2b2b2b"/><text x="40" y="376" font-size="17" fill="#fff" text-anchor="middle" font-weight="700">⑥</text><text x="60" y="376" font-size="17" fill="#2b2b2b" font-weight="700" text-anchor="start" stroke="#fbf8f1" stroke-width="6" paint-order="stroke">小腸</text>
+<text x="180" y="448" font-size="13" fill="#6b5a48" text-anchor="middle">点線は背中側にあるもの</text>
+</svg>

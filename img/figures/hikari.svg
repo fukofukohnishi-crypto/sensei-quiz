@@ -1,0 +1,24 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 552 240" width="552" height="240" role="img" aria-label="光の色の並び。両はしに目に見えない光①②" font-family="Hiragino Sans,Noto Sans JP,Yu Gothic,sans-serif">
+<rect x="0" y="0" width="552" height="240" rx="16" fill="#fbf8f1"/>
+<rect x="110" y="70" width="46" height="70" fill="#e53935"/>
+<text x="133" y="166" font-size="17" text-anchor="middle" fill="#2b2b2b" font-weight="700">赤</text>
+<rect x="156" y="70" width="46" height="70" fill="#fb8c00"/>
+<text x="179" y="166" font-size="17" text-anchor="middle" fill="#2b2b2b" font-weight="700">橙</text>
+<rect x="202" y="70" width="46" height="70" fill="#fdd835"/>
+<text x="225" y="166" font-size="17" text-anchor="middle" fill="#2b2b2b" font-weight="700">黄</text>
+<rect x="248" y="70" width="46" height="70" fill="#43a047"/>
+<text x="271" y="166" font-size="17" text-anchor="middle" fill="#2b2b2b" font-weight="700">緑</text>
+<rect x="294" y="70" width="46" height="70" fill="#1e88e5"/>
+<text x="317" y="166" font-size="17" text-anchor="middle" fill="#2b2b2b" font-weight="700">青</text>
+<rect x="340" y="70" width="46" height="70" fill="#3949ab"/>
+<text x="363" y="166" font-size="17" text-anchor="middle" fill="#2b2b2b" font-weight="700">藍</text>
+<rect x="386" y="70" width="46" height="70" fill="#8e24aa"/>
+<text x="409" y="166" font-size="17" text-anchor="middle" fill="#2b2b2b" font-weight="700">紫</text>
+<rect x="20" y="70" width="80" height="70" fill="none" stroke="#c0392b" stroke-width="2" stroke-dasharray="6 5"/>
+<rect x="442" y="70" width="80" height="70" fill="none" stroke="#7b1fa2" stroke-width="2" stroke-dasharray="6 5"/>
+<text x="270" y="44" font-size="15" text-anchor="middle" fill="#6b5a48">目に見える光（可視光線）</text>
+<path d="M110 52 L432 52" stroke="#6b5a48" stroke-width="1.5"/>
+<circle cx="60" cy="105" r="13" fill="#2b2b2b"/><text x="60" y="111" font-size="17" fill="#fff" text-anchor="middle" font-weight="700">①</text>
+<circle cx="482" cy="105" r="13" fill="#2b2b2b"/><text x="482" y="111" font-size="17" fill="#fff" text-anchor="middle" font-weight="700">②</text>
+<text x="270" y="210" font-size="14" text-anchor="middle" fill="#6b5a48">①と②は、目に見えない光</text>
+</svg>

@@ -1,0 +1,15 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 490 320" width="490" height="320" role="img" aria-label="2枚の鏡の光の重なりと明るさ" font-family="Hiragino Sans,Noto Sans JP,Yu Gothic,sans-serif">
+<rect x="0" y="0" width="490" height="320" rx="16" fill="#fbf8f1"/>
+<rect x="40" y="30" width="230" height="250" rx="6" fill="#efe8da" stroke="#8a7a5c" stroke-width="2"/>
+<circle cx="135" cy="125" r="60" fill="#fff2a0" stroke="#d9b84a" stroke-width="2"/>
+<circle cx="175" cy="185" r="60" fill="#fff2a0" stroke="#d9b84a" stroke-width="2"/>
+<clipPath id="kc"><circle cx="135" cy="125" r="60"/></clipPath>
+<circle cx="175" cy="185" r="60" fill="#ffd34d" clip-path="url(#kc)"/>
+<text x="155" y="304" font-size="14" text-anchor="middle" fill="#6b5a48">かべにうつった鏡の光</text>
+<circle cx="155" cy="155" r="13" fill="#2b2b2b"/><text x="155" y="161" font-size="17" fill="#fff" text-anchor="middle" font-weight="700">①</text>
+<circle cx="110" cy="105" r="13" fill="#2b2b2b"/><text x="110" y="111" font-size="17" fill="#fff" text-anchor="middle" font-weight="700">②</text>
+<circle cx="240" cy="65" r="13" fill="#2b2b2b"/><text x="240" y="71" font-size="17" fill="#fff" text-anchor="middle" font-weight="700">③</text>
+<text x="290" y="110" font-size="15" fill="#2b2b2b" font-weight="700">① 2枚が重なる</text><text x="290" y="132" font-size="13" fill="#2b2b2b">いちばん明るく、あたたかい</text>
+<text x="290" y="172" font-size="15" fill="#2b2b2b" font-weight="700">② 1枚</text>
+<text x="290" y="212" font-size="15" fill="#2b2b2b" font-weight="700">③ 光が当たらない</text><text x="290" y="234" font-size="13" fill="#2b2b2b">いちばん暗い</text>
+</svg>

@@ -1823,7 +1823,8 @@
   "explain": "成人するころには、およそ200個になります。",
   "juken": "",
   "basis": "text",
-  "yomi": "さんびゃっこ"
+  "yomi": "さんびゃっこ",
+  "figAfter": "hone_ans.svg"
  },
  {
   "id": "seed_n8_14",
@@ -1840,7 +1841,8 @@
   "explain": "生まれたてのころは、およそ300個あります。",
   "juken": "",
   "basis": "text",
-  "yomi": "にひゃっこ"
+  "yomi": "にひゃっこ",
+  "figAfter": "hone_ans.svg"
  },
  {
   "id": "seed_n8_15",
@@ -1921,7 +1923,8 @@
   "explain": "耳小骨の1つで、長さはおよそ3mmです。",
   "juken": "",
   "basis": "text",
-  "yomi": "あぶみこつ"
+  "yomi": "あぶみこつ",
+  "figAfter": "hone_ans.svg"
  },
  {
   "id": "seed_n8_20",
@@ -1937,7 +1940,8 @@
   "explain": "長さはおよそ40cmです。",
   "juken": "",
   "basis": "text",
-  "yomi": "だいたいこつ"
+  "yomi": "だいたいこつ",
+  "figAfter": "hone_ans.svg"
  },
  {
   "id": "seed_n8_21",
@@ -1970,7 +1974,8 @@
   "explain": "すい臓が、ここにすい液を出しています。",
   "juken": "",
   "basis": "text",
-  "yomi": "じゅうにしちょう"
+  "yomi": "じゅうにしちょう",
+  "figAfter": "naizo_ans.svg"
  },
  {
   "id": "seed_n8_23",
@@ -1987,7 +1992,8 @@
   "explain": "テキストより。",
   "juken": "",
   "basis": "text",
-  "yomi": "すいぞう"
+  "yomi": "すいぞう",
+  "figAfter": "naizo_ans.svg"
  },
  {
   "id": "seed_n8_24",
@@ -2020,7 +2026,8 @@
   "explain": "大きさはこぶしぐらいです。",
   "juken": "",
   "basis": "text",
-  "yomi": "じんぞう"
+  "yomi": "じんぞう",
+  "figAfter": "naizo_ans.svg"
  },
  {
   "id": "seed_n8_26",
@@ -2134,7 +2141,8 @@
   "source": "集めた光が重なれば重なるほど明るくなり、光が重なって明るくなったところほどあたたかくなります。",
   "explain": "2枚の光が重なったところは、1枚だけのところより明るく、光があたらないところがいちばん暗くなります。",
   "juken": "",
-  "basis": "text"
+  "basis": "text",
+  "figAfter": "kagami_ans.svg"
  },
  {
   "id": "seed_n9_02",
@@ -2150,7 +2158,8 @@
   "explain": "紫外線や赤外線は、人の目で見ることができません。",
   "juken": "",
   "basis": "text",
-  "yomi": "かしこうせん"
+  "yomi": "かしこうせん",
+  "figAfter": "hikari_ans.svg"
  },
  {
   "id": "seed_n9_03",
@@ -2165,7 +2174,8 @@
   "source": "光を当てたとき、あたたかさの原因になるのは赤外線です。可視光線が多く集まり明るく見えるところは、目で見ることができない赤外線も多く集まりあたたかくなるのです。",
   "explain": "プリズムで分けた光の、赤のさらに外側にあります。",
   "juken": "赤外線＝あたたかさ。紫外線＝色あせ・日焼け。入れかえた文に注意。",
-  "basis": "text"
+  "basis": "text",
+  "figAfter": "hikari_ans.svg"
  },
  {
   "id": "seed_n9_04",
@@ -2181,7 +2191,8 @@
   "explain": "プリズムで分けた光の、紫のさらに外側にあります。",
   "juken": "赤外線＝あたたかさ。紫外線＝色あせ・日焼け。",
   "basis": "text",
-  "yomi": "しがいせん"
+  "yomi": "しがいせん",
+  "figAfter": "hikari_ans.svg"
  },
  {
   "id": "seed_n9_05",
@@ -2210,7 +2221,8 @@
   "source": "太陽の光をプリズムというガラスや水晶などでできたものに当てると、太陽の光がわかれます。このことから、太陽の光には、いろいろな光が混ざっていることがわかります。",
   "explain": "雨のあと、空気中の水滴がプリズムと同じはたらきをすると、虹が見えます。",
   "juken": "",
-  "basis": "text"
+  "basis": "text",
+  "figAfter": "hikari_ans.svg"
  },
  {
   "id": "seed_n9_07",
@@ -2226,7 +2238,8 @@
   "source": "プリズムで光を分けると虹と同じく一番内側は紫、一番外側は赤になります。また、目で見ることができない光には、赤のさらに外側の赤外線や紫のさらに内側の紫外線などがあります。（問題集）",
   "explain": "一番内側は紫です。赤のさらに外側には赤外線があります。",
   "juken": "",
-  "basis": "text"
+  "basis": "text",
+  "figAfter": "hikari_ans.svg"
  },
  {
   "id": "seed_n9_08",
@@ -2243,7 +2256,8 @@
   "explain": "一番外側は赤です。紫のさらに内側には紫外線があります。",
   "juken": "",
   "basis": "text",
-  "yomi": "むらさき"
+  "yomi": "むらさき",
+  "figAfter": "hikari_ans.svg"
  },
  {
   "id": "seed_n9_09",
@@ -2260,7 +2274,8 @@
   "explain": "「せき・とう・おう・りょく・せい・らん・し」と読んで覚えるとよい。",
   "juken": "黄と橙、青と藍の順番を入れかえた選択肢が出る。",
   "basis": "choice",
-  "yomi": "あか・だいだい・き・みどり・あお・あい・むらさき"
+  "yomi": "あか・だいだい・き・みどり・あお・あい・むらさき",
+  "figAfter": "hikari_ans.svg"
  },
  {
   "id": "seed_n9_10",
@@ -2580,7 +2595,8 @@
   "explain": "ここに黒い紙を置くと燃やすことができます。",
   "juken": "",
   "basis": "text",
-  "yomi": "しょうてん"
+  "yomi": "しょうてん",
+  "figAfter": "mushimegane_ans.svg"
  },
  {
   "id": "seed_n9_31",
@@ -2853,7 +2869,8 @@
   "explain": "ふれはば（波の高さ）ではありません。",
   "juken": "「ふれはばが大きいほど高い音」は×。",
   "basis": "choice",
-  "yomi": "しんどうするかいすう"
+  "yomi": "しんどうするかいすう",
+  "figAfter": "nami_takasa.svg"
  },
  {
   "id": "seed_n10_11",
@@ -2887,7 +2904,8 @@
   "source": "人の耳で聞こえる音は1秒間に20回〜20000回程度の振動といわれていますが、16000回以上の音は若い人にしか聞こえないことが多いようです。",
   "explain": "16000回以上の音は、若い人にしか聞こえないことが多いようです。",
   "juken": "「20回〜20000回」を選ぶ問題が出る。",
-  "basis": "text"
+  "basis": "text",
+  "figAfter": "nami_takasa.svg"
  },
  {
   "id": "seed_n10_13",
@@ -2964,7 +2982,8 @@
   "source": "オシロスコープで音を調べると左下の図のような形がうつります。波が同じ場所にもどるまでが一回の振動を表します。横の長さが時間を表します。（中略）波の高さをふれはばといいます。（問題集）",
   "explain": "横の長さは時間を表し、波が同じ場所にもどるまでが1回の振動です。",
   "juken": "",
-  "basis": "text"
+  "basis": "text",
+  "figAfter": "nami_ans.svg"
  },
  {
   "id": "seed_n10_18",
@@ -6689,5 +6708,307 @@
   "juken": "白地図で県名を答える。",
   "basis": "text",
   "yomi": "ふくいけん"
+ },
+ {
+  "id": "seed_nf_01",
+  "type": "figure",
+  "fig": "hone.svg",
+  "subj": "rika",
+  "round": 8,
+  "q": "図の①の骨の名前は何ですか。",
+  "a": "頭骨",
+  "accept": [
+   "ずがいこつ",
+   "頭がい骨"
+  ],
+  "source": "骨と内臓（問題集の図）：頭骨・鎖骨・肋骨・背骨・骨盤・大腿骨",
+  "explain": "頭を守っている骨です。",
+  "juken": "",
+  "basis": "choice",
+  "figAfter": "hone_ans.svg",
+  "yomi": "とうこつ"
+ },
+ {
+  "id": "seed_nf_02",
+  "type": "figure",
+  "fig": "hone.svg",
+  "subj": "rika",
+  "round": 8,
+  "q": "図の②の骨の名前は何ですか。",
+  "a": "鎖骨",
+  "accept": [],
+  "source": "骨と内臓（問題集の図）：頭骨・鎖骨・肋骨・背骨・骨盤・大腿骨",
+  "explain": "肩と胸をつなぐ骨です。",
+  "juken": "",
+  "basis": "choice",
+  "figAfter": "hone_ans.svg",
+  "yomi": "さこつ"
+ },
+ {
+  "id": "seed_nf_03",
+  "type": "figure",
+  "fig": "hone.svg",
+  "subj": "rika",
+  "round": 8,
+  "q": "図の③の骨の名前は何ですか。",
+  "a": "肋骨",
+  "accept": [],
+  "source": "骨と内臓（問題集の図）：頭骨・鎖骨・肋骨・背骨・骨盤・大腿骨",
+  "explain": "胸の内臓（心臓や肺）を囲んでいる骨です。",
+  "juken": "",
+  "basis": "choice",
+  "figAfter": "hone_ans.svg",
+  "yomi": "ろっこつ"
+ },
+ {
+  "id": "seed_nf_04",
+  "type": "figure",
+  "fig": "hone.svg",
+  "subj": "rika",
+  "round": 8,
+  "q": "図の④の骨の名前は何ですか。",
+  "a": "背骨",
+  "accept": [],
+  "source": "骨と内臓（問題集の図）：頭骨・鎖骨・肋骨・背骨・骨盤・大腿骨",
+  "explain": "体のまん中を通る骨で、小さな骨がつながってできています。",
+  "juken": "",
+  "basis": "choice",
+  "figAfter": "hone_ans.svg",
+  "yomi": "せぼね"
+ },
+ {
+  "id": "seed_nf_05",
+  "type": "figure",
+  "fig": "hone.svg",
+  "subj": "rika",
+  "round": 8,
+  "q": "図の⑤の骨の名前は何ですか。",
+  "a": "骨盤",
+  "accept": [],
+  "source": "骨と内臓（問題集の図）：頭骨・鎖骨・肋骨・背骨・骨盤・大腿骨",
+  "explain": "腰の骨です。",
+  "juken": "",
+  "basis": "choice",
+  "figAfter": "hone_ans.svg",
+  "yomi": "こつばん"
+ },
+ {
+  "id": "seed_nf_06",
+  "type": "figure",
+  "fig": "hone.svg",
+  "subj": "rika",
+  "round": 8,
+  "q": "図の⑥の骨の名前は何ですか。",
+  "a": "大腿骨",
+  "accept": [],
+  "source": "骨と内臓（問題集の図）：頭骨・鎖骨・肋骨・背骨・骨盤・大腿骨",
+  "explain": "太ももの骨で、体の中でいちばん大きい骨です（長さおよそ40cm）。",
+  "juken": "",
+  "basis": "choice",
+  "figAfter": "hone_ans.svg",
+  "yomi": "だいたいこつ"
+ },
+ {
+  "id": "seed_nf_07",
+  "type": "figure",
+  "fig": "naizo.svg",
+  "subj": "rika",
+  "round": 8,
+  "q": "図の①の臓器の名前は何ですか。",
+  "a": "肺",
+  "accept": [],
+  "source": "骨と内臓（問題集の図）：心臓・肺・胃・小腸・肝臓・腎臓。腎臓は腰よりやや高い位置の背中側に、背骨をはさんで左右1こずつあります。",
+  "explain": "左右に1つずつあり、呼吸をします。",
+  "juken": "",
+  "basis": "choice",
+  "figAfter": "naizo_ans.svg",
+  "yomi": "はい"
+ },
+ {
+  "id": "seed_nf_08",
+  "type": "figure",
+  "fig": "naizo.svg",
+  "subj": "rika",
+  "round": 8,
+  "q": "図の②の臓器の名前は何ですか。",
+  "a": "心臓",
+  "accept": [],
+  "source": "骨と内臓（問題集の図）：心臓・肺・胃・小腸・肝臓・腎臓。腎臓は腰よりやや高い位置の背中側に、背骨をはさんで左右1こずつあります。",
+  "explain": "肺のあいだにあります。",
+  "juken": "",
+  "basis": "choice",
+  "figAfter": "naizo_ans.svg",
+  "yomi": "しんぞう"
+ },
+ {
+  "id": "seed_nf_09",
+  "type": "figure",
+  "fig": "naizo.svg",
+  "subj": "rika",
+  "round": 8,
+  "q": "図の③の臓器の名前は何ですか。",
+  "a": "肝臓",
+  "accept": [],
+  "source": "骨と内臓（問題集の図）：心臓・肺・胃・小腸・肝臓・腎臓。腎臓は腰よりやや高い位置の背中側に、背骨をはさんで左右1こずつあります。",
+  "explain": "胃のとなりにある大きな臓器です。",
+  "juken": "",
+  "basis": "choice",
+  "figAfter": "naizo_ans.svg",
+  "yomi": "かんぞう"
+ },
+ {
+  "id": "seed_nf_10",
+  "type": "figure",
+  "fig": "naizo.svg",
+  "subj": "rika",
+  "round": 8,
+  "q": "図の④の臓器の名前は何ですか。",
+  "a": "胃",
+  "accept": [],
+  "source": "骨と内臓（問題集の図）：心臓・肺・胃・小腸・肝臓・腎臓。腎臓は腰よりやや高い位置の背中側に、背骨をはさんで左右1こずつあります。",
+  "explain": "食べたものが小腸へ行く前に入るところです。すぐあとに十二指腸があります。",
+  "juken": "",
+  "basis": "choice",
+  "figAfter": "naizo_ans.svg",
+  "yomi": "い"
+ },
+ {
+  "id": "seed_nf_11",
+  "type": "figure",
+  "fig": "naizo.svg",
+  "subj": "rika",
+  "round": 8,
+  "q": "図の⑤の臓器の名前は何ですか。",
+  "a": "腎臓",
+  "accept": [],
+  "source": "骨と内臓（問題集の図）：心臓・肺・胃・小腸・肝臓・腎臓。腎臓は腰よりやや高い位置の背中側に、背骨をはさんで左右1こずつあります。",
+  "explain": "背中側に、背骨をはさんで左右1こずつあります。ソラマメのような形です。",
+  "juken": "",
+  "basis": "choice",
+  "figAfter": "naizo_ans.svg",
+  "yomi": "じんぞう"
+ },
+ {
+  "id": "seed_nf_12",
+  "type": "figure",
+  "fig": "naizo.svg",
+  "subj": "rika",
+  "round": 8,
+  "q": "図の⑥の臓器の名前は何ですか。",
+  "a": "小腸",
+  "accept": [],
+  "source": "骨と内臓（問題集の図）：心臓・肺・胃・小腸・肝臓・腎臓。腎臓は腰よりやや高い位置の背中側に、背骨をはさんで左右1こずつあります。",
+  "explain": "胃のあとにつづく長い管です。はじめの部分が十二指腸です。",
+  "juken": "",
+  "basis": "choice",
+  "figAfter": "naizo_ans.svg",
+  "yomi": "しょうちょう"
+ },
+ {
+  "id": "seed_nf_13",
+  "type": "figure",
+  "fig": "hikari.svg",
+  "subj": "rika",
+  "round": 9,
+  "q": "図の①の、赤のさらに外側にある目に見えない光を何といいますか。",
+  "a": "赤外線",
+  "accept": [
+   "せきがいせん"
+  ],
+  "source": "可視光線は、虹の七色のように赤から紫までたくさんの色の光があります。目で見ることができない光には、赤のさらに外側の赤外線や紫のさらに内側の紫外線などがあります。（問題集）",
+  "explain": "光を当てたとき、あたたかさの原因になる光です。",
+  "juken": "",
+  "basis": "choice",
+  "figAfter": "hikari_ans.svg",
+  "yomi": "せきがいせん"
+ },
+ {
+  "id": "seed_nf_14",
+  "type": "figure",
+  "fig": "hikari.svg",
+  "subj": "rika",
+  "round": 9,
+  "q": "図の②の、紫のさらに内側にある目に見えない光を何といいますか。",
+  "a": "紫外線",
+  "accept": [
+   "しがいせん"
+  ],
+  "source": "可視光線は、虹の七色のように赤から紫までたくさんの色の光があります。目で見ることができない光には、赤のさらに外側の赤外線や紫のさらに内側の紫外線などがあります。（問題集）",
+  "explain": "物が色あせしたり、日焼けしたりする原因になる光です。",
+  "juken": "",
+  "basis": "choice",
+  "figAfter": "hikari_ans.svg",
+  "yomi": "しがいせん"
+ },
+ {
+  "id": "seed_nf_15",
+  "type": "figure",
+  "fig": "nami.svg",
+  "subj": "rika",
+  "round": 10,
+  "q": "オシロスコープの図で、①の波の高さを何といいますか。",
+  "a": "ふれはば",
+  "accept": [
+   "振れ幅",
+   "振幅"
+  ],
+  "source": "オシロスコープで音を調べると、波の形がうつります。波が同じ場所にもどるまでが一回の振動を表します。横の長さが時間を表します。波の高さをふれはばといいます。（問題集）",
+  "explain": "音の高さは、ふれはばではなく振動する回数で決まります。",
+  "juken": "",
+  "basis": "choice",
+  "figAfter": "nami_ans.svg"
+ },
+ {
+  "id": "seed_nf_16",
+  "type": "figure",
+  "fig": "nami.svg",
+  "subj": "rika",
+  "round": 10,
+  "q": "オシロスコープの図で、②の横の長さは何を表していますか。",
+  "a": "時間",
+  "accept": [
+   "じかん"
+  ],
+  "source": "オシロスコープで音を調べると、波の形がうつります。波が同じ場所にもどるまでが一回の振動を表します。横の長さが時間を表します。波の高さをふれはばといいます。（問題集）",
+  "explain": "同じ時間で振動する回数が多いほど、高い音になります。",
+  "juken": "",
+  "basis": "choice",
+  "figAfter": "nami_ans.svg"
+ },
+ {
+  "id": "seed_nf_17",
+  "type": "figure",
+  "fig": "kagami.svg",
+  "subj": "rika",
+  "round": 9,
+  "q": "鏡ではね返した光をかべに当てました。図の①は、鏡の光が何枚分重なったところですか。",
+  "a": "2枚",
+  "accept": [
+   "2枚分",
+   "二枚"
+  ],
+  "source": "集めた光が重なれば重なるほど明るくなり、光が重なって明るくなったところほどあたたかくなります。",
+  "explain": "いちばん明るく、あたたかいところです。光が当たらない③がいちばん暗くなります。",
+  "juken": "",
+  "basis": "choice",
+  "figAfter": "kagami_ans.svg"
+ },
+ {
+  "id": "seed_nf_18",
+  "type": "figure",
+  "fig": "mushimegane.svg",
+  "subj": "rika",
+  "round": 9,
+  "q": "虫メガネで太陽の光を集めました。図の①の、光が集まる場所を何といいますか。",
+  "a": "焦点",
+  "accept": [
+   "しょうてん"
+  ],
+  "source": "焦点とは光が集まる場所で、ここに黒い紙を置くと燃やすことができます。（問題集）",
+  "explain": "ここに黒い紙を置くと燃やすことができます。",
+  "juken": "",
+  "basis": "choice",
+  "figAfter": "mushimegane_ans.svg",
+  "yomi": "しょうてん"
  }
 ]

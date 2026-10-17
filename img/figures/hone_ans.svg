@@ -1,0 +1,49 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 360 470" width="360" height="470" role="img" aria-label="人の体の骨の名前" font-family="Hiragino Sans,Noto Sans JP,Yu Gothic,sans-serif">
+<rect x="0" y="0" width="360" height="470" rx="16" fill="#fbf8f1"/>
+<ellipse cx="180" cy="62" rx="38" ry="44" fill="#f4ecd8" stroke="#8a7a5c" stroke-width="2"/>
+<ellipse cx="166" cy="60" rx="8" ry="9" fill="#8a7a5c"/><ellipse cx="194" cy="60" rx="8" ry="9" fill="#8a7a5c"/>
+<rect x="172" y="112" width="16" height="10" rx="3" fill="#f4ecd8" stroke="#8a7a5c" stroke-width="2"/>
+<rect x="172" y="125" width="16" height="10" rx="3" fill="#f4ecd8" stroke="#8a7a5c" stroke-width="2"/>
+<rect x="172" y="138" width="16" height="10" rx="3" fill="#f4ecd8" stroke="#8a7a5c" stroke-width="2"/>
+<rect x="172" y="151" width="16" height="10" rx="3" fill="#f4ecd8" stroke="#8a7a5c" stroke-width="2"/>
+<rect x="172" y="164" width="16" height="10" rx="3" fill="#f4ecd8" stroke="#8a7a5c" stroke-width="2"/>
+<rect x="172" y="177" width="16" height="10" rx="3" fill="#f4ecd8" stroke="#8a7a5c" stroke-width="2"/>
+<rect x="172" y="190" width="16" height="10" rx="3" fill="#f4ecd8" stroke="#8a7a5c" stroke-width="2"/>
+<rect x="172" y="203" width="16" height="10" rx="3" fill="#f4ecd8" stroke="#8a7a5c" stroke-width="2"/>
+<rect x="172" y="216" width="16" height="10" rx="3" fill="#f4ecd8" stroke="#8a7a5c" stroke-width="2"/>
+<rect x="172" y="229" width="16" height="10" rx="3" fill="#f4ecd8" stroke="#8a7a5c" stroke-width="2"/>
+<rect x="172" y="242" width="16" height="10" rx="3" fill="#f4ecd8" stroke="#8a7a5c" stroke-width="2"/>
+<rect x="172" y="255" width="16" height="10" rx="3" fill="#f4ecd8" stroke="#8a7a5c" stroke-width="2"/>
+<rect x="172" y="268" width="16" height="10" rx="3" fill="#f4ecd8" stroke="#8a7a5c" stroke-width="2"/>
+<rect x="172" y="281" width="16" height="10" rx="3" fill="#f4ecd8" stroke="#8a7a5c" stroke-width="2"/>
+<rect x="172" y="294" width="16" height="10" rx="3" fill="#f4ecd8" stroke="#8a7a5c" stroke-width="2"/>
+<path d="M180 130 L122 124" stroke="#8a7a5c" stroke-width="7" stroke-linecap="round"/><path d="M180 130 L238 124" stroke="#8a7a5c" stroke-width="7" stroke-linecap="round"/>
+<path d="M172 146 Q122 156 140 176" fill="none" stroke="#8a7a5c" stroke-width="5" stroke-linecap="round"/>
+<path d="M188 146 Q238 156 220 176" fill="none" stroke="#8a7a5c" stroke-width="5" stroke-linecap="round"/>
+<path d="M172 161 Q119 171 137 191" fill="none" stroke="#8a7a5c" stroke-width="5" stroke-linecap="round"/>
+<path d="M188 161 Q241 171 223 191" fill="none" stroke="#8a7a5c" stroke-width="5" stroke-linecap="round"/>
+<path d="M172 176 Q116 186 134 206" fill="none" stroke="#8a7a5c" stroke-width="5" stroke-linecap="round"/>
+<path d="M188 176 Q244 186 226 206" fill="none" stroke="#8a7a5c" stroke-width="5" stroke-linecap="round"/>
+<path d="M172 191 Q119 201 137 221" fill="none" stroke="#8a7a5c" stroke-width="5" stroke-linecap="round"/>
+<path d="M188 191 Q241 201 223 221" fill="none" stroke="#8a7a5c" stroke-width="5" stroke-linecap="round"/>
+<path d="M172 206 Q122 216 140 236" fill="none" stroke="#8a7a5c" stroke-width="5" stroke-linecap="round"/>
+<path d="M188 206 Q238 216 220 236" fill="none" stroke="#8a7a5c" stroke-width="5" stroke-linecap="round"/>
+<path d="M172 221 Q125 231 143 251" fill="none" stroke="#8a7a5c" stroke-width="5" stroke-linecap="round"/>
+<path d="M188 221 Q235 231 217 251" fill="none" stroke="#8a7a5c" stroke-width="5" stroke-linecap="round"/>
+<path d="M122 124 L104 228 L96 300" fill="none" stroke="#c9bb9c" stroke-width="8" stroke-linecap="round"/><path d="M238 124 L256 228 L264 300" fill="none" stroke="#c9bb9c" stroke-width="8" stroke-linecap="round"/>
+<path d="M180 300 C150 296 128 304 130 330 C134 350 160 352 180 342 C200 352 226 350 230 330 C232 304 210 296 180 300 Z" fill="#f4ecd8" stroke="#8a7a5c" stroke-width="2"/>
+<path d="M156 342 L146 446" stroke="#8a7a5c" stroke-width="12" stroke-linecap="round"/><path d="M204 342 L214 446" stroke="#8a7a5c" stroke-width="12" stroke-linecap="round"/>
+<path d="M156 342 L146 446" stroke="#f4ecd8" stroke-width="7" stroke-linecap="round"/><path d="M204 342 L214 446" stroke="#f4ecd8" stroke-width="7" stroke-linecap="round"/>
+<line x1="98" y1="60" x2="150" y2="58" stroke="#2b2b2b" stroke-width="1.6"/><circle cx="150" cy="58" r="3" fill="#2b2b2b"/>
+<circle cx="40" cy="60" r="13" fill="#2b2b2b"/><text x="40" y="66" font-size="17" fill="#fff" text-anchor="middle" font-weight="700">①</text><text x="60" y="66" font-size="17" fill="#2b2b2b" font-weight="700" text-anchor="start" stroke="#fbf8f1" stroke-width="6" paint-order="stroke">頭骨</text>
+<line x1="98" y1="126" x2="130" y2="125" stroke="#2b2b2b" stroke-width="1.6"/><circle cx="130" cy="125" r="3" fill="#2b2b2b"/>
+<circle cx="40" cy="126" r="13" fill="#2b2b2b"/><text x="40" y="132" font-size="17" fill="#fff" text-anchor="middle" font-weight="700">②</text><text x="60" y="132" font-size="17" fill="#2b2b2b" font-weight="700" text-anchor="start" stroke="#fbf8f1" stroke-width="6" paint-order="stroke">鎖骨</text>
+<line x1="262" y1="182" x2="224" y2="184" stroke="#2b2b2b" stroke-width="1.6"/><circle cx="224" cy="184" r="3" fill="#2b2b2b"/>
+<circle cx="320" cy="182" r="13" fill="#2b2b2b"/><text x="320" y="188" font-size="17" fill="#fff" text-anchor="middle" font-weight="700">③</text><text x="300" y="188" font-size="17" fill="#2b2b2b" font-weight="700" text-anchor="end" stroke="#fbf8f1" stroke-width="6" paint-order="stroke">肋骨</text>
+<line x1="262" y1="262" x2="186" y2="262" stroke="#2b2b2b" stroke-width="1.6"/><circle cx="186" cy="262" r="3" fill="#2b2b2b"/>
+<circle cx="320" cy="262" r="13" fill="#2b2b2b"/><text x="320" y="268" font-size="17" fill="#fff" text-anchor="middle" font-weight="700">④</text><text x="300" y="268" font-size="17" fill="#2b2b2b" font-weight="700" text-anchor="end" stroke="#fbf8f1" stroke-width="6" paint-order="stroke">背骨</text>
+<line x1="98" y1="322" x2="140" y2="322" stroke="#2b2b2b" stroke-width="1.6"/><circle cx="140" cy="322" r="3" fill="#2b2b2b"/>
+<circle cx="40" cy="322" r="13" fill="#2b2b2b"/><text x="40" y="328" font-size="17" fill="#fff" text-anchor="middle" font-weight="700">⑤</text><text x="60" y="328" font-size="17" fill="#2b2b2b" font-weight="700" text-anchor="start" stroke="#fbf8f1" stroke-width="6" paint-order="stroke">骨盤</text>
+<line x1="245" y1="410" x2="211" y2="410" stroke="#2b2b2b" stroke-width="1.6"/><circle cx="211" cy="410" r="3" fill="#2b2b2b"/>
+<circle cx="320" cy="410" r="13" fill="#2b2b2b"/><text x="320" y="416" font-size="17" fill="#fff" text-anchor="middle" font-weight="700">⑥</text><text x="300" y="416" font-size="17" fill="#2b2b2b" font-weight="700" text-anchor="end" stroke="#fbf8f1" stroke-width="6" paint-order="stroke">大腿骨</text>
+</svg>
