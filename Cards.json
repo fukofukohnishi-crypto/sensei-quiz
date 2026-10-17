@@ -720,6 +720,60 @@
     "imgUrl": "/card-images/r43_saitama.webp"
   },
   {
+    "id": "r045",
+    "char": "tokyo",
+    "rarity": 4,
+    "series": "pref",
+    "name": "東京守護神　スシ・ド・トーキョー",
+    "power": "江戸前シャリスラッシュ！ 東京湾の浅瀬でとれたことからついた「江戸前」の力で、ネクタイのマントをひるがえして斬りこむ！ 雷門のちょうちんが光ると、味方の知恵が上がる。",
+    "imgUrl": "/card-images/r45_tokyo.webp"
+  },
+  {
+    "id": "r046",
+    "char": "kanagawa",
+    "rarity": 4,
+    "series": "pref",
+    "name": "神奈川守護神　黒船ボー",
+    "power": "開港ボーッ！ 汽笛の音で、とざされた門をこじあける！ 三方を山、一方を海にかこまれた鎌倉の大仏が帽子の中から味方を守る。",
+    "imgUrl": "/card-images/r46_kanagawa.webp"
+  },
+  {
+    "id": "r049",
+    "char": "ishikawa",
+    "rarity": 4,
+    "series": "pref",
+    "name": "石川守護神　キンパクおわん",
+    "power": "金箔ゴールドフラッシュ！ 紙よりはるかにうすくのばした金箔をまとい、まぶしい光で敵の目をくらます！ 職人の手作業の技が力のみなもと。",
+    "imgUrl": "/card-images/r49_ishikawa.webp"
+  },
+  {
+    "id": "r050",
+    "char": "fukui",
+    "rarity": 4,
+    "series": "pref",
+    "name": "福井守護神　メガネザウルス",
+    "power": "サバエ・クリアビジョン！ 鯖江のめがねをかけると、どんなに小さな字も、敵の弱点もくっきり見える！ 冬の家の中で育った地場産業の技で、仲間をささえる。",
+    "imgUrl": "/card-images/r50_fukui.webp"
+  },
+  {
+    "id": "r051",
+    "char": "yamanashi",
+    "rarity": 4,
+    "series": "pref",
+    "name": "山梨守護神　ぶどう百面相",
+    "power": "扇状地フルーツスプレッド！ 扇をばっと広げると、川が山から平地に出るところのように実りが広がり、ぶどうのつぶが一斉にしゃべりだして敵を混乱させる！",
+    "imgUrl": "/card-images/r51_yamanashi.webp"
+  },
+  {
+    "id": "r054",
+    "char": "shizuoka",
+    "rarity": 4,
+    "series": "pref",
+    "name": "静岡守護神　茶柱タッタ丸",
+    "power": "茶柱ストレートアップ！ 日当たりがよく水はけのよい台地の力で、茶柱をまっすぐ立たせる。茶柱が立っているあいだ、味方はぜったいに転ばない。浜名湖のうなぎと浜松のピアノの音で追いかける！",
+    "imgUrl": "/card-images/r54_shizuoka.webp"
+  },
+  {
     "id": "l017",
     "char": "hounobito_sakura",
     "rarity": 5,
