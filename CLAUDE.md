@@ -20,7 +20,7 @@ api/generate.js   Claude API 呼び出し。教材写真→クイズ生成／漫
 Cards.json        カード98枚のマスタデータ
 stories.json      学園の読み物93話。10月版のご褒美（れんしゅう20問ごとに1話）
 pref-stories.json 守護神ミッション10話。ニッポン制覇のご褒美（県のメダル10個で1話）
-quizbank-seed-nov.json  11月版の作りおき問題444問（理科217・社会227）。november.html が読む
+quizbank-seed-nov.json  11月版の作りおき問題460問（理科233・社会227）。november.html が読む
 stories-nov.json  11月版の読み物11話（1都県1話・読んだあとに3問）
 quizbank-seed.json  作りおき問題534問。理科・社会とも後期第1〜5回ぶん。
                     テキストと練成問題集の両方から作った。
