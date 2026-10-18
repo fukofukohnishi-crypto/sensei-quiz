@@ -1006,5 +1006,50 @@
     "name": "アニア",
     "power": "みんなを支える水の副リーダー：川や海で生まれたカワウソ。水を自由にあやつり、水の流れで仲間を守ったり、困っている動物を助けたりする。「ひとりじゃない。みんなでいれば、きっと乗りこえられるよ！」",
     "imgUrl": "/card-images/legend21_ania.webp"
+  },
+  {
+    "id": "l022",
+    "char": "buresute",
+    "rarity": 5,
+    "series": "gakuen",
+    "name": "ブレステ",
+    "power": "隠された力：一見すると普通の少年だが、その正体は仮面ライダーワニに変身する生徒。明るく自信家で、仲間のピンチには誰よりも早く駆けつける。みんなの笑顔を守るために、戦う！",
+    "imgUrl": "/card-images/legend22_buresute.webp"
+  },
+  {
+    "id": "sr036",
+    "char": "kamenwani",
+    "rarity": 2,
+    "series": "gakuen",
+    "name": "仮面ライダーワニ",
+    "power": "オーバーフィニッシュ：変身者はブレステ。ワニをモチーフにした剣で水の力を操り、巨大な水のワニを呼び出して、すべてをのみこむ最強の一撃！",
+    "imgUrl": "/card-images/sr36_wani.webp"
+  },
+  {
+    "id": "sr037",
+    "char": "kamensame",
+    "rarity": 2,
+    "series": "gakuen",
+    "name": "仮面ライダーサメ",
+    "power": "ブラストメガロドン：サメをモチーフにした剣で水の力を操る、学園に潜む正義のヒーロー。巨大な水のメガロドンを呼び出し、すべてをのみこむ最強の一撃！",
+    "imgUrl": "/card-images/sr37_same.webp"
+  },
+  {
+    "id": "sr038",
+    "char": "kamentora",
+    "rarity": 2,
+    "series": "gakuen",
+    "name": "仮面ライダートラ",
+    "power": "タイガーラッシュ：ブレステがトラの力を解放した姿。圧倒的なスピードと鋭い爪で敵を追いつめる。猛スピードで駆け抜け、無数の爪撃で切り裂く最強の連撃！",
+    "imgUrl": "/card-images/sr38_tora.webp"
+  },
+  {
+    "id": "sr039",
+    "char": "kamenkirin",
+    "rarity": 2,
+    "series": "gakuen",
+    "name": "仮面ライダーキリン",
+    "power": "ゴールデンネックブレイク：キリンをモチーフにした槍で仲間を守る、学園に潜む正義のヒーロー。黄金のキリンの光の首が突き抜け、敵を貫く最強の一撃！",
+    "imgUrl": "/card-images/sr39_kirin.webp"
   }
 ]
