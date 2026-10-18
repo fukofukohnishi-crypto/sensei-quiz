@@ -1051,5 +1051,32 @@
     "name": "仮面ライダーキリン",
     "power": "ゴールデンネックブレイク：キリンをモチーフにした槍で仲間を守る、学園に潜む正義のヒーロー。黄金のキリンの光の首が突き抜け、敵を貫く最強の一撃！",
     "imgUrl": "/card-images/sr39_kirin.webp"
+  },
+  {
+    "id": "n040",
+    "char": "kurozumi",
+    "rarity": 1,
+    "series": "gakuen",
+    "name": "黒墨雲畜塞",
+    "power": "書は心！：長いひげと長い眉をたずさえた、伝説の習字の先生。墨の持つ力で心を整え、世界を楽しくすることが目標。奇想天外な言動でみんなを驚かせるが、その字には人の心を動かす力がある。",
+    "imgUrl": "/card-images/n40_kurozumi.webp"
+  },
+  {
+    "id": "sr040",
+    "char": "kurozumi",
+    "rarity": 2,
+    "series": "gakuen",
+    "name": "黒墨雲畜塞・墨術覚醒",
+    "power": "墨龍乱舞：墨の力を極め、「墨術」を覚醒させた。墨で描いた5匹の龍が、敵をのみこむ強力な一撃！",
+    "imgUrl": "/card-images/sr40_kurozumi.webp"
+  },
+  {
+    "id": "ssr040",
+    "char": "kurozumi",
+    "rarity": 3,
+    "series": "gakuen",
+    "name": "黒墨雲畜塞・万象墨神",
+    "power": "天地開墨・森羅万象：墨術が極まり、万物を書き換える力を手に入れた。天空に一文字を描き、すべてのものを墨で書き換える究極の一撃！",
+    "imgUrl": "/card-images/ssr40_kurozumi.webp"
   }
 ]
