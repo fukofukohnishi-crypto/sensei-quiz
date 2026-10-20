@@ -1105,5 +1105,32 @@
     "name": "バグ田エラー蔵・電脳崩壊神",
     "power": "世界致命的例外：バグを愛し、バグで世界を書き換える伝説のプログラマー。すべてのプログラムを書き換え、世界そのものをバグで崩壊させる究極の一撃！",
     "imgUrl": "/card-images/ssr41_bagutaerazo.webp"
+  },
+  {
+    "id": "n042",
+    "char": "kagimori",
+    "rarity": 1,
+    "series": "gakuen",
+    "name": "鍵守 錆之助",
+    "power": "この学園には、開けてはならぬ扉がある……。学園の施設を管理する、謎だらけの用務員。学園のすべての鍵を持っていると言われ、どんな場所の鍵でも開けられるが、開けてはいけない扉は絶対に開けない。",
+    "imgUrl": "/card-images/n42_kagimori.webp"
+  },
+  {
+    "id": "sr042",
+    "char": "kagimori",
+    "rarity": 2,
+    "series": "gakuen",
+    "name": "鍵守 錆之助・封印解放",
+    "power": "封印十二鍵：12本の封印の鍵を同時に解放し、敵を異次元の扉に封印する！すべての鍵が揃うと、どんな扉も開くことができる！",
+    "imgUrl": "/card-images/sr42_kagimori.webp"
+  },
+  {
+    "id": "ssr042",
+    "char": "kagimori",
+    "rarity": 3,
+    "series": "gakuen",
+    "name": "鍵守 錆之助・万界鍵神",
+    "power": "万界終焉施錠：すべての世界の扉を同時に操り、時空そのものを閉ざす究極の鍵！敵の能力・存在・世界を封印し、二度と開けられなくする！",
+    "imgUrl": "/card-images/ssr42_kagimori.webp"
   }
 ]
