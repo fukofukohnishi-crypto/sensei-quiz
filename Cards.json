@@ -1078,5 +1078,32 @@
     "name": "黒墨雲畜塞・万象墨神",
     "power": "天地開墨・森羅万象：墨術が極まり、万物を書き換える力を手に入れた。天空に一文字を描き、すべてのものを墨で書き換える究極の一撃！",
     "imgUrl": "/card-images/ssr40_kurozumi.webp"
+  },
+  {
+    "id": "n041",
+    "char": "bagutaerazo",
+    "rarity": 1,
+    "series": "gakuen",
+    "name": "バグ田エラー蔵",
+    "power": "やってみよう！：いつもバグだらけのプログラムを作る、天才プログラマーの先生。バグをこわがらず、むしろ楽しむスタイルで、失敗の中から新しい発見を見つけるのが得意。エラーは失敗じゃない！新しい発見だ！",
+    "imgUrl": "/card-images/n41_bagutaerazo.webp"
+  },
+  {
+    "id": "sr041",
+    "char": "bagutaerazo",
+    "rarity": 2,
+    "series": "gakuen",
+    "name": "バグ田エラー蔵・暴走覚醒",
+    "power": "無限エラー連鎖：生み出したバグが連鎖して、無限に増え続けるエラーの嵐！すべてをバグの世界に巻き込む！",
+    "imgUrl": "/card-images/sr41_bagutaerazo.webp"
+  },
+  {
+    "id": "ssr041",
+    "char": "bagutaerazo",
+    "rarity": 3,
+    "series": "gakuen",
+    "name": "バグ田エラー蔵・電脳崩壊神",
+    "power": "世界致命的例外：バグを愛し、バグで世界を書き換える伝説のプログラマー。すべてのプログラムを書き換え、世界そのものをバグで崩壊させる究極の一撃！",
+    "imgUrl": "/card-images/ssr41_bagutaerazo.webp"
   }
 ]
