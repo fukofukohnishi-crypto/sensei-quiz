@@ -230,3 +230,5 @@ python3 tools/photo2ans.py <絵> <名前> --nobg
 | `kegon.webp` | 華厳の滝 | Flickr（Openverse 経由）<br>https://www.flickr.com/photos/42438962@N05/22664922062 | **CC BY 2.0**<br>→ **画面に表示ずみ** | reggiepen |
 | `kaminarimon.webp` | 雷門 | Flickr（Openverse 経由）<br>https://www.flickr.com/photos/91049143@N00/13757029184 | **CC BY-SA 2.0**<br>→ **画面に表示ずみ** | bryan... |
 | `kokkai.webp` | 国会議事堂 | Flickr（Openverse 経由）<br>https://www.flickr.com/photos/31029865@N06/6700031823 | **CC BY 2.0**<br>→ **画面に表示ずみ** | Dick Thomas Johnson |
+| `kenrokuen.webp` | 兼六園のことじ灯籠 | Flickr（Openverse 経由）<br>https://www.flickr.com/photos/91049143@N00/15695525629 | **CC BY-SA 2.0**<br>→ **画面に表示ずみ** | bryan... |
+| `curvemirror.webp` | カーブミラー（凸面鏡） | Flickr（Openverse 経由）<br>https://www.flickr.com/photos/7455207@N05/4463257694 | **CC BY-SA 2.0**<br>→ **画面に表示ずみ** | SBA73 |

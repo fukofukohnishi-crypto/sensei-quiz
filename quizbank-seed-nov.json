@@ -2605,7 +2605,9 @@
   "explain": "広い範囲を見渡すのに適しています。光を集めることはできません。",
   "juken": "",
   "basis": "text",
-  "yomi": "とつめんきょう"
+  "yomi": "とつめんきょう",
+  "ansFig": "curvemirror.webp",
+  "ansFigBy": "写真: SBA73（CC BY-SA 2.0）"
  },
  {
   "id": "seed_n9_27",
@@ -6110,7 +6112,9 @@
   "explain": "金沢市にあります。",
   "juken": "偕楽園（水戸）・後楽園（岡山）とあわせて日本三名園。",
   "basis": "text",
-  "yomi": "けんろくえん"
+  "yomi": "けんろくえん",
+  "ansFig": "kenrokuen.webp",
+  "ansFigBy": "写真: bryan...（CC BY-SA 2.0）"
  },
  {
   "id": "seed_ns10_08",
