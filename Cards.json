@@ -1141,5 +1141,23 @@
     "name": "ソルバエ",
     "power": "創造破壊：火と氷、そして「創造」と「消滅」を操る創造神でありながら、生徒として学園に通う特別な存在。火と氷の力で、あらゆるものを作り出し、同時に消し去る！",
     "imgUrl": "/card-images/legend23_solbae.webp"
+  },
+  {
+    "id": "l024",
+    "char": "fuzeria",
+    "rarity": 5,
+    "series": "gakuen",
+    "name": "フウゼリア",
+    "power": "正義の天翔裁断：スーパー田中ファミリー・特殊警察部隊の最高指揮官。学園の近くの警察署にいて、何かあったらすぐに駆けつける。光とエネルギーの力で、すべての悪を捕縛・浄化する！",
+    "imgUrl": "/card-images/legend24_fuzeria.webp"
+  },
+  {
+    "id": "l025",
+    "char": "yunden",
+    "rarity": 5,
+    "series": "gakuen",
+    "name": "ゆんでん",
+    "power": "とんでん豪快膳：スーパー田中ファミリーの一員で、フウゼリアの夫。とんでんが大好きで、おいしいご飯でみんなを笑顔にする。仲間の体力を大回復し、攻撃力・防御力・やる気を大きく上げる！",
+    "imgUrl": "/card-images/legend25_yunden.webp"
   }
 ]
