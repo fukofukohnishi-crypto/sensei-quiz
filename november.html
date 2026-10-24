@@ -189,8 +189,24 @@ button:focus-visible{outline:2px solid var(--gold);outline-offset:2px}
   font-weight:800;margin-bottom:10px;text-align:left}
 .explain .fig img{max-width:100%;height:auto;max-height:min(46vh,360px);border-radius:12px}
 
-.scorebtns{display:grid;grid-template-columns:1fr 1fr;gap:12px;margin-top:16px}
-@media(max-width:520px){.scorebtns{grid-template-columns:1fr}}
+/* 答えあわせのボタン。以前は解説の下にあり、iPad では毎回スクロールしないと
+   押せなかった（親の指摘）。いまは左の先生の列に置き、その列ごと画面に固定する。
+   解説は右にそのまま見えるので、目に入ってから押せる。
+   縦長・せまい画面では、画面の下にはりつける */
+.judge{margin-top:14px}
+.judge-hint{font-size:.74rem;color:var(--muted);margin-bottom:8px}
+.scorebtns{display:grid;grid-template-columns:1fr;gap:10px}
+/* 答えを見てすぐは少しだけ押せない（読まずに押すのをふせぐ）。reveal() が外す */
+.judge.wait .scorebtns,.judge.wait #q-mapnext{opacity:.4;pointer-events:none;transition:opacity .3s}
+@media(min-width:901px){ .qside{position:sticky;top:72px} }
+@media(max-width:900px){
+  .qwrap{padding-bottom:130px}
+  .judge{position:fixed;left:0;right:0;bottom:0;z-index:30;margin:0;
+    padding:10px 16px calc(12px + env(safe-area-inset-bottom));
+    background:rgba(13,13,20,.95);backdrop-filter:blur(10px);border-top:1px solid var(--line)}
+  .judge-hint{text-align:center;margin-bottom:6px}
+  .scorebtns{grid-template-columns:1fr 1fr}
+}
 .big-ok{background:linear-gradient(135deg,#44cc88,#1f8f5a);color:#fff;border-radius:16px;padding:19px;font-weight:900;font-size:1.14rem}
 .big-ng{background:linear-gradient(135deg,#ff6b7a,#b52a3a);color:#fff;border-radius:16px;padding:19px;font-weight:900;font-size:1.14rem}
 
@@ -379,6 +395,15 @@ button:focus-visible{outline:2px solid var(--gold);outline-offset:2px}
       <img id="q-face" src="/img/teachers/kaga.jpg" alt="" onerror="this.style.display='none'">
       <div class="who" id="q-who"></div>
       <div class="prog"><b id="q-prog">0</b><span id="q-proglbl">もんめ</span><span id="q-hearts" class="hearts"></span></div>
+      <!-- ⭕❌は左の先生の下に出す（スクロールしなくても押せるように）。下の CSS を参照 -->
+      <div class="judge" id="q-judge" style="display:none">
+        <div class="judge-hint">👀 かいせつも読んでから</div>
+        <button class="btn gold" id="q-mapnext" style="width:100%;display:none" onclick="score(!!(mapPick&&mapPick.ok))"></button>
+        <div class="scorebtns">
+          <button class="big-ok" onclick="score(true)">⭕ できた</button>
+          <button class="big-ng" onclick="score(false)">❌ まだ</button>
+        </div>
+      </div>
     </div>
     <div class="qmain" id="q-main">
       <div class="segs" id="q-segs"></div>
@@ -607,11 +632,6 @@ button:focus-visible{outline:2px solid var(--gold);outline-offset:2px}
             <div class="ans-accept" id="q-accept"></div>
           </div>
           <div class="explain" id="q-explain"></div>
-          <button class="btn gold" id="q-mapnext" style="width:100%;display:none" onclick="score(!!(mapPick&&mapPick.ok))"></button>
-          <div class="scorebtns">
-            <button class="big-ok" onclick="score(true)">⭕ できた</button>
-            <button class="big-ng" onclick="score(false)">❌ まだ</button>
-          </div>
         </div>
       </div>
     </div>
@@ -1266,6 +1286,9 @@ function renderQ(){
   revealed=false;
   document.getElementById('q-before').style.display='';
   document.getElementById('q-after').style.display='none';
+  document.getElementById('q-judge').style.display='none';
+  /* 解説を下まで読んでいても、次の問題は上から出す */
+  window.scrollTo(0,0);
 
   const segs=document.getElementById('q-segs');
   segs.innerHTML='';
@@ -1338,16 +1361,21 @@ function highlightPref(name){
   if(el)el.classList.add('hl');
 }
 
+const JUDGE_WAIT=1200;
 function reveal(){
   if(revealed)return;
   revealed=true;
   const q=qList[qIdx];
   document.getElementById('q-before').style.display='none';
   document.getElementById('q-after').style.display='';
+  /* ⭕❌は答えを見てから1.2秒だけ押せない。読まずに押すのをふせぐ軽いブレーキ */
+  const jg=document.getElementById('q-judge');
+  jg.style.display=''; jg.classList.add('wait');
+  clearTimeout(reveal.t); reveal.t=setTimeout(()=>jg.classList.remove('wait'),JUDGE_WAIT);
   /* 地図をタップする問題は、正解・不正解が決まっているので⭕❌のかわりに「つぎへ」。
      「わからない」で答えを見たときは、まちがいとしてあつかう */
   const nx=document.getElementById('q-mapnext');
-  document.querySelector('#q-after .scorebtns').style.display=mapPick?'none':'';
+  document.querySelector('#q-judge .scorebtns').style.display=mapPick?'none':'';
   nx.style.display=mapPick?'':'none';
   if(mapPick){
     if(mapPick.ok===null){ mapPick.ok=false; markAnswerPref(q.a); }
