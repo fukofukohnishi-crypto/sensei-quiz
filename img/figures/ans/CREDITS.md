@@ -237,3 +237,5 @@ python3 tools/photo2ans.py <絵> <名前> --nobg
 | `ushikudaibutsu.webp` | 牛久大仏 | 家族が撮影 | **自分で撮った写真** | 表示不要 |
 | `tsurugaoka.webp` | 鶴岡八幡宮 | Wikimedia Commons（親がさがした） | **PD** | 表示不要 |
 | `odawarajo.webp` | 小田原城 | Wikimedia Commons（親がさがした） | **PD** | 表示不要 |
+| `chukagai.webp` | 横浜中華街の門 | Wikimedia Commons（親がさがした） | **PD** | 表示不要 |
+| `akarenga.webp` | 横浜赤レンガ倉庫 | Wikimedia Commons（親がさがした） | **PD** | 表示不要 |

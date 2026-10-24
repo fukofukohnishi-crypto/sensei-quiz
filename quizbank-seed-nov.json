@@ -4323,7 +4323,8 @@
   "explain": "テキストより。",
   "juken": "",
   "basis": "text",
-  "yomi": "あかレンガそうこ"
+  "yomi": "あかレンガそうこ",
+  "ansFig": "akarenga.webp"
  },
  {
   "id": "seed_ns7_26",
@@ -4339,7 +4340,8 @@
   "explain": "テキストより。",
   "juken": "",
   "basis": "text",
-  "yomi": "よこはまちゅうかがい"
+  "yomi": "よこはまちゅうかがい",
+  "ansFig": "chukagai.webp"
  },
  {
   "id": "seed_ns7_27",
