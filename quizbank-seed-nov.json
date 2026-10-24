@@ -218,7 +218,9 @@
   "source": "夏鳥のなかま　ツバメ・カッコウ・ホトトギス・オオルリ・キビタキ・オオヨシキリ",
   "explain": "春のころ、繁殖のために南の地域からやってきます。",
   "juken": "夏鳥・冬鳥・留鳥・漂鳥の4つに分ける問題がよく出る。",
-  "basis": "text"
+  "basis": "text",
+  "ansFig": "tsubame.webp",
+  "ansFigBy": "写真: Donald Davesne（CC BY 4.0）"
  },
  {
   "id": "seed_n6_15",
@@ -263,7 +265,9 @@
   "source": "夏鳥のなかま　ツバメ・カッコウ・ホトトギス・オオルリ・キビタキ・オオヨシキリ",
   "explain": "春のころ、繁殖のために南の地域からやってきます。",
   "juken": "夏鳥・冬鳥・留鳥・漂鳥の4つに分ける問題がよく出る。",
-  "basis": "text"
+  "basis": "text",
+  "ansFig": "ooruri.webp",
+  "ansFigBy": "写真: Wang.QG（CC BY 4.0）"
  },
  {
   "id": "seed_n6_18",
@@ -278,7 +282,9 @@
   "source": "夏鳥のなかま　ツバメ・カッコウ・ホトトギス・オオルリ・キビタキ・オオヨシキリ",
   "explain": "春のころ、繁殖のために南の地域からやってきます。",
   "juken": "夏鳥・冬鳥・留鳥・漂鳥の4つに分ける問題がよく出る。",
-  "basis": "text"
+  "basis": "text",
+  "ansFig": "kibitaki.webp",
+  "ansFigBy": "写真: Lawrence Hylton（CC BY 4.0）"
  },
  {
   "id": "seed_n6_19",
@@ -293,7 +299,9 @@
   "source": "夏鳥のなかま　ツバメ・カッコウ・ホトトギス・オオルリ・キビタキ・オオヨシキリ",
   "explain": "春のころ、繁殖のために南の地域からやってきます。",
   "juken": "夏鳥・冬鳥・留鳥・漂鳥の4つに分ける問題がよく出る。",
-  "basis": "text"
+  "basis": "text",
+  "ansFig": "ooyoshikiri.webp",
+  "ansFigBy": "写真: Kim（CC BY 4.0）"
  },
  {
   "id": "seed_n6_20",
@@ -323,7 +331,9 @@
   "source": "冬鳥のなかま　オオハクチョウ・マガモ・マナヅル・ツグミ・マガン・ウソ",
   "explain": "秋のころ、冬越しのために北の地域からやってきます。",
   "juken": "夏鳥・冬鳥・留鳥・漂鳥の4つに分ける問題がよく出る。",
-  "basis": "text"
+  "basis": "text",
+  "ansFig": "magamo.webp",
+  "ansFigBy": "写真: Codrin Bucur（CC BY 4.0）"
  },
  {
   "id": "seed_n6_22",
@@ -338,7 +348,9 @@
   "source": "冬鳥のなかま　オオハクチョウ・マガモ・マナヅル・ツグミ・マガン・ウソ",
   "explain": "秋のころ、冬越しのために北の地域からやってきます。",
   "juken": "夏鳥・冬鳥・留鳥・漂鳥の4つに分ける問題がよく出る。",
-  "basis": "text"
+  "basis": "text",
+  "ansFig": "manazuru.webp",
+  "ansFigBy": "写真: Christoph Moning（CC BY 4.0）"
  },
  {
   "id": "seed_n6_23",
@@ -353,7 +365,8 @@
   "source": "冬鳥のなかま　オオハクチョウ・マガモ・マナヅル・ツグミ・マガン・ウソ",
   "explain": "秋のころ、冬越しのために北の地域からやってきます。",
   "juken": "夏鳥・冬鳥・留鳥・漂鳥の4つに分ける問題がよく出る。",
-  "basis": "text"
+  "basis": "text",
+  "ansFig": "tsugumi.webp"
  },
  {
   "id": "seed_n6_24",
@@ -368,7 +381,9 @@
   "source": "冬鳥のなかま　オオハクチョウ・マガモ・マナヅル・ツグミ・マガン・ウソ",
   "explain": "秋のころ、冬越しのために北の地域からやってきます。",
   "juken": "夏鳥・冬鳥・留鳥・漂鳥の4つに分ける問題がよく出る。",
-  "basis": "text"
+  "basis": "text",
+  "ansFig": "magan.webp",
+  "ansFigBy": "写真: MarvalPhotography19（CC BY 4.0）"
  },
  {
   "id": "seed_n6_25",
@@ -383,7 +398,9 @@
   "source": "冬鳥のなかま　オオハクチョウ・マガモ・マナヅル・ツグミ・マガン・ウソ",
   "explain": "秋のころ、冬越しのために北の地域からやってきます。",
   "juken": "夏鳥・冬鳥・留鳥・漂鳥の4つに分ける問題がよく出る。",
-  "basis": "text"
+  "basis": "text",
+  "ansFig": "uso.webp",
+  "ansFigBy": "写真: Ксения Волянская（CC BY 4.0）"
  },
  {
   "id": "seed_n6_26",
@@ -399,7 +416,9 @@
   "explain": "一年中同じ地域で生活します。",
   "juken": "夏鳥・冬鳥・留鳥・漂鳥の4つに分ける問題がよく出る。",
   "basis": "text",
-  "yomi": "りゅうちょう"
+  "yomi": "りゅうちょう",
+  "ansFig": "suzume.webp",
+  "ansFigBy": "写真: Radu Teodoreanu（CC BY 4.0）"
  },
  {
   "id": "seed_n6_27",
@@ -415,7 +434,9 @@
   "explain": "一年中同じ地域で生活します。",
   "juken": "夏鳥・冬鳥・留鳥・漂鳥の4つに分ける問題がよく出る。",
   "basis": "text",
-  "yomi": "りゅうちょう"
+  "yomi": "りゅうちょう",
+  "ansFig": "kijibato.webp",
+  "ansFigBy": "写真: egorbirder（CC BY 4.0）"
  },
  {
   "id": "seed_n6_28",
@@ -431,7 +452,9 @@
   "explain": "一年中同じ地域で生活します。",
   "juken": "夏鳥・冬鳥・留鳥・漂鳥の4つに分ける問題がよく出る。",
   "basis": "text",
-  "yomi": "りゅうちょう"
+  "yomi": "りゅうちょう",
+  "ansFig": "hashibutogarasu.webp",
+  "ansFigBy": "写真: Aparna Shyam（CC BY 4.0）"
  },
  {
   "id": "seed_n6_29",
@@ -447,7 +470,9 @@
   "explain": "春から秋は山地、秋から春は平地で過ごします。移動する距離が短いので、留鳥としてあつかわれることもあります。",
   "juken": "夏鳥・冬鳥・留鳥・漂鳥の4つに分ける問題がよく出る。",
   "basis": "text",
-  "yomi": "ひょうちょう"
+  "yomi": "ひょうちょう",
+  "ansFig": "uguisu.webp",
+  "ansFigBy": "写真: Pavel Smirnov（CC BY 4.0）"
  },
  {
   "id": "seed_n6_30",
@@ -463,7 +488,9 @@
   "explain": "春から秋は山地、秋から春は平地で過ごします。移動する距離が短いので、留鳥としてあつかわれることもあります。",
   "juken": "夏鳥・冬鳥・留鳥・漂鳥の4つに分ける問題がよく出る。",
   "basis": "text",
-  "yomi": "ひょうちょう"
+  "yomi": "ひょうちょう",
+  "ansFig": "hibari.webp",
+  "ansFigBy": "写真: Paul Lewis（CC BY 4.0）"
  },
  {
   "id": "seed_n6_31",
@@ -479,7 +506,9 @@
   "explain": "春から秋は山地、秋から春は平地で過ごします。移動する距離が短いので、留鳥としてあつかわれることもあります。",
   "juken": "夏鳥・冬鳥・留鳥・漂鳥の4つに分ける問題がよく出る。",
   "basis": "text",
-  "yomi": "ひょうちょう"
+  "yomi": "ひょうちょう",
+  "ansFig": "hiyodori.webp",
+  "ansFigBy": "写真: Corey Farwell（CC BY 4.0）"
  },
  {
   "id": "seed_n6_32",
@@ -495,7 +524,9 @@
   "source": "ライチョウは山地で見られる留鳥です。夏のライチョウは褐色（暗い黄赤）、冬のライチョウは白い色の羽毛をまといます。また、ライチョウのオスは目の上が赤くなっています。",
   "explain": "オスは目の上が赤くなっています。",
   "juken": "平地の留鳥（スズメなど）とちがい、山地の留鳥。",
-  "basis": "text"
+  "basis": "text",
+  "ansFig": "raicho_natsu.webp",
+  "ansFigBy": "写真: Marco Mussita（CC BY 4.0）"
  },
  {
   "id": "seed_n6_33",
@@ -511,7 +542,9 @@
   "source": "ライチョウは山地で見られる留鳥です。夏のライチョウは褐色（暗い黄赤）、冬のライチョウは白い色の羽毛をまといます。また、ライチョウのオスは目の上が赤くなっています。",
   "explain": "夏は褐色（暗い黄赤）です。",
   "juken": "",
-  "basis": "text"
+  "basis": "text",
+  "ansFig": "raicho.webp",
+  "ansFigBy": "写真: Jan Frode Haugseth（CC BY-SA 3.0）"
  },
  {
   "id": "seed_n6_34",
@@ -528,7 +561,9 @@
   "explain": "冬は白い色の羽毛になります。",
   "juken": "",
   "basis": "text",
-  "yomi": "かっしょく"
+  "yomi": "かっしょく",
+  "ansFig": "raicho_natsu.webp",
+  "ansFigBy": "写真: Marco Mussita（CC BY 4.0）"
  },
  {
   "id": "seed_n6_35",
@@ -544,7 +579,9 @@
   "source": "ライチョウは山地で見られる留鳥です。夏のライチョウは褐色（暗い黄赤）、冬のライチョウは白い色の羽毛をまといます。また、ライチョウのオスは目の上が赤くなっています。",
   "explain": "テキストより。",
   "juken": "",
-  "basis": "text"
+  "basis": "text",
+  "ansFig": "raicho_natsu.webp",
+  "ansFigBy": "写真: Marco Mussita（CC BY 4.0）"
  },
  {
   "id": "seed_n6_36",
@@ -637,7 +674,9 @@
   "source": "日本に生息する飛べない鳥としては他に、国の天然記念物に指定されている絶滅危惧種のヤンバルクイナなどもいます。",
   "explain": "ニワトリやシャモも、空を上手に飛ぶことができません。",
   "juken": "",
-  "basis": "text"
+  "basis": "text",
+  "ansFig": "yanbarukuina.webp",
+  "ansFigBy": "写真: Takaaki Hattori（CC BY 4.0）"
  },
  {
   "id": "seed_n6_42",
@@ -650,7 +689,9 @@
   "source": "日本以外の地域に生息する飛べない鳥は、アフリカ大陸に生息するダチョウやオーストラリアに生息するヒクイドリ、南極に生息するペンギンなどがいます。",
   "explain": "テキストより。",
   "juken": "",
-  "basis": "text"
+  "basis": "text",
+  "ansFig": "dacho.webp",
+  "ansFigBy": "写真: Andrew Allen（CC BY 4.0）"
  },
  {
   "id": "seed_n6_43",
@@ -663,7 +704,9 @@
   "source": "日本以外の地域に生息する飛べない鳥は、アフリカ大陸に生息するダチョウやオーストラリアに生息するヒクイドリ、南極に生息するペンギンなどがいます。",
   "explain": "テキストより。",
   "juken": "",
-  "basis": "text"
+  "basis": "text",
+  "ansFig": "hikuidori.webp",
+  "ansFigBy": "写真: Oscar Dove（CC BY 4.0）"
  },
  {
   "id": "seed_n6_44",
@@ -676,7 +719,9 @@
   "source": "日本以外の地域に生息する飛べない鳥は、アフリカ大陸に生息するダチョウやオーストラリアに生息するヒクイドリ、南極に生息するペンギンなどがいます。",
   "explain": "テキストより。",
   "juken": "",
-  "basis": "text"
+  "basis": "text",
+  "ansFig": "penguin.webp",
+  "ansFigBy": "写真: Annika Lindqvist（CC BY 4.0）"
  },
  {
   "id": "seed_n6_45",
@@ -818,7 +863,8 @@
   "source": "紅葉　赤く染まる樹木：カエデ・ツタ・ニシキギ・ツツジ　黄色く染まる樹木：イチョウ・ポプラ",
   "explain": "赤く染まるのはカエデ・ツタ・ニシキギ・ツツジ、黄色く染まるのはイチョウ・ポプラです。",
   "juken": "季節の移り変わり（紅葉）。",
-  "basis": "text"
+  "basis": "text",
+  "ansFig": "momiji.webp"
  },
  {
   "id": "seed_n6_54",
@@ -882,7 +928,9 @@
   "source": "紅葉　赤く染まる樹木：カエデ・ツタ・ニシキギ・ツツジ　黄色く染まる樹木：イチョウ・ポプラ",
   "explain": "赤く染まるのはカエデ・ツタ・ニシキギ・ツツジ、黄色く染まるのはイチョウ・ポプラです。",
   "juken": "季節の移り変わり（紅葉）。",
-  "basis": "text"
+  "basis": "text",
+  "ansFig": "icho.webp",
+  "ansFigBy": "写真: James Field（CC BY-SA 3.0）"
  },
  {
   "id": "seed_n6_58",
@@ -1334,7 +1382,8 @@
   "source": "その中でもブラックバスと呼ばれるオオクチバスや、ウシガエル、カミツキガメなどは特定外来生物として駆除の対象になっています。",
   "explain": "特定外来生物として駆除の対象になっています。",
   "juken": "",
-  "basis": "text"
+  "basis": "text",
+  "ansFig": "blackbass.webp"
  },
  {
   "id": "seed_n7_28",
@@ -1360,7 +1409,9 @@
   "source": "その中でもブラックバスと呼ばれるオオクチバスや、ウシガエル、カミツキガメなどは特定外来生物として駆除の対象になっています。",
   "explain": "テキストより。",
   "juken": "",
-  "basis": "text"
+  "basis": "text",
+  "ansFig": "kamitsukigame.webp",
+  "ansFigBy": "写真: Abbie King（CC BY 4.0）"
  },
  {
   "id": "seed_n7_30",
@@ -1399,7 +1450,9 @@
   "source": "一方、古くから日本に生息する在来種はその数を減らしており、イトウやイボイモリ、アオウミガメなどは絶滅危惧種に指定され、保護の対象になっています。",
   "explain": "テキストより。",
   "juken": "",
-  "basis": "text"
+  "basis": "text",
+  "ansFig": "aoumigame.webp",
+  "ansFigBy": "写真: Susan Aide（CC BY 4.0）"
  },
  {
   "id": "seed_n7_33",
@@ -1430,7 +1483,9 @@
   "source": "ヤモリは漢字で書くと家守、イモリは漢字で書くと井守です。乾燥した家の壁などに張り付いているヤモリがは虫類、湿った井戸の中などにいるイモリが両生類です。",
   "explain": "は虫類です。壁に張り付くための爪があり、体の表面は乾いています。",
   "juken": "ヤモリ（は虫類）とイモリ（両生類）の入れかえに注意。",
-  "basis": "text"
+  "basis": "text",
+  "ansFig": "yamori.webp",
+  "ansFigBy": "写真: Kim（CC BY 4.0）"
  },
  {
   "id": "seed_n7_35",
@@ -1445,7 +1500,9 @@
   "source": "ヤモリは漢字で書くと家守、イモリは漢字で書くと井守です。乾燥した家の壁などに張り付いているヤモリがは虫類、湿った井戸の中などにいるイモリが両生類です。",
   "explain": "両生類です。尾が泳ぐのに適した形で、体の表面は湿っています。",
   "juken": "ヤモリ（は虫類）とイモリ（両生類）の入れかえに注意。",
-  "basis": "text"
+  "basis": "text",
+  "ansFig": "imori.webp",
+  "ansFigBy": "写真: りなべる（CC BY 4.0）"
  },
  {
   "id": "seed_n7_36",
@@ -1474,7 +1531,8 @@
   "source": "現在生息している最大の動物はほ乳類のシロナガスクジラです。",
   "explain": "ほ乳類です。",
   "juken": "",
-  "basis": "text"
+  "basis": "text",
+  "ansFig": "shironagasukujira.webp"
  },
  {
   "id": "seed_n7_38",
@@ -1489,7 +1547,9 @@
   "source": "最大の魚類は海に生息するジンベイザメで、最大で体長が20mほどになる巨大な魚ですが、その巨体に似合わず、オキアミなどの小さなプランクトンをえさにしています。",
   "explain": "巨体に似合わず、オキアミなどの小さなプランクトンをえさにしています。",
   "juken": "",
-  "basis": "text"
+  "basis": "text",
+  "ansFig": "jinbeizame.webp",
+  "ansFigBy": "写真: Daniel Benák（CC BY 4.0）"
  },
  {
   "id": "seed_n7_39",
@@ -1502,7 +1562,9 @@
   "source": "最大の両生類は日本に生息するオオサンショウウオです。最大で体長が1.5mほどまで成長します。",
   "explain": "テキストより。",
   "juken": "",
-  "basis": "text"
+  "basis": "text",
+  "ansFig": "oosanshouuo.webp",
+  "ansFigBy": "写真: Nick Tobler (Cowturtle)（CC BY 4.0）"
  },
  {
   "id": "seed_n7_40",
@@ -1515,7 +1577,9 @@
   "source": "最大のは虫類はイリエワニ、もしくはアミメニシキヘビです。イリエワニは最大で体長が7mほどになり、体重は2t近い記録があり、",
   "explain": "ヘビのなかまではアミメニシキヘビが最大です。",
   "juken": "",
-  "basis": "text"
+  "basis": "text",
+  "ansFig": "iriewani.webp",
+  "ansFigBy": "写真: Navaneeth Sini George（CC BY 4.0）"
  },
  {
   "id": "seed_n7_41",
@@ -1610,7 +1674,9 @@
   "source": "種子の運ばれ方①　風で飛ぶ種子：カエデ・マツ・ススキ・ポプラ　動物につく種子：オナモミ・センダングサ",
   "explain": "風で飛ぶのはカエデ・マツ・ススキ・ポプラ、動物につくのはオナモミ・センダングサです。",
   "juken": "季節の移り変わり（種子の運ばれ方）。",
-  "basis": "text"
+  "basis": "text",
+  "ansFig": "onamomi.webp",
+  "ansFigBy": "写真: zebedeugalinha（CC BY 4.0）"
  },
  {
   "id": "seed_n7_47",
@@ -2108,7 +2174,9 @@
   "explain": "どんぐりが転がるのはシイ・カシ・クヌギ・コナラ、実がはじけて飛ぶのはホウセンカ・カタバミです。",
   "juken": "季節の移り変わり（種子の運ばれ方）。",
   "basis": "text",
-  "yomi": "みがはじけてとぶ"
+  "yomi": "みがはじけてとぶ",
+  "ansFig": "housenka.webp",
+  "ansFigBy": "写真: Martin Alfredo Murillo（CC BY 4.0）"
  },
  {
   "id": "seed_n8_31",
@@ -2222,7 +2290,9 @@
   "explain": "雨のあと、空気中の水滴がプリズムと同じはたらきをすると、虹が見えます。",
   "juken": "",
   "basis": "text",
-  "figAfter": "hikari_ans.svg"
+  "figAfter": "hikari_ans.svg",
+  "ansFig": "prism_hikari.webp",
+  "ansFigBy": "写真: Han Cheng Yeh（CC BY 2.0）"
  },
  {
   "id": "seed_n9_07",
@@ -2239,7 +2309,9 @@
   "explain": "一番内側は紫です。赤のさらに外側には赤外線があります。",
   "juken": "",
   "basis": "text",
-  "figAfter": "hikari_ans.svg"
+  "figAfter": "hikari_ans.svg",
+  "ansFig": "niji.webp",
+  "ansFigBy": "写真: Sean MacEntee（CC BY 2.0）"
  },
  {
   "id": "seed_n9_08",
@@ -2257,7 +2329,9 @@
   "juken": "",
   "basis": "text",
   "yomi": "むらさき",
-  "figAfter": "hikari_ans.svg"
+  "figAfter": "hikari_ans.svg",
+  "ansFig": "niji.webp",
+  "ansFigBy": "写真: Sean MacEntee（CC BY 2.0）"
  },
  {
   "id": "seed_n9_09",
@@ -2643,7 +2717,9 @@
   "source": "地下に養分を蓄える　根に養分を蓄える：ダリア・サツマイモ・ニンジン・ヤマノイモ　地下の茎に養分を蓄える：ハス・サトイモ",
   "explain": "根に蓄えるのはダリア・サツマイモ・ニンジン・ヤマノイモ、地下の茎に蓄えるのはハス・サトイモです。",
   "juken": "季節の移り変わり（地下に養分を蓄える）。",
-  "basis": "text"
+  "basis": "text",
+  "ansFig": "satsumaimo.webp",
+  "ansFigBy": "写真: Kanko*（CC BY 2.0）"
  },
  {
   "id": "seed_n9_34",
@@ -2658,7 +2734,9 @@
   "source": "地下に養分を蓄える　根に養分を蓄える：ダリア・サツマイモ・ニンジン・ヤマノイモ　地下の茎に養分を蓄える：ハス・サトイモ",
   "explain": "根に蓄えるのはダリア・サツマイモ・ニンジン・ヤマノイモ、地下の茎に蓄えるのはハス・サトイモです。",
   "juken": "季節の移り変わり（地下に養分を蓄える）。",
-  "basis": "text"
+  "basis": "text",
+  "ansFig": "ninjin.webp",
+  "ansFigBy": "写真: John-Morgan（CC BY 2.0）"
  },
  {
   "id": "seed_n9_35",
@@ -3891,7 +3969,9 @@
   "explain": "全国から国会議員が集まります。",
   "juken": "",
   "basis": "text",
-  "yomi": "こっかいぎじどう"
+  "yomi": "こっかいぎじどう",
+  "ansFig": "kokkai.webp",
+  "ansFigBy": "写真: Dick Thomas Johnson（CC BY 2.0）"
  },
  {
   "id": "seed_ns7_04",
@@ -3970,7 +4050,9 @@
   "explain": "テキストより。",
   "juken": "",
   "basis": "text",
-  "yomi": "かみなりもん"
+  "yomi": "かみなりもん",
+  "ansFig": "kaminarimon.webp",
+  "ansFigBy": "写真: bryan...（CC BY-SA 2.0）"
  },
  {
   "id": "seed_ns7_09",
@@ -5271,7 +5353,9 @@
   "explain": "陽明門も貴重な建造物です。",
   "juken": "",
   "basis": "text",
-  "yomi": "さんざる"
+  "yomi": "さんざる",
+  "ansFig": "sanzaru.webp",
+  "ansFigBy": "写真: Jpatokal（CC BY-SA 4.0）"
  },
  {
   "id": "seed_ns9_05",
@@ -5303,7 +5387,9 @@
   "explain": "テキストより。",
   "juken": "",
   "basis": "text",
-  "yomi": "けごんのたき"
+  "yomi": "けごんのたき",
+  "ansFig": "kegon.webp",
+  "ansFigBy": "写真: reggiepen（CC BY 2.0）"
  },
  {
   "id": "seed_ns9_07",

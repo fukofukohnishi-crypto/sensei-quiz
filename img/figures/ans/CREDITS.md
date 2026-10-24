@@ -193,3 +193,40 @@ python3 tools/photo2ans.py <絵> <名前> --nobg
 > **Free Art License（ライセンス・アート・リブル）について。** `mayu.webp` だけが
 > この免許。CC BY-SA と同じく「撮影者の表示」と「同じ条件での配布」を求める自由免許で、
 > 商用利用も再配布もできる。画面にクレジットを出しているので条件は満たしている。
+| `tsubame.webp` | ツバメ | iNaturalist<br>https://www.inaturalist.org/photos/635249563 | **CC BY**<br>→ **画面に表示ずみ** | Donald Davesne |
+| `ooruri.webp` | オオルリ（オス） | iNaturalist<br>https://www.inaturalist.org/photos/233568359 | **CC BY**<br>→ **画面に表示ずみ** | Wang.QG |
+| `kibitaki.webp` | キビタキ（オス） | iNaturalist<br>https://www.inaturalist.org/photos/175461055 | **CC BY**<br>→ **画面に表示ずみ** | Lawrence Hylton |
+| `magamo.webp` | マガモ（オス） | iNaturalist<br>https://www.inaturalist.org/photos/177479326 | **CC BY**<br>→ **画面に表示ずみ** | Codrin Bucur |
+| `manazuru.webp` | マナヅル | iNaturalist<br>https://www.inaturalist.org/photos/102489197 | **CC BY**<br>→ **画面に表示ずみ** | Christoph Moning |
+| `tsugumi.webp` | ツグミ | iNaturalist<br>https://www.inaturalist.org/photos/359893507 | **CC0** | 表示不要 |
+| `magan.webp` | マガン | iNaturalist<br>https://www.inaturalist.org/photos/257754955 | **CC BY**<br>→ **画面に表示ずみ** | MarvalPhotography19 |
+| `uso.webp` | ウソ（オス） | iNaturalist<br>https://www.inaturalist.org/photos/605362605 | **CC BY**<br>→ **画面に表示ずみ** | Ксения Волянская |
+| `suzume.webp` | スズメ | iNaturalist<br>https://www.inaturalist.org/photos/608112754 | **CC BY**<br>→ **画面に表示ずみ** | Radu Teodoreanu |
+| `kijibato.webp` | キジバト | iNaturalist<br>https://www.inaturalist.org/photos/144293490 | **CC BY**<br>→ **画面に表示ずみ** | egorbirder |
+| `hashibutogarasu.webp` | ハシブトガラス | iNaturalist<br>https://www.inaturalist.org/photos/684726421 | **CC BY**<br>→ **画面に表示ずみ** | Aparna Shyam |
+| `uguisu.webp` | ウグイス | iNaturalist<br>https://www.inaturalist.org/photos/223908464 | **CC BY**<br>→ **画面に表示ずみ** | Pavel Smirnov |
+| `hibari.webp` | ヒバリ | iNaturalist<br>https://www.inaturalist.org/photos/515519778 | **CC BY**<br>→ **画面に表示ずみ** | Paul Lewis |
+| `hiyodori.webp` | ヒヨドリ | iNaturalist<br>https://www.inaturalist.org/photos/617670438 | **CC BY**<br>→ **画面に表示ずみ** | Corey Farwell |
+| `ooyoshikiri.webp` | オオヨシキリ | iNaturalist<br>https://www.inaturalist.org/photos/2741588 | **CC BY**<br>→ **画面に表示ずみ** | Kim |
+| `raicho_natsu.webp` | ライチョウ（夏羽・日本） | iNaturalist<br>https://www.inaturalist.org/photos/89386109 | **CC BY**<br>→ **画面に表示ずみ** | Marco Mussita |
+| `yanbarukuina.webp` | ヤンバルクイナ | iNaturalist<br>https://www.inaturalist.org/photos/108698022 | **CC BY**<br>→ **画面に表示ずみ** | Takaaki Hattori |
+| `dacho.webp` | ダチョウ | iNaturalist<br>https://www.inaturalist.org/photos/55506762 | **CC BY**<br>→ **画面に表示ずみ** | Andrew Allen |
+| `hikuidori.webp` | ヒクイドリ | iNaturalist<br>https://www.inaturalist.org/photos/346814420 | **CC BY**<br>→ **画面に表示ずみ** | Oscar Dove |
+| `penguin.webp` | フンボルトペンギン | iNaturalist<br>https://www.inaturalist.org/photos/16309093 | **CC BY**<br>→ **画面に表示ずみ** | Annika Lindqvist |
+| `yamori.webp` | ニホンヤモリ | iNaturalist<br>https://www.inaturalist.org/photos/7533665 | **CC BY**<br>→ **画面に表示ずみ** | Kim |
+| `imori.webp` | アカハライモリ | iNaturalist<br>https://www.inaturalist.org/photos/688280201 | **CC BY**<br>→ **画面に表示ずみ** | りなべる |
+| `oosanshouuo.webp` | オオサンショウウオ | iNaturalist<br>https://www.inaturalist.org/photos/627060000 | **CC BY**<br>→ **画面に表示ずみ** | Nick Tobler (Cowturtle) |
+| `kamitsukigame.webp` | カミツキガメ | iNaturalist<br>https://www.inaturalist.org/photos/11051534 | **CC BY**<br>→ **画面に表示ずみ** | Abbie King |
+| `aoumigame.webp` | アオウミガメ | iNaturalist<br>https://www.inaturalist.org/photos/184199270 | **CC BY**<br>→ **画面に表示ずみ** | Susan Aide |
+| `jinbeizame.webp` | ジンベイザメ | iNaturalist<br>https://www.inaturalist.org/photos/229381770 | **CC BY**<br>→ **画面に表示ずみ** | Daniel Benák |
+| `iriewani.webp` | イリエワニ | iNaturalist<br>https://www.inaturalist.org/photos/174241093 | **CC BY**<br>→ **画面に表示ずみ** | Navaneeth Sini George |
+| `onamomi.webp` | オナモミの実 | iNaturalist<br>https://www.inaturalist.org/photos/588432360 | **CC BY**<br>→ **画面に表示ずみ** | zebedeugalinha |
+| `housenka.webp` | ホウセンカ | iNaturalist<br>https://www.inaturalist.org/photos/120732592 | **CC BY**<br>→ **画面に表示ずみ** | Martin Alfredo Murillo |
+| `satsumaimo.webp` | サツマイモ | Flickr（Openverse 経由）<br>https://www.flickr.com/photos/29282750@N00/51144298 | **CC BY 2.0**<br>→ **画面に表示ずみ** | Kanko* |
+| `ninjin.webp` | ニンジン | Flickr（Openverse 経由）<br>https://www.flickr.com/photos/24742305@N00/2256197976 | **CC BY 2.0**<br>→ **画面に表示ずみ** | John-Morgan |
+| `prism_hikari.webp` | プリズムで分かれた光 | Flickr（Openverse 経由）<br>https://www.flickr.com/photos/26719227@N00/9543521907 | **CC BY 2.0**<br>→ **画面に表示ずみ** | Han Cheng Yeh |
+| `niji.webp` | 虹 | Flickr（Openverse 経由）<br>https://www.flickr.com/photos/18090920@N07/4487110194 | **CC BY 2.0**<br>→ **画面に表示ずみ** | Sean MacEntee |
+| `sanzaru.webp` | 日光東照宮の三猿 | Wikimedia Commons<br>https://commons.wikimedia.org/w/index.php?curid=148219054 | **CC BY-SA 4.0**<br>→ **画面に表示ずみ** | Jpatokal |
+| `kegon.webp` | 華厳の滝 | Flickr（Openverse 経由）<br>https://www.flickr.com/photos/42438962@N05/22664922062 | **CC BY 2.0**<br>→ **画面に表示ずみ** | reggiepen |
+| `kaminarimon.webp` | 雷門 | Flickr（Openverse 経由）<br>https://www.flickr.com/photos/91049143@N00/13757029184 | **CC BY-SA 2.0**<br>→ **画面に表示ずみ** | bryan... |
+| `kokkai.webp` | 国会議事堂 | Flickr（Openverse 経由）<br>https://www.flickr.com/photos/31029865@N06/6700031823 | **CC BY 2.0**<br>→ **画面に表示ずみ** | Dick Thomas Johnson |
