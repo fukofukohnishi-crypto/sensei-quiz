@@ -232,3 +232,8 @@ python3 tools/photo2ans.py <絵> <名前> --nobg
 | `kokkai.webp` | 国会議事堂 | Flickr（Openverse 経由）<br>https://www.flickr.com/photos/31029865@N06/6700031823 | **CC BY 2.0**<br>→ **画面に表示ずみ** | Dick Thomas Johnson |
 | `kenrokuen.webp` | 兼六園のことじ灯籠 | Flickr（Openverse 経由）<br>https://www.flickr.com/photos/91049143@N00/15695525629 | **CC BY-SA 2.0**<br>→ **画面に表示ずみ** | bryan... |
 | `curvemirror.webp` | カーブミラー（凸面鏡） | Flickr（Openverse 経由）<br>https://www.flickr.com/photos/7455207@N05/4463257694 | **CC BY-SA 2.0**<br>→ **画面に表示ずみ** | SBA73 |
+| `toshogu.webp` | 日光東照宮の陽明門 | Wikimedia Commons（親がさがした） | **PD** | 表示不要 |
+| `tomioka.webp` | 富岡製糸場 | Wikimedia Commons（親がさがした） | **PD** | 表示不要 |
+| `ushikudaibutsu.webp` | 牛久大仏 | 家族が撮影 | **自分で撮った写真** | 表示不要 |
+| `tsurugaoka.webp` | 鶴岡八幡宮 | Wikimedia Commons（親がさがした） | **PD** | 表示不要 |
+| `odawarajo.webp` | 小田原城 | Wikimedia Commons（親がさがした） | **PD** | 表示不要 |

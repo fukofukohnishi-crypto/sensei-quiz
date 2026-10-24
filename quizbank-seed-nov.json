@@ -4389,7 +4389,8 @@
   "explain": "テキストより。",
   "juken": "",
   "basis": "text",
-  "yomi": "おだわらじょう"
+  "yomi": "おだわらじょう",
+  "ansFig": "odawarajo.webp"
  },
  {
   "id": "seed_ns7_30",
@@ -4422,7 +4423,8 @@
   "explain": "テキストより。",
   "juken": "",
   "basis": "text",
-  "yomi": "つるがおかはちまんぐう"
+  "yomi": "つるがおかはちまんぐう",
+  "ansFig": "tsurugaoka.webp"
  },
  {
   "id": "seed_ns7_32",
@@ -4796,7 +4798,8 @@
   "explain": "テキストより。",
   "juken": "",
   "basis": "text",
-  "yomi": "うしくだいぶつ"
+  "yomi": "うしくだいぶつ",
+  "ansFig": "ushikudaibutsu.webp"
  },
  {
   "id": "seed_ns8_13",
@@ -5322,7 +5325,8 @@
   "explain": "世界文化遺産に登録されています。",
   "juken": "",
   "basis": "text",
-  "yomi": "にっこうとうしょうぐう"
+  "yomi": "にっこうとうしょうぐう",
+  "ansFig": "toshogu.webp"
  },
  {
   "id": "seed_ns9_03",
@@ -5816,7 +5820,8 @@
   "explain": "テキストより。",
   "juken": "",
   "basis": "text",
-  "yomi": "とみおかせいしじょう"
+  "yomi": "とみおかせいしじょう",
+  "ansFig": "tomioka.webp"
  },
  {
   "id": "seed_ns9_34",
