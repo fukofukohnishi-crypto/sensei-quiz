@@ -5073,7 +5073,9 @@
   "explain": "テキストより。",
   "juken": "問題集では「川崎」と入れかえてある。",
   "basis": "text",
-  "yomi": "いぬぼうさき"
+  "yomi": "いぬぼうさき",
+  "ansFig": "inubosaki.webp",
+  "ansFigBy": "写真: Hiroaki Kaneko（CC BY-SA 3.0）"
  },
  {
   "id": "seed_ns8_30",
@@ -5119,7 +5121,9 @@
   "source": "東京湾アクアラインは神奈川県川崎市と千葉県木更津市を結ぶ高速道路です。人工の島である海ほたるにはサービスエリアがあります。",
   "explain": "テキストより。",
   "juken": "問題集の○×では「ゆりかもめ」（東京都の都の鳥）と入れかえてある。",
-  "basis": "text"
+  "basis": "text",
+  "ansFig": "umihotaru.webp",
+  "ansFigBy": "写真: 690 Noda（CC BY 3.0）"
  },
  {
   "id": "seed_ns8_33",

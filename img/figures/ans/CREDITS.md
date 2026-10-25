@@ -243,3 +243,5 @@ python3 tools/photo2ans.py <絵> <名前> --nobg
 | `tojinbo.webp` | 東尋坊 | Wikimedia Commons<br>`東尋坊 - panoramio (13).jpg` | **CC BY 3.0**<br>→ **画面に表示ずみ** | くろふね |
 | `yubatake.webp` | 草津温泉の湯畑（夜） | 家族が撮影 | **自分で撮った写真** | 表示不要 |
 | `senmaida.webp` | 白米千枚田 | Wikimedia Commons<br>`Shiroyone Senmaida ac (3).jpg` | **CC BY-SA 4.0**<br>→ **画面に表示ずみ** | Asturio Cantabrio |
+| `umihotaru.webp` | 海ほたる | Wikimedia Commons<br>`海ほたるPA 20141116 - panoramio.jpg` | **CC BY 3.0**<br>→ **画面に表示ずみ** | 690 Noda |
+| `inubosaki.webp` | 犬吠埼灯台 | Wikimedia Commons<br>`犬吠埼灯台 (Inubozaki Lighthouse) 07 Aug, 2009 - panoramio.jpg` | **CC BY-SA 3.0**<br>→ **画面に表示ずみ** | Hiroaki Kaneko |
