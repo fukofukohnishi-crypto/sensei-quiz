@@ -239,3 +239,5 @@ python3 tools/photo2ans.py <絵> <名前> --nobg
 | `odawarajo.webp` | 小田原城 | Wikimedia Commons（親がさがした） | **PD** | 表示不要 |
 | `chukagai.webp` | 横浜中華街の門 | Wikimedia Commons（親がさがした） | **PD** | 表示不要 |
 | `akarenga.webp` | 横浜赤レンガ倉庫 | Wikimedia Commons（親がさがした） | **PD** | 表示不要 |
+| `eiheiji.webp` | 永平寺の承陽門 | Wikimedia Commons<br>`Joyomon of Eiheiji in September 2024.jpg` | **CC BY-SA 4.0**<br>→ **画面に表示ずみ** | 掬茶 |
+| `tojinbo.webp` | 東尋坊 | Wikimedia Commons<br>`東尋坊 - panoramio (13).jpg` | **CC BY 3.0**<br>→ **画面に表示ずみ** | くろふね |

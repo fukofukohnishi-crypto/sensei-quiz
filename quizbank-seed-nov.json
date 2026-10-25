@@ -6474,7 +6474,9 @@
   "explain": "テキストより。",
   "juken": "",
   "basis": "text",
-  "yomi": "とうじんぼう"
+  "yomi": "とうじんぼう",
+  "ansFig": "tojinbo.webp",
+  "ansFigBy": "写真: くろふね（CC BY 3.0）"
  },
  {
   "id": "seed_ns10_30",
@@ -6506,7 +6508,9 @@
   "explain": "テキストより。",
   "juken": "",
   "basis": "text",
-  "yomi": "えいへいじ"
+  "yomi": "えいへいじ",
+  "ansFig": "eiheiji.webp",
+  "ansFigBy": "写真: 掬茶（CC BY-SA 4.0）"
  },
  {
   "id": "seed_ns10_32",
