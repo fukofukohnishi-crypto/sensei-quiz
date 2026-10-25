@@ -255,3 +255,6 @@ python3 tools/photo2ans.py <絵> <名前> --nobg
 | `echizenwashi.webp` | 越前和紙（卯立の工芸館の紙すき） | Wikimedia Commons<br>`Japanese paper making 03.jpg` | **CC BY-SA 4.0**<br>→ **画面に表示ずみ** | TR15336300101 |
 | `yosegi.webp` | 箱根寄木細工（もようの箱） | Wikimedia Commons | **PD**（パブリックドメイン） | 表示不要 |
 | `kagayuzen.webp` | 加賀友禅（草花と鳥の着物） | Wikimedia Commons<br>`加賀友禅染元 小川株式会社.jpg` | **CC BY-SA 3.0**<br>→ **画面に表示ずみ** | Linkage2 |
+| `imono.webp` | 鋳物（金属を流しこんでつくったイノシシの像） | Wikimedia Commons | **PD**（パブリックドメイン） | 表示不要 |
+| `yukitsumugi.webp` | 結城紬（地機で織っているところ） | Wikimedia Commons<br>`Yuki-jibata.JPG` | **CC BY-SA 3.0**<br>→ **画面に表示ずみ** | Moraykaita（日本語版Wikipedia） |
+| `hinaningyo.webp` | ひな人形（七段かざり） | 親が撮影 | 制限なし | 表示不要 |

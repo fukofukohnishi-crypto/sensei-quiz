@@ -3821,7 +3821,8 @@
   "source": "さいたま市の岩槻区ではひな人形の生産がさかんです。日光東照宮を修理した職人が伝えたとされています。",
   "explain": "テキストより。",
   "juken": "",
-  "basis": "text"
+  "basis": "text",
+  "ansFig": "hinaningyo.webp"
  },
  {
   "id": "seed_ns6_40",
@@ -3837,7 +3838,8 @@
   "explain": "マンホールのふたも鋳物の1つです。",
   "juken": "",
   "basis": "text",
-  "yomi": "いもの"
+  "yomi": "いもの",
+  "ansFig": "imono.webp"
  },
  {
   "id": "seed_ns6_41",
@@ -4791,7 +4793,9 @@
   "explain": "テキストより。",
   "juken": "",
   "basis": "text",
-  "yomi": "ゆうきつむぎ"
+  "yomi": "ゆうきつむぎ",
+  "ansFig": "yukitsumugi.webp",
+  "ansFigBy": "写真: Moraykaita（CC BY-SA 3.0）"
  },
  {
   "id": "seed_ns8_12",
