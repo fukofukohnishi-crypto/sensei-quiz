@@ -247,3 +247,5 @@ python3 tools/photo2ans.py <絵> <名前> --nobg
 | `inubosaki.webp` | 犬吠埼灯台 | Wikimedia Commons<br>`犬吠埼灯台 (Inubozaki Lighthouse) 07 Aug, 2009 - panoramio.jpg` | **CC BY-SA 3.0**<br>→ **画面に表示ずみ** | Hiroaki Kaneko |
 | `asamayama.webp` | 浅間山（山頂から白い煙） | Wikimedia Commons<br>`北陸新幹線からの浅間山20220508-IMG 2534.jpg` | **CC BY 4.0**<br>→ **画面に表示ずみ** | くろふね |
 | `miho.webp` | 三保の松原（松原と海と富士山） | Wikimedia Commons<br>`三保の松原, Miho no matsubara - panoramio.jpg` | **CC BY-SA 3.0**<br>→ **画面に表示ずみ** | xe zna |
+| `makinohara.webp` | 牧ノ原台地の茶畑 | Wikimedia Commons<br>`Tea Plantation.jpg` | **CC BY-SA 3.0**<br>→ **画面に表示ずみ** | 久保嶋宏明 |
+| `kofu.webp` | 甲府盆地（空から見た扇状地） | Wikimedia Commons<br>`KofuBonchi.jpg` | **CC BY-SA 3.0**<br>→ **画面に表示ずみ** | BehBeh（日本語版Wikipedia） |

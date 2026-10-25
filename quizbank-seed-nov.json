@@ -3306,7 +3306,9 @@
   "explain": "台地は、まわりの土地よりも高くなった土地のことです。",
   "juken": "静岡県は日本一の茶の産地。",
   "basis": "text",
-  "yomi": "まきのはら"
+  "yomi": "まきのはら",
+  "ansFig": "makinohara.webp",
+  "ansFigBy": "写真: 久保嶋宏明（CC BY-SA 3.0）"
  },
  {
   "id": "seed_ns6_07",
@@ -3512,7 +3514,9 @@
   "explain": "甲府盆地に広がっています。",
   "juken": "",
   "basis": "text",
-  "yomi": "せんじょうち"
+  "yomi": "せんじょうち",
+  "ansFig": "kofu.webp",
+  "ansFigBy": "写真: BehBeh（CC BY-SA 3.0）"
  },
  {
   "id": "seed_ns6_20",
