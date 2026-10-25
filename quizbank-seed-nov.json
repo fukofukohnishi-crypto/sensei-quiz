@@ -316,7 +316,8 @@
   "source": "冬鳥のなかま　オオハクチョウ・マガモ・マナヅル・ツグミ・マガン・ウソ",
   "explain": "秋のころ、冬越しのために北の地域からやってきます。",
   "juken": "夏鳥・冬鳥・留鳥・漂鳥の4つに分ける問題がよく出る。",
-  "basis": "text"
+  "basis": "text",
+  "ansFig": "oohakucho.webp"
  },
  {
   "id": "seed_n6_21",
@@ -1396,7 +1397,9 @@
   "source": "その中でもブラックバスと呼ばれるオオクチバスや、ウシガエル、カミツキガメなどは特定外来生物として駆除の対象になっています。",
   "explain": "テキストより。",
   "juken": "",
-  "basis": "text"
+  "basis": "text",
+  "ansFig": "ushigaeru.webp",
+  "ansFigBy": "写真: Brian Gratwicke（CC BY 2.0）"
  },
  {
   "id": "seed_n7_29",
@@ -6161,7 +6164,9 @@
   "explain": "テキストより。",
   "juken": "",
   "basis": "text",
-  "yomi": "きんぱく"
+  "yomi": "きんぱく",
+  "ansFig": "kinpaku.webp",
+  "ansFigBy": "写真: Eckhard Pecher（CC BY 2.5）"
  },
  {
   "id": "seed_ns10_09",
@@ -6419,7 +6424,9 @@
   "source": "福井県の鯖江市では、めがねフレームの生産がさかんで、めがねフレームの町として知られています。",
   "explain": "テキストより。",
   "juken": "",
-  "basis": "text"
+  "basis": "text",
+  "ansFig": "megane.webp",
+  "ansFigBy": "写真: 運動会プロテインパワー（CC BY-SA 4.0）"
  },
  {
   "id": "seed_ns10_25",

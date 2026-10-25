@@ -258,3 +258,7 @@ python3 tools/photo2ans.py <絵> <名前> --nobg
 | `imono.webp` | 鋳物（金属を流しこんでつくったイノシシの像） | Wikimedia Commons | **PD**（パブリックドメイン） | 表示不要 |
 | `yukitsumugi.webp` | 結城紬（地機で織っているところ） | Wikimedia Commons<br>`Yuki-jibata.JPG` | **CC BY-SA 3.0**<br>→ **画面に表示ずみ** | Moraykaita（日本語版Wikipedia） |
 | `hinaningyo.webp` | ひな人形（七段かざり） | 親が撮影 | 制限なし | 表示不要 |
+| `megane.webp` | 鯖江駅前（めがねのモニュメント） | Wikimedia Commons<br>`Sabae station 2021-03.jpg` | **CC BY-SA 4.0**<br>→ **画面に表示ずみ** | 運動会プロテインパワー |
+| `kinpaku.webp` | 金沢の金箔 | Wikimedia Commons<br>`Kanazawa Gold Factory.jpg` | **CC BY 2.5**<br>→ **画面に表示ずみ** | Eckhard Pecher |
+| `oohakucho.webp` | オオハクチョウ（黄色いくちばし） | Wikimedia Commons | **PD**（パブリックドメイン） | 表示不要 |
+| `ushigaeru.webp` | ウシガエル | Wikimedia Commons<br>`2011-05-01 Lithobates catesbeianus - Bullfrog.jpg` | **CC BY 2.0**<br>→ **画面に表示ずみ** | Brian Gratwicke |
