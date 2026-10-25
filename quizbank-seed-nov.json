@@ -3394,7 +3394,9 @@
   "source": "久能山：石がきを利用したいちごづくりで知られています。",
   "explain": "テキストより。",
   "juken": "",
-  "basis": "text"
+  "basis": "text",
+  "ansFig": "ichigo.webp",
+  "ansFigBy": "写真: wwarby（CC BY 2.0）"
  },
  {
   "id": "seed_ns6_11",
@@ -3489,7 +3491,9 @@
   "source": "静岡県　県の花　ツツジ",
   "explain": "テキストより。",
   "juken": "",
-  "basis": "text"
+  "basis": "text",
+  "ansFig": "tsutsuji.webp",
+  "ansFigBy": "写真: Timur Kalininsky（CC BY）"
  },
  {
   "id": "seed_ns6_17",
@@ -3667,7 +3671,9 @@
   "explain": "現在は宝石の加工もさかんです。",
   "juken": "",
   "basis": "text",
-  "yomi": "すいしょう"
+  "yomi": "すいしょう",
+  "ansFig": "suisho.webp",
+  "ansFigBy": "写真: mscaprikell（CC BY-SA 2.0）"
  },
  {
   "id": "seed_ns6_28",
@@ -3693,7 +3699,9 @@
   "source": "県の花　フジザクラ　マメザクラの別名なんだ！",
   "explain": "テキストより。",
   "juken": "",
-  "basis": "text"
+  "basis": "text",
+  "ansFig": "fujizakura.webp",
+  "ansFigBy": "写真: WATANABE Hitoshi 渡辺仁（CC BY）"
  },
  {
   "id": "seed_ns6_30",
@@ -3882,7 +3890,9 @@
   "explain": "テキストより。",
   "juken": "",
   "basis": "text",
-  "yomi": "かわごえし"
+  "yomi": "かわごえし",
+  "ansFig": "kawagoe.webp",
+  "ansFigBy": "写真: Kentagon（CC BY-SA 4.0）"
  },
  {
   "id": "seed_ns6_42",
@@ -3928,7 +3938,8 @@
   "source": "県の花　サクラソウ　湿った土地などでよく育つ一年草なんだ！",
   "explain": "テキストより。",
   "juken": "",
-  "basis": "text"
+  "basis": "text",
+  "ansFig": "sakuraso.webp"
  },
  {
   "id": "seed_ns6_45",
@@ -4039,7 +4050,9 @@
   "explain": "テキストより。",
   "juken": "",
   "basis": "text",
-  "yomi": "こうきょ"
+  "yomi": "こうきょ",
+  "ansFig": "kokyo.webp",
+  "ansFigBy": "写真: Ray in Manila（CC BY 2.0）"
  },
  {
   "id": "seed_ns7_06",
@@ -4055,7 +4068,9 @@
   "explain": "江戸城は将軍の住まいでした。",
   "juken": "",
   "basis": "text",
-  "yomi": "えどじょう"
+  "yomi": "えどじょう",
+  "ansFig": "kokyo.webp",
+  "ansFigBy": "写真: Ray in Manila（CC BY 2.0）"
  },
  {
   "id": "seed_ns7_07",
@@ -4202,7 +4217,9 @@
   "explain": "テキストより。",
   "juken": "",
   "basis": "text",
-  "yomi": "おがさわらしょとう"
+  "yomi": "おがさわらしょとう",
+  "ansFig": "ogasawara.webp",
+  "ansFigBy": "写真: Si-take. at Japanese Wikipedia(しいたけ)（CC BY-SA 3.0）"
  },
  {
   "id": "seed_ns7_16",
@@ -4218,7 +4235,9 @@
   "explain": "独自の進化をとげた生物が評価されました。",
   "juken": "世界文化遺産（富岡製糸場・日光東照宮）と区別する。",
   "basis": "text",
-  "yomi": "せかいしぜんいさん"
+  "yomi": "せかいしぜんいさん",
+  "ansFig": "ogasawara.webp",
+  "ansFigBy": "写真: Si-take. at Japanese Wikipedia(しいたけ)（CC BY-SA 3.0）"
  },
  {
   "id": "seed_ns7_17",
@@ -4266,7 +4285,9 @@
   "explain": "羽田空港ともよばれます。成田国際空港は千葉県です。",
   "juken": "成田国際空港（千葉）と入れかえた○×が出る。",
   "basis": "text",
-  "yomi": "とうきょうこくさいくうこう"
+  "yomi": "とうきょうこくさいくうこう",
+  "ansFig": "haneda.webp",
+  "ansFigBy": "写真: MIKI Yoshihito.（CC BY 2.0）"
  },
  {
   "id": "seed_ns7_20",
@@ -4447,7 +4468,8 @@
   "explain": "テキストより。",
   "juken": "",
   "basis": "text",
-  "yomi": "かまくら"
+  "yomi": "かまくら",
+  "ansFig": "tsurugaoka.webp"
  },
  {
   "id": "seed_ns7_31",
@@ -5003,7 +5025,9 @@
   "source": "県の花　バラ　県章にもえがかれているね！",
   "explain": "県章は、バラのつぼみが開いていく様子です。",
   "juken": "",
-  "basis": "text"
+  "basis": "text",
+  "ansFig": "bara.webp",
+  "ansFigBy": "写真: Jangra Works（CC BY 2.0）"
  },
  {
   "id": "seed_ns8_23",
@@ -5034,7 +5058,9 @@
   "source": "千葉県は日本一のらっかせい（落花生）の産地です。水はけのよい土と温暖な気候が栽培に適しています。",
   "explain": "テキストより。",
   "juken": "なぜ→だから：水はけ＋温暖 → 落花生。",
-  "basis": "text"
+  "basis": "text",
+  "ansFig": "rakkasei.webp",
+  "ansFigBy": "写真: ruurmo（CC BY-SA 2.0）"
  },
  {
   "id": "seed_ns8_25",
@@ -5214,7 +5240,9 @@
   "source": "上流から運ばれてきた大豆などを使って調味料をつくることができたんだ。野田市と銚子市はどちらもしょう油づくりで有名な都市なんだ。",
   "explain": "利根川の水運で、大豆などを運ぶことができました。",
   "juken": "なぜ→だから：利根川の水運 → 大豆が運べる → しょう油。",
-  "basis": "text"
+  "basis": "text",
+  "ansFig": "shoyu.webp",
+  "ansFigBy": "写真: Creative Tools（CC BY 2.0）"
  },
  {
   "id": "seed_ns8_36",
@@ -5346,7 +5374,9 @@
   "source": "県の花　ナノハナ　千葉県は食用の収穫量が日本一なんだ！",
   "explain": "テキストより。",
   "juken": "",
-  "basis": "text"
+  "basis": "text",
+  "ansFig": "nanohana.webp",
+  "ansFigBy": "写真: Michel Langeveld（CC BY）"
  },
  {
   "id": "seed_ns9_01",
@@ -5545,7 +5575,9 @@
   "source": "栃木県は長年にわたっていちごの収穫量が日本一です。「とちおとめ」や「スカイベリー」などの品種が有名です。",
   "explain": "テキストより。",
   "juken": "",
-  "basis": "text"
+  "basis": "text",
+  "ansFig": "ichigo.webp",
+  "ansFigBy": "写真: wwarby（CC BY 2.0）"
  },
  {
   "id": "seed_ns9_13",
@@ -5689,7 +5721,9 @@
   "explain": "テキストより。",
   "juken": "",
   "basis": "text",
-  "yomi": "どう"
+  "yomi": "どう",
+  "ansFig": "dou.webp",
+  "ansFigBy": "写真: James St. John（CC BY 2.0）"
  },
  {
   "id": "seed_ns9_22",
@@ -5702,7 +5736,9 @@
   "source": "県の花　ヤシオツツジ　きびしい冬をこしたあとすぐに花をさかせます。",
   "explain": "テキストより。",
   "juken": "",
-  "basis": "text"
+  "basis": "text",
+  "ansFig": "yashiotsutsuji.webp",
+  "ansFigBy": "写真: Marco Mussita（CC BY）"
  },
  {
   "id": "seed_ns9_23",
@@ -6065,7 +6101,9 @@
   "source": "県の花　レンゲツツジ　夏の始めにはオレンジ色の花をさかせます。",
   "explain": "テキストより。",
   "juken": "",
-  "basis": "text"
+  "basis": "text",
+  "ansFig": "rengetsutsuji.webp",
+  "ansFigBy": "写真: Marco Mussita（CC BY）"
  },
  {
   "id": "seed_ns10_01",
@@ -6413,7 +6451,9 @@
   "source": "県の花　クロユリ　白山国立公園などでみられるんだ！",
   "explain": "テキストより。",
   "juken": "",
-  "basis": "text"
+  "basis": "text",
+  "ansFig": "kuroyuri.webp",
+  "ansFigBy": "写真: florawhite（CC BY）"
  },
  {
   "id": "seed_ns10_22",
@@ -6708,7 +6748,9 @@
   "source": "県の花　スイセン　漢字で「水仙」と書くんだ！",
   "explain": "テキストより。",
   "juken": "",
-  "basis": "text"
+  "basis": "text",
+  "ansFig": "suisen.webp",
+  "ansFigBy": "写真: Katerina Kalogerini（CC BY）"
  },
  {
   "id": "seed_nmap_01",

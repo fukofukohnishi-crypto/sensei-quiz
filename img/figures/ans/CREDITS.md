@@ -268,3 +268,21 @@ python3 tools/photo2ans.py <絵> <名前> --nobg
 | `takasakidaruma.webp` | 高崎だるま | Wikimedia Commons | **PD**（パブリックドメイン） | 表示不要 |
 | `marimba.webp` | マリンバ（木の板の楽器） | Wikimedia Commons<br>`Marimba One 4000 Series.jpg` | **CC BY-SA 3.0**<br>→ **画面に表示ずみ** | Marimbaone |
 | `kaede_tane.webp` | カエデの種子（羽のついた種） | Wikimedia Commons<br>`This seed of a maple seed runs as a helicopter.jpg` | **CC BY-SA 3.0**<br>→ **画面に表示ずみ** | Peter van der Sluijs |
+| `tsutsuji.webp` | ツツジ | iNaturalist<br>https://www.inaturalist.org/photos/203376555 | **CC BY**<br>→ **画面に表示ずみ** | Timur Kalininsky |
+| `fujizakura.webp` | フジザクラ | iNaturalist<br>https://www.inaturalist.org/photos/117078531 | **CC BY**<br>→ **画面に表示ずみ** | WATANABE Hitoshi 渡辺仁 |
+| `sakuraso.webp` | サクラソウ | iNaturalist<br>https://www.inaturalist.org/photos/198011515 | **CC0** | 表示不要 |
+| `bara.webp` | バラ | Flickr（Openverse 経由）<br>https://www.flickr.com/photos/46488122@N05/16459670901 | **CC BY 2.0**<br>→ **画面に表示ずみ** | Jangra Works |
+| `nanohana.webp` | ナノハナ | iNaturalist<br>https://www.inaturalist.org/photos/476700308 | **CC BY**<br>→ **画面に表示ずみ** | Michel Langeveld |
+| `yashiotsutsuji.webp` | ヤシオツツジ（アカヤシオ） | iNaturalist<br>https://www.inaturalist.org/photos/650615301 | **CC BY**<br>→ **画面に表示ずみ** | Marco Mussita |
+| `rengetsutsuji.webp` | レンゲツツジ | iNaturalist<br>https://www.inaturalist.org/photos/18863865 | **CC BY**<br>→ **画面に表示ずみ** | Marco Mussita |
+| `kuroyuri.webp` | クロユリ | iNaturalist<br>https://www.inaturalist.org/photos/746672739 | **CC BY**<br>→ **画面に表示ずみ** | florawhite |
+| `suisen.webp` | スイセン | iNaturalist<br>https://www.inaturalist.org/photos/57095781 | **CC BY**<br>→ **画面に表示ずみ** | Katerina Kalogerini |
+| `rakkasei.webp` | 落花生 | Flickr（Openverse 経由）<br>https://www.flickr.com/photos/81752595@N00/142983393 | **CC BY-SA 2.0**<br>→ **画面に表示ずみ** | ruurmo |
+| `shoyu.webp` | しょう油 | Flickr（Openverse 経由）<br>https://commons.wikimedia.org/w/index.php?curid=12263014 | **CC BY 2.0**<br>→ **画面に表示ずみ** | Creative Tools |
+| `ichigo.webp` | いちご | Flickr（Openverse 経由）<br>https://www.flickr.com/photos/26782864@N00/11902390455 | **CC BY 2.0**<br>→ **画面に表示ずみ** | wwarby |
+| `suisho.webp` | 水晶 | Flickr（Openverse 経由）<br>https://www.flickr.com/photos/49503060852@N01/13904965 | **CC BY-SA 2.0**<br>→ **画面に表示ずみ** | mscaprikell |
+| `dou.webp` | 銅（自然銅） | Flickr（Openverse 経由）<br>https://www.flickr.com/photos/47445767@N05/17116629157 | **CC BY 2.0**<br>→ **画面に表示ずみ** | James St. John |
+| `kawagoe.webp` | 川越の時の鐘 | Flickr（Openverse 経由）<br>https://commons.wikimedia.org/w/index.php?curid=37731046 | **CC BY-SA 4.0**<br>→ **画面に表示ずみ** | Kentagon |
+| `kokyo.webp` | 皇居（二重橋） | Flickr（Openverse 経由）<br>https://www.flickr.com/photos/21186555@N07/17247906786 | **CC BY 2.0**<br>→ **画面に表示ずみ** | Ray in Manila |
+| `ogasawara.webp` | 小笠原諸島（父島） | Flickr（Openverse 経由）<br>https://commons.wikimedia.org/w/index.php?curid=4784053 | **CC BY-SA 3.0**<br>→ **画面に表示ずみ** | Si-take. at Japanese Wikipedia(しいたけ) |
+| `haneda.webp` | 羽田空港 | Flickr（Openverse 経由）<br>https://www.flickr.com/photos/7940758@N07/2992395846 | **CC BY 2.0**<br>→ **画面に表示ずみ** | MIKI Yoshihito. |
