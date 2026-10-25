@@ -1613,7 +1613,9 @@
   "source": "種子の運ばれ方①　風で飛ぶ種子：カエデ・マツ・ススキ・ポプラ　動物につく種子：オナモミ・センダングサ",
   "explain": "風で飛ぶのはカエデ・マツ・ススキ・ポプラ、動物につくのはオナモミ・センダングサです。",
   "juken": "季節の移り変わり（種子の運ばれ方）。",
-  "basis": "text"
+  "basis": "text",
+  "ansFig": "kaede_tane.webp",
+  "ansFigBy": "写真: Peter van der Sluijs（CC BY-SA 3.0）"
  },
  {
   "id": "seed_n7_43",

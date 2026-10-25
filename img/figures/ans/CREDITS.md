@@ -267,3 +267,4 @@ python3 tools/photo2ans.py <絵> <名前> --nobg
 | `solarcooker.webp` | ソーラークッカー（丸い鏡で中華鍋を温める） | Wikimedia Commons<br>`Cuina solar paella.JPG` | **CC BY-SA 3.0**<br>→ **画面に表示ずみ** | Avecendrell |
 | `takasakidaruma.webp` | 高崎だるま | Wikimedia Commons | **PD**（パブリックドメイン） | 表示不要 |
 | `marimba.webp` | マリンバ（木の板の楽器） | Wikimedia Commons<br>`Marimba One 4000 Series.jpg` | **CC BY-SA 3.0**<br>→ **画面に表示ずみ** | Marimbaone |
+| `kaede_tane.webp` | カエデの種子（羽のついた種） | Wikimedia Commons<br>`This seed of a maple seed runs as a helicopter.jpg` | **CC BY-SA 3.0**<br>→ **画面に表示ずみ** | Peter van der Sluijs |
