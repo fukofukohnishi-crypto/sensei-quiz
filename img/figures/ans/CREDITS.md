@@ -246,4 +246,4 @@ python3 tools/photo2ans.py <絵> <名前> --nobg
 | `umihotaru.webp` | 海ほたる | Wikimedia Commons<br>`海ほたるPA 20141116 - panoramio.jpg` | **CC BY 3.0**<br>→ **画面に表示ずみ** | 690 Noda |
 | `inubosaki.webp` | 犬吠埼灯台 | Wikimedia Commons<br>`犬吠埼灯台 (Inubozaki Lighthouse) 07 Aug, 2009 - panoramio.jpg` | **CC BY-SA 3.0**<br>→ **画面に表示ずみ** | Hiroaki Kaneko |
 | `asamayama.webp` | 浅間山（山頂から白い煙） | Wikimedia Commons<br>`北陸新幹線からの浅間山20220508-IMG 2534.jpg` | **CC BY 4.0**<br>→ **画面に表示ずみ** | くろふね |
-| `miho.webp` | 三保の松原 | Wikimedia Commons<br>`Miho no Matsubara 13.jpg` | **CC BY-SA 4.0**<br>→ **画面に表示ずみ** | Motokoka |
+| `miho.webp` | 三保の松原（松原と海と富士山） | Wikimedia Commons<br>`三保の松原, Miho no matsubara - panoramio.jpg` | **CC BY-SA 3.0**<br>→ **画面に表示ずみ** | xe zna |
