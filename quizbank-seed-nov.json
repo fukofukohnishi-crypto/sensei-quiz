@@ -2546,7 +2546,9 @@
   "source": "ソーラークッカーのように鏡を中華鍋のような形にすると、鏡に当たった光のほとんどを1点に集めることができます。光が集まればあたたかくなるので料理をすることができます",
   "explain": "テキストより。",
   "juken": "",
-  "basis": "text"
+  "basis": "text",
+  "ansFig": "solarcooker.webp",
+  "ansFigBy": "写真: Avecendrell（CC BY-SA 3.0）"
  },
  {
   "id": "seed_n9_23",
@@ -2774,7 +2776,9 @@
   "explain": "根に蓄えるのはダリア・サツマイモ・ニンジン・ヤマノイモ、地下の茎に蓄えるのはハス・サトイモです。",
   "juken": "季節の移り変わり（地下に養分を蓄える）。",
   "basis": "text",
-  "yomi": "ちかのくき"
+  "yomi": "ちかのくき",
+  "ansFig": "hasu_renkon.webp",
+  "ansFigBy": "写真: FotoosRobin（CC BY-SA 2.0）"
  },
  {
   "id": "seed_n9_37",
@@ -2792,7 +2796,8 @@
   "explain": "根に蓄えるのはダリア・サツマイモ・ニンジン・ヤマノイモ、地下の茎に蓄えるのはハス・サトイモです。",
   "juken": "季節の移り変わり（地下に養分を蓄える）。",
   "basis": "text",
-  "yomi": "ちかのくき"
+  "yomi": "ちかのくき",
+  "ansFig": "satoimo.webp"
  },
  {
   "id": "seed_n10_01",

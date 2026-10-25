@@ -262,3 +262,6 @@ python3 tools/photo2ans.py <絵> <名前> --nobg
 | `kinpaku.webp` | 金沢の金箔 | Wikimedia Commons<br>`Kanazawa Gold Factory.jpg` | **CC BY 2.5**<br>→ **画面に表示ずみ** | Eckhard Pecher |
 | `oohakucho.webp` | オオハクチョウ（黄色いくちばし） | Wikimedia Commons | **PD**（パブリックドメイン） | 表示不要 |
 | `ushigaeru.webp` | ウシガエル | Wikimedia Commons<br>`2011-05-01 Lithobates catesbeianus - Bullfrog.jpg` | **CC BY 2.0**<br>→ **画面に表示ずみ** | Brian Gratwicke |
+| `satoimo.webp` | サトイモ（ほったいも） | Wikimedia Commons | **PD**（パブリックドメイン） | 表示不要 |
+| `hasu_renkon.webp` | れんこん（ハスの地下の茎の切り口） | Wikimedia Commons<br>`Lotus root.jpg` | **CC BY-SA 2.0**<br>→ **画面に表示ずみ** | FotoosRobin |
+| `solarcooker.webp` | ソーラークッカー（丸い鏡で中華鍋を温める） | Wikimedia Commons<br>`Cuina solar paella.JPG` | **CC BY-SA 3.0**<br>→ **画面に表示ずみ** | Avecendrell |
