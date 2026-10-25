@@ -4381,7 +4381,8 @@
   "explain": "テキストより。",
   "juken": "",
   "basis": "text",
-  "yomi": "はこねよせぎざいく"
+  "yomi": "はこねよせぎざいく",
+  "ansFig": "yosegi.webp"
  },
  {
   "id": "seed_ns7_29",
@@ -6120,7 +6121,9 @@
   "explain": "テキストより。",
   "juken": "問題集では京都の「西陣織」と入れかえてある。",
   "basis": "text",
-  "yomi": "かがゆうぜん"
+  "yomi": "かがゆうぜん",
+  "ansFig": "kagayuzen.webp",
+  "ansFigBy": "写真: Linkage2（CC BY-SA 3.0）"
  },
  {
   "id": "seed_ns10_07",
@@ -6477,7 +6480,9 @@
   "explain": "テキストより。",
   "juken": "問題集では「土佐」と入れかえてある。",
   "basis": "text",
-  "yomi": "えちぜんわし"
+  "yomi": "えちぜんわし",
+  "ansFig": "echizenwashi.webp",
+  "ansFigBy": "写真: TR15336300101（CC BY-SA 4.0）"
  },
  {
   "id": "seed_ns10_29",

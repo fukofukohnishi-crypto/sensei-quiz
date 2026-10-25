@@ -252,3 +252,6 @@ python3 tools/photo2ans.py <絵> <名前> --nobg
 | `wajimanuri.webp` | 輪島塗（朱塗りのごはん茶わん） | Wikimedia Commons<br>`Wajima-nuri red rice bowl.jpg` | **CC BY-SA 4.0**<br>→ **画面に表示ずみ** | yuuki ゆうき（金野裕希） |
 | `kutaniyaki.webp` | 九谷焼（色絵の大皿） | Wikimedia Commons | **PD**（パブリックドメイン） | 表示不要 |
 | `mashikoyaki.webp` | 益子焼（角皿） | Wikimedia Commons | **PD**（パブリックドメイン） | 表示不要 |
+| `echizenwashi.webp` | 越前和紙（卯立の工芸館の紙すき） | Wikimedia Commons<br>`Japanese paper making 03.jpg` | **CC BY-SA 4.0**<br>→ **画面に表示ずみ** | TR15336300101 |
+| `yosegi.webp` | 箱根寄木細工（もようの箱） | Wikimedia Commons | **PD**（パブリックドメイン） | 表示不要 |
+| `kagayuzen.webp` | 加賀友禅（草花と鳥の着物） | Wikimedia Commons<br>`加賀友禅染元 小川株式会社.jpg` | **CC BY-SA 3.0**<br>→ **画面に表示ずみ** | Linkage2 |
