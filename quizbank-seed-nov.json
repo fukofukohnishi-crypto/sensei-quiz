@@ -1077,7 +1077,9 @@
   "explain": "一生えらで呼吸し、卵に殻がありません。",
   "juken": "魚類・両生類・は虫類に分ける問題がよく出る。",
   "basis": "text",
-  "yomi": "ぎょるい"
+  "yomi": "ぎょるい",
+  "ansFig": "unagi.webp",
+  "ansFigBy": "写真: Ffish.asia（CC BY 4.0）"
  },
  {
   "id": "seed_n7_09",
@@ -1109,7 +1111,9 @@
   "explain": "子はえら、成長すると肺と皮ふで呼吸します。卵に殻がありません。",
   "juken": "魚類・両生類・は虫類に分ける問題がよく出る。",
   "basis": "text",
-  "yomi": "りょうせいるい"
+  "yomi": "りょうせいるい",
+  "ansFig": "imori.webp",
+  "ansFigBy": "写真: りなべる（CC BY 4.0）"
  },
  {
   "id": "seed_n7_11",
@@ -1125,7 +1129,9 @@
   "explain": "子はえら、成長すると肺と皮ふで呼吸します。卵に殻がありません。",
   "juken": "魚類・両生類・は虫類に分ける問題がよく出る。",
   "basis": "text",
-  "yomi": "りょうせいるい"
+  "yomi": "りょうせいるい",
+  "ansFig": "oosanshouuo.webp",
+  "ansFigBy": "写真: Nick Tobler (Cowturtle)（CC BY 4.0）"
  },
  {
   "id": "seed_n7_12",
@@ -1158,7 +1164,9 @@
   "explain": "肺で呼吸し、卵に殻があります。",
   "juken": "魚類・両生類・は虫類に分ける問題がよく出る。",
   "basis": "text",
-  "yomi": "はちゅうるい"
+  "yomi": "はちゅうるい",
+  "ansFig": "aoumigame.webp",
+  "ansFigBy": "写真: Susan Aide（CC BY 4.0）"
  },
  {
   "id": "seed_n7_14",
@@ -1175,7 +1183,9 @@
   "explain": "肺で呼吸し、卵に殻があります。",
   "juken": "魚類・両生類・は虫類に分ける問題がよく出る。",
   "basis": "text",
-  "yomi": "はちゅうるい"
+  "yomi": "はちゅうるい",
+  "ansFig": "iriewani.webp",
+  "ansFigBy": "写真: Navaneeth Sini George（CC BY 4.0）"
  },
  {
   "id": "seed_n7_15",
@@ -1521,7 +1531,9 @@
   "explain": "体の表面が乾いていて、壁に張り付くための爪があります。",
   "juken": "",
   "basis": "text",
-  "yomi": "はちゅうるい"
+  "yomi": "はちゅうるい",
+  "ansFig": "yamori.webp",
+  "ansFigBy": "写真: Kim（CC BY 4.0）"
  },
  {
   "id": "seed_n7_37",
@@ -3588,7 +3600,8 @@
   "explain": "山梨県と静岡県の境にあります。",
   "juken": "",
   "basis": "text",
-  "yomi": "ふじさん"
+  "yomi": "ふじさん",
+  "ansFig": "fujigoko.webp"
  },
  {
   "id": "seed_ns6_24",
@@ -3604,7 +3617,8 @@
   "explain": "山梨県にあります。",
   "juken": "",
   "basis": "text",
-  "yomi": "ふじごこ"
+  "yomi": "ふじごこ",
+  "ansFig": "fujigoko.webp"
  },
  {
   "id": "seed_ns6_25",
@@ -3635,7 +3649,9 @@
   "explain": "山梨県・長野県・静岡県にまたがっています。",
   "juken": "白地図で場所を聞かれる。",
   "basis": "text",
-  "yomi": "あかいしさんみゃく"
+  "yomi": "あかいしさんみゃく",
+  "ansFig": "akaishi.webp",
+  "ansFigBy": "写真: Alpsdake（CC BY-SA 4.0）"
  },
  {
   "id": "seed_ns6_27",
@@ -4055,7 +4071,9 @@
   "explain": "テキストより。",
   "juken": "",
   "basis": "text",
-  "yomi": "せんそうじ"
+  "yomi": "せんそうじ",
+  "ansFig": "kaminarimon.webp",
+  "ansFigBy": "写真: bryan...（CC BY-SA 2.0）"
  },
  {
   "id": "seed_ns7_08",
@@ -4679,7 +4697,8 @@
   "source": "江戸時代に徳川斉昭が民衆たちと「偕に楽しむ」ためにつくった庭園といわれ、ウメや（中略）たくさんの植物の花が美しくさいています。",
   "explain": "テキストより。",
   "juken": "",
-  "basis": "text"
+  "basis": "text",
+  "ansFig": "ume.webp"
  },
  {
   "id": "seed_ns8_04",
@@ -4727,7 +4746,9 @@
   "source": "霞ヶ浦周辺ではれんこんの栽培がさかんで、生産量は日本一です。",
   "explain": "テキストより。",
   "juken": "",
-  "basis": "text"
+  "basis": "text",
+  "ansFig": "hasu_renkon.webp",
+  "ansFigBy": "写真: FotoosRobin（CC BY-SA 2.0）"
  },
  {
   "id": "seed_ns8_07",
@@ -5209,7 +5230,9 @@
   "explain": "銚子市は利根川の河口にあります。",
   "juken": "",
   "basis": "text",
-  "yomi": "とねがわ"
+  "yomi": "とねがわ",
+  "ansFig": "tonegawa.webp",
+  "ansFigBy": "写真: P199（CC BY-SA 3.0）"
  },
  {
   "id": "seed_ns8_37",
@@ -5225,7 +5248,9 @@
   "explain": "日本で2番目に長い川で、流域面積は日本一です。",
   "juken": "",
   "basis": "text",
-  "yomi": "とねがわ"
+  "yomi": "とねがわ",
+  "ansFig": "tonegawa.webp",
+  "ansFigBy": "写真: P199（CC BY-SA 3.0）"
  },
  {
   "id": "seed_ns8_38",
@@ -5241,7 +5266,8 @@
   "explain": "もともと利根川は東京湾（江戸湾）に注いでいました。",
   "juken": "",
   "basis": "text",
-  "yomi": "とくがわいえやす"
+  "yomi": "とくがわいえやす",
+  "ansFig": "ieyasu.webp"
  },
  {
   "id": "seed_ns8_39",
@@ -5370,7 +5396,8 @@
   "explain": "テキストより。",
   "juken": "",
   "basis": "text",
-  "yomi": "とくがわいえやす"
+  "yomi": "とくがわいえやす",
+  "ansFig": "ieyasu.webp"
  },
  {
   "id": "seed_ns9_04",
@@ -6210,7 +6237,9 @@
   "explain": "テキストより。",
   "juken": "",
   "basis": "text",
-  "yomi": "たなだ"
+  "yomi": "たなだ",
+  "ansFig": "senmaida.webp",
+  "ansFigBy": "写真: Asturio Cantabrio（CC BY-SA 4.0）"
  },
  {
   "id": "seed_ns10_11",
