@@ -757,8 +757,9 @@ let chMiss=0;
    在庫切れ。いちばん追いこみたい時期にごほうびが薄くなるため20問にした。
    話を書きたしたら、この数を減らしてもよい。 */
 const STORY_EVERY=20;
-/* 11月版の専用カード。sp07（理科）・sp08（社会）・sp09（融合）の予定で、絵はまだ無い。
-   Cards.json に無いあいだは、クリアしてもトーストだけ出て落ちない（10月版と同じ作り） */
+/* 11月版の専用カード。sp07「学ぶ」（理科）・sp08「教える」（社会）・sp09「正義のヒーローファミリー」（融合）。
+   Cards.json に無いときは、クリアしてもトーストだけ出て落ちない（10月版と同じ作り）。
+   絵が届く前にクリアしていた子には、起動時に reconcileChallengeCards() がわたす */
 const CHALLENGE_CARD={rika:'sp07', shakai:'sp08'};
 const FUSION_CARD='sp09';
 /* 禁呪カード（極秘院隠真の進化）。呪い＝まちがい、という設定で、
@@ -766,7 +767,7 @@ const FUSION_CARD='sp09';
    ランダムには出ない（series が curse なので drawOne の学園しばりに入らない） */
 const CURSE_CARD='kj034';
 const CURSE_GOAL=30;
-/* 最終話は順番では開かない。融合カード（sp06）を取ったときだけ開く。
+/* 最終話は順番では開かない。融合カード（sp09）を取ったときだけ開く。
    stories.json の末尾の話を最終話としてあつかう */
 /* 最終話は stories.json の "final":true で決める。
    以前は「配列のいちばん最後」だったが、それだと話を足すたびに最終話が
@@ -774,12 +775,12 @@ const CURSE_GOAL=30;
    フラグが無いときだけ、これまでどおり末尾をつかう */
 function finalStoryId(){
   const f=STORIES.find(s=>s.final);
-  /* 11月版の読み物には最終話が無い（11話とも れんしゅうで順に開く）。
-     10月版のように「フラグが無ければ末尾」にすると、11話目がカード待ちで開かなくなる */
+  /* 11月版の最終話は n28「四つの絆の光」（"final":true）。sp09 で開く。
+     10月版のように「フラグが無ければ末尾」にはしない。末尾の話がカード待ちで開かなくなるため */
   return f?f.id:'';
 }
 
-/* 8 の「無限」は sp06（両科目クリアの融合カード）専用。
+/* 8 の「無限」は両科目クリアの融合カード専用（10月版の sp06・11月版の sp09）。
    7 の「四天王」は四人組のカード（sp03）の名前なので、そこには置けない。
    9 の「禁呪」は kj034（極秘院隠真の進化）専用。段の上下ではなく、段の外の1枚 */
 const RNAME=['','N','SR','SSR','R','伝説','神覚者','四天王','無限','禁呪'];
@@ -950,14 +951,14 @@ function showCardGet(card,isNew,extra){
 
 /* =========================================================================
    読み物：れんしゅう（と、まちがい直し）を STORY_EVERY 問こたえるごとに1話。
-   最終話だけは融合カード sp06 を取ったときに開く。
+   最終話だけは融合カード sp09 を取ったときに開く。
    50問連続チャレンジでは開かない（あちらのごほうびはレアカード）。
    ========================================================================= */
 async function loadStories(){
   try{ const r=await fetch('/stories-nov.json'); if(r.ok){const d=await r.json(); if(Array.isArray(d))STORIES=d;} }catch(e){}
 }
 function unlockNext(){
-  /* 最終話はここでは開かない（sp06 専用のごほうびにしてある） */
+  /* 最終話はここでは開かない（sp09 専用のごほうびにしてある） */
   const fin=finalStoryId();
   const next=STORIES.find(s=>s.id!==fin&&unlocked.indexOf(s.id)<0);
   if(!next)return null;
@@ -1480,6 +1481,19 @@ function tryFusion(){
   /* 最後のカードと最終話は対になっている */
   const last=unlockFinalStory();
   if(last)setTimeout(()=>toast('📖 最終話「'+last.title+'」がひらいた','var(--gold)'),2600);
+}
+/* 50問をクリアずみなのに専用カードを持っていない科目があれば、わたす。
+   11月版は sp07〜sp09 の絵があとから届いたので、それより前にクリアした子の救済 */
+function reconcileChallengeCards(){
+  let wait=600;
+  ['rika','shakai'].forEach(s=>{
+    if(!challenge[s].cleared)return;
+    const c=CARDS.find(x=>x.id===CHALLENGE_CARD[s]);
+    if(!c||collection[c.id])return;
+    const {isNew}=award(c);
+    setTimeout(()=>showCardGet(c,isNew,'50問 達成のカードがとどいた'),wait); wait+=1200;
+  });
+  tryFusion();
 }
 function nextQ(){
   qIdx++;
@@ -2047,7 +2061,9 @@ function retireOld(){
   try{ const r=JSON.parse(localStorage.getItem(LS_ROUND)||'{}');
        ['rika','shakai'].forEach(s=>{ if(r[s])practiceRound[s]=r[s]|0; }); }catch(e){}
   await Promise.all([loadCards(),loadStories()]);
-  /* すでに sp06 を持っているのに最終話が閉じたままなら、ここで開けておく
+  /* カードの絵が届く前に50問をクリアしていたら、ここでカードをわたす */
+  reconcileChallengeCards();
+  /* すでに sp09 を持っているのに最終話が閉じたままなら、ここで開けておく
      （この仕組みより先にカードを取っていた場合） */
   unlockFinalStory();
   tryCurse();

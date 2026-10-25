@@ -882,6 +882,33 @@
     "imgUrl": "/card-images/sp06_yakusoku.webp"
   },
   {
+    "id": "sp07",
+    "char": "manabu",
+    "rarity": 6,
+    "series": "challenge",
+    "name": "学ぶ",
+    "power": "学びの書：習字の黒墨雲畜塞が筆で書いた一枚。わからないことから目をそらさず、まちがいを答えにつなげる者に宿る。理科50問チャレンジの証！",
+    "imgUrl": "/card-images/sp07_manabu.webp"
+  },
+  {
+    "id": "sp08",
+    "char": "oshieru",
+    "rarity": 6,
+    "series": "challenge",
+    "name": "教える",
+    "power": "教えの書：習字の黒墨雲畜塞が筆で書いた一枚。知っていることを、まだ知らないだれかへ手わたす者に宿る。社会50問チャレンジの証！",
+    "imgUrl": "/card-images/sp08_oshieru.webp"
+  },
+  {
+    "id": "sp09",
+    "char": "herofamily",
+    "rarity": 8,
+    "series": "challenge",
+    "name": "正義のヒーローファミリー",
+    "power": "四つの絆の光：ゆんでんの炎、ソルバエの氷、フウゼリアの光、ブレステの創造の力がひとつになり、呪王の闇を打ち破る最強の絆の一撃！『学ぶ』と『教える』がそろったときに生まれる、スーパー田中ファミリーの切り札。",
+    "imgUrl": "/card-images/sp09_family.webp"
+  },
+  {
     "id": "n013",
     "char": "maniau",
     "rarity": 1,
