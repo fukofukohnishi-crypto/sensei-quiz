@@ -6052,7 +6052,9 @@
   "explain": "テキストより。",
   "juken": "",
   "basis": "text",
-  "yomi": "わじまぬり"
+  "yomi": "わじまぬり",
+  "ansFig": "wajimanuri.webp",
+  "ansFigBy": "写真: yuuki ゆうき（金野裕希）（CC BY-SA 4.0）"
  },
  {
   "id": "seed_ns10_03",
@@ -6100,7 +6102,8 @@
   "explain": "テキストより。",
   "juken": "",
   "basis": "text",
-  "yomi": "くたにやき"
+  "yomi": "くたにやき",
+  "ansFig": "kutaniyaki.webp"
  },
  {
   "id": "seed_ns10_06",
