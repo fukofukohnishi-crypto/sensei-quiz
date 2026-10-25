@@ -2294,8 +2294,7 @@
   "juken": "",
   "basis": "text",
   "figAfter": "hikari_ans.svg",
-  "ansFig": "prism_hikari.webp",
-  "ansFigBy": "写真: Han Cheng Yeh（CC BY 2.0）"
+  "ansFig": "prism_hikari.webp"
  },
  {
   "id": "seed_n9_07",
@@ -3103,7 +3102,9 @@
   "explain": "音源の長さを変えて、音の高さを変えています。",
   "juken": "",
   "basis": "text",
-  "yomi": "だがっき"
+  "yomi": "だがっき",
+  "ansFig": "marimba.webp",
+  "ansFigBy": "写真: Marimbaone（CC BY-SA 3.0）"
  },
  {
   "id": "seed_n10_20",
@@ -5882,7 +5883,8 @@
   "source": "およそ200年の歴史をもつだるまづくりがさかんです。",
   "explain": "テキストより。",
   "juken": "",
-  "basis": "text"
+  "basis": "text",
+  "ansFig": "takasakidaruma.webp"
  },
  {
   "id": "seed_ns9_36",
@@ -7263,7 +7265,9 @@
   "explain": "音源の長さを変えて音の高さを変えています。",
   "juken": "打楽器・弦楽器・管楽器に分ける問題が出る。",
   "basis": "text",
-  "yomi": "だがっき"
+  "yomi": "だがっき",
+  "ansFig": "marimba.webp",
+  "ansFigBy": "写真: Marimbaone（CC BY-SA 3.0）"
  },
  {
   "id": "seed_nt_08",

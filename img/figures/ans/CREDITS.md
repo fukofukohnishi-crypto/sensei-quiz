@@ -224,7 +224,7 @@ python3 tools/photo2ans.py <絵> <名前> --nobg
 | `housenka.webp` | ホウセンカ | iNaturalist<br>https://www.inaturalist.org/photos/120732592 | **CC BY**<br>→ **画面に表示ずみ** | Martin Alfredo Murillo |
 | `satsumaimo.webp` | サツマイモ | Flickr（Openverse 経由）<br>https://www.flickr.com/photos/29282750@N00/51144298 | **CC BY 2.0**<br>→ **画面に表示ずみ** | Kanko* |
 | `ninjin.webp` | ニンジン | Flickr（Openverse 経由）<br>https://www.flickr.com/photos/24742305@N00/2256197976 | **CC BY 2.0**<br>→ **画面に表示ずみ** | John-Morgan |
-| `prism_hikari.webp` | プリズムで分かれた光 | Flickr（Openverse 経由）<br>https://www.flickr.com/photos/26719227@N00/9543521907 | **CC BY 2.0**<br>→ **画面に表示ずみ** | Han Cheng Yeh |
+| `prism_hikari.webp` | プリズムで虹色に分かれた光 | Wikimedia Commons | **PD**（パブリックドメイン） | 表示不要 |
 | `niji.webp` | 虹 | Flickr（Openverse 経由）<br>https://www.flickr.com/photos/18090920@N07/4487110194 | **CC BY 2.0**<br>→ **画面に表示ずみ** | Sean MacEntee |
 | `sanzaru.webp` | 日光東照宮の三猿 | Wikimedia Commons<br>https://commons.wikimedia.org/w/index.php?curid=148219054 | **CC BY-SA 4.0**<br>→ **画面に表示ずみ** | Jpatokal |
 | `kegon.webp` | 華厳の滝 | Flickr（Openverse 経由）<br>https://www.flickr.com/photos/42438962@N05/22664922062 | **CC BY 2.0**<br>→ **画面に表示ずみ** | reggiepen |
@@ -265,3 +265,5 @@ python3 tools/photo2ans.py <絵> <名前> --nobg
 | `satoimo.webp` | サトイモ（ほったいも） | Wikimedia Commons | **PD**（パブリックドメイン） | 表示不要 |
 | `hasu_renkon.webp` | れんこん（ハスの地下の茎の切り口） | Wikimedia Commons<br>`Lotus root.jpg` | **CC BY-SA 2.0**<br>→ **画面に表示ずみ** | FotoosRobin |
 | `solarcooker.webp` | ソーラークッカー（丸い鏡で中華鍋を温める） | Wikimedia Commons<br>`Cuina solar paella.JPG` | **CC BY-SA 3.0**<br>→ **画面に表示ずみ** | Avecendrell |
+| `takasakidaruma.webp` | 高崎だるま | Wikimedia Commons | **PD**（パブリックドメイン） | 表示不要 |
+| `marimba.webp` | マリンバ（木の板の楽器） | Wikimedia Commons<br>`Marimba One 4000 Series.jpg` | **CC BY-SA 3.0**<br>→ **画面に表示ずみ** | Marimbaone |
