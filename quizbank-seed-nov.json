@@ -3402,7 +3402,9 @@
   "explain": "昔の和歌にも登場します。",
   "juken": "",
   "basis": "text",
-  "yomi": "みほのまつばら"
+  "yomi": "みほのまつばら",
+  "ansFig": "miho.webp",
+  "ansFigBy": "写真: Motokoka（CC BY-SA 4.0）"
  },
  {
   "id": "seed_ns6_13",
@@ -5733,7 +5735,9 @@
   "explain": "山ろくの嬬恋村で高原野菜がつくられています。",
   "juken": "白地図で聞かれる。",
   "basis": "text",
-  "yomi": "あさまやま"
+  "yomi": "あさまやま",
+  "ansFig": "asamayama.webp",
+  "ansFigBy": "写真: くろふね（CC BY 4.0）"
  },
  {
   "id": "seed_ns9_28",
