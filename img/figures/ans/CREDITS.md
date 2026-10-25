@@ -241,3 +241,5 @@ python3 tools/photo2ans.py <絵> <名前> --nobg
 | `akarenga.webp` | 横浜赤レンガ倉庫 | Wikimedia Commons（親がさがした） | **PD** | 表示不要 |
 | `eiheiji.webp` | 永平寺の承陽門 | Wikimedia Commons<br>`Joyomon of Eiheiji in September 2024.jpg` | **CC BY-SA 4.0**<br>→ **画面に表示ずみ** | 掬茶 |
 | `tojinbo.webp` | 東尋坊 | Wikimedia Commons<br>`東尋坊 - panoramio (13).jpg` | **CC BY 3.0**<br>→ **画面に表示ずみ** | くろふね |
+| `yubatake.webp` | 草津温泉の湯畑（夜） | 家族が撮影 | **自分で撮った写真** | 表示不要 |
+| `senmaida.webp` | 白米千枚田 | Wikimedia Commons<br>`Shiroyone Senmaida ac (3).jpg` | **CC BY-SA 4.0**<br>→ **画面に表示ずみ** | Asturio Cantabrio |

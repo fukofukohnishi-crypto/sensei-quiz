@@ -5680,7 +5680,8 @@
   "explain": "テキストより。",
   "juken": "",
   "basis": "text",
-  "yomi": "くさつおんせん"
+  "yomi": "くさつおんせん",
+  "ansFig": "yubatake.webp"
  },
  {
   "id": "seed_ns9_25",
@@ -6153,7 +6154,9 @@
   "explain": "テキストより。",
   "juken": "",
   "basis": "text",
-  "yomi": "しろよねせんまいだ"
+  "yomi": "しろよねせんまいだ",
+  "ansFig": "senmaida.webp",
+  "ansFigBy": "写真: Asturio Cantabrio（CC BY-SA 4.0）"
  },
  {
   "id": "seed_ns10_10",
