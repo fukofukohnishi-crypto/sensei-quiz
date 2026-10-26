@@ -235,7 +235,9 @@
   "source": "夏鳥のなかま　ツバメ・カッコウ・ホトトギス・オオルリ・キビタキ・オオヨシキリ",
   "explain": "春のころ、繁殖のために南の地域からやってきます。",
   "juken": "夏鳥・冬鳥・留鳥・漂鳥の4つに分ける問題がよく出る。",
-  "basis": "text"
+  "basis": "text",
+  "ansFig": "kakko.webp",
+  "ansFigBy": "写真: Ramnarayan K（CC BY）"
  },
  {
   "id": "seed_n6_16",
@@ -801,7 +803,9 @@
   "source": "その種類は多く、世界最大のフィリピンオオコウモリは、体長が約1.5mもあります。",
   "explain": "テキストより。",
   "juken": "",
-  "basis": "text"
+  "basis": "text",
+  "ansFig": "ookoumori.webp",
+  "ansFigBy": "写真: Cheongweei Gan（CC BY）"
  },
  {
   "id": "seed_n6_50",
@@ -816,7 +820,9 @@
   "source": "同じように、空を飛ぶための膜をもち、昔は鳥類に分類されていたこともある動物にムササビやモモンガがいます。",
   "explain": "ムササビとモモンガのどちらでも正解です。",
   "juken": "",
-  "basis": "text"
+  "basis": "text",
+  "ansFig": "musasabi.webp",
+  "ansFigBy": "写真: Christoph Moning（CC BY）"
  },
  {
   "id": "seed_n6_51",
@@ -881,7 +887,9 @@
   "source": "紅葉　赤く染まる樹木：カエデ・ツタ・ニシキギ・ツツジ　黄色く染まる樹木：イチョウ・ポプラ",
   "explain": "赤く染まるのはカエデ・ツタ・ニシキギ・ツツジ、黄色く染まるのはイチョウ・ポプラです。",
   "juken": "季節の移り変わり（紅葉）。",
-  "basis": "text"
+  "basis": "text",
+  "ansFig": "tsuta.webp",
+  "ansFigBy": "写真: Sandy Wolkenberg（CC BY）"
  },
  {
   "id": "seed_n6_55",
@@ -897,7 +905,8 @@
   "source": "紅葉　赤く染まる樹木：カエデ・ツタ・ニシキギ・ツツジ　黄色く染まる樹木：イチョウ・ポプラ",
   "explain": "赤く染まるのはカエデ・ツタ・ニシキギ・ツツジ、黄色く染まるのはイチョウ・ポプラです。",
   "juken": "季節の移り変わり（紅葉）。",
-  "basis": "text"
+  "basis": "text",
+  "ansFig": "nishikigi.webp"
  },
  {
   "id": "seed_n6_56",
@@ -947,7 +956,8 @@
   "source": "紅葉　赤く染まる樹木：カエデ・ツタ・ニシキギ・ツツジ　黄色く染まる樹木：イチョウ・ポプラ",
   "explain": "赤く染まるのはカエデ・ツタ・ニシキギ・ツツジ、黄色く染まるのはイチョウ・ポプラです。",
   "juken": "季節の移り変わり（紅葉）。",
-  "basis": "text"
+  "basis": "text",
+  "ansFig": "popura.webp"
  },
  {
   "id": "seed_n7_01",
@@ -1029,7 +1039,9 @@
   "explain": "一生えらで呼吸し、卵に殻がありません。",
   "juken": "魚類・両生類・は虫類に分ける問題がよく出る。",
   "basis": "text",
-  "yomi": "ぎょるい"
+  "yomi": "ぎょるい",
+  "ansFig": "medaka.webp",
+  "ansFigBy": "写真: Zinogre（CC BY-SA）"
  },
  {
   "id": "seed_n7_06",
@@ -1045,7 +1057,8 @@
   "explain": "一生えらで呼吸し、卵に殻がありません。",
   "juken": "魚類・両生類・は虫類に分ける問題がよく出る。",
   "basis": "text",
-  "yomi": "ぎょるい"
+  "yomi": "ぎょるい",
+  "ansFig": "sake.webp"
  },
  {
   "id": "seed_n7_07",
@@ -1061,7 +1074,9 @@
   "explain": "一生えらで呼吸し、卵に殻がありません。",
   "juken": "魚類・両生類・は虫類に分ける問題がよく出る。",
   "basis": "text",
-  "yomi": "ぎょるい"
+  "yomi": "ぎょるい",
+  "ansFig": "same.webp",
+  "ansFigBy": "写真: Kim（CC BY）"
  },
  {
   "id": "seed_n7_08",
@@ -1095,7 +1110,9 @@
   "explain": "子はえら、成長すると肺と皮ふで呼吸します。卵に殻がありません。",
   "juken": "魚類・両生類・は虫類に分ける問題がよく出る。",
   "basis": "text",
-  "yomi": "りょうせいるい"
+  "yomi": "りょうせいるい",
+  "ansFig": "kaeru.webp",
+  "ansFigBy": "写真: Kim（CC BY）"
  },
  {
   "id": "seed_n7_10",
@@ -1147,7 +1164,9 @@
   "explain": "子はえら、成長すると肺と皮ふで呼吸します。卵に殻がありません。",
   "juken": "魚類・両生類・は虫類に分ける問題がよく出る。",
   "basis": "text",
-  "yomi": "りょうせいるい"
+  "yomi": "りょうせいるい",
+  "ansFig": "siren.webp",
+  "ansFigBy": "写真: Nathan May（CC BY）"
  },
  {
   "id": "seed_n7_13",
@@ -1202,7 +1221,9 @@
   "explain": "肺で呼吸し、卵に殻があります。",
   "juken": "魚類・両生類・は虫類に分ける問題がよく出る。",
   "basis": "text",
-  "yomi": "はちゅうるい"
+  "yomi": "はちゅうるい",
+  "ansFig": "tokage.webp",
+  "ansFigBy": "写真: harum.koh（CC BY-SA）"
  },
  {
   "id": "seed_n7_16",
@@ -1450,7 +1471,9 @@
   "source": "一方、古くから日本に生息する在来種はその数を減らしており、イトウやイボイモリ、アオウミガメなどは絶滅危惧種に指定され、保護の対象になっています。",
   "explain": "テキストより。",
   "juken": "",
-  "basis": "text"
+  "basis": "text",
+  "ansFig": "iboimori.webp",
+  "ansFigBy": "写真: Yung-Lun Lin（CC BY）"
  },
  {
   "id": "seed_n7_32",
@@ -1481,7 +1504,9 @@
   "explain": "ウミヘビには、魚類に分類されるもの（ウナギやアナゴ、ウツボなどのなかま）もいます。",
   "juken": "",
   "basis": "text",
-  "yomi": "はちゅうるい"
+  "yomi": "はちゅうるい",
+  "ansFig": "erabuumihebi.webp",
+  "ansFigBy": "写真: Alicia Christman（CC BY）"
  },
  {
   "id": "seed_n7_34",
@@ -1659,7 +1684,8 @@
   "source": "種子の運ばれ方①　風で飛ぶ種子：カエデ・マツ・ススキ・ポプラ　動物につく種子：オナモミ・センダングサ",
   "explain": "風で飛ぶのはカエデ・マツ・ススキ・ポプラ、動物につくのはオナモミ・センダングサです。",
   "juken": "季節の移り変わり（種子の運ばれ方）。",
-  "basis": "text"
+  "basis": "text",
+  "ansFig": "susuki.webp"
  },
  {
   "id": "seed_n7_45",
@@ -2142,7 +2168,9 @@
   "source": "種子の運ばれ方②　どんぐりが転がる樹木：シイ・カシ・クヌギ・コナラ　実がはじけて飛ぶ種子：ホウセンカ・カタバミ",
   "explain": "どんぐりが転がるのはシイ・カシ・クヌギ・コナラ、実がはじけて飛ぶのはホウセンカ・カタバミです。",
   "juken": "季節の移り変わり（種子の運ばれ方）。",
-  "basis": "text"
+  "basis": "text",
+  "ansFig": "kashi.webp",
+  "ansFigBy": "写真: WATANABE Hitoshi 渡辺仁（CC BY）"
  },
  {
   "id": "seed_n8_28",
@@ -2174,7 +2202,9 @@
   "source": "種子の運ばれ方②　どんぐりが転がる樹木：シイ・カシ・クヌギ・コナラ　実がはじけて飛ぶ種子：ホウセンカ・カタバミ",
   "explain": "どんぐりが転がるのはシイ・カシ・クヌギ・コナラ、実がはじけて飛ぶのはホウセンカ・カタバミです。",
   "juken": "季節の移り変わり（種子の運ばれ方）。",
-  "basis": "text"
+  "basis": "text",
+  "ansFig": "konara.webp",
+  "ansFigBy": "写真: Takaaki Hattori（CC BY）"
  },
  {
   "id": "seed_n8_30",
@@ -2210,7 +2240,9 @@
   "explain": "どんぐりが転がるのはシイ・カシ・クヌギ・コナラ、実がはじけて飛ぶのはホウセンカ・カタバミです。",
   "juken": "季節の移り変わり（種子の運ばれ方）。",
   "basis": "text",
-  "yomi": "みがはじけてとぶ"
+  "yomi": "みがはじけてとぶ",
+  "ansFig": "katabami.webp",
+  "ansFigBy": "写真: Douglas Goldman（CC BY-SA）"
  },
  {
   "id": "seed_n9_01",
@@ -2722,7 +2754,9 @@
   "source": "地下に養分を蓄える　根に養分を蓄える：ダリア・サツマイモ・ニンジン・ヤマノイモ　地下の茎に養分を蓄える：ハス・サトイモ",
   "explain": "根に蓄えるのはダリア・サツマイモ・ニンジン・ヤマノイモ、地下の茎に蓄えるのはハス・サトイモです。",
   "juken": "季節の移り変わり（地下に養分を蓄える）。",
-  "basis": "text"
+  "basis": "text",
+  "ansFig": "daria.webp",
+  "ansFigBy": "写真: biogeek（CC BY）"
  },
  {
   "id": "seed_n9_33",
@@ -7242,7 +7276,9 @@
   "explain": "は虫類のウミヘビは毒をもつものが多くいます。魚類のウミヘビはウナギやアナゴ、ウツボなどのなかまです。",
   "juken": "名前に「ウミヘビ」がついても、魚類のものがある。",
   "basis": "text",
-  "yomi": "はちゅうるい"
+  "yomi": "はちゅうるい",
+  "ansFig": "erabuumihebi.webp",
+  "ansFigBy": "写真: Alicia Christman（CC BY）"
  },
  {
   "id": "seed_nt_02",
@@ -7259,7 +7295,9 @@
   "explain": "は虫類のウミヘビは毒をもつものが多くいます。魚類のウミヘビはウナギやアナゴ、ウツボなどのなかまです。",
   "juken": "名前に「ウミヘビ」がついても、魚類のものがある。",
   "basis": "text",
-  "yomi": "はちゅうるい"
+  "yomi": "はちゅうるい",
+  "ansFig": "hirooumihebi.webp",
+  "ansFigBy": "写真: 林正文（CC BY）"
  },
  {
   "id": "seed_nt_03",
@@ -7276,7 +7314,9 @@
   "explain": "は虫類のウミヘビは毒をもつものが多くいます。魚類のウミヘビはウナギやアナゴ、ウツボなどのなかまです。",
   "juken": "名前に「ウミヘビ」がついても、魚類のものがある。",
   "basis": "text",
-  "yomi": "はちゅうるい"
+  "yomi": "はちゅうるい",
+  "ansFig": "kurogashiraumihebi.webp",
+  "ansFigBy": "写真: 林正文（CC BY）"
  },
  {
   "id": "seed_nt_04",
@@ -7292,7 +7332,8 @@
   "explain": "は虫類のウミヘビは毒をもつものが多くいます。魚類のウミヘビはウナギやアナゴ、ウツボなどのなかまです。",
   "juken": "名前に「ウミヘビ」がついても、魚類のものがある。",
   "basis": "text",
-  "yomi": "ぎょるい"
+  "yomi": "ぎょるい",
+  "ansFig": "mongaradooshi.webp"
  },
  {
   "id": "seed_nt_05",
@@ -7308,7 +7349,9 @@
   "explain": "は虫類のウミヘビは毒をもつものが多くいます。魚類のウミヘビはウナギやアナゴ、ウツボなどのなかまです。",
   "juken": "名前に「ウミヘビ」がついても、魚類のものがある。",
   "basis": "text",
-  "yomi": "ぎょるい"
+  "yomi": "ぎょるい",
+  "ansFig": "hotateumihebi.webp",
+  "ansFigBy": "写真: Dan Schofield（CC BY）"
  },
  {
   "id": "seed_nt_06",
@@ -7438,7 +7481,9 @@
   "source": "アフリカの森林で樹上に住んでいた類人猿からチンパンジーと人類とに枝分かれし、人類の物語がはじまりました。",
   "explain": "",
   "juken": "",
-  "basis": "text"
+  "basis": "text",
+  "ansFig": "chimpanzee.webp",
+  "ansFigBy": "写真: Wairambar Rainforest（CC BY）"
  },
  {
   "id": "seed_nt_15",

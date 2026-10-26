@@ -286,3 +286,27 @@ python3 tools/photo2ans.py <絵> <名前> --nobg
 | `kokyo.webp` | 皇居（二重橋） | Flickr（Openverse 経由）<br>https://www.flickr.com/photos/21186555@N07/17247906786 | **CC BY 2.0**<br>→ **画面に表示ずみ** | Ray in Manila |
 | `ogasawara.webp` | 小笠原諸島（父島） | Flickr（Openverse 経由）<br>https://commons.wikimedia.org/w/index.php?curid=4784053 | **CC BY-SA 3.0**<br>→ **画面に表示ずみ** | Si-take. at Japanese Wikipedia(しいたけ) |
 | `haneda.webp` | 羽田空港 | Flickr（Openverse 経由）<br>https://www.flickr.com/photos/7940758@N07/2992395846 | **CC BY 2.0**<br>→ **画面に表示ずみ** | MIKI Yoshihito. |
+| `kakko.webp` | カッコウ | iNaturalist<br>https://www.inaturalist.org/photos/140638774 | **CC BY**<br>→ **画面に表示ずみ** | Ramnarayan K |
+| `ookoumori.webp` | フィリピンオオコウモリ | iNaturalist<br>https://www.inaturalist.org/photos/337314505 | **CC BY**<br>→ **画面に表示ずみ** | Cheongweei Gan |
+| `musasabi.webp` | ムササビ | iNaturalist<br>https://www.inaturalist.org/photos/60436826 | **CC BY**<br>→ **画面に表示ずみ** | Christoph Moning |
+| `tsuta.webp` | ツタの紅葉 | iNaturalist<br>https://www.inaturalist.org/photos/27541394 | **CC BY**<br>→ **画面に表示ずみ** | Sandy Wolkenberg |
+| `nishikigi.webp` | ニシキギの紅葉 | iNaturalist<br>https://www.inaturalist.org/photos/327270904 | **CC0** | 表示不要 |
+| `popura.webp` | ポプラの黄葉 | iNaturalist<br>https://www.inaturalist.org/photos/586205101 | **CC0** | 表示不要 |
+| `medaka.webp` | メダカ | iNaturalist<br>https://www.inaturalist.org/photos/185011729 | **CC BY-SA**<br>→ **画面に表示ずみ** | Zinogre |
+| `sake.webp` | サケ | iNaturalist<br>https://www.inaturalist.org/photos/336279503 | **CC0** | 表示不要 |
+| `same.webp` | サメ（ドチザメ） | iNaturalist<br>https://www.inaturalist.org/photos/4369240 | **CC BY**<br>→ **画面に表示ずみ** | Kim |
+| `kaeru.webp` | カエル（ニホンアマガエル） | iNaturalist<br>https://www.inaturalist.org/photos/5773513 | **CC BY**<br>→ **画面に表示ずみ** | Kim |
+| `siren.webp` | サイレン | iNaturalist<br>https://www.inaturalist.org/photos/370860105 | **CC BY**<br>→ **画面に表示ずみ** | Nathan May |
+| `tokage.webp` | トカゲ（ニホントカゲ） | iNaturalist<br>https://www.inaturalist.org/photos/1534505 | **CC BY-SA**<br>→ **画面に表示ずみ** | harum.koh |
+| `iboimori.webp` | イボイモリ | iNaturalist<br>https://www.inaturalist.org/photos/462473785 | **CC BY**<br>→ **画面に表示ずみ** | Yung-Lun Lin |
+| `erabuumihebi.webp` | エラブウミヘビ | iNaturalist<br>https://www.inaturalist.org/photos/369084836 | **CC BY**<br>→ **画面に表示ずみ** | Alicia Christman |
+| `hirooumihebi.webp` | ヒロオウミヘビ | iNaturalist<br>https://www.inaturalist.org/photos/411869890 | **CC BY**<br>→ **画面に表示ずみ** | 林正文 |
+| `kurogashiraumihebi.webp` | クロガシラウミヘビ | iNaturalist<br>https://www.inaturalist.org/photos/695740201 | **CC BY**<br>→ **画面に表示ずみ** | 林正文 |
+| `mongaradooshi.webp` | モンガラドオシ | iNaturalist<br>https://www.inaturalist.org/photos/674464051 | **CC0** | 表示不要 |
+| `hotateumihebi.webp` | ホタテウミヘビ | iNaturalist<br>https://www.inaturalist.org/photos/62079479 | **CC BY**<br>→ **画面に表示ずみ** | Dan Schofield |
+| `susuki.webp` | ススキ | iNaturalist<br>https://www.inaturalist.org/photos/56219365 | **CC0** | 表示不要 |
+| `kashi.webp` | カシ（アラカシ）のどんぐり | iNaturalist<br>https://www.inaturalist.org/photos/437210402 | **CC BY**<br>→ **画面に表示ずみ** | WATANABE Hitoshi 渡辺仁 |
+| `konara.webp` | コナラのどんぐり | iNaturalist<br>https://www.inaturalist.org/photos/440532463 | **CC BY**<br>→ **画面に表示ずみ** | Takaaki Hattori |
+| `katabami.webp` | カタバミ | iNaturalist<br>https://www.inaturalist.org/photos/289239525 | **CC BY-SA**<br>→ **画面に表示ずみ** | Douglas Goldman |
+| `chimpanzee.webp` | チンパンジー | iNaturalist<br>https://www.inaturalist.org/photos/217300479 | **CC BY**<br>→ **画面に表示ずみ** | Wairambar Rainforest |
+| `daria.webp` | ダリア | iNaturalist<br>https://www.inaturalist.org/photos/457531953 | **CC BY**<br>→ **画面に表示ずみ** | biogeek |
