@@ -294,8 +294,8 @@ python3 tools/photo2ans.py <絵> <名前> --nobg
 | `popura.webp` | ポプラの黄葉 | iNaturalist<br>https://www.inaturalist.org/photos/586205101 | **CC0** | 表示不要 |
 | `medaka.webp` | メダカ | iNaturalist<br>https://www.inaturalist.org/photos/185011729 | **CC BY-SA**<br>→ **画面に表示ずみ** | Zinogre |
 | `sake.webp` | サケ | iNaturalist<br>https://www.inaturalist.org/photos/336279503 | **CC0** | 表示不要 |
-| `same.webp` | サメ（ドチザメ） | iNaturalist<br>https://www.inaturalist.org/photos/4369240 | **CC BY**<br>→ **画面に表示ずみ** | Kim |
-| `kaeru.webp` | カエル（ニホンアマガエル） | iNaturalist<br>https://www.inaturalist.org/photos/5773513 | **CC BY**<br>→ **画面に表示ずみ** | Kim |
+| `same.webp` | サメ（ドチザメ） | iNaturalist<br>https://www.inaturalist.org/photos/4369240 | **CC BY**<br>→ **画面に表示ずみ** | Kim, Hyun-tae |
+| `kaeru.webp` | カエル（ニホンアマガエル） | iNaturalist<br>https://www.inaturalist.org/photos/5773513 | **CC BY**<br>→ **画面に表示ずみ** | Kim, Hyun-tae |
 | `siren.webp` | サイレン | iNaturalist<br>https://www.inaturalist.org/photos/370860105 | **CC BY**<br>→ **画面に表示ずみ** | Nathan May |
 | `tokage.webp` | トカゲ（ニホントカゲ） | iNaturalist<br>https://www.inaturalist.org/photos/1534505 | **CC BY-SA**<br>→ **画面に表示ずみ** | harum.koh |
 | `iboimori.webp` | イボイモリ | iNaturalist<br>https://www.inaturalist.org/photos/462473785 | **CC BY**<br>→ **画面に表示ずみ** | Yung-Lun Lin |
