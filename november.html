@@ -301,6 +301,21 @@ button:focus-visible{outline:2px solid var(--gold);outline-offset:2px}
   padding:12px 14px;color:var(--text);font-family:inherit;font-size:.95rem}
 .chips{display:flex;gap:8px;flex-wrap:wrap}
 .fresh{font-size:.78rem;color:var(--muted);margin:8px 0 2px}
+/* 今週のめあて */
+.plan{background:var(--panel);border:1px solid rgba(255,215,0,.35);border-radius:18px;padding:16px 20px;margin:22px 0 0}
+.plan .ph{display:flex;justify-content:space-between;align-items:baseline;gap:10px;flex-wrap:wrap}
+.plan .pt{font-weight:900;font-size:1.02rem}
+.plan .pt small{color:var(--muted);font-weight:700;font-size:.74rem;margin-left:6px}
+.plan .pd{color:var(--gold);font-weight:900;font-size:.86rem}
+.plan .pg{color:var(--muted);font-size:.8rem;margin:4px 0 10px}
+.plan .prow{display:grid;grid-template-columns:3.2em 1fr auto;align-items:center;gap:10px;margin:7px 0}
+.plan .pn{font-weight:800;font-size:.86rem}
+.plan .bar{height:10px;background:#2a2a3e;border-radius:99px;overflow:hidden}
+.plan .bar i{display:block;height:100%;border-radius:99px}
+.plan .pc{font-size:.8rem;color:var(--muted);white-space:nowrap}
+.plan .pc b{color:var(--text);font-size:.95rem}
+.plan .today{font-weight:900;font-size:.84rem;white-space:nowrap}
+.plan .today.done{color:var(--ok)}
 .fresh b{color:var(--gold);font-size:.95rem}
 .chip{background:var(--card);border:1px solid var(--line-hi);border-radius:99px;padding:9px 17px;
   font-size:.88rem;font-weight:700;color:var(--text-2)}
@@ -366,6 +381,7 @@ button:focus-visible{outline:2px solid var(--gold);outline-offset:2px}
     <div class="sub">答えを思いうかべてから、めくって自分で採点する</div>
   </div>
   <div class="body">
+    <div class="plan" id="plan" style="display:none"></div>
     <div class="subjrow" id="subjrow"></div>
     <div class="navrow">
       <button class="nav" onclick="go('s-cards')">
@@ -742,6 +758,7 @@ const LS_STORIES='nov_stories_v1';
 const LS_PRACTICE='nov_practice_v1';  /* 練習で解いた累計。読み物の解放に使う */
 const LS_ROUND='nov_round_v1';        /* れんしゅうでえらんだ単元（0＝ぜんぶ） */
 const LS_SEEN='nov_seen_v1';
+const LS_PLAN='nov_plan_v1';          /* 今週のめあて：週ごとに答えた問題・日ごとの数 */
 const LS_MASTERED='nov_mastered_v1';  /* まちがい直しで外れた（日をあけて3回正解した）問題の累計。禁呪カードに使う */          /* 一度でも出した問題のid。まだ出ていない問題から先に出すため */
 
 const CHALLENGE_GOAL=50;
@@ -773,6 +790,66 @@ function roundOpen(subj,round){
 function openDateText(subj,round){ const d=roundOpenDate(subj,round); return d?(+d.slice(5,7))+'/'+(+d.slice(8))+'から':''; }
 /* 読み物も、テストの中身が入っている話は、その回を習ってから開く（stories-nov.json の subj と round） */
 function storyOpen(s){ return !s.subj||!s.round||roundOpen(s.subj,s.round); }
+
+/* ===== 今週のめあて =====
+   塾の予定表（授業は理科が水曜・社会が金曜、11/24〜27はMT対策週、11/28がテスト）から、
+   週ごとに「この回の問題を1周する」を決めておく。ホームのいちばん上に、今週の進みと
+   「きょう あと◯問」を出す。きょうの数は、今週ののこりを今週ののこりの日数でわったもの。
+   数えるのは、今週はじめて答えた問題（れんしゅう・まちがい直し・50問・白地図のどれでも）。
+   seen は1周すると消えて2周目にもどるので、別に nov_plan_v1 に週ごと・日ごとで持つ */
+const TEST_DAY='2026-11-28';
+const WEEKS=[
+  {from:'2026-11-08',to:'2026-11-15',title:'第6〜8回を1周、第9回も習ったら',rounds:[6,7,8,9]},
+  {from:'2026-11-16',to:'2026-11-22',title:'第9回・第10回を1周',rounds:[9,10]},
+  {from:'2026-11-23',to:'2026-11-27',title:'テスト対策週：ぜんぶの回をもう1周',rounds:[6,7,8,9,10],
+   note:'まちがい直しを「いまはなし」にして、50問チャレンジにも挑戦しよう'}
+];
+let plan={week:{},day:{}};
+function savePlan(){try{localStorage.setItem(LS_PLAN,JSON.stringify(plan));}catch(e){}}
+function ymd(t){ const d=new Date(t); return d.getFullYear()+'-'+String(d.getMonth()+1).padStart(2,'0')+'-'+String(d.getDate()).padStart(2,'0'); }
+function dayNum(s){ const [y,m,d]=s.split('-').map(Number); return new Date(y,m-1,d).getTime(); }
+function curWeek(){ const t=ymd(Date.now()); return WEEKS.find(w=>w.from<=t&&t<=w.to)||null; }
+function weekPool(w,subj){ return poolOf(subj).filter(q=>w.rounds.indexOf(q.round)>=0); }
+function planRecord(q){
+  const w=curWeek(); if(!w)return;
+  const k=qKey(q), wk=plan.week[w.from]||(plan.week[w.from]={});
+  if(wk[k])return;
+  wk[k]=1;
+  const t=ymd(Date.now()), dy=plan.day[t]||(plan.day[t]={rika:0,shakai:0});
+  dy[q.subj]=(dy[q.subj]||0)+1;
+  savePlan();
+}
+function renderPlan(){
+  const el=document.getElementById('plan'); if(!el)return;
+  const t=ymd(Date.now()), w=curWeek();
+  const left=Math.round((dayNum(TEST_DAY)-dayNum(t))/86400000);
+  if(!w){
+    el.style.display='block';
+    el.innerHTML=left===0?'<div class="pt">📝 きょうはテスト本番！ がんばって</div>'
+      :left<0?'<div class="pt">🎉 テストおつかれさま！</div>':'<div class="pt">📅 テストまで あと '+left+'日</div>';
+    return;
+  }
+  const wk=plan.week[w.from]||{}, dy=plan.day[t]||{};
+  const daysLeft=Math.round((dayNum(w.to)-dayNum(t))/86400000)+1;
+  const rows=['rika','shakai'].map(s=>{
+    const pool=weekPool(w,s), done=pool.filter(q=>wk[qKey(q)]).length, all=pool.length;
+    const today=dy[s]||0;
+    /* きょうの数＝（のこり＋きょうもうやった数）÷ 今週ののこり日数 */
+    const goal=Math.ceil((all-done+today)/daysLeft), rest=Math.max(0,goal-today);
+    const pct=all?Math.round(done/all*100):0;
+    return '<div class="prow"><span class="pn">'+SUBJ[s].n+'</span>'
+      +'<span class="bar"><i style="width:'+pct+'%;background:'+SUBJ[s].c+'"></i></span>'
+      +'<span class="pc"><b>'+done+'</b>／'+all+'問</span></div>'
+      +'<div class="prow"><span></span><span class="today'+(rest?'':' done')+'">'
+      +(done>=all?'✅ 今週のぶんは1周できた！':rest?'きょう あと '+rest+'問（'+today+'／'+goal+'）':'✅ きょうのぶんはできた！')
+      +'</span><span></span></div>';
+  }).join('');
+  const locked=['rika','shakai'].map(s=>w.rounds.filter(r=>!roundOpen(s,r)).map(r=>SUBJ[s].n+'第'+r+'回は'+openDateText(s,r)).join('・')).filter(x=>x).join('、');
+  el.style.display='block';
+  el.innerHTML='<div class="ph"><span class="pt">📅 今週のめあて<small>'+(+w.from.slice(5,7))+'/'+(+w.from.slice(8))+'〜'+(+w.to.slice(5,7))+'/'+(+w.to.slice(8))+'</small></span>'
+    +'<span class="pd">テストまで あと '+left+'日</span></div>'
+    +'<div class="pg">'+w.title+(locked?'（'+locked+'）':'')+(w.note?'<br>'+w.note:'')+'</div>'+rows;
+}
 /* 11月版の専用カード。sp07「学ぶ」（理科）・sp08「教える」（社会）・sp09「正義のヒーローファミリー」（融合）。
    Cards.json に無いときは、クリアしてもトーストだけ出て落ちない（10月版と同じ作り）。
    絵が届く前にクリアしていた子には、起動時に reconcileChallengeCards() がわたす */
@@ -1441,6 +1518,7 @@ function score(ok){
   recordReview(q,ok);
   tryCurse();
   seen[qKey(q)]=Date.now(); saveSeen();
+  planRecord(q);
 
   /* 10問ごとにカード1枚 */
   if(answeredCount%10===0){
@@ -1563,6 +1641,7 @@ function freshLine(s,cur){
     : '🎉 ぜんぶ1回ずつ出しおわった（つぎから2周目）')+'</div>';
 }
 function renderHome(){
+  renderPlan();
   const w=document.getElementById('subjrow');
   w.innerHTML=['rika','shakai'].map(s=>{
     const n=poolOf(s).length, st=challenge[s];
@@ -2078,6 +2157,7 @@ function retireOld(){
   practiceCount=parseInt(localStorage.getItem(LS_PRACTICE)||'0',10)||0;
   try{ seen=JSON.parse(localStorage.getItem(LS_SEEN)||'{}')||{}; }catch(e){ seen={}; }
   masteredCount=parseInt(localStorage.getItem(LS_MASTERED)||'0',10)||0;
+  try{ const p=JSON.parse(localStorage.getItem(LS_PLAN)||'null'); if(p&&p.week&&p.day)plan=p; }catch(e){}
   try{ const r=JSON.parse(localStorage.getItem(LS_ROUND)||'{}');
        ['rika','shakai'].forEach(s=>{ if(r[s])practiceRound[s]=r[s]|0; }); }catch(e){}
   await Promise.all([loadCards(),loadStories()]);
