@@ -4,6 +4,8 @@
   "no": 1,
   "title": "三日見た茶畑",
   "kind": "mission",
+  "subj": "shakai",
+  "round": 6,
   "pref": "静岡県",
   "chars": [
    "usagidakamekichi",
@@ -47,6 +49,8 @@
   "no": 2,
   "title": "扇のかたちの答え",
   "kind": "mission",
+  "subj": "shakai",
+  "round": 6,
   "pref": "山梨県",
   "chars": [
    "eiaimirai",
@@ -96,6 +100,8 @@
   "no": 3,
   "title": "いちばん早く家を出る理由",
   "kind": "mission",
+  "subj": "shakai",
+  "round": 6,
   "pref": "埼玉県",
   "chars": [
    "maniau",
@@ -144,6 +150,8 @@
   "no": 4,
   "title": "江戸前の「前」",
   "kind": "mission",
+  "subj": "shakai",
+  "round": 7,
   "pref": "東京都",
   "chars": [
    "zanpanman",
@@ -190,6 +198,8 @@
   "no": 5,
   "title": "守りやすい町",
   "kind": "mission",
+  "subj": "shakai",
+  "round": 7,
   "pref": "神奈川県",
   "chars": [
    "kendomichiko",
@@ -237,6 +247,8 @@
   "no": 6,
   "title": "台風より先に",
   "kind": "mission",
+  "subj": "shakai",
+  "round": 8,
   "pref": "茨城県",
   "chars": [
    "kofukumanpuku",
@@ -285,6 +297,8 @@
   "no": 7,
   "title": "坂東太郎の引っ越し",
   "kind": "mission",
+  "subj": "shakai",
+  "round": 8,
   "pref": "千葉県",
   "chars": [
    "bakuso",
@@ -332,6 +346,8 @@
   "no": 8,
   "title": "アユのいない川",
   "kind": "mission",
+  "subj": "shakai",
+  "round": 9,
   "pref": "栃木県",
   "chars": [
    "risaikuru",
@@ -379,6 +395,8 @@
   "no": 9,
   "title": "からっ風の通り道",
   "kind": "mission",
+  "subj": "shakai",
+  "round": 9,
   "pref": "群馬県",
   "chars": [
    "koorihiramon",
@@ -425,6 +443,8 @@
   "no": 10,
   "title": "手でつくるという条件",
   "kind": "mission",
+  "subj": "shakai",
+  "round": 10,
   "pref": "石川県",
   "chars": [
    "shiorihasamitaro",
@@ -471,6 +491,8 @@
   "no": 11,
   "title": "冬の家の中で",
   "kind": "mission",
+  "subj": "shakai",
+  "round": 10,
   "pref": "福井県",
   "chars": [
    "procoachrobot",
@@ -521,6 +543,7 @@
   "title": "鍵のかかっていない入り口",
   "kind": "mission",
   "subj": "rika",
+  "round": 6,
   "chars": [
    "kagimori",
    "penton"
@@ -564,6 +587,7 @@
   "title": "ワニは何類",
   "kind": "mission",
   "subj": "rika",
+  "round": 7,
   "chars": [
    "bagutaerazo",
    "buresute"
@@ -607,6 +631,7 @@
   "title": "骨が百個へった日",
   "kind": "mission",
   "subj": "rika",
+  "round": 8,
   "chars": [
    "bakudanma",
    "rumina"
@@ -652,6 +677,7 @@
   "title": "光が書いた字",
   "kind": "mission",
   "subj": "rika",
+  "round": 9,
   "chars": [
    "kurozumi",
    "solbae"
@@ -695,6 +721,7 @@
   "title": "コップの音階",
   "kind": "mission",
   "subj": "rika",
+  "round": 10,
   "chars": [
    "yunden",
    "yabai"
@@ -739,8 +766,9 @@
   "no": 17,
   "title": "理由のカード",
   "kind": "mission",
-  "pref": "静岡県・千葉県・栃木県・群馬県",
   "subj": "shakai",
+  "round": 9,
+  "pref": "静岡県・千葉県・栃木県・群馬県",
   "chars": [
    "aishii_ikemen",
    "moguriana"
@@ -785,8 +813,9 @@
   "no": 18,
   "title": "迷路のまちの警察官",
   "kind": "mission",
-  "pref": "石川県・茨城県",
   "subj": "shakai",
+  "round": 10,
+  "pref": "石川県・茨城県",
   "chars": [
    "fuzeria",
    "uzan"
@@ -831,8 +860,9 @@
   "no": 19,
   "title": "二つの海流が出合うところ",
   "kind": "mission",
-  "pref": "千葉県・静岡県・神奈川県",
   "subj": "shakai",
+  "round": 8,
+  "pref": "千葉県・静岡県・神奈川県",
   "chars": [
    "ania",
    "kamensame"
@@ -876,8 +906,9 @@
   "no": 20,
   "title": "やいた、やいた、ぬった",
   "kind": "mission",
-  "pref": "栃木県・石川県",
   "subj": "shakai",
+  "round": 10,
+  "pref": "栃木県・石川県",
   "chars": [
    "hounobito_sakura",
    "niwatori"
@@ -921,8 +952,9 @@
   "no": 21,
   "title": "川のノート",
   "kind": "mission",
-  "pref": "山梨県・千葉県・栃木県・静岡県",
   "subj": "shakai",
+  "round": 9,
+  "pref": "山梨県・千葉県・栃木県・静岡県",
   "chars": [
    "usagidakamekichi",
    "hiyakozo"

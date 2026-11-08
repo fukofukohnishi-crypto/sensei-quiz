@@ -757,6 +757,22 @@ let chMiss=0;
    在庫切れ。いちばん追いこみたい時期にごほうびが薄くなるため20問にした。
    話を書きたしたら、この数を減らしてもよい。 */
 const STORY_EVERY=20;
+/* 授業の進みに合わせて、まだ習っていない回は出さない。
+   日付は授業のある日（理科は水曜・社会は金曜）。その日の0時から出る。
+   書いていない回（第6〜8回）は、はじめから出る。テストは11/28 */
+const ROUND_OPEN={
+  rika:  {9:'2026-11-11', 10:'2026-11-18'},
+  shakai:{9:'2026-11-13', 10:'2026-11-20'}
+};
+function roundOpenDate(subj,round){ return (ROUND_OPEN[subj]||{})[round]||''; }
+function roundOpen(subj,round){
+  const d=roundOpenDate(subj,round); if(!d)return true;
+  const [y,m,dd]=d.split('-').map(Number);
+  return Date.now()>=new Date(y,m-1,dd).getTime();
+}
+function openDateText(subj,round){ const d=roundOpenDate(subj,round); return d?(+d.slice(5,7))+'/'+(+d.slice(8))+'から':''; }
+/* 読み物も、テストの中身が入っている話は、その回を習ってから開く（stories-nov.json の subj と round） */
+function storyOpen(s){ return !s.subj||!s.round||roundOpen(s.subj,s.round); }
 /* 11月版の専用カード。sp07「学ぶ」（理科）・sp08「教える」（社会）・sp09「正義のヒーローファミリー」（融合）。
    Cards.json に無いときは、クリアしてもトーストだけ出て落ちない（10月版と同じ作り）。
    絵が届く前にクリアしていた子には、起動時に reconcileChallengeCards() がわたす */
@@ -960,7 +976,8 @@ async function loadStories(){
 function unlockNext(){
   /* 最終話はここでは開かない（sp09 専用のごほうびにしてある） */
   const fin=finalStoryId();
-  const next=STORIES.find(s=>s.id!==fin&&unlocked.indexOf(s.id)<0);
+  /* まだ習っていない回の話はとばして、つぎの話を開く（その回の授業のあとで開く） */
+  const next=STORIES.find(s=>s.id!==fin&&unlocked.indexOf(s.id)<0&&storyOpen(s));
   if(!next)return null;
   unlocked.push(next.id); saveUnlocked();
   return next;
@@ -1029,7 +1046,8 @@ let qWrong=[];
 
 /* round を渡すとその単元だけ。0 や未指定なら全部 */
 function poolOf(subj,round){
-  const list=quizbank.filter(q=>q.subj===subj);
+  /* まだ授業のない回は入れない（ROUND_OPEN）。れんしゅう・50問チャレンジ・数の表示がこれを使う */
+  const list=quizbank.filter(q=>q.subj===subj&&roundOpen(subj,q.round));
   return round?list.filter(q=>q.round===round):list;
 }
 /* その科目に実際にある単元の番号。データにある回だけを出す */
@@ -1166,7 +1184,7 @@ const MAP_PICK=[
 const MAP_PICK_Q=MAP_PICK.map((r,i)=>({id:'mappick_'+String(i+1).padStart(2,'0'),type:'map_pick',
   subj:'shakai',round:r[1],q:r[2]+'があるのは、どの都県？',a:r[0],accept:[],
   explain:r[0]+'です。'+r[2]+'があります。',juken:'',source:''}));
-function mapPool(){ return quizbank.filter(q=>q.type==='map_reverse').concat(MAP_PICK_Q); }
+function mapPool(){ return quizbank.filter(q=>q.type==='map_reverse').concat(MAP_PICK_Q).filter(q=>roundOpen('shakai',q.round)); }
 function startMapDrill(){
   qList=pickFresh(mapPool(),20);
   beginQuiz('shakai','free','社会 白地図とっくん');
@@ -1551,6 +1569,8 @@ function renderHome(){
     const cur=roundOf(s), rs=roundsOf(s);
     const chip=(r,label)=>{
       const c=poolOf(s,r).length;
+      /* まだ授業のない回は、出る日を見せておく */
+      if(r&&!roundOpen(s,r)) return '<button class="rchip" disabled>'+label+'<i>'+openDateText(s,r)+'</i></button>';
       return '<button class="rchip'+(cur===r?' on':'')+'"'+(c?'':' disabled')
         +' onclick="setRound(\''+s+'\','+r+')">'+label+'<i>'+c+'</i></button>';
     };
